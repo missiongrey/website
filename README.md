@@ -68,21 +68,22 @@ That serves exactly the tree that gets published. The one difference is the
 
 ## Analytics
 
-Google Analytics 4 is wired but switched off until it is configured, and it
-never runs without the visitor agreeing to it.
+Google Analytics 4 is wired but switched off until it is configured. It
+runs cookieless: nothing is ever stored on the visitor's device, so there
+is no consent notice.
 
 - `assets/consent.js` reads the measurement id from its own `data-ga`
   attribute. Until a real id is set, that attribute holds the placeholder
-  `__GA_MEASUREMENT_ID__`, the script does nothing, no banner appears and no
-  request is made to Google.
+  `__GA_MEASUREMENT_ID__`, the script does nothing and no request is made
+  to Google.
 - To switch it on, set a repository variable named `GA_MEASUREMENT_ID` to
   the GA4 measurement id (`Settings` then `Secrets and variables` then
   `Actions` then `Variables`). The value looks like `G-XXXXXXXXXX`. Then run
   the workflow. The build substitutes the id into every page.
-- With a real id set, a first time visitor sees a small notice offering
-  `Allow` and `Decline`. Nothing is requested from Google before `Allow` is
-  clicked. The choice is stored in the visitor's browser under `mg-consent`
-  and the notice does not come back.
+- With a real id set, gtag.js loads in Consent Mode with every storage
+  type denied: no analytics cookie is set, measurement rides on
+  cookieless aggregate pings, and visitor and session counts in GA are
+  Google's modeled estimates rather than exact.
 - The privacy policy describes this behaviour in section 3, Activity
   Logging. If the analytics setup changes, that section changes with it.
 
