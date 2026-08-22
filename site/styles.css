@@ -589,8 +589,7 @@ html:not(.js) .globe-scene::before{
 }
 .globe-cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--signal);animation:blink 2.4s ease-in-out infinite;flex:none}
 @media (max-width:980px){
-  /* world before words: the globe leads the stacked hero */
-  .globe-scene{order:-1;margin-inline:calc(-1 * var(--pad))}
+  .globe-scene{margin-inline:calc(-1 * var(--pad))}
   .globe-scene canvas{aspect-ratio:1/.96}
   html:not(.js) .globe-scene noscript img{width:100%;aspect-ratio:1/.92;object-fit:cover;object-position:52% 42%}
   /* no-JS overlay hugs the image box; the caption sits below it in flow */
