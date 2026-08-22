@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Partners and Guild &middot; Mission Grey</title>
+<meta name="description" content="Mission Grey operates as an ecosystem: consulting and technology partners, research with Cambridge, Aalto, and Tampere, and a curated Guild of 28 named experts.">
+<link rel="canonical" href="https://missiongrey.com/partners-guild/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://missiongrey.com/partners-guild/">
+<meta property="og:title" content="Partners and Guild &middot; Mission Grey">
+<meta property="og:description" content="Consulting and technology partners, research with Cambridge, Aalto, and Tampere, and a curated Guild of 28 named experts.">
+<meta property="og:image" content="/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Partners and Guild &middot; Mission Grey">
+<meta name="twitter:description" content="Consulting and technology partners, research with Cambridge, Aalto, and Tampere, and a curated Guild of 28 named experts.">
+<meta name="twitter:image" content="/assets/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../../assets/favicon-180.png">
+<link rel="apple-touch-icon" href="/assets/favicon-180.png">
+<link rel="stylesheet" href="../styles.css">
+<style>
+/* Page-local layout only. System tokens exclusively; nothing restyled.
+   The roster is a directory, not a card wall: hairline rows, monogram
+   gutter, domains and profile link on one metadata line. */
+.nav-main a[aria-current="page"],.mnav-panel a[aria-current="page"]{color:var(--ink)}
+.hero-note{margin-top:30px;font:400 10.5px/1.9 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim)}
+.layers{margin-top:clamp(34px,4.5vw,48px);margin-bottom:0}
+/* research institutions */
+.instgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.instcell{background:var(--bg-1);padding:26px 24px 28px}
+.instcell .inst{white-space:normal;color:var(--ink);font-size:17px}
+.instcell .inst small{margin-top:7px;color:var(--ink-dim)}
+.instcell p{margin-top:14px;font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
+.instcell a{display:inline-block;margin-top:18px;font:500 10.5px/1.8 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:5px}
+.instcell a:hover{color:var(--ink);text-decoration-color:var(--line-2)}
+/* people directory */
+.roster{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(28px,4vw,64px);border-bottom:1px solid var(--line)}
+.person{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:22px 6px;border-top:1px solid var(--line);transition:background-color .2s ease}
+.person:hover{background:var(--bg-1)}
+.mgram{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line-2);font:500 11px/1 var(--mono);letter-spacing:.1em;color:var(--ink-mute)}
+.person h3{font-size:16.5px;font-weight:600;letter-spacing:-.01em}
+.person .bio{margin-top:8px;font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
+.person-foot{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:14px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font:400 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);border:1px solid var(--line);padding:7px 9px;border-radius:2px}
+.prof{margin-left:auto;display:inline-flex;align-items:center;min-height:24px;font:500 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);border-bottom:1px solid var(--line-2);white-space:nowrap}
+.prof:hover{color:var(--ink)}
+.roster-key{display:flex;flex-wrap:wrap;gap:8px 24px;margin:24px 0;font:400 10.5px/1.8 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
+.trust-foot a{color:var(--ink-mute);border-bottom:1px solid var(--line-2)}
+.trust-foot a:hover{color:var(--ink)}
+@media (max-width:900px){
+  .instgrid{grid-template-columns:1fr}
+  .roster{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .person{grid-template-columns:1fr;gap:14px}
+  .person-foot{flex-direction:column;align-items:flex-start;gap:12px}
+  .prof{margin-left:0}
+}
+</style>
+<script src="../../assets/consent.js" data-ga="__GA_MEASUREMENT_ID__" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Mission Grey home">
+      <img src="../../assets/mission-grey-logo-white.png" alt="Mission Grey" width="835" height="165">
+    </a>
+    <nav class="nav-main" aria-label="Primary">
+      <a href="/platform/">Platform</a>
+      <a href="/solutions/">Solutions</a>
+      <a href="/use-cases/">Use cases</a>
+      <a href="/partners-guild/" aria-current="page">Partners</a>
+      <a href="/api/">API</a>
+      <a href="/insights/">Insights</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="head-right">
+      <span class="utc" id="utc" aria-hidden="true"></span>
+      <a class="login" href="https://app.missiongrey.com/">Log in</a>
+      <a class="btn btn-primary" href="/contact/">Request access</a>
+      <details class="mnav">
+        <summary aria-label="Open menu">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#E9EDF1" stroke-width="1.5" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+        </summary>
+        <nav class="mnav-panel" aria-label="Mobile">
+          <a href="/platform/">Platform</a>
+          <a href="/solutions/">Solutions</a>
+          <a href="/use-cases/">Use cases</a>
+          <a href="/partners-guild/" aria-current="page">Partners &amp; Guild</a>
+          <a href="/api/">API</a>
+          <a href="/insights/">Insights</a>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+          <a href="https://app.missiongrey.com/">Log in</a>
+          <div class="mnav-cta"><a href="/contact/">Request access</a></div>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="sec hero" aria-labelledby="h1">
+    <div class="wrap">
+      <p class="eyebrow hero-eyebrow">Partners &middot; Research &middot; The Guild</p>
+      <h1 id="h1">Beyond a single provider.</h1>
+      <p class="hero-dek">Mission Grey operates as an ecosystem of partners, experts, and research institutions. The platform carries the scale, partners carry it into client environments, and the Guild carries the judgment that machine analysis cannot supply on its own.</p>
+      <div class="pipe layers reveal" role="img" aria-label="One system, multiple layers: platform, partners, experts, decisions">
+        <span class="node"><span class="nd"></span>Platform</span><span class="link"></span>
+        <span class="node"><span class="nd"></span>Partners</span><span class="link"></span>
+        <span class="node"><span class="nd"></span>Experts</span><span class="link"></span>
+        <span class="node"><span class="nd"></span>Decisions</span>
+      </div>
+      <p class="hero-note">One system, multiple layers</p>
+    </div>
+  </section>
+
+  <!-- ============ PARTNERS ============ -->
+  <section class="sec" id="partners" aria-labelledby="part-h" style="padding-top:0">
+    <div class="wrap">
+      <p class="rule-label">Delivery layer</p>
+      <div class="sec-head reveal" style="margin-top:44px">
+        <p class="eyebrow">Consulting and technology partners</p>
+        <h2 id="part-h">Partners deliver Mission Grey into client environments and workflows.</h2>
+        <p>Mission Grey works with risk management consulting firms, Big Four consulting organizations, data providers, and technology and AI partners.</p>
+      </div>
+      <div class="trust-grid reveal">
+        <div class="trust-cell">
+          <h3>Risk consulting</h3>
+          <p>Risk management consulting firms that bring the platform into engagements they already run.</p>
+        </div>
+        <div class="trust-cell">
+          <h3>Big Four</h3>
+          <p>Big Four consulting organizations working with Mission Grey inside client mandates.</p>
+        </div>
+        <div class="trust-cell">
+          <h3>Data providers</h3>
+          <p>Data partners whose sources extend what the platform can see.</p>
+        </div>
+        <div class="trust-cell">
+          <h3>Technology and AI</h3>
+          <p>Technology and AI partners on the model, infrastructure, and integration side.</p>
+        </div>
+      </div>
+      <p class="trust-foot reveal">Partner organizations are not listed on this page. To discuss delivering Mission Grey to your clients, <a href="/contact/">contact us</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ RESEARCH ============ -->
+  <section class="sec sec-alt" id="research" aria-labelledby="res-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Research layer</p>
+        <h2 id="res-h">Decision models developed with research institutions.</h2>
+        <p>Mission Grey collaborates with leading institutions to develop decision models. The research is integrated directly into the platform rather than published beside it.</p>
+      </div>
+      <div class="instgrid reveal">
+        <div class="instcell">
+          <p class="inst">University of Cambridge<small>Judge Business School</small></p>
+          <p>Work with the business school on how organizations make decisions under external uncertainty.</p>
+          <a href="https://www.jbs.cam.ac.uk/">Judge Business School</a>
+        </div>
+        <div class="instcell">
+          <p class="inst">Aalto University<small>Computer science research</small></p>
+          <p>Collaboration on the computational side of the platform: the models and the methods behind them.</p>
+          <a href="https://www.aalto.fi/en/department-of-computer-science/research-in-computer-science">Department of Computer Science</a>
+        </div>
+        <div class="instcell">
+          <p class="inst">Tampere University<small>Insurance and risk management</small></p>
+          <p>Research with the insurance and risk management group on quantifying exposure and impact.</p>
+          <a href="https://www.tuni.fi/en/research/insurance-and-risk-management-research-group">Insurance and Risk Management Research Group</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE GUILD ============ -->
+  <section class="sec" id="guild" aria-labelledby="guild-h">
+    <div class="wrap">
+      <p class="rule-label">Expert layer</p>
+      <div class="sec-head reveal" style="margin-top:44px">
+        <p class="eyebrow">The Mission Grey Guild</p>
+        <h2 id="guild-h">A curated network of experts providing context, validation, and decision guidance.</h2>
+        <p>Experts validate and challenge outputs in high&#8209;impact situations. They are integrated into the system, not added on top of it, and they cover domains from geopolitics and finance to strategy, operations, security, and advanced technologies.</p>
+      </div>
+      <div class="chips reveal" aria-label="Guild domains">
+        <span class="chip">Strategy</span><span class="chip">Geopolitics</span><span class="chip">Finance</span><span class="chip">Operations</span><span class="chip">Regulation</span><span class="chip">Technology</span><span class="chip">Security</span>
+      </div>
+
+      <p class="rule-label" style="margin-top:clamp(40px,5vw,60px)">Guild roster</p>
+      <div class="roster-key">
+        <span>28 members</span>
+        <span>Domains listed per member</span>
+        <span>Most profiles link to LinkedIn</span>
+      </div>
+      <div class="roster reveal">
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">RA</span>
+          <div>
+            <h3>Richard Andrew</h3>
+            <p class="bio">Senior APAC public affairs and geopolitical strategy expert</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/richard-a-6337292/" aria-label="Richard Andrew on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">RI</span>
+          <div>
+            <h3>Runi Irnandari Arnowo</h3>
+            <p class="bio">Senior banking executive and former Managing Director at Deutsche Bank, with 30+ years across corporate banking, transaction banking and capital markets in Asia-Pacific</p>
+            <div class="person-foot">
+              <div class="tags"><span>Finance</span><span>Strategy</span><span>Operations</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/runi-irnandari-arnowo-64273931/" aria-label="Runi Irnandari Arnowo on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">MA</span>
+          <div>
+            <h3>Marino Auffant</h3>
+            <p class="bio">Harvard-awarded historian and strategist</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span><span>Strategy</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/mauffant/" aria-label="Marino Auffant on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">SJ</span>
+          <div>
+            <h3>Stephen J Blank</h3>
+            <p class="bio">Senior foreign policy expert and fellow</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/stephen-j-blank/" aria-label="Stephen J Blank on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">MB</span>
+          <div>
+            <h3>Mathieu Boulègue</h3>
+            <p class="bio">Transatlantic security researcher and consultant</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span><span>Security</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/mathieu-boul%C3%A8gue-18a1a621/" aria-label="Mathieu Boulègue on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">GC</span>
+          <div>
+            <h3>Gloria Chen</h3>
+            <p class="bio">Multidimensional geopolitical analyst with a focus on space geopolitics</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/gloria-chen-b8b481383/" aria-label="Gloria Chen on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">RC</span>
+          <div>
+            <h3>Rori Comiskey</h3>
+            <p class="bio">US Special Forces officer with operational intelligence expertise</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span><span>Security</span><span>Operations</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/rori-comiskey-051b2030b/" aria-label="Rori Comiskey on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">KC</span>
+          <div>
+            <h3>Kelly Couto</h3>
+            <p class="bio">Latin American specialist and business consultant</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span><span>Finance</span><span>Operations</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/kellycoutooficial/" aria-label="Kelly Couto on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">ZA</span>
+          <div>
+            <h3>Zsuzsa Anna Ferenczy</h3>
+            <p class="bio">EU-China and Indo-Pacific specialist, academic and former European Parliament political advisor</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span><span>Regulation</span><span>Strategy</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/zsuzsa-anna-ferenczy-phd-041946193/" aria-label="Zsuzsa Anna Ferenczy on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">FF</span>
+          <div>
+            <h3>Fabio Frettoli</h3>
+            <p class="bio">International security analyst and project designer</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span><span>Security</span></div>
+              <a class="prof" href="https://it.linkedin.com/in/fabio-frettoli" aria-label="Fabio Frettoli on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">JG</span>
+          <div>
+            <h3>Joseph Gozoya</h3>
+            <p class="bio">PhD candidate in economics, focusing on tax data, policy, and labour markets</p>
+            <div class="person-foot">
+              <div class="tags"><span>Finance</span><span>Regulation</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/josephgozoya/" aria-label="Joseph Gozoya on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">SK</span>
+          <div>
+            <h3>Samantha Karlin</h3>
+            <p class="bio">Global empowerment strategist and CEO</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span><span>Strategy</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/samanthakarlinspeaker/" aria-label="Samantha Karlin on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">AL</span>
+          <div>
+            <h3>Alan Leung</h3>
+            <p class="bio">Enterprise risk and geopolitical intelligence advisor</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span><span>Finance</span><span>Security</span><span>Strategy</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/alan-leung2/" aria-label="Alan Leung on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">LT</span>
+          <div>
+            <h3>Looi Teck Kheong</h3>
+            <p class="bio">Global legal and political strategist, ASEAN specialist</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span><span>Regulation</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/teck-kheong-looi-342399169/" aria-label="Looi Teck Kheong on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">LL</span>
+          <div>
+            <h3>Ludvig Lund</h3>
+            <p class="bio">Seasoned security consultant</p>
+            <div class="person-foot">
+              <div class="tags"><span>Security</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/youfoundmegood/" aria-label="Ludvig Lund on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">DM</span>
+          <div>
+            <h3>Dorota Maczuga</h3>
+            <p class="bio">East Asia expert and co-founder of Polylocal</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/dorota-maczuga/" aria-label="Dorota Maczuga on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">AM</span>
+          <div>
+            <h3>Andrew Marshall</h3>
+            <p class="bio">Global media, IP and commercial strategy leader</p>
+            <div class="person-foot">
+              <div class="tags"><span>Strategy</span><span>Operations</span><span>Finance</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/marshallandrew/" aria-label="Andrew Marshall on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">SM</span>
+          <div>
+            <h3>Shabab Muhaddes</h3>
+            <p class="bio">FinTech and financial risk executive</p>
+            <div class="person-foot">
+              <div class="tags"><span>Finance</span><span>Technology</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/shababmuhaddes/" aria-label="Shabab Muhaddes on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">TN</span>
+          <div>
+            <h3>Toshihisa Nagai</h3>
+            <p class="bio">Geoeconomic risk and regulatory intelligence strategist focused on sanctions, export controls, and capital architecture across APAC and the EU</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span><span>Regulation</span><span>Finance</span><span>Technology</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/toshihisa-nagai/" aria-label="Toshihisa Nagai on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">FP</span>
+          <div>
+            <h3>Fernando Prats</h3>
+            <p class="bio">LATAM political, regulatory and public affairs advisor</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span><span>Regulation</span><span>Strategy</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/fernandoprats/" aria-label="Fernando Prats on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">RR</span>
+          <div>
+            <h3>Rwizi Rweizooba Ainomugisha</h3>
+            <p class="bio">Freelance wargame researcher, analyst and designer</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span><span>Strategy</span><span>Technology</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/rwizirweizooba/" aria-label="Rwizi Rweizooba Ainomugisha on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">AS</span>
+          <div>
+            <h3>Amandine Schneickert</h3>
+            <p class="bio">International strategic policy executive and lobbyist</p>
+            <div class="person-foot">
+              <div class="tags"><span>Regulation</span><span>Geopolitics</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/amuskus/" aria-label="Amandine Schneickert on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">SR</span>
+          <div>
+            <h3>Scott R. Siler</h3>
+            <p class="bio">Political risk advisor and strategy professor</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span><span>Regulation</span><span>Strategy</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/scottrsiler/" aria-label="Scott R. Siler on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">DT</span>
+          <div>
+            <h3>Diana The Hui Ling</h3>
+            <p class="bio">Senior legal, insurance, and risk management expert</p>
+            <div class="person-foot">
+              <div class="tags"><span>Finance</span><span>Regulation</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/diana-the-hui-ling/" aria-label="Diana The Hui Ling on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">DV</span>
+          <div>
+            <h3>Daniel Valerio</h3>
+            <p class="bio">Former EY Partner in charge of Americas Retail Risk and Audit</p>
+            <div class="person-foot">
+              <div class="tags"><span>Finance</span><span>Operations</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/dan-valerio-2864a23/" aria-label="Daniel Valerio on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">PV</span>
+          <div>
+            <h3>Pekka Väisänen</h3>
+            <p class="bio">Political scientist focused on French and European affairs</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span><span>Regulation</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/pekka-v%C3%A4is%C3%A4nen-373a40268/" aria-label="Pekka Väisänen on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">WV</span>
+          <div>
+            <h3>William Vogt</h3>
+            <p class="bio">Emerging Markets Expert, with an emphasis on Sino-Lusophone (China/Portuguese-speaking) Affairs.</p>
+            <div class="person-foot">
+              <div class="tags"><span>Technology</span><span>Geopolitics</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <span class="mgram" aria-hidden="true">PV</span>
+          <div>
+            <h3>Pekka Virkki</h3>
+            <p class="bio">Guildmaster, geopolitical author and journalist</p>
+            <div class="person-foot">
+              <div class="tags"><span>Geopolitics</span></div>
+              <a class="prof" href="https://www.linkedin.com/in/pekka-virkki-b504a0181/" aria-label="Pekka Virkki on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ JOIN ============ -->
+  <section class="sec" id="join" aria-labelledby="join-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="frame access-panel reveal"><span class="tick"></span>
+        <p class="eyebrow">Join the ecosystem</p>
+        <h2 id="join-h">Become a partner, or join the Guild.</h2>
+        <p>Partners deliver Mission Grey into client environments. Guild members bring domain judgment to high&#8209;impact analysis. Both start with a conversation.</p>
+        <div class="access-cta">
+          <a class="btn btn-primary" href="/contact/">Become a partner</a>
+          <a class="btn btn-ghost" href="/contact/">Join the Guild</a>
+        </div>
+        <p class="access-mail"><a href="mailto:contact@missiongrey.com">contact@missiongrey.com</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="../../assets/mission-grey-logo-white.png" alt="Mission Grey" width="835" height="165">
+        <p>External intelligence for decision&#8209;making. Enterprise access by request.</p>
+        <p class="entity">Mission Grey, Inc. &middot; Delaware, United States</p>
+      </div>
+      <nav class="foot-col" aria-label="Platform">
+        <h3>Platform</h3>
+        <ul>
+          <li><a href="/platform/">Platform</a></li>
+          <li><a href="/api/">API</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="Solutions">
+        <h3>Solutions</h3>
+        <ul>
+          <li><a href="/solutions/">Solutions</a></li>
+          <li><a href="/use-cases/">Use cases</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="Company">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="/about/">About us</a></li>
+          <li><a href="/partners-guild/">Partners &amp; Guild</a></li>
+          <li><a href="/insights/">Insights</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="Contact">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="/contact/">Request access</a></li>
+          <li><a href="https://calendly.com/lauri-missiongrey/30min">Book a demo</a></li>
+          <li><a href="mailto:contact@missiongrey.com">Email us</a></li>
+          <li><a href="https://app.missiongrey.com/">Log in</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="foot-offices" aria-label="Offices">
+      <span>Arlington, VA</span><span>Puteaux, France</span><span>Singapore</span><span>Tampere, Finland</span><span>San Francisco, USA</span>
+    </p>
+    <div class="foot-legal">
+      <span>&copy; 2026 Mission Grey. All rights reserved.</span>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="/terms/">Terms of Use</a>
+      <span class="tag">Built for enterprise decision&#8209;makers</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+
+  /* UTC clock: JS-driven; the empty span stays hidden without JS */
+  var c=document.getElementById('utc');
+  if(c){var f=function(){c.textContent='UTC '+new Date().toISOString().slice(11,19);};f();if(!matchMedia('(prefers-reduced-motion: reduce)').matches){setInterval(f,1000);}}
+
+  /* reveal on scroll */
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.08,rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  }else{
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
+  }
+
+  /* close mobile menu after navigation or outside click */
+  var mn=document.querySelector('.mnav');
+  if(mn){
+    mn.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mn.removeAttribute('open');});});
+    document.addEventListener('click',function(e){if(mn.hasAttribute('open')&&!mn.contains(e.target)){mn.removeAttribute('open');}});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'){mn.removeAttribute('open');}});
+  }
+})();
+</script>
+</body>
+</html>

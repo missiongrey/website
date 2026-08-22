@@ -1,0 +1,3 @@
+# Build output. Both are regenerated from scratch by the deploy scripts.
+deploy/prod/
+deploy/stage/

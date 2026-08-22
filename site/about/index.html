@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About &middot; Mission Grey</title>
+<meta name="description" content="Mission Grey builds the intelligence layer between the world and enterprise decisions. The team, the advisors, the research partnerships, and where we operate.">
+<link rel="canonical" href="https://missiongrey.com/about/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://missiongrey.com/about/">
+<meta property="og:title" content="About &middot; Mission Grey">
+<meta property="og:description" content="The intelligence layer between the world and enterprise decisions. The team, the advisors, the research partnerships, and where we operate.">
+<meta property="og:image" content="/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About &middot; Mission Grey">
+<meta name="twitter:description" content="The intelligence layer between the world and enterprise decisions. The team, the advisors, the research partnerships, and where we operate.">
+<meta name="twitter:image" content="/assets/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../../assets/favicon-180.png">
+<link rel="apple-touch-icon" href="/assets/favicon-180.png">
+<link rel="stylesheet" href="../styles.css">
+<style>
+/* Page-local layout only. System tokens exclusively; nothing restyled.
+   People are rendered as a directory (hairline rows, headshot gutter —
+   .person-photo lives in the system, section 14; the monogram is the
+   fallback where no photo exists), the same idiom as the Guild roster
+   on /partners-guild/. */
+.nav-main a[aria-current="page"],.mnav-panel a[aria-current="page"]{color:var(--ink)}
+/* people directory */
+.roster{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(28px,4vw,64px);border-bottom:1px solid var(--line)}
+.person{display:grid;grid-template-columns:48px 1fr;gap:18px;padding:22px 6px;border-top:1px solid var(--line);transition:background-color .2s ease}
+.person:hover{background:var(--bg-1)}
+.mgram{width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line-2);border-radius:2px;font:500 11px/1 var(--mono);letter-spacing:.1em;color:var(--ink-mute)}
+.person h3{font-size:16.5px;font-weight:600;letter-spacing:-.01em}
+.person .role{margin-top:7px;font:500 10.5px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
+.person .bio{margin-top:10px;font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
+.person .cred{margin-top:7px;font-size:13.5px;line-height:1.6;color:var(--ink-dim)}
+.person-foot{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:14px}
+.prof{display:inline-flex;align-items:center;min-height:24px;font:500 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);border-bottom:1px solid var(--line-2);white-space:nowrap}
+.prof:hover{color:var(--ink)}
+.roster-key{display:flex;flex-wrap:wrap;gap:8px 24px;margin:24px 0;font:400 10.5px/1.8 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
+/* research strip cross-link (mirrors .strip-g2 without the G2 semantics) */
+.strip-link{margin-left:auto;font:500 11px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);border-bottom:1px solid var(--line-2);padding-bottom:2px;white-space:nowrap}
+.strip-link:hover{color:var(--ink)}
+/* offices */
+.offices{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.office{background:var(--bg-1);padding:26px 24px 28px}
+.office h3{font:500 10.5px/1.5 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:16px}
+.office p{font:600 16px/1.45 var(--sans);letter-spacing:-.01em;color:var(--ink)}
+.office p small{display:block;margin-top:6px;font:400 13.5px/1.5 var(--sans);letter-spacing:0;color:var(--ink-mute)}
+.office-foot{margin-top:20px;display:flex;flex-wrap:wrap;gap:6px 24px;font:400 10.5px/1.9 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
+@media (max-width:900px){
+  .roster{grid-template-columns:1fr}
+  .offices{grid-template-columns:1fr}
+  .strip-link{margin-left:0}
+}
+@media (max-width:560px){
+  .person{grid-template-columns:1fr;gap:14px}
+  .person-foot{flex-direction:column;align-items:flex-start;gap:12px}
+}
+</style>
+<script src="../../assets/consent.js" data-ga="__GA_MEASUREMENT_ID__" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Mission Grey home">
+      <img src="../../assets/mission-grey-logo-white.png" alt="Mission Grey" width="835" height="165">
+    </a>
+    <nav class="nav-main" aria-label="Primary">
+      <a href="/platform/">Platform</a>
+      <a href="/solutions/">Solutions</a>
+      <a href="/use-cases/">Use cases</a>
+      <a href="/partners-guild/">Partners</a>
+      <a href="/api/">API</a>
+      <a href="/insights/">Insights</a>
+      <a href="/about/" aria-current="page">About</a>
+    </nav>
+    <div class="head-right">
+      <span class="utc" id="utc" aria-hidden="true"></span>
+      <a class="login" href="https://app.missiongrey.com/">Log in</a>
+      <a class="btn btn-primary" href="/contact/">Request access</a>
+      <details class="mnav">
+        <summary aria-label="Open menu">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#E9EDF1" stroke-width="1.5" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+        </summary>
+        <nav class="mnav-panel" aria-label="Mobile">
+          <a href="/platform/">Platform</a>
+          <a href="/solutions/">Solutions</a>
+          <a href="/use-cases/">Use cases</a>
+          <a href="/partners-guild/">Partners &amp; Guild</a>
+          <a href="/api/">API</a>
+          <a href="/insights/">Insights</a>
+          <a href="/about/" aria-current="page">About</a>
+          <a href="/contact/">Contact</a>
+          <a href="https://app.missiongrey.com/">Log in</a>
+          <div class="mnav-cta"><a href="/contact/">Request access</a></div>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="sec hero" aria-labelledby="h1">
+    <div class="wrap">
+      <p class="eyebrow hero-eyebrow">About Mission Grey</p>
+      <h1 id="h1">Built by operators, researchers, and intelligence experts.</h1>
+      <p class="hero-dek">Mission Grey builds the intelligence layer between the world and enterprise decisions. Organizations operate in a world shaped by external forces. The company exists to connect those forces directly to the decisions they affect.</p>
+    </div>
+  </section>
+
+  <!-- ============ WHY ============ -->
+  <section class="sec sec-alt" id="why" aria-labelledby="why-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Four disciplines, one system</p>
+        <h2 id="why-h">Why Mission Grey exists.</h2>
+        <p>External intelligence is not one job. It takes people who have run international businesses, people who read the world for a living, people who can price risk, and people who build the models underneath. All four are in the company.</p>
+      </div>
+      <div class="trust-grid reveal">
+        <div class="trust-cell">
+          <h3>Operators</h3>
+          <p>Entrepreneurs and executives who have built and scaled international businesses.</p>
+        </div>
+        <div class="trust-cell">
+          <h3>Intelligence experts</h3>
+          <p>Specialists in geopolitical analysis and global systems who translate complexity into strategic implications.</p>
+        </div>
+        <div class="trust-cell">
+          <h3>Risk experts</h3>
+          <p>Experts in risk management and financial modeling who quantify impact.</p>
+        </div>
+        <div class="trust-cell">
+          <h3>Research</h3>
+          <p>Economists, data scientists, and complex systems researchers building the models behind the platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEAM ============ -->
+  <section class="sec" id="team" aria-labelledby="team-h">
+    <div class="wrap">
+      <p class="rule-label">The team</p>
+      <div class="sec-head reveal" style="margin-top:44px">
+        <p class="eyebrow">16 people &middot; 4 advisors</p>
+        <h2 id="team-h">The people accountable for the work.</h2>
+      </div>
+      <div class="roster-key">
+        <span>Names, roles, and prior work</span>
+        <span>Profiles link out where public</span>
+      </div>
+      <div class="roster reveal">
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/lauri-t-htinen.jpg" alt="Lauri Tähtinen, Chief Executive Officer" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Lauri Tähtinen</h3>
+            <p class="role">Chief Executive Officer</p>
+            <p class="bio">Strategist and entrepreneur at the intersection of geopolitics, technology, and business</p>
+            <p class="cred">Harvard, Cambridge PhD. Advised public and private sector leaders globally.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.linkedin.com/in/lauri-t%C3%A4htinen-7b510722/" aria-label="Lauri Tähtinen on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/jouko-ahvenainen.png" alt="Jouko Ahvenainen, Founder &amp; Chairman" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Jouko Ahvenainen</h3>
+            <p class="role">Founder &amp; Chairman</p>
+            <p class="bio">Serial entrepreneur in data analytics, fintech, and external intelligence</p>
+            <p class="cred">Built and scaled companies across Asia, Europe, and the US.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.linkedin.com/in/joukoahvenainen/" aria-label="Jouko Ahvenainen on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/janaki-kates.jpeg" alt="Janaki Kates, Head of Intelligence" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Janaki Kates</h3>
+            <p class="role">Head of Intelligence</p>
+            <p class="bio">National security expert with 18 years in intelligence and government</p>
+            <p class="cred">Former CIA analyst. Briefed executives at the Department of State and National Security Council.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.linkedin.com/in/janaki-kates-a925241/" aria-label="Janaki Kates on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/jani-kinnunen.jpeg" alt="Jani Kinnunen, Chief Research Officer" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Jani Kinnunen</h3>
+            <p class="role">Chief Research Officer</p>
+            <p class="bio">Senior researcher in economics, finance, and computational modeling</p>
+            <p class="cred">100+ peer-reviewed publications.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.researchgate.net/profile/Jani-Kinnunen-2" aria-label="Jani Kinnunen on ResearchGate">ResearchGate</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/andrew-ong.jpeg" alt="Andrew Ong, Chief Growth Officer" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Andrew Ong</h3>
+            <p class="role">Chief Growth Officer</p>
+            <p class="bio">C-level executive with 30+ years scaling fintech and SaaS businesses globally</p>
+            <p class="cred">Delivered triple-digit growth across Asia-Pacific markets.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.linkedin.com/in/ong-andrew/" aria-label="Andrew Ong on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/akseli-kettula.jpg" alt="Akseli Kettula, VP, Product &amp; Business Development" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Akseli Kettula</h3>
+            <p class="role">VP, Product &amp; Business Development</p>
+            <p class="bio">Expert in insurance, risk management, and large-scale corporate exposure</p>
+            <p class="cred">Managed portfolios for 40+ organizations.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.linkedin.com/in/akselikettula/" aria-label="Akseli Kettula on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/teppo-koskinen.png" alt="Teppo Koskinen, Founder &amp; Chief Technology Officer" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Teppo Koskinen</h3>
+            <p class="role">Founder &amp; Chief Technology Officer</p>
+            <p class="bio">Technology entrepreneur specializing in scalable software and machine learning systems</p>
+            <p class="cred">20+ years building products from architecture to production.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.linkedin.com/in/teppo-koskinen" aria-label="Teppo Koskinen on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/mercy-kuo.png" alt="Mercy Kuo, Head of Strategy, United States" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Mercy Kuo</h3>
+            <p class="role">Head of Strategy, United States</p>
+            <p class="bio">Geopolitics, strategic risk, and external intelligence expert with experience across government, corporate advisory, and international affairs</p>
+            <p class="cred">Former CIA analyst and executive in U.S. risk intelligence, helping organizations understand how external developments shape business decisions.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.linkedin.com/in/mercyakuo/" aria-label="Mercy Kuo on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/lauri-byckling.jpeg" alt="Lauri Byckling, Advisor" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Lauri Byckling</h3>
+            <p class="role">Strategic Advisor</p>
+            <p class="bio">Senior executive and advisor with 30+ years in consulting, technology, and business transformation</p>
+            <p class="cred">Former Deloitte Managing Partner. Helps global organizations build practical business and technology solutions.</p>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/erno-pirinen.jpeg" alt="Erno Pirinen, VP, Technical Product Management" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Erno Pirinen</h3>
+            <p class="role">VP, Technical Product Management</p>
+            <p class="bio">Product leader in AI and data-driven enterprise platforms</p>
+            <p class="cred">Scaled a cloud orchestration platform from concept to Fortune 500 adoption.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.linkedin.com/in/ernopirinen/" aria-label="Erno Pirinen on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/monique-boddington.jpeg" alt="Monique Boddington, Head of Campus" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Monique Boddington</h3>
+            <p class="role">Head of Campus</p>
+            <p class="bio">Professor at Cambridge Judge Business School</p>
+            <p class="cred">Directs the Master's in Entrepreneurship. Leads research collaborations.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.linkedin.com/in/monique-ingrid-boddington-b550a321/" aria-label="Monique Boddington on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/peter-steube.jpeg" alt="Peter Steube, Head of Community" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Peter Steube</h3>
+            <p class="role">Head of Community</p>
+            <p class="bio">Strategic community builder for executive-level intelligence networks</p>
+            <p class="cred">Former Gartner executive community lead.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.linkedin.com/in/petersteube/" aria-label="Peter Steube on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/thorsten-terweiden.jpg" alt="Thorsten Terweiden, Director, Business Development" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Thorsten Terweiden</h3>
+            <p class="role">Director, Business Development</p>
+            <p class="bio">Senior trade and investment professional with 20+ years across Europe, Asia, and Australia</p>
+            <p class="cred">Part of the core team that secured Intel's landmark investment in Germany.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.linkedin.com/in/thorsten-terweiden-08295217/" aria-label="Thorsten Terweiden on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/pekka-virkki.png" alt="Pekka Virkki, Co-founder &amp; Intelligence Recruiter" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Pekka Virkki</h3>
+            <p class="role">Co-founder &amp; Intelligence Recruiter</p>
+            <p class="bio">Geopolitical author and journalist specializing in international power dynamics</p>
+            <p class="cred">Published by The Times, El País, CEPA.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.linkedin.com/in/pekka-virkki-b504a0181/" aria-label="Pekka Virkki on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/eva-mikkonen.png" alt="Eva Mikkonen, OSINT Specialist &amp; Software Developer" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Eva Mikkonen</h3>
+            <p class="role">OSINT Specialist &amp; Software Developer</p>
+            <p class="bio">OSINT specialist and cybersecurity professional</p>
+            <p class="cred">Full-stack security experience. Specializes in open-source intelligence.</p>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/se-n-mcloughlin.jpg" alt="Seán McLoughlin, Practice &amp; Community Developer" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Seán McLoughlin</h3>
+            <p class="role">Practice &amp; Community Developer</p>
+            <p class="bio">International politics researcher focused on geopolitical complexity</p>
+            <p class="cred">Background in municipal politics, civil society, and global insurance brokerage.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.linkedin.com/in/se%C3%A1n-mcloughlin-b05aa5207/" aria-label="Seán McLoughlin on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="rule-label" style="margin-top:clamp(44px,5vw,64px)">Advisors</p>
+      <div class="roster reveal" style="margin-top:24px">
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/kuan-yen-tan.jpeg" alt="Kuan Yen Tan, Advisor" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Kuan Yen Tan</h3>
+            <p class="bio">Co-founder of IQM Quantum Computers. PhD in experimental physics</p>
+            <p class="cred">Named CTO of the Year 2023 by Technology Industries of Finland.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.linkedin.com/in/kuan-yen-tan/" aria-label="Kuan Yen Tan on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/pasi-eronen-watt.jpg" alt="Pasi Eronen Watt, Advisor" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Pasi Eronen Watt</h3>
+            <p class="bio">Expert in information operations, strategic analysis, and hybrid threat assessment</p>
+            <p class="cred">Career spanning NATO, OSCE, EU missions.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.linkedin.com/in/peronen/" aria-label="Pasi Eronen Watt on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/jay-tannon.jpeg" alt="Jay Tannon, Advisor" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Jay Tannon</h3>
+            <p class="bio">Business lawyer and principal investor in infrastructure and renewable energy</p>
+            <p class="cred">Recognized by Best Lawyers in America for 25 consecutive years.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.linkedin.com/in/jaymtannon/" aria-label="Jay Tannon on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="person">
+          <img class="person-photo" src="../../assets/people/markus-lampinen.jpeg" alt="Markus Lampinen, Advisor" width="48" height="48" loading="lazy">
+          <div>
+            <h3>Markus Lampinen</h3>
+            <p class="bio">Serial entrepreneur and investor with global fintech and AI scaling experience</p>
+            <p class="cred">Based in Silicon Valley.</p>
+            <div class="person-foot">
+              <a class="prof" href="https://www.linkedin.com/in/markuslampinen/" aria-label="Markus Lampinen on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESEARCH STRIP ============ -->
+  <section class="proofstrip" aria-label="Research partnerships">
+    <div class="wrap strip-row">
+      <span class="strip-label">Research partnerships</span>
+      <span class="inst">University of Cambridge<small>Judge Business School</small></span>
+      <span class="inst">Aalto University</span>
+      <span class="inst">Tampere University</span>
+      <span class="strip-rule" aria-hidden="true"></span>
+      <a class="strip-link" href="/partners-guild/">Partners and the Guild</a>
+    </div>
+  </section>
+
+  <!-- ============ OFFICES ============ -->
+  <section class="sec" id="offices" aria-labelledby="off-h">
+    <div class="wrap">
+      <p class="rule-label">Where we are</p>
+      <div class="sec-head reveal" style="margin-top:44px">
+        <p class="eyebrow">Three regions</p>
+        <h2 id="off-h">Globally present, locally connected.</h2>
+      </div>
+      <div class="offices reveal">
+        <div class="office">
+          <h3>Americas</h3>
+          <p>Venture X, Arlington, VA<small>United States</small></p>
+        </div>
+        <div class="office">
+          <h3>Europe, Middle East &amp; Africa</h3>
+          <p>La Défense, Puteaux<small>France</small></p>
+        </div>
+        <div class="office">
+          <h3>Asia</h3>
+          <p>Raffles Place<small>Singapore</small></p>
+        </div>
+      </div>
+      <p class="office-foot reveal">
+        <span>Other offices and operations</span><span>Tampere, Finland</span><span>San Francisco, USA</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ CLOSER ============ -->
+  <section class="sec" id="category" aria-labelledby="cat-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="frame access-panel reveal"><span class="tick"></span>
+        <p class="eyebrow">A new category</p>
+        <h2 id="cat-h">Intelligence, modeling, and expertise in one system.</h2>
+        <p>Mission Grey combines intelligence, modeling, and expertise into one system. The platform, the research models, and the Guild operate together. Access is by request.</p>
+        <div class="access-cta">
+          <a class="btn btn-primary" href="/contact/">Request access</a>
+          <a class="btn btn-ghost" href="https://calendly.com/lauri-missiongrey/30min">Book a demo</a>
+        </div>
+        <p class="access-mail"><a href="mailto:contact@missiongrey.com">contact@missiongrey.com</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="../../assets/mission-grey-logo-white.png" alt="Mission Grey" width="835" height="165">
+        <p>External intelligence for decision&#8209;making. Enterprise access by request.</p>
+        <p class="entity">Mission Grey, Inc. &middot; Delaware, United States</p>
+      </div>
+      <nav class="foot-col" aria-label="Platform">
+        <h3>Platform</h3>
+        <ul>
+          <li><a href="/platform/">Platform</a></li>
+          <li><a href="/api/">API</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="Solutions">
+        <h3>Solutions</h3>
+        <ul>
+          <li><a href="/solutions/">Solutions</a></li>
+          <li><a href="/use-cases/">Use cases</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="Company">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="/about/">About us</a></li>
+          <li><a href="/partners-guild/">Partners &amp; Guild</a></li>
+          <li><a href="/insights/">Insights</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="Contact">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="/contact/">Request access</a></li>
+          <li><a href="https://calendly.com/lauri-missiongrey/30min">Book a demo</a></li>
+          <li><a href="mailto:contact@missiongrey.com">Email us</a></li>
+          <li><a href="https://app.missiongrey.com/">Log in</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="foot-offices" aria-label="Offices">
+      <span>Arlington, VA</span><span>Puteaux, France</span><span>Singapore</span><span>Tampere, Finland</span><span>San Francisco, USA</span>
+    </p>
+    <div class="foot-legal">
+      <span>&copy; 2026 Mission Grey. All rights reserved.</span>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="/terms/">Terms of Use</a>
+      <span class="tag">Built for enterprise decision&#8209;makers</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+
+  /* UTC clock: JS-driven; the empty span stays hidden without JS */
+  var c=document.getElementById('utc');
+  if(c){var f=function(){c.textContent='UTC '+new Date().toISOString().slice(11,19);};f();if(!matchMedia('(prefers-reduced-motion: reduce)').matches){setInterval(f,1000);}}
+
+  /* reveal on scroll */
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.08,rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  }else{
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
+  }
+
+  /* close mobile menu after navigation or outside click */
+  var mn=document.querySelector('.mnav');
+  if(mn){
+    mn.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mn.removeAttribute('open');});});
+    document.addEventListener('click',function(e){if(mn.hasAttribute('open')&&!mn.contains(e.target)){mn.removeAttribute('open');}});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'){mn.removeAttribute('open');}});
+  }
+})();
+</script>
+</body>
+</html>

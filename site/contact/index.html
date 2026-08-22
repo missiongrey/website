@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact &middot; Mission Grey</title>
+<meta name="description" content="Three ways to reach Mission Grey: book a working session, write to the team, or send a request for access. Offices in the Americas, EMEA, and Asia.">
+<link rel="canonical" href="https://missiongrey.com/contact/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://missiongrey.com/contact/">
+<meta property="og:title" content="Contact &middot; Mission Grey">
+<meta property="og:description" content="Three ways to reach Mission Grey: book a working session, write to the team, or send a request for access. Offices in the Americas, EMEA, and Asia.">
+<meta property="og:image" content="/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../../assets/favicon-180.png">
+<link rel="apple-touch-icon" href="/assets/favicon-180.png">
+<link rel="stylesheet" href="../styles.css">
+<style>
+/* Contact: sub-page hero heading + three-route cards + office cells.
+   Tokens only; no new colors, no new motion. */
+.sec-head h1{font-size:var(--fs-hero);line-height:1.05;letter-spacing:-.03em;max-width:16ch}
+.cap-link{
+  display:inline-flex;align-items:center;gap:10px;margin-top:20px;
+  font:500 11px/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);
+  border-bottom:1px solid var(--line-2);padding-bottom:3px;
+}
+.cap-link:hover{color:var(--ink);border-color:rgba(255,255,255,.4)}
+.inc-panel{background:var(--bg-1);margin-top:clamp(36px,4.5vw,52px)}
+.inc-body{
+  padding:clamp(24px,3vw,34px);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(24px,4vw,56px);align-items:start;
+}
+.inc-copy p{max-width:42ch}
+.inc-foot{margin-top:18px;font-size:14.5px;color:var(--ink-mute)}
+.inc-list{display:grid;gap:14px}
+.inc-list li{display:grid;grid-template-columns:6px 1fr;gap:15px;align-items:baseline;color:var(--ink-body)}
+.inc-list .checker{position:relative;top:-3px}
+@media (max-width:900px){
+  .inc-body{grid-template-columns:1fr;gap:20px}
+  .inc-copy{display:contents}
+  .inc-copy p{max-width:none}
+  .inc-list{order:2}
+  .inc-foot{order:3}
+}
+/* .access-panel p wins on specificity and zeroes .access-mail's top
+   margin: restore it here until styles.css carries the fix */
+.access-panel .access-mail{margin:26px auto 0}
+.offices{grid-template-columns:repeat(3,1fr)}
+.office-loc{font-size:15.5px;color:var(--ink);margin-bottom:6px}
+.office-cc{font:400 10.5px/1.6 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim)}
+@media (max-width:900px){.offices{grid-template-columns:1fr}}
+</style>
+<script src="../../assets/consent.js" data-ga="__GA_MEASUREMENT_ID__" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Mission Grey home">
+      <img src="../../assets/mission-grey-logo-white.png" alt="Mission Grey" width="835" height="165">
+    </a>
+    <nav class="nav-main" aria-label="Primary">
+      <a href="/platform/">Platform</a>
+      <a href="/solutions/">Solutions</a>
+      <a href="/use-cases/">Use cases</a>
+      <a href="/partners-guild/">Partners</a>
+      <a href="/api/">API</a>
+      <a href="/insights/">Insights</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="head-right">
+      <span class="utc" id="utc" aria-hidden="true"></span>
+      <a class="login" href="https://app.missiongrey.com/">Log in</a>
+      <a class="btn btn-primary" href="/contact/">Request access</a>
+      <details class="mnav">
+        <summary aria-label="Open menu">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#E9EDF1" stroke-width="1.5" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+        </summary>
+        <nav class="mnav-panel" aria-label="Mobile">
+          <a href="/platform/">Platform</a>
+          <a href="/solutions/">Solutions</a>
+          <a href="/use-cases/">Use cases</a>
+          <a href="/partners-guild/">Partners &amp; Guild</a>
+          <a href="/api/">API</a>
+          <a href="/insights/">Insights</a>
+          <a href="/about/">About</a>
+          <a href="/contact/" aria-current="page">Contact</a>
+          <a href="https://app.missiongrey.com/">Log in</a>
+          <div class="mnav-cta"><a href="/contact/">Request access</a></div>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="sec hero" aria-labelledby="h1">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow hero-eyebrow">Contact &middot; Enterprise access by request</p>
+        <h1 id="h1">Reach the team directly.</h1>
+        <p class="hero-dek">Mission Grey is an enterprise platform and access is granted by request. Three routes below, each one going to the people who run the system. Tell us the decision you are working on, and we will show you what it looks like from inside the platform.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROUTES ============ -->
+  <section class="sec" id="routes" aria-labelledby="routes-h" style="padding-top:0">
+    <div class="wrap">
+      <p class="rule-label">How to reach us</p>
+      <div class="sec-head reveal" style="margin-top:44px">
+        <p class="eyebrow">Three routes, one team</p>
+        <h2 id="routes-h">Pick the one that fits.</h2>
+      </div>
+      <div class="caps reveal">
+        <article class="cap">
+          <div class="cap-meta"><span class="idx">ROUTE&#8201;/&#8201;01</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="1"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/><path d="M7.5 13.5h3M7.5 17h3M13.5 13.5h3"/></svg>
+          </div>
+          <h3>Book a demo</h3>
+          <p>Schedule a short session and see how Mission Grey works in practice, against a region, a sector, or an exposure you already care about.</p>
+          <a class="cap-link" href="https://calendly.com/lauri-missiongrey/30min">Book a demo</a>
+        </article>
+        <article class="cap">
+          <div class="cap-meta"><span class="idx">ROUTE&#8201;/&#8201;02</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="1"/><path d="M3 6.2l9 7 9-7"/></svg>
+          </div>
+          <h3>Email us</h3>
+          <p>Write to the team directly. Questions about coverage, method, sourcing, or whether this fits your organization are all fair ground.</p>
+          <a class="cap-link" href="mailto:contact@missiongrey.com">contact@missiongrey.com</a>
+        </article>
+        <article class="cap">
+          <div class="cap-meta"><span class="idx">ROUTE&#8201;/&#8201;03</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="12" r="3.6"/><path d="M10.6 12H21M17.6 12v3.6M20.4 12v2.6"/></svg>
+          </div>
+          <h3>Request access</h3>
+          <p>Access is granted by request. Email us or book a session, say which decisions you need covered, and the team takes it from there.</p>
+          <a class="cap-link" href="mailto:contact@missiongrey.com?subject=Request%20access">Email a request</a>
+        </article>
+      </div>
+
+      <div class="frame inc-panel reveal"><span class="tick"></span>
+        <div class="frame-bar">
+          <span>What to include</span>
+          <span class="dim">Four lines is enough</span>
+        </div>
+        <div class="inc-body">
+          <div class="inc-copy">
+            <p>There is no form on this page, by design. A short email carries more than a set of form fields ever did, and it reaches a person instead of a queue. Four lines are enough:</p>
+            <p class="inc-foot">Send it to <a href="mailto:contact@missiongrey.com">contact@missiongrey.com</a>, or bring it to the demo. What you send is handled under our <a href="/privacy/">Privacy Policy</a>.</p>
+          </div>
+          <ul class="inc-list">
+            <li><span class="checker" aria-hidden="true"></span><span>Who you are, and the organization you are writing from.</span></li>
+            <li><span class="checker" aria-hidden="true"></span><span>The decision or exposure you are trying to see more clearly.</span></li>
+            <li><span class="checker" aria-hidden="true"></span><span>The regions, sectors, or counterparties that matter to you.</span></li>
+            <li><span class="checker" aria-hidden="true"></span><span>Whether you would rather have a live session or a written reply.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OFFICES ============ -->
+  <section class="sec sec-alt" id="offices" aria-labelledby="off-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Globally present, locally connected</p>
+        <h2 id="off-h">Three regions, one desk.</h2>
+      </div>
+      <div class="trust-grid offices reveal">
+        <div class="trust-cell">
+          <h3>Americas</h3>
+          <p class="office-loc">Venture X, Arlington, VA</p>
+          <p class="office-cc">United States</p>
+        </div>
+        <div class="trust-cell">
+          <h3>Europe, Middle East &amp; Africa</h3>
+          <p class="office-loc">La D&eacute;fense, Puteaux</p>
+          <p class="office-cc">France</p>
+        </div>
+        <div class="trust-cell">
+          <h3>Asia</h3>
+          <p class="office-loc">Raffles Place</p>
+          <p class="office-cc">Singapore</p>
+        </div>
+      </div>
+      <p class="net-partners reveal" style="margin-top:26px"><b>Other offices and operations</b> Tampere, Finland &middot; San Francisco, USA</p>
+    </div>
+  </section>
+
+  <!-- ============ ACCESS ============ -->
+  <section class="sec" id="access" aria-labelledby="access-h">
+    <div class="wrap">
+      <div class="frame access-panel reveal"><span class="tick"></span>
+        <p class="eyebrow">Access</p>
+        <h2 id="access-h">Start with the decision in front of you.</h2>
+        <p>A short session with the team, or an email that says what you need to see. Either one starts the same conversation.</p>
+        <div class="access-cta">
+          <a class="btn btn-primary" href="https://calendly.com/lauri-missiongrey/30min">Book a demo</a>
+          <a class="btn btn-ghost" href="mailto:contact@missiongrey.com">Email us</a>
+        </div>
+        <p class="access-mail"><a href="mailto:contact@missiongrey.com">contact@missiongrey.com</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="../../assets/mission-grey-logo-white.png" alt="Mission Grey" width="835" height="165">
+        <p>External intelligence for decision&#8209;making. Enterprise access by request.</p>
+        <p class="entity">Mission Grey, Inc. &middot; Delaware, United States</p>
+      </div>
+      <nav class="foot-col" aria-label="Platform">
+        <h3>Platform</h3>
+        <ul>
+          <li><a href="/platform/">Platform</a></li>
+          <li><a href="/api/">API</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="Solutions">
+        <h3>Solutions</h3>
+        <ul>
+          <li><a href="/solutions/">Solutions</a></li>
+          <li><a href="/use-cases/">Use cases</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="Company">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="/about/">About us</a></li>
+          <li><a href="/partners-guild/">Partners &amp; Guild</a></li>
+          <li><a href="/insights/">Insights</a></li>
+          <li><a href="/contact/" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="Contact">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="/contact/">Request access</a></li>
+          <li><a href="https://calendly.com/lauri-missiongrey/30min">Book a demo</a></li>
+          <li><a href="mailto:contact@missiongrey.com">Email us</a></li>
+          <li><a href="https://app.missiongrey.com/">Log in</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="foot-offices" aria-label="Offices">
+      <span>Arlington, VA</span><span>Puteaux, France</span><span>Singapore</span><span>Tampere, Finland</span><span>San Francisco, USA</span>
+    </p>
+    <div class="foot-legal">
+      <span>&copy; 2026 Mission Grey. All rights reserved.</span>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="/terms/">Terms of Use</a>
+      <span class="tag">Built for enterprise decision&#8209;makers</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+
+  /* UTC clock: JS-driven; the empty span stays hidden without JS */
+  var c=document.getElementById('utc');
+  if(c){var f=function(){c.textContent='UTC '+new Date().toISOString().slice(11,19);};f();if(!matchMedia('(prefers-reduced-motion: reduce)').matches){setInterval(f,1000);}}
+
+  /* reveal on scroll */
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.08,rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  }else{
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
+  }
+
+  /* close mobile menu after navigation or outside click */
+  var mn=document.querySelector('.mnav');
+  if(mn){
+    mn.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mn.removeAttribute('open');});});
+    document.addEventListener('click',function(e){if(mn.hasAttribute('open')&&!mn.contains(e.target)){mn.removeAttribute('open');}});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'){mn.removeAttribute('open');}});
+  }
+})();
+</script>
+</body>
+</html>

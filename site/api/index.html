@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>API &middot; Mission Grey</title>
+<meta name="description" content="Embed Mission Grey signals, scenarios, and decision-ready reports into your own systems, dashboards, and workflows through the documented API.">
+<link rel="canonical" href="https://missiongrey.com/api/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://missiongrey.com/api/">
+<meta property="og:title" content="API &middot; Mission Grey">
+<meta property="og:description" content="Embed Mission Grey signals, scenarios, and decision-ready reports into your own systems, dashboards, and workflows through the documented API.">
+<meta property="og:image" content="/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="API &middot; Mission Grey">
+<meta name="twitter:description" content="Embed Mission Grey signals, scenarios, and decision-ready reports into your own systems, dashboards, and workflows through the documented API.">
+<meta name="twitter:image" content="/assets/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../../assets/favicon-180.png">
+<link rel="apple-touch-icon" href="/assets/favicon-180.png">
+<link rel="stylesheet" href="../styles.css">
+<style>
+/* Page-local layout only. System tokens exclusively; nothing restyled. */
+.nav-main a[aria-current="page"],.mnav-panel a[aria-current="page"]{color:var(--ink)}
+.path{margin-top:clamp(34px,4.5vw,48px);margin-bottom:0}
+.path-cap{margin-top:14px;font:400 10.5px/1.9 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim)}
+/* reference panel */
+.docs{background:var(--bg-1);max-width:760px}
+.docs-body{padding:clamp(24px,3vw,34px)}
+.docs-kind{font:500 10.5px/1.6 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:16px}
+.docs-body p{font-size:15px;line-height:1.65;color:var(--ink-mute);max-width:56ch}
+.docs-body .api-url{font:400 12.5px/1.75 var(--mono);letter-spacing:.01em;color:var(--ink);border-left:1px solid var(--line-2);padding-left:14px;margin-top:22px;overflow-wrap:anywhere;max-width:none}
+.docs-body .btn{margin-top:26px}
+</style>
+<script src="../../assets/consent.js" data-ga="__GA_MEASUREMENT_ID__" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="Mission Grey home">
+      <img src="../../assets/mission-grey-logo-white.png" alt="Mission Grey" width="835" height="165">
+    </a>
+    <nav class="nav-main" aria-label="Primary">
+      <a href="/platform/">Platform</a>
+      <a href="/solutions/">Solutions</a>
+      <a href="/use-cases/">Use cases</a>
+      <a href="/partners-guild/">Partners</a>
+      <a href="/api/" aria-current="page">API</a>
+      <a href="/insights/">Insights</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="head-right">
+      <span class="utc" id="utc" aria-hidden="true"></span>
+      <a class="login" href="https://app.missiongrey.com/">Log in</a>
+      <a class="btn btn-primary" href="/contact/">Request access</a>
+      <details class="mnav">
+        <summary aria-label="Open menu">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#E9EDF1" stroke-width="1.5" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+        </summary>
+        <nav class="mnav-panel" aria-label="Mobile">
+          <a href="/platform/">Platform</a>
+          <a href="/solutions/">Solutions</a>
+          <a href="/use-cases/">Use cases</a>
+          <a href="/partners-guild/">Partners &amp; Guild</a>
+          <a href="/api/" aria-current="page">API</a>
+          <a href="/insights/">Insights</a>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+          <a href="https://app.missiongrey.com/">Log in</a>
+          <div class="mnav-cta"><a href="/contact/">Request access</a></div>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="sec hero" aria-labelledby="h1">
+    <div class="wrap">
+      <p class="eyebrow hero-eyebrow">External intelligence in your stack</p>
+      <h1 id="h1">Build on the Mission Grey API.</h1>
+      <p class="hero-dek">Embed intelligence into operational systems, dashboards, and decision processes. The signals, scenarios, and reports the platform produces are available where your own software runs, from strategic insight through to automated workflow.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="/contact/">Request access</a>
+        <a class="btn btn-ghost" href="https://app.missiongrey.com/api/v1/schema/swagger-ui/">Open the API documentation</a>
+      </div>
+      <div class="pipe path reveal" role="img" aria-label="Integration path: signal, analysis, API, your systems">
+        <span class="node"><span class="nd"></span>Signal</span><span class="link"></span>
+        <span class="node"><span class="nd"></span>Analysis</span><span class="link"></span>
+        <span class="node"><span class="nd"></span>API</span><span class="link"></span>
+        <span class="node"><span class="nd"></span>Your systems</span>
+      </div>
+      <p class="path-cap">The pipeline does not end at our interface</p>
+    </div>
+  </section>
+
+  <!-- ============ WHAT IT ENABLES ============ -->
+  <section class="sec" id="enables" aria-labelledby="en-h" style="padding-top:0">
+    <div class="wrap">
+      <p class="rule-label">Integration index</p>
+      <div class="sec-head reveal" style="margin-top:44px">
+        <p class="eyebrow">From integration to custom solutions</p>
+        <h2 id="en-h">Built for enterprise and experimentation.</h2>
+        <p>The same intelligence the platform runs on, available in your own environment: for a production integration, or for one small internal tool.</p>
+      </div>
+      <div class="trust-grid reveal">
+        <div class="trust-cell">
+          <h3>Enterprise integration</h3>
+          <p>Bring signals, scenarios, and reports into the systems your organization already runs.</p>
+        </div>
+        <div class="trust-cell">
+          <h3>Automated pipelines</h3>
+          <p>Move intelligence through your processes without a person copying it between tools.</p>
+        </div>
+        <div class="trust-cell">
+          <h3>Custom dashboards</h3>
+          <p>Compose the views your teams need, on your own front end.</p>
+        </div>
+        <div class="trust-cell">
+          <h3>Internal tools</h3>
+          <p>Build lightweight decision tools on the same data the platform works from.</p>
+        </div>
+      </div>
+      <p class="trust-foot reveal">Supports secure, modular, and scalable integration.</p>
+    </div>
+  </section>
+
+  <!-- ============ USE CASES ============ -->
+  <section class="sec sec-alt" id="use-cases" aria-labelledby="uc-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Where teams point it</p>
+        <h2 id="uc-h">API use cases.</h2>
+      </div>
+      <div class="sectors reveal">
+        <div class="sector">
+          <p class="code"><span>RSK</span>Risk &amp; compliance systems</p>
+          <p class="desc">Pull external signals into the controls, reviews, and reporting your risk function already runs.</p>
+          <p class="out"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>External intelligence inside existing risk workflows.</p>
+        </div>
+        <div class="sector">
+          <p class="code"><span>DSH</span>Internal dashboards</p>
+          <p class="desc">Surface monitored indicators and generated reports where your teams already look.</p>
+          <p class="out"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>One view, without a second login.</p>
+        </div>
+        <div class="sector">
+          <p class="code"><span>DEC</span>Custom decision tools</p>
+          <p class="desc">Build a purpose&#8209;made tool around a decision your organization makes repeatedly.</p>
+          <p class="out"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Intelligence shaped to one recurring call.</p>
+        </div>
+        <div class="sector">
+          <p class="code"><span>WFL</span>Tailored workflows</p>
+          <p class="desc">Route intelligence into the sequence your teams already follow, on your own schedule.</p>
+          <p class="out"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Automation that fits the process you have.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REFERENCE ============ -->
+  <section class="sec" id="reference" aria-labelledby="ref-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Explore the API</p>
+        <h2 id="ref-h">Read the reference before you write a line.</h2>
+      </div>
+      <div class="frame docs reveal"><span class="tick"></span>
+        <div class="frame-bar">
+          <span>API reference</span>
+          <span class="dim">app.missiongrey.com</span>
+        </div>
+        <div class="docs-body">
+          <p class="docs-kind">OpenAPI schema &middot; Swagger UI</p>
+          <p>The reference is generated from the API schema and lists the available endpoints, their parameters, and their responses.</p>
+          <p class="api-url">https://app.missiongrey.com/api/v1/schema/swagger-ui/</p>
+          <a class="btn btn-ghost" href="https://app.missiongrey.com/api/v1/schema/swagger-ui/">Open the API documentation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ACCESS ============ -->
+  <section class="sec" id="access" aria-labelledby="access-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="frame access-panel reveal"><span class="tick"></span>
+        <p class="eyebrow">Access</p>
+        <h2 id="access-h">Start building with Mission Grey.</h2>
+        <p>Mission Grey is an enterprise platform; access is by request. Tell us what you plan to build and where it needs to run.</p>
+        <div class="access-cta">
+          <a class="btn btn-primary" href="/contact/">Request access</a>
+          <a class="btn btn-ghost" href="https://calendly.com/lauri-missiongrey/30min">Book a demo</a>
+        </div>
+        <p class="access-mail"><a href="mailto:contact@missiongrey.com">contact@missiongrey.com</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="../../assets/mission-grey-logo-white.png" alt="Mission Grey" width="835" height="165">
+        <p>External intelligence for decision&#8209;making. Enterprise access by request.</p>
+        <p class="entity">Mission Grey, Inc. &middot; Delaware, United States</p>
+      </div>
+      <nav class="foot-col" aria-label="Platform">
+        <h3>Platform</h3>
+        <ul>
+          <li><a href="/platform/">Platform</a></li>
+          <li><a href="/api/">API</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="Solutions">
+        <h3>Solutions</h3>
+        <ul>
+          <li><a href="/solutions/">Solutions</a></li>
+          <li><a href="/use-cases/">Use cases</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="Company">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="/about/">About us</a></li>
+          <li><a href="/partners-guild/">Partners &amp; Guild</a></li>
+          <li><a href="/insights/">Insights</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <nav class="foot-col" aria-label="Contact">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="/contact/">Request access</a></li>
+          <li><a href="https://calendly.com/lauri-missiongrey/30min">Book a demo</a></li>
+          <li><a href="mailto:contact@missiongrey.com">Email us</a></li>
+          <li><a href="https://app.missiongrey.com/">Log in</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="foot-offices" aria-label="Offices">
+      <span>Arlington, VA</span><span>Puteaux, France</span><span>Singapore</span><span>Tampere, Finland</span><span>San Francisco, USA</span>
+    </p>
+    <div class="foot-legal">
+      <span>&copy; 2026 Mission Grey. All rights reserved.</span>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="/terms/">Terms of Use</a>
+      <span class="tag">Built for enterprise decision&#8209;makers</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+
+  /* UTC clock: JS-driven; the empty span stays hidden without JS */
+  var c=document.getElementById('utc');
+  if(c){var f=function(){c.textContent='UTC '+new Date().toISOString().slice(11,19);};f();if(!matchMedia('(prefers-reduced-motion: reduce)').matches){setInterval(f,1000);}}
+
+  /* reveal on scroll */
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.08,rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  }else{
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
+  }
+
+  /* close mobile menu after navigation or outside click */
+  var mn=document.querySelector('.mnav');
+  if(mn){
+    mn.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mn.removeAttribute('open');});});
+    document.addEventListener('click',function(e){if(mn.hasAttribute('open')&&!mn.contains(e.target)){mn.removeAttribute('open');}});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'){mn.removeAttribute('open');}});
+  }
+})();
+</script>
+</body>
+</html>
