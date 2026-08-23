@@ -1,8 +1,8 @@
 # missiongrey.com
 
 Source for the public Mission Grey website. Hand written static HTML and
-one stylesheet, built by a bash script and published to GitHub Pages on the
-apex domain `missiongrey.com`.
+one stylesheet, built by a bash script and published by AWS Amplify Hosting
+on the apex domain `missiongrey.com`.
 
 There is no framework, no package manager and no build toolchain. If you can
 edit HTML you can edit this site.
@@ -24,7 +24,6 @@ fonts/                 self hosted woff2 files, referenced from styles.css
 newsletters/           Guild newsletter PDFs, published as /newsletters/*.pdf
 deploy/build.sh        production build, writes deploy/prod/
 deploy/stage.sh        preview build under the /new/ prefix, writes deploy/stage/
-.github/workflows/     the deploy action
 ```
 
 `deploy/prod/` and `deploy/stage/` are build output. They are ignored by git
@@ -43,17 +42,14 @@ up at the web root. Write the relative form and the build handles the rest.
 
 1. Edit under `site/` (or `assets/`).
 2. Push to `main`.
-3. The `Deploy to GitHub Pages` action runs `deploy/build.sh` and publishes
-   `deploy/prod/`. It takes about a minute.
+3. AWS Amplify (app `website`, the MG AWS account) runs `deploy/build.sh`
+   and publishes `deploy/prod/`. It takes about two minutes; progress is in
+   the Amplify console.
 
 The build fails, and nothing is published, if any internal link or asset
 reference does not resolve, if the page count does not match the sitemap, or
-if the consent script is missing from a page. A red build means the site you
-are looking at is still the previous one.
-
-You can also start a build by hand from the Actions tab
-(`Deploy to GitHub Pages` then `Run workflow`), which is what you want after
-changing a repository variable.
+if the consent script is missing from a page. A red build in Amplify means
+the site you are looking at is still the previous one.
 
 ## Preview locally
 
@@ -76,10 +72,10 @@ is no consent notice.
   attribute. Until a real id is set, that attribute holds the placeholder
   `__GA_MEASUREMENT_ID__`, the script does nothing and no request is made
   to Google.
-- To switch it on, set a repository variable named `GA_MEASUREMENT_ID` to
-  the GA4 measurement id (`Settings` then `Secrets and variables` then
-  `Actions` then `Variables`). The value looks like `G-XXXXXXXXXX`. Then run
-  the workflow. The build substitutes the id into every page.
+- To switch it on, set an environment variable named `GA_MEASUREMENT_ID` in
+  the Amplify console (App settings, Environment variables), value like
+  `G-XXXXXXXXXX`, then redeploy the branch. The build substitutes the id
+  into every page.
 - With a real id set, gtag.js loads in Consent Mode with every storage
   type denied: no analytics cookie is set, measurement rides on
   cookieless aggregate pings, and visitor and session counts in GA are
@@ -89,25 +85,26 @@ is no consent notice.
 
 ## DNS
 
-The domain is served from GitHub Pages at the apex, with `www` redirecting
-to it. `deploy/build.sh` writes the `CNAME` file on every build, so do not
-add one by hand.
+Served by AWS Amplify Hosting (CloudFront distribution
+`dsj57wmc1tos1.cloudfront.net`). DNS lives at joker.com; the zone is
+DNSSEC signed, and joker's ALIAS record type is incompatible with that
+signing (it produced malformed signatures and validating resolvers
+refused the whole name, 2026-08-23). The apex therefore pins the
+distribution's resolved IPs as plain A records:
 
 | Type | Name | Value |
 |---|---|---|
-| A | `@` | `185.199.108.153` |
-| A | `@` | `185.199.109.153` |
-| A | `@` | `185.199.110.153` |
-| A | `@` | `185.199.111.153` |
-| AAAA | `@` | `2606:50c0:8000::153` |
-| AAAA | `@` | `2606:50c0:8001::153` |
-| AAAA | `@` | `2606:50c0:8002::153` |
-| AAAA | `@` | `2606:50c0:8003::153` |
-| CNAME | `www` | `missiongrey.github.io` |
+| A | `missiongrey.com` | `3.174.113.27` (TTL 300) |
+| A | `missiongrey.com` | `3.174.113.19` (TTL 300) |
+| A | `missiongrey.com` | `3.174.113.52` (TTL 300) |
+| A | `missiongrey.com` | `3.174.113.60` (TTL 300) |
+| CNAME | `www` | `dsj57wmc1tos1.cloudfront.net` |
+| CNAME | `_5d9bf7...` | ACM certificate validation, do not remove |
 
-In the repository, `Settings` then `Pages`, set the source to
-`GitHub Actions`, set the custom domain to `missiongrey.com` and tick
-`Enforce HTTPS` once the certificate has been issued.
+If the site stops answering, first check whether CloudFront moved off the
+pinned IPs: resolve `dsj57wmc1tos1.cloudfront.net` and update the four A
+records to what it returns. The durable fix is moving the zone to a DNS
+host with working apex aliases (planned).
 
 ## Newsletter PDFs
 
