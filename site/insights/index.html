@@ -40,26 +40,56 @@
 .ins-read svg{flex:none}
 .ins-card:hover .ins-read{color:var(--ink)}
 /* newsletter */
-.nl{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:start}
+/* two objects share the top row, the pitch and the edition cover, and each
+   is sized to its own content: the cover frame shrinks to the cover, the
+   pitch keeps a reading measure. The edition line, its title and the
+   highlights then run the full width under one divider, so neither column
+   trails a column of empty ground. */
+.nl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(32px,5vw,64px);align-items:start}
+.nl-pitch{max-width:520px}
+.nl-what-lbl{margin-bottom:16px;font:500 10.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim)}
 .nl-what{margin:0 0 26px}
 .nl-what li{position:relative;padding-left:24px;margin-bottom:11px;font-size:15px;color:var(--ink-body)}
 .nl-what li::before{content:"";position:absolute;left:1px;top:.62em;width:6px;height:6px;background:conic-gradient(var(--signal) 0 25%,transparent 25% 50%,var(--signal) 50% 75%,transparent 75%)}
 .nl-mail{border-top:1px solid var(--line);padding-top:20px;font-size:14.5px;color:var(--ink-mute)}
 .nl-mail .btn{margin-top:16px}
-.nl-latest{padding:26px 24px 28px}
-.nl-latest .ed{font:400 10.5px/1.6 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim)}
-.nl-latest h3{font-size:20px;line-height:1.25;margin:10px 0 20px}
-.nl-hi{border-top:1px solid var(--line)}
-.nl-hi div{padding:15px 0;border-bottom:1px solid var(--line)}
+/* covers are page-1 renders of the published PDFs, trimmed to the printed
+   edge. The hairline separates that edge from the card; no instrument or
+   paper chrome, which would claim product or label a real edition
+   illustrative. The large cover belongs to the latest edition only, and the
+   frame holds nothing else, so it hugs the cover on every width: equal
+   gutters inside, right rail on the section grid. */
+.nl-latest{justify-self:end;width:max-content;max-width:100%;padding:24px}
+.nl-cover{width:300px;max-width:100%;border:1px solid var(--line)}
+/* the edition block: mono line, title, then the highlights it heads */
+.nl-ed{margin-top:clamp(38px,4vw,54px);padding-top:clamp(30px,3.4vw,40px);border-top:1px solid var(--line)}
+.nl-ed .ed{font:400 10.5px/1.6 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim)}
+.nl-ed h3{font-size:24px;line-height:1.25;margin:10px 0 0}
+/* one highlight per hairline row, title left and reading right, the same
+   row grammar as the episode list */
+.nl-hi{margin-top:26px;border-top:1px solid var(--line)}
+.nl-hi div{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:8px 44px;padding:19px 0;border-bottom:1px solid var(--line)}
 .nl-hi div:last-child{border-bottom:0;padding-bottom:0}
-.nl-hi h4{font:600 14.5px/1.45 var(--sans);letter-spacing:-.008em;color:var(--ink);margin-bottom:6px}
-.nl-hi p{font-size:14px;line-height:1.6;color:var(--ink-mute)}
+.nl-hi h4{font:600 15.5px/1.4 var(--sans);letter-spacing:-.008em;color:var(--ink)}
+.nl-hi p{font-size:14.5px;line-height:1.6;color:var(--ink-mute);max-width:72ch}
 .nl-arch{margin-top:clamp(40px,5vw,60px)}
-.nl-arch>div{margin-top:22px;border-top:1px solid var(--line)}
-.nl-arch .row{display:grid;grid-template-columns:150px 1fr;gap:12px 20px;align-items:baseline;padding:16px 4px;border-bottom:1px solid var(--line)}
-.nl-arch .m{font:500 11px/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
-.nl-arch .t{font-size:15.5px;color:var(--ink)}
-.nl-arch .s{margin-top:16px;font:400 10.5px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim)}
+.nl-arch-note{margin-top:16px;font-size:14.5px;color:var(--ink-mute)}
+/* same hairline-per-card grid as .ins-cards, so a short last row leaves page
+   ground rather than a lit empty cell. The cover runs as a small mark, not
+   as an image block: at 120px the printed page is texture and the caption
+   below it is the only readable title. Every thumbnail gets the same fixed
+   90x120 box and object-fit:cover, never a free dimension: the sources are
+   page renders and their trimmed aspect ratios never match. */
+.nl-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:24px}
+.nl-card{background:var(--bg);box-shadow:0 0 0 1px var(--line);padding:22px 22px 24px;display:flex;flex-direction:column;transition:background-color .2s ease}
+.nl-card:hover,.nl-card:focus-within{background:var(--bg-2)}
+.nl-thumb{display:block;width:90px;margin-bottom:20px}
+.nl-card img{width:90px;height:120px;object-fit:cover;object-position:top center;border:1px solid var(--line)}
+.nl-card .m{font:500 11px/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
+.nl-card .t{font-size:16.5px;line-height:1.35;letter-spacing:-.012em;color:var(--ink);font-weight:600;margin:9px 0 22px}
+.nl-dl{margin-top:auto;display:flex;align-items:center;gap:10px;font:500 10.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
+.nl-dl svg{flex:none}
+.nl-card:hover .nl-dl,.nl-card:focus-within .nl-dl{color:var(--ink)}
 /* podcast */
 .pod-lede{max-width:660px}
 .pod-links{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:26px 0 10px}
@@ -80,11 +110,18 @@
   .ins-cards{grid-template-columns:1fr 1fr}
 }
 @media (max-width:900px){
-  .nl{grid-template-columns:1fr}
-  .nl-arch .row{grid-template-columns:110px 1fr;gap:8px 16px}
+  /* minmax(0,1fr), not 1fr: the frame is max-content sized, and a bare 1fr
+     would take that as the column's floor and push the block past the wrap
+     on a phone instead of letting the frame clamp to the section grid */
+  .nl{grid-template-columns:minmax(0,1fr)}
+  .nl-pitch{max-width:640px}
+  .nl-latest{justify-self:start}
+  .nl-hi div{grid-template-columns:1fr;gap:7px}
+  .nl-cards{grid-template-columns:1fr 1fr}
 }
 @media (max-width:640px){
   .ins-cards{grid-template-columns:1fr}
+  .nl-cards{grid-template-columns:1fr}
   .ep{grid-template-columns:1fr;gap:12px}
   .ep .n{letter-spacing:.2em}
 }
@@ -247,11 +284,12 @@
     <div class="wrap">
       <p class="rule-label">Guild Newsletter</p>
       <div class="nl" style="margin-top:44px">
-        <div class="reveal">
+        <div class="nl-pitch reveal">
           <p class="eyebrow" style="margin-bottom:18px">Monthly &middot; By email</p>
           <h2 id="nl-h" style="font-size:var(--fs-h2);line-height:1.12;margin-bottom:18px">Curated intelligence from the Guild.</h2>
           <p style="margin-bottom:26px">Global signals, expert perspective, and the decision each one points at. Assembled monthly by the Mission Grey Guild and sent as a single edition.</p>
-          <ul class="nl-what" aria-label="What each edition carries">
+          <p class="nl-what-lbl" id="nl-what-lbl">What you receive</p>
+          <ul class="nl-what" aria-labelledby="nl-what-lbl">
             <li>Key global signals affecting decisions.</li>
             <li>Expert interpretation and context.</li>
             <li>Decision&#8209;relevant insight, not analysis for its own sake.</li>
@@ -263,50 +301,60 @@
         </div>
 
         <div class="frame nl-latest reveal"><span class="tick"></span>
-          <p class="ed">Latest edition &middot; June 2026</p>
-          <h3>When Ballots Meet Balance Sheets</h3>
-          <div class="nl-hi">
-            <div>
-              <h4>Elections matter, but state capacity matters more.</h4>
-              <p>Markets are increasingly pricing fiscal credibility, institutional competence, and the ability to execute policy rather than campaign promises or ideological labels.</p>
-            </div>
-            <div>
-              <h4>Political risk has become infrastructure risk.</h4>
-              <p>Electricity grids, ports, supply chains, public finances, and demographic pressure now weigh on business strategy as heavily as elections and legislation.</p>
-            </div>
-            <div>
-              <h4>AI&rsquo;s next challenge is political legitimacy.</h4>
-              <p>As data centers drive demand for electricity and water, AI infrastructure becomes a local political issue, and community acceptance becomes a condition for digital investment.</p>
-            </div>
-            <div>
-              <h4>The new investment landscape rewards resilience over prediction.</h4>
-              <p>From Brazil and Peru to the United States and Malaysia, the issue separates structural economic change from short&#8209;term political volatility.</p>
-            </div>
-            <div>
-              <h4>The Mission Grey ecosystem is widening.</h4>
-              <p>The issue introduces the collaboration with Polylocal and the launch of Field Notes, a premium briefing on Taiwan&rsquo;s political, regulatory, and economic developments, alongside new Guild contributions and Guildmaster Pekka Virkki&rsquo;s latest book.</p>
-            </div>
+          <img class="nl-cover" src="../../assets/newsletters/guild-newsletter-june-2026-cover.jpg" width="640" height="906" loading="lazy" alt="Cover of the June 2026 edition: a hand lowers a ballot printed with a balance sheet and an electricity bill into a shipping container used as a ballot box, over a night harbor and a lit data center.">
+        </div>
+      </div>
+
+      <div class="nl-ed reveal">
+        <p class="ed">Latest edition &middot; June 2026</p>
+        <h3>When Ballots Meet Balance Sheets</h3>
+        <div class="nl-hi">
+          <div>
+            <h4>Elections matter, but state capacity matters more.</h4>
+            <p>Markets are increasingly pricing fiscal credibility, institutional competence, and the ability to execute policy rather than campaign promises or ideological labels.</p>
+          </div>
+          <div>
+            <h4>Political risk has become infrastructure risk.</h4>
+            <p>Electricity grids, ports, supply chains, public finances, and demographic pressure now weigh on business strategy as heavily as elections and legislation.</p>
+          </div>
+          <div>
+            <h4>AI&rsquo;s next challenge is political legitimacy.</h4>
+            <p>As data centers drive demand for electricity and water, AI infrastructure becomes a local political issue, and community acceptance becomes a condition for digital investment.</p>
+          </div>
+          <div>
+            <h4>The new investment landscape rewards resilience over prediction.</h4>
+            <p>From Brazil and Peru to the United States and Malaysia, the issue separates structural economic change from short&#8209;term political volatility.</p>
+          </div>
+          <div>
+            <h4>The Mission Grey ecosystem is widening.</h4>
+            <p>The issue introduces the collaboration with Polylocal and the launch of Field Notes, a premium briefing on Taiwan&rsquo;s political, regulatory, and economic developments, alongside new Guild contributions and Guildmaster Pekka Virkki&rsquo;s latest book.</p>
           </div>
         </div>
       </div>
 
       <div class="nl-arch reveal">
-        <p class="rule-label">Archive</p>
-        <div role="list" aria-label="Previous editions">
-          <div class="row" role="listitem">
-            <span class="m">May 2026</span>
-            <span class="t">The New Geopolitical Economy</span>
-          </div>
-          <div class="row" role="listitem">
-            <span class="m">April 2026</span>
-            <span class="t">Neutralizing Chokepoints</span>
-          </div>
-          <div class="row" role="listitem">
-            <span class="m">March 2026</span>
-            <span class="t">Signals Shaping Decisions</span>
-          </div>
+        <h3 class="rule-label" id="nl-arch-h">Archive</h3>
+        <p class="nl-arch-note">Editions before the current one are direct downloads.</p>
+        <div class="nl-cards" role="list" aria-labelledby="nl-arch-h">
+          <article class="nl-card" role="listitem">
+            <a class="nl-thumb" href="/newsletters/guild-newsletter-may-2026.pdf" aria-hidden="true" tabindex="-1"><img src="../../assets/newsletters/guild-newsletter-may-2026-cover.jpg" width="180" height="240" loading="lazy" alt=""></a>
+            <p class="m">May 2026</p>
+            <h4 class="t">The New Geopolitical Economy</h4>
+            <a class="nl-dl" href="/newsletters/guild-newsletter-may-2026.pdf" aria-label="Download PDF of the May 2026 edition, The New Geopolitical Economy">Download PDF<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
+          </article>
+          <article class="nl-card" role="listitem">
+            <a class="nl-thumb" href="/newsletters/guild-newsletter-april-2026.pdf" aria-hidden="true" tabindex="-1"><img src="../../assets/newsletters/guild-newsletter-april-2026-cover.jpg" width="180" height="240" loading="lazy" alt=""></a>
+            <p class="m">April 2026</p>
+            <h4 class="t">Neutralizing Chokepoints</h4>
+            <a class="nl-dl" href="/newsletters/guild-newsletter-april-2026.pdf" aria-label="Download PDF of the April 2026 edition, Neutralizing Chokepoints">Download PDF<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
+          </article>
+          <article class="nl-card" role="listitem">
+            <a class="nl-thumb" href="/newsletters/guild-newsletter-march-2026.pdf" aria-hidden="true" tabindex="-1"><img src="../../assets/newsletters/guild-newsletter-march-2026-cover.jpg" width="180" height="240" loading="lazy" alt=""></a>
+            <p class="m">March 2026</p>
+            <h4 class="t">Signals Shaping Decisions</h4>
+            <a class="nl-dl" href="/newsletters/guild-newsletter-march-2026.pdf" aria-label="Download PDF of the March 2026 edition, Signals Shaping Decisions">Download PDF<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
+          </article>
         </div>
-        <p class="s">Previous editions are sent on request.</p>
       </div>
     </div>
   </section>
