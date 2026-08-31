@@ -398,3 +398,108 @@ photograph saved as PNG costs several megabytes for no gain. Keep every
 cover under about 400KB and run `-auto-orient` before stripping metadata,
 otherwise a phone photo with an EXIF rotation flag loses it and lands
 sideways.
+
+
+## Newsletter round additions (2026-08-30)
+
+### Newsletter covers
+
+The Guild Newsletter covers in `/insights/#newsletters` are renders of page 1
+of the published PDFs: real documents, not drawn artifacts and not product.
+They take none of the three honesty chromes. A `.window` would claim they
+are the product and a `.sheet` would label a real edition illustrative; both
+would be false.
+
+Trim the render before scaling (`magick ... -fuzz 2% -trim +repage`). An
+untrimmed A4 render carries the page's white margin, which on the dark
+chassis reads as a lit paper slab and takes over the section. The remaining
+`var(--line)` hairline sits against the printed edge and does separate the
+cover from the card; use that one token for every cover, large or small.
+
+**Inverted hierarchy, binding.** A large cover appears on the latest edition
+only, at 300px in the `.frame`. Every other cover is a small mark 120px
+tall. The reason is honesty, not taste: these PDFs print their own
+cover lines, which are not always the edition title Mission Grey publishes
+(May prints "Transforming Alliances, Reshaping Regulations, Reconsidering
+Supply Chains" under the published title "The New Geopolitical Economy").
+At 120px that printed text is texture and the caption below it is the only
+readable title; at archive-card size it would be a second, contradicting
+headline.
+
+**One fixed frame for the thumbnails, binding.** Every archive cover renders
+in the same 90x120 box with `object-fit:cover`. Never give a thumbnail a
+free dimension (`width:auto`, `height:auto` or `object-fit:contain`): the
+sources are page renders of different documents and their trimmed aspect
+ratios are never uniform, so a free dimension produces three different
+widths in one row, under an article grid that is perfectly regular. The
+fixed box is what makes the row read as a set. Render the sources at 180x240
+(the box at 2x) so the crop is decided once, in the render, and the CSS
+`object-fit` only has to hold the line for a source that arrives off-ratio.
+
+Alt text follows from the same split. The latest cover is the section's
+anchor image, so its `alt` describes what the picture shows. The archive
+thumbnails carry no information the adjacent month and title do not already
+give, and describing them would repeat the caption or, worse, restate the
+printed cover line, so they take `alt=""`.
+
+### Newsletter section layout
+
+`.nl` is a two-object top row, not a two-column article: the pitch on the
+left, the latest edition's cover in its `.frame` on the right. Both are
+sized to their own content rather than to a fraction of the grid. The frame
+is `width:max-content` and holds nothing but the cover, so it hugs it and
+sits `justify-self:end`, on the section's right rail; the pitch keeps a
+520px reading measure inside a `1fr` column. Sizing them this way is what
+keeps their two ends level (46px apart at 1440, under 50px from 900 up):
+the earlier version put the highlights inside the frame, which ran the
+frame 500px past the end of the pitch and left half the left column as
+empty ground.
+
+Everything the edition itself says then runs the full width below one
+divider: `.nl-ed` carries the mono `Latest edition · <Month> <Year>` line,
+the edition title as the `h3`, and `.nl-hi` under them. The title heads the
+highlights instead of floating beside the cover, which is also what gives it
+a top edge to sit on. Each highlight is one hairline row, `h4` left and its
+sentence right, the same row grammar as the episode list; below 900px the
+row stacks and the frame moves to the left rail, where it still hugs the
+cover, so no width ever leaves dead space beside it.
+
+The one label in the pitch, `.nl-what-lbl`, is a mono uppercase label at
+label scale like every other label on the site, and carries no colon: a
+label is not a sentence with something missing. It keeps the `id` the
+checklist points at with `aria-labelledby`.
+
+Two sizing details are load-bearing. The frame needs `max-width:100%` and
+its single-column grid needs `minmax(0,1fr)` rather than `1fr`: a bare `1fr`
+takes the frame's max-content width as the column floor and pushes the whole
+block past the wrap on a phone, instead of letting the frame clamp to the
+section grid and the cover shrink with it. That clamp is what puts the
+frame's border on the same rails as the hairlines below it and leaves the
+cover equal gutters inside.
+
+### Newsletter archive cards
+
+`.nl-cards` is the same hairline-per-card grid as `.ins-cards`, three across,
+two at 900px, one at 640px. Each `.nl-card` carries the thumbnail, a mono
+month label, the issue title as an `h4`, and one `.nl-dl` download link to
+`/newsletters/<file>.pdf` with the shared 14x10 amber arrow. "Archive" is a
+real `h3` wearing `.rule-label`, so the card titles sit under a group
+heading rather than directly under the section `h2`.
+
+The thumbnail is wrapped in a second anchor to the same PDF, marked
+`aria-hidden="true" tabindex="-1"`: the card lights on hover, so its largest
+object must not be a dead click, but assistive technology and the keyboard
+should still meet exactly one link per card. Give the visible download link
+an `aria-label` naming the edition, since three links with identical text
+read alike out of context, and keep the words "Download PDF" intact at the
+start of that label so the accessible name still contains the visible one.
+Hover states on the card need `:focus-within` counterparts, otherwise the
+card stays inert while the link inside it is focused.
+
+The latest edition is shown as the cover in the `.frame` with its edition
+line, title and highlights full width below, and is never offered as a
+download anywhere on the page: it is requested by mail through the
+`/contact/` CTA. One line above the cards
+says so ("Editions before the current one are direct downloads."), which is
+also what explains the absence of the current month from the archive. The
+page carries no email form.
