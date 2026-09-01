@@ -102,7 +102,7 @@
           <canvas id="globe" role="img" aria-label="A drawn globe of the monitored world, slowly turning: land rendered as a dot grid, with the six tracked maritime chokepoints — Suez, Hormuz, Bab el Mandeb, Malacca, the Taiwan Strait, and Panama — marked in amber, and route signals arcing between them"></canvas>
           <noscript><img src="../assets/globe-canvas.jpg" width="1305" height="1090" alt="The Mission Grey live tracking view: a satellite globe centered on the Middle East and South Asia, layered with monitored event markers, military and infrastructure signals, maritime chokepoints, and live vessel routes across the Arabian Sea"></noscript>
           <p class="globe-route" id="globe-route" aria-hidden="true"></p>
-          <figcaption class="globe-cap">Global signal watch &middot; illustrative view</figcaption>
+          <figcaption class="globe-cap">Global signal watch &middot; illustrative view <button type="button" class="globe-pause" id="globe-pause">Pause motion</button></figcaption>
         </figure>
       </div>
 
@@ -560,7 +560,8 @@
    125x47 bitmask of the former flat map (8px pitch on a 1000x378
    equirectangular plane). Chokepoints at true lat/lon. Pauses when the
    hero leaves the viewport or the tab hides; prefers-reduced-motion gets
-   a single still frame at the Gulf aspect. */
+   a single still frame at the Gulf aspect. The caption's Pause control
+   freezes the current frame on demand (WCAG 2.1 SC 2.2.2). */
 (function(){
 'use strict';
 var cv=document.getElementById('globe');
@@ -830,9 +831,9 @@ window.__mgGlobeStats=function(){
 var RM=window.matchMedia?matchMedia('(prefers-reduced-motion: reduce)'):{matches:false};
 var FORCESTATIC=/[?&]globe=static/.test(location.search);
 function still(){return RM.matches||FORCESTATIC}
-var inView=true,vis=!document.hidden,running=false,raf=0,last=0;
+var inView=true,vis=!document.hidden,paused=false,running=false,raf=0,last=0;
 function setRun(){
-  var want=inView&&vis&&!still();
+  var want=inView&&vis&&!still()&&!paused;
   if(want&&!running){running=true;last=performance.now();raf=requestAnimationFrame(frame)}
   else if(!want&&running){running=false;if(raf){cancelAnimationFrame(raf);raf=0}}
 }
@@ -864,6 +865,16 @@ window.addEventListener('resize',resize);
 if(RM.addEventListener)RM.addEventListener('change',function(){
   if(still()){rot=REST;arcs.length=0;pulses.length=0;if(routeEl)routeEl.classList.remove('on')}
   setRun();draw();
+});
+/* SC 2.2.2: the on-page pause control. A pause, not a reset: the globe
+   keeps its current frame, and html.motion-off rests the pulsing dots. */
+var pb=document.getElementById('globe-pause');
+if(pb)pb.addEventListener('click',function(){
+  paused=!paused;
+  var root=document.documentElement;
+  if(paused)root.classList.add('motion-off');else root.classList.remove('motion-off');
+  pb.textContent=paused?'Resume motion':'Pause motion';
+  setRun();
 });
 resize();
 setRun();

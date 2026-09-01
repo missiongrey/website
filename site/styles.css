@@ -57,12 +57,15 @@
      The roles, fixed across variants:
        --accent       accent as INK. Links in prose, stage numbers,
                       sector codes, the eyebrow tick, checker
-                      bullets, quote rules, focus ring, selection.
+                      bullets, quote rules, focus ring.
        --accent-hi    the same ink under pressure (hover, active).
                       On a light ground "more" means DARKER, so this
                       is always deeper than --accent, never brighter.
        --accent-fill  the accent as a BLOCK: the primary button, the
-                      one filled surface on the page.
+                      one filled surface on the page, and the ground
+                      behind selected text (WCAG 2.1 AA pass 2026-09-01:
+                      --accent-on on --accent as a selection ground
+                      measured 3.05:1; on --accent-fill it is 8.42:1).
        --accent-fill-hi  that block under pressure.
        --accent-on    ink ON an accent fill.
        --accent-mark  small non-text marks that must stay lit at
@@ -163,7 +166,7 @@ body{
   text-rendering:optimizeLegibility;
   overflow-x:hidden;
 }
-::selection{background:var(--accent);color:var(--accent-on)}
+::selection{background:var(--accent-fill);color:var(--accent-on)}
 img{max-width:100%;height:auto;display:block}
 a{color:var(--ink);text-decoration:none}
 a:hover{color:var(--accent)}
@@ -237,7 +240,7 @@ html.js .reveal.in{opacity:1;transform:none;transition:opacity .55s ease,transfo
 }
 .frame-bar span{white-space:nowrap}
 .frame-bar .live{display:flex;align-items:center;gap:8px}
-.frame-bar .live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent-mark);animation:blink 2.4s ease-in-out infinite}
+.frame-bar .live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent-mark);animation:blink 2.4s ease-in-out 2}
 .frame-bar .dim{color:var(--ink-dim)}
 .frame-legend{
   display:flex;flex-wrap:wrap;align-items:center;gap:22px;
@@ -249,6 +252,9 @@ html.js .reveal.in{opacity:1;transform:none;transition:opacity .55s ease,transfo
 .frame-legend .sw.amber{background:var(--accent-mark)}
 .frame-legend .sw.grey{background:var(--ink-mute)}
 .frame-legend .src{margin-left:auto}
+/* Two pulses then rest, 4.8s total: under the five-second bar of WCAG 2.1
+   SC 2.2.2, so a status dot needs no pause control of its own (AA pass,
+   2026-09-01). The keyframes end at full opacity, so rest is the lit state. */
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
 
 /* ============ 07 WINDOW: real product screenshots only ============ */
@@ -359,7 +365,7 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
 .nav-main a:hover{color:var(--ink)}
 .head-right{margin-left:auto;display:flex;align-items:center;gap:22px}
 .utc{font:400 11.5px/1 var(--mono);letter-spacing:.08em;color:var(--ink-dim);white-space:nowrap;display:flex;align-items:center;gap:8px}
-.utc::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent-mark);animation:blink 2.4s ease-in-out infinite}
+.utc::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent-mark);animation:blink 2.4s ease-in-out 2}
 .utc:empty{display:none}
 .login{font:500 11.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
 .login:hover{color:var(--ink)}
@@ -705,7 +711,25 @@ html:not(.js) .globe-cap::before{margin-top:5px}
   display:flex;align-items:center;gap:10px;
   font:500 10.5px/1.6 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);
 }
-.globe-cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent-mark);animation:blink 2.4s ease-in-out infinite;flex:none}
+.globe-cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent-mark);animation:blink 2.4s ease-in-out 2;flex:none}
+/* WCAG 2.1 SC 2.2.2 (AA pass, 2026-09-01): the globe auto-animates for
+   longer than five seconds, so the page carries its own pause control,
+   independent of the OS reduced-motion setting. One hairline control in
+   the caption row: it freezes the globe on its current frame and rests
+   the caption and header dots (html.motion-off). Hidden without JS and
+   under reduced motion, because nothing moves in either case. */
+.globe-pause{
+  margin-left:6px;padding:5px 9px;
+  font:500 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-mute);background:transparent;
+  border:1px solid var(--line-2);border-radius:2px;cursor:pointer;
+  white-space:nowrap;flex:none;
+  transition:border-color .18s ease,color .18s ease,background-color .18s ease;
+}
+.globe-pause:hover{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+html:not(.js) .globe-pause{display:none}
+@media (prefers-reduced-motion:reduce){.globe-pause{display:none}}
+html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
 @media (max-width:980px){
   .globe-scene{margin-inline:calc(-1 * var(--pad))}
   html:not(.js) .globe-scene{margin-inline:0}

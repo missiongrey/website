@@ -41,9 +41,9 @@ article-depth pages (`site/insights/<slug>/`) use `../../../assets/` and link
 | `--ink-body` | `#3A414B` | body copy |
 | `--ink-mute` | `#545C67` | secondary copy |
 | `--ink-dim` | `#626B77` | labels and metadata; do not go dimmer than this for text |
-| `--accent` | accent block | THE accent, as INK: links in running copy, the eyebrow tick, checker bullets, stage numbers, sector codes, quote rules, focus ring, selection. |
+| `--accent` | accent block | THE accent, as INK: links in running copy, the eyebrow tick, checker bullets, stage numbers, sector codes, quote rules, focus ring. |
 | `--accent-hi` | accent block | the same ink under pressure. On a light ground "more" means DARKER, so hover always deepens, never brightens. |
-| `--accent-fill` / `--accent-fill-hi` / `--accent-on` | accent block | the accent as a BLOCK plus the ink that sits on it: the primary button, and nothing else. |
+| `--accent-fill` / `--accent-fill-hi` / `--accent-on` | accent block | the accent as a BLOCK plus the ink that sits on it: the primary button and the ground behind selected text (`::selection`), nothing else. |
 | `--accent-mark` | accent block | small non-text marks that must stay legible at 6px: status dots, map pins, globe chokepoints. |
 | `--accent-soft` | accent block | the accent as a wash behind a hovered hairline control. |
 | `--signal` / `--signal-hi` | aliases | the old accent names, aliased to `--accent` / `--accent-hi`. Existing page-local CSS uses them; new work should use the accent names. |
@@ -349,6 +349,10 @@ script (copy from index.html) gates it behind `html.js`, so no-JS shows
 everything; `prefers-reduced-motion` disables it entirely. Do not invent
 other animations. Permitted motion inventory: reveal rise, the blink dot,
 the map ping, sheet hover lift, color transitions. Nothing else moves.
+WCAG 2.1 SC 2.2.2 (AA pass, 2026-09-01): the blink dot pulses twice and
+rests (4.8s, under the five-second bar); the hero globe, the one thing that
+moves longer, carries its own Pause control in its caption (`.globe-pause`,
+home page only), which freezes the globe and rests the dots on that page.
 
 ## Layout and responsive rules
 
