@@ -102,7 +102,9 @@
   --bg:#F1F3F5;            /* page ground */
   --bg-1:#FAFBFC;          /* raised surface, alt bands */
   --bg-2:#E5E8EC;          /* chrome bars, hover surface */
-  --bg-blur:rgba(241,243,245,.82); /* sticky header; keep in sync with --bg */
+  --bg-blur:rgba(241,243,245,.96); /* sticky header; keep in sync with --bg.
+     .96, not .82: on the light ground an .82 bar transmits legible headings
+     and dark screenshots passing beneath it (critic blocker 1, 1.9) */
   --line:rgba(15,23,32,.10);
   --line-2:rgba(15,23,32,.18);
   --line-3:rgba(15,23,32,.34);       /* emphasized edge: hover borders */
@@ -335,8 +337,14 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
 .site-head{
   position:sticky;top:0;z-index:100;
   background:var(--bg-blur);
-  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  /* no backdrop blur: at .96 alpha it added nothing visually, and a
+     filter here makes the header a containing block, which pins the
+     phone menu's position:fixed sheet + scrim to the bar instead of
+     the viewport (critic blocker 2 fix depends on this) */
   border-bottom:1px solid var(--line);
+  /* soft drop keeps the bar reading as a surface when dark imagery
+     scrolls under it (critic blocker 1, 1.9) */
+  box-shadow:0 10px 28px -22px rgba(15,23,32,.28);
 }
 .site-head .wrap{display:flex;align-items:center;gap:28px;height:64px;max-width:var(--max-nav)}
 .logo{display:flex;align-items:center;flex:none}
@@ -362,10 +370,18 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
 .mnav summary::-webkit-details-marker{display:none}
 .mnav summary svg{display:block}
 .mnav[open] summary{background:var(--bg-2)}
+/* Full-bleed sheet under the 64px header, with a scrim over the page:
+   the half-width dropdown left the hero (and its third REQUEST ACCESS)
+   competing at full contrast beside the menu (critic blocker 2, 1.9). */
+.mnav[open]::before{
+  content:"";position:fixed;inset:64px 0 0 0;
+  background:rgba(15,23,32,.44);z-index:110;
+}
 .mnav-panel{
-  position:absolute;right:0;top:calc(100% + 10px);width:min(78vw,300px);
-  background:var(--bg-1);border:1px solid var(--line-2);border-radius:2px;
-  display:flex;flex-direction:column;padding:8px;z-index:120;
+  position:fixed;left:0;right:0;top:64px;width:auto;
+  background:var(--bg-1);border:0;border-bottom:1px solid var(--line-2);
+  border-radius:0;
+  display:flex;flex-direction:column;padding:10px 16px 16px;z-index:120;
   box-shadow:0 20px 44px -18px rgba(15,23,32,.35);
 }
 .mnav-panel a{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-body);padding:13px 14px;border-radius:2px}
