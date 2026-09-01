@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F1F3F5">
 <title>Insights &middot; Mission Grey</title>
 <meta name="description" content="Analysis, the Guild Newsletter, and the This Week in Business Risk podcast. What Mission Grey and its expert network see in the external world, written down.">
 <link rel="canonical" href="https://missiongrey.com/insights/">
@@ -25,7 +26,7 @@
 .ins-hero .lede{margin-top:22px;max-width:600px;font-size:var(--fs-lede);line-height:1.6}
 .ins-jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
 .ins-jump a{font:500 10.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);border:1px solid var(--line-2);border-radius:2px;padding:11px 15px}
-.ins-jump a:hover{background:rgba(255,255,255,.04);color:var(--ink)}
+.ins-jump a:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
 /* article index */
 /* hairlines are drawn by each card, not by a gap-coloured container, so a
    short last row leaves page ground rather than a lit empty cell */
@@ -37,7 +38,9 @@
 .ins-card h3{font-size:16.5px;line-height:1.35;letter-spacing:-.012em;margin-bottom:11px}
 .ins-card .dek{font-size:14.5px;line-height:1.6;color:var(--ink-mute);margin-bottom:22px}
 .ins-read{margin-top:auto;display:flex;align-items:center;gap:10px;font:500 10.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
-.ins-read svg{flex:none}
+/* the 14x10 arrow is stroke="currentColor" everywhere on the site; the
+   accent reaches it through the svg's own color, never through markup */
+.ins-read svg,.nl-dl svg,.ep .go svg{flex:none;color:var(--accent)}
 .ins-card:hover .ins-read{color:var(--ink)}
 /* newsletter */
 /* two objects share the top row, the pitch and the edition cover, and each
@@ -84,7 +87,7 @@
 .nl-card{background:var(--bg);box-shadow:0 0 0 1px var(--line);padding:22px 22px 24px;display:flex;flex-direction:column;transition:background-color .2s ease}
 .nl-card:hover,.nl-card:focus-within{background:var(--bg-2)}
 .nl-thumb{display:block;width:90px;margin-bottom:20px}
-.nl-card img{width:90px;height:120px;object-fit:cover;object-position:top center;border:1px solid var(--line)}
+.nl-card img{width:90px;height:120px;object-fit:cover;object-position:top center;border:1px solid var(--line-2)}
 .nl-card .m{font:500 11px/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
 .nl-card .t{font-size:16.5px;line-height:1.35;letter-spacing:-.012em;color:var(--ink);font-weight:600;margin:9px 0 22px}
 .nl-dl{margin-top:auto;display:flex;align-items:center;gap:10px;font:500 10.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
@@ -94,7 +97,7 @@
 .pod-lede{max-width:660px}
 .pod-links{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:26px 0 10px}
 .pod-links a{font:500 10.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);border:1px solid var(--line-2);border-radius:2px;padding:11px 15px}
-.pod-links a:hover{background:rgba(255,255,255,.04);color:var(--ink)}
+.pod-links a:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
 .pod-also{font:400 11px/1.9 var(--mono);letter-spacing:.1em;color:var(--ink-dim)}
 .pod-also a{color:var(--ink-dim);border-bottom:1px solid var(--line)}
 .pod-also a:hover{color:var(--ink)}
@@ -151,7 +154,7 @@
       <a class="btn btn-primary" href="/contact/">Request access</a>
       <details class="mnav">
         <summary aria-label="Open menu">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#E9EDF1" stroke-width="1.5" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
         </summary>
         <nav class="mnav-panel" aria-label="Mobile">
           <a href="/platform/">Platform</a>
@@ -202,77 +205,77 @@
           <p class="ins-tag"><b>Strategy</b><time datetime="2026-07-01">July 1, 2026</time></p>
           <h3>Welcoming Runi Irnandari Arnowo to Mission Grey</h3>
           <p class="dek">Runi brings more than three decades of leadership experience from some of the world's leading financial institutions, including Deutsche Bank and Citi. Most recently, she served as Managing Director at Deutsche Bank.</p>
-          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
         </a>
 
         <a class="ins-card" href="/insights/strengthening-mission-greys-us-strategy-and-external-intelligence-leadership/">
           <p class="ins-tag"><b>Strategy</b><time datetime="2026-06-16">June 16, 2026</time></p>
           <h3>Strengthening Mission Grey's U.S. Strategy and External Intelligence Leadership</h3>
           <p class="dek">Mission Grey is pleased to announce that Mercy Kuo has joined the company as Head of Strategy, United States. She previously served as Executive Vice President and Head of Analysis at a U.S. corporate risk intelligence consultancy advising Fortune 500 companies.</p>
-          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
         </a>
 
         <a class="ins-card" href="/insights/lauri-byckling-joins-mission-grey-as-strategic-advisor/">
           <p class="ins-tag"><b>Strategy</b><time datetime="2026-06-09">June 9, 2026</time></p>
           <h3>Lauri Byckling Joins Mission Grey as Strategic Advisor</h3>
           <p class="dek">Mission Grey is pleased to announce that Lauri Byckling has joined the company as Strategic Advisor. He spent decades at Deloitte, where he held several senior leadership positions.</p>
-          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
         </a>
 
         <a class="ins-card" href="/insights/from-research-to-decisions-what-cambridge-judge-business-school-reveals-about-ex/">
           <p class="ins-tag"><b>Markets</b><time datetime="2026-04-30">April 30, 2026</time></p>
           <h3>From Research to Decisions: What Cambridge Judge Business School Reveals About External Intelligence</h3>
           <p class="dek">The broader conclusion is straightforward. External volatility is no longer an exception; it is the operating environment. Companies that treat external intelligence as a core part of decision-making infrastructure will operate differently from those that do not.</p>
-          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
         </a>
 
         <a class="ins-card" href="/insights/interconnected-risks-what-spatial-economics-reveals-about-the-real-world/">
           <p class="ins-tag"><b>Strategy</b><time datetime="2026-04-27">April 27, 2026</time></p>
           <h3>Interconnected Risks: What Spatial Economics Reveals About the Real World</h3>
           <p class="dek">Economic and environmental outcomes are not local. They are interconnected across borders. The analysis demonstrates strong spillover effects.</p>
-          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
         </a>
 
         <a class="ins-card" href="/insights/asias-geopolitical-risks-are-everyones-business-now-lessons-from-asia/">
           <p class="ins-tag"><b>Geopolitics</b><time datetime="2026-04-23">April 23, 2026</time></p>
           <h3>Asia&rsquo;s Geopolitical Risks Are Everyone&rsquo;s Business Now; Lessons from Asia</h3>
           <p class="dek">Across my discussions, a striking theme emerged: trust in US security guarantees is fading fast. A Singapore-based geopolitical expert told me simply: &ldquo;We don&rsquo;t even debate anymore whether the US is a reliable partner. We know it isn&rsquo;t.&rdquo;</p>
-          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
         </a>
 
         <a class="ins-card" href="/insights/mission-grey-at-the-deutsch-finnisches-businessforum-2025/">
           <p class="ins-tag"><b>Geopolitics</b><time datetime="2026-04-23">April 23, 2026</time></p>
           <h3>Mission Grey at the Deutsch-Finnisches Businessforum 2025</h3>
           <p class="dek">The forum brings together German and Finnish companies, government representatives, and public institutions to explore solutions in industry, energy, and logistics.</p>
-          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
         </a>
 
         <a class="ins-card" href="/insights/mission-grey-at-horasis-global-meeting-2025-in-so-paulo/">
           <p class="ins-tag"><b>Strategy</b><time datetime="2026-04-23">April 23, 2026</time></p>
           <h3>Mission Grey at Horasis Global Meeting 2025 In S&atilde;o Paulo</h3>
           <p class="dek">Known as one of the world&rsquo;s most trusted communities for dialogue, Horasis brings together decision-makers to address urgent questions of globalization, sustainability, and geopolitical change.</p>
-          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
         </a>
 
         <a class="ins-card" href="/insights/janaki-kates-joins-mission-grey-as-head-of-intelligence/">
           <p class="ins-tag"><b>Geopolitics</b><time datetime="2026-04-23">April 23, 2026</time></p>
           <h3>Janaki Kates Joins Mission Grey as Head of Intelligence</h3>
           <p class="dek">Janaki brings nearly two decades of experience at the highest levels of the U.S. government and industry. She began her career as a CIA analyst focused on foreign space programs.</p>
-          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
         </a>
 
         <a class="ins-card" href="/insights/how-fuzzy-real-options-help-companies-navigate-geopolitical-risks/">
           <p class="ins-tag"><b>Strategy</b><time datetime="2026-04-23">April 23, 2026</time></p>
           <h3>How Fuzzy Real Options Help Companies Navigate Geopolitical Risks</h3>
           <p class="dek">Traditional financial models rely on probabilities, clean numbers that describe how likely each outcome is. But in geopolitically sensitive environments, reliable data is often missing.</p>
-          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
         </a>
 
         <a class="ins-card" href="/insights/modeling-uncertainty-how-fuzzy-copulas-strengthen-external-intelligence/">
           <p class="ins-tag"><b>Strategy</b><time datetime="2026-04-23">April 23, 2026</time></p>
           <h3>Modeling Uncertainty: How Fuzzy Copulas Strengthen External Intelligence</h3>
           <p class="dek">In global markets, uncertainty is not an inconvenience; it is the environment. Economic dependencies shift with political decisions, commodity prices react to shocks in unexpected ways, and asset relationships that look stable on paper can change dramatically in a few days.</p>
-          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Read</span>
         </a>
 
       </div>
@@ -340,19 +343,19 @@
             <a class="nl-thumb" href="/newsletters/guild-newsletter-may-2026.pdf" aria-hidden="true" tabindex="-1"><img src="../../assets/newsletters/guild-newsletter-may-2026-cover.jpg" width="180" height="240" loading="lazy" alt=""></a>
             <p class="m">May 2026</p>
             <h4 class="t">The New Geopolitical Economy</h4>
-            <a class="nl-dl" href="/newsletters/guild-newsletter-may-2026.pdf" aria-label="Download PDF of the May 2026 edition, The New Geopolitical Economy">Download PDF<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
+            <a class="nl-dl" href="/newsletters/guild-newsletter-may-2026.pdf" aria-label="Download PDF of the May 2026 edition, The New Geopolitical Economy">Download PDF<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
           </article>
           <article class="nl-card" role="listitem">
             <a class="nl-thumb" href="/newsletters/guild-newsletter-april-2026.pdf" aria-hidden="true" tabindex="-1"><img src="../../assets/newsletters/guild-newsletter-april-2026-cover.jpg" width="180" height="240" loading="lazy" alt=""></a>
             <p class="m">April 2026</p>
             <h4 class="t">Neutralizing Chokepoints</h4>
-            <a class="nl-dl" href="/newsletters/guild-newsletter-april-2026.pdf" aria-label="Download PDF of the April 2026 edition, Neutralizing Chokepoints">Download PDF<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
+            <a class="nl-dl" href="/newsletters/guild-newsletter-april-2026.pdf" aria-label="Download PDF of the April 2026 edition, Neutralizing Chokepoints">Download PDF<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
           </article>
           <article class="nl-card" role="listitem">
             <a class="nl-thumb" href="/newsletters/guild-newsletter-march-2026.pdf" aria-hidden="true" tabindex="-1"><img src="../../assets/newsletters/guild-newsletter-march-2026-cover.jpg" width="180" height="240" loading="lazy" alt=""></a>
             <p class="m">March 2026</p>
             <h4 class="t">Signals Shaping Decisions</h4>
-            <a class="nl-dl" href="/newsletters/guild-newsletter-march-2026.pdf" aria-label="Download PDF of the March 2026 edition, Signals Shaping Decisions">Download PDF<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
+            <a class="nl-dl" href="/newsletters/guild-newsletter-march-2026.pdf" aria-label="Download PDF of the March 2026 edition, Signals Shaping Decisions">Download PDF<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
           </article>
         </div>
       </div>
@@ -399,7 +402,7 @@
             <p>Host Rwizi Rweizooba Ainomugisha breaks down the week's four biggest risk signals: a $3 billion US push to break China's grip on critical minerals, India's overhaul of mining taxation, a new India&#8209;Africa trade corridor, and a leaked ultimatum forcing 35 countries to pick a side in the AI race.</p>
             <p class="guest">Rwizi Rweizooba Ainomugisha &middot; Host &middot; Mission Grey Guild member</p>
           </div>
-          <a class="go" href="https://podcasts.apple.com/us/podcast/03-rwizi-on-us-critical-minerals-push-indian-mining/id6793223621?i=1000785784013" aria-label="Listen to episode 03, Rwizi on US Critical Minerals Push, Indian Mining and Pax Silica Ultimatum">Listen<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
+          <a class="go" href="https://podcasts.apple.com/us/podcast/03-rwizi-on-us-critical-minerals-push-indian-mining/id6793223621?i=1000785784013" aria-label="Listen to episode 03, Rwizi on US Critical Minerals Push, Indian Mining and Pax Silica Ultimatum">Listen<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
         </article>
         <article class="ep">
           <p class="n">02</p>
@@ -408,7 +411,7 @@
             <p>Mercy Kuo joins Rwizi Rweizooba Ainomugisha to discuss wargaming as a decision tool, how to think about China risk, and the discipline of turning uncertainty into action.</p>
             <p class="guest">Mercy Kuo &middot; Author of The China Risk Report &middot; Mission Grey team member</p>
           </div>
-          <a class="go" href="https://podcasts.apple.com/us/podcast/02-mercy-kuo-on-wargaming-china-risk-and-eating-black/id6793223621?i=1000779717563" aria-label="Listen to episode 02, Mercy Kuo on Wargaming, China Risk, and Eating Black">Listen<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
+          <a class="go" href="https://podcasts.apple.com/us/podcast/02-mercy-kuo-on-wargaming-china-risk-and-eating-black/id6793223621?i=1000779717563" aria-label="Listen to episode 02, Mercy Kuo on Wargaming, China Risk, and Eating Black">Listen<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
         </article>
         <article class="ep">
           <p class="n">01</p>
@@ -417,7 +420,7 @@
             <p>In the first episode, Lauri T&auml;htinen joins Rwizi Rweizooba Ainomugisha to discuss human&#8209;machine teaming and what it means for decision&#8209;makers operating in complex environments.</p>
             <p class="guest">Lauri T&auml;htinen &middot; Human&#8209;machine teaming expert</p>
           </div>
-          <a class="go" href="https://podcasts.apple.com/us/podcast/01-lauri-t%C3%A4htinen-on-human-machine-teaming-nairobi/id6793223621?i=1000777755314" aria-label="Listen to episode 01, Lauri Tähtinen on Human-Machine Teaming, Nairobi">Listen<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
+          <a class="go" href="https://podcasts.apple.com/us/podcast/01-lauri-t%C3%A4htinen-on-human-machine-teaming-nairobi/id6793223621?i=1000777755314" aria-label="Listen to episode 01, Lauri Tähtinen on Human-Machine Teaming, Nairobi">Listen<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
         </article>
       </div>
     </div>

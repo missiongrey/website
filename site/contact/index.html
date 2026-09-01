@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F1F3F5">
 <title>Contact &middot; Mission Grey</title>
 <meta name="description" content="Three ways to reach Mission Grey: book a working session, write to the team, or send a request for access. Offices in the Americas, EMEA, and Asia.">
 <link rel="canonical" href="https://missiongrey.com/contact/">
@@ -25,7 +26,7 @@
   font:500 11px/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);
   border-bottom:1px solid var(--line-2);padding-bottom:3px;
 }
-.cap-link:hover{color:var(--ink);border-color:rgba(255,255,255,.4)}
+.cap-link:hover{color:var(--accent);border-color:var(--accent)}
 .inc-panel{background:var(--bg-1);margin-top:clamp(36px,4.5vw,52px)}
 .inc-body{
   padding:clamp(24px,3vw,34px);
@@ -33,6 +34,10 @@
 }
 .inc-copy p{max-width:42ch}
 .inc-foot{margin-top:18px;font-size:14.5px;color:var(--ink-mute)}
+/* the only prose links on the page: the accent marks them, the same
+   treatment the legal pages give .doc-body a */
+.inc-foot a{color:var(--accent);border-bottom:1px solid var(--line-2);padding-bottom:1px}
+.inc-foot a:hover{color:var(--accent-hi);border-color:var(--accent)}
 .inc-list{display:grid;gap:14px}
 .inc-list li{display:grid;grid-template-columns:6px 1fr;gap:15px;align-items:baseline;color:var(--ink-body)}
 .inc-list .checker{position:relative;top:-3px}
@@ -76,7 +81,7 @@
       <a class="btn btn-primary" href="/contact/">Request access</a>
       <details class="mnav">
         <summary aria-label="Open menu">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#E9EDF1" stroke-width="1.5" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14"/></svg>
         </summary>
         <nav class="mnav-panel" aria-label="Mobile">
           <a href="/platform/">Platform</a>

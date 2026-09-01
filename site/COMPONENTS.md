@@ -33,16 +33,42 @@ article-depth pages (`site/insights/<slug>/`) use `../../../assets/` and link
 
 | Token | Value | Use |
 |---|---|---|
-| `--bg` | `#0A0C10` | page ground. The site is dark; there is no light theme. |
-| `--bg-1` | `#0E1116` | raised surfaces, alternate bands (`.sec-alt`) |
-| `--bg-2` | `#12161C` | chrome bars, hover surfaces |
-| `--line` / `--line-2` | white at 8% / 15% | hairlines / emphasized hairlines and corner ticks |
-| `--ink` | `#E9EDF1` | headings, primary emphasis |
-| `--ink-body` | `#B6BEC7` | body copy |
-| `--ink-mute` | `#8B95A0` | secondary copy |
-| `--ink-dim` | `#78828F` | labels and metadata; do not go dimmer than this for text |
-| `--signal` | `#E2A33C` | THE accent. Amber means "live signal": status dots, markers, the eyebrow tick, focus rings, stage numbers. Never use it for decoration, large fills, or body text. One accent per component is the ceiling. |
-| `--paper*` | warm paper set | ONLY inside `.sheet` artifacts (see below). Paper never leaks onto the dark chassis. |
+| `--bg` | `#F1F3F5` | page ground: light gray, never white. There is one theme; no dark mode. |
+| `--bg-1` | `#FAFBFC` | raised surfaces, alternate bands (`.sec-alt`) |
+| `--bg-2` | `#E5E8EC` | chrome bars, recessed and hover surfaces |
+| `--line` / `--line-2` | ink at 10% / 18% | hairlines / emphasized hairlines, corner ticks, edges around photographs |
+| `--ink` | `#171A20` | headings, primary emphasis |
+| `--ink-body` | `#3A414B` | body copy |
+| `--ink-mute` | `#545C67` | secondary copy |
+| `--ink-dim` | `#626B77` | labels and metadata; do not go dimmer than this for text |
+| `--accent` | accent block | THE accent, as INK: links in running copy, the eyebrow tick, checker bullets, stage numbers, sector codes, quote rules, focus ring, selection. |
+| `--accent-hi` | accent block | the same ink under pressure. On a light ground "more" means DARKER, so hover always deepens, never brightens. |
+| `--accent-fill` / `--accent-fill-hi` / `--accent-on` | accent block | the accent as a BLOCK plus the ink that sits on it: the primary button, and nothing else. |
+| `--accent-mark` | accent block | small non-text marks that must stay legible at 6px: status dots, map pins, globe chokepoints. |
+| `--accent-soft` | accent block | the accent as a wash behind a hovered hairline control. |
+| `--signal` / `--signal-hi` | aliases | the old accent names, aliased to `--accent` / `--accent-hi`. Existing page-local CSS uses them; new work should use the accent names. |
+| `--paper*` | warm paper set | ONLY inside `.sheet` artifacts (see below). Paper never leaks onto the page chassis; the chassis never leaks into the sheet. |
+
+**The accent lives in ONE block** at the top of `styles.css` section 02.
+Nothing else in the stylesheet, and nothing at all in any page, declares an
+accent value: the whole site's accent is a single-block swap, and that is a
+property to preserve. If you need an accent, use a token. Never use the
+accent for decoration or for body text, and one accent per component is the
+ceiling.
+
+### Building on a light ground
+
+Three habits change from the earlier dark chassis, and they are the ones
+that go wrong first:
+
+- **Separation is a shadow, not a glow.** A raised object earns its lift
+  from `--bg-1` plus a tight ink shadow. Nothing on the page glows.
+- **Photographs need an edge.** On a dark ground an image separated itself
+  by being brighter; on light gray a headshot or a document cover is often
+  lighter than the ground, so every photograph carries a `--line-2`
+  hairline. `--line` is for structure, `--line-2` is for image edges.
+- **Hover deepens.** Every interactive state moves toward more ink, never
+  toward white. `--accent-hi` is always darker than `--accent`.
 
 Type scale tokens: `--fs-hero`, `--fs-h2`, `--fs-h3`, `--fs-lede`,
 `--fs-body`, `--fs-small`, `--fs-label`. Spacing: `--sec-pad` (section
@@ -58,7 +84,7 @@ header), `--pad` (24px gutters).
   uppercase, letter-spaced. Mono is never used for paragraphs.
 - `--serif` (Source Serif 4): the document voice. ONLY inside paper
   artifacts (`.sheet`) and long-form editorial content (insight articles).
-  Never for UI on the dark chassis.
+  Never for UI on the page chassis.
 
 Copy register: senior, concrete, calm. Sentences state facts and stop.
 No hype adjectives, no "revolutionary", no "cutting-edge". Style law
@@ -152,7 +178,7 @@ sub-pages is the same scaffold with `<h1>` instead of `<h2>` and
 
 ### Eyebrow and rule label
 
-`.eyebrow` = mono uppercase with a 14px amber tick. `.rule-label` = mono
+`.eyebrow` = mono uppercase with a 14px accent tick. `.rule-label` = mono
 uppercase with a trailing hairline. Both already styled; never restyle.
 
 ### Buttons
@@ -161,8 +187,11 @@ uppercase with a trailing hairline. Both already styled; never restyle.
 <a class="btn btn-primary" href="/contact/">Request access</a>
 <a class="btn btn-ghost" href="...">Book a demo</a>
 ```
-Primary is the light block; ghost is the hairline. Never invent a third
-variant, never put amber in a button. CTA pairs: primary first.
+Primary is the accent block (`--accent-fill` with `--accent-on` type),
+ghost is the hairline. It is the only filled surface on the page that is
+neither ink nor ground, which is what makes one call to action findable.
+Never invent a third variant, never put the accent in a ghost button's
+resting state. CTA pairs: primary first.
 
 ### Corner-tick frame (instrument chrome)
 
@@ -179,7 +208,10 @@ variant, never put amber in a button. CTA pairs: primary first.
 </div>
 ```
 The `<span class="tick"></span>` child is required (it draws the bottom
-corner ticks). `.frame-bar .live` gets the blinking amber dot; use it only
+corner ticks). `.sw.amber` is a legend swatch class name inherited from the
+first build: it paints `--accent-mark`, whatever the accent is, and is not a
+claim about the colour. `.frame-bar .live` gets the blinking `--accent-mark`
+dot; use it only
 on panels that represent continuous processes. Legend optional.
 
 ### Window (real product screenshots only)
@@ -255,7 +287,7 @@ numbers.
 ### Stages (numbered narrative rows)
 
 `.stage` = 5/7 copy+media grid, `.stage.flip` mirrors it. `.stage-num`
-carries `01 &middot; MONITOR` in amber mono. `.stage-io` is the
+carries `01 &middot; MONITOR` in accent mono. `.stage-io` is the
 INPUT/OUTPUT line. Media slot takes a `.shotfig` window.
 
 ### Capability cards
@@ -271,13 +303,14 @@ INPUT/OUTPUT line. Media slot takes a `.shotfig` window.
 
 ### Sector index
 
-`.sectors` list of `.sector` rows: mono `code` with amber 3-letter prefix,
-`desc`, `out` with the amber arrow SVG (copy the 14x10 arrow from
-index.html).
+`.sectors` list of `.sector` rows: mono `code` with an accent 3-letter
+prefix, `desc`, `out` with the shared arrow SVG (copy the 14x10 arrow from
+index.html). That arrow is `stroke="currentColor"` and takes its accent
+from CSS; never write a colour into the markup.
 
 ### Quotes
 
-`.quote-main` (amber left rule, large quote, `.attr` mono attribution) +
+`.quote-main` (accent left rule, large quote, `.attr` mono attribution) +
 `.quote-row` cells. Quotes are register-verbatim; attribution format
 `Role &middot; Org type &middot; name withheld`.
 
@@ -300,10 +333,13 @@ Inline SVG checkerboard (fixed brand element, redraw nothing):
   <path fill="#FDFCF8" d="M11 4h7v7h-7zM25 4h7v7h-7zM4 11h7v7H4zM18 11h7v7h-7zM11 18h7v7h-7zM25 18h7v7h-7zM4 25h7v7H4zM18 25h7v7h-7z"/>
 </svg>
 ```
-On the dark chassis use the PNG logo for the wordmark; the SVG mark is for
-paper artifacts and small brand moments. The `.checker` utility (6px
+Use the PNG logo for the wordmark; the SVG mark is for paper artifacts and
+small brand moments. The wordmark asset is white-on-transparent, drawn for
+the earlier dark chassis, and is rendered onto the light ground by a CSS
+filter (`.logo img,.foot-brand img`) rather than by editing the asset. A
+dark-ink PNG export would retire that line. The `.checker` utility (6px
 conic-gradient checkerboard) is the mark at its smallest: a bullet or
-caption marker, amber on dark. Use `.win-cap::before` and `.checker` as
+caption marker in the accent. Use `.win-cap::before` and `.checker` as
 the only list-marker treatments.
 
 ### Reveal motion
@@ -326,7 +362,7 @@ the map ping, sheet hover lift, color transitions. Nothing else moves.
   fold, real alt text.
 - Accessibility floor: WCAG AA contrast (never set text dimmer than
   `--ink-dim` on `--bg` or smaller than the sizes used here), visible
-  focus (`:focus-visible` amber ring is global), aria-labels on icon-only
+  focus (`:focus-visible` accent ring is global), aria-labels on icon-only
   controls and every `nav`.
 - Weight: keep each page's HTML+CSS+JS under ~400KB before fonts. No
   base64 images. Zero external network requests.
@@ -387,7 +423,7 @@ site is still zero external requests.
 
 The notice is the second paper object in the system, alongside `.sheet`. It
 reads as a printed slip laid on the desk rather than as UI chrome, which is
-why it uses the paper tokens on the dark chassis. It has no motion of any
+why it uses the paper tokens rather than the chassis tokens. It has no motion of any
 kind. If the register ruling changes, the whole component is the
 `.consent*` block at the end of styles.css.
 
@@ -482,7 +518,7 @@ cover equal gutters inside.
 `.nl-cards` is the same hairline-per-card grid as `.ins-cards`, three across,
 two at 900px, one at 640px. Each `.nl-card` carries the thumbnail, a mono
 month label, the issue title as an `h4`, and one `.nl-dl` download link to
-`/newsletters/<file>.pdf` with the shared 14x10 amber arrow. "Archive" is a
+`/newsletters/<file>.pdf` with the shared 14x10 accent arrow. "Archive" is a
 real `h3` wearing `.rule-label`, so the card titles sit under a group
 heading rather than directly under the section `h2`.
 
