@@ -1,8 +1,14 @@
 /* ============================================================
    MISSION GREY · missiongrey.com design system
-   Chassis: "The Terminal" (dark instrument register)
+   Chassis: "The Terminal", re-grounded on light gray (2026-09-01).
+   Same instrument structure, same voice, same layout: dark ink on
+   a light gray stock, with ONE accent carried through links, calls
+   to action and instrument marks. Everything accented routes
+   through the accent block in section 02 and nothing else declares
+   an accent value, so the accent is a one-block swap.
    Grafts: the Morning Brief paper artifact · real-product
-   window chrome. See site/COMPONENTS.md before building pages.
+   window chrome (now light, see section 07).
+   See site/COMPONENTS.md before building pages.
    Contents:
      01 Fonts          06 Frames (instrument chrome)
      02 Tokens         07 Window (product screenshots)
@@ -38,20 +44,86 @@
 
 /* ============ 02 TOKENS ============ */
 :root{
-  /* ground */
-  --bg:#0A0C10;            /* page ground */
-  --bg-1:#0E1116;          /* raised surface, alt bands */
-  --bg-2:#12161C;          /* chrome bars, hover surface */
-  --line:rgba(255,255,255,.08);
-  --line-2:rgba(255,255,255,.15);
-  /* ink on dark */
-  --ink:#E9EDF1;           /* headings, primary text */
-  --ink-body:#B6BEC7;      /* body copy */
-  --ink-mute:#8B95A0;      /* secondary copy */
-  --ink-dim:#78828F;       /* labels, metadata (smallest legible) */
-  /* the signal accent: earns its place, never decorates */
-  --signal:#E2A33C;
-  --signal-hi:#F0B44E;
+  color-scheme:light;      /* light UA chrome: scrollbars, form controls */
+
+  /* ============================================================
+     THE ACCENT · variant A, amber continuity
+     ------------------------------------------------------------
+     ONE accent, one block. Every accented surface on the site
+     routes through these seven values and nothing below hardcodes
+     an accent: swapping this block alone reskins the whole site,
+     which is what makes variant A and variant B comparable.
+
+     The roles, fixed across variants:
+       --accent       accent as INK. Links in prose, stage numbers,
+                      sector codes, the eyebrow tick, checker
+                      bullets, quote rules, focus ring.
+       --accent-hi    the same ink under pressure (hover, active).
+                      On a light ground "more" means DARKER, so this
+                      is always deeper than --accent, never brighter.
+       --accent-fill  the accent as a BLOCK: the primary button, the
+                      one filled surface on the page, and the ground
+                      behind selected text (WCAG 2.1 AA pass 2026-09-01:
+                      --accent-on on --accent as a selection ground
+                      measured 3.05:1; on --accent-fill it is 8.42:1).
+       --accent-fill-hi  that block under pressure.
+       --accent-on    ink ON an accent fill.
+       --accent-mark  small non-text marks that must stay lit at
+                      6px: status dots, map pins, globe chokepoints.
+       --accent-soft  the accent as a wash behind a hovered control.
+
+     Why these values: #8A5710 is the site's own --paper-accent,
+     already shipped and already described as "signal, rendered for
+     paper". The light gray chassis IS paper, so variant A does not
+     invent an accent, it promotes the one the design system already
+     used on light surfaces. #E2A33C is the live site's amber,
+     unchanged, kept as the CTA block where a lit amber can carry
+     dark type. Together they are one accent in two tones, the same
+     relationship --signal / --signal-hi had on the dark chassis.
+
+     Contrast against --bg #F1F3F5 (WCAG 2.1):
+       --accent as text          5.47:1  AA
+       --accent-hi as text       7.57:1  AAA
+       --accent-mark as a mark   4.21:1  (3:1 is the bar for marks)
+       --accent-on on --fill     8.42:1  AAA
+     ============================================================ */
+  --accent:#8A5710;                  /* accent as ink */
+  --accent-hi:#6E440C;               /* ink under pressure: deeper */
+  --accent-fill:#E2A33C;             /* accent as a block */
+  --accent-fill-hi:#F0B44E;          /* block under pressure */
+  --accent-on:#1A1206;               /* ink ON an accent fill */
+  --accent-mark:#9C6A12;             /* 6px lit marks */
+  --accent-soft:rgba(138,87,16,.10); /* accent wash: hover surfaces */
+  /* the printed artifact's signal ink follows the accent too, so the
+     Morning Brief carries one accent with the page around it */
+  --paper-accent:#8A5710;            /* signal, rendered for paper */
+  --paper-dot:#B8821E;               /* the brief's priority dot */
+  --signal:var(--accent);            /* legacy names; page-local CSS uses them */
+  --signal-hi:var(--accent-hi);
+
+  /* ground: light gray stock, never white */
+  --bg:#F1F3F5;            /* page ground */
+  --bg-1:#FAFBFC;          /* raised surface, alt bands */
+  --bg-2:#E5E8EC;          /* chrome bars, hover surface */
+  --bg-blur:rgba(241,243,245,.96); /* sticky header; keep in sync with --bg.
+     .96, not .82: on the light ground an .82 bar transmits legible headings
+     and dark screenshots passing beneath it (critic blocker 1, 1.9) */
+  --line:rgba(15,23,32,.10);
+  --line-2:rgba(15,23,32,.18);
+  --line-3:rgba(15,23,32,.34);       /* emphasized edge: hover borders */
+  /* ink on light gray (contrast against --bg) */
+  --ink:#171A20;           /* headings, primary text            15.7:1 */
+  --ink-body:#3A414B;      /* body copy                          9.3:1 */
+  --ink-mute:#545C67;      /* secondary copy                     6.1:1 */
+  --ink-dim:#626B77;       /* labels, metadata (smallest legible) 4.9:1 */
+  /* the hero globe is drawn on a canvas; its script reads this plus
+     --accent and --accent-hi, so the instrument follows the theme
+     and the accent swap reaches the sphere without touching the JS */
+  --globe-ink:#1E242E;     /* land dots, graticule, route trails */
+  /* the brand mark: black and white resolving into grey (/#why-grey) */
+  --mark-ink:#0B0D11;
+  --mark-paper:#FFFFFF;
+  --mark-grey:#77808A;
   /* the paper object (Morning Brief and other printed artifacts) */
   --paper:#FDFCF8;
   --paper-2:#F4F1E8;
@@ -61,8 +133,8 @@
   --paper-faint:#6E675A;
   --paper-hair:#D9D2C2;
   --paper-hair-2:#C9C1AE;
-  --paper-accent:#8A5710;  /* signal, rendered for paper */
-  --paper-dot:#B8821E;
+  /* --paper-accent and --paper-dot live in the accent block above:
+     they are accent roles, not stock, and must swap with it */
   /* families */
   --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
@@ -94,12 +166,12 @@ body{
   text-rendering:optimizeLegibility;
   overflow-x:hidden;
 }
-::selection{background:var(--signal);color:#0A0C10}
+::selection{background:var(--accent-fill);color:var(--accent-on)}
 img{max-width:100%;height:auto;display:block}
 a{color:var(--ink);text-decoration:none}
-a:hover{color:#fff}
+a:hover{color:var(--accent)}
 ul{list-style:none}
-:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:1px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:1px}
 h1,h2,h3{color:var(--ink);font-weight:600;letter-spacing:-.02em;text-wrap:balance}
 .wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
 .skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--ink);color:var(--bg);padding:10px 18px;font:500 13px var(--mono)}
@@ -113,7 +185,7 @@ h1,h2,h3{color:var(--ink);font-weight:600;letter-spacing:-.02em;text-wrap:balanc
   font:500 var(--fs-label)/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
   color:var(--ink-mute);
 }
-.eyebrow::before{content:"";width:14px;height:1px;background:var(--signal);flex:none}
+.eyebrow::before{content:"";width:14px;height:1px;background:var(--accent);flex:none}
 /* rule label: full-width hairline chapter divider */
 .rule-label{
   display:flex;align-items:center;gap:16px;
@@ -121,7 +193,7 @@ h1,h2,h3{color:var(--ink);font-weight:600;letter-spacing:-.02em;text-wrap:balanc
 }
 .rule-label::after{content:"";flex:1;height:1px;background:var(--line)}
 /* checker micro-mark: 2x2 checkerboard bullet, the logo at its smallest */
-.checker{display:inline-block;width:6px;height:6px;background:conic-gradient(var(--signal) 0 25%,transparent 25% 50%,var(--signal) 50% 75%,transparent 75%)}
+.checker{display:inline-block;width:6px;height:6px;background:conic-gradient(var(--accent) 0 25%,transparent 25% 50%,var(--accent) 50% 75%,transparent 75%)}
 /* section scaffold */
 .sec{padding-block:var(--sec-pad)}
 .sec-alt{background:var(--bg-1);border-block:1px solid var(--line)}
@@ -141,10 +213,13 @@ html.js .reveal.in{opacity:1;transform:none;transition:opacity .55s ease,transfo
   transition:background-color .18s ease,border-color .18s ease,color .18s ease;
   white-space:nowrap;cursor:pointer;
 }
-.btn-primary{background:var(--ink);color:#0A0C10}
-.btn-primary:hover{background:#fff;color:#000}
+/* Primary is the accent block, ghost is the hairline. The accent fill is
+   the only surface on the page that is neither ink nor ground, which is
+   what makes the one call to action findable on a light chassis. */
+.btn-primary{background:var(--accent-fill);color:var(--accent-on)}
+.btn-primary:hover{background:var(--accent-fill-hi);color:var(--accent-on)}
 .btn-ghost{border-color:var(--line-2);color:var(--ink)}
-.btn-ghost:hover{border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.04);color:#fff}
+.btn-ghost:hover{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
 .btn svg{flex:none}
 
 /* ============ 06 FRAMES: instrument chrome (corner ticks) ============ */
@@ -165,7 +240,7 @@ html.js .reveal.in{opacity:1;transform:none;transition:opacity .55s ease,transfo
 }
 .frame-bar span{white-space:nowrap}
 .frame-bar .live{display:flex;align-items:center;gap:8px}
-.frame-bar .live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--signal);animation:blink 2.4s ease-in-out infinite}
+.frame-bar .live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent-mark);animation:blink 2.4s ease-in-out 2}
 .frame-bar .dim{color:var(--ink-dim)}
 .frame-legend{
   display:flex;flex-wrap:wrap;align-items:center;gap:22px;
@@ -174,24 +249,31 @@ html.js .reveal.in{opacity:1;transform:none;transition:opacity .55s ease,transfo
 }
 .frame-legend .li{display:flex;align-items:center;gap:8px}
 .frame-legend .sw{width:7px;height:7px;border-radius:50%;flex:none}
-.frame-legend .sw.amber{background:var(--signal)}
-.frame-legend .sw.grey{background:#39414C}
+.frame-legend .sw.amber{background:var(--accent-mark)}
+.frame-legend .sw.grey{background:var(--ink-mute)}
 .frame-legend .src{margin-left:auto}
+/* Two pulses then rest, 4.8s total: under the five-second bar of WCAG 2.1
+   SC 2.2.2, so a status dot needs no pause control of its own (AA pass,
+   2026-09-01). The keyframes end at full opacity, so rest is the lit state. */
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
 
 /* ============ 07 WINDOW: real product screenshots only ============ */
 /* Browser chrome asserts "this is the product". Never wrap drawn
-   graphics or mockups in it. */
+   graphics or mockups in it.
+   The chrome is light because the product is light: every shipping
+   screenshot but the satellite globe is a light interface, so a dark
+   title bar would put a seam where the product has none. The window
+   earns its edge from a hairline and a lifted shadow instead. */
 .shotfig{margin:0}
 .window{
   background:var(--bg-1);border:1px solid var(--line-2);border-radius:6px;overflow:hidden;
-  box-shadow:0 30px 70px -34px rgba(0,0,0,.65);
+  box-shadow:0 22px 44px -26px rgba(15,23,32,.42),0 3px 10px -5px rgba(15,23,32,.16);
 }
 .chrome{
   display:flex;align-items:center;gap:7px;height:34px;padding:0 13px;
   background:var(--bg-2);border-bottom:1px solid var(--line);position:relative;
 }
-.chrome i{width:9px;height:9px;border-radius:50%;background:#262C34}
+.chrome i{width:9px;height:9px;border-radius:50%;background:var(--line-2)}
 .chrome .url{
   position:absolute;left:50%;transform:translateX(-50%);
   font:400 10.5px/1 var(--mono);letter-spacing:.04em;color:var(--ink-dim);
@@ -206,17 +288,22 @@ html.js .reveal.in{opacity:1;transform:none;transition:opacity .55s ease,transfo
   margin-top:13px;display:flex;align-items:center;gap:10px;
   font:500 10.5px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);
 }
-.win-cap::before{content:"";width:6px;height:6px;flex:none;background:conic-gradient(var(--signal) 0 25%,transparent 25% 50%,var(--signal) 50% 75%,transparent 75%)}
+.win-cap::before{content:"";width:6px;height:6px;flex:none;background:conic-gradient(var(--accent) 0 25%,transparent 25% 50%,var(--accent) 50% 75%,transparent 75%)}
 
 /* ============ 08 SHEET: the paper artifact ============ */
 /* Printed documents the platform produces, shown as objects on the
-   dark desk. Serif inside; always carries its honesty label. */
+   desk. Serif inside; always carries its honesty label.
+   The paper palette is unchanged by the light re-skin: it is warm
+   printed stock, and the light gray ground is cool, so the sheet still
+   reads as an object laid on the page rather than as part of it. What
+   changes is the lift: on the dark chassis a deep shadow did the work,
+   on light gray it takes a tighter shadow and a warm edge. */
 .artifact{position:relative}
 .sheet{
   position:relative;background:var(--paper);color:var(--paper-body);
   border:1px solid var(--paper-hair-2);
   padding:clamp(20px,2vw,30px) clamp(20px,2.2vw,32px) 18px;
-  box-shadow:0 50px 100px -40px rgba(0,0,0,.85),0 14px 34px -14px rgba(0,0,0,.55);
+  box-shadow:0 24px 44px -26px rgba(15,23,32,.38),0 6px 14px -8px rgba(15,23,32,.20);
 }
 .sheet::before{
   content:"";position:absolute;inset:0;z-index:-1;background:var(--paper-2);
@@ -230,6 +317,9 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
 .bf-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
 .bf-title{display:flex;align-items:center;gap:9px}
 .bf-title svg{width:17px;height:17px;flex:none}
+/* the mark inside the brief: paper tokens, so the sheet stays one object */
+.bf-title svg rect{fill:var(--paper-ink)}
+.bf-title svg path{fill:var(--paper)}
 .bf-title b{font:700 13.5px/1 var(--serif);letter-spacing:.12em;text-transform:uppercase;color:var(--paper-ink)}
 .bf-tag{font:500 8.5px/1 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--paper-mute);border:1px solid var(--paper-hair-2);padding:5px 8px;border-radius:2px;white-space:nowrap}
 .bf-date{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font:400 9.5px/1.6 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--paper-faint);border-top:1px solid var(--paper-ink);border-bottom:1px solid var(--paper-hair);padding:7px 0;margin-bottom:16px}
@@ -252,33 +342,53 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
 /* ============ 09 HEADER / NAV ============ */
 .site-head{
   position:sticky;top:0;z-index:100;
-  background:rgba(10,12,16,.85);
-  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  background:var(--bg-blur);
+  /* no backdrop blur: at .96 alpha it added nothing visually, and a
+     filter here makes the header a containing block, which pins the
+     phone menu's position:fixed sheet + scrim to the bar instead of
+     the viewport (critic blocker 2 fix depends on this) */
   border-bottom:1px solid var(--line);
+  /* soft drop keeps the bar reading as a surface when dark imagery
+     scrolls under it (critic blocker 1, 1.9) */
+  box-shadow:0 10px 28px -22px rgba(15,23,32,.28);
 }
 .site-head .wrap{display:flex;align-items:center;gap:28px;height:64px;max-width:var(--max-nav)}
 .logo{display:flex;align-items:center;flex:none}
+/* the wordmark ships as white-on-transparent; the asset is never edited,
+   so the light chassis renders it through a filter instead. brightness(0)
+   flattens the grayscale artwork to solid black, the .9 opacity settles it
+   on --ink rather than on a harder black than any type beside it. */
+.logo img,.foot-brand img{filter:brightness(0);opacity:.9}
 .logo img{height:24px;width:auto}
 .nav-main{display:flex;align-items:center;gap:26px;margin-left:12px}
 .nav-main a{font:500 11.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);padding:6px 0}
 .nav-main a:hover{color:var(--ink)}
 .head-right{margin-left:auto;display:flex;align-items:center;gap:22px}
 .utc{font:400 11.5px/1 var(--mono);letter-spacing:.08em;color:var(--ink-dim);white-space:nowrap;display:flex;align-items:center;gap:8px}
-.utc::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--signal);animation:blink 2.4s ease-in-out infinite}
+.utc::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent-mark);animation:blink 2.4s ease-in-out 2}
 .utc:empty{display:none}
 .login{font:500 11.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
 .login:hover{color:var(--ink)}
 .site-head .btn{padding:11px 18px}
 .mnav{display:none;position:relative}
-.mnav summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line);border-radius:2px}
+/* the burger icon is stroke="currentColor": this is what colors it */
+.mnav summary{list-style:none;cursor:pointer;color:var(--ink);display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--line-2);border-radius:2px}
 .mnav summary::-webkit-details-marker{display:none}
 .mnav summary svg{display:block}
 .mnav[open] summary{background:var(--bg-2)}
+/* Full-bleed sheet under the 64px header, with a scrim over the page:
+   the half-width dropdown left the hero (and its third REQUEST ACCESS)
+   competing at full contrast beside the menu (critic blocker 2, 1.9). */
+.mnav[open]::before{
+  content:"";position:fixed;inset:64px 0 0 0;
+  background:rgba(15,23,32,.44);z-index:110;
+}
 .mnav-panel{
-  position:absolute;right:0;top:calc(100% + 10px);width:min(78vw,300px);
-  background:var(--bg-1);border:1px solid var(--line-2);border-radius:2px;
-  display:flex;flex-direction:column;padding:8px;z-index:120;
-  box-shadow:0 24px 60px rgba(0,0,0,.55);
+  position:fixed;left:0;right:0;top:64px;width:auto;
+  background:var(--bg-1);border:0;border-bottom:1px solid var(--line-2);
+  border-radius:0;
+  display:flex;flex-direction:column;padding:10px 16px 16px;z-index:120;
+  box-shadow:0 20px 44px -18px rgba(15,23,32,.35);
 }
 .mnav-panel a{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-body);padding:13px 14px;border-radius:2px}
 .mnav-panel a:hover{background:var(--bg-2);color:var(--ink)}
@@ -313,7 +423,7 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
 .hero{position:relative;padding-top:clamp(56px,7vw,92px)}
 .hero::before{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(900px 480px at 18% -10%,rgba(122,144,178,.09),transparent 62%);
+  background:radial-gradient(900px 480px at 18% -10%,rgba(255,255,255,.62),transparent 62%);
 }
 .hero .wrap{position:relative}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(36px,5vw,72px);align-items:center}
@@ -336,12 +446,12 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
 .map-frame{background:var(--bg-1)}
 .mapwrap{padding:clamp(8px,1.5vw,18px)}
 .mapwrap svg{display:block;width:100%;height:auto}
-.map-land{stroke:#39414C;stroke-width:3.4;stroke-linecap:round;fill:none}
-.map-grat{stroke:rgba(255,255,255,.05);stroke-width:1}
-.mk-dot{fill:var(--signal)}
-.mk-ring{fill:none;stroke:var(--signal);stroke-width:1;opacity:0;transform-origin:center;transform-box:fill-box;animation:ping 3.6s ease-out infinite}
+.map-land{stroke:var(--ink-mute);stroke-width:3.4;stroke-linecap:round;fill:none}
+.map-grat{stroke:var(--line);stroke-width:1}
+.mk-dot{fill:var(--accent-mark)}
+.mk-ring{fill:none;stroke:var(--accent-mark);stroke-width:1;opacity:0;transform-origin:center;transform-box:fill-box;animation:ping 3.6s ease-out infinite}
 @keyframes ping{0%{transform:scale(.4);opacity:.8}70%{transform:scale(2.6);opacity:0}100%{opacity:0}}
-.mk-label{font:500 11px var(--mono);letter-spacing:.14em;fill:#98A2AD}
+.mk-label{font:500 11px var(--mono);letter-spacing:.14em;fill:var(--ink-dim)}
 /* ---- proof strip ---- */
 .proofstrip{border-block:1px solid var(--line);background:var(--bg-1)}
 .strip-row{display:flex;align-items:center;gap:14px 32px;flex-wrap:wrap;padding-block:20px}
@@ -361,7 +471,7 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
 .stage.flip .stage-copy{order:2}
 .stage.flip .stage-media{order:1}
 .stage-num{
-  font:400 13px/1 var(--mono);letter-spacing:.2em;color:var(--signal);
+  font:400 13px/1 var(--mono);letter-spacing:.2em;color:var(--accent);
   display:flex;align-items:center;gap:14px;margin-bottom:20px;
 }
 .stage-num::after{content:"";width:34px;height:1px;background:var(--line-2)}
@@ -387,7 +497,7 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
 .cap-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:34px}
 .cap-meta .idx{font:400 10.5px/1 var(--mono);letter-spacing:.2em;color:var(--ink-dim)}
 .cap svg{stroke:var(--ink-mute);transition:stroke .2s ease}
-.cap:hover svg{stroke:var(--signal)}
+.cap:hover svg{stroke:var(--accent)}
 .cap h3{font-size:16.5px;letter-spacing:-.01em;margin-bottom:10px;font-weight:600}
 .cap p{font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
 /* ---- trust ---- */
@@ -401,7 +511,7 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
   display:flex;align-items:center;gap:10px;
 }
 .pipe .node .nd{width:6px;height:6px;border-radius:50%;background:var(--ink-dim);flex:none}
-.pipe .node:last-child .nd{background:var(--signal)}
+.pipe .node:last-child .nd{background:var(--accent-mark)}
 .pipe .link{flex:1 1 26px;min-width:20px;max-width:72px;height:1px;background:var(--line-2);position:relative}
 .pipe .link::after{
   content:"";position:absolute;right:0;top:-3px;
@@ -429,13 +539,14 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
 }
 .sector:hover{background:var(--bg-1)}
 .sector .code{font:500 12px/1.6 var(--mono);letter-spacing:.1em;color:var(--ink)}
-.sector .code span{color:var(--signal);margin-right:12px}
+.sector .code span{color:var(--accent);margin-right:12px}
 .sector .desc{font-size:14.5px;color:var(--ink-mute)}
 .sector .out{font-size:14.5px;color:var(--ink-body);display:flex;gap:10px;align-items:baseline}
-.sector .out svg{flex:none;transform:translateY(2px)}
+/* the 14x10 arrow is stroke="currentColor": this is what makes it accent */
+.sector .out svg{flex:none;transform:translateY(2px);color:var(--accent)}
 /* ---- proof quotes ---- */
 .quote-main{
-  border-left:2px solid var(--signal);padding-left:clamp(20px,3vw,36px);margin-bottom:clamp(36px,5vw,52px);
+  border-left:2px solid var(--accent);padding-left:clamp(20px,3vw,36px);margin-bottom:clamp(36px,5vw,52px);
 }
 .quote-main blockquote{
   font-size:clamp(21px,2.6vw,29px);line-height:1.4;color:var(--ink);font-weight:500;letter-spacing:-.015em;
@@ -457,7 +568,14 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
 .name-copy h2{font-size:clamp(26px,3vw,36px);margin-bottom:18px}
 .name-copy p{max-width:54ch}
 .resolve{display:flex;align-items:center;gap:clamp(10px,1.6vw,18px);justify-content:flex-end}
-.resolve svg{display:block;border:1px solid var(--line);background:#000;flex:none;width:clamp(52px,6.5vw,84px);height:auto}
+/* the mark sequence: black and white resolving into grey. The tiles keep
+   their own black and white on the light ground, because that literal
+   contrast is the argument the copy beside them makes. Fills are token
+   driven; the artwork carries no colors of its own. */
+.resolve svg{display:block;border:1px solid var(--line-2);background:var(--mark-ink);flex:none;width:clamp(52px,6.5vw,84px);height:auto}
+.resolve svg rect{fill:var(--mark-ink)}
+.resolve svg path{fill:var(--mark-paper)}
+.resolve svg:last-of-type rect{fill:var(--mark-grey)}
 .resolve-cap{font:400 10px/1.6 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);text-align:right;margin-top:14px}
 /* ---- access panel ---- */
 .access-panel{background:var(--bg-1);padding:clamp(44px,7vw,84px) clamp(24px,5vw,72px);text-align:center}
@@ -538,10 +656,15 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
    (/about/, and /partners-guild/ once Guild headshots exist). Grayscale is not
    a treatment choice — the monochrome register is the identity; a colour
    headshot breaks it. Portraits crop from the top so faces survive the square. */
+/* Light-ground edge: on the dark chassis a photo separated itself from
+   the page by being brighter than it. On light gray a grayscale headshot
+   is often lighter than the ground, so the hairline is the only thing
+   holding the square. It takes --line-2, one step up from the structural
+   hairline, wherever the system puts a photograph on the page. */
 .person-photo{
   display:block;width:48px;height:48px;
   object-fit:cover;object-position:center top;
-  border:1px solid var(--line);border-radius:2px;
+  border:1px solid var(--line-2);border-radius:2px;
   background:var(--bg-1);filter:grayscale(1)
 }
 /* Hero globe instrument (2026-08-22): the drawn world.
@@ -564,36 +687,54 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
 }
 .globe-scene canvas{display:block;width:100%;aspect-ratio:1.15/1}
 html:not(.js) .globe-scene canvas{display:none}
-.globe-scene noscript img{display:block;width:100%;height:auto}
-/* no-JS only: fuse the static render's space edges into the page ground */
-html:not(.js) .globe-scene::before{
-  content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
-  background:
-    radial-gradient(115% 105% at 62% 42%,rgba(10,12,16,0) 62%,rgba(10,12,16,.5) 88%,rgba(10,12,16,.85) 100%),
-    linear-gradient(to right,var(--bg) 0,rgba(10,12,16,0) 14%),
-    linear-gradient(to bottom,var(--bg) 0,rgba(10,12,16,0) 12%),
-    linear-gradient(to top,var(--bg) 0,rgba(10,12,16,0) 16%);
-}
+/* no-JS only: the static render is a dark image and cannot be fused into a
+   light ground, so it is presented as what it is, a dark plate with an
+   edge, rather than bled into the page. Being a plate rather than a bleed,
+   it keeps all four of its edges (the canvas' negative margin is cancelled)
+   and its caption sits BELOW it in flow, because --ink-dim on a dark
+   photograph is unreadable. A light-ground re-render of globe-canvas.jpg
+   would let the original bleed come back. */
+.globe-scene noscript img{display:block;width:100%;height:auto;border:1px solid var(--line-2)}
+html:not(.js) .globe-scene{margin-right:0}
+html:not(.js) .globe-cap{position:static;margin-top:12px;align-items:flex-start}
+html:not(.js) .globe-cap::before{margin-top:5px}
 /* the instrument's route readout: fixed mono text, never drawn on the sphere */
 .globe-route{
   position:absolute;left:10px;bottom:44px;z-index:2;
   font:500 10.5px/1.6 var(--mono);letter-spacing:.18em;text-transform:uppercase;
   color:var(--ink-mute);opacity:0;transition:opacity .6s ease;
 }
-.globe-route b{color:var(--signal);font-weight:500;margin-right:14px}
+.globe-route b{color:var(--accent);font-weight:500;margin-right:14px}
 .globe-route.on{opacity:1}
 .globe-cap{
   position:absolute;left:10px;bottom:16px;z-index:2;
   display:flex;align-items:center;gap:10px;
   font:500 10.5px/1.6 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);
 }
-.globe-cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--signal);animation:blink 2.4s ease-in-out infinite;flex:none}
+.globe-cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent-mark);animation:blink 2.4s ease-in-out 2;flex:none}
+/* WCAG 2.1 SC 2.2.2 (AA pass, 2026-09-01): the globe auto-animates for
+   longer than five seconds, so the page carries its own pause control,
+   independent of the OS reduced-motion setting. One hairline control in
+   the caption row: it freezes the globe on its current frame and rests
+   the caption and header dots (html.motion-off). Hidden without JS and
+   under reduced motion, because nothing moves in either case. */
+.globe-pause{
+  margin-left:6px;padding:5px 9px;
+  font:500 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-mute);background:transparent;
+  border:1px solid var(--line-2);border-radius:2px;cursor:pointer;
+  white-space:nowrap;flex:none;
+  transition:border-color .18s ease,color .18s ease,background-color .18s ease;
+}
+.globe-pause:hover{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+html:not(.js) .globe-pause{display:none}
+@media (prefers-reduced-motion:reduce){.globe-pause{display:none}}
+html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
 @media (max-width:980px){
   .globe-scene{margin-inline:calc(-1 * var(--pad))}
+  html:not(.js) .globe-scene{margin-inline:0}
   .globe-scene canvas{aspect-ratio:1/.96}
   html:not(.js) .globe-scene noscript img{width:100%;aspect-ratio:1/.92;object-fit:cover;object-position:52% 42%}
-  /* no-JS overlay hugs the image box; the caption sits below it in flow */
-  html:not(.js) .globe-scene::before{inset:auto;top:0;left:0;right:0;aspect-ratio:1/.92}
   .globe-route{left:var(--pad);bottom:auto;top:10px}
   .globe-cap{position:static;margin-top:12px;padding-inline:var(--pad);align-items:flex-start}
   .globe-cap::before{margin-top:5px}
