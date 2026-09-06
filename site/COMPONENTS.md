@@ -519,8 +519,9 @@ cover equal gutters inside.
 
 ### Newsletter archive cards
 
-`.nl-cards` is the same hairline-per-card grid as `.ins-cards`, three across,
-two at 900px, one at 640px. Each `.nl-card` carries the thumbnail, a mono
+`.nl-cards` is the same hairline-per-card grid as `.ins-cards`, four across,
+two at 1000px, one at 640px. Every past edition stays in it (Jouko,
+2026-09-06); a growing archive wraps into rows, nothing drops off. Each `.nl-card` carries the thumbnail, a mono
 month label, the issue title as an `h4`, and one `.nl-dl` download link to
 `/newsletters/<file>.pdf` with the shared 14x10 accent arrow. "Archive" is a
 real `h3` wearing `.rule-label`, so the card titles sit under a group

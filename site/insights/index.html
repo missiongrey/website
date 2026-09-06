@@ -75,6 +75,13 @@
 .nl-hi div:last-child{border-bottom:0;padding-bottom:0}
 .nl-hi h4{font:600 15.5px/1.4 var(--sans);letter-spacing:-.008em;color:var(--ink)}
 .nl-hi p{font-size:14.5px;line-height:1.6;color:var(--ink-mute);max-width:72ch}
+/* the issue's own voice: a lede under the title, one pull quote after the
+   rows, and the subscribe line the quote earns */
+.nl-ed .lede{margin-top:16px;font-size:16px;line-height:1.6;color:var(--ink-mute);max-width:72ch}
+.nl-quote{margin:30px 0 4px;padding-left:18px;border-left:2px solid var(--accent);font-size:17px;line-height:1.5;font-weight:500;color:var(--ink);max-width:56ch}
+.nl-sub{margin-top:18px;font-size:14.5px;line-height:1.6;color:var(--ink-mute);max-width:72ch}
+.nl-sub a{color:var(--accent);border-bottom:1px solid var(--accent)}
+.nl-sub a:hover{color:var(--ink);border-color:var(--ink)}
 .nl-arch{margin-top:clamp(40px,5vw,60px)}
 .nl-arch-note{margin-top:16px;font-size:14.5px;color:var(--ink-mute)}
 /* same hairline-per-card grid as .ins-cards, so a short last row leaves page
@@ -83,7 +90,10 @@
    below it is the only readable title. Every thumbnail gets the same fixed
    90x120 box and object-fit:cover, never a free dimension: the sources are
    page renders and their trimmed aspect ratios never match. */
-.nl-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:24px}
+/* every past edition stays on the page (Jouko, 2026-09-06): four across, two
+   at 1000px, one at 640px, the same steps as .ins-cards, so a growing
+   archive wraps into full rows rather than dropping issues */
+.nl-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px}
 .nl-card{background:var(--bg);box-shadow:0 0 0 1px var(--line);padding:22px 22px 24px;display:flex;flex-direction:column;transition:background-color .2s ease}
 .nl-card:hover,.nl-card:focus-within{background:var(--bg-2)}
 .nl-thumb{display:block;width:90px;margin-bottom:20px}
@@ -111,6 +121,7 @@
 .ep .go:hover{color:var(--ink)}
 @media (max-width:1000px){
   .ins-cards{grid-template-columns:1fr 1fr}
+  .nl-cards{grid-template-columns:1fr 1fr}
 }
 @media (max-width:900px){
   /* minmax(0,1fr), not 1fr: the frame is max-content sized, and a bare 1fr
@@ -120,7 +131,6 @@
   .nl-pitch{max-width:640px}
   .nl-latest{justify-self:start}
   .nl-hi div{grid-template-columns:1fr;gap:7px}
-  .nl-cards{grid-template-columns:1fr 1fr}
 }
 @media (max-width:640px){
   .ins-cards{grid-template-columns:1fr}
@@ -304,41 +314,52 @@
         </div>
 
         <div class="frame nl-latest reveal"><span class="tick"></span>
-          <img class="nl-cover" src="../../assets/newsletters/guild-newsletter-june-2026-cover.jpg" width="640" height="906" loading="lazy" alt="Cover of the June 2026 edition: a hand lowers a ballot printed with a balance sheet and an electricity bill into a shipping container used as a ballot box, over a night harbor and a lit data center.">
+          <img class="nl-cover" src="../../assets/newsletters/guild-newsletter-august-september-2026-cover.jpg" width="640" height="904" loading="lazy" alt="Cover of the August to September 2026 double issue, Health of Nations: a city skyline with wind turbines, cranes and a passing aircraft above ground, and beneath it a cross-section of pipes reaching down into a gold-lit cavern of machinery, gears, books and circuitry, over the subtitle The Hidden Economics of Human Capacity.">
         </div>
       </div>
 
       <div class="nl-ed reveal">
-        <p class="ed">Latest edition &middot; June 2026</p>
-        <h3>When Ballots Meet Balance Sheets</h3>
+        <p class="ed">Latest edition &middot; August&ndash;September 2026 &middot; Double issue</p>
+        <h3>Health of Nations</h3>
+        <p class="lede">We have become very good at taking an economy&rsquo;s temperature: GDP, inflation, unemployment, productivity, debt. All of it can look healthy while a country quietly runs down its reserves of skills, healthy working years and experienced people. This double issue asks the question the indicators miss: can a country still do the work it needs to do?</p>
         <div class="nl-hi">
           <div>
-            <h4>Elections matter, but state capacity matters more.</h4>
-            <p>Markets are increasingly pricing fiscal credibility, institutional competence, and the ability to execute policy rather than campaign promises or ideological labels.</p>
+            <h4>The workforce that shows up, and runs below capacity.</h4>
+            <p>Labour shortages are only half the problem. Presenteeism, mental health and ageing workforces drain output in ways employment statistics never record, and the losses sit exactly where conventional measures do not look.</p>
           </div>
           <div>
-            <h4>Political risk has become infrastructure risk.</h4>
-            <p>Electricity grids, ports, supply chains, public finances, and demographic pressure now weigh on business strategy as heavily as elections and legislation.</p>
+            <h4>The missing apprentice.</h4>
+            <p>AI lifts productivity today by removing the routine entry-level work where analysts, engineers and managers once learned their judgment. Where does the next generation of experienced professionals come from? The answer is capability-preserving AI adoption, neither resistance nor blind techno-optimism.</p>
           </div>
           <div>
-            <h4>AI&rsquo;s next challenge is political legitimacy.</h4>
-            <p>As data centers drive demand for electricity and water, AI infrastructure becomes a local political issue, and community acceptance becomes a condition for digital investment.</p>
-          </div>
-          <div>
-            <h4>The new investment landscape rewards resilience over prediction.</h4>
-            <p>From Brazil and Peru to the United States and Malaysia, the issue separates structural economic change from short&#8209;term political volatility.</p>
-          </div>
-          <div>
-            <h4>The Mission Grey ecosystem is widening.</h4>
-            <p>The issue introduces the collaboration with Polylocal and the launch of Field Notes, a premium briefing on Taiwan&rsquo;s political, regulatory, and economic developments, alongside new Guild contributions and Guildmaster Pekka Virkki&rsquo;s latest book.</p>
+            <h4>The GLP-1 economy.</h4>
+            <p>Weight-loss medicines are escaping healthcare and reshaping consumer markets. Food, retail, wellness, insurance and employer benefits all face second-order effects as adoption changes what people buy, how they spend and what benefits cost.</p>
           </div>
         </div>
+        <p class="nl-quote">&ldquo;GDP is not capacity. Employment is not readiness. Longevity is not vitality. AI investment is not human renewal.&rdquo;</p>
+        <div class="nl-hi">
+          <div>
+            <h4>Four dispatches from 2035.</h4>
+            <p>The Automated Nation, the Migrant Nation, the Protected Nation and the Exhausted Nation: four futures for human capacity, told as news from 2035. Each shows how choices on technology, migration, health and family policy either build a nation&rsquo;s resilience or slowly consume it.</p>
+          </div>
+          <div>
+            <h4>Five questions to ask before you invest.</h4>
+            <p>Availability, capability, health, continuity, adaptability. Can the people be found, do they have the skills, can they sustain the work, what happens when the experienced leave, and how fast can the workforce absorb AI, regulation and geopolitical shocks. Headcount answers none of them.</p>
+          </div>
+        </div>
+        <p class="nl-sub">The full double issue is a single email. <a href="/contact/">Ask for it</a> and each new edition follows as it is published.</p>
       </div>
 
       <div class="nl-arch reveal">
         <h3 class="rule-label" id="nl-arch-h">Archive</h3>
         <p class="nl-arch-note">Editions before the current one are direct downloads.</p>
         <div class="nl-cards" role="list" aria-labelledby="nl-arch-h">
+          <article class="nl-card" role="listitem">
+            <a class="nl-thumb" href="/newsletters/guild-newsletter-june-2026.pdf" aria-hidden="true" tabindex="-1"><img src="../../assets/newsletters/guild-newsletter-june-2026-cover.jpg" width="180" height="240" loading="lazy" alt=""></a>
+            <p class="m">June 2026</p>
+            <h4 class="t">When Ballots Meet Balance Sheets</h4>
+            <a class="nl-dl" href="/newsletters/guild-newsletter-june-2026.pdf" aria-label="Download PDF of the June 2026 edition, When Ballots Meet Balance Sheets">Download PDF<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
+          </article>
           <article class="nl-card" role="listitem">
             <a class="nl-thumb" href="/newsletters/guild-newsletter-may-2026.pdf" aria-hidden="true" tabindex="-1"><img src="../../assets/newsletters/guild-newsletter-may-2026-cover.jpg" width="180" height="240" loading="lazy" alt=""></a>
             <p class="m">May 2026</p>
