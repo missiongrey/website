@@ -90,7 +90,10 @@
    below it is the only readable title. Every thumbnail gets the same fixed
    90x120 box and object-fit:cover, never a free dimension: the sources are
    page renders and their trimmed aspect ratios never match. */
-.nl-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:24px}
+/* every past edition stays on the page (Jouko, 2026-09-06): four across, two
+   at 1000px, one at 640px, the same steps as .ins-cards, so a growing
+   archive wraps into full rows rather than dropping issues */
+.nl-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:24px}
 .nl-card{background:var(--bg);box-shadow:0 0 0 1px var(--line);padding:22px 22px 24px;display:flex;flex-direction:column;transition:background-color .2s ease}
 .nl-card:hover,.nl-card:focus-within{background:var(--bg-2)}
 .nl-thumb{display:block;width:90px;margin-bottom:20px}
@@ -118,6 +121,7 @@
 .ep .go:hover{color:var(--ink)}
 @media (max-width:1000px){
   .ins-cards{grid-template-columns:1fr 1fr}
+  .nl-cards{grid-template-columns:1fr 1fr}
 }
 @media (max-width:900px){
   /* minmax(0,1fr), not 1fr: the frame is max-content sized, and a bare 1fr
@@ -127,7 +131,6 @@
   .nl-pitch{max-width:640px}
   .nl-latest{justify-self:start}
   .nl-hi div{grid-template-columns:1fr;gap:7px}
-  .nl-cards{grid-template-columns:1fr 1fr}
 }
 @media (max-width:640px){
   .ins-cards{grid-template-columns:1fr}
@@ -368,6 +371,12 @@
             <p class="m">April 2026</p>
             <h4 class="t">Neutralizing Chokepoints</h4>
             <a class="nl-dl" href="/newsletters/guild-newsletter-april-2026.pdf" aria-label="Download PDF of the April 2026 edition, Neutralizing Chokepoints">Download PDF<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
+          </article>
+          <article class="nl-card" role="listitem">
+            <a class="nl-thumb" href="/newsletters/guild-newsletter-march-2026.pdf" aria-hidden="true" tabindex="-1"><img src="../../assets/newsletters/guild-newsletter-march-2026-cover.jpg" width="180" height="240" loading="lazy" alt=""></a>
+            <p class="m">March 2026</p>
+            <h4 class="t">Signals Shaping Decisions</h4>
+            <a class="nl-dl" href="/newsletters/guild-newsletter-march-2026.pdf" aria-label="Download PDF of the March 2026 edition, Signals Shaping Decisions">Download PDF<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
           </article>
         </div>
       </div>

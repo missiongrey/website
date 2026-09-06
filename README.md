@@ -128,8 +128,9 @@ as a set. See
 `site/COMPONENTS.md`, "Newsletter covers", for why the archive covers stay
 small and why the box is fixed.
 
-Adding an edition is a swap, not an append. The month that was latest becomes
-an archive card, and the archive holds the three most recent past editions:
+Adding an edition rotates the latest into the archive. The month that was
+latest becomes the first archive card, and every past edition stays on the
+page (Jouko, 2026-09-06: all newsletters visible, no cap):
 
 1. Drop the PDF into `newsletters/` as `guild-newsletter-<month>-2026.pdf`.
 2. Render the new latest cover, large:
@@ -171,5 +172,5 @@ an archive card, and the archive holds the three most recent past editions:
      `alt=""`, sets `width="180" height="240"`, carries the title as an
      `h4`, and adds the `a.nl-dl` download link with its `aria-label`. Copy
      an existing card and edit the month, title and filename;
-   - drop the oldest card so three remain.
+   - keep every older card. The archive grid is four across and wraps.
 5. Run `deploy/build.sh`. It fails if any cover file or PDF path is wrong.
