@@ -486,7 +486,7 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,2.5vw,28px);padding-block:clamp(40px,5vw,64px);border-top:1px solid var(--line)}
 .dcard{margin:0}
 .dcard figcaption{padding:18px 4px 0}
-.dcard h4{font:600 16.5px/1.35 var(--sans);letter-spacing:-.01em;color:var(--ink);margin-bottom:7px}
+.dcard h3,.dcard h4{font:600 16.5px/1.35 var(--sans);letter-spacing:-.01em;color:var(--ink);margin-bottom:7px}
 .dcard figcaption p{font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
 /* ---- workspace closer ---- */
 .workspace{padding-top:clamp(40px,5vw,64px);border-top:1px solid var(--line)}
@@ -873,11 +873,6 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
 .arch-band{border:1px solid var(--line-2);background:var(--bg);padding:20px;text-align:center}
 .arch-band .k{font:500 12px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
 .arch-band .v{margin-top:10px;font:400 10.5px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim)}
-.arch-teams{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:28px}
-.arch-team{
-  background:var(--bg);padding:14px 8px;text-align:center;position:relative;
-  font:500 10.5px/1.45 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);
-}
 .arch-band{position:relative}
 .arch-band::after{content:"";position:absolute;left:50%;bottom:-29px;width:1px;height:29px;background:var(--line-2)}
 .arch-recv{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:24px}
@@ -907,7 +902,6 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
   .method{grid-template-columns:180px minmax(0,1fr)}
 }
 @media (max-width:980px){
-  .arch-teams{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:22px}
   .arch-band::after{display:none}
   .recipe-foot{grid-template-columns:1fr}
 }
@@ -922,8 +916,141 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
   .method{grid-template-columns:1fr;gap:4px}
 }
 @media (max-width:560px){
-  .arch-teams{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .arch-team:last-child{grid-column:1/-1}
   .level,.chain-list li,.loop-node,.rx-band,.rx-col,.rx-add,.arch-body,.vs{padding-inline:16px}
   .principle{padding-left:16px}
+}
+
+/* ============ 16 ROUND TWO: EDITING AND REORGANIZATION (2026-09) ============ */
+/* Home was cut back to the shortest path through the argument and the
+   product depth moved to Platform. What follows is what that pass added:
+   two rules promoted out of page-local blocks because several pages had
+   invented them identically, modifiers on existing instruments (the
+   recipe columns as a two-way contrast, the loop at four and three
+   nodes, the comparison box side by side), and four small components.
+   Tokens only; the accent arrives through var(--accent). */
+
+/* ---- promoted from page-local blocks ---- */
+/* inline link inside running copy: accent ink on a hairline */
+.ilink{color:var(--accent);border-bottom:1px solid var(--line-2);padding-bottom:1px}
+.ilink:hover{color:var(--accent-hi);border-color:var(--accent)}
+/* the hairline cell grid at three across */
+.trust-grid.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* ---- inside and outside (#outside) ---- */
+/* the recipe columns read as a two-way contrast: what the systems see,
+   what moves the numbers next */
+.rx-cols.rx-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+/* decision latency: the copy beside the two chains */
+.latency{
+  display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:clamp(28px,4vw,56px);margin-top:clamp(36px,5vw,56px);align-items:start;
+}
+.latency-copy h3{font-size:clamp(20px,2.1vw,24px);line-height:1.25;margin-bottom:16px;max-width:22ch}
+.latency-copy p{max-width:52ch}
+/* the comparison box, two chains side by side. It keeps stacking where it
+   sits in a narrow column, which is how Platform uses it. */
+.vs-2{grid-template-columns:1fr 1fr}
+.vs-2 .vs-note{grid-column:1/-1}
+
+/* ---- the pipeline at four nodes (#system) ---- */
+.loop-4{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr)}
+
+/* ---- role views under the shared layer (#roles) ---- */
+/* the arriving question per responsibility, not an org chart: the band
+   above is the shared layer and these are views onto it */
+.arch-roles{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);margin-top:28px;
+}
+.arch-role{background:var(--bg);padding:18px 18px 20px}
+.arch-role .k{font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
+.arch-role .v{font-size:14px;line-height:1.55;color:var(--ink-mute)}
+
+/* ---- daily use (#daily) ---- */
+/* five hairline cells, no arrows and no instrument chrome: this is a
+   description of what a day looks like, not a claimed view of data. */
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.step{background:var(--bg);padding:22px 20px 26px}
+.step .k{font:500 11.5px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.step .v{font-size:14px;line-height:1.6;color:var(--ink-mute)}
+
+/* ---- solutions: the three levels, and daily use by function ---- */
+.loop-3{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr)}
+.funcs{border-top:1px solid var(--line)}
+.func{
+  display:grid;grid-template-columns:200px minmax(0,1fr) minmax(0,1fr);gap:10px 24px;
+  align-items:baseline;padding:18px 4px;border-bottom:1px solid var(--line);
+  transition:background-color .2s ease;
+}
+.func:hover{background:var(--bg-1)}
+.func .k{font:500 12px/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.func .q{font-size:14.5px;line-height:1.6;color:var(--ink)}
+.func .v{font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
+
+/* ---- solutions: the adoption ladder ---- */
+/* One device, not two: the three levels ARE the progression, so each node
+   carries its own name, its sentence and its bullets. The meter is the
+   escalation, drawn in ink weight rather than in the accent, because the
+   checker bullets inside the node already hold the one accent role. */
+.ladder{
+  display:grid;align-items:stretch;
+  grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);
+  padding:clamp(16px,2.2vw,24px);
+}
+.ladder-node{border:1px solid var(--line);background:var(--bg);padding:22px 20px 26px}
+.ladder-node .idx{font:400 10.5px/1 var(--mono);letter-spacing:.2em;color:var(--ink-dim)}
+.ladder-meter{display:flex;gap:4px;margin-top:14px}
+.ladder-meter i{height:3px;flex:1 1 0;background:var(--line-2)}
+.ladder-meter i.on{background:var(--ink)}
+.ladder-node h3{font-size:17px;letter-spacing:-.01em;margin:18px 0 10px}
+.ladder-node .v{font-size:14px;line-height:1.6;color:var(--ink-mute)}
+.ladder-node .pts{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+.ladder-node .pts li{color:var(--ink-body)}
+
+/* ---- a quote row carrying one cell ---- */
+/* .quote-row is a hairline grid: a single cell in a two-column track paints
+   the empty half as a solid block. One cell means one column. */
+.quote-row.quote-1{grid-template-columns:minmax(0,1fr)}
+
+/* ---- platform: the beta label on the instrument set ---- */
+/* The product marks these instruments beta in the app today, so the page
+   says so too. One token, easy to lift when the label goes. */
+.beta{
+  display:inline-block;margin-left:5px;vertical-align:2px;
+  font:500 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim);
+  border:1px solid var(--line-2);border-radius:2px;padding:4px 6px;
+}
+.caps-note{margin-top:22px;font:400 11px/1.7 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim)}
+
+/* ---- responsive ---- */
+@media (max-width:1080px){
+  .func{grid-template-columns:170px minmax(0,1fr) minmax(0,1fr)}
+}
+@media (max-width:980px){
+  .latency{grid-template-columns:1fr}
+  /* five cells over three columns: the fifth takes the empty track with it */
+  .steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .steps .step:last-child{grid-column:span 2}
+}
+@media (max-width:900px){
+  .rx-cols.rx-2{grid-template-columns:1fr}
+  .ladder{grid-template-columns:minmax(0,1fr)}
+  .loop-4,.loop-3{grid-template-columns:minmax(0,1fr)}
+  .arch-roles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .func{grid-template-columns:1fr;gap:8px;padding:16px 4px}
+  /* three cells over two columns: the third runs full width */
+  .trust-grid.grid-3{grid-template-columns:1fr 1fr}
+  .trust-grid.grid-3 .trust-cell:last-child{grid-column:1/-1}
+  .vs-2{grid-template-columns:1fr}
+}
+@media (max-width:700px){
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps .step:last-child{grid-column:1/-1}
+}
+@media (max-width:560px){
+  .ladder-node{padding-inline:16px}
+  .arch-roles,.steps{grid-template-columns:1fr}
+  .steps .step:last-child{grid-column:auto}
+  .trust-grid.grid-3{grid-template-columns:1fr}
+  .step,.arch-role{padding-inline:16px}
 }

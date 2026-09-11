@@ -573,3 +573,160 @@ recipe architecture), `.method`/`.principle` (the more-than-AI list),
 layer and team views), `.duo-copy`, `.sec-note`, `.more-link`, `.taglist`,
 `.cap-wide` (the thirteenth capability card spans the row). Diagrams live
 in `.frame` with `Illustrative view`; the `.live` dot stays off them.
+
+
+## Round two additions (2026-09)
+
+The editing and reorganization pass. No new visual identity, no new
+palette: this round moved content between pages, cut the home page back,
+and added the few components that the new arrangement needed. All of it
+lives in `styles.css` section 16.
+
+### The page division, binding
+
+Each page answers one question, and content that answers a different one
+belongs on the page that owns it:
+
+| Page | Question | Owns |
+|---|---|---|
+| Home | Why Mission Grey matters | the business problem, urgency, the difference, the shortest version of everything else |
+| Platform | How Mission Grey works | global to local in full, the walkthrough and every product screenshot, the decision engine, the full recipe, method, the instrument set, trust, the application layer |
+| Solutions | How you start and how it expands | the three levels, the progression, daily use by function, interaction modes |
+| Use cases | Where organizations use it | the six decision contexts |
+
+What moved off Home in this round: the four-stage walkthrough with its
+eight product screenshots, the Morning Brief `.sheet`, the decision engine
+loop and the agent cards, the full recipe stack, the methods list and the
+`.vs` comparison, the thirteen-card instrument set, and the sector index.
+Home keeps short versions of the global-to-local table and the recipe by
+design (the chairman's instruction: keep the idea, move the detail), and
+three product visuals in total.
+
+Home carries **at most four major product visuals**. It currently has
+three: the monitoring screen and the recommendations screen in `#system`,
+and the one real customer application capture in `#apps`. Adding a fourth
+is a judgment call; adding a fifth is a regression.
+
+### Promoted out of page-local blocks
+
+- `.ilink` (accent inline link on a hairline) was declared identically in
+  the Platform, Solutions and Use cases `<style>` blocks. It is in
+  styles.css now and those three copies are gone. No page declares it
+  locally any more; `grep -rn '\.ilink{' site/**/*.html` returns nothing.
+- `.trust-grid.grid-3` is the hairline cell grid at three across, promoted
+  from the same Platform block.
+
+### Modifiers on existing instruments
+
+- `.rx-cols.rx-2` sets the recipe columns to two, which is how the
+  inside/outside contrast in `#outside` is built: `.frame` > `.rx-stack` >
+  `.rx-cols.rx-2`, with a `.level-out` bar as a direct child of the frame
+  so it runs full bleed under the padding.
+- `.loop-4` and `.loop-3` run the decision-engine loop at four nodes (the
+  Monitor / Analyze / Decide / Act pipeline on Home) and three (the
+  adoption path on Solutions). Both collapse to one column at 900.
+- `.vs-2` puts the two chains of the comparison box side by side. Without
+  it `.vs` stacks, which is right in a narrow column (Platform) and wrong
+  in a wide one (the decision-latency block on Home). Any `max-width` rule
+  that could reach a `p` inside `.vs` must be scoped to the copy column,
+  not the block: `.vs-note` is a `p` and inherits whatever you leave open.
+
+### Hairline grids may not leave an empty track, binding
+
+`.steps`, `.trust-grid`, `.caps`, `.arch-roles`, `.quote-row`, `.rx-cols`
+and `.agent-cards` are all built the same way: `gap:1px` over a container
+whose background is `var(--line)`, with each cell painting its own
+`var(--bg)`. The hairlines are the gaps. That means **an empty grid track
+is not empty space, it is a solid block of line colour**, and it reads as
+a broken cell rather than as air.
+
+So the count that matters is items modulo columns, **at every breakpoint**,
+not only at the narrowest one. Two defects in one round came from checking
+only the last breakpoint: five `.step` cells over three columns at 980, and
+three `.trust-grid.grid-3` cells over two columns at 900. Span the
+remainder (`grid-column:span 2`, or `1/-1` for a single leftover), or drop
+to one column. Where a component can carry a variable number of cells, give
+it a modifier that states the count: `.quote-row.quote-1` is the two-column
+quote row holding a single cell.
+
+Check 1440, 1080, 980, 900, 760, 700, 560 and 485. The breakpoints in use
+are not evenly spaced and a grid can be clean at 1440 and at 390 while
+being broken through the whole tablet range.
+
+### New components
+
+- `.latency` (+ `.latency-copy`): the copy column beside the two chains.
+- `.arch-roles` / `.arch-role`: the role views under `.arch-band`. Each
+  cell is the mono function label and the question that function actually
+  arrives with. It is not an org chart and it is not long cards: one
+  question per cell, nothing else.
+- `.steps` / `.step`: five hairline cells, no arrows, no chrome. Used for
+  Ask, Monitor, Receive, Share, Act. **It deliberately takes no `.frame`**:
+  it is a description of what a day looks like, not a claimed view of
+  data, so it may not wear instrument chrome. The same reasoning keeps the
+  three-cell upside/adapt/downside triad in a bare `.trust-grid.grid-3`.
+- `.funcs` / `.func`: the Solutions index of daily use by function. Three
+  columns per row: mono label, the arriving question in ink, the value in
+  mute. Collapses to one column at 900.
+- `.ladder` / `.ladder-node` / `.ladder-meter`: the Solutions adoption
+  path. One device, not two. The three levels **are** the progression, so
+  each node carries its own name, sentence and `.pts` bullets, with
+  `.loop-arrow` between them. The meter (one, two, three filled bars) is
+  drawn in `var(--ink)` rather than the accent, because the checker
+  bullets inside the node already hold the component's one accent role.
+- `.quote-row.quote-1`: the quote row carrying a single cell.
+- `.beta` and `.caps-note`: see below.
+
+### Deleted this round
+
+`.arch-teams` / `.arch-team` (the nine-cell team strip under the shared
+layer) lost its only user when the shared-layer diagram became
+`.arch-roles`, so the component and its two breakpoint rules are gone.
+`.arch-band::after`, the connector stub between band and grid, stays: it is
+sized to the 28px margin that `.arch-roles` also uses.
+
+### One diagram, one direction, binding
+
+The intelligence architecture appears on Home in short form and on Platform
+in full. **Both flow the same way: inputs at the top, the decision engine
+in the middle, decision-worthy intelligence at the bottom, and the same
+three pillar names (Data and context / Models and methods / Human
+intelligence) on both pages.** Platform extends the shared diagram
+downward from the inputs, with the intelligence base and the three added
+source classes sitting under the pillars they stock; it does not invert the
+flow or rename the pillars. A reader who follows Home's "full recipe" link
+has to arrive at the same object, opened up.
+
+The same rule applies to the three sections that exist on both pages at
+two depths (`#breadth`, `#recipe`, `#trust`). Platform's headings and deks
+say what the deeper chapter adds; they are never a verbatim copy of Home's.
+
+### Diagram density
+
+The organizational architecture diagram on Platform is capped at **four
+chips per layer**, with the remainder of every layer carried in one prose
+line under the frame. Forty-four chips of equal weight is a wall, not a
+diagram, and on a phone it became a three-screen ladder. Every layer name
+the chairman listed stays; the items that stop being chips stop being
+chips, they do not stop existing. The decision layer names its five objects
+nowhere on that diagram: they appear twice already on the page, so the band
+points at `#engine` instead.
+
+### Beta labels on the instrument set
+
+`.beta` is a one-token mono tag inside a `.cap` heading, with
+`.caps-note` under the grid saying what it means. Five of the thirteen
+instruments carry it: Forecasting, Scenario simulation, Knowledge Graph,
+Expert intelligence and Private data rooms. That list is not a judgment,
+it is a reading of the product's own sidebar, which labels Chronos
+Forecast, Scenario Simulation, Knowledge Graph, Delfoi Questions and Data
+Rooms as BETA (Theme Browser is also labelled but is not one of the
+thirteen). The site says what the product says. When a label comes off in
+the app, delete the span; nothing else changes.
+
+### Still-live components that left the home page
+
+`.sectors` / `.sector` is no longer on Home or Solutions. It is still used
+on the API page, so the CSS stays. The Solutions industry rows were cut as
+a duplicate of Use cases, and the `.ind` overrides in the Solutions
+page-local block went with them.
