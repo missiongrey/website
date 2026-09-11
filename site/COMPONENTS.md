@@ -697,9 +697,11 @@ source classes sitting under the pillars they stock; it does not invert the
 flow or rename the pillars. A reader who follows Home's "full recipe" link
 has to arrive at the same object, opened up.
 
-The same rule applies to the three sections that exist on both pages at
-two depths (`#breadth`, `#recipe`, `#trust`). Platform's headings and deks
-say what the deeper chapter adds; they are never a verbatim copy of Home's.
+The same rule applies to every section that exists on both pages at two
+depths. Round two had three of them (`#breadth`, `#recipe`, `#trust`);
+since round three `#breadth` is Platform's alone, and the pairs are
+`#recipe` and `#trust`. Platform's headings and deks say what the deeper
+chapter adds; they are never a verbatim copy of Home's.
 
 ### Diagram density
 
@@ -709,8 +711,9 @@ line under the frame. Forty-four chips of equal weight is a wall, not a
 diagram, and on a phone it became a three-screen ladder. Every layer name
 the chairman listed stays; the items that stop being chips stop being
 chips, they do not stop existing. The decision layer names its five objects
-nowhere on that diagram: they appear twice already on the page, so the band
-points at `#engine` instead.
+nowhere on that diagram: they are already drawn in the recipe on the same
+page, so the band points at `#engine` instead, which is the section that
+names them in prose.
 
 ### Beta labels on the instrument set
 
@@ -730,3 +733,118 @@ the app, delete the span; nothing else changes.
 on the API page, so the CSS stays. The Solutions industry rows were cut as
 a duplicate of Use cases, and the `.ind` overrides in the Solutions
 page-local block went with them.
+
+
+## Round three additions (2026-09-11)
+
+The second editing pass, on the same rule as the first: no new visual
+identity, no new palette, no new components and no new tokens; three
+spacing corrections against existing selectors are listed at the end of
+this section. Every section below reuses a component that was already here. The pass answered the
+chairman's round-three note, whose object was a home page that gets a
+senior reader to "why do we need this, why now, why Mission Grey, is it
+easy to use" before it shows product.
+
+### What Home looks like now
+
+In order: hero, proof strip, the business problem (`#outside`), "Don't be
+surprised." (`#prepared`), "External intelligence should not depend on who
+happens to be looking." (`#shared`), the four-stage pipeline (`#system`),
+the short recipe (`#recipe`), daily use (`#daily`), "One outside world.
+Different decisions." (`#roles`, which also carries the example
+application), trust (`#trust`), access.
+
+What left Home this round: the four-level global-to-local table (Platform
+has "The four levels, opened up." and now carries the definition sentence
+with it), the worked example chain (**moved** to Platform, where it closes
+the walkthrough), the "Built for the grey zone." name band (**moved** to
+`/about/`), the decision-latency comparison, one of the two product
+screenshots, and the separate Applications section (folded into `#roles`).
+Two things came back after review: the five decision objects inside the
+recipe's engine band, and the evidence pair in `#trust`, one Guild line
+positioned as "Human expertise, built into the intelligence system." and
+the Export Agency testimonial, which is published nowhere else on the site.
+The order changed as much as the contents: the organizational problem now
+sits third, before any product, and the role views left `#shared` to become
+their own short section after daily use.
+
+Nothing was deleted outright this round. Two sections moved to the page
+that owns their question, which is the same rule the page division states:
+the worked example is product proof, so it belongs on Platform, and the
+name band is company writing, so it belongs on About.
+
+Home measured 14426px tall at 1440 before the pass and 11396px after it.
+
+### Home's product visuals, binding (supersedes the round-two count)
+
+Home carries **at most two major product visuals**: one real product
+screenshot (the recommendations screen in `#system`) and one example
+application capture (`#roles`). The hero globe is a drawn instrument and is
+not one of the two. Round two allowed four and used three; the chairman's
+round-three instruction was to reduce screenshots significantly and move
+most of them to Platform, which is where the other eight now are. A third
+product visual on Home is a judgment call, a fourth is a regression.
+
+### Diagrams at two depths, restated
+
+Home's short recipe now carries chips rather than sentences under the three
+pillars (Data and context, Models and methods, Human intelligence), and the
+decision-engine band in the middle carries its five objects as chips, the
+same five the full recipe on Platform draws, so the diagram is never a
+hollow box on either page. The flow direction, the pillar names and
+the order are unchanged, so the "one diagram, one direction" rule still
+holds between Home and Platform. `#roles` reuses the `.arch-band` +
+`.arch-roles` diagram that round two put inside `#shared`; the CSS comment
+in section 16 already called it `#roles`, and now it is.
+
+### Deleted this round
+
+Four components lost their only user with the sections that carried them
+and are gone from styles.css, along with their breakpoint rules:
+`.duo-copy` (the paired copy block), `.arch-recv` (the delivery-forms row),
+`.latency` / `.latency-copy` and `.vs-2` (the decision-latency block), and
+`.quote-row.quote-1`. `.vs` itself stays: Platform uses it. `.chain-list`
+was deleted and then restored when the worked example moved to Platform
+instead of being cut. `.loop-back`, the feedback line under the decision
+engine, went when that diagram stopped being drawn a second time; the
+pre-existing `.loop-3` has no user either, and is left for whoever next
+audits the stylesheet.
+
+The name band (`.name-grid`, `.name-copy`, `.resolve`, `.resolve-cap`) has
+a user again: the section moved to `/about/`, between "Why Mission Grey
+exists." and the people, which is where the company story sits. It is the
+only piece of brand writing on the site and the mark sequence is a brand
+object rather than a page device, so it moved rather than went.
+
+### Apostrophes, observed convention
+
+Chassis pages use the straight ASCII apostrophe in display copy and body
+copy alike: `customer's environment`, `Mission Grey's Privacy Policy` in a
+privacy `h2`, `today's`, `buyer's`, twenty-two of them and no typographic
+one. The curly apostrophe appears only in the editorial register, inside
+insight articles and the article titles quoted on `/insights/`, where the
+text is reproduced as published. "Don't be surprised." on Home therefore
+takes the straight apostrophe. If that ruling ever flips it flips for the
+whole chassis at once, not for one heading.
+
+### Spacing corrections made against existing selectors
+
+Three, all of them slots where a component had no spacing contract:
+`.rx-stack .taglist` (was `.rx-band .taglist`, so chips under a column
+label rode 6px high while chips under a band label sat at 14px),
+`.stage p+p` (two paragraphs in a stage column collided), and
+`.trust-cell .ladder-meter` (the Solutions meter reused as a scale marker
+inside a hairline cell, where the cell padding already gives the top gap).
+
+### Solutions: three steps, not three levels
+
+The adoption ladder keeps its component and changes its labels. Each node's
+mono index line now carries the progression (`01 / ONE DECISION`,
+`02 / CONTINUOUS INTELLIGENCE`, `03 / ORGANIZATIONAL INTELLIGENCE`) and
+each heading is the step as an instruction ("Start with a decision.",
+"Keep it continuously current.", "Make it part of the organization."). The
+seven function rows are named for the functions a buyer recognizes
+(Top management, Sales, Operations, Finance / treasury, Risk / compliance,
+Strategy / investment, Public affairs / regulation) and the section heading
+says what the page adds over Home's six questions rather than repeating
+them.
