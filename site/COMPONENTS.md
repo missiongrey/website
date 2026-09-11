@@ -547,3 +547,29 @@ download anywhere on the page: it is requested by mail through the
 says so ("Editions before the current one are direct downloads."), which is
 also what explains the absence of the current month from the archive. The
 page carries no email form.
+
+
+## Content evolution additions (2026-09)
+
+### Example application (honesty tier 2 variant)
+
+A real screenshot of an application BUILT ON the platform but not served
+from `app.missiongrey.com` (a customer or country dashboard, a demo) is
+neither the product nor a drawn graphic, so it takes neither `.window`
+nor the `Illustrative view` label. It sits in a `.frame` whose bar names
+the artifact on the left and carries the dim label `Example application`
+on the right, wrapped in `figure.appfig` with a figcaption that ends in
+`figures illustrative`. Used on the home, Platform and Solutions pages;
+`.window` with the url pill is reserved for the core product UI only.
+
+### Instrument components added for the homepage
+
+All in `styles.css` section 15, tokens only, one accent per component:
+`.levels`/`.level` (the global-to-local layer table), `.loop-row`/
+`.loop-node`/`.loop-back` (the decision engine), `.agents`/`.agent-card`
+(Check this, Do this), `.chain-list` (the worked example), `.rx-*` (the
+recipe architecture), `.method`/`.principle` (the more-than-AI list),
+`.vs` (the small general-purpose AI comparison), `.arch-*` (the shared
+layer and team views), `.duo-copy`, `.sec-note`, `.more-link`, `.taglist`,
+`.cap-wide` (the thirteenth capability card spans the row). Diagrams live
+in `.frame` with `Illustrative view`; the `.live` dot stays off them.
