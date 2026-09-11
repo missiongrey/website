@@ -1,7 +1,8 @@
 # Mission Grey site design system: component guide
 
 For builders of sibling pages (`/platform`, `/solutions`, `/use-cases`,
-`/partners-guild`, `/api`, `/insights`, `/about`, `/contact`, legal).
+`/guild`, `/partners-guild`, `/api`, `/insights`, `/about`, `/contact`,
+legal).
 The homepage (`site/index.html`) is the reference implementation; this file
 tells you how to stay on register. Read all of it before writing markup.
 
@@ -134,9 +135,11 @@ verbatim with their exact anonymous attributions.
 ### Header (copy verbatim from index.html)
 
 Sticky, blurred, hairline bottom. Desktop nav: Platform, Solutions,
-Use cases, Partners, API, Insights, About + UTC clock + Log in + Request
-access button. Mobile (`<=980px`): `details.mnav` burger panel including
-Contact. Logo is `../assets/mission-grey-logo-white.png` at `height:24px`.
+Use cases, Guild, Partners, API, Insights, About + UTC clock + Log in +
+Request access button. Mobile (`<=980px`): `details.mnav` burger panel
+including Contact. The mobile panel carries the same labels as the desktop
+nav; `/partners-guild/` reads "Partners" in both (the route kept its old
+name when the Guild moved to `/guild/`). Logo is `../assets/mission-grey-logo-white.png` at `height:24px`.
 
 ### Clock
 
