@@ -739,3 +739,189 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
   .globe-cap{position:static;margin-top:12px;padding-inline:var(--pad);align-items:flex-start}
   .globe-cap::before{margin-top:5px}
 }
+
+/* ============ 15 CONTENT EVOLUTION (2026-09) ============ */
+/* Components for the broadened homepage story: the global-to-local level
+   grid, the decision engine loop, the worked example chain, the recipe
+   architecture, the shared-layer diagram and the example application
+   figure. All of them are drawn instruments, so they live inside .frame
+   and take hairlines, mono labels and at most one accent role each. No
+   value below is a colour literal; the accent arrives only through
+   var(--accent). */
+
+/* ---- shared helpers ---- */
+/* a tag row that reuses .chip without .chips' section margins */
+.taglist{display:flex;flex-wrap:wrap;gap:8px}
+/* the sentence that follows a diagram and says what it means */
+.sec-note{margin-top:clamp(24px,3vw,32px);font-size:15.5px;line-height:1.65;color:var(--ink-mute);max-width:80ch}
+.sec-note b{color:var(--ink);font-weight:600}
+/* two paragraphs set side by side under a section head */
+.duo-copy{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);margin-bottom:clamp(32px,4vw,48px)}
+.duo-copy p{max-width:54ch}
+/* a hairline text link with the shared 14x10 arrow */
+.more-link{margin-top:26px}
+.more-link a{
+  display:inline-flex;align-items:center;gap:12px;
+  font:500 11.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
+  border-bottom:1px solid var(--line-2);padding-bottom:6px;
+}
+.more-link a svg{color:var(--accent);flex:none}
+.more-link a:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ---- levels: global to local (#breadth) ---- */
+.level{
+  display:grid;grid-template-columns:230px minmax(0,1fr);gap:14px 24px;
+  padding:18px 18px;border-bottom:1px solid var(--line);align-items:start;
+}
+.level-grid .level:last-child{border-bottom:0}
+.level-k{
+  display:flex;align-items:baseline;gap:12px;
+  font:500 12px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+}
+.level-i{color:var(--accent)}
+.level-out{
+  display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;
+  padding:14px 18px;border-top:1px solid var(--line);background:var(--bg-2);
+  font:400 12px/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);
+}
+.level-out svg{color:var(--ink-mute);flex:none}
+.level-out b{color:var(--ink);font-weight:500}
+
+/* ---- decision engine loop (#engine) ---- */
+.loop-row{
+  display:grid;align-items:stretch;gap:0;padding:clamp(16px,2.2vw,24px);
+  grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);
+}
+.loop-node{border:1px solid var(--line);background:var(--bg);padding:18px 16px 20px}
+.loop-node .k{font:500 11.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
+.loop-node .v{font-size:13.5px;line-height:1.55;color:var(--ink-mute)}
+.loop-arrow{display:flex;align-items:center;justify-content:center;color:var(--ink-dim);padding:0 10px}
+.loop-back{
+  display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;
+  padding:14px 18px;border-top:1px solid var(--line);background:var(--bg-2);
+  font-size:14.5px;color:var(--ink);
+}
+.loop-back svg{color:var(--ink-mute);flex:none}
+.loop-back b{font:500 10.5px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);font-weight:500}
+
+/* ---- agents ---- */
+.agents{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px);margin-top:clamp(36px,5vw,52px);align-items:start}
+.agents-copy h3{font-size:clamp(20px,2.1vw,24px);line-height:1.25;margin-bottom:16px}
+.agents-copy p{margin-bottom:14px;max-width:54ch}
+.agent-cards{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.agent-card{background:var(--bg);padding:22px 22px 24px}
+.agent-card .k{font:500 11.5px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.agent-card p{font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
+
+/* ---- worked example chain (#example) ---- */
+.chain-list{counter-reset:none}
+.chain-list li{
+  display:grid;grid-template-columns:200px minmax(0,1fr);gap:10px 24px;
+  padding:16px 18px;border-bottom:1px solid var(--line);align-items:start;
+}
+.chain-list li:last-child{border-bottom:0}
+.chain-list .k{
+  display:flex;align-items:baseline;gap:12px;
+  font:500 12px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+}
+.chain-list .n{color:var(--accent)}
+.chain-list .v{font-size:15px;line-height:1.6;color:var(--ink-body)}
+
+/* ---- the recipe architecture (#recipe) ---- */
+.rx-stack{display:grid;padding:clamp(16px,2.2vw,26px)}
+.rx-band{border:1px solid var(--line);background:var(--bg);padding:18px 20px}
+.rx-k{
+  display:flex;align-items:baseline;
+  font:500 11.5px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
+}
+.rx-band .taglist{margin-top:14px}
+.rx-i{
+  font:500 10.5px/1 var(--mono);color:var(--accent);
+  border:1px solid var(--line-2);padding:5px 7px;margin-right:12px;flex:none;
+}
+.rx-flow{display:flex;justify-content:center;padding:12px 0;color:var(--ink-dim)}
+.rx-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.rx-col{background:var(--bg);padding:18px 20px}
+.rx-v{margin-top:12px;font-size:14px;line-height:1.6;color:var(--ink-mute)}
+.rx-adds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-top:0;margin-top:12px}
+.rx-add{background:var(--bg-1);padding:18px 20px}
+.rx-add .rx-k{color:var(--ink-mute)}
+
+/* ---- methods and the small architecture comparison ---- */
+.recipe-foot{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,4vw,56px);margin-top:clamp(40px,5vw,60px);align-items:start}
+.methods h3{font-size:clamp(20px,2.1vw,24px);line-height:1.25;margin-bottom:22px}
+.method-list{border-top:1px solid var(--line)}
+.method{display:grid;grid-template-columns:210px minmax(0,1fr);gap:6px 20px;padding:14px 2px;border-bottom:1px solid var(--line)}
+.method dt{font:500 11px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.method dd{font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
+.principle{margin-top:24px;border-left:2px solid var(--accent);padding-left:20px;font-size:17px;line-height:1.55;color:var(--ink);max-width:46ch}
+.vs{border:1px solid var(--line);background:var(--bg);padding:24px 24px 22px;display:grid;gap:24px}
+.vs-k{font:500 10.5px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:14px}
+.vs-chain{list-style:none}
+.vs-chain li{
+  position:relative;padding:7px 0 7px 24px;
+  font:500 11.5px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);
+}
+.vs-chain li::before{content:"";position:absolute;left:4px;top:14px;bottom:-7px;width:1px;background:var(--line-2)}
+.vs-chain li:last-child{color:var(--ink)}
+.vs-chain li:last-child::before{display:none}
+.vs-chain li::after{content:"";position:absolute;left:1.5px;top:11px;width:6px;height:6px;background:conic-gradient(var(--ink-dim) 0 25%,transparent 25% 50%,var(--ink-dim) 50% 75%,transparent 75%)}
+.vs-note{font:400 10.5px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);border-top:1px solid var(--line);padding-top:16px}
+
+/* ---- shared intelligence layer (#shared) ---- */
+.arch-body{padding:clamp(18px,2.4vw,30px)}
+.arch-band{border:1px solid var(--line-2);background:var(--bg);padding:20px;text-align:center}
+.arch-band .k{font:500 12px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.arch-band .v{margin-top:10px;font:400 10.5px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim)}
+.arch-teams{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:28px}
+.arch-team{
+  background:var(--bg);padding:14px 8px;text-align:center;position:relative;
+  font:500 10.5px/1.45 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);
+}
+.arch-team::before{content:"";position:absolute;left:50%;top:-29px;width:1px;height:29px;background:var(--line-2)}
+.arch-recv{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:24px}
+.arch-recv b{font:500 10.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);font-weight:500;margin-right:6px}
+.arch-recv span{
+  font:400 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);
+  border:1px solid var(--line);padding:8px 12px;
+}
+
+/* ---- example application figure (#apps) ---- */
+/* NOT a .window: this is an application built on the platform, not
+   app.missiongrey.com, so it takes instrument chrome and says so. */
+.appfig{margin:0}
+.appfig img{display:block;width:100%;height:auto}
+.appfig figcaption{
+  margin-top:13px;display:flex;align-items:center;gap:10px;
+  font:500 10.5px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);
+}
+.appfig figcaption::before{content:"";width:6px;height:6px;flex:none;background:conic-gradient(var(--accent) 0 25%,transparent 25% 50%,var(--accent) 50% 75%,transparent 75%)}
+
+/* ---- capability grid: the thirteenth card closes the row ---- */
+.cap-wide{grid-column:1/-1}
+
+/* ---- responsive ---- */
+@media (max-width:1080px){
+  .level{grid-template-columns:190px minmax(0,1fr)}
+  .method{grid-template-columns:180px minmax(0,1fr)}
+}
+@media (max-width:980px){
+  .arch-teams{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:22px}
+  .arch-team::before{display:none}
+  .recipe-foot{grid-template-columns:1fr}
+}
+@media (max-width:900px){
+  .level,.chain-list li{grid-template-columns:1fr;gap:12px}
+  .loop-row{grid-template-columns:minmax(0,1fr)}
+  .loop-arrow{transform:rotate(90deg);padding:8px 0}
+  .agents{grid-template-columns:1fr}
+  .rx-cols,.rx-adds{grid-template-columns:1fr}
+  .rx-adds{border-top:1px solid var(--line);margin-top:12px}
+  .duo-copy{grid-template-columns:1fr;gap:14px}
+  .method{grid-template-columns:1fr;gap:4px}
+}
+@media (max-width:560px){
+  .arch-teams{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .level,.chain-list li,.loop-node,.rx-band,.rx-col,.rx-add,.arch-body,.vs{padding-inline:16px}
+  .principle{padding-left:16px}
+}
