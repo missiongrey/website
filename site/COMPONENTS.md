@@ -266,7 +266,7 @@ dateline is JS-written; the static fallback stays dateless.
 
 ```html
 <div class="cadence" role="list" aria-label="Operating cadence">
-  <div role="listitem"><span class="v">4x daily</span><span class="k">News pipeline</span></div>
+  <div role="listitem"><span class="v">4x daily</span><span class="k">News updates</span></div>
   ...
 </div>
 ```
@@ -848,3 +848,22 @@ seven function rows are named for the functions a buyer recognizes
 Strategy / investment, Public affairs / regulation) and the section heading
 says what the page adds over Home's six questions rather than repeating
 them.
+
+
+## Round four (2026-09-12)
+
+Editorial pass only: shorter, sharper, more credible copy on Home, Platform
+and Solutions, no component, token or imagery change. The "Three levels"
+strip was removed from Home's `#daily` (its idea is covered by the Solutions
+adoption path; the me / team / organization axis exists nowhere now), so
+`.trust-cell .ladder-meter` has no user and joins `.loop-3` on the audit
+list. Platform's METHOD section lost the five-row `.method-list` and the
+machine-scale `.net` block (the recipe's B and C cards already carry the
+ingredients); the pull quote, the `.vs` box and the research-partnerships
+line stay, and `.method-list` / `.method` have no user. Platform's
+`#methods` roles `dl` and its page-local `.roles` rules went together, and
+`#breadth` is titled "External change arrives on four levels." The cadence
+band keeps four cells and the same facts in plain words (`4x daily / News
+updates`, `Nightly / Country indicators`, `Real time / Maritime tracking`,
+`In the loop / Expert review`). Home measured 11364px tall at 1440 before
+the pass and 10659px after it.
