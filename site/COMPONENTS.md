@@ -867,3 +867,41 @@ band keeps four cells and the same facts in plain words (`4x daily / News
 updates`, `Nightly / Country indicators`, `Real time / Maritime tracking`,
 `In the loop / Expert review`). Home measured 11364px tall at 1440 before
 the pass and 10659px after it.
+
+## Round five (2026-09-12)
+
+Precision and editorial pass only, no component, token or imagery change.
+The rule for copy from here on: claims stay accurate and positive. Nothing
+on Home, Platform or Solutions says what AI, LLMs or other tools cannot do; the differentiation
+is what Mission Grey combines and how it works (Platform `#methods` is the canonical wording: the h2 "AI alone is not
+enough." and its dek "Decision intelligence also needs quantitative models,
+persistent structure, history, context and expert judgment."). "Same analytical methods" is banned
+wording; the site says one consistent process with methods selected for
+the question, and "The question determines the data and the method, not
+the other way around." stays as the `.principle` under it. Absolutes
+(`every`, `all`, `nothing`, `always`, `never`, `usually`) are kept only
+where factual; the ACT stage on Platform now says the intelligence can flow
+directly into the views, workflows and systems where decisions are made
+(the "nothing has to leave the system" wording itself left the site in
+round four).
+
+Composition changes: Platform's `.vs` box is reframed on the individual
+versus organization axis ("An AI assistant, for one person" / "Mission Grey,
+for the organization") and now lays its two chains side by side
+(`grid-template-columns:1fr 1fr`, the note spanning both, single column
+under 600px) so it reads as a comparison rather than one ten-step chain;
+the section's `.principle` beside it carries "AI assistants help
+individuals. Mission Grey adds the organizational intelligence layer." in
+sans (two sentences in `.vs-note` mono wrapped to three lines at 390, and
+mono is never a paragraph), the note reverts to its short label, and the
+question-determines-the-method line closes the dek. Home `#roles` is
+headed by "One external intelligence layer. Different views for different
+responsibilities." with the Solutions pointer as a `.sec-note` under the
+diagram, and the `h3.net-lede` over the example application is removed.
+Home `#prepared` closes on its three cards; the round-four `.sec-note`
+that restated their headings is gone. Rule learned from the
+whole-surface pass: a summary line placed after the cards or diagram that
+already made the point is duplication, not emphasis; emphasis goes before
+or instead, never after. Main-text words: Home 1010
+to 964, Platform 2239
+to 2148, Solutions 722 to 717.
