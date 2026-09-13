@@ -1147,6 +1147,11 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
   display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,3vw,44px);
   margin-top:clamp(26px,3vw,36px);padding-top:clamp(24px,2.8vw,32px);border-top:1px solid var(--line);
 }
+.fe-timing{
+  margin-top:clamp(24px,2.8vw,32px);padding-top:clamp(20px,2.4vw,26px);border-top:1px solid var(--line);
+  max-width:72ch;font-size:var(--fs-body);color:var(--ink-body);line-height:1.55;
+}
+.fe-timing b{display:block;font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
 .fe-col .k{
   margin-bottom:12px;
   font:500 11.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink);

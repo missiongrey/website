@@ -1064,9 +1064,7 @@ inside ladder node 01 are gone: the fact lives once, in the buyer-facing
 block. The cost is that node 01 now sits shorter than the two nodes beside
 it in a stretch grid. That is the accepted trade.
 
-No timing line: the chairman's draft offered "Typically X weeks" only if the
-team has approved a number, and no approved number exists. If one is
-approved later it goes in this panel as a fourth column.
+Timing line (`.fe-timing`, under the three columns): a first version on standard data in about two weeks, proprietary data takes longer, agents and a customer dashboard follow the customer's requirements and systems; the chairman supplied these facts in-thread on 2026-09-13 and the two weeks is the only number
 
 ### The role views name the view, the questions live on Solutions
 
