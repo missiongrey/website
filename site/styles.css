@@ -752,8 +752,9 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
    that were their only users. */
 
 /* ---- shared helpers ---- */
-/* a tag row that reuses .chip without .chips' section margins */
-.taglist{display:flex;flex-wrap:wrap;gap:8px}
+/* a tag row that reuses .chip without .chips' section margins; .dobjs
+   is the same row carrying decision objects (section 18) */
+.taglist,.dobjs{display:flex;flex-wrap:wrap;gap:8px}
 /* the sentence that follows a diagram and says what it means */
 .sec-note{margin-top:clamp(24px,3vw,32px);font-size:15.5px;line-height:1.65;color:var(--ink-mute);max-width:80ch}
 .sec-note b{color:var(--ink);font-weight:600}
@@ -767,17 +768,11 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
 .more-link a svg{color:var(--accent);flex:none}
 .more-link a:hover{color:var(--accent);border-color:var(--accent)}
 
-/* ---- levels: global to local (#breadth) ---- */
-.level{
-  display:grid;grid-template-columns:230px minmax(0,1fr);gap:14px 24px;
-  padding:18px 18px;border-bottom:1px solid var(--line);align-items:start;
-}
-.level-grid .level:last-child{border-bottom:0}
-.level-k{
-  display:flex;align-items:baseline;gap:12px;
-  font:500 12px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
-}
-.level-i{color:var(--accent)}
+/* ---- levels: global to local ----
+   .levels / .level / .level-grid / .level-k / .level-i were the four-row
+   table on Platform #breadth and went with it when round seven replaced
+   that table with the converging .lens. .level-out stays: it is the
+   closing bar under a frame and the Solutions adoption frame uses it. */
 .level-out{
   display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;
   padding:14px 18px;border-top:1px solid var(--line);background:var(--bg-2);
@@ -890,7 +885,6 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
 
 /* ---- responsive ---- */
 @media (max-width:1080px){
-  .level{grid-template-columns:190px minmax(0,1fr)}
   .method{grid-template-columns:180px minmax(0,1fr)}
 }
 @media (max-width:980px){
@@ -898,7 +892,7 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
   .recipe-foot{grid-template-columns:1fr}
 }
 @media (max-width:900px){
-  .level,.chain-list li{grid-template-columns:1fr;gap:12px}
+  .chain-list li{grid-template-columns:1fr;gap:12px}
   .loop-row{grid-template-columns:minmax(0,1fr)}
   .loop-arrow{transform:rotate(90deg);padding:8px 0}
   .agents{grid-template-columns:1fr}
@@ -907,7 +901,7 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
   .method{grid-template-columns:1fr;gap:4px}
 }
 @media (max-width:560px){
-  .level,.chain-list li,.loop-node,.rx-band,.rx-col,.rx-add,.arch-body,.vs{padding-inline:16px}
+  .chain-list li,.loop-node,.rx-band,.rx-col,.rx-add,.arch-body,.vs{padding-inline:16px}
   .principle{padding-left:16px}
 }
 
@@ -1072,6 +1066,18 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
 .stage.stage-stack .stage-copy{max-width:68ch}
 .stage.stage-stack .stage-media{width:100%}
 .stage.stage-stack .win-cap{margin-top:15px}
+/* The INPUT/OUTPUT pair annotates the stage it closes. As a bare
+   inline-flex row under a paragraph it read as two mono words floating in
+   the gap above the screenshot, so it takes the rule of the copy column
+   it belongs to (round seven). */
+.stage.stage-stack .stage-io{
+  display:flex;margin-top:clamp(20px,2.4vw,26px);padding-top:14px;
+  border-top:1px solid var(--line);
+  /* .stage p sets a 52ch measure, and 52ch of 10.5px mono is 330px, so
+     without this the rule stopped a third of the way across the column it
+     is supposed to close */
+  max-width:none;
+}
 
 /* ---- what each call to action actually does ---- */
 /* Two buttons that lead to two different processes, so each carries one
@@ -1203,10 +1209,316 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
   .win-body.focus-globe img{width:455%;left:-355%}
   .win-body.focus-graph img{width:417%;left:-65%}
   .win-body.focus-sim img{width:370%;left:-172%;top:-80%}
-  .win-body.focus-report img{width:385%;left:-196%;top:-171%}
   /* the caption becomes running text so the qualifier joins the sentence
      instead of being squeezed into a second flex column */
   .stage-stack .win-cap{display:block}
   .stage-stack .win-cap::before{display:inline-block;margin-right:10px;vertical-align:1px}
   .cap-detail{display:inline}
+}
+
+/* ============ 18 ROUND SEVEN: THE MISSION GREY VISUAL GRAMMAR (2026-09-14) ============ */
+/* The visual and product-proof pass. Rounds three to six were editing;
+   this one adds the grammar the written positioning had outrun: an
+   editorial type ladder, four signature devices, one annotated rail that
+   carries the rebuilt system diagrams, and the crops that make the new
+   product screenshots readable on a phone. Same rules as every round
+   since the re-skin: tokens only, no new font file, no new motion, no
+   gradient, no glow, one accent role per component. */
+
+/* ---- the type ladder: structure, statement, detail ---- */
+/* Three registers were already in the stylesheet and only two of them
+   were legible as registers: sans headings and mono labels. The pull
+   lines, the ones the chairman's document calls "the strongest
+   messages", were sans at a middling weight and read as headings that
+   happened to be a different size. They are the editorial voice, so they
+   now take the document face the site already ships and already reserves
+   for editorial writing: Source Serif 4. Sans stays the structural voice
+   (page and section headings, body, UI), mono stays the instrument voice,
+   serif is the statement register. Three faces, three jobs, no new file.
+   A heading that IS the statement takes the register with it: .net-lede
+   is an h2 or h3 in every page that uses it, and it is serif because of
+   what it says, not despite what it is. An ordinary section heading is
+   never serif. */
+.net-lede,.principle,.quote-main blockquote,.statement{
+  font-family:var(--serif);font-weight:600;letter-spacing:-.015em;
+}
+.net-lede{font-size:clamp(23px,2.7vw,31px);line-height:1.24}
+.quote-main blockquote{font-size:clamp(22px,2.7vw,30px);line-height:1.34;max-width:31ch}
+.principle{font-size:clamp(19px,2.1vw,24px);line-height:1.36;max-width:42ch}
+/* A display statement that stands on its own above a proof: the section
+   already carries its h2, so this is not a heading and is not marked up
+   as one where the h2 exists. Air above it, the proof under it. */
+.statement{
+  font-size:clamp(24px,3vw,36px);line-height:1.2;color:var(--ink);max-width:26ch;
+  margin-top:clamp(44px,5.5vw,76px);
+}
+.statement + .statement-sub{
+  margin-top:16px;max-width:62ch;font-size:var(--fs-lede);line-height:1.62;color:var(--ink-body);
+}
+.statement-lead{margin-top:0}
+/* The measure belongs to the two-column layout. Below 900 .net sits in
+   one column and section 12 already releases the lede; re-declaring the
+   measure here at equal specificity after that override collapsed the
+   lede to a ribbon in a full-width parent, so the measure is scoped to
+   the width that has a second column to balance against. */
+@media (min-width:901px){
+  .net-lede{max-width:24ch}
+}
+
+/* ---- DEVICE A: the intelligence trail ---- */
+/* SOURCE to ACTION, the path every piece of Mission Grey intelligence
+   takes, printed as a measuring rule rather than as a row of boxes. It
+   is an annotation, never a section: at most one per page, always under
+   something it annotates, never carrying its own heading. The last
+   station is the only accented one, because the trail exists to say
+   where the path ends. */
+/* The rule and the ticks belong to the STATIONS, not to the container:
+   a rule drawn on the container floats away from any row the flex box
+   wraps, which put the second row's ticks under the first row's words at
+   390px. Each span carries its own top rule and its own tick, and the
+   separation is padding rather than gap, so the rules abut and every
+   wrapped row is a continuous rule with its stations hanging from it. */
+.trail{
+  display:flex;flex-wrap:wrap;gap:0;margin-top:clamp(22px,2.6vw,30px);
+  font:500 10px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);
+}
+.trail span{
+  position:relative;border-top:1px solid var(--line-2);
+  padding:12px clamp(14px,2.2vw,30px) 0 0;
+}
+.trail span::before{
+  content:"";position:absolute;top:-1px;left:0;width:1px;height:7px;background:var(--line-3);
+}
+.trail span:last-child{color:var(--ink);padding-right:0}
+.trail span:last-child::before{background:var(--accent);height:11px;width:2px;top:-1px}
+
+/* ---- DEVICE B: evidence annotation ---- */
+/* The small technical markers an intelligence brief prints beside a
+   figure. BINDING: on a drawn diagram these carry LABELS and word
+   values only. A date, a percentage or a confidence number here would
+   be fabricated metadata presented as fact, which is the one thing the
+   honesty convention exists to stop. Real metadata belongs inside a
+   real screenshot, where the product wrote it. */
+.evi{
+  display:flex;flex-wrap:wrap;gap:10px clamp(20px,3vw,44px);
+  padding:13px clamp(16px,2.2vw,26px);border-top:1px solid var(--line);background:var(--bg-1);
+}
+.evi span{
+  display:flex;align-items:baseline;gap:10px;
+  font:400 10.5px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);
+}
+.evi i{font-style:normal;white-space:nowrap;color:var(--ink-dim);letter-spacing:.2em}
+.evi i::after{content:"";display:inline-block;width:14px;height:1px;background:var(--line-2);margin-left:10px;vertical-align:3px}
+
+/* ---- DEVICE C: the macro-to-micro lens ---- */
+/* Four levels of external context were a table of four equal rows, which
+   says the levels are alternatives. They are not: each one is read
+   THROUGH the one above it and they converge on a single decision. So
+   the rows step inward, the decision sits narrowest and last, and the
+   hairline between each pair is the only connector. Below 760 the insets
+   go flat and the index column carries the depth instead: a converging
+   shape drawn 360px wide is a smudge. */
+.lens{padding:clamp(14px,2vw,22px) 0 clamp(18px,2.2vw,26px)}
+.lens-level,.lens-core{
+  --step:clamp(10px,2.6vw,32px);
+  margin-inline:calc(var(--d) * var(--step));
+  border:1px solid var(--line);background:var(--bg);
+  padding:16px clamp(16px,2vw,22px) 18px;
+}
+.lens-level + .lens-level,.lens-core{margin-top:10px}
+.lens-k{
+  display:flex;align-items:baseline;gap:12px;margin-bottom:12px;
+  font:500 11.5px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
+}
+.lens-i{color:var(--accent)}
+.lens-core{
+  border-color:var(--line-2);border-top:2px solid var(--accent);background:var(--bg-1);
+  display:grid;grid-template-columns:minmax(0,auto) minmax(0,1fr);gap:6px clamp(18px,2.4vw,30px);align-items:baseline;
+}
+.lens-core .k{font:500 11.5px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.lens-core .v{font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
+
+/* ---- DEVICE D: the decision objects ---- */
+/* Tracker, Indicator, Scenario, Trigger, Action are the five standing
+   objects of the product, and until now they were drawn as ordinary
+   chips, indistinguishable from "Regulation" or "Satellite". They get
+   one grammar wherever they appear: a hairline cell with an accent tick
+   on its leading edge. Named as a set (.dobjs) or opened up with their
+   definitions (.dobj-set). */
+.dobj{
+  position:relative;padding:8px 12px 8px 18px;border:1px solid var(--line-2);background:var(--bg);
+  font:500 10.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
+}
+.dobj::before{content:"";position:absolute;left:0;top:-1px;bottom:-1px;width:2px;background:var(--accent)}
+.dobj-set{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(28px,3.4vw,40px)}
+.dobj-cell{position:relative;background:var(--bg);padding:20px 18px 22px}
+.dobj-cell::before{content:"";position:absolute;left:0;top:0;width:2px;height:34px;background:var(--accent)}
+.dobj-cell .k{font:500 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-bottom:12px}
+.dobj-cell .v{font-size:14px;line-height:1.6;color:var(--ink-mute)}
+
+/* ---- the annotated rail ---- */
+/* One structure under the two rebuilt diagrams (the system diagram on
+   Platform, the impact chain on Solutions): a continuous vertical
+   hairline with a station tick per row, the stage name in mono to its
+   left and the content to its right. It is the spine of an intelligence
+   brief rather than a stack of boxes with arrows, and it is the reason
+   neither diagram needed a new arrow glyph. */
+.rail{position:relative;padding:clamp(6px,1vw,12px) 0}
+.rail::before{
+  content:"";position:absolute;top:0;bottom:0;left:var(--rail-x,clamp(104px,13vw,160px));
+  width:1px;background:var(--line-2);
+}
+.rail-row{
+  position:relative;display:grid;
+  grid-template-columns:var(--rail-x,clamp(104px,13vw,160px)) minmax(0,1fr);
+  gap:12px clamp(22px,2.8vw,38px);
+  padding:clamp(16px,2vw,22px) clamp(16px,2vw,24px) clamp(16px,2vw,22px) 0;
+}
+.rail-row + .rail-row{border-top:1px solid var(--line)}
+.rail-row::after{
+  content:"";position:absolute;left:calc(var(--rail-x,clamp(104px,13vw,160px)) - 3px);
+  top:calc(clamp(16px,2vw,22px) + 5px);width:7px;height:7px;background:var(--bg);
+  border:1px solid var(--line-3);
+}
+.rail-row.is-end::after{background:var(--accent);border-color:var(--accent)}
+.rail-k{
+  padding-left:clamp(16px,2vw,24px);
+  font:500 11px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);
+}
+.rail-k b{display:block;color:var(--ink);font-weight:500}
+.rail-body .rail-h{
+  font:500 12px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:10px;
+}
+.rail-body p{font-size:14.5px;line-height:1.62;color:var(--ink-mute);max-width:62ch}
+.rail-body .taglist{margin-top:12px}
+.rail-body .dobjs{margin-top:12px}
+
+/* ---- ruled rows: the alternative to a third card grid ---- */
+/* Three hairline cells side by side are a card run; the same three facts
+   as ruled rows are a list in a document. Used where a section's job is
+   to enumerate rather than to compare. */
+.ruled{border-top:1px solid var(--line)}
+.ruled-row{
+  display:grid;grid-template-columns:clamp(180px,22vw,280px) minmax(0,1fr);
+  gap:8px clamp(24px,3.4vw,52px);align-items:baseline;
+  padding:clamp(18px,2.2vw,26px) 2px;border-bottom:1px solid var(--line);
+}
+.ruled-row .k{
+  display:flex;align-items:baseline;gap:14px;
+  font:500 12px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+}
+.ruled-row .n{color:var(--accent)}
+.ruled-row .v{font-size:15.5px;line-height:1.62;color:var(--ink-body)}
+
+/* ---- product proof at document width ---- */
+/* The sourced report is a portrait document, not a landscape interface,
+   so it is printed at reading width and centered rather than stretched
+   to the content column. .proofblock is the wrapper that gives a single
+   screenshot the air the document asks for around a proof. */
+.proofblock{margin-top:clamp(36px,4.5vw,56px)}
+.shot-doc{max-width:820px;margin-inline:auto}
+
+/* ---- the scenario simulation, cropped at desktop width too ---- */
+/* Like the knowledge graph: the product sidebar is a repeat of the one
+   in every other capture and costs the frame a fifth of its width, so the
+   desktop crop drops it and prints the app's own content area, where the
+   actor list and the Select Action options read. The scenario title bar
+   stays whole (the product truncates that title itself, with its own
+   ellipsis; the crop adds nothing). Scoped above 600 so the phone crop in
+   section 17, which aims at the options alone, still wins on a phone. */
+@media (min-width:601px){
+  .win-body.focus-sim{position:relative;overflow:hidden;aspect-ratio:1520/998}
+  .win-body.focus-sim img{
+    position:absolute;width:126.3%;max-width:none;height:auto;left:-23.7%;top:-3.8%;
+  }
+}
+
+/* ---- a caption clause that only the wide layout carries ---- */
+/* Where the phone crop shows a different part of a screenshot than the
+   desktop frame does, the caption has to change with it, or it describes
+   something the reader cannot see. .cap-desk is the wide-width clause and
+   .cap-detail is the phone one. */
+.cap-desk{display:inline}
+
+/* ---- example application: the mobile crop wrapper ---- */
+/* .appfig images were direct children of the frame, which left no box to
+   crop against on a phone. .appshot is that box and nothing else; at
+   desktop widths it is transparent. */
+.appshot{display:block}
+.appshot img{display:block;width:100%;height:auto}
+
+/* ---- responsive ---- */
+@media (max-width:900px){
+  .dobj-set{grid-template-columns:repeat(2,minmax(0,1fr))}
+  /* five cells over two columns: the fifth takes the empty track */
+  .dobj-set .dobj-cell:last-child{grid-column:1/-1}
+}
+@media (max-width:760px){
+  /* the lens goes flat: the index column carries the depth instead */
+  .lens-level,.lens-core{margin-inline:0}
+  .lens-level + .lens-level,.lens-core{margin-top:8px}
+  /* the rail loses its spine and the stage label sits above its row */
+  .rail::before{display:none}
+  .rail-row{grid-template-columns:minmax(0,1fr);gap:12px;padding-inline:0}
+  .rail-row::after{display:none}
+  .rail-k{padding-left:0;display:flex;align-items:baseline;gap:10px}
+  .rail-k b{display:inline}
+  .ruled-row{grid-template-columns:minmax(0,1fr);gap:10px}
+}
+@media (max-width:560px){
+  .dobj-set{grid-template-columns:minmax(0,1fr)}
+  .dobj-set .dobj-cell:last-child{grid-column:auto}
+  .statement{margin-top:clamp(36px,7vw,52px)}
+}
+
+/* ---- round seven: the proof between two stages ---- */
+/* The sourced report is not one of the four walk stages and must not be
+   dressed as one, but it sits between them and has to keep the rhythm of
+   the ruled rows around it, so it takes the rule on both edges instead
+   of a stage number. */
+.proof-between{
+  border-block:1px solid var(--line);
+  padding-block:clamp(40px,5vw,72px);
+}
+
+/* ---- round seven: the adoption ladder's step number ---- */
+/* The step is the one thing that escalates across the three nodes, so it
+   is the one thing in the index line that carries the accent. */
+.ladder-node .idx b{color:var(--accent);font-weight:500}
+
+/* ---- round seven: phone crops for the new product proof ---- */
+/* Same reasoning as round six's stage crops, applied to the screenshots
+   that do not sit in a stage: the image is scaled up inside a clipped
+   box and positioned on the region its caption names. The report is a
+   portrait document, so its box is portrait; everything else keeps the
+   4:3 box a phone can hold.
+   The caption becomes running text at this width for every product
+   figure, not only for the ones inside a stage, so the phone qualifier
+   joins the sentence instead of being squeezed into a second column. */
+@media (max-width:600px){
+  .win-body.focus-reports,.win-body.focus-recs,.appshot.focus-country{
+    position:relative;overflow:hidden;aspect-ratio:4/3;
+  }
+  /* the application's first card row is 16:10 of its own width; a 4:3 box
+     at the same scale reaches into the second row and slices it */
+  .appshot.focus-space{position:relative;overflow:hidden;aspect-ratio:16/10}
+  .win-body.focus-sourced{position:relative;overflow:hidden;aspect-ratio:3/4}
+  .win-body.focus-reports img,.win-body.focus-recs img,.win-body.focus-sourced img,
+  .appshot.focus-space img,.appshot.focus-country img{
+    position:absolute;top:0;left:0;max-width:none;height:auto;
+  }
+  /* the list title, the column head and the dated report names */
+  .win-body.focus-reports img{width:234%;left:-4%;top:0}
+  /* the head of the report: title, thesis, executive summary opening */
+  .win-body.focus-sourced img{width:240%;left:-4%;top:-16%}
+  /* the heading and the first recommended actions */
+  .win-body.focus-recs img{width:175%;left:-6%;top:-18%}
+  /* the application title and its first two indexes, neither sliced */
+  .appshot.focus-space img{width:240%;left:-39%;top:-13%}
+  .appshot.focus-country img{width:175%;left:-27%;top:-18%}
+  .win-cap{display:block}
+  .win-cap::before{display:inline-block;margin-right:10px;vertical-align:1px}
+  .appfig figcaption{display:block}
+  .appfig figcaption::before{display:inline-block;margin-right:10px;vertical-align:1px}
+  .cap-desk{display:none}
 }

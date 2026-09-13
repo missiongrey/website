@@ -1106,3 +1106,278 @@ the one page that grew: it absorbed the first-engagement block and the CTA
 lines, which together are about 100 words of the round's most commercially
 important copy, against roughly 75 cut from what was already there. Measured
 inside `<main>`, tags and entities stripped.
+
+## Round seven (2026-09-14)
+
+The visual and product-proof round. Rounds three to six were editing
+passes on copy that was already right; this one answers the note that the
+written positioning had outrun the visual identity. Everything new lives
+in `styles.css` **section 18**, plus three additions to the round-six crop
+block. Same standing rules: no new palette, no new font file, no new
+motion, no gradient, no glow, nothing decorative, tokens only, one accent
+role per component.
+
+### The type ladder is three faces, binding
+
+Sans is the structural voice (h1, h2, h3, body, UI), mono is the
+instrument voice (labels, captions, annotations, metadata), and **Source
+Serif 4 is now the statement voice on the page chassis**: `.net-lede`,
+`.principle`, `.quote-main blockquote` and the new `.statement`. This
+supersedes the earlier rule that serif appears only inside `.sheet` and
+inside insight articles. The reason is that the site's strongest lines
+("The cost is often not ignorance. It is delay.", "People can have
+different responsibilities and views.") were sans at a middling weight and
+read as headings that happened to be a different size, so the page had two
+legible registers where it needed three. The font is already self-hosted
+and already the editorial face; nothing in `fonts/` changed.
+
+Serif is for a claim set apart, **including when a heading is the claim**.
+`.net-lede` is an `h2` or `h3` in every page that uses it, and it is serif
+because of what it says, not despite what it is. Body copy, UI and
+ordinary section headings stay sans; a heading that is simply naming its
+section never becomes serif.
+
+**The statement measures are scoped to the wide layout.** `.net-lede`
+carries a 24ch measure inside `@media (min-width:901px)` only. Section 12
+releases that measure at 900 because `.net` collapses to one column there,
+and a 24ch re-declaration after it at equal specificity turned the lede
+into a 300px ribbon in an 850px parent on all three pages. Any measure
+added to a statement from here follows the same scoping.
+
+### The four signature devices
+
+**A. `.trail`, the intelligence trail.** SOURCE, SIGNAL, EXPOSURE,
+INDICATOR, SCENARIO, TRIGGER, ACTION, set as a measuring rule with a tick
+per station and the last station in the accent. It is an annotation, never
+a section: **at most one per page**, always under something it annotates,
+never with a heading of its own. **Used once, on Platform `#engine`,
+under the decision objects.** It was also built on Home under the pipeline
+frame and taken out again: Home already runs five mono step-grammars
+(pipeline, recipe columns, daily steps, role views, ruled rows) and a
+sixth made the page read as one texture rather than as an argument. A
+second instance on any page is decoration.
+
+The rule and the ticks belong to the **stations**, not to the container. A
+border drawn on the flex container floats away from every row the box
+wraps, which at 390px put the second row's ticks under the first row's
+words; each span now carries its own top rule and its own tick, and the
+separation is padding rather than gap so the rules abut into one line per
+row. The element takes `role="img"` with the station list as its label: a
+bare `aria-label` on a `p` is prohibited and is dropped by assistive
+technology.
+
+**B. `.evi`, the evidence annotation.** The row of small technical markers
+an intelligence brief prints beside a figure, as a hairline strip at the
+foot of a `.frame`. **Binding: on a drawn diagram these carry labels and
+word values only.** A date, a percentage or a confidence number here is
+fabricated metadata presented as fact, which is exactly what the honesty
+convention exists to prevent; real metadata belongs inside a real
+screenshot, where the product wrote it. **Two annotations on one diagram
+is the ceiling**, and each one has to name something the figure actually
+draws: the first cut of this round shipped three on three figures, one of
+which promised an owner ("Owner, named at every step") that the Solutions
+chain never shows. An annotation that describes an absent feature is the
+same defect as a caption that does, and the same rule catches both.
+There are five `.evi` rows on the site, all inside `Illustrative view`
+frames, all two clauses.
+
+**C. `.lens`, the macro-to-micro lens.** The four levels of external
+context on Platform `#breadth` were four equal rows, which says the levels
+are alternatives. They are not: each is read *through* the one above it
+and they converge on a single decision. The rows now step inward by
+`--d` (0 to 3) times one clamp, and `.lens-core` is the narrowest object
+with the accent along its top edge. Below 760px the insets go flat and the
+index column carries the depth, because a converging shape drawn 360px
+wide is a smudge. `.levels` / `.level` / `.level-grid` lost their only
+user and the `.level-k` / `.level-i` rules with them; `.level-out` stays,
+because the Solutions adoption frame still uses it.
+
+**D. `.dobj` / `.dobjs` / `.dobj-set`, the decision objects.** Tracker,
+Indicator, Scenario, Trigger and Action are the five standing objects of
+the product and were drawn as ordinary `.chip`s, indistinguishable from
+"Satellite" or "Regulation". They now take one grammar wherever they
+appear: a hairline cell with an accent tick on its leading edge, named as
+a set (`.dobjs`, in Platform's full recipe and in the system diagram) or
+opened up with their one-line definitions (`.dobj-set`, on Platform
+`#engine`, where they replaced the same definitions run together in a
+single 39-word sentence). **The grammar is Platform's**: Home's short
+recipe keeps plain `.chip`s for the same five names, because Home shows
+the five once, in passing, and a second accented grammar there competed
+with the chips beside it rather than distinguishing anything. `.dobjs` is
+the same flex row as `.taglist` and is declared with it, not twice.
+In Platform's full recipe the sixth item,
+"Feedback loop", stays a plain `.chip`: it is not one of the five, and the
+grammar saying so is the point.
+
+### `.rail`, one spine under two rebuilt diagrams
+
+A continuous vertical hairline with a station tick per row, the stage name
+in mono to its left and the content to its right. It carries the Platform
+system diagram (`#apps`) and the Solutions impact chain (`#practice`), and
+it is why neither diagram needed an arrow glyph. `.rail-row.is-end` marks
+the terminal station in the accent. Below 760px the spine goes and the
+stage label sits above its row. The row titles are `p.rail-h`, not
+headings: `.rail-k` already carries the structural label, and an `h4`
+under a section `h2` with no `h3` between them is a skipped level.
+
+The Platform system diagram is the chairman's architecture, drawn: the
+shared intelligence layer, the customer context added to it, the
+customer intelligence application built on both, and the roles it serves.
+It replaces the five-band `.rx-stack` that stood in `#apps`.
+
+### `.ruled`, the alternative to a third card grid
+
+Three hairline cells side by side are a card run; the same three facts as
+ruled rows with an accent index are a list in a document. Home `#prepared`
+took it, which leaves Home one hairline-cell grid fewer.
+
+### Product proof: what is on each page now, binding
+
+| Page | Product visuals |
+|---|---|
+| Home | Available Reports (`#system`), the space and infrastructure application (`#roles`). Two, as the document asks. The hero globe is a drawn instrument and is not one of them |
+| Platform | the globe, the sourced report, the Knowledge Graph, the scenario simulation, the space and infrastructure application. Four walk stages plus one proof between the first and second |
+| Solutions | the recommended actions screen, the country-level example application |
+
+This supersedes round six's counts (Home one, Platform four). The fifth
+object on Platform is the sourced report, which the document names as an
+additional proof between Monitor and Understand rather than as a fifth
+stage, and it is composed as one: `.proof-between`, ruled on both edges,
+carrying a statement and one screenshot, with no stage number.
+
+**The four walk stages keep the names MONITOR, ANALYZE, DECIDE, ACT.**
+The document's four moments are monitor, understand, model,
+operationalize, and the section dek now says exactly that, but the stage
+labels are the site's shared pipeline vocabulary: Home's `#system` diagram
+prints the same four words in its nodes, its eyebrow and its heading.
+Renaming them on Platform alone would put two different four-step models
+on one site, which is the failure the "one diagram, one direction" rule
+exists to prevent.
+
+### Assets
+
+- **new** `product-screenshot-reports.png` (1920x1258): the Available
+  Reports list, cropped from a 3192x1846 capture to **the list region
+  only**. The product sidebar goes with the account footer and its
+  Internal badge: the sidebar is a fifth of the frame, it repeats in every
+  other capture on the site, and the document asks for this list to be
+  large enough that the rows and dates read. Dropping it makes the rows
+  21% larger at the same printed width. The crop ends on a row boundary.
+  Quantized to 64 colours: the full-width version was 443KB, this one is
+  100KB.
+- **replaced** `product-screenshot-report-advisor.png` (1642x1844): the
+  Defense and Dual-Use Technology report. The old file was the same view
+  (a weekly report in the same instrument) and the newer capture wins.
+  **Cropped to the report panel alone**, which is a deliberate call: the
+  document asks to keep the sessions list as evidence that the work can be
+  reopened, but the sessions column and the chat body are the same
+  rectangle, and the chat text may not appear on the site. The report
+  header chrome that survives the crop, the `v3 (current)` version control
+  and the download control, carries the same evidence.
+- **restored** `intelligence-app-space-infrastructure.jpg` (1920x1032),
+  from `3d8a5df`, where round six deleted it. Dark UI on a light page,
+  ruled acceptable as is.
+- `product-screenshot-recommendations.png` left Home and is on Solutions,
+  captioned for what it actually contains: the recommended actions from a
+  cleanroom operational risk analysis.
+- Nothing lost its last reference, so no asset was deleted.
+
+### Two screenshots are cropped at desktop width, not only on a phone
+
+The knowledge graph was the first (round six, to keep a raw property list
+off the page). The scenario simulation is the second: its left fifth is
+the same product sidebar every other capture carries, and dropping it
+prints the app's own content area, where the actor list and the Select
+Action options read at content width. **The scenario title bar stays
+whole.** The product truncates that title itself with its own ellipsis, so
+the frame shows the product's truncation and adds none of its own; a crop
+that cut the title mid-phrase would be the site making a mess and blaming
+the app. The rule sits inside `@media (min-width:601px)` so the phone crop
+in section 17, which aims at the Select Action options alone, still wins
+on a phone.
+
+### Deleted and on the audit list
+
+Deleted: `.levels` / `.level` / `.level-grid` / `.level-k` / `.level-i`
+with their three breakpoint rules (the lens replaced them), and
+`.win-body.focus-report` (its asset changed shape). On the audit list, with
+`.loop-3`, `.method-list` / `.method`, `.trust-cell .ladder-meter` and
+`.win-body.crop`: `.trust-grid.grid-3`, whose only user was Home
+`#prepared` before it became `.ruled`. It is a grid-count modifier rather
+than a component instance, so it stays for the next page that needs three
+hairline cells.
+
+### Phone crops
+
+Round six's rule stands and grew four rules: a 1920px product screen
+printed at 350px is texture, so every screenshot that is not already a
+detail carries a focus wrapper under 600px. New: `.focus-reports` (the
+list title, the column head and the dated report names), `.focus-sourced`
+(the head of the report, in a portrait box because the report is a
+portrait document), `.focus-recs` (the heading and the first actions),
+and `.appshot.focus-space` / `.focus-country` (the application title and
+its first indexes). `.appshot` exists only to be that box: the example
+application images were direct children of `.frame` and had nothing to
+crop against. `.win-body.focus-report`, whose asset changed shape, is
+deleted; `.focus-globe`, `.focus-graph` and `.focus-sim` are unchanged.
+
+**A phone crop that shows a different part of the screen needs a different
+caption**, or the caption describes something the reader cannot see. That
+is what `.cap-desk` is for: the wide clause and the phone clause sit in
+the same `figcaption`, and each width shows one. The sourced report is the
+case that needed it. Its wide caption names the report, its version
+control and the sources panel; its phone crop is the head of the report at
+240%, so the phone caption says title, thesis and the opening of the
+executive summary. A 150% crop of a 1642px portrait document was the first
+attempt and was the wrong trade: it cut every line mid-word AND hid both
+the version control and the sources panel the caption promised.
+
+The caption becomes running text under 600px for every product figure now,
+not only inside a stage, so the `&middot; shown as a detail` qualifier
+joins the sentence instead of being squeezed into a second flex column.
+
+The application crop takes a 16:10 box rather than 4:3. At 4:3 and the
+scale that makes two metric cards readable, the box reached into the
+application's second card row and sliced it at the frame edge; 16:10 ends
+in the gutter above it. The crop holds the eyebrow, the title and **two
+whole cards**. The title's last word runs past the right edge, which is
+the accepted trade: the alternative width slices a third card, and a
+sliced card at the frame edge is the defect this crop was rebuilt to fix.
+
+### The INPUT/OUTPUT pair belongs to its stage
+
+`.stage-io` was a bare `inline-flex` row of mono words sitting in the gap
+between a paragraph and a screenshot, annotating nothing the eye could
+attach it to. Inside a stacked stage it now takes the hairline of the copy
+column it closes. Watch the measure: `.stage p` sets 52ch, and 52ch of
+10.5px mono is 330px, so the rule needs `max-width:none` or it stops a
+third of the way across the column.
+
+### Main-text words
+
+Home 888 to 975, Platform 1954 to 2151, Solutions 749 to 925. Measured
+inside `<main>`, tags, scripts, inline SVG and entities stripped.
+
+One measurement note for the next round: a `.cap-desk` / `.cap-detail`
+caption holds two clauses in the markup and renders one, so a count taken
+this way charges both. Two captions carry the pair, which is about 29
+words of the totals above that no reader ever reads at one width.
+
+**Home grew by 87 words (74 of them readable at any one width), and that
+is the one instruction this round did not hold flat.** The arithmetic: the two product-proof blocks the document
+specifies for Home cost about 65 words between them (the "Intelligence
+that stays current." statement with the supporting line the document
+supplies, the application statement with the section-12 language, and two
+captions). The rest is the ruled-row indices and one evidence annotation,
+about 15. Coming the other way: ten words from the dek the pipeline no
+longer needed, fourteen from the caption of the screenshot that left for
+Solutions, and seven more when the trail came off Home.
+
+Nothing was cut to fake parity. Rounds three to six already took the slack
+out of that page, and cutting live copy to pay for a required visual
+trades the reader's argument for a number. The honest statement of the
+position is that the document asks Home for a second product visual and
+names the copy that has to sit with it, and those two instructions and
+"do not make Home longer" cannot all three be satisfied; the visual and
+its copy won. Solutions is the page the document asks to grow, and the
+impact chain with its product proof is most of its 176 words.
