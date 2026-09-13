@@ -905,3 +905,206 @@ already made the point is duplication, not emphasis; emphasis goes before
 or instead, never after. Main-text words: Home 1010
 to 964, Platform 2239
 to 2148, Solutions 722 to 717.
+
+## Round six (2026-09-13)
+
+The editing, pacing and product-visual pass. Same rule as rounds three to
+five: no new palette, no new font, no new motion, nothing decorative
+added. Everything below lives in `styles.css` section 17 except the two
+deletions, which happened in place.
+
+### The two calls to action always say what they do, binding
+
+`Request access` goes to the contact form at `/contact/` and `Book a demo`
+goes to a 30&nbsp;minute call. Those are two different processes, and a reader
+cannot tell which one they want from two mono labels, so **every closing
+panel that offers a choice carries `.cta-notes`**: a two-column block under
+the button pair with one line per button, the button's own words as the mono
+label. Home, Platform, Solutions, Use cases, Guild, About, Partners, API,
+Insights and the eleven insight articles all carry it.
+
+**Two deliberate exceptions.** `/contact/` is where `Request access` leads,
+so a panel there explaining the button the reader just followed is noise;
+its cards already describe the routes. `404.html` is navigation, not an
+offer. The header button and the mobile-nav CTA never carry notes either:
+the panel is read, the header is scanned.
+
+**The notes share the buttons' axis, binding.** `.access-cta` is a centered
+flex row sized to its buttons and `.cta-notes` was a 760px grid, so every
+label sat about a hundred pixels left of the button it described. In a panel
+that carries notes the button row is now the same two-column grid as the
+notes (`.access-panel:has(.cta-notes) .access-cta`): equal 290px columns,
+one shared gap, button centered in its column, note centered under it, both
+stacking at 560. Panels without notes keep the flex row.
+
+Where a page's pair is not the standard one, the lines follow that page's
+buttons (Guild: Join the Guild / Become a partner; Partners: Become a
+partner / Book a demo). Nothing anywhere implies instant or self-service
+access, because access is by request and that is the actual process.
+
+`.access-panel .join-note` was page-local on Partners and is promoted, since
+the Guild panel now needs it too: it is the one line under the buttons
+naming the path the panel itself does not carry (Guild points a buyer at
+Solutions; Partners points an expert at the Guild).
+
+### Platform product visuals: four, at content width, binding
+
+The walkthrough carried nine product screenshots, five of them in paired
+`.duo` cards about 590px wide. A 1920px product screen inside a 590px card
+is decoration: nothing in it can be read, so it proves nothing. The
+walkthrough now carries **four screenshots, one per stage, each at full
+content width under its own copy** (`.stage.stage-stack`), each with a
+one-line `.win-cap` saying what the reader is looking at:
+
+| Stage | Screen | Why it is one of the four |
+|---|---|---|
+| 01 MONITOR | the globe | the monitoring view, and the stage's own proof |
+| 02 ANALYZE | Knowledge Graph | the structure nothing else on the market draws |
+| 03 DECIDE | scenario simulation | the forecasting and scenario view |
+| 04 ACT | Report Advisor | the sourced report, numbered sources visible |
+
+Dropped with the `.duo` cards: sessions, Industry Analyser, Indexes, Chronos
+Forecast, branch analysis, and the recommendations screen (which stays on
+Home, so the site still shows it once). Those instruments keep their cards
+in the instrument set; they stop being unreadable thumbnails, they do not
+stop existing. **A fifth screenshot on Platform is a regression**, and a
+paired screenshot card is the shape this round removed: `.duo` / `.dcard`
+are deleted from styles.css.
+
+**Each of the four is cropped to the region its caption names.** A 1920px
+product screen printed at 350px on a phone is texture, and a caption
+promising detail over texture is worse than no caption, so each screenshot
+sits in a focus wrapper (`.win-body.focus-globe` / `-graph` / `-sim` /
+`-report`): the image is scaled up inside a clipped box and positioned so
+the named region fills it. Phones get a 4:3 box and a scale of roughly four
+(the tracking-layer panel, the breadcrumb and graph, the Select Action
+options, the sources panel), and the caption picks up `&middot; shown as a
+detail` under 600px. No new image files; the source assets are untouched.
+
+**The knowledge graph is cropped at every width, not only on phones.** Its
+right-hand property panel is a raw field list (`Hq_iso3`, `Wikidata_id`,
+`Presseed_source`, a source note in another script) and reads as an admin
+view rather than as the product, so the desktop rule shows the left 75% of
+the frame. Its caption changed with it: the old one promised "sector,
+country, relationships and the record behind them", which is exactly what
+the crop removes. **The graph's own nodes carry no text labels** (they are
+shaped, colored marks), so the readable evidence in that frame is the
+breadcrumb, the entity name and the search field, and the caption claims
+nothing more.
+
+`.win-body.crop` has no user after this round and joins the audit list with
+`.loop-3`, `.method-list` / `.method` and `.trust-cell .ladder-meter`. It is
+a general utility rather than a component instance, so it stays. The six
+screenshot and application assets that lost their last reference
+(`product-screenshot-analysis`, `-chronos`, `-indexes`,
+`-industry-analyser`, `-sessions`, `intelligence-app-space-infrastructure`)
+are deleted from `assets/`: 1.3MB the deploy was shipping for nothing.
+
+### Home carries one product screenshot
+
+The dark example-application capture (`intelligence-app-space-infrastructure.jpg`)
+is off Home, which now reads light from the hero to the footer. Platform and
+Solutions both already carried an example application, so nothing moved and
+nothing was lost. Home's product visuals are now **the recommendations
+screen in `#system` and nothing else**; the hero globe is a drawn instrument
+and is not one of them. This supersedes round three's count of two.
+
+### The mission line
+
+One quiet band on Home between `#prepared` and `#shared` (`.sec.mission` >
+`.quote-main`): the democratizing-strategic-intelligence line, attributed
+`A former CIA officer`. The attribution is not "Guild member" because the
+Guild roster on `/guild/` names no former CIA officer, and an attribution
+the site cannot support anywhere is a claim. It sits with space around it,
+at the scale of the other quotes, and is never a hero element.
+
+### Pacing
+
+`--sec-pad` and `--head-gap` both moved up a step, `.principle` and
+`.net-lede` took a size up, and `.sec-statement` is the modifier for a
+section that carries one claim (Home `#shared`): more block padding, a
+larger `h2`. Card runs tightened slightly (`.cap`) as the sections around
+them gained air, because the contrast between a card run and a statement is
+what the pacing is for.
+
+The hero's radial-gradient wash (`.hero::before`) is gone. A glow is the one
+lighting effect the light chassis forbids, and it was the only one left.
+`.cap` icons, the `.checker` bullet, the monograms and the mark sequence
+stay: each of them carries information or is the brand mark, which is the
+line between an instrument and filler.
+
+### The instrument index is a list, not thirteen cards
+
+Thirteen icon cards were the longest card run on the site, and the icons
+carried nothing the names did not: a stroke circle does not explain signal
+monitoring. The set is an index, so it is set as one. `.instr-list` is two
+columns of hairline rows, instrument name in heading weight, one line under
+it, the `.beta` tag where the product still carries it, one column under
+760px. No icons.
+
+`.caps` / `.cap` stay in styles.css: `/contact/` still uses the three-card
+grid for its routes. `.cap-wide`, the modifier that let the thirteenth card
+span the row, lost its only user and is deleted.
+
+### Step one in practice (Solutions)
+
+The most important commercial change on the site, so it may not wear the
+clothes of the card runs around it. `.first-engagement` is a bordered panel
+on the raised surface with **one accent rule along its top edge**, a mono
+index line tying it to node 01 of the ladder (`Step one &middot; one
+decision`), a heading at `--fs-h3` ("What the first engagement looks
+like."), and the three groups as columns of running copy: **You bring /
+Mission Grey brings / You receive**. The accent rule is the component's one
+accent role, which is why the index line is dim ink rather than accent.
+
+`You receive` carries the chairman's own list (situation overview, exposure
+and impact analysis, scenarios and recommendations, in a form that can be
+used in management discussion) and the three bullets that used to repeat it
+inside ladder node 01 are gone: the fact lives once, in the buyer-facing
+block. The cost is that node 01 now sits shorter than the two nodes beside
+it in a stretch grid. That is the accepted trade.
+
+No timing line: the chairman's draft offered "Typically X weeks" only if the
+team has approved a number, and no approved number exists. If one is
+approved later it goes in this panel as a fourth column.
+
+### The role views name the view, the questions live on Solutions
+
+Home's `.arch-roles` printed the six arriving questions word for word and
+the Solutions function table printed seven of them again. Home now carries
+the role plus a three to five word descriptor of what that function watches
+("Top management / Strategy and capital allocation"), the section eyebrow
+says what each function watches, and the pointer under the diagram sends a
+reader to Solutions for the questions themselves. The protected line above
+the diagram is untouched.
+
+### Trust and security, unchanged on purpose
+
+The chairman asked for hosting region, model-training and isolation
+specifics "if approved factual information is available". None exists in
+writing, so `#trust` on Home and Platform is untouched. Inventing a hosting
+region is the one failure the claims law exists to prevent.
+
+### About, Partners, Guild
+
+- About: the roster labels are **Core team** and **Advisors and network**.
+  One person whose stated role is "Strategic Advisor" moved into the second
+  group; nothing else was regrouped, because a role like Head of Campus or
+  Practice & Community Developer is a company role from the outside and
+  guessing is inventing. Offices are city plus country or state
+  ("Arlington, VA / United States"), with the building and district names
+  gone. The closing panel's eyebrow is "Access", not "A new category".
+- Partners: the unnamed partners line now says why they are unnamed. The
+  work happens inside client mandates, so the relationships are
+  confidential. That is a reason a buyer accepts; "not listed on this page"
+  alone reads as an empty logo wall.
+- Guild: the intro no longer enumerates the four cards under it, and the
+  closing panel carries a buyer path as well as the two recruitment CTAs.
+
+### Main-text words
+
+Home 951 to 898, Platform 2156 to 1982, Solutions 714 to 738. Solutions is
+the one page that grew: it absorbed the first-engagement block and the CTA
+lines, which together are about 100 words of the round's most commercially
+important copy, against roughly 75 cut from what was already there. Measured
+inside `<main>`, tags and entities stripped.

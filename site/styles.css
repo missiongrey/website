@@ -151,8 +151,8 @@
   --max:1200px;
   --max-nav:1360px;
   --pad:24px;
-  --sec-pad:clamp(72px,9vw,120px);
-  --head-gap:clamp(36px,5vw,56px);
+  --sec-pad:clamp(84px,10vw,136px);
+  --head-gap:clamp(40px,5.4vw,64px);
 }
 
 /* ============ 03 BASE ============ */
@@ -420,11 +420,10 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
 
 /* ============ 11 PAGE SECTIONS ============ */
 /* ---- hero ---- */
+/* No wash behind the hero: the radial gradient that used to sit here read
+   as a glow, which is the one lighting effect the light chassis forbids
+   (round six). .hero keeps position:relative for the globe instrument. */
 .hero{position:relative;padding-top:clamp(56px,7vw,92px)}
-.hero::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(900px 480px at 18% -10%,rgba(255,255,255,.62),transparent 62%);
-}
 .hero .wrap{position:relative}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(36px,5vw,72px);align-items:center}
 .hero-eyebrow{margin-bottom:26px}
@@ -486,12 +485,10 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
   font:400 10.5px/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim);
 }
 .stage-io b{color:var(--ink-mute);font-weight:500}
-/* ---- duo cards (screenshot pair) ---- */
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,2.5vw,28px);padding-block:clamp(40px,5vw,64px);border-top:1px solid var(--line)}
-.dcard{margin:0}
-.dcard figcaption{padding:18px 4px 0}
-.dcard h3,.dcard h4{font:600 16.5px/1.35 var(--sans);letter-spacing:-.01em;color:var(--ink);margin-bottom:7px}
-.dcard figcaption p{font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
+/* ---- duo cards (screenshot pair): deleted in round six ----
+   The paired screenshot card was the run of small product shots on
+   Platform, and that run is what the round replaced with four visuals at
+   content width. Nothing else used it. */
 /* ---- workspace closer ---- */
 .workspace{padding-top:clamp(40px,5vw,64px);border-top:1px solid var(--line)}
 /* ---- capability grid ---- */
@@ -528,7 +525,7 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
 .trust-foot{margin-top:26px;font-size:15px;color:var(--ink-mute);max-width:70ch}
 /* ---- network / hybrid intelligence ---- */
 .net{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:start}
-.net-lede{font-size:clamp(21px,2.2vw,26px);line-height:1.35;color:var(--ink);font-weight:500;letter-spacing:-.015em;max-width:22ch}
+.net-lede{font-size:clamp(22px,2.5vw,29px);line-height:1.3;color:var(--ink);font-weight:500;letter-spacing:-.02em;max-width:22ch}
 .net-body p{margin-bottom:16px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 26px}
 .chip{font:400 10.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);border:1px solid var(--line);padding:8px 12px;border-radius:2px}
@@ -609,7 +606,6 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
   .stage.flip .stage-media{order:2}
   .caps{grid-template-columns:1fr 1fr}
   .trust-grid{grid-template-columns:1fr 1fr}
-  .duo{grid-template-columns:1fr;gap:36px}
   .net{grid-template-columns:1fr}
   .net-lede{max-width:none}
   .name-grid{grid-template-columns:1fr}
@@ -853,7 +849,7 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
 .method{display:grid;grid-template-columns:210px minmax(0,1fr);gap:6px 20px;padding:14px 2px;border-bottom:1px solid var(--line)}
 .method dt{font:500 11px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
 .method dd{font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
-.principle{margin-top:24px;border-left:2px solid var(--accent);padding-left:20px;font-size:17px;line-height:1.55;color:var(--ink);max-width:46ch}
+.principle{margin-top:24px;border-left:2px solid var(--accent);padding-left:clamp(20px,2.4vw,28px);font-size:clamp(18px,1.9vw,22px);line-height:1.45;color:var(--ink);max-width:44ch;letter-spacing:-.01em}
 .vs{border:1px solid var(--line);background:var(--bg);padding:24px 24px 22px;display:grid;grid-template-columns:1fr 1fr;gap:24px 28px}
 .vs-note{grid-column:1/-1}
 @media (max-width:600px){.vs{grid-template-columns:1fr}}
@@ -888,8 +884,9 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
 }
 .appfig figcaption::before{content:"";width:6px;height:6px;flex:none;background:conic-gradient(var(--accent) 0 25%,transparent 25% 50%,var(--accent) 50% 75%,transparent 75%)}
 
-/* ---- capability grid: the thirteenth card closes the row ---- */
-.cap-wide{grid-column:1/-1}
+/* ---- capability grid: the thirteenth card closed the row ----
+   .cap-wide went with the icon grid on Platform (round six). The .caps
+   grid itself still serves the three route cards on /contact/. */
 
 /* ---- responsive ---- */
 @media (max-width:1080px){
@@ -1036,4 +1033,175 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
   .steps .step:last-child{grid-column:auto}
   .trust-grid.grid-3{grid-template-columns:1fr}
   .step,.arch-role{padding-inline:16px}
+}
+
+/* ============ 17 ROUND SIX: PACING, PRODUCT VISUALS, THE TWO CTAs (2026-09) ============ */
+/* An editing and pacing pass, not a new visual identity: no new palette,
+   no new font, no new motion, nothing decorative added. Three things
+   needed CSS. Sections breathe more (--sec-pad and --head-gap moved up,
+   the hero wash came out, statements took a size up), the four product
+   screenshots on Platform run full content width under their copy
+   instead of four small pairs, and every closing panel now says what
+   each of its two buttons does. Tokens only. */
+
+/* ---- a section that carries one claim ---- */
+/* The page alternates statement, diagram, card run. A statement section
+   is the one that must not read like the card run above it, so it takes
+   the extra air and the size up rather than a device of its own. */
+.sec-statement{padding-block:clamp(96px,12vw,168px)}
+.sec-statement .sec-head{margin-bottom:clamp(28px,3.4vw,40px)}
+.sec-statement .sec-head h2{font-size:clamp(31px,4vw,48px);line-height:1.08}
+.sec-statement .sec-head p{max-width:62ch}
+
+/* ---- the mission line (home) ---- */
+/* One quiet band: the statement, its attribution, and space around it.
+   It reuses the quote component unchanged and only drops the trailing
+   margin the proof rows need. */
+.mission .quote-main{margin-bottom:0;max-width:56ch}
+
+/* ---- product visuals at content width (platform walkthrough) ---- */
+/* Four screenshots instead of nine, each the full width of the column
+   with its copy above it. A 1920px product screen inside a 590px card
+   is decoration; at content width the interface is legible, which is the
+   only reason to print a screenshot at all. */
+.stage.stage-stack{
+  grid-template-columns:minmax(0,1fr);
+  gap:clamp(26px,3.4vw,40px);align-items:start;
+  padding-block:clamp(48px,6vw,84px);
+}
+.stage.stage-stack .stage-copy{max-width:68ch}
+.stage.stage-stack .stage-media{width:100%}
+.stage.stage-stack .win-cap{margin-top:15px}
+
+/* ---- what each call to action actually does ---- */
+/* Two buttons that lead to two different processes, so each carries one
+   line naming the process.
+   The note has to sit under its own button, so in a panel that carries
+   notes the button row stops being a centered flex row and becomes the
+   same two-column grid the notes use: equal columns, same gap, same
+   max-width, button centered in its column and the note centered under
+   it. A flex row sized to its buttons and a 760px notes grid do not
+   share an axis, which is how the first cut put every label a hundred
+   pixels left of the button it described. Panels without notes keep the
+   flex row untouched. */
+.access-panel:has(.cta-notes) .access-cta{
+  display:grid;grid-template-columns:repeat(2,minmax(0,290px));
+  justify-content:center;justify-items:center;
+  gap:14px clamp(24px,3.4vw,44px);max-width:640px;margin-inline:auto;
+}
+.cta-notes{
+  display:grid;grid-template-columns:repeat(2,minmax(0,290px));
+  justify-content:center;gap:20px clamp(24px,3.4vw,44px);
+  max-width:640px;margin:26px auto 0;text-align:center;
+}
+.cta-notes p{margin:0;max-width:none;font-size:14px;line-height:1.6;color:var(--ink-mute)}
+.cta-notes b{
+  display:block;margin-bottom:8px;
+  font:500 10.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink);
+}
+
+/* ---- calmer card runs ---- */
+/* Cards lose a little of their internal air as the sections around them
+   gain it: the contrast between a card run and a statement is what the
+   pacing pass is for. */
+.cap{padding:24px 22px 28px}
+.cap-meta{margin-bottom:26px}
+
+@media (max-width:560px){
+  /* the flex rule at 560 sets flex-basis, which a grid item ignores */
+  .access-panel:has(.cta-notes) .access-cta{grid-template-columns:minmax(0,1fr);max-width:420px}
+  .access-panel:has(.cta-notes) .access-cta .btn{width:100%}
+  .cta-notes{grid-template-columns:minmax(0,1fr);gap:18px;max-width:420px}
+}
+
+/* ---- the pointer under a CTA pair ---- */
+/* One line under the buttons naming the path the panel itself does not
+   carry: the Guild page owes a buyer somewhere to go, the Partners page
+   owes an expert the Guild. Declared page-local on Partners until the
+   Guild needed it too, so it is promoted here (round six). */
+.access-panel .join-note{margin-top:26px;font-size:14.5px;color:var(--ink-mute)}
+.access-panel .join-note a{color:var(--accent);border-bottom:1px solid var(--line-2)}
+.access-panel .join-note a:hover{color:var(--accent-hi);border-color:var(--accent)}
+
+/* ---- the first engagement (solutions, under the adoption ladder) ---- */
+/* The commercial answer to "what does step one actually involve", so it
+   may not wear the same clothes as the card runs around it: a bordered
+   panel on the raised surface with one accent rule along its top edge,
+   a heading at h3 scale, and the three groups as columns of running
+   copy rather than as a third grid of hairline cells. The accent rule is
+   the component's one accent role; the index line above the heading is
+   mono in dim ink and ties the panel to node 01 of the ladder. */
+.first-engagement{
+  margin-top:clamp(30px,3.6vw,44px);
+  border:1px solid var(--line-2);border-top:2px solid var(--accent);
+  background:var(--bg-1);
+  padding:clamp(28px,3.6vw,46px) clamp(20px,3vw,44px) clamp(30px,3.6vw,46px);
+}
+.fe-idx{
+  display:flex;align-items:center;gap:14px;margin-bottom:16px;
+  font:500 10.5px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);
+}
+.fe-idx::after{content:"";flex:1;height:1px;background:var(--line)}
+.first-engagement h3{font-size:var(--fs-h3);line-height:1.14;max-width:24ch}
+.fe-cols{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,3vw,44px);
+  margin-top:clamp(26px,3vw,36px);padding-top:clamp(24px,2.8vw,32px);border-top:1px solid var(--line);
+}
+.fe-col .k{
+  margin-bottom:12px;
+  font:500 11.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink);
+}
+.fe-col p{font-size:15px;line-height:1.62;color:var(--ink-body)}
+@media (max-width:900px){
+  .fe-cols{grid-template-columns:1fr;gap:22px;row-gap:24px}
+}
+
+/* ---- the instrument index (platform) ---- */
+/* Thirteen icon cards were the longest card run on the site and the
+   icons carried nothing the names did not: a stroke circle does not
+   explain signal monitoring. The set is an index, so it is set as one:
+   two columns of hairline rows, name in heading weight, one line under
+   it, the Beta tag where the product carries it. No icons. */
+.instr-list{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(32px,4.5vw,72px);
+  border-top:1px solid var(--line);
+}
+.instr{padding:20px 2px 22px;border-bottom:1px solid var(--line)}
+.instr h3{font-size:16.5px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+.instr p{font-size:14.5px;line-height:1.6;color:var(--ink-mute);max-width:50ch}
+@media (max-width:760px){
+  .instr-list{grid-template-columns:minmax(0,1fr)}
+}
+
+/* ---- product screenshots: crop to the region the caption names ---- */
+/* A 1920px product screen printed at 350px is texture, not evidence, and
+   a caption promising detail over an unreadable image is the worst of
+   both. So each of the four screenshots on Platform carries a focus
+   wrapper: the image is scaled up inside a clipped box and positioned so
+   the region the caption names fills it. No new image files, one rule per
+   screenshot, and the source assets stay untouched.
+   The knowledge graph is cropped at EVERY width, not only on phones: its
+   right-hand panel is a raw property list (internal field names, a source
+   note in another script) and reads as an admin view rather than as the
+   product. */
+.win-body.focus-graph{overflow:hidden}
+.win-body.focus-graph img{width:133%;max-width:none}
+/* the caption's phone-only qualifier */
+.cap-detail{display:none;margin-left:6px}
+
+@media (max-width:600px){
+  .stage-stack .win-body{position:relative;overflow:hidden;aspect-ratio:4/3}
+  .stage-stack .win-body img{position:absolute;top:0;left:0;max-width:none;height:auto}
+  /* left offsets are a share of the box width, top offsets a share of its
+     height: box height is 3/4 of box width, which is what the odd-looking
+     top percentages carry */
+  .win-body.focus-globe img{width:455%;left:-355%}
+  .win-body.focus-graph img{width:417%;left:-65%}
+  .win-body.focus-sim img{width:370%;left:-172%;top:-80%}
+  .win-body.focus-report img{width:385%;left:-196%;top:-171%}
+  /* the caption becomes running text so the qualifier joins the sentence
+     instead of being squeezed into a second flex column */
+  .stage-stack .win-cap{display:block}
+  .stage-stack .win-cap::before{display:inline-block;margin-right:10px;vertical-align:1px}
+  .cap-detail{display:inline}
 }
