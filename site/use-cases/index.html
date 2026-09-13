@@ -22,11 +22,10 @@
 <link rel="apple-touch-icon" href="/assets/favicon-180.png">
 <link rel="stylesheet" href="../styles.css">
 <style>
-  /* Page-local: forms the system does not carry yet. Tokens only. */
+  /* Page-local: forms the system does not carry yet. Tokens only.
+     .ilink moved into styles.css section 16. */
   .nav-main a[aria-current="page"],.mnav-panel a[aria-current="page"]{color:var(--ink)}
   .hero h1{max-width:17ch}
-  .ilink{color:var(--accent);border-bottom:1px solid var(--line-2);padding-bottom:1px}
-  .ilink:hover{color:var(--accent-hi);border-color:var(--accent)}
   /* the arriving question: the buyer's own words, before the answer */
   .arc-q{
     font-size:clamp(17px,1.7vw,20px);line-height:1.5;color:var(--ink);font-weight:500;letter-spacing:-.012em;
@@ -55,6 +54,7 @@
       <a href="/platform/">Platform</a>
       <a href="/solutions/">Solutions</a>
       <a href="/use-cases/" aria-current="page">Use cases</a>
+      <a href="/guild/">Guild</a>
       <a href="/partners-guild/">Partners</a>
       <a href="/api/">API</a>
       <a href="/insights/">Insights</a>
@@ -72,7 +72,8 @@
           <a href="/platform/">Platform</a>
           <a href="/solutions/">Solutions</a>
           <a href="/use-cases/" aria-current="page">Use cases</a>
-          <a href="/partners-guild/">Partners &amp; Guild</a>
+          <a href="/guild/">Guild</a>
+          <a href="/partners-guild/">Partners</a>
           <a href="/api/">API</a>
           <a href="/insights/">Insights</a>
           <a href="/about/">About</a>
@@ -92,7 +93,7 @@
     <div class="wrap">
       <p class="eyebrow hero-eyebrow">Use cases &middot; Six decision contexts</p>
       <h1 id="h1">Six rooms where the decision gets made.</h1>
-      <p class="hero-dek">Mission Grey is used by strategy teams, operational leaders, and financial decision&#8209;makers. Six recurring contexts are below, each with the question it arrives with and what changes once the external picture is continuous.</p>
+      <p class="hero-dek">Where organizations actually use external intelligence. Six recurring contexts, each with the role it sits with, the question it arrives with, and what changes once the external picture is continuous.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="/contact/">Request access</a>
         <a class="btn btn-ghost" href="https://calendly.com/lauri-missiongrey/30min">Book a demo</a>
@@ -117,14 +118,14 @@
       <div class="sec-head reveal" style="margin-top:44px">
         <p class="eyebrow">How to read this</p>
         <h2 id="cases-h">Role, arriving question, and what changes.</h2>
-        <p>These are decision contexts, not a customer list. Names are withheld throughout, and every quote below is reproduced exactly as it was given.</p>
+        <p>These are decision contexts, not a customer list. Names are withheld, and the quotes are reproduced exactly as they were given.</p>
       </div>
 
       <article class="stage reveal">
         <div class="stage-copy">
           <p class="stage-num">01 &middot; CONSULTING</p>
           <h3>Big Four consulting.</h3>
-          <p>Upgrade client advice with real&#8209;time intelligence. Consultants bring sector depth and method; Mission Grey adds the continuous external read that a strategy, risk, or market entry recommendation has to stand on.</p>
+          <p>Consultants bring sector depth and method. Mission Grey adds the continuous external read that a strategy, risk, or market entry recommendation has to stand on.</p>
           <p class="stage-io"><span><b>WHO</b> PARTNERS AND ENGAGEMENT LEADS</span></p>
         </div>
         <div class="stage-media">
@@ -140,7 +141,7 @@
         <div class="stage-copy">
           <p class="stage-num">02 &middot; INDUSTRIAL</p>
           <h3>Global industrial.</h3>
-          <p>Protect operations and guide expansion. One organization, many countries, and a supply chain that tends to announce itself only when it breaks.</p>
+          <p>One organization, many countries, and a supply chain that tends to announce itself when it breaks.</p>
           <p class="stage-io"><span><b>WHO</b> STRATEGY, RISK, AND SUPPLY CHAIN LEADS</span></p>
         </div>
         <div class="stage-media">
@@ -160,7 +161,7 @@
         <div class="stage-copy">
           <p class="stage-num">03 &middot; INSURANCE</p>
           <h3>Insurance broker.</h3>
-          <p>Enhance risk models and client advisory. Exposure gets priced on what the model can see, and the model was built before this year's map.</p>
+          <p>Exposure gets priced on what the model can see, and the model was built before this year's map.</p>
           <p class="stage-io"><span><b>WHO</b> UNDERWRITING AND ADVISORY LEADS</span></p>
         </div>
         <div class="stage-media">
@@ -180,7 +181,7 @@
         <div class="stage-copy">
           <p class="stage-num">04 &middot; RISK ADVISORY</p>
           <h3>Risk consulting.</h3>
-          <p>Scale advisory with continuous intelligence. Expert judgment does not scale by hiring; it scales when the monitoring and the modeling underneath it run continuously.</p>
+          <p>Expert judgment does not scale by hiring. It scales when the monitoring and the modeling underneath it run continuously.</p>
           <p class="stage-io"><span><b>WHO</b> PRACTICE AND DELIVERY LEADS</span></p>
         </div>
         <div class="stage-media">
@@ -196,7 +197,7 @@
         <div class="stage-copy">
           <p class="stage-num">05 &middot; GOVERNMENT</p>
           <h3>Government and public sector.</h3>
-          <p>Identify opportunities and guide policy. Economic and strategic development decisions land years after they are made, on evidence that has to survive scrutiny the whole way.</p>
+          <p>Economic and strategic development decisions land years after they are made, on evidence that has to survive scrutiny the whole way.</p>
           <p class="stage-io"><span><b>WHO</b> POLICY AND ECONOMIC DEVELOPMENT TEAMS</span></p>
         </div>
         <div class="stage-media">
@@ -212,7 +213,7 @@
         <div class="stage-copy">
           <p class="stage-num">06 &middot; NGO</p>
           <h3>Nongovernmental organizations.</h3>
-          <p>Support global initiatives with intelligence. Governance and development programs run exactly where the signals are weakest and the cost of being late is highest.</p>
+          <p>Governance and development programs run where the signals are weakest and the cost of being late is highest.</p>
           <p class="stage-io"><span><b>WHO</b> PROGRAM AND GOVERNANCE LEADS</span></p>
         </div>
         <div class="stage-media">
@@ -224,7 +225,7 @@
         </div>
       </article>
 
-      <p class="trust-foot reveal" style="margin-top:34px">The same six contexts, read from the delivery side, are on <a class="ilink" href="/solutions/">Solutions</a>. What the instrument itself does is on <a class="ilink" href="/platform/">Platform</a>.</p>
+      <p class="trust-foot reveal" style="margin-top:34px">How an organization starts and expands from one of these decisions is on <a class="ilink" href="/solutions/">Solutions</a>. What the instrument itself does is on <a class="ilink" href="/platform/">Platform</a>.</p>
     </div>
   </section>
 
@@ -238,6 +239,10 @@
         <div class="access-cta">
           <a class="btn btn-primary" href="/contact/">Request access</a>
           <a class="btn btn-ghost" href="https://calendly.com/lauri-missiongrey/30min">Book a demo</a>
+        </div>
+        <div class="cta-notes">
+          <p><b>Request access</b>Start setting up Mission Grey for your organization, through a short contact form.</p>
+          <p><b>Book a demo</b>A 30&#8209;minute call where you see Mission Grey applied to a decision or question of yours.</p>
         </div>
         <p class="access-mail"><a href="mailto:contact@missiongrey.com">contact@missiongrey.com</a></p>
       </div>
@@ -273,7 +278,8 @@
         <h3>Company</h3>
         <ul>
           <li><a href="/about/">About us</a></li>
-          <li><a href="/partners-guild/">Partners &amp; Guild</a></li>
+          <li><a href="/guild/">Guild</a></li>
+          <li><a href="/partners-guild/">Partners</a></li>
           <li><a href="/insights/">Insights</a></li>
           <li><a href="/contact/">Contact</a></li>
         </ul>

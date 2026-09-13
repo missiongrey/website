@@ -5,35 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#F1F3F5">
 <title>Platform &middot; Mission Grey</title>
-<meta name="description" content="The instrument set behind Mission Grey: continuous signal monitoring, multi-actor simulation, a knowledge graph, economic branch analysis, and decision-ready reporting. Every screen is the product itself.">
+<meta name="description" content="How Mission Grey works: global-to-local data, structured knowledge, quantitative and proprietary models, AI and human expertise, combined into continuously updated decision intelligence.">
 <link rel="canonical" href="https://missiongrey.com/platform/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://missiongrey.com/platform/">
 <meta property="og:title" content="Platform &middot; Mission Grey">
-<meta property="og:description" content="Continuous signal monitoring, multi-actor simulation, a knowledge graph, economic branch analysis, and decision-ready reporting. Every screen is the product itself.">
+<meta property="og:description" content="Global-to-local data, structured knowledge, quantitative and proprietary models, AI and human expertise, combined into continuously updated decision intelligence.">
 <meta property="og:image" content="/assets/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@missiongrey">
 <meta name="twitter:title" content="Platform &middot; Mission Grey">
-<meta name="twitter:description" content="Continuous signal monitoring, multi-actor simulation, a knowledge graph, economic branch analysis, and decision-ready reporting. Every screen is the product itself.">
+<meta name="twitter:description" content="Global-to-local data, structured knowledge, quantitative and proprietary models, AI and human expertise, combined into continuously updated decision intelligence.">
 <meta name="twitter:image" content="/assets/og-image.jpg">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../../assets/favicon-180.png">
 <link rel="apple-touch-icon" href="/assets/favicon-180.png">
 <link rel="stylesheet" href="../styles.css">
 <style>
-  /* Page-local: forms the system does not carry yet. Tokens only. */
+  /* Page-local: forms the system does not carry yet. Tokens only.
+     .ilink and the three-across cell grid moved into styles.css
+     section 16, so they are no longer declared here. */
   .nav-main a[aria-current="page"],.mnav-panel a[aria-current="page"]{color:var(--ink)}
-  .grid-3{grid-template-columns:repeat(3,1fr)}
-  .ilink{color:var(--accent);border-bottom:1px solid var(--line-2);padding-bottom:1px}
-  .ilink:hover{color:var(--accent-hi);border-color:var(--accent)}
-  .roles{border-top:1px solid var(--line);margin-top:24px}
-  .roles>div{display:grid;grid-template-columns:150px 1fr;gap:8px 16px;padding:14px 0;border-bottom:1px solid var(--line)}
-  .roles dt{font:500 11px/1.7 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
-  .roles dd{font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
-  .dcard figcaption .stage-num{font:400 13px/1 var(--mono);letter-spacing:.2em;color:var(--signal);margin-bottom:14px}
-  @media (max-width:900px){.grid-3{grid-template-columns:1fr}}
-  @media (max-width:560px){.roles>div{grid-template-columns:1fr;gap:6px}}
 </style>
 <script src="../../assets/consent.js" data-ga="__GA_MEASUREMENT_ID__" defer></script>
 </head>
@@ -49,6 +41,7 @@
       <a href="/platform/" aria-current="page">Platform</a>
       <a href="/solutions/">Solutions</a>
       <a href="/use-cases/">Use cases</a>
+      <a href="/guild/">Guild</a>
       <a href="/partners-guild/">Partners</a>
       <a href="/api/">API</a>
       <a href="/insights/">Insights</a>
@@ -66,7 +59,8 @@
           <a href="/platform/" aria-current="page">Platform</a>
           <a href="/solutions/">Solutions</a>
           <a href="/use-cases/">Use cases</a>
-          <a href="/partners-guild/">Partners &amp; Guild</a>
+          <a href="/guild/">Guild</a>
+          <a href="/partners-guild/">Partners</a>
           <a href="/api/">API</a>
           <a href="/insights/">Insights</a>
           <a href="/about/">About</a>
@@ -85,165 +79,479 @@
   <section class="hero sec" aria-labelledby="h1">
     <div class="wrap">
       <p class="eyebrow hero-eyebrow">The platform &middot; Access by request</p>
-      <h1 id="h1">The layer between the world and your decisions.</h1>
-      <p class="hero-dek">Mission Grey turns external signals, across geopolitics, markets, regulation, and supply chains, into structured intelligence a real business decision can rest on. This page walks the instrument set, screen by screen.</p>
+      <h1 id="h1">The intelligence layer between the outside world and your decisions.</h1>
+      <p class="hero-dek">Mission Grey combines global&#8209;to&#8209;local data, structured knowledge, quantitative and proprietary models, AI and human expertise into continuously updated decision intelligence. This page shows how.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="/contact/">Request access</a>
         <a class="btn btn-ghost" href="https://calendly.com/lauri-missiongrey/30min">Book a demo</a>
       </div>
+    </div>
+  </section>
 
-      <p class="rule-label" style="margin-top:clamp(48px,6vw,68px)">The structured process</p>
-      <div class="trust-grid grid-3 reveal" style="margin-top:20px">
-        <div class="trust-cell">
-          <h3>Signals</h3>
-          <p>External events, data, and weak signals, collected across markets, regulation, and supply chains.</p>
+  <!-- ============ GLOBAL TO LOCAL ============ -->
+  <section class="sec" id="breadth" aria-labelledby="breadth-h" style="padding-top:0">
+    <div class="wrap">
+      <p class="rule-label">External intelligence</p>
+      <div class="sec-head reveal" style="margin-top:44px">
+        <p class="eyebrow">Global to local, macro to micro</p>
+        <h2 id="breadth-h">External change arrives on four levels.</h2>
+        <p>External intelligence is what sits outside your organization and can still change a decision. One local decision often has to be read through several levels at once.</p>
+      </div>
+
+      <div class="frame reveal"><span class="tick"></span>
+        <div class="frame-bar"><span>Levels of external context</span><span class="dim">Illustrative view</span></div>
+        <div class="lens">
+          <div class="lens-level" style="--d:0">
+            <p class="lens-k"><span class="lens-i">01</span>Global</p>
+            <div class="taglist">
+              <span class="chip">Geopolitics</span><span class="chip">Trade</span><span class="chip">Macroeconomics</span><span class="chip">Climate</span><span class="chip">International regulation</span><span class="chip">Security</span>
+            </div>
+          </div>
+          <div class="lens-level" style="--d:1">
+            <p class="lens-k"><span class="lens-i">02</span>Markets and industries</p>
+            <div class="taglist">
+              <span class="chip">Technology</span><span class="chip">Competition</span><span class="chip">Investment</span><span class="chip">Supply chains</span><span class="chip">Sector trends</span><span class="chip">Consumer behavior</span>
+            </div>
+          </div>
+          <div class="lens-level" style="--d:2">
+            <p class="lens-k"><span class="lens-i">03</span>Local</p>
+            <div class="taglist">
+              <span class="chip">Local regulation</span><span class="chip">Politics</span><span class="chip">Laws</span><span class="chip">Financing</span><span class="chip">Costs</span><span class="chip">Demand</span><span class="chip">Permits</span><span class="chip">Local practices</span><span class="chip">Market conditions</span>
+            </div>
+          </div>
+          <div class="lens-level" style="--d:3">
+            <p class="lens-k"><span class="lens-i">04</span>Your organization</p>
+            <div class="taglist">
+              <span class="chip">Private documents</span><span class="chip">Internal data</span><span class="chip">Exposures</span><span class="chip">Assumptions</span><span class="chip">Strategies</span><span class="chip">Plans</span><span class="chip">Existing decisions</span>
+            </div>
+          </div>
+          <div class="lens-core" style="--d:4">
+            <p class="k">One decision</p>
+            <p class="v">Built from every level that bears on it.</p>
+          </div>
         </div>
-        <div class="trust-cell">
-          <h3>Scenarios</h3>
-          <p>Structured analysis that connects those signals into possible outcomes and business impact.</p>
-        </div>
-        <div class="trust-cell">
-          <h3>Decisions</h3>
-          <p>Clear, actionable inputs for strategy, risk management, and operations.</p>
+        <div class="evi">
+          <span><i>Read</i>Top down, one level through the next</span>
+          <span><i>Scope</i>Set by the decision, not by the feed</span>
         </div>
       </div>
+
+      <p class="sec-note reveal">One local investment decision can turn on financing conditions, permits, local politics and the macroeconomic picture behind them. Mission Grey assembles that context around the decision.</p>
     </div>
   </section>
 
   <!-- ============ CAPABILITY WALK ============ -->
-  <section class="sec" id="capabilities" aria-labelledby="cap-h" style="padding-top:0">
+  <section class="sec sec-alt" id="walk" aria-labelledby="walk-h">
     <div class="wrap">
       <p class="rule-label">Capability walk</p>
       <div class="sec-head reveal" style="margin-top:44px">
-        <p class="eyebrow">Seven capabilities, one platform</p>
-        <h2 id="cap-h">What the platform does, screen by screen.</h2>
-        <p>The order below follows the work: watch the world, read what it means for you, test the option, and leave with something a board can act on. Every screen is the product itself, unretouched.</p>
+        <p class="eyebrow">Monitor &middot; Analyze &middot; Decide &middot; Act</p>
+        <h2 id="walk-h">What the platform does, screen by screen.</h2>
+        <p>Four moments, in the order the work happens: monitor, understand, model, operationalize. One screen each, plus the report the work is circulated as.</p>
       </div>
 
-      <div class="stage reveal">
+      <div class="stage stage-stack reveal">
         <div class="stage-copy">
           <p class="stage-num">01 &middot; MONITOR</p>
-          <h3>Track the world in real time.</h3>
-          <p>Geopolitical events, military movements, maritime chokepoints, and supply chain signals, monitored across the world in real time. Live signals are followed across geographies, sectors, and risk categories, so the watch never depends on somebody happening to read the right headline.</p>
+          <h3>What is changing.</h3>
+          <p>Signals collected around the clock: regulation, markets and technology, political developments, supply chains and local conditions, company activity, specialist sources and physical&#8209;world data.</p>
           <p class="stage-io"><span><b>INPUT</b> THE WORLD</span><span><b>OUTPUT</b> SIGNAL</span></p>
         </div>
         <div class="stage-media">
           <figure class="shotfig">
             <div class="window">
               <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">app.missiongrey.com</span></div>
-              <div class="win-body"><img src="../../assets/product-screenshot-globe.jpg" width="1920" height="1090" loading="lazy" alt="Global signal monitoring on a live globe: tracking layers for flights, satellites, AIS vessels, military bases, and maritime chokepoints with status levels"></div>
+              <div class="win-body focus-globe"><img src="../../assets/product-screenshot-globe.jpg" width="1920" height="1040" loading="lazy" alt="Global monitoring on a live globe with selectable tracking layers for satellites, AIS vessels, news events, reports, natural hazards, military sites, maritime chokepoints and energy infrastructure"></div>
             </div>
-            <figcaption class="win-cap">Global signal monitoring with live tracking layers</figcaption>
+            <figcaption class="win-cap">The monitoring screen &middot; tracked events and infrastructure on one globe, layer by layer<span class="cap-detail">&middot; shown as a detail</span></figcaption>
           </figure>
         </div>
       </div>
 
-      <div class="stage flip reveal">
+      <div class="proof-between reveal">
+        <p class="statement statement-lead">Decision&#8209;ready analysis that can actually be circulated internally.</p>
+        <p class="statement-sub">A report written in the platform: the thesis under the title, an executive summary, the questions the analysis keeps separate, and numbered sources under the claims that carry them. Versions are kept, so the work can be reopened and taken further.</p>
+        <figure class="shotfig shot-doc proofblock">
+          <div class="window">
+            <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">app.missiongrey.com</span></div>
+            <div class="win-body focus-sourced"><img src="../../assets/product-screenshot-report-advisor.png" width="1642" height="1844" loading="lazy" alt="A sourced analytical report open in the platform: an investment framework for defense and dual-use technology, with an italic thesis line, an executive summary, four numbered questions the analysis separates, a version control reading v3 current, and a numbered sources panel below it"></div>
+          </div>
+          <figcaption class="win-cap">Report Advisor &middot; <span class="cap-desk">the report, its version control and the sources panel under it</span><span class="cap-detail">the head of the report: title, thesis and the opening of the executive summary, shown as a detail</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="stage stage-stack reveal">
         <div class="stage-copy">
           <p class="stage-num">02 &middot; ANALYZE</p>
-          <h3>See how a signal affects your business.</h3>
-          <p>Analysis translates external developments into strategic implications for your organization, with geopolitical and regulatory signals mapped directly to your operations. The work happens in a session you can reopen, question, and extend, and every report it generates carries its sources.</p>
-          <p class="stage-io"><span><b>INPUT</b> SIGNAL</span><span><b>OUTPUT</b> IMPLICATION</span></p>
+          <h3>What it means for you.</h3>
+          <p>Mission Grey connects a signal to your exposure: the entities involved, their relationships and history, and the assumptions your organization already holds. The knowledge graph keeps that structure persistent, quantitative models carry the numbers, and Guild experts weigh in where context decides the answer.</p>
+          <p class="stage-io"><span><b>INPUT</b> SIGNAL</span><span><b>OUTPUT</b> ASSESSMENT</span></p>
         </div>
         <div class="stage-media">
           <figure class="shotfig">
             <div class="window">
               <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">app.missiongrey.com</span></div>
-              <div class="win-body"><img src="../../assets/product-screenshot-sessions.png" width="1920" height="1149" loading="lazy" alt="The Mission Grey workspace: a session list, an analyst conversation refining a risk scenario, and a generated report with numbered, verifiable sources"></div>
+              <div class="win-body focus-graph"><img src="../../assets/product-screenshot-knowledge-graph.png" width="1920" height="1037" loading="lazy" alt="An interactive knowledge graph in the platform: a breadcrumb naming the company being viewed, an entity search field beside it, and a dense network of shaped and colored nodes joined by relationship lines"></div>
             </div>
-            <figcaption class="win-cap">Sessions, the analyst conversation, and the report with its sources</figcaption>
+            <figcaption class="win-cap">The knowledge graph &middot; the company named in the breadcrumb, and the network the record holds around it<span class="cap-detail">&middot; shown as a detail</span></figcaption>
           </figure>
         </div>
       </div>
 
-      <div class="stage reveal">
+      <div class="stage stage-stack reveal">
         <div class="stage-copy">
-          <p class="stage-num">03 &middot; SIMULATE</p>
-          <h3>From signals to decisions.</h3>
-          <p>Multi&#8209;actor simulation models complex geopolitical and market scenarios and stress&#8209;tests your strategy against the way those actors actually behave. Developments turn into concrete moves: adjust exposure, secure supply chains, reprice risk.</p>
-          <p class="stage-io"><span><b>INPUT</b> SIGNAL</span><span><b>OUTPUT</b> SCENARIO</span></p>
+          <p class="stage-num">03 &middot; DECIDE</p>
+          <h3>What may happen, and what to do.</h3>
+          <p>Multi&#8209;actor simulation sets out what could happen and what you would do about it, run with the actors who would be in the room and tested against the way they behave. Each actor carries the strategic options open to it, primary, alternative and wildcard, with the reasoning under each one.</p>
+          <p class="stage-io"><span><b>INPUT</b> ASSESSMENT</span><span><b>OUTPUT</b> DECISION</span></p>
         </div>
         <div class="stage-media">
           <figure class="shotfig">
             <div class="window">
               <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">app.missiongrey.com</span></div>
-              <div class="win-body"><img src="../../assets/product-screenshot-simulation.png" width="1920" height="1169" loading="lazy" alt="Multi-actor scenario simulation of an oil and gas coalition responding to an escalation, with primary, alternative, and wildcard strategic options"></div>
+              <div class="win-body focus-sim"><img src="../../assets/product-screenshot-simulation.png" width="1920" height="1036" loading="lazy" alt="Multi-actor scenario simulation of an oil and gas coalition responding to an escalation, with primary, alternative, and wildcard strategic options"></div>
             </div>
-            <figcaption class="win-cap">Multi&#8209;actor scenario simulation with strategic options</figcaption>
+            <figcaption class="win-cap">Scenario simulation &middot; how the actors in a situation respond, with the strategic options each one has<span class="cap-detail">&middot; shown as a detail</span></figcaption>
           </figure>
         </div>
       </div>
 
-      <div class="duo">
-        <figure class="shotfig dcard reveal">
-          <div class="window">
-            <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">app.missiongrey.com</span></div>
-            <div class="win-body crop"><img src="../../assets/product-screenshot-knowledge-graph.png" width="1920" height="1152" loading="lazy" alt="Interactive knowledge graph of 201 entities and 679 edges showing how companies, states, and events connect"></div>
+      <div class="stage stage-stack reveal">
+        <div class="stage-copy">
+          <p class="stage-num">04 &middot; ACT</p>
+          <h3>How intelligence reaches the organization.</h3>
+          <p>Intelligence arrives as reports and executive briefings, dashboards and alerts, role&#8209; and customer&#8209;specific applications, and agents that route what changed to the person who owns it. Through the <a class="ilink" href="/api/">API</a> it can flow directly into the views, workflows and systems where decisions are made.</p>
+          <p>An application built around one customer's decision environment is the operational form of that: the same intelligence layer, <a class="ilink" href="#apps">shaped around their business</a>.</p>
+          <p class="stage-io"><span><b>INPUT</b> DECISION</span><span><b>OUTPUT</b> ACTION</span></p>
+        </div>
+        <div class="stage-media">
+          <figure class="appfig">
+            <div class="frame"><span class="tick"></span>
+              <div class="frame-bar"><span>Space and infrastructure intelligence</span><span class="dim">Example application</span></div>
+              <div class="appshot focus-space"><img src="../../assets/intelligence-app-space-infrastructure.jpg" width="1920" height="1032" loading="lazy" alt="An intelligence application built for one customer: a Southeast Asia space and infrastructure executive overview with a sovereignty risk index, an infrastructure expansion score, maritime tension and cable resilience levels, AI infrastructure growth, regulatory fragmentation, and an ASEAN signal geography below them"></div>
+            </div>
+            <figcaption>Example &middot; satellite, telecom, subsea cable, maritime and regulatory intelligence around one business environment &middot; figures illustrative</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="workspace reveal">
+        <figure class="artifact" style="max-width:560px;margin-inline:auto">
+          <div class="sheet" role="img" aria-label="A Mission Grey daily brief, shown as a printed front page with a priority signal, an assessment, and a recommended action. Contents are illustrative.">
+            <div class="bf-head">
+              <div class="bf-title">
+                <svg viewBox="0 0 36 36" aria-hidden="true">
+                  <rect width="36" height="36"/>
+                  <path d="M11 4h7v7h-7zM25 4h7v7h-7zM4 11h7v7H4zM18 11h7v7h-7zM11 18h7v7h-7zM25 18h7v7h-7zM4 25h7v7H4zM18 25h7v7h-7z"/>
+                </svg>
+                <b>The Morning Brief</b>
+              </div>
+              <span class="bf-tag">Illustrative edition</span>
+            </div>
+            <div class="bf-date">
+              <span id="bf-date">Daily edition &middot; 06:00 UTC</span>
+              <span>Prepared for: your organization</span>
+            </div>
+            <div class="bf-lead">
+              <div class="siglab"><span class="bf-dot" aria-hidden="true"></span><em>Priority signal</em><span>Supply chains &middot; Maritime</span></div>
+              <h3>Rerouting puts two tier&#8209;one suppliers on the same lane risk</h3>
+              <p>Vessel tracking shows sustained diversion on a corridor both suppliers depend on. Cost and delay exposure is concentrated in fourth&#8209;quarter commitments, and the concentration itself is the finding.</p>
+              <div class="bf-rec">
+                <i>Recommended</i>
+                <p>Review alternate sourcing before renewal terms close. Reasoning and sources are cited in the full report.</p>
+              </div>
+            </div>
+            <div class="bf-items">
+              <div class="bf-item">
+                <time>04:20 UTC</time>
+                <h4><span>Regulation</span>Export&#8209;control amendment enters comment period; two monitored suppliers fall inside the proposed scope</h4>
+              </div>
+              <div class="bf-item">
+                <time>02:05 UTC</time>
+                <h4><span>Markets</span>Sovereign spread movement flagged against one monitored counterparty exposure</h4>
+              </div>
+            </div>
+            <div class="bf-foot">
+              <span>Each line carries its source</span>
+              <span>Generated by the Mission Grey platform</span>
+            </div>
           </div>
-          <figcaption>
-            <p class="stage-num">04 &middot; CONNECT</p>
-            <h4>Understand systemic dependencies</h4>
-            <p>Navigate the relationships between entities, events, and signals. The graph shows how risk travels across regions and sectors before it reaches you.</p>
-          </figcaption>
+          <figcaption><b>Above</b>One delivery form of many: the daily brief, with signals assessed against the client's exposure and a recommended action. Contents shown are illustrative, not live intelligence.</figcaption>
         </figure>
-        <figure class="shotfig dcard reveal">
-          <div class="window">
-            <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">app.missiongrey.com</span></div>
-            <div class="win-body crop"><img src="../../assets/product-screenshot-analysis.png" width="1920" height="1519" loading="lazy" alt="Economic scenario analysis comparing GDP forecast branches with historical, baseline, and scenario paths"></div>
+      </div>
+
+      <div class="net" style="margin-top:clamp(44px,5.5vw,64px)">
+        <div class="reveal">
+          <p class="eyebrow" style="margin-bottom:18px">An enterprise example</p>
+          <h3 class="net-lede">Several developments, one decision.</h3>
+        </div>
+        <div class="net-body reveal">
+          <p>One illustrative case, run end to end: an industrial manufacturer with a plant in one region, two suppliers in another, and a contract renewal due next quarter.</p>
+        </div>
+      </div>
+
+      <div class="frame chain reveal"><span class="tick"></span>
+        <div class="frame-bar"><span>From developments to action</span><span class="dim">Illustrative view</span></div>
+        <ol class="chain-list">
+          <li>
+            <p class="k"><span class="n">01</span>Developments</p>
+            <p class="v">An export&#8209;control amendment enters its comment period, a shipping lane the plant depends on reroutes, and an election shifts the outlook for an energy subsidy.</p>
+          </li>
+          <li>
+            <p class="k"><span class="n">02</span>Indicators</p>
+            <p class="v">Three measures move: delay on the corridor, the share of sourced components inside the proposed control scope, and projected energy cost per unit at the plant.</p>
+          </li>
+          <li>
+            <p class="k"><span class="n">03</span>Scenario</p>
+            <p class="v">One scenario holds the three together: the control scope is confirmed, the lane stays diverted and the subsidy lapses, with the response already agreed.</p>
+          </li>
+          <li>
+            <p class="k"><span class="n">04</span>Trigger</p>
+            <p class="v">Defined in advance: two of the three indicators past their thresholds, with the renewal window still open.</p>
+          </li>
+          <li>
+            <p class="k"><span class="n">05</span>Action</p>
+            <p class="v">Procurement prices the alternate lane, treasury reviews the hedge, compliance opens the control assessment, and management sees one view.</p>
+          </li>
+          <li>
+            <p class="k"><span class="n">06</span>Value</p>
+            <p class="v">The renewal is decided with the alternative priced and the exposure understood, not after the disruption arrives.</p>
+          </li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ DECISION ENGINE ============ -->
+  <section class="sec" id="engine" aria-labelledby="engine-h">
+    <div class="wrap">
+      <p class="rule-label">Decision architecture</p>
+      <div class="sec-head reveal" style="margin-top:44px">
+        <p class="eyebrow">Five standing objects</p>
+        <h2 id="engine-h">A decision, held as a standing structure.</h2>
+        <p>Five connected objects carry a decision over time. Each can change the others, so the system does not go quiet once an answer has been delivered, and all five are drawn again in <a class="ilink" href="#recipe">the full recipe below</a>.</p>
+      </div>
+
+      <div class="dobj-set reveal">
+        <div class="dobj-cell"><p class="k">Tracker</p><p class="v">What we watch.</p></div>
+        <div class="dobj-cell"><p class="k">Indicator</p><p class="v">What we measure.</p></div>
+        <div class="dobj-cell"><p class="k">Scenario</p><p class="v">What could happen, and what we would do.</p></div>
+        <div class="dobj-cell"><p class="k">Trigger</p><p class="v">When a decision is due.</p></div>
+        <div class="dobj-cell"><p class="k">Action</p><p class="v">What the organization does.</p></div>
+      </div>
+
+      <p class="trail reveal" role="img" aria-label="The intelligence trail: source, signal, exposure, indicator, scenario, trigger, action">
+        <span>Source</span><span>Signal</span><span>Exposure</span><span>Indicator</span><span>Scenario</span><span>Trigger</span><span>Action</span>
+      </p>
+
+      <div class="agents">
+        <div class="agents-copy reveal">
+          <h3>Agents connect intelligence to responsibility and action.</h3>
+          <p>Agents can read trackers, indicators and scenarios continuously, identify material change and know who owns the exposure it touches. They can send that person what changed, recommend an action and, where explicitly authorized, start a process in a connected system.</p>
+          <p>One external development can mean different instructions for procurement, treasury, compliance and management, not the same alert to everyone.</p>
+        </div>
+        <div class="agent-cards reveal">
+          <div class="agent-card">
+            <p class="k">Check this</p>
+            <p>Something important changed. A person should look at it.</p>
           </div>
-          <figcaption>
-            <p class="stage-num">05 &middot; MODEL</p>
-            <h4>Model how scenarios unfold</h4>
-            <p>Quantitative branch analysis runs forward&#8209;looking economic models, so every scenario carries a path over time against a baseline you can inspect.</p>
-          </figcaption>
-        </figure>
-      </div>
-
-      <div class="stage flip reveal" style="border-top:1px solid var(--line)">
-        <div class="stage-copy">
-          <p class="stage-num">06 &middot; ACT</p>
-          <h3>Act on what matters.</h3>
-          <p>Expert analysis reports and context&#8209;specific recommended actions, prioritized for your organization and written for the room where the decision gets made. Delivered in a format ready for management or board discussion, as exports, as shareable report microsites, or through the <a class="ilink" href="/api/">API</a> into your own systems.</p>
-          <p class="stage-io"><span><b>INPUT</b> SCENARIO</span><span><b>OUTPUT</b> ACTION</span></p>
-        </div>
-        <div class="stage-media">
-          <figure class="shotfig">
-            <div class="window">
-              <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">app.missiongrey.com</span></div>
-              <div class="win-body"><img src="../../assets/product-screenshot-recommendations.png" width="1920" height="1078" loading="lazy" alt="Management-focused output: six priority actions with concrete steps, generated from a risk assessment"></div>
-            </div>
-            <figcaption class="win-cap">Management&#8209;focused priority action recommendations</figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <div class="stage reveal">
-        <div class="stage-copy">
-          <p class="stage-num">07 &middot; BUILD</p>
-          <h3>Build intelligence applications in minutes.</h3>
-          <p>Create interactive dashboards and decision environments tailored to your needs, combine external intelligence with your internal data, and deploy them without heavy integration work. This replaces months of system integration with intelligence applications that are usable immediately.</p>
-          <p class="stage-io"><span><b>INPUT</b> INTELLIGENCE</span><span><b>OUTPUT</b> APPLICATION</span></p>
-        </div>
-        <div class="stage-media">
-          <figure class="shotfig">
-            <div class="window">
-              <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">app.missiongrey.com</span></div>
-              <div class="win-body"><img src="../../assets/intelligence-app-example.png" width="1920" height="1039" loading="lazy" alt="A country-level intelligence application: a strategic risks dashboard combining live signals, scenario views, and decision panels"></div>
-            </div>
-            <figcaption class="win-cap">Example &middot; a country&#8209;level intelligence application</figcaption>
-          </figure>
+          <div class="agent-card">
+            <p class="k">Do this</p>
+            <p>An agreed trigger has been reached. A previously defined action is now relevant.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ TRUST ============ -->
-  <section class="sec sec-alt" id="trust" aria-labelledby="trust-h">
+  <!-- ============ THE RECIPE ============ -->
+  <section class="sec sec-alt" id="recipe" aria-labelledby="recipe-h">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="eyebrow">Trust architecture</p>
-        <h2 id="trust-h">Built for trust and accountability.</h2>
-        <p>Mission Grey is designed for real decisions, not just analysis. Every signal, interpretation, and recommendation is transparent, traceable, and explainable.</p>
+      <p class="rule-label">The recipe</p>
+      <div class="sec-head reveal" style="margin-top:44px">
+        <p class="eyebrow">Inside the three inputs</p>
+        <h2 id="recipe-h">The full recipe.</h2>
+        <p>Three inputs, opened up: what each one contributes, the intelligence base that stocks them, and the sources added only when a question calls for them.</p>
+      </div>
+
+      <div class="frame rx reveal"><span class="tick"></span>
+        <div class="frame-bar"><span>Intelligence architecture</span><span class="dim">Illustrative view</span></div>
+        <div class="rx-stack">
+          <div class="rx-cols">
+            <div class="rx-col">
+              <p class="rx-k"><span class="rx-i">A</span>Data and context</p>
+              <p class="rx-v">The Knowledge Graph, entity relationships, history, macro to micro context, and the connections between events, companies, people, markets, regulation and technology.</p>
+            </div>
+            <div class="rx-col">
+              <p class="rx-k"><span class="rx-i">B</span>Models and methods</p>
+              <p class="rx-v">LLMs, quantitative and economic models, forecasting, scenario models, fuzzy logic, network approaches, proprietary and university&#8209;developed methods, and agents.</p>
+            </div>
+            <div class="rx-col">
+              <p class="rx-k"><span class="rx-i">C</span>Human intelligence</p>
+              <p class="rx-v">The Mission Grey Guild: domain and regional experts, Delphi methods, structured expert surveys, expert validation and local knowledge.</p>
+            </div>
+          </div>
+          <div class="rx-band" style="border-top:0">
+            <p class="rx-k">Intelligence base, underneath all three</p>
+            <div class="taglist">
+              <span class="chip">Global data</span><span class="chip">Local data</span><span class="chip">Market data</span><span class="chip">Regulation</span><span class="chip">Politics</span><span class="chip">Technology</span><span class="chip">Finance</span><span class="chip">Companies</span><span class="chip">Consumer behavior</span><span class="chip">Events</span><span class="chip">Research</span><span class="chip">Open&#8209;source intelligence</span>
+            </div>
+          </div>
+          <div class="rx-adds">
+            <div class="rx-add">
+              <p class="rx-k"><span class="rx-i">+</span>Premium and specialist sources</p>
+              <p class="rx-v">Detailed maritime data, satellite data, commercial databases, paid research, specialist industry datasets.</p>
+            </div>
+            <div class="rx-add">
+              <p class="rx-k"><span class="rx-i">+</span>Local and niche sources</p>
+              <p class="rx-v">Regional sources, specialist publications, local experts, structured local observation.</p>
+            </div>
+            <div class="rx-add">
+              <p class="rx-k"><span class="rx-i">+</span>Customer&#8209;private data</p>
+              <p class="rx-v">Internal documents and datasets, assumptions, exposures, plans, organization&#8209;specific context.</p>
+            </div>
+          </div>
+          <span class="rx-flow" aria-hidden="true"><svg width="10" height="14" viewBox="0 0 10 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 1v11M1.5 9L5 12.5 8.5 9"/></svg></span>
+          <div class="rx-band">
+            <p class="rx-k">Mission Grey decision engine</p>
+            <div class="taglist dobjs">
+              <span class="dobj">Trackers</span><span class="dobj">Indicators</span><span class="dobj">Scenarios</span><span class="dobj">Triggers</span><span class="dobj">Actions</span><span class="chip">Feedback loop</span>
+            </div>
+          </div>
+          <span class="rx-flow" aria-hidden="true"><svg width="10" height="14" viewBox="0 0 10 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 1v11M1.5 9L5 12.5 8.5 9"/></svg></span>
+          <div class="rx-band">
+            <p class="rx-k">Decision&#8209;worthy intelligence</p>
+            <div class="taglist">
+              <span class="chip">What matters</span><span class="chip">What may happen</span><span class="chip">What it means to us</span><span class="chip">What should we do</span><span class="chip">When</span><span class="chip">What is it worth</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="sec-note reveal"><b>Start with the intelligence base. Add what the decision requires.</b></p>
+    </div>
+  </section>
+
+  <!-- ============ MORE THAN AI ============ -->
+  <section class="sec" id="methods" aria-labelledby="methods-h">
+    <div class="wrap">
+      <p class="rule-label">Method</p>
+      <div class="sec-head reveal" style="margin-top:44px">
+        <p class="eyebrow">Data, models and people</p>
+        <h2 id="methods-h">AI alone is not enough.</h2>
+        <p>Decision intelligence also needs quantitative models, persistent structure, history, context and expert judgment. Mission Grey combines them because different questions need different forms of analysis, and the question determines the data and the method, not the other way around.</p>
+      </div>
+
+      <div class="recipe-foot">
+        <div class="methods reveal">
+          <p class="principle">AI assistants help individuals. Mission Grey adds the organizational intelligence layer.</p>
+        </div>
+
+        <div class="vs reveal">
+          <div class="vs-col">
+            <p class="vs-k">An AI assistant, for one person</p>
+            <ol class="vs-chain">
+              <li>A person</li>
+              <li>A question</li>
+              <li>An answer</li>
+            </ol>
+          </div>
+          <div class="vs-col">
+            <p class="vs-k">Mission Grey, for the organization</p>
+            <ol class="vs-chain">
+              <li>Persistent intelligence</li>
+              <li>Structured knowledge</li>
+              <li>Multiple models</li>
+              <li>Expert judgment</li>
+              <li>Scenarios and indicators</li>
+              <li>Decision</li>
+              <li>Continuous monitoring</li>
+            </ol>
+          </div>
+          <p class="vs-note">An architectural difference, not a comparison of answers.</p>
+        </div>
+      </div>
+
+      <p class="net-partners reveal" style="margin-top:clamp(40px,5vw,56px)"><b>Research partnerships</b><br>Cambridge Judge Business School &middot; Aalto University &middot; Tampere University</p>
+    </div>
+  </section>
+
+  <!-- ============ THE INSTRUMENT SET ============ -->
+  <section class="sec sec-alt" id="capabilities" aria-labelledby="cap-h">
+    <div class="wrap">
+      <p class="rule-label">Capability index</p>
+      <div class="sec-head reveal" style="margin-top:44px">
+        <p class="eyebrow">The instrument set, one platform</p>
+        <h2 id="cap-h">The instrument set.</h2>
+        <p>Thirteen instruments on one platform. They draw on the same intelligence base and evidence, so an answer from one can be checked against another.</p>
+      </div>
+      <div class="instr-list reveal">
+        <div class="instr">
+          <h3>Signal monitoring</h3>
+          <p>Track external developments from global to local: regulation, markets, technology, supply chains, physical&#8209;world data.</p>
+        </div>
+        <div class="instr">
+          <h3>Trackers and early warning</h3>
+          <p>Watch one issue continuously and catch change while there is still time to act.</p>
+        </div>
+        <div class="instr">
+          <h3>Indicators and indexes</h3>
+          <p>Build measures around the decisions you have to make, and hold them to thresholds.</p>
+        </div>
+        <div class="instr">
+          <h3>Forecasting <span class="beta">Beta</span></h3>
+          <p>Model how variables and outcomes may develop, with the assumptions set explicitly.</p>
+        </div>
+        <div class="instr">
+          <h3>Scenario simulation <span class="beta">Beta</span></h3>
+          <p>Explore possible futures, actor behavior and strategic options before committing to one.</p>
+        </div>
+        <div class="instr">
+          <h3>Knowledge Graph <span class="beta">Beta</span></h3>
+          <p>Understand relationships, dependencies and second&#8209; and third&#8209;order effects across regions and sectors.</p>
+        </div>
+        <div class="instr">
+          <h3>Decision Advisor</h3>
+          <p>Investigate one decision on structured intelligence, with prioritized recommended actions.</p>
+        </div>
+        <div class="instr">
+          <h3>Report Advisor</h3>
+          <p>Create sourced, recurring reports that state what changed since the last edition.</p>
+        </div>
+        <div class="instr">
+          <h3>Industry Analyser</h3>
+          <p>Analyze industries and competitive environments in a repeatable structure, by country and sector.</p>
+        </div>
+        <div class="instr">
+          <h3>Expert intelligence <span class="beta">Beta</span></h3>
+          <p>Bring Guild judgment into the analysis through expert review, surveys and Delphi rounds.</p>
+        </div>
+        <div class="instr">
+          <h3>Private data rooms <span class="beta">Beta</span></h3>
+          <p>Use your private information as controlled context, which can remain restricted to your environment.</p>
+        </div>
+        <div class="instr">
+          <h3>Intelligence applications</h3>
+          <p>Create decision&#8209; and role&#8209;specific environments on the shared intelligence layer.</p>
+        </div>
+        <div class="instr">
+          <h3>Agents and API</h3>
+          <p>Connect intelligence to the people who own a decision and the systems you already run.</p>
+        </div>
+      </div>
+      <p class="caps-note reveal">Beta marks an instrument the product itself labels beta today.</p>
+    </div>
+  </section>
+
+  <!-- ============ TRUST AND PRIVATE DATA ============ -->
+  <section class="sec" id="trust" aria-labelledby="trust-h">
+    <div class="wrap">
+      <p class="rule-label">Trust architecture</p>
+      <div class="sec-head reveal" style="margin-top:44px">
+        <p class="eyebrow">Sources, review, private data</p>
+        <h2 id="trust-h">What makes it inspectable.</h2>
+        <p>Traceability is a property of the pipeline rather than a promise about it: signal, model, decision and review each leave a record.</p>
       </div>
       <div class="pipe reveal" role="img" aria-label="Pipeline: signal, model, decision, review">
         <span class="node"><span class="nd"></span>Signal</span><span class="link"></span>
@@ -252,44 +560,84 @@
         <span class="node"><span class="nd"></span>Review</span>
       </div>
       <div class="trust-grid reveal">
-        <div class="trust-cell"><h3>Traceable to source</h3><p>Every signal and input can be linked back to its origin.</p></div>
-        <div class="trust-cell"><h3>Explainable in context</h3><p>Decisions are based on clear reasoning, not opaque models.</p></div>
-        <div class="trust-cell"><h3>Reviewable by experts</h3><p>Outputs can be validated through the Mission Grey Guild.</p></div>
-        <div class="trust-cell"><h3>Audit&#8209;ready</h3><p>Decisions can be documented and justified.</p></div>
+        <div class="trust-cell"><h3>Traceable to source</h3><p>Signals and inputs can be linked back to their source.</p></div>
+        <div class="trust-cell"><h3>Inspectable evidence</h3><p>The evidence behind a conclusion can be opened and read, not only cited.</p></div>
+        <div class="trust-cell"><h3>Reviewable by experts</h3><p>Analysis and recommendations can be reviewed and challenged by your own team and by the Guild.</p></div>
+        <div class="trust-cell"><h3>Audit&#8209;ready</h3><p>A decision, the evidence under it and the trigger that raised it can be documented and justified.</p></div>
       </div>
-      <p class="trust-foot reveal">Reports include sources and can be verified, a feature users consistently highlight, and the whole design assumes environments that require transparency, auditability, and accountability.</p>
+      <p class="sec-note reveal"><b>Private data stays private.</b> Customer documents, datasets, assumptions and exposures can be used as controlled context for analysis and can remain restricted to that customer's environment. Customer data is not resold.</p>
     </div>
   </section>
 
-  <!-- ============ HYBRID INTELLIGENCE ============ -->
-  <section class="sec" id="hybrid" aria-labelledby="hyb-h">
+  <!-- ============ APPLICATION LAYER ============ -->
+  <section class="sec sec-alt" id="apps" aria-labelledby="apps-h">
     <div class="wrap">
-      <p class="rule-label">Hybrid intelligence</p>
-      <div class="net" style="margin-top:44px">
-        <div class="reveal">
-          <p class="eyebrow" style="margin-bottom:18px">Machine scale, human judgment</p>
-          <h2 class="net-lede" id="hyb-h">Machine&#8209;scale detection, with expert judgment inside the system.</h2>
+      <p class="rule-label">Application layer</p>
+      <div class="sec-head reveal" style="margin-top:44px">
+        <p class="eyebrow">Above the shared layer</p>
+        <h2 id="apps-h">How Mission Grey sits inside an organization.</h2>
+        <p>The shared layer can carry applications, dashboards, agents and API connections built around one organization, an industry or one recurring decision, with the intelligence, models and evidence shared underneath. It is not a separate product built beside the platform.</p>
+      </div>
+
+      <div class="frame reveal"><span class="tick"></span>
+        <div class="frame-bar"><span>Mission Grey system diagram</span><span class="dim">Illustrative view</span></div>
+        <div class="rail">
+          <div class="rail-row">
+            <p class="rail-k">01<b>Intelligence layer</b></p>
+            <div class="rail-body">
+              <p class="rail-h">The shared Mission Grey layer</p>
+              <p>Global to local data, structured knowledge, quantitative and proprietary models, AI and Guild expertise. One layer, the same for every customer on it.</p>
+              <div class="taglist">
+                <span class="chip">Data fusion</span><span class="chip">Knowledge Graph</span><span class="chip">Quantitative models</span><span class="chip">Expert intelligence</span>
+              </div>
+            </div>
+          </div>
+          <div class="rail-row">
+            <p class="rail-k">02<b>Customer context</b></p>
+            <div class="rail-body">
+              <p class="rail-h">What makes the layer yours</p>
+              <p>The organization's own situation, added as controlled context and kept inside its environment.</p>
+              <div class="taglist">
+                <span class="chip">Markets</span><span class="chip">Assets</span><span class="chip">Processes</span><span class="chip">Exposure</span><span class="chip">Decisions</span><span class="chip">Private data</span>
+              </div>
+            </div>
+          </div>
+          <div class="rail-row">
+            <p class="rail-k">03<b>Intelligence application</b></p>
+            <div class="rail-body">
+              <p class="rail-h">Built around the decisions, on the shared layer</p>
+              <p>The five standing objects of <a class="ilink" href="#engine">the decision engine</a>, carried in a view built for one business environment rather than for the platform.</p>
+              <div class="dobjs">
+                <span class="dobj">Trackers</span><span class="dobj">Indicators</span><span class="dobj">Scenarios</span><span class="dobj">Triggers</span><span class="dobj">Actions</span>
+              </div>
+            </div>
+          </div>
+          <div class="rail-row is-end">
+            <p class="rail-k">04<b>The roles it serves</b></p>
+            <div class="rail-body">
+              <p class="rail-h">One application, the views each function needs</p>
+              <div class="taglist">
+                <span class="chip">Executive</span><span class="chip">Operations</span><span class="chip">Risk</span><span class="chip">Sales</span><span class="chip">Finance</span><span class="chip">Strategy</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="net-body reveal">
-          <p>AI identifies patterns. Experts provide context, judgment, and validation. Continuous detection runs at machine scale across global signals, and where context decides the answer, the <a class="ilink" href="/partners-guild/">Mission Grey Guild</a> validates and challenges the output. Experts are integrated into the system, not added on top of it.</p>
-          <dl class="roles">
-            <div><dt>AI models</dt><dd>Continuous detection across global signals.</dd></div>
-            <div><dt>Data science</dt><dd>Modeling impact and how scenarios unfold.</dd></div>
-            <div><dt>The Guild</dt><dd>A curated network of experts in geopolitics, regulation, finance, and technology.</dd></div>
-          </dl>
-          <p class="net-partners" style="margin-top:26px"><b>Research partners</b><br>Cambridge Judge Business School &middot; Aalto University &middot; Tampere University</p>
+        <div class="evi">
+          <span><i>Shared</i>Data, models and evidence</span>
+          <span><i>Specific</i>Context, views and decisions</span>
         </div>
       </div>
+
+      <p class="sec-note reveal">Each row holds more than the items drawn. The layer also runs AI, proprietary methods and forecasting, the context reaches procurement, compliance and treasury, and delivery can be a dashboard, an alert, an agent or an <a class="ilink" href="/api/">API</a> call into a system you already run.</p>
     </div>
   </section>
 
   <!-- ============ INDEPENDENT VALIDATION ============ -->
-  <section class="sec sec-alt" id="reviews" aria-labelledby="rev-h">
+  <section class="sec" id="reviews" aria-labelledby="rev-h">
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="eyebrow">Independent validation</p>
         <h2 id="rev-h">Rated 5.0&#8201;/&#8201;5 by users on G2.</h2>
-        <p>Mission Grey is reviewed by users on G2, a leading software review platform.</p>
       </div>
       <div class="chips reveal" aria-label="What reviewers name">
         <span class="chip">Accurate and actionable analysis</span>
@@ -316,6 +664,10 @@
         <div class="access-cta">
           <a class="btn btn-primary" href="/contact/">Request access</a>
           <a class="btn btn-ghost" href="https://calendly.com/lauri-missiongrey/30min">Book a demo</a>
+        </div>
+        <div class="cta-notes">
+          <p><b>Request access</b>Start setting up Mission Grey for your organization, through a short contact form.</p>
+          <p><b>Book a demo</b>A 30&#8209;minute call where you see Mission Grey applied to a decision or question of yours.</p>
         </div>
         <p class="access-mail"><a href="mailto:contact@missiongrey.com">contact@missiongrey.com</a></p>
       </div>
@@ -351,7 +703,8 @@
         <h3>Company</h3>
         <ul>
           <li><a href="/about/">About us</a></li>
-          <li><a href="/partners-guild/">Partners &amp; Guild</a></li>
+          <li><a href="/guild/">Guild</a></li>
+          <li><a href="/partners-guild/">Partners</a></li>
           <li><a href="/insights/">Insights</a></li>
           <li><a href="/contact/">Contact</a></li>
         </ul>
@@ -385,6 +738,12 @@
   /* UTC clock: JS-driven; the empty span stays hidden without JS */
   var c=document.getElementById('utc');
   if(c){var f=function(){c.textContent='UTC '+new Date().toISOString().slice(11,19);};f();if(!matchMedia('(prefers-reduced-motion: reduce)').matches){setInterval(f,1000);}}
+
+  /* Morning Brief dateline: today's date, never hardcoded */
+  var d=document.getElementById('bf-date');
+  if(d){try{
+    d.textContent=new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'})+' · 06:00 UTC';
+  }catch(e){}}
 
   /* reveal on scroll */
   if('IntersectionObserver' in window){
