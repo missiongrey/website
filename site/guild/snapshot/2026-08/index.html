@@ -25,54 +25,63 @@
 
 <!-- ==========================================================================
      MONTHLY EDITION: August 2026.
-     Everything editable for a new month is marked EDITION below, in the order
-     it appears: masthead, core conclusion, evidence (theme reach and
-     connections), five signals, monitoring baskets, design rule, implication,
-     Guild context, methodology note, footer links. The recurring identity
-     (palette, type, section scaffold, print rules) lives in ../snapshot.css
-     and should not move from month to month. See GUILD-SNAPSHOT.md at the repository root.
+     Thirteen blocks are marked EDITION below, in the order they appear:
+       01 masthead: analysis and publication months
+       02 masthead: title, two lines
+       03 masthead: descriptor
+       04 masthead: evidence line
+       05 core conclusion
+       06 evidence: the two charts and the caption beneath them
+       07 five signals
+       08 monitoring baskets
+       09 design rule
+       10 the bigger signal
+       11 Guild context (standing copy: it rarely changes between editions)
+       12 methodology note
+       13 footer links
+     The recurring identity (palette, type, section scaffold, print rules)
+     lives in ../snapshot.css and should not move from month to month.
+     See GUILD-SNAPSHOT.md at the repository root.
      ========================================================================== -->
 
 <header class="masthead wrap">
   <div class="mh-top">
     <img class="mh-logo" src="../../../../assets/mission-grey-logo-navy.png" width="835" height="165" alt="Mission Grey">
-    <!-- EDITION: analysis month and publication month -->
-    <p class="mh-ref">August 2026 analysis <i>|</i> Published September 2026</p>
+    <!-- EDITION 01: analysis month and publication month -->
+    <p class="mh-ref"><span>August 2026 analysis</span> <i>|</i> <span>Published September 2026</span></p>
   </div>
-  <p class="mh-eyebrow">Mission Grey Guild <i>|</i> Monthly Weak-Signal Snapshot</p>
-  <!-- EDITION: title, set as two lines. Never join them with a dash. -->
+  <p class="mh-eyebrow"><span>Mission Grey Guild</span> <i>|</i> <span>Monthly <span class="nb">Weak-Signal</span> Snapshot</span></p>
+  <!-- EDITION 02: title, set as two lines. Never join them with a dash. -->
   <h1 class="mh-title">The Health of Nations II
     <span class="t2">Adaptation Under Pressure</span></h1>
-  <!-- EDITION: descriptor -->
+  <!-- EDITION 03: descriptor -->
   <p class="mh-desc">Adaptation choices, geopolitical and regulatory pressure, validation signals, probability estimates and monitoring priorities.</p>
-  <!-- EDITION: evidence line -->
+  <!-- EDITION 04: evidence line -->
   <p class="mh-evidence">17 expert respondents <i>|</i> 80 coded answer units <i>|</i> August 2026</p>
 </header>
 
 <main id="main">
 <div class="wrap">
 
-  <!-- EDITION: core conclusion. The dominant block after the title. -->
+  <!-- EDITION 05: core conclusion. The dominant block after the title. -->
   <section class="lead" aria-labelledby="lead-h">
     <p class="kicker">Core conclusion</p>
     <h2 id="lead-h">Adaptation is moving faster than validation.</h2>
-    <p>AI, mobility rules, strategic capacity and workforce protection are changing operating choices. But the stronger question emerging from the Guild is whether usable capacity actually improves, or whether pressure is simply relocated into junior-role loss, regulatory workload, infrastructure dependence or key-person concentration.</p>
+    <p>AI, mobility rules, strategic capacity and workforce protection are changing operating choices. But the stronger question emerging from the Guild is whether usable capacity actually improves — or whether pressure is simply relocated into junior-role loss, regulatory workload, infrastructure dependence or key-person concentration.</p>
   </section>
 
-  <!-- EDITION: evidence. Two analytical visuals: respondent reach for the
-       spontaneously recurring themes, and the strongest same-answer
-       connections. Bar widths are set inline as --w (share of 17 for reach,
-       share of the top pair for connections). -->
+  <!-- EDITION 06: evidence. Two analytical visuals, then one caption line
+       carrying the counting method and the prompted-lens caveat. Bar widths
+       are set inline as --w (share of 17 for reach, share of the strongest
+       pair for connections). -->
   <section class="sec" aria-labelledby="ev-h">
     <div class="sec-head">
       <p class="kicker">Evidence</p>
       <h2 id="ev-h">Theme reach and connections.</h2>
-      <p class="sec-note">Geopolitics (16 of 17) and regulation (14 of 17) are not ranked here: both were prompted lenses in the questionnaire, so their reach partly reflects questionnaire design. Signal 04 sets out what they act through.</p>
     </div>
     <div class="evidence">
       <div class="panel">
         <h3 class="panel-h">Respondent reach, recurring themes</h3>
-        <p class="panel-sub">Each expert respondent counted once per theme across the five questions. Reach is breadth across people, not answer incidence, which is counted separately.</p>
         <ul class="chart">
           <li><span class="ch-label">AI adoption, automation &amp; job redesign</span><span class="ch-bar"><span class="ch-track" aria-hidden="true"><span class="ch-fill" style="--w:88.2%"></span></span><span class="ch-val">15/17</span></span></li>
           <li><span class="ch-label">Skills, hiring &amp; cross-border talent</span><span class="ch-bar"><span class="ch-track" aria-hidden="true"><span class="ch-fill" style="--w:88.2%"></span></span><span class="ch-val">15/17</span></span></li>
@@ -84,21 +93,21 @@
       </div>
       <div class="panel">
         <h3 class="panel-h">Strongest same-answer connections</h3>
-        <p class="panel-sub">Theme pairs counted only where both appear in the same answer, so the count is a connection inside one observation rather than across a respondent.</p>
         <ul class="conn">
-          <li><span class="cn-pair">AI <svg width="16" height="6" viewBox="0 0 16 6" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M3.2 1.2 1 3l2.2 1.8M12.8 1.2 15 3l-2.2 1.8M1 3h14"/></svg> Talent</span><span class="cn-bar"><span class="cn-track" aria-hidden="true"><span class="cn-fill" style="--w:100%"></span></span><span class="cn-val">18</span></span></li>
-          <li><span class="cn-pair">Regulation <svg width="16" height="6" viewBox="0 0 16 6" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M3.2 1.2 1 3l2.2 1.8M12.8 1.2 15 3l-2.2 1.8M1 3h14"/></svg> Talent</span><span class="cn-bar"><span class="cn-track" aria-hidden="true"><span class="cn-fill" style="--w:83.3%"></span></span><span class="cn-val">15</span></span></li>
-          <li><span class="cn-pair">AI <svg width="16" height="6" viewBox="0 0 16 6" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M3.2 1.2 1 3l2.2 1.8M12.8 1.2 15 3l-2.2 1.8M1 3h14"/></svg> Work design</span><span class="cn-bar"><span class="cn-track" aria-hidden="true"><span class="cn-fill" style="--w:77.8%"></span></span><span class="cn-val">14</span></span></li>
-          <li><span class="cn-pair">Talent <svg width="16" height="6" viewBox="0 0 16 6" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M3.2 1.2 1 3l2.2 1.8M12.8 1.2 15 3l-2.2 1.8M1 3h14"/></svg> Work design</span><span class="cn-bar"><span class="cn-track" aria-hidden="true"><span class="cn-fill" style="--w:66.7%"></span></span><span class="cn-val">12</span></span></li>
-          <li><span class="cn-pair">AI <svg width="16" height="6" viewBox="0 0 16 6" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M3.2 1.2 1 3l2.2 1.8M12.8 1.2 15 3l-2.2 1.8M1 3h14"/></svg> Regulation</span><span class="cn-bar"><span class="cn-track" aria-hidden="true"><span class="cn-fill" style="--w:61.1%"></span></span><span class="cn-val">11</span></span></li>
-          <li><span class="cn-pair">Geopolitics <svg width="16" height="6" viewBox="0 0 16 6" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M3.2 1.2 1 3l2.2 1.8M12.8 1.2 15 3l-2.2 1.8M1 3h14"/></svg> Supply and infrastructure</span><span class="cn-bar"><span class="cn-track" aria-hidden="true"><span class="cn-fill" style="--w:55.6%"></span></span><span class="cn-val">10</span></span></li>
+          <li><span class="cn-pair">AI <svg width="16" height="6" viewBox="0 0 16 6" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M3.2 1.2 1 3l2.2 1.8M12.8 1.2 15 3l-2.2 1.8M1 3h14"/></svg> <span class="vh">and</span> Talent</span><span class="cn-bar"><span class="cn-track" aria-hidden="true"><span class="cn-fill" style="--w:100%"></span></span><span class="cn-val">18</span></span></li>
+          <li><span class="cn-pair">Regulation <svg width="16" height="6" viewBox="0 0 16 6" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M3.2 1.2 1 3l2.2 1.8M12.8 1.2 15 3l-2.2 1.8M1 3h14"/></svg> <span class="vh">and</span> Talent</span><span class="cn-bar"><span class="cn-track" aria-hidden="true"><span class="cn-fill" style="--w:83.3%"></span></span><span class="cn-val">15</span></span></li>
+          <li><span class="cn-pair">AI <svg width="16" height="6" viewBox="0 0 16 6" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M3.2 1.2 1 3l2.2 1.8M12.8 1.2 15 3l-2.2 1.8M1 3h14"/></svg> <span class="vh">and</span> Work design</span><span class="cn-bar"><span class="cn-track" aria-hidden="true"><span class="cn-fill" style="--w:77.8%"></span></span><span class="cn-val">14</span></span></li>
+          <li><span class="cn-pair">Talent <svg width="16" height="6" viewBox="0 0 16 6" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M3.2 1.2 1 3l2.2 1.8M12.8 1.2 15 3l-2.2 1.8M1 3h14"/></svg> <span class="vh">and</span> Work design</span><span class="cn-bar"><span class="cn-track" aria-hidden="true"><span class="cn-fill" style="--w:66.7%"></span></span><span class="cn-val">12</span></span></li>
+          <li><span class="cn-pair">AI <svg width="16" height="6" viewBox="0 0 16 6" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M3.2 1.2 1 3l2.2 1.8M12.8 1.2 15 3l-2.2 1.8M1 3h14"/></svg> <span class="vh">and</span> Regulation</span><span class="cn-bar"><span class="cn-track" aria-hidden="true"><span class="cn-fill" style="--w:61.1%"></span></span><span class="cn-val">11</span></span></li>
+          <li><span class="cn-pair">Geopolitics <svg width="16" height="6" viewBox="0 0 16 6" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M3.2 1.2 1 3l2.2 1.8M12.8 1.2 15 3l-2.2 1.8M1 3h14"/></svg> <span class="vh">and</span> Supply and infrastructure</span><span class="cn-bar"><span class="cn-track" aria-hidden="true"><span class="cn-fill" style="--w:55.6%"></span></span><span class="cn-val">10</span></span></li>
         </ul>
       </div>
     </div>
+    <p class="ev-note">Respondent reach counts each expert respondent once per theme across the five questions: breadth across people, not answer incidence, which is counted separately. Theme pairs are counted only where both appear in the same answer, so a connection sits inside one observation rather than across a respondent. Geopolitics (16 of 17) and regulation (14 of 17) were prompted lenses in the questionnaire, so their reach and their pairings partly reflect questionnaire design. They are left out of the reach ranking; the fourth signal sets out what they act through.</p>
   </section>
 
-  <!-- EDITION: the five signals. Numbered observations, not cards. Signal 05
-       is the wide one at the foot of the set. -->
+  <!-- EDITION 07: the five signals. Numbered observations, not cards. Signal
+       05 is the wide one at the foot of the set, on screen and in print. -->
   <section class="sec" aria-labelledby="sig-h">
     <div class="sec-head">
       <p class="kicker">Signals</p>
@@ -109,7 +118,7 @@
       <article class="sig">
         <p class="sig-num">01</p>
         <h3>AI and talent are becoming one operating problem</h3>
-        <p>AI and talent each reached 15 of 17 expert respondents, and the pairing of the two was the strongest same-answer connection in the analysis.</p>
+        <p>AI and talent each reached 15 of 17 expert respondents, and the AI–talent relationship was the strongest same-answer connection in the analysis.</p>
         <p class="sig-key">The issue is increasingly not simply how much labour AI can replace, but which human capabilities become scarce as work is redesigned.</p>
         <p class="sig-mark"><b>15/17</b> AI <i>|</i> <b>15/17</b> talent <i>|</i> <b>18</b> same-answer connections</p>
       </article>
@@ -131,7 +140,7 @@
         <h3>AI governance is creating work as well as constraining automation</h3>
         <p>Respondents describe AI-related regulation, assurance, documentation and human review adding cognitively demanding work even while other tasks are automated.</p>
         <p class="sig-key">Automation does not necessarily remove work. It can move work into oversight, exception handling and judgement.</p>
-        <p class="sig-mark"><b>10</b> respondents linked AI to regulation, assurance or human-review burden</p>
+        <p>10 respondents linked AI to regulation, assurance or human-review burden.</p>
       </article>
 
       <article class="sig">
@@ -147,7 +156,6 @@
           <li>strategic capacity</li>
         </ul>
         <p class="sig-key">Strategic pressure matters when it changes access to inputs, infrastructure, expertise and operating capacity.</p>
-        <p class="sig-mark">Prompted lens <i>|</i> <b>16/17</b> reach <i>|</i> <b>3</b> mention it outside the prompt</p>
       </article>
 
       <article class="sig sig-wide">
@@ -169,52 +177,53 @@
     </div>
   </section>
 
-  <!-- EDITION: monitoring baskets (six) and the design rule sentence. -->
-  <section class="sec" aria-labelledby="mon-h">
+  <!-- EDITION 08: monitoring baskets (six). EDITION 09: the design rule. -->
+  <section class="sec" id="indicators" aria-labelledby="mon-h">
     <div class="sec-head">
       <p class="kicker">Indicators</p>
       <h2 id="mon-h">What should leaders monitor now?</h2>
     </div>
     <div class="baskets">
       <article class="basket">
-        <h3><span class="bn">01</span>AI augmentation vs substitution</h3>
+        <h3><span class="bn" aria-hidden="true">01</span>AI augmentation vs substitution</h3>
         <p>Deployment by workflow, roles not refilled, graduate and trainee intake, human-review queues, workload after redesign.</p>
       </article>
       <article class="basket">
-        <h3><span class="bn">02</span>Talent mobility and regulatory friction</h3>
+        <h3><span class="bn" aria-hidden="true">02</span>Talent mobility and regulatory friction</h3>
         <p>Work-permit and licence lead times, repeat vacancies, offer withdrawals, skilled-worker exits.</p>
       </article>
       <article class="basket">
-        <h3><span class="bn">03</span>Usable capacity and wellbeing</h3>
+        <h3><span class="bn" aria-hidden="true">03</span>Usable capacity and wellbeing</h3>
         <p>Absence, part-time hours by skill group, overtime, readiness restrictions, burnout and workload pressure.</p>
       </article>
       <article class="basket">
-        <h3><span class="bn">04</span>Critical infrastructure and supply dependency</h3>
+        <h3><span class="bn" aria-hidden="true">04</span>Critical infrastructure and supply dependency</h3>
         <p>Medicine and medtech concentration, chokepoints, backup suppliers, data-centre energy and water constraints.</p>
       </article>
       <article class="basket">
-        <h3><span class="bn">05</span>Knowledge redundancy and succession</h3>
+        <h3><span class="bn" aria-hidden="true">05</span>Knowledge redundancy and succession</h3>
         <p>Named-expert escalation, shadow coverage, cross-training, succession and recovery documentation.</p>
       </article>
       <article class="basket">
-        <h3><span class="bn">06</span>Trust, disclosure and measurement quality</h3>
+        <h3><span class="bn" aria-hidden="true">06</span>Trust, disclosure and measurement quality</h3>
         <p>Hiring transparency, ghost jobs, disclosure delays, AI/data trust and adoption-to-utilisation gaps.</p>
       </article>
     </div>
+    <!-- EDITION 09: the design rule, as a pull-out under the baskets. -->
     <div class="principle">
-      <p class="kicker">Design rule</p>
+      <p class="principle-lbl">Design rule</p>
       <p class="principle-rule">Every activity measure should be paired with an outcome measure and a dependency measure.</p>
     </div>
   </section>
 
-  <!-- EDITION: the implication. The line the reader should remember. -->
+  <!-- EDITION 10: the bigger signal. The line the reader should remember. -->
   <section class="bigsig" aria-labelledby="big-h">
-    <p class="kicker">Implication</p>
     <h2 id="big-h">The bigger signal</h2>
     <p>The emerging risk is not necessarily failure to adapt. It is adaptation that preserves visible output while concentrating the invisible work of continuity, judgement and exception handling in fewer people or more fragile infrastructure.</p>
   </section>
 
-  <!-- Guild context. Standing copy: it rarely changes between editions. -->
+  <!-- EDITION 11: Guild context. Standing copy: it rarely changes between
+       editions, but it is an edition block like the rest. -->
   <section class="sec" aria-labelledby="ctx-h">
     <div class="sec-head">
       <p class="kicker">The Guild</p>
@@ -226,7 +235,7 @@
     </div>
   </section>
 
-  <!-- EDITION: methodology note. Counts change, the caveats do not. -->
+  <!-- EDITION 12: methodology note. Counts change, the caveats do not. -->
   <p class="note"><b>Source:</b> Mission Grey Guild Weak-Signal Snapshot, August 2026. 17 substantive expert respondents and 80 coded answer units. This is a small, self-selected expert sample and not a representative population survey. Quantitative findings describe this response set. Respondent factual claims are treated as leads unless independently verified.</p>
 
 </div>
@@ -235,11 +244,16 @@
 <footer class="foot wrap">
   <p class="foot-brand">Mission Grey<span>External Intelligence for Decision-Making</span></p>
   <div class="foot-links">
-    <!-- CONFIG SITE_URL: the Mission Grey website. One place, one value. -->
+    <!-- EDITION 13, CONFIG SITE_URL: the Mission Grey website. One value. -->
     <a class="cta" href="https://missiongrey.com/">Explore Mission Grey<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5 12.5 5 9 8.5"/></svg></a>
-    <!-- CONFIG REPORT_URL: PLACEHOLDER, currently "#". Replace with the
-         address of the published August analysis when it goes live. -->
-    <a class="cta cta-2" href="#">Read the full August analysis<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5 12.5 5 9 8.5"/></svg></a>
+    <!-- EDITION 13, CONFIG REPORT_URL: the second link stays commented out
+         until the full analysis has a public address. To enable it, put that
+         address inside the empty href below and remove the two comment
+         markers around the link. Nothing else changes. The href is left empty
+         rather than "#" because the build rejects a reference that resolves
+         to nothing.
+    <a class="cta cta-2" href="">Read the full August analysis<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5 12.5 5 9 8.5"/></svg></a>
+    -->
   </div>
 </footer>
 

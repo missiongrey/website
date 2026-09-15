@@ -109,6 +109,11 @@ img{max-width:100%;height:auto}
 .skip{position:absolute;left:-9999px;top:0;z-index:20;background:var(--navy);color:var(--cream);padding:10px 18px;font:500 12px var(--mono)}
 .skip:focus{left:12px;top:12px}
 :focus-visible{outline:2px solid var(--gold-ink);outline-offset:3px}
+/* .nb keeps a hyphenated term whole; .vh gives assistive technology a word
+   the layout carries as a mark. */
+.nb{white-space:nowrap}
+.vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
+  clip-path:inset(50%);white-space:nowrap;border:0}
 
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)}
 
@@ -122,8 +127,6 @@ img{max-width:100%;height:auto}
 .kicker::before{content:"";display:inline-block;width:14px;height:2px;
   background:var(--gold);vertical-align:.24em;margin-right:9px}
 h2{font:600 var(--fs-h2)/1.18 var(--serif);letter-spacing:-.012em;color:var(--navy)}
-.sec-note{font:400 var(--fs-small)/1.5 var(--sans);color:var(--ink-3);
-  margin-left:auto;max-width:46ch}
 
 /* ============ 04 MASTHEAD ============ */
 .masthead{padding-top:34px}
@@ -150,7 +153,10 @@ h2{font:600 var(--fs-h2)/1.18 var(--serif);letter-spacing:-.012em;color:var(--na
 .lead{margin-top:clamp(26px,3vw,38px);background:var(--cream-2);
   border-left:3px solid var(--gold);padding:clamp(20px,2.4vw,28px) clamp(20px,2.6vw,32px);
   break-inside:avoid}
-.lead .kicker{color:var(--gold-ink)}
+/* .lead p would otherwise win the cascade over .kicker and set the label in
+   serif at lede size; the scoped rule restates the label font. */
+.lead .kicker{font:500 var(--fs-label)/1 var(--mono);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gold-ink)}
 .lead .kicker::before{background:var(--navy)}
 .lead h2{margin-top:10px;font-size:clamp(23px,2.3vw,31px);font-weight:600;line-height:1.14}
 .lead p{margin-top:12px;font:400 var(--fs-lede)/1.52 var(--serif);color:var(--ink);max-width:88ch}
@@ -161,7 +167,10 @@ h2{font:600 var(--fs-h2)/1.18 var(--serif);letter-spacing:-.012em;color:var(--na
 .panel{break-inside:avoid}
 .panel-h{font:500 var(--fs-label)/1.4 var(--mono);letter-spacing:.16em;
   text-transform:uppercase;color:var(--ink-2)}
-.panel-sub{margin-top:5px;font:400 var(--fs-small)/1.5 var(--sans);color:var(--ink-3)}
+/* One caption under both charts: counting method first, prompted-lens caveat
+   last. Three scattered captions read as hedging; one reads as method. */
+.ev-note{margin-top:14px;padding-top:10px;border-top:1px solid var(--rule);
+  font:400 var(--fs-small)/1.5 var(--sans);color:var(--ink-3);max-width:104ch}
 
 .chart{margin-top:14px;border-top:1px solid var(--rule)}
 .chart li{display:grid;grid-template-columns:minmax(0,1fr) 34%;
@@ -169,8 +178,7 @@ h2{font:600 var(--fs-h2)/1.18 var(--serif);letter-spacing:-.012em;color:var(--na
 .ch-label{font:400 var(--fs-small)/1.35 var(--sans);color:var(--ink)}
 .ch-bar{display:flex;align-items:center;gap:9px}
 .ch-track{flex:1 1 auto;height:9px;background:rgba(20,43,69,.09);position:relative}
-.ch-fill{display:block;height:100%;width:var(--w);background:var(--navy);
-  border-right:2px solid var(--gold)}
+.ch-fill{display:block;height:100%;width:var(--w);background:var(--navy)}
 .ch-val{flex:none;font:500 var(--fs-mark)/1 var(--mono);color:var(--navy);
   letter-spacing:.04em;min-width:44px;text-align:right}
 
@@ -196,21 +204,28 @@ h2{font:600 var(--fs-h2)/1.18 var(--serif);letter-spacing:-.012em;color:var(--na
 .sig-list li{position:relative;padding-left:15px;margin-top:5px}
 .sig-list li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;background:var(--gold)}
 /* A set of short items reads as one taxonomy line rather than six rows.
-   The separator is an ::after inside the item, so a wrapped line never
-   opens with a stray mark. */
+   Each item is a nowrap flex item and carries its own leading separator, so
+   the mark can never be left dangling at the end of a wrapped line. */
 .sig-inline{margin-top:8px;display:flex;flex-wrap:wrap;
   font-size:var(--fs-small);line-height:1.45;color:var(--ink-2)}
-.sig-inline li{margin-right:11px;position:relative}
-.sig-inline li:not(:last-child)::after{content:"";display:inline-block;
-  width:4px;height:4px;margin-left:11px;background:var(--gold);vertical-align:.1em}
-.sig-key{margin-top:10px;padding-left:12px;border-left:2px solid var(--navy);
-  font:400 var(--fs-small)/1.45 var(--serif);color:var(--navy);font-size:calc(var(--fs-small) + 1px)}
-.sig-mark{margin-top:10px;font:500 var(--fs-label)/1.5 var(--mono);letter-spacing:.12em;
-  text-transform:uppercase;color:var(--ink-3)}
+.sig-inline li{margin-right:11px;position:relative;white-space:nowrap}
+.sig-inline li:not(:first-child)::before{content:"";display:inline-block;
+  width:4px;height:4px;margin-right:11px;background:var(--gold);vertical-align:.1em}
+/* Both of these are scoped .sig X rather than bare .X: .sig p carries a
+   font-size and outranks a single class, which silently overrode the key
+   line and the data marker before. */
+.sig .sig-key{margin-top:10px;padding-left:12px;border-left:2px solid var(--navy);
+  font:400 var(--serif);color:var(--navy);line-height:1.45;
+  font-size:calc(var(--fs-small) + 1px)}
+/* One data line, one line at every width: the size is bounded by the
+   narrowest column it ever sits in (the 2-up signal grid at 861px), so it
+   never wraps and never overflows. Print sets it from --fs-small. */
+.sig .sig-mark{margin-top:10px;white-space:nowrap;color:var(--ink-3);
+  font-family:var(--mono);font-weight:500;font-size:10.5px;line-height:1.5;
+  letter-spacing:.02em;text-transform:uppercase}
+.sig .sig-mark i{padding:0 .4em}
 .sig-mark b{color:var(--navy);font-weight:500}
 .sig-wide{grid-column:1 / -1}
-.sig-wide .sig-list{columns:2;column-gap:clamp(28px,3.4vw,52px)}
-.sig-wide .sig-list li{break-inside:avoid}
 
 /* ============ 08 MONITORING ============ */
 .baskets{margin-top:20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
@@ -220,19 +235,19 @@ h2{font:600 var(--fs-h2)/1.18 var(--serif);letter-spacing:-.012em;color:var(--na
   display:flex;gap:9px;align-items:baseline}
 .basket h3 .bn{font:500 var(--fs-label)/1 var(--mono);color:var(--gold-ink);flex:none}
 .basket p{margin-top:7px;font-size:var(--fs-small);line-height:1.45;color:var(--ink-2)}
-.principle{margin-top:16px;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;
-  border-top:2px solid var(--gold);padding-top:12px;break-inside:avoid}
-.principle .kicker{color:var(--gold-ink)}
-.principle .kicker::before{background:var(--navy)}
-.principle .kicker{flex:none}
-.principle-rule{font:600 clamp(17px,1.5vw,21px)/1.3 var(--serif);color:var(--navy);flex:1 1 320px}
+/* The design rule is a pull-out, not a section heading: the core conclusion
+   treatment at a smaller scale, so it reads as a rule the reader can lift. */
+.principle{margin-top:16px;background:var(--cream-2);border-left:3px solid var(--gold);
+  padding:14px 18px 16px;break-inside:avoid}
+.principle-lbl{font:500 var(--fs-label)/1 var(--mono);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gold-ink)}
+.principle-rule{margin-top:8px;font:600 clamp(16px,1.35vw,19px)/1.32 var(--serif);
+  color:var(--navy)}
 
 /* ============ 09 IMPLICATION ============ */
 .bigsig{margin-top:var(--sec-gap);background:var(--navy-deep);color:var(--cream);
   padding:clamp(26px,3vw,38px) clamp(24px,3.2vw,44px);break-inside:avoid}
-.bigsig .kicker{color:var(--gold-on-navy)}
-.bigsig .kicker::before{background:var(--gold-on-navy)}
-.bigsig h2{margin-top:10px;color:var(--cream)}
+.bigsig h2{color:var(--cream)}
 .bigsig p{margin-top:12px;font:400 clamp(19px,1.9vw,25px)/1.36 var(--serif);
   color:#fff;max-width:74ch;letter-spacing:-.005em}
 
@@ -244,9 +259,15 @@ h2{font:600 var(--fs-h2)/1.18 var(--serif);letter-spacing:-.012em;color:var(--na
   font:400 11.5px/1.5 var(--sans);color:var(--ink-3);max-width:104ch;break-inside:avoid}
 .note b{font-weight:600;color:var(--ink-2)}
 
-.foot{margin-top:26px;padding:16px 0 40px;border-top:2px solid var(--navy);
+/* The footer is itself a .wrap, so its own border would run the full wrap
+   width while every other rule on the page stops at the gutter. The rule is
+   drawn inside the content box instead, and the gutter comes from --pad so
+   the footer text sits on the same column as the rest. */
+.foot{position:relative;margin-top:26px;padding:16px var(--pad) 40px;
   display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 32px;
   break-inside:avoid}
+.foot::before{content:"";position:absolute;top:0;left:var(--pad);right:var(--pad);
+  border-top:2px solid var(--navy)}
 .foot-brand{font:500 var(--fs-mark)/1.5 var(--mono);letter-spacing:.2em;
   text-transform:uppercase;color:var(--navy)}
 .foot-brand span{display:block;letter-spacing:.1em;color:var(--ink-3);font-weight:400}
@@ -270,25 +291,30 @@ h2{font:600 var(--fs-h2)/1.18 var(--serif);letter-spacing:-.012em;color:var(--na
 @media screen and (max-width:860px){
   .evidence{grid-template-columns:minmax(0,1fr);gap:26px}
   .signals{grid-template-columns:minmax(0,1fr)}
-  .sig-wide .sig-list{columns:1}
   .ctx{grid-template-columns:minmax(0,1fr)}
-  .mh-body{grid-template-columns:minmax(0,1fr)}
-  .mh-evidence{white-space:normal}
 }
 @media screen and (max-width:640px){
   :root{--pad:20px;--fs-body:14.5px;--fs-small:13.5px;--sec-gap:30px}
   .baskets{grid-template-columns:minmax(0,1fr)}
   .chart li,.conn li{grid-template-columns:minmax(0,1fr);gap:6px}
   .ch-val,.cn-val{min-width:0}
+  .sig .sig-mark{font-size:min(10.5px,2.4vw)}
   .sig-inline{display:block}
-  .sig-inline li{margin:5px 0 0;padding-left:15px}
-  .sig-inline li::before{content:"";position:absolute;left:0;top:.62em;
+  .sig-inline li{margin:5px 0 0;padding-left:15px;white-space:normal}
+  .sig-inline li::before,.sig-inline li:not(:first-child)::before{
+    content:"";position:absolute;left:0;top:.62em;display:block;margin:0;
     width:5px;height:5px;background:var(--gold)}
-  .sig-inline li:not(:last-child)::after{display:none}
   .mh-top{gap:10px}
   .mh-ref{text-align:left}
   .mh-logo{height:22px}
   .note{font-size:11px}
+}
+/* A phone column cannot hold either masthead line whole, so both stack at
+   their own separator and the pipe goes rather than dangle at a line end. */
+@media screen and (max-width:430px){
+  .mh-eyebrow > span,.mh-ref > span{display:block}
+  .mh-eyebrow i,.mh-ref i{display:none}
+  .mh-eyebrow{letter-spacing:.2em;line-height:1.5}
 }
 
 /* ============ 12 PRINT ============
@@ -300,14 +326,14 @@ h2{font:600 var(--fs-h2)/1.18 var(--serif);letter-spacing:-.012em;color:var(--na
 @page{size:A4 portrait;margin:9mm 10mm}
 @media print{
   :root{
-    --pf:.905;
+    --pf:.89;
     --fs-h1:calc(var(--pf)*21px);
     --fs-h2:calc(var(--pf)*12px);
     --fs-h3:calc(var(--pf)*9.6px);
     --fs-lede:calc(var(--pf)*11px);
     --fs-body:calc(var(--pf)*9.4px);
     --fs-small:calc(var(--pf)*9.3px);
-    --fs-label:calc(var(--pf)*7px);
+    --fs-label:calc(var(--pf)*8.4px);
     --fs-mark:calc(var(--pf)*8px);
     --lh-body:1.24;--sec-gap:4px;--wrap:none;--pad:0;
   }
@@ -329,44 +355,86 @@ h2{font:600 var(--fs-h2)/1.18 var(--serif);letter-spacing:-.012em;color:var(--na
 
   .sec{padding-top:var(--sec-gap)}
   .sec-head{padding-top:3px;gap:2px 16px}
-  .sec-note{font-size:calc(var(--pf)*8px);line-height:1.3;max-width:54ch}
 
   .evidence{margin-top:3px;gap:18px}
-  .panel-sub{margin-top:2px;font-size:calc(var(--pf)*8px);line-height:1.3}
+  .ev-note{margin-top:5px;padding-top:4px;font-size:calc(var(--pf)*8.6px);
+    line-height:1.3;max-width:none}
   .chart,.conn{margin-top:4px}
   .chart li,.conn li{padding:1.4px 0}
   .ch-track{height:6px}
 
-  /* Balanced columns pack the five blocks tighter than grid rows, which
-     would leave every row as tall as its tallest block. The signal number
-     runs into its heading rather than sitting on a line of its own. */
-  .signals{margin-top:4px;display:block;columns:2;column-gap:20px}
-  .sig{padding-top:4px;margin-bottom:4px}
-  .sig-wide{column-span:all;margin-bottom:0}
+  /* The same row-major grid as the screen, so the printed reading order is
+     01 02 / 03 04 / 05 and matches the numbering. The signal number runs
+     into its heading rather than sitting on a line of its own. */
+  .signals{margin-top:4px;gap:7px 20px}
+  .sig{padding-top:4px}
   .sig-num{display:inline;margin-right:5px}
   .sig h3{display:inline;margin-top:0}
   .sig p,.sig-list,.sig-inline{margin-top:2px;line-height:1.28}
   .sig-list li{margin-top:1px;padding-left:9px}
   .sig-list li::before{width:4px;height:4px}
-  .sig-key{margin-top:3px;padding-left:7px;border-left-width:1.5px;
+  .sig .sig-key{margin-top:3px;padding-left:7px;border-left-width:1.5px;
     font-size:calc(var(--pf)*9.6px);line-height:1.28}
-  .sig-mark{margin-top:3px;line-height:1.3}
+  .sig .sig-mark{margin-top:3px;font-size:var(--fs-small);line-height:1.3;letter-spacing:.03em}
 
   .baskets{margin-top:3px}
   .basket{padding:4px 7px 5px}
   .basket h3{gap:6px;line-height:1.25}
   .basket p{margin-top:2px;line-height:1.28}
-  .principle{margin-top:5px;padding-top:4px;gap:3px 14px;border-top-width:1.5px}
-  .principle-rule{font-size:calc(var(--pf)*11px);line-height:1.24}
+  .principle{margin-top:5px;padding:5px 9px 6px;border-left-width:2.5px}
+  .principle-rule{margin-top:3px;font-size:calc(var(--pf)*11px);line-height:1.24}
 
   .bigsig{margin-top:6px;padding:6px 12px}
-  .bigsig h2{margin-top:3px}
   .bigsig p{margin-top:3px;font-size:calc(var(--pf)*12.2px);line-height:1.26;max-width:none}
 
   .ctx{margin-top:4px;gap:4px 20px}
   .ctx p{line-height:1.28}
   .note{margin-top:4px;padding-top:3px;font-size:calc(var(--pf)*8.6px);
     line-height:1.3;max-width:none}
-  .foot{margin-top:4px;padding:4px 0 0;border-top-width:1.2px}
+  .foot{margin-top:4px;padding:4px 0 0}
+  .foot::before{border-top-width:1.2px}
   .cta{border-bottom:none;padding-bottom:0}
+
+  /* ---- Two-page variant -------------------------------------------------
+     Add class="two-page" to <body> and print. The sheet keeps this layout
+     but takes the reading sizes of the brief (supporting text 8.5pt,
+     methodology note 7.9pt) and its spacing opens back up, so the two pages
+     carry comparable weight: page one runs masthead to the five signals,
+     page two carries the indicators, the design rule, the bigger signal, the
+     Guild and the note. Default printing is unaffected. */
+  body.two-page{--pf:1.22;--sec-gap:15px;--lh-body:1.32}
+  body.two-page .mh-logo{height:20px}
+  body.two-page .mh-top{padding-bottom:9px}
+  body.two-page .mh-eyebrow{margin-top:10px}
+  body.two-page .mh-title{margin-top:8px;line-height:1.04}
+  body.two-page .mh-desc{margin-top:9px;line-height:1.42}
+  body.two-page .mh-evidence{margin-top:10px;padding:6px 0}
+  body.two-page .lead{margin-top:14px;padding:13px 18px}
+  body.two-page .lead h2{margin-top:6px}
+  body.two-page .lead p{margin-top:7px;line-height:1.42}
+  body.two-page .sec-head{padding-top:7px}
+  body.two-page .evidence{margin-top:9px;gap:26px}
+  body.two-page .ev-note{margin-top:10px;padding-top:7px;line-height:1.42}
+  body.two-page .chart,body.two-page .conn{margin-top:8px}
+  body.two-page .chart li,body.two-page .conn li{padding:4px 0}
+  body.two-page .ch-track{height:8px}
+  body.two-page .signals{margin-top:10px;gap:14px 26px}
+  body.two-page .sig{padding-top:9px}
+  body.two-page .sig p,body.two-page .sig-list,body.two-page .sig-inline{margin-top:5px;line-height:1.42}
+  body.two-page .sig-list li{margin-top:3px}
+  body.two-page .sig-key{margin-top:7px;line-height:1.38}
+  body.two-page .sig-mark{margin-top:7px}
+  body.two-page #indicators{break-before:page}
+  body.two-page .baskets{margin-top:18px}
+  body.two-page .basket{padding:18px 16px 20px}
+  body.two-page .basket p{margin-top:7px;line-height:1.5}
+  body.two-page .principle{margin-top:24px;padding:17px 20px 19px}
+  body.two-page .principle-rule{margin-top:8px}
+  body.two-page .bigsig{margin-top:28px;padding:26px 24px}
+  body.two-page .bigsig p{margin-top:10px;line-height:1.42}
+  body.two-page .ctx{margin-top:18px;gap:12px 26px}
+  body.two-page .ctx p{line-height:1.5}
+  body.two-page .note{margin-top:28px;padding-top:12px;line-height:1.5}
+  body.two-page .foot{margin-top:24px;padding-top:14px}
+  body.two-page .foot::before{border-top-width:1.5px}
 }
