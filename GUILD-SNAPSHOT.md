@@ -27,19 +27,24 @@ restyle.
    13. footer links
    Update the `<title>`, description, canonical URL and the `og:` pair too.
 3. Bar widths are inline `--w` values: reach as a share of respondents,
-   connections as a share of the strongest pair. Keep the printed count beside
-   every bar, and keep respondent reach and answer incidence labelled apart in
-   the caption.
+   connections as a share of the strongest pair. The reach list prints the
+   share of respondents as a whole-number percent and nothing else beside
+   the bar (Jouko, 2026-09-16: percentages only, no base line); the
+   connections list keeps its counts. Keep respondent reach and answer
+   incidence labelled apart in the caption.
 4. Footer links are block 13. `CONFIG SITE_URL` is live. `CONFIG REPORT_URL`
    is the second link, commented out until the full analysis has a public
    address: put that address in its empty `href` and remove the two comment
    markers. The build rejects an `href` that resolves to nothing, so the
    placeholder is an empty value rather than `#`.
-5. Build with `deploy/build.sh` and print the page to A4.
+5. Build with `deploy/build.sh` and print the page to A4. The body carries
+   `class="two-page"`, so the print export is the two-page sheet described
+   below: that is the standard for the series (Jouko, 2026-09-16).
 
 ## The one-page ceiling
 
-The sheet is sized to fill exactly one A4 page. On this edition the printed
+Without the `two-page` class on `<body>`, the sheet is sized to fill exactly
+one A4 page. On this edition the printed
 content measures 1043 css px against a 1054 px text box at `--pf:.89`: eleven
 pixels of slack, with supporting text at 6.2pt. That is the ceiling, not a
 setting with room in it. `--pf:.90` still measures inside the box but already
@@ -51,15 +56,18 @@ slightly shorter edition, not a longer one. **A longer edition cuts copy.**
 Raising `--pf` to reach a comfortable reading size does not fit: the mandated
 content of this edition needs about one and a half A4 pages at 8.5pt.
 
-## Two-page variant
+## Two-page sheet (the series standard)
 
-For a reading-size export, add `class="two-page"` to `<body>` and print:
+The August 2026 edition ships with `class="two-page"` on `<body>`, so
+printing the page as served gives the two-page sheet. To produce the
+one-page ceiling sheet instead, remove the class and print:
 
-    sed 's|^<body>|<body class="two-page">|' index.html > two-page.html
+    sed 's|^<body class="two-page">|<body>|' index.html > one-page.html
 
-The variant is a block at the end of `snapshot.css` inside `@media print`.
+The two-page rules are a block at the end of `snapshot.css` inside `@media print`.
 It keeps this layout, takes the reading sizes (supporting text 8.5pt,
 methodology note 7.9pt), opens the spacing back up and breaks the page before
 the indicators section, so page one runs masthead to the five signals and page
 two carries the indicators, the design rule, the bigger signal, the Guild and
-the note. Default printing is untouched.
+the note. The one-page print rules stay in the stylesheet for a shorter
+edition that fits one sheet.

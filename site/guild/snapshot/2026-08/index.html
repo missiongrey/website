@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="../snapshot.css">
 <script src="../../../../assets/consent.js" data-ga="__GA_MEASUREMENT_ID__" defer></script>
 </head>
-<body>
+<body class="two-page">
 <a class="skip" href="#main">Skip to content</a>
 
 <!-- ==========================================================================
@@ -39,6 +39,9 @@
        11 Guild context (standing copy: it rarely changes between editions)
        12 methodology note
        13 footer links
+     The body carries class="two-page": the two-page print export is the
+     series standard (Jouko, 2026-09-16). Remove the class for the one-page
+     ceiling sheet.
      The recurring identity (palette, type, section scaffold, print rules)
      lives in ../snapshot.css and should not move from month to month.
      See GUILD-SNAPSHOT.md at the repository root.
@@ -71,9 +74,11 @@
   </section>
 
   <!-- EDITION 06: evidence. Two analytical visuals, then one caption line
-       carrying the counting method and the prompted-lens caveat. Bar widths
-       are set inline as --w (share of 17 for reach, share of the strongest
-       pair for connections). -->
+       carrying the counting method and the prompted-lens caveat. Reach shows
+       the share of respondents as a whole-number percent (Jouko, 2026-09-16:
+       percentages only on this list, no base line); connections stay counts.
+       Bar widths are set inline as --w (share of respondents for reach,
+       share of the strongest pair for connections). -->
   <section class="sec" aria-labelledby="ev-h">
     <div class="sec-head">
       <p class="kicker">Evidence</p>
@@ -83,12 +88,12 @@
       <div class="panel">
         <h3 class="panel-h">Respondent reach, recurring themes</h3>
         <ul class="chart">
-          <li><span class="ch-label">AI adoption, automation &amp; job redesign</span><span class="ch-bar"><span class="ch-track" aria-hidden="true"><span class="ch-fill" style="--w:88.2%"></span></span><span class="ch-val">15/17</span></span></li>
-          <li><span class="ch-label">Skills, hiring &amp; cross-border talent</span><span class="ch-bar"><span class="ch-track" aria-hidden="true"><span class="ch-fill" style="--w:88.2%"></span></span><span class="ch-val">15/17</span></span></li>
-          <li><span class="ch-label">Work design, participation &amp; career patterns</span><span class="ch-bar"><span class="ch-track" aria-hidden="true"><span class="ch-fill" style="--w:70.6%"></span></span><span class="ch-val">12/17</span></span></li>
-          <li><span class="ch-label">Workforce health, stress &amp; burnout</span><span class="ch-bar"><span class="ch-track" aria-hidden="true"><span class="ch-fill" style="--w:64.7%"></span></span><span class="ch-val">11/17</span></span></li>
-          <li><span class="ch-label">Supply chains, infrastructure &amp; dependencies</span><span class="ch-bar"><span class="ch-track" aria-hidden="true"><span class="ch-fill" style="--w:64.7%"></span></span><span class="ch-val">11/17</span></span></li>
-          <li><span class="ch-label">Usable capacity, readiness &amp; continuity</span><span class="ch-bar"><span class="ch-track" aria-hidden="true"><span class="ch-fill" style="--w:58.8%"></span></span><span class="ch-val">10/17</span></span></li>
+          <li><span class="ch-label">AI adoption, automation &amp; job redesign</span><span class="ch-bar"><span class="ch-track" aria-hidden="true"><span class="ch-fill" style="--w:88.2%"></span></span><span class="ch-val">88%</span></span></li>
+          <li><span class="ch-label">Skills, hiring &amp; cross-border talent</span><span class="ch-bar"><span class="ch-track" aria-hidden="true"><span class="ch-fill" style="--w:88.2%"></span></span><span class="ch-val">88%</span></span></li>
+          <li><span class="ch-label">Work design, participation &amp; career patterns</span><span class="ch-bar"><span class="ch-track" aria-hidden="true"><span class="ch-fill" style="--w:70.6%"></span></span><span class="ch-val">71%</span></span></li>
+          <li><span class="ch-label">Workforce health, stress &amp; burnout</span><span class="ch-bar"><span class="ch-track" aria-hidden="true"><span class="ch-fill" style="--w:64.7%"></span></span><span class="ch-val">65%</span></span></li>
+          <li><span class="ch-label">Supply chains, infrastructure &amp; dependencies</span><span class="ch-bar"><span class="ch-track" aria-hidden="true"><span class="ch-fill" style="--w:64.7%"></span></span><span class="ch-val">65%</span></span></li>
+          <li><span class="ch-label">Usable capacity, readiness &amp; continuity</span><span class="ch-bar"><span class="ch-track" aria-hidden="true"><span class="ch-fill" style="--w:58.8%"></span></span><span class="ch-val">59%</span></span></li>
         </ul>
       </div>
       <div class="panel">
