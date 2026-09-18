@@ -25,7 +25,7 @@
    People are rendered as a directory (hairline rows, headshot gutter —
    .person-photo lives in the system, section 14; the monogram is the
    fallback where no photo exists), the same idiom as the Guild roster
-   on /partners-guild/. */
+   on /guild/. */
 .nav-main a[aria-current="page"],.mnav-panel a[aria-current="page"]{color:var(--ink)}
 /* people directory */
 .roster{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(28px,4vw,64px);border-bottom:1px solid var(--line)}
@@ -74,6 +74,7 @@
       <a href="/platform/">Platform</a>
       <a href="/solutions/">Solutions</a>
       <a href="/use-cases/">Use cases</a>
+      <a href="/guild/">Guild</a>
       <a href="/partners-guild/">Partners</a>
       <a href="/api/">API</a>
       <a href="/insights/">Insights</a>
@@ -91,7 +92,8 @@
           <a href="/platform/">Platform</a>
           <a href="/solutions/">Solutions</a>
           <a href="/use-cases/">Use cases</a>
-          <a href="/partners-guild/">Partners &amp; Guild</a>
+          <a href="/guild/">Guild</a>
+          <a href="/partners-guild/">Partners</a>
           <a href="/api/">API</a>
           <a href="/insights/">Insights</a>
           <a href="/about/" aria-current="page">About</a>
@@ -144,10 +146,33 @@
     </div>
   </section>
 
+  <!-- ============ NAME ============ -->
+  <section class="sec" id="why-grey" aria-labelledby="name-h">
+    <div class="wrap">
+      <div class="name-grid">
+        <div class="name-copy reveal">
+          <p class="eyebrow" style="margin-bottom:18px">Why grey</p>
+          <h2 id="name-h">Built for the grey zone.</h2>
+          <p>The world does not arrive in black and white. Every consequential decision is made in between, where signals conflict, incentives collide, and certainty is not on offer. The mark is black and white resolving into grey. Mission Grey is the instrument for operating there.</p>
+        </div>
+        <div class="reveal">
+          <div class="resolve" aria-hidden="true">
+            <svg viewBox="0 0 180 180"><rect width="180" height="180"/><path d="M0 0h90v90H0zM90 90h90v90H90z"/></svg>
+            <svg viewBox="0 0 180 180"><rect width="180" height="180"/><path d="M55 20.5h34.5v34.5H55zM124 20.5h34.5v34.5H124zM20.5 55h34.5v34.5H20.5zM89.5 55h34.5v34.5H89.5zM55 89.5h34.5v34.5H55zM124 89.5h34.5v34.5H124zM20.5 124h34.5v34.5H20.5zM89.5 124h34.5v34.5H89.5z"/></svg>
+            <svg viewBox="0 0 180 180"><rect width="180" height="180"/><path d="M22.5 0.0h22.5v22.5H22.5zM67.5 0.0h22.5v22.5H67.5zM112.5 0.0h22.5v22.5H112.5zM157.5 0.0h22.5v22.5H157.5zM0.0 22.5h22.5v22.5H0.0zM45.0 22.5h22.5v22.5H45.0zM90.0 22.5h22.5v22.5H90.0zM135.0 22.5h22.5v22.5H135.0zM22.5 45.0h22.5v22.5H22.5zM67.5 45.0h22.5v22.5H67.5zM112.5 45.0h22.5v22.5H112.5zM157.5 45.0h22.5v22.5H157.5zM0.0 67.5h22.5v22.5H0.0zM45.0 67.5h22.5v22.5H45.0zM90.0 67.5h22.5v22.5H90.0zM135.0 67.5h22.5v22.5H135.0zM22.5 90.0h22.5v22.5H22.5zM67.5 90.0h22.5v22.5H67.5zM112.5 90.0h22.5v22.5H112.5zM157.5 90.0h22.5v22.5H157.5zM0.0 112.5h22.5v22.5H0.0zM45.0 112.5h22.5v22.5H45.0zM90.0 112.5h22.5v22.5H90.0zM135.0 112.5h22.5v22.5H135.0zM22.5 135.0h22.5v22.5H22.5zM67.5 135.0h22.5v22.5H67.5zM112.5 135.0h22.5v22.5H112.5zM157.5 135.0h22.5v22.5H157.5zM0.0 157.5h22.5v22.5H0.0zM45.0 157.5h22.5v22.5H45.0zM90.0 157.5h22.5v22.5H90.0zM135.0 157.5h22.5v22.5H135.0z"/></svg>
+            <svg viewBox="0 0 180 180"><rect width="180" height="180"/><path d="M11.25 0.0h11.25v11.25H11.25zM33.75 0.0h11.25v11.25H33.75zM56.25 0.0h11.25v11.25H56.25zM78.75 0.0h11.25v11.25H78.75zM101.25 0.0h11.25v11.25H101.25zM123.75 0.0h11.25v11.25H123.75zM146.25 0.0h11.25v11.25H146.25zM168.75 0.0h11.25v11.25H168.75zM0.0 11.25h11.25v11.25H0.0zM22.5 11.25h11.25v11.25H22.5zM45.0 11.25h11.25v11.25H45.0zM67.5 11.25h11.25v11.25H67.5zM90.0 11.25h11.25v11.25H90.0zM112.5 11.25h11.25v11.25H112.5zM135.0 11.25h11.25v11.25H135.0zM157.5 11.25h11.25v11.25H157.5zM11.25 22.5h11.25v11.25H11.25zM33.75 22.5h11.25v11.25H33.75zM56.25 22.5h11.25v11.25H56.25zM78.75 22.5h11.25v11.25H78.75zM101.25 22.5h11.25v11.25H101.25zM123.75 22.5h11.25v11.25H123.75zM146.25 22.5h11.25v11.25H146.25zM168.75 22.5h11.25v11.25H168.75zM0.0 33.75h11.25v11.25H0.0zM22.5 33.75h11.25v11.25H22.5zM45.0 33.75h11.25v11.25H45.0zM67.5 33.75h11.25v11.25H67.5zM90.0 33.75h11.25v11.25H90.0zM112.5 33.75h11.25v11.25H112.5zM135.0 33.75h11.25v11.25H135.0zM157.5 33.75h11.25v11.25H157.5zM11.25 45.0h11.25v11.25H11.25zM33.75 45.0h11.25v11.25H33.75zM56.25 45.0h11.25v11.25H56.25zM78.75 45.0h11.25v11.25H78.75zM101.25 45.0h11.25v11.25H101.25zM123.75 45.0h11.25v11.25H123.75zM146.25 45.0h11.25v11.25H146.25zM168.75 45.0h11.25v11.25H168.75zM0.0 56.25h11.25v11.25H0.0zM22.5 56.25h11.25v11.25H22.5zM45.0 56.25h11.25v11.25H45.0zM67.5 56.25h11.25v11.25H67.5zM90.0 56.25h11.25v11.25H90.0zM112.5 56.25h11.25v11.25H112.5zM135.0 56.25h11.25v11.25H135.0zM157.5 56.25h11.25v11.25H157.5zM11.25 67.5h11.25v11.25H11.25zM33.75 67.5h11.25v11.25H33.75zM56.25 67.5h11.25v11.25H56.25zM78.75 67.5h11.25v11.25H78.75zM101.25 67.5h11.25v11.25H101.25zM123.75 67.5h11.25v11.25H123.75zM146.25 67.5h11.25v11.25H146.25zM168.75 67.5h11.25v11.25H168.75zM0.0 78.75h11.25v11.25H0.0zM22.5 78.75h11.25v11.25H22.5zM45.0 78.75h11.25v11.25H45.0zM67.5 78.75h11.25v11.25H67.5zM90.0 78.75h11.25v11.25H90.0zM112.5 78.75h11.25v11.25H112.5zM135.0 78.75h11.25v11.25H135.0zM157.5 78.75h11.25v11.25H157.5zM11.25 90.0h11.25v11.25H11.25zM33.75 90.0h11.25v11.25H33.75zM56.25 90.0h11.25v11.25H56.25zM78.75 90.0h11.25v11.25H78.75zM101.25 90.0h11.25v11.25H101.25zM123.75 90.0h11.25v11.25H123.75zM146.25 90.0h11.25v11.25H146.25zM168.75 90.0h11.25v11.25H168.75zM0.0 101.25h11.25v11.25H0.0zM22.5 101.25h11.25v11.25H22.5zM45.0 101.25h11.25v11.25H45.0zM67.5 101.25h11.25v11.25H67.5zM90.0 101.25h11.25v11.25H90.0zM112.5 101.25h11.25v11.25H112.5zM135.0 101.25h11.25v11.25H135.0zM157.5 101.25h11.25v11.25H157.5zM11.25 112.5h11.25v11.25H11.25zM33.75 112.5h11.25v11.25H33.75zM56.25 112.5h11.25v11.25H56.25zM78.75 112.5h11.25v11.25H78.75zM101.25 112.5h11.25v11.25H101.25zM123.75 112.5h11.25v11.25H123.75zM146.25 112.5h11.25v11.25H146.25zM168.75 112.5h11.25v11.25H168.75zM0.0 123.75h11.25v11.25H0.0zM22.5 123.75h11.25v11.25H22.5zM45.0 123.75h11.25v11.25H45.0zM67.5 123.75h11.25v11.25H67.5zM90.0 123.75h11.25v11.25H90.0zM112.5 123.75h11.25v11.25H112.5zM135.0 123.75h11.25v11.25H135.0zM157.5 123.75h11.25v11.25H157.5zM11.25 135.0h11.25v11.25H11.25zM33.75 135.0h11.25v11.25H33.75zM56.25 135.0h11.25v11.25H56.25zM78.75 135.0h11.25v11.25H78.75zM101.25 135.0h11.25v11.25H101.25zM123.75 135.0h11.25v11.25H123.75zM146.25 135.0h11.25v11.25H146.25zM168.75 135.0h11.25v11.25H168.75zM0.0 146.25h11.25v11.25H0.0zM22.5 146.25h11.25v11.25H22.5zM45.0 146.25h11.25v11.25H45.0zM67.5 146.25h11.25v11.25H67.5zM90.0 146.25h11.25v11.25H90.0zM112.5 146.25h11.25v11.25H112.5zM135.0 146.25h11.25v11.25H135.0zM157.5 146.25h11.25v11.25H157.5zM11.25 157.5h11.25v11.25H11.25zM33.75 157.5h11.25v11.25H33.75zM56.25 157.5h11.25v11.25H56.25zM78.75 157.5h11.25v11.25H78.75zM101.25 157.5h11.25v11.25H101.25zM123.75 157.5h11.25v11.25H123.75zM146.25 157.5h11.25v11.25H146.25zM168.75 157.5h11.25v11.25H168.75zM0.0 168.75h11.25v11.25H0.0zM22.5 168.75h11.25v11.25H22.5zM45.0 168.75h11.25v11.25H45.0zM67.5 168.75h11.25v11.25H67.5zM90.0 168.75h11.25v11.25H90.0zM112.5 168.75h11.25v11.25H112.5zM135.0 168.75h11.25v11.25H135.0zM157.5 168.75h11.25v11.25H157.5z"/></svg>
+            <svg viewBox="0 0 180 180"><rect width="180" height="180"/></svg>
+          </div>
+          <p class="resolve-cap">Black and white, resolving into grey</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ TEAM ============ -->
   <section class="sec" id="team" aria-labelledby="team-h">
     <div class="wrap">
-      <p class="rule-label">The team</p>
+      <p class="rule-label">Core team</p>
       <div class="sec-head reveal" style="margin-top:44px">
         <h2 id="team-h">The people accountable for the work.</h2>
       </div>
@@ -288,7 +313,7 @@
         </article>
 
         <article class="person">
-          <img class="person-photo" src="../../assets/people/lauri-byckling.jpeg" alt="Lauri Byckling, Advisor" width="48" height="48" loading="lazy">
+          <img class="person-photo" src="../../assets/people/lauri-byckling.jpeg" alt="Lauri Byckling, Strategic Advisor" width="48" height="48" loading="lazy">
           <div>
             <h3>Lauri Byckling</h3>
             <p class="role">Strategic Advisor</p>
@@ -387,7 +412,7 @@
 
       </div>
 
-      <p class="rule-label" style="margin-top:clamp(44px,5vw,64px)">Advisors</p>
+      <p class="rule-label" style="margin-top:clamp(44px,5vw,64px)">Advisors and network</p>
       <div class="roster reveal" style="margin-top:24px">
 
         <article class="person">
@@ -450,7 +475,7 @@
       <span class="inst">Aalto University</span>
       <span class="inst">Tampere University</span>
       <span class="strip-rule" aria-hidden="true"></span>
-      <a class="strip-link" href="/partners-guild/">Partners and the Guild</a>
+      <a class="strip-link" href="/partners-guild/">Partners</a>
     </div>
   </section>
 
@@ -465,15 +490,15 @@
       <div class="offices reveal">
         <div class="office">
           <h3>Americas</h3>
-          <p>Venture X, Arlington, VA<small>United States</small></p>
+          <p>Arlington, VA<small>United States</small></p>
         </div>
         <div class="office">
           <h3>Europe, Middle East &amp; Africa</h3>
-          <p>La Défense, Puteaux<small>France</small></p>
+          <p>Puteaux<small>France</small></p>
         </div>
         <div class="office">
           <h3>Asia</h3>
-          <p>Raffles Place<small>Singapore</small></p>
+          <p>Singapore</p>
         </div>
       </div>
       <p class="office-foot reveal">
@@ -486,12 +511,16 @@
   <section class="sec" id="category" aria-labelledby="cat-h" style="padding-top:0">
     <div class="wrap">
       <div class="frame access-panel reveal"><span class="tick"></span>
-        <p class="eyebrow">A new category</p>
+        <p class="eyebrow">Access</p>
         <h2 id="cat-h">Intelligence, modeling, and expertise in one system.</h2>
         <p>Mission Grey combines intelligence, modeling, and expertise into one system. The platform, the research models, and the Guild operate together. Access is by request.</p>
         <div class="access-cta">
           <a class="btn btn-primary" href="/contact/">Request access</a>
-          <a class="btn btn-ghost" href="https://calendly.com/lauri-missiongrey/30min">Book a demo</a>
+          <a class="btn btn-ghost" href="https://calendly.com/lauri-missiongrey/30min">See it on your decision</a>
+        </div>
+        <div class="cta-notes">
+          <p><b>Request access</b>For organizations ready to start working with Mission Grey.</p>
+          <p><b>See it on your decision</b>A short working session using a real question, exposure or opportunity from your organization.</p>
         </div>
         <p class="access-mail"><a href="mailto:contact@missiongrey.com">contact@missiongrey.com</a></p>
       </div>
@@ -527,7 +556,8 @@
         <h3>Company</h3>
         <ul>
           <li><a href="/about/">About us</a></li>
-          <li><a href="/partners-guild/">Partners &amp; Guild</a></li>
+          <li><a href="/guild/">Guild</a></li>
+          <li><a href="/partners-guild/">Partners</a></li>
           <li><a href="/insights/">Insights</a></li>
           <li><a href="/contact/">Contact</a></li>
         </ul>
@@ -536,15 +566,27 @@
         <h3>Contact</h3>
         <ul>
           <li><a href="/contact/">Request access</a></li>
-          <li><a href="https://calendly.com/lauri-missiongrey/30min">Book a demo</a></li>
+          <li><a href="https://calendly.com/lauri-missiongrey/30min">See it on your decision</a></li>
           <li><a href="mailto:contact@missiongrey.com">Email us</a></li>
           <li><a href="https://app.missiongrey.com/">Log in</a></li>
         </ul>
       </nav>
     </div>
-    <p class="foot-offices" aria-label="Offices">
-      <span>Arlington, VA</span><span>Puteaux, France</span><span>Singapore</span><span>Tampere, Finland</span><span>San Francisco, USA</span>
-    </p>
+    <div class="foot-strip">
+      <p class="foot-offices" aria-label="Offices">
+        <span>Arlington, VA</span><span>Puteaux, France</span><span>Singapore</span><span>Tampere, Finland</span><span>San Francisco, USA</span>
+      </p>
+      <nav class="foot-social" aria-label="Mission Grey channels">
+        <a href="https://x.com/MissionGrey" target="_blank" rel="noopener" aria-label="Mission Grey on X" title="Mission Grey on X"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#x"/></svg></a>
+        <a href="https://www.instagram.com/mg_missiongrey/" target="_blank" rel="noopener" aria-label="Mission Grey on Instagram" title="Mission Grey on Instagram"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#instagram"/></svg></a>
+        <a href="https://www.linkedin.com/company/mission-grey" target="_blank" rel="noopener" aria-label="Mission Grey on LinkedIn" title="Mission Grey on LinkedIn"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#linkedin"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=61557005876673" target="_blank" rel="noopener" aria-label="Mission Grey on Facebook" title="Mission Grey on Facebook"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#facebook"/></svg></a>
+        <span class="foot-social-rule" aria-hidden="true"></span>
+        <a href="https://www.youtube.com/@ThisWeekinBusinessRisk" target="_blank" rel="noopener" aria-label="This Week in Business Risk on YouTube" title="This Week in Business Risk on YouTube"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#youtube"/></svg></a>
+        <a href="https://open.spotify.com/show/033TrDLjqhXrrOJJ2sF1KD" target="_blank" rel="noopener" aria-label="This Week in Business Risk on Spotify" title="This Week in Business Risk on Spotify"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#spotify"/></svg></a>
+        <a href="https://podcasts.apple.com/us/podcast/this-week-in-business-risk/id6793223621" target="_blank" rel="noopener" aria-label="This Week in Business Risk on Apple Podcasts" title="This Week in Business Risk on Apple Podcasts"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#applepodcasts"/></svg></a>
+      </nav>
+    </div>
     <div class="foot-legal">
       <span>&copy; 2026 Mission Grey. All rights reserved.</span>
       <a href="/privacy/">Privacy Policy</a>
