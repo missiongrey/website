@@ -23,8 +23,8 @@ article-depth pages (`site/insights/<slug>/`) use `../../../assets/` and link
   trailing slash: `href="/platform/"`. A base-path rewrite happens at
   deploy time; never write `/new/` into markup.
 - Log in goes to `https://app.missiongrey.com/`. Request access goes to
-  `/contact/`. Book a demo goes to
-  `https://calendly.com/lauri-missiongrey/30min`.
+  `/contact/`. See it on your decision (the session button, labelled Book a
+  demo until round eight) goes to `https://calendly.com/lauri-missiongrey/30min`.
 - Every page: `<a class="skip">`, one `<h1>`, semantic landmarks
   (`header/main/footer/nav/section`), the shared header and footer copied
   from `index.html` verbatim (only the current-page nav item may change
@@ -188,7 +188,7 @@ uppercase with a trailing hairline. Both already styled; never restyle.
 
 ```html
 <a class="btn btn-primary" href="/contact/">Request access</a>
-<a class="btn btn-ghost" href="...">Book a demo</a>
+<a class="btn btn-ghost" href="...">See it on your decision</a>
 ```
 Primary is the accent block (`--accent-fill` with `--accent-on` type),
 ghost is the hairline. It is the only filled surface on the page that is
@@ -915,8 +915,8 @@ deletions, which happened in place.
 
 ### The two calls to action always say what they do, binding
 
-`Request access` goes to the contact form at `/contact/` and `Book a demo`
-goes to a 30&nbsp;minute call. Those are two different processes, and a reader
+`Request access` goes to `/contact/` and `See it on your decision` goes to
+a short working session on the visitor's own question (a Calendly slot). Those are two different processes, and a reader
 cannot tell which one they want from two mono labels, so **every closing
 panel that offers a choice carries `.cta-notes`**: a two-column block under
 the button pair with one line per button, the button's own words as the mono
@@ -939,7 +939,7 @@ stacking at 560. Panels without notes keep the flex row.
 
 Where a page's pair is not the standard one, the lines follow that page's
 buttons (Guild: Join the Guild / Become a partner; Partners: Become a
-partner / Book a demo). Nothing anywhere implies instant or self-service
+partner / See it on your decision). Nothing anywhere implies instant or self-service
 access, because access is by request and that is the actual process.
 
 `.access-panel .join-note` was page-local on Partners and is promoted, since
