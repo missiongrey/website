@@ -55,6 +55,17 @@
 .office-loc{font-size:15.5px;color:var(--ink);margin-bottom:6px}
 .office-cc{font:400 10.5px/1.6 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim)}
 @media (max-width:900px){.offices{grid-template-columns:1fr}}
+/* channel listing: two cells, name plus address, icons from the shared sprite */
+.channels{grid-template-columns:1fr 1fr}
+.ch-list{display:grid;gap:12px;margin-top:2px}
+.ch-list a{display:grid;grid-template-columns:16px 150px minmax(0,1fr);gap:0 12px;align-items:center;color:var(--ink-mute);font-size:14.5px;line-height:1.4}
+.ch-list a:hover{color:var(--ink)}
+.ch-list svg{width:16px;height:16px;fill:currentColor;color:var(--ink-dim)}
+.ch-list a:hover svg{color:var(--ink)}
+.ch-name{color:var(--ink)}
+.ch-handle{font:400 10.5px/1.6 var(--mono);letter-spacing:.06em;color:var(--ink-dim);overflow-wrap:anywhere}
+@media (max-width:900px){.channels{grid-template-columns:1fr}}
+@media (max-width:560px){.ch-list a{grid-template-columns:16px minmax(0,1fr)}.ch-handle{grid-column:2}}
 </style>
 <script src="../../assets/consent.js" data-ga="__GA_MEASUREMENT_ID__" defer></script>
 </head>
@@ -199,6 +210,36 @@
     </div>
   </section>
 
+  <!-- ============ CHANNELS ============ -->
+  <section class="sec" id="channels" aria-labelledby="ch-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Follow Mission Grey</p>
+        <h2 id="ch-h">Where we publish.</h2>
+        <p>Company updates on social, and This Week in Business Risk wherever you listen.</p>
+      </div>
+      <div class="trust-grid channels reveal">
+        <div class="trust-cell">
+          <h3>Social</h3>
+          <ul class="ch-list">
+            <li><a href="https://x.com/MissionGrey" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#x"/></svg><span class="ch-name">X</span><span class="ch-handle">x.com/MissionGrey</span></a></li>
+            <li><a href="https://www.instagram.com/mg_missiongrey/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#instagram"/></svg><span class="ch-name">Instagram</span><span class="ch-handle">instagram.com/mg_missiongrey</span></a></li>
+            <li><a href="https://www.linkedin.com/company/mission-grey" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#linkedin"/></svg><span class="ch-name">LinkedIn</span><span class="ch-handle">linkedin.com/company/mission-grey</span></a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=61557005876673" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#facebook"/></svg><span class="ch-name">Facebook</span></a></li>
+          </ul>
+        </div>
+        <div class="trust-cell">
+          <h3>Podcast &middot; This Week in Business Risk</h3>
+          <ul class="ch-list">
+            <li><a href="https://www.youtube.com/@ThisWeekinBusinessRisk" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#youtube"/></svg><span class="ch-name">YouTube</span><span class="ch-handle">youtube.com/@ThisWeekinBusinessRisk</span></a></li>
+            <li><a href="https://open.spotify.com/show/033TrDLjqhXrrOJJ2sF1KD" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#spotify"/></svg><span class="ch-name">Spotify</span></a></li>
+            <li><a href="https://podcasts.apple.com/us/podcast/this-week-in-business-risk/id6793223621" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#applepodcasts"/></svg><span class="ch-name">Apple Podcasts</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ ACCESS ============ -->
   <section class="sec" id="access" aria-labelledby="access-h">
     <div class="wrap">
@@ -260,9 +301,21 @@
         </ul>
       </nav>
     </div>
-    <p class="foot-offices" aria-label="Offices">
-      <span>Arlington, VA</span><span>Puteaux, France</span><span>Singapore</span><span>Tampere, Finland</span><span>San Francisco, USA</span>
-    </p>
+    <div class="foot-strip">
+      <p class="foot-offices" aria-label="Offices">
+        <span>Arlington, VA</span><span>Puteaux, France</span><span>Singapore</span><span>Tampere, Finland</span><span>San Francisco, USA</span>
+      </p>
+      <nav class="foot-social" aria-label="Mission Grey channels">
+        <a href="https://x.com/MissionGrey" target="_blank" rel="noopener" aria-label="Mission Grey on X" title="Mission Grey on X"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#x"/></svg></a>
+        <a href="https://www.instagram.com/mg_missiongrey/" target="_blank" rel="noopener" aria-label="Mission Grey on Instagram" title="Mission Grey on Instagram"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#instagram"/></svg></a>
+        <a href="https://www.linkedin.com/company/mission-grey" target="_blank" rel="noopener" aria-label="Mission Grey on LinkedIn" title="Mission Grey on LinkedIn"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#linkedin"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=61557005876673" target="_blank" rel="noopener" aria-label="Mission Grey on Facebook" title="Mission Grey on Facebook"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#facebook"/></svg></a>
+        <span class="foot-social-rule" aria-hidden="true"></span>
+        <a href="https://www.youtube.com/@ThisWeekinBusinessRisk" target="_blank" rel="noopener" aria-label="This Week in Business Risk on YouTube" title="This Week in Business Risk on YouTube"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#youtube"/></svg></a>
+        <a href="https://open.spotify.com/show/033TrDLjqhXrrOJJ2sF1KD" target="_blank" rel="noopener" aria-label="This Week in Business Risk on Spotify" title="This Week in Business Risk on Spotify"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#spotify"/></svg></a>
+        <a href="https://podcasts.apple.com/us/podcast/this-week-in-business-risk/id6793223621" target="_blank" rel="noopener" aria-label="This Week in Business Risk on Apple Podcasts" title="This Week in Business Risk on Apple Podcasts"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#applepodcasts"/></svg></a>
+      </nav>
+    </div>
     <div class="foot-legal">
       <span>&copy; 2026 Mission Grey. All rights reserved.</span>
       <a href="/privacy/">Privacy Policy</a>

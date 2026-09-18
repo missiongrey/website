@@ -404,11 +404,24 @@ html.js .artifact:hover .sheet{transform:translateY(-3px)}
 .foot-col li{margin-bottom:10px}
 .foot-col a{font-size:14px;color:var(--ink-mute)}
 .foot-col a:hover{color:var(--ink)}
+.foot-strip{
+  border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 32px;
+}
 .foot-offices{
-  border-top:1px solid var(--line);padding:18px 0;
+  padding:18px 0;
   font:400 10.5px/1.9 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);
   display:flex;flex-wrap:wrap;gap:6px 24px;
 }
+/* channel row: seven icon links, social then podcast, one line of footer text high */
+.foot-social{display:flex;align-items:center;gap:2px;padding:10px 0;margin-left:-7px}
+.foot-social a{
+  display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;
+  color:var(--ink-dim);border-radius:2px;transition:color .18s ease,background-color .18s ease;
+}
+.foot-social a:hover{color:var(--ink);background:var(--bg-2)}
+.foot-social svg{width:15px;height:15px;display:block;fill:currentColor}
+.foot-social-rule{width:1px;height:16px;background:var(--line-2);margin:0 14px}
 .foot-legal{
   border-top:1px solid var(--line);padding:20px 0 28px;
   display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;
