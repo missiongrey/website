@@ -1592,7 +1592,9 @@ repeated as the label of a drawn register). No portrait exists for any
 Guild member in this repo, and none was invented.
 
 **`.gd-reg`, the member register, binding.** One rule, one tick per member
-of the roster, in the order the roster PRINTS (the four plate-scale members
+of the roster, in the order the roster PRINTS (SUPERSEDED by round ten,
+section 26: no member is featured, the register carries no accent marks
+and the roster prints in the live site's alphabetical order; the four plate-scale members
 first, then the directory), with those four marked in the accent at stations
 1 to 4. Binding: the `--n` indices in the markup index the printed list, so
 reordering the roster means rewriting them; the first cut carried the four
@@ -1948,7 +1950,7 @@ groups and exactly three were drawn:
 
 | Register | Who | Portrait | Why |
 |---|---|---|---|
-| `.ab-leads` | the two roles the page opens with (Chief Executive Officer, Founder and Chairman) | 112px | the page's own reading order, printed at reading order's scale |
+| `.ab-leads` (SUPERSEDED by round ten, section 26: the two leads print as the register's first two rows at the register's size) | the two roles the page opens with (Chief Executive Officer, Founder and Chairman) | 112px | the page's own reading order, printed at reading order's scale |
 | `.ab-reg` | the rest of the core team, 16 people, two columns of ruled rows | 64px | a register, not cards: hairline per row, tick at its leading edge, no box and no fill |
 | `.ab-adv` | Advisors and network, four stations on one rule | 80px, over the name | the entries carry no role line, so the rhythm changes with the content |
 
@@ -2049,11 +2051,12 @@ joins the register, nobody is promoted out of it — and order is untouched
 on both pages, because re-sorting names is an editorial act nobody asked
 for. The two About leads are simply the register's first two rows.
 
-**One portrait size on About, across both groups.** The hard rule only
+**One portrait size on About, across both groups, at every width.** The hard rule only
 asks for equality within a group, and Advisors and network is a real
 second group with its own rhythm (four across, portrait over the name, no
 role line), so its 80px was legal. It went to 64 anyway: a reader does not
-read the rule, they read the page, and an advisor's head printed larger
+read the rule, they read the page (under 560px both groups drop to 56px
+together, the size section 24 already gives the register there), and an advisor's head printed larger
 than the chief executive's is exactly the question this round exists to
 stop being asked. 64 is also what the sources allow — two core-team files
 are 112px wide and cap that register — so one size for the page means that
@@ -2162,7 +2165,8 @@ selectable views, and the intelligence trail becomes readable one station
 at a time. **No word on the page changed** (source textdiff: 2301 words
 in and out, zero changes; live DOM with JS on: the same 2292 words with
 the same counts, in a different reading order, because the four station
-lines are lifted onto the rail). No asset, crop or caption changed. Every
+lines are lifted onto the rail; ON SCREEN with JS on, the copy of the
+three unselected moments is behind a click, by the brief's design). No asset, crop or caption changed. Every
 selector is prefixed `px-`; only rules that move a layout are gated on
 `html.js`.
 
@@ -2200,8 +2204,10 @@ three unselected moments collapse to their station.
   Up/Down, Home and End moving and selecting. A panel with no link of its
   own takes `tabindex="0"`; moment 04 carries two and does not need it.
 - **The next plate is fetched before it is asked for.** All four images
-  stay `loading="lazy"`; selecting a view promotes its two neighbours to
-  `eager`, so a switch never opens on an empty frame while a reader who
+  stay `loading="lazy"`; selecting a view promotes it and its two neighbours to
+  `eager` (the view itself included: a lazy image inside a hidden panel
+  never loads on its own), and the first pointer, focus or touch on the
+  rail promotes all four, so a switch never opens on an empty frame while a reader who
   never touches the rail still downloads one screenshot.
 - **Under 600px the rail is a vertical ruled list** with the selected
   plate under it: four 12-character station labels cannot sit across a
@@ -2282,7 +2288,8 @@ The adoption figure was not redesigned and not moved: it is the round-nine
 drawing exactly, given a state. Proof rather than claim — the resting
 figure at 1440 and at 390 is **pixel-identical** to the base tree
 (`ImageChops.difference` bbox `None` on the `.so-path` element at both
-widths), every station, run, heading and bullet reports the same x, width
+widths; the resting clip inset is 14px clear on all four sides, so the
+drawn runs carry no left clip after the sweep, a review fix), every station, run, heading and bullet reports the same x, width
 and height, and the page's rendered text is 1065 words in and 1065 out
 with no word-level difference. Nothing in section 23 was edited; section
 28 only adds states and one draw, and where it changes a section 23
@@ -2308,7 +2315,12 @@ register. Hover and focus are pure CSS, so the figure answers a pointer
 and a keyboard with the script absent. Specificity carries the order
 rather than source position: every loud selector is exactly one class
 ahead of every quiet one, so a hover beats a standing selection and
-**exactly one stage is ever live**.
+**exactly one stage is ever live**. The quiet trigger is
+`.so-grid:has(.so-step:hover)`, never the grid's own `:hover`: on the wide
+layout the step is `display:contents`, so the grid is hovered over its own
+padding and margins where no step is, and a container trigger there greys
+the whole figure with nothing lit (review, round ten). Section 26 uses the
+same guard for the same reason.
 
 **What activation is.** The live stage's station tick takes the mark
 station 01 wears at rest (same position, 2px by 12px, amber), its index

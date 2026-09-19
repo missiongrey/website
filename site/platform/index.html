@@ -837,14 +837,23 @@
     });
 
     var cur=-1;
-    /* the neighbouring plates are fetched before they are asked for, so a
-       switch never opens on an empty frame; the rest stay lazy */
+    /* the selected plate and its neighbours are fetched before they are
+       asked for, and the whole set on the first reach for the rail, so a
+       switch never opens on an empty frame */
     function warm(i){
-      [i-1,i+1].forEach(function(n){
+      [i-1,i,i+1].forEach(function(n){
         var g=shots[(n+shots.length)%shots.length];
         if(g&&g.getAttribute('loading')==='lazy'){g.setAttribute('loading','eager');}
       });
     }
+    /* the first time a reader reaches for the rail, every plate is fetched:
+       a lazy image inside a hidden panel never loads on its own, and the
+       base page downloaded all four as the reader scrolled anyway */
+    function warmAll(){
+      shots.forEach(function(g){if(g&&g.getAttribute('loading')==='lazy'){g.setAttribute('loading','eager');}});
+      ['pointerenter','focusin','touchstart'].forEach(function(t){rail.removeEventListener(t,warmAll);});
+    }
+    ['pointerenter','focusin','touchstart'].forEach(function(t){rail.addEventListener(t,warmAll,{passive:true});});
     function show(i,move){
       if(i!==cur){
         cur=i;

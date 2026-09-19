@@ -3040,6 +3040,7 @@ html.js .reveal.in .pl-run{transform:scaleX(1)}
   .gd-m .gd-p{grid-template-columns:48px minmax(0,1fr);gap:16px}
   .gd-m .gd-plate{width:48px;height:48px}
   .gd-m .gd-gram{font-size:11.5px}
+  .ab-por-m{width:56px;height:56px}
 }
 
 /* ---- 26.6 reduced motion ---- */
@@ -3269,14 +3270,14 @@ html.js .pl-trail span{cursor:pointer}
    The insets are negative on three sides because the station marks
    overhang the run's own box by up to 12px; clipping at the box edge
    would cut the marks off at rest. */
-html.js .so-path .so-ext i{clip-path:inset(-14px 100% -14px 0)}
+html.js .so-path .so-ext i{clip-path:inset(-14px 100% -14px -14px)}
 html.js .so-path.in .so-ext i{animation:sx-draw .55s cubic-bezier(.33,0,.2,1) .12s both}
 html.js .so-path.in .so-s2 .so-ext i{animation-duration:.8s;animation-delay:.72s}
 html.js .so-path.in .so-s3 .so-ext i{animation-duration:.52s;animation-delay:1.6s}
 html.js .so-path.in .so-s3 .so-ext i:nth-child(2){animation-delay:1.7s}
 html.js .so-path.in .so-s3 .so-ext i:nth-child(3){animation-delay:1.8s}
 html.js .so-path.in .so-s3 .so-ext i:nth-child(4){animation-delay:1.9s}
-@keyframes sx-draw{to{clip-path:inset(-14px -14px -14px 0)}}
+@keyframes sx-draw{to{clip-path:inset(-14px -14px -14px -14px)}}
 
 /* ---- 28.3 one stage active, the other two quieter ---- */
 /* DEFAULT is the figure exactly as round nine left it, and that state is
@@ -3359,14 +3360,14 @@ html.js .so-path.in .so-s3 .so-ext i:nth-child(4){animation-delay:1.9s}
    one class ahead of every quiet one, so a hover still beats a standing
    selection and exactly one stage is ever live. */
 @media (hover:hover){
-  .so-grid:hover .so-step .so-ext i{border-top-color:var(--line-2)}
-  .so-grid:hover .so-step .so-ext i::before,.so-grid:hover .so-step .so-ext i::after{background:var(--line-3)}
-  .so-grid:hover .so-step .so-k::before{background:var(--line-2)}
-  .so-grid:hover .so-step .so-k b{color:var(--ink-mute)}
-  .so-grid:hover .so-step h3{color:var(--ink-mute)}
-  .so-grid:hover .so-step .v{color:var(--ink-dim)}
-  .so-grid:hover .so-step .pts li{color:var(--ink-mute)}
-  .so-grid:hover .so-step .checker{opacity:.38}
+  .so-grid:has(.so-step:hover) .so-step .so-ext i{border-top-color:var(--line-2)}
+  .so-grid:has(.so-step:hover) .so-step .so-ext i::before,.so-grid:has(.so-step:hover) .so-step .so-ext i::after{background:var(--line-3)}
+  .so-grid:has(.so-step:hover) .so-step .so-k::before{background:var(--line-2)}
+  .so-grid:has(.so-step:hover) .so-step .so-k b{color:var(--ink-mute)}
+  .so-grid:has(.so-step:hover) .so-step h3{color:var(--ink-mute)}
+  .so-grid:has(.so-step:hover) .so-step .v{color:var(--ink-dim)}
+  .so-grid:has(.so-step:hover) .so-step .pts li{color:var(--ink-mute)}
+  .so-grid:has(.so-step:hover) .so-step .checker{opacity:.38}
   .so-path .so-grid .so-step:hover .so-ext i{border-top-color:var(--ink)}
   .so-path .so-grid .so-step:hover .so-ext i::before,
   .so-path .so-grid .so-step:hover .so-ext i::after{background:var(--ink)}
