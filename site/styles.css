@@ -1535,3 +1535,242 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
   .appfig figcaption::before{display:inline-block;margin-right:10px;vertical-align:1px}
   .cap-desk{display:none}
 }
+
+/* ============ 19 HOME VISUAL DEVELOPMENT V1 (2026-09) ============ */
+/* A first visual-development pass over three areas of the home page only:
+   the fold, the external-world figure, and the application proof. Every
+   selector below is scoped to a class that exists on no other page, so
+   nothing in sections 01 to 18 is rewritten and every sibling page renders
+   exactly as it did before. Same standing rules: tokens only, no new font
+   file, no new accent value, no gradient used as decoration, no glow.
+
+   The system this pass proposes, in one line: MISSION GREY READS A RULED
+   WORLD. Three ideas carry it.
+
+   1 THE GRID BECOMES VISIBLE ONCE PER VIEW. A measured rule, drawn from
+     the thing being measured: a longitude scale across the fold whose
+     caret sits at the meridian the instrument under it is drawn at.
+   2 STATIONS HANG FROM RULES. Every list in these three areas is a rule
+     with ticked stations under it, never a row of boxes: the cadence, the
+     signals plotted on the external field, the systems inside the
+     organization. It is the site's own .trail grammar, extended.
+   3 THE FIGURE IS A VIEW, NOT AN OBJECT. The globe and the application
+     are both cropped by their plate rather than fitted inside it, which
+     is the difference between an instrument and an illustration. */
+
+/* ---- 19.1 the longitude scale (hero) ---- */
+/* Real coordinates, no claim attached: a 30 degree scale from 180W to
+   180E with the meridians ticked. The caret is written by the hero
+   script from the globe's own rotation, so the page and the sphere agree
+   about where the view is. Decorative to a screen reader (the globe's
+   alt text already says what is being watched), so the whole strip is
+   aria-hidden in the markup. */
+.hz{position:relative;height:28px}
+.hz::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--line-2)}
+.hz-ticks{
+  position:absolute;left:0;right:0;top:0;height:5px;
+  background-image:linear-gradient(to right,var(--line-2) 0 1px,transparent 1px);
+  background-size:calc(100% / 12) 100%;
+}
+.hz-ticks::after{content:"";position:absolute;right:0;top:0;width:1px;height:5px;background:var(--line-2)}
+.hz-m{
+  position:absolute;top:11px;left:var(--x);transform:translateX(-50%);
+  font:500 10px/1 var(--mono);letter-spacing:.2em;color:var(--ink-dim);white-space:nowrap;
+}
+/* the fallback longitude is the aspect the globe rests at without JS */
+.hz-now{position:absolute;left:var(--x,67.22%);top:-4px;width:1px;height:13px;background:var(--accent)}
+.hz-now::before{
+  content:"";position:absolute;left:-3px;top:-4px;width:7px;height:5px;background:var(--accent);
+  clip-path:polygon(0 0,100% 0,50% 100%);
+}
+
+/* ---- 19.2 the fold ---- */
+/* Asymmetric: the scale rules the whole width, the copy hangs on the left
+   third under a ruled eyebrow, the instrument is a tall plate on the
+   right that runs off the page edge. */
+.hero-v1{padding-top:26px}
+.hero-v1 .wrap{padding-top:clamp(30px,3.8vw,54px)}
+.hero-v1 .hero-eyebrow{margin-bottom:24px}
+.hero-v1 .hero-eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
+@media (min-width:981px){
+  .hero-v1 .hero-grid{grid-template-columns:minmax(0,.97fr) minmax(0,1.03fr);gap:clamp(26px,3.2vw,48px)}
+}
+/* the scope: the sphere is drawn larger than the plate and cropped by it,
+   so the fold carries a view onto the world instead of a globe centered
+   in a box. The canvas keeps its own aspect ratio; only the plate clips. */
+.hero-v1 .scope{
+  position:relative;aspect-ratio:1/.62;overflow:hidden;
+  background:var(--bg-1);border-left:1px solid var(--line);border-block:1px solid var(--line);
+}
+.hero-v1 .scope canvas{
+  position:absolute;left:8%;top:-16%;width:100%;max-width:none;height:auto;aspect-ratio:1.15/1;
+}
+.hero-v1 .globe-route{left:18px;bottom:16px;top:auto}
+.hero-v1 .globe-cap{position:static;margin-top:14px;padding-left:18px;align-items:center}
+.hero-v1 .globe-cap::before{margin-top:0}
+/* no JS: the static plate is a dark photograph and cannot be cropped into
+   a light ground, so the scope stands down and the image is a plate again */
+html:not(.js) .hero-v1 .scope{aspect-ratio:auto;overflow:visible;background:none;border-left:0}
+html:not(.js) .hero-v1 .globe-cap{padding-left:0}
+
+/* the cadence, as a ledger: one rule, four ticked stations, label over
+   value. The four facts are unchanged; the boxes are gone. */
+.cadence-v1{
+  border:0;border-top:1px solid var(--line-2);
+  margin-top:clamp(44px,5.6vw,72px);
+}
+.cadence-v1>div{
+  position:relative;border:0;display:grid;align-content:start;
+  padding:16px clamp(16px,2.4vw,32px) 0 14px;
+}
+.cadence-v1>div::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.cadence-v1 .k{grid-row:1;margin-top:0}
+.cadence-v1 .v{grid-row:2;margin-top:10px;font-size:16px;letter-spacing:.02em}
+
+/* ---- 19.3 the aperture (#outside) ---- */
+/* One figure, read top down. The external field is ruled into three
+   registers at world, market and place scale, each one narrower than the
+   one above it and each one carrying less noise; the organization sits
+   under them as an even ruled register, which is the whole argument of
+   the section drawn as texture: outside is scattered, inside is gridded.
+   The walls between registers are the only diagonals on the site, drawn
+   with a non-scaling stroke so a stretched viewBox cannot thicken them.
+   The two existing columns keep their words and their reading order; the
+   grid puts the outside field above the organization band because that is
+   where a funnel has to put it. */
+.ap{display:grid;padding:clamp(18px,2.4vw,30px) clamp(16px,2.2vw,28px) clamp(22px,2.8vw,34px)}
+.ap-out{grid-row:1}
+.ap-w-po{grid-row:2}
+.ap-band{grid-row:3}
+.ap-w-od{grid-row:4}
+.ap-core{grid-row:5}
+.ap-k{margin-bottom:16px;color:var(--ink-mute)}
+.ap-k-out{margin-bottom:18px}
+/* the IN / OUT mark loses its box: one accent per figure, and in this one
+   the accent belongs to the decision at the bottom */
+.ap .rx-i{
+  border:0;padding:0;margin-right:0;font-size:10px;letter-spacing:.24em;color:var(--ink-dim);
+}
+.ap .rx-i::after{
+  content:"";display:inline-block;width:16px;height:1px;background:var(--line-2);
+  margin:0 14px;vertical-align:3px;
+}
+.ap-name{
+  margin:0;font:500 11px/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink);
+}
+.ap-row{
+  margin-inline:var(--in);border:1px solid var(--line);border-bottom:0;
+  padding:14px clamp(14px,1.8vw,22px) 20px;
+  display:grid;grid-template-columns:clamp(104px,12%,152px) repeat(12,minmax(0,1fr));column-gap:14px;
+}
+/* the noise thins register by register: the field is being filtered */
+.ap-r1{background-image:radial-gradient(circle,rgba(15,23,32,.17) .9px,transparent 1px);background-size:9px 9px;min-height:104px}
+.ap-r2{background-image:radial-gradient(circle,rgba(15,23,32,.14) .9px,transparent 1px);background-size:13px 13px;min-height:96px}
+.ap-r3{background-image:radial-gradient(circle,rgba(15,23,32,.11) .9px,transparent 1px);background-size:18px 18px;min-height:92px}
+/* a plotted signal: a station hanging from the register rule at its own
+   depth, written in the editorial face because it is a thing that happens
+   in the world, not a system identifier */
+.ap-sig{
+  position:relative;grid-column:calc(1 + var(--c)) / span 4;grid-row:1;
+  margin-top:var(--y,0px);align-self:start;
+  font:400 14.5px/1.4 var(--sans);letter-spacing:-.005em;color:var(--ink);
+}
+.ap-sig::before{
+  content:"";position:absolute;left:0;top:calc(-14px - var(--y,0px));
+  width:1px;height:calc(11px + var(--y,0px));background:var(--line-3);
+}
+.ap-sig::after{content:"";position:absolute;left:-1px;top:calc(-15px - var(--y,0px));width:3px;height:3px;background:var(--ink-mute)}
+/* the organization: the same seven words, printed as an even register */
+.ap-band{
+  margin-inline:var(--in);border:1px solid var(--line);border-bottom:0;background:var(--bg-1);
+  padding:16px clamp(14px,1.8vw,22px) 20px;
+  display:grid;grid-template-columns:clamp(104px,12%,152px) minmax(0,1fr);column-gap:14px;
+}
+.ap-band .ap-k{grid-column:1 / -1;grid-row:1}
+.ap-band .ap-name{grid-column:1;grid-row:2;padding-top:14px}
+.ap-sys{grid-column:2;grid-row:2;display:flex;flex-wrap:wrap}
+.ap-sys span{
+  position:relative;border-top:1px solid var(--line-2);padding:14px clamp(16px,2.4vw,34px) 0 9px;
+  font:500 10.5px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);
+  white-space:nowrap;
+}
+.ap-sys span:last-child{padding-right:0;flex:1 0 auto}
+.ap-sys span::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
+/* the convergence */
+.ap-core{
+  margin-inline:var(--in);border:1px solid var(--line-2);border-top:2px solid var(--accent);
+  background:var(--bg-2);padding:20px;display:flex;justify-content:center;
+}
+.ap-w{display:block;width:100%;height:34px;fill:none;stroke:var(--line-2)}
+.ap-w-od{height:60px}
+.ap-stem{stroke:var(--accent)}
+
+/* ---- 19.4 the evidence object (the example application) ---- */
+/* Not a screenshot printed whole: a plate cropped onto the indexes the
+   application is read for, one leader pointing at a mark that is visibly
+   in the image, and the notation language beside it. The notation carries
+   labels and no values, because an illustrative figure has no real
+   metadata to print and inventing some is the one thing the honesty
+   convention exists to stop. */
+.ev-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) clamp(176px,19%,236px);
+  gap:clamp(22px,3vw,44px);align-items:start;
+}
+.ev-frame{--ax:20.18%}
+.appshot.ev-crop{position:relative;overflow:hidden;aspect-ratio:1576/524}
+.appshot.ev-crop img{position:absolute;max-width:none;width:121.827%;left:-20.558%;top:-11.45%;height:auto}
+/* the leader runs over the plate in the plate's own light and continues
+   in page ink below it; both are placed from --ax on the same box, so the
+   two halves stay one line at every width */
+.ev-lead{position:absolute;left:var(--ax);bottom:0;width:1px;height:44.3%;background:rgba(250,251,252,.45)}
+.ev-lead::before{content:"";position:absolute;left:-3px;top:0;width:7px;height:1px;background:rgba(250,251,252,.85)}
+.ev-ann{position:relative;height:44px;margin:0}
+.ev-ann b{
+  position:absolute;left:var(--ax);top:0;bottom:0;display:flex;align-items:flex-end;
+  padding:0 0 0 12px;border-left:1px solid var(--line-3);
+  font:500 10.5px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);
+  white-space:nowrap;
+}
+.ev-note{border-top:1px solid var(--line-2)}
+.ev-m{display:flex;align-items:center;gap:12px;margin:0;padding:11px 0 10px;border-bottom:1px solid var(--line)}
+.ev-m i{
+  font:400 10.5px/1.4 var(--mono);font-style:normal;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-mute);white-space:nowrap;
+}
+.ev-m::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* ---- 19.5 responsive ---- */
+@media (max-width:980px){
+  .hero-v1 .scope{aspect-ratio:1/.66;border-left:0;border-block:1px solid var(--line)}
+  .hero-v1 .scope canvas{left:0;top:-15%;width:100%;aspect-ratio:1/.96}
+  .hero-v1 .globe-route{left:var(--pad);bottom:14px;top:auto}
+  .hero-v1 .globe-cap{padding-left:var(--pad)}
+}
+@media (max-width:760px){
+  /* the registers keep their taper but stack their content: a plotted
+     field 340px wide is a smudge, an indented list is still a funnel */
+  .ap{padding-inline:clamp(10px,3vw,28px)}
+  .ap-row,.ap-band{grid-template-columns:minmax(0,1fr)}
+  .ap-band .ap-name{grid-column:1;grid-row:2;padding-top:0;padding-bottom:12px}
+  .ap-sys{grid-column:1;grid-row:3}
+  .ap-sys span{padding:12px 20px 0 8px}
+  .ap-row .ap-sig{grid-column:1;grid-row:auto;margin-top:0;padding:10px 0 0 15px}
+  .ap-row .ap-sig::before{top:13px;left:0;height:15px}
+  .ap-row .ap-sig::after{display:none}
+  .ap-r1,.ap-r2,.ap-r3{min-height:0}
+  .ev-grid{grid-template-columns:minmax(0,1fr)}
+  .ev-note{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(16px,4vw,30px)}
+}
+@media (max-width:700px){
+  .cadence-v1{grid-template-columns:1fr 1fr;row-gap:4px}
+  .cadence-v1>div{border:0;padding-right:16px}
+  .cadence-v1>div:nth-child(n+3){margin-top:14px;border-top:1px solid var(--line)}
+}
+@media (max-width:600px){
+  /* the phone plate crops harder still: one index, read at full size */
+  .ev-frame{--ax:81.04%}
+  .appshot.ev-crop{aspect-ratio:385/326}
+  .appshot.ev-crop img{width:498.7%;left:-85.714%;top:-72.39%}
+  .ev-lead{height:64.4%}
+  .ev-ann b{padding:0 12px 0 0;border-left:0;border-right:1px solid var(--line-3);transform:translateX(-100%)}
+}
