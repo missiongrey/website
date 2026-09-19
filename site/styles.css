@@ -1640,9 +1640,9 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
    the section drawn as texture: outside is scattered, inside is gridded.
    The walls between registers are the only diagonals on the site, drawn
    with a non-scaling stroke so a stretched viewBox cannot thicken them.
-   The two existing columns keep their words and their reading order; the
-   grid puts the outside field above the organization band because that is
-   where a funnel has to put it. */
+   The two existing columns keep their words; the markup places the outside
+   field before the organization band, which is where a funnel has to put
+   it, and the grid follows source order. */
 .ap{display:grid;padding:clamp(18px,2.4vw,30px) clamp(16px,2.2vw,28px) clamp(22px,2.8vw,34px)}
 .ap-k{margin-bottom:16px;color:var(--ink-mute)}
 .ap-k-out{margin-bottom:18px}
@@ -1726,7 +1726,7 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
    figure the product prints on every index, and there is exactly one of
    them: the site's device B ceiling is two, and no second mark on this
    plate can be leadered without the stem crossing product text. */
-.ev-fig{max-width:74%}
+.ev-fig .frame{max-width:74%}
 .ev-frame{--ax:46.496%}
 .appshot.ev-crop{position:relative;overflow:hidden;aspect-ratio:799/352}
 .appshot.ev-crop img{position:absolute;max-width:none;width:240.300%;left:-39.299%;top:-60.795%;height:auto}
@@ -1768,7 +1768,7 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
   .ap-row .ap-sig::before{top:13px;left:0;height:15px}
   .ap-row .ap-sig::after{display:none}
   .ap-r1,.ap-r2,.ap-r3{min-height:0}
-  .ev-fig{max-width:100%}
+  .ev-fig .frame{max-width:100%}
 }
 @media (max-width:700px){
   .cadence-v1{grid-template-columns:1fr 1fr;row-gap:4px}
