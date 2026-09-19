@@ -2746,3 +2746,27 @@ html.js .reveal.in .pl-run{transform:scaleX(1)}
 }
 
 /* ---- end 24 ---- */
+
+/* ============ 25 THE PLATE: a product screen without the browser mockup ============ */
+/* Round nine, integration. The chairman's counter-prompt names browser-window
+   mockups on every proof as the thing to avoid, and the second pass had six
+   real screens in .window chrome on desktop while every phone crop already
+   printed them as plates. .win-plate keeps the honesty claim of the window
+   (the product address, in the instrument voice) and drops the pretence of
+   an operating system around it: no traffic lights, no lifted shadow, no
+   radius, a hairline frame and a ruled bar the address hangs from. A real
+   screen still sits in .window; only its costume changed. Applied on Home,
+   Platform and Solutions, to the .window elements only. */
+.window.win-plate{border-radius:0;box-shadow:none;border-color:var(--line)}
+.win-plate .chrome{height:30px;padding:0 14px;gap:0;background:var(--bg-2)}
+.win-plate .chrome i{display:none}
+.win-plate .chrome .url{
+  position:static;transform:none;background:none;border:0;border-radius:0;padding:0;
+  letter-spacing:.14em;text-transform:uppercase;font-size:10px;color:var(--ink-mute);
+}
+.win-plate .chrome .url::before{
+  content:"";display:inline-block;width:5px;height:5px;background:var(--accent);
+  margin-right:10px;vertical-align:1px;
+}
+@media (max-width:760px){.win-plate .chrome .url{display:inline}}
+/* ---- end 25 ---- */
