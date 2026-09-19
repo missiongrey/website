@@ -1534,7 +1534,115 @@ page's builder and documents the binding decisions for that page.
 
 ### Platform (section 22, `pl-`)
 
-(builder writes here)
+Platform is the machinery page, so the round's object was to make it read
+as an examined instrument rather than as a scroll of browser windows. It
+carried five product plates in one run, each the full width of the column
+under its own copy, and the run read as one texture. Everything below is
+composition: **no word on the page changed** (textdiff: nothing added,
+nothing removed), and every new selector is prefixed `pl-`.
+
+**The four proof moments, and the exhibit pair.** The walk is now four
+moments and one exhibit. The four are the document's own logic (monitor,
+understand, model, operationalize, which the section dek already names in
+that order) and they keep the site's stage words MONITOR, ANALYZE,
+DECIDE, ACT: Home's pipeline prints the same four, and a second set of
+names on one site is the failure the one-diagram-one-direction rule
+exists to stop. **So UNDERSTAND, MODEL and OPERATIONALIZE are used as
+composition logic and are not printed as labels**; MONITOR is already
+printed, and printing it twice would be notation for its own sake.
+`.pl-mom` is the ledger grammar applied to a narrative row: a rule across
+the width with the index hanging from it as a station, the claim on the
+left rail, the argument in the wide column, the INPUT/OUTPUT pair closing
+that column, and the plate at content width below. Nothing shrank: a
+1920px product screen printed small is decoration, and round six's ruling
+stands.
+
+The sourced report moved from between moments 01 and 02 to after moment
+04, where it joins the Morning Brief as `.pl-deliv`, the delivery
+exhibits: one statement across the width, then the real screen on the
+wide rail and the printed artifact beside it. They answer one question,
+how the work leaves the platform, and the fourth moment is the one that
+asks it. The two honesty tiers keep their own chrome and labels; nothing
+about `.window`, `.frame` or `.sheet` changed. This supersedes round
+seven's `.proof-between` placement (that component is now unused on this
+page and has no other user).
+
+**Every plate starts at the edge of the product sidebar.** The scenario
+simulation already did (round seven). The globe and the knowledge graph
+did not, so three quarters of a fifth of each frame was the same repeated
+navigation, and it is also the only part of the captures carrying beta
+tags and a report count, which is interface state rather than evidence.
+Both now crop at the sidebar edge (source x 296 and x 300 of 1920); the
+graph keeps round six's right edge, which is what holds its raw property
+list off the page, so its frame is the app's own content area between the
+two. The phone crops in section 17 are untouched, and no asset changed.
+
+**The example application is cropped to its operating band.** Printed
+whole it is the one dark object on a light page and it is a wall: eight
+index cards, a signal map and a live feed at one weight. `.pl-evcrop`
+takes source y 0 to 566 at the asset's full width, which is the layer
+strip the caption names, the application title whole and the first card
+row ending in the gutter above the second. On a phone that band would be
+356px of texture, so the crop changes rather than scales: x 0 to 712, y
+200 to 566, the customer's own intelligence layers beside one whole
+index. Both crops end on a gap in the sidebar list and neither cuts a
+card or a word. Home's plate on the same asset is a different rect at a
+different scale, so the two pages do not print the same picture.
+`.appshot.focus-space` (section 17) now has no user.
+
+**The intelligence trail is the page's signature figure, and it is still
+an annotation.** It stays under the five decision objects, carries no
+heading of its own, and remains the only trail on the page: the round
+seven rule holds and the decision here was to grow the figure, not to
+promote it into a section. What changed is that it now annotates the
+objects EXACTLY. Both rows are drawn on one grid of seven stations, three
+narrow and four wide: **Tracker stands over SOURCE, SIGNAL and EXPOSURE,
+the evidence it watches, and Indicator, Scenario, Trigger and Action each
+stand over the station that bears their name.** A riser under every
+station reaches up to the object it belongs to, so the relationship is
+drawn rather than asserted, and it costs no words. Three graded ink
+registers carry the progression without a second colour (evidence dim,
+objects mute, the last station full ink), the ticks change state at the
+same boundary, and the accent is the one role in the figure: the station
+the trail exists to reach. Equal sevenths were the first cut and left
+Tracker as a wide empty cell while Scenario's sentence wrapped to three
+lines, which is why the grid is 0.74 and 1.19.
+
+One line is drawn once, left to right, when the figure arrives: `.pl-run`
+is a transition on the existing reveal (the observer's own `.in` class is
+the trigger), not a loop. It rests where it stops, section 13's
+reduced-motion block collapses it, and without JS the line is simply
+there. That is the document's "a line progressing through the
+intelligence trail", built inside the permitted motion inventory rather
+than beside it.
+
+Below 901px the objects are no longer on the trail's grid, so the risers
+would point at nothing and they go; below 761px the rule turns vertical
+with the stations hanging off it, which is what the rail does at that
+width. The station marks turn with it, because the long ticks that
+measured height against the object row read as blocks on a vertical
+spine.
+
+**The rest of the page, by restraint.** `.lens` (#breadth), the full
+recipe, the method comparison, the instrument list and the `.rail` system
+diagram (#apps) already follow the system and were left alone, which is
+most of the page. Two card runs were replaced: the four trust cells are
+now `.pl-rows`, label left and sentence right, a list in a document
+rather than four boxes; and the G2 themes are now a ticked register
+beside the rating instead of a row of pills under it, with the quotes and
+the link under the register. The trust pipeline chain wrapped at 390px
+and left an arrow pointing off the right edge, so under 700px it turns
+vertical with its arrowhead redrawn downward from the same borders.
+
+**The fold** is the cover sheet of a specification and deliberately
+carries no instrument: ruled eyebrow across the width, the h1 on the
+left, the dek and the two calls to action in a hairline-ruled right rail
+whose last line ends level with the heading. The page's instruments start
+one rule below it and run to the footer.
+
+**On the audit list after this round:** `.proof-between`,
+`.appshot.focus-space` and `.trust-grid` at four columns lost their only
+users. All three are in sections 17 and 18 and were left in place.
 
 ### Solutions (section 23, `so-`)
 

@@ -1816,7 +1816,260 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
    sections above render unchanged on every other page. Tokens only, no
    new font file, no new accent value, no gradient as decoration, no glow.
    Written in the same voice as section 19: the why beside the what. */
-/* ---- 22.1 ---- */
+/* ---- 22.1 the fold: the claim on the left, the offer on a ruled rail ---- */
+/* Home's fold is a view of the world. Platform's is the cover sheet of a
+   specification: the eyebrow rules the full width, the h1 hangs on the
+   left, and the dek with the two calls to action sits in a hairline-ruled
+   right column whose last line ends level with the heading. Same system,
+   a different composition, and no instrument in the fold: the page's
+   instruments start one rule below it and run to the footer. */
+.pl-fold .hero-eyebrow{margin-bottom:clamp(26px,3vw,40px)}
+.pl-fold .hero-eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
+@media (min-width:981px){
+  .pl-fold-grid{
+    display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+    gap:clamp(36px,4.2vw,64px);align-items:end;
+  }
+  .pl-fold-side{border-left:1px solid var(--line);padding-left:clamp(26px,3vw,46px);padding-bottom:6px}
+  .pl-fold-side .hero-dek{margin-top:0;max-width:42ch}
+}
+
+/* ---- 22.2 the proof moments ---- */
+/* The walk carried five product plates in one run, each the full width of
+   the column under its own copy, and the run read as one texture: five
+   browser windows stacked. It is now four moments and one exhibit. The
+   four are the document's own composition logic (monitor, understand,
+   model, operationalize, which the section dek already names in that
+   order) and they keep the site's four stage words, because Home's
+   pipeline prints the same four and a second set of names on one site is
+   the failure the one-diagram-one-direction rule exists to stop.
+   The moment itself is the ledger grammar applied to a narrative row: a
+   rule across the width with the index hanging from it as a station, the
+   claim on the left rail, the argument in the wide column, the
+   INPUT/OUTPUT pair closing that column, and the plate at content width
+   below. Nothing here shrinks a screenshot: a 1920px product screen
+   printed small is decoration, and that ruling stands. */
+.pl-mom{position:relative;border-top:1px solid var(--line)}
+.pl-mom::before{content:"";position:absolute;left:0;top:0;width:1px;height:12px;background:var(--line-3)}
+.pl-mom .stage-media{margin-top:clamp(8px,1.4vw,20px)}
+@media (min-width:981px){
+  .pl-mom .stage-copy{
+    max-width:none;display:grid;
+    grid-template-columns:minmax(0,4fr) minmax(0,7fr);
+    column-gap:clamp(32px,4vw,72px);align-items:start;
+  }
+  .pl-mom .stage-num{grid-column:1/-1;margin-bottom:clamp(22px,2.6vw,32px)}
+  /* the claim takes the rail it hangs in, not a measure of its own: a
+     15ch cap broke the longest of the four into four lines in a column
+     wide enough for three */
+  .pl-mom .stage-copy h3{grid-column:1;grid-row:2;margin-bottom:0;max-width:none}
+  .pl-mom .stage-copy p:not(.stage-num){grid-column:2;max-width:58ch}
+}
+
+/* ---- 22.2b every plate starts at the edge of the product sidebar ---- */
+/* The scenario simulation already dropped the sidebar at desktop width
+   (round seven), for two reasons that apply to all four plates: it
+   repeats in every capture on the site, and it costs the frame a fifth
+   of its width. The globe and the knowledge graph were still printing
+   it, and it is also the one part of the captures carrying beta tags and
+   a report count, which is interface state rather than evidence. Both
+   frames now start at the edge of the sidebar, source x 296 and x 300 of
+   1920. The graph keeps round six's right edge, which is what holds its
+   raw property list off the page, so the frame is the app's own content
+   area between the two. The phone crops in section 17 are untouched. */
+@media (min-width:601px){
+  .pl-mom .win-body.focus-globe{position:relative;overflow:hidden;aspect-ratio:1624/1040}
+  .pl-mom .win-body.focus-globe img{
+    position:absolute;left:-18.227%;top:0;width:118.227%;max-width:none;height:auto;
+  }
+  .pl-mom .win-body.focus-graph{position:relative;overflow:hidden;aspect-ratio:1140/1037}
+  .pl-mom .win-body.focus-graph img{
+    position:absolute;left:-26.316%;top:0;width:168.421%;max-width:none;height:auto;
+  }
+}
+
+/* ---- 22.3 the delivery exhibits ---- */
+/* The sourced report and the daily brief are both answers to one
+   question, how the work leaves the platform, so they are read together
+   after the fourth moment instead of interrupting the walk between the
+   first and the second. They are two honesty tiers and each keeps its
+   own chrome: a real screen in its window, a printed artifact on its
+   sheet, labelled as it always was. The statement heads the pair, the
+   brief sits on the right rail at artifact scale, and the report keeps
+   its reading width on the left with the air beside it. */
+.pl-deliv{border-block:1px solid var(--line);padding-block:clamp(44px,5.5vw,80px)}
+.pl-deliv .statement{margin-top:0}
+.pl-deliv-doc{margin-inline:0;margin-top:clamp(34px,4.2vw,54px);max-width:820px}
+.pl-deliv-brief{margin-top:clamp(34px,4vw,48px);max-width:520px}
+@media (min-width:981px){
+  /* The statement opens the block across the width, and the two
+     artifacts are read as a pair under it: the real screen on the wide
+     rail, the printed object beside it. An earlier cut put the statement
+     and the brief in one row and the report under them, which left a
+     third of the block as dead ground under three lines of type. */
+  .pl-deliv{
+    display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+    column-gap:clamp(36px,4.4vw,70px);
+  }
+  .pl-deliv-say{grid-column:1/-1;grid-row:1}
+  .pl-deliv-doc{grid-column:1;grid-row:2}
+  .pl-deliv-brief{grid-column:2;grid-row:2;align-self:start;max-width:440px;margin-top:clamp(34px,4.2vw,54px)}
+}
+
+/* ---- 22.4 the example application, cropped to its operating band ---- */
+/* The application is the one dark object on a light page, and printed
+   whole it is a wall: eight index cards, a signal map and a live feed at
+   one size. The plate takes the top band of the source instead, x 0 to
+   1920 and y 0 to 566 of a 1920x1032 asset, which is the frame's own
+   full width (so nothing is cut vertically), the layer strip the caption
+   names, the application title whole, and the first card row ending in
+   the gutter above the second. On a phone the band would be 356px of
+   texture, so the crop changes rather than scales: x 0 to 712, y 200 to
+   566, the customer's own intelligence layers beside one whole index.
+   Both crops end on a gap in the sidebar list, and neither cuts a card
+   or a word. Home's plate on the same asset is a different rect at a
+   different scale; this one is Platform's. */
+.pl-evcrop{position:relative;overflow:hidden;aspect-ratio:1920/566}
+.pl-evcrop img{position:absolute;left:0;top:0;width:100%;height:auto;max-width:none}
+@media (max-width:600px){
+  .pl-evcrop{aspect-ratio:712/366}
+  .pl-evcrop img{width:269.663%;left:0;top:-54.645%}
+}
+
+/* ---- 22.5 the intelligence trail, grown into the page's signature ---- */
+/* SOURCE, SIGNAL, EXPOSURE, INDICATOR, SCENARIO, TRIGGER, ACTION was a
+   footnote-scale strip under the decision objects. It is still an
+   annotation and still the only trail on the page, and it still carries
+   no heading of its own; what changed is that it now annotates the five
+   objects EXACTLY, because both are drawn on one seven-station grid.
+   Tracker stands over the three evidence stations, the thing it watches;
+   Indicator, Scenario, Trigger and Action each stand over the station
+   that bears their name. The riser under every station reaches up to the
+   object it belongs to, so the relationship is drawn rather than
+   asserted, and it costs no words.
+   Three graded registers carry the progression without a second colour:
+   the evidence stations are dim, the object stations are mute ink, the
+   last station is full ink with the accent tick the device always gave
+   it. The accent is the one role in the figure, the point the trail
+   exists to reach. */
+.pl-eng .dobj-set{margin-top:clamp(30px,3.6vw,44px)}
+/* One grid serves both rows: three narrow stations for the evidence the
+   tracker watches, four wider ones for the objects that carry the
+   decision. Equal sevenths left Tracker as a wide empty cell and
+   squeezed Scenario's sentence to three lines. */
+@media (min-width:901px){
+  .pl-eng-objs{grid-template-columns:repeat(3,minmax(0,.74fr)) repeat(4,minmax(0,1.19fr))}
+  .pl-eng-objs .dobj-cell:first-child{grid-column:span 3}
+}
+.pl-trail{
+  --pl-riser:32px;
+  position:relative;display:grid;
+  grid-template-columns:repeat(3,minmax(0,.74fr)) repeat(4,minmax(0,1.19fr));
+  gap:0;margin-top:var(--pl-riser);font-size:11px;letter-spacing:.14em;
+}
+.pl-trail span{padding:15px 12px 0 0;color:var(--ink-dim);font-size:11.5px}
+.pl-trail span::before{height:8px}
+.pl-trail span::after{
+  content:"";position:absolute;left:0;top:calc(-1 * var(--pl-riser));
+  width:1px;height:var(--pl-riser);background:var(--line);
+}
+.pl-trail span:nth-of-type(n+4){color:var(--ink-mute)}
+.pl-trail span:nth-of-type(n+4)::before{height:12px;background:var(--ink-dim)}
+.pl-trail span:nth-of-type(n+4)::after{background:var(--line-2)}
+.pl-trail span:last-child{color:var(--ink);padding-right:0}
+.pl-trail span:last-child::after{background:var(--accent);width:2px}
+/* One line, drawn once, left to right: the trail is a path and the page
+   says so as it arrives. It is the existing reveal doing the work (the
+   observer's own .in class is the trigger), it is a transition and not a
+   loop, it rests where it stops, and the reduced-motion block in section
+   13 collapses it to nothing. Without JS the line is simply there. */
+.pl-run{
+  position:absolute;left:0;top:0;width:100%;height:1px;background:var(--ink-dim);
+  transform:scaleX(0);transform-origin:left center;
+}
+html:not(.js) .pl-run{transform:scaleX(1)}
+html.js .pl-run{transition:transform 1.15s cubic-bezier(.33,0,.2,1) .25s}
+html.js .reveal.in .pl-run{transform:scaleX(1)}
+
+/* ---- 22.6 the trust facts, as a document list ---- */
+/* Four hairline cells side by side are a card run. The same four facts
+   ruled, label left and sentence right, are a list in a document, which
+   is what this section is. The pipe above them is unchanged. */
+.pl-rows{border-top:1px solid var(--line)}
+.pl-row{
+  position:relative;display:grid;
+  grid-template-columns:clamp(190px,23vw,300px) minmax(0,1fr);
+  gap:8px clamp(24px,3.4vw,52px);align-items:baseline;
+  padding:clamp(18px,2.2vw,26px) 2px;border-bottom:1px solid var(--line);
+}
+.pl-row::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.pl-row h3{font:500 12px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.pl-row p{font-size:15.5px;line-height:1.62;color:var(--ink-body);max-width:64ch}
+
+/* ---- 22.6b the pipeline chain on a narrow screen ---- */
+/* Four nodes and three connectors wrap at 390px, which left an arrow
+   pointing off the right edge into nothing. The chain turns vertical
+   instead: same four nodes, same three connectors, the arrowhead
+   redrawn downward from the same borders. */
+@media (max-width:700px){
+  .pl-trust .pipe{flex-direction:column;align-items:flex-start}
+  .pl-trust .pipe .link{width:1px;height:16px;min-width:0;max-width:none;flex:none;margin-left:26px}
+  .pl-trust .pipe .link::after{
+    right:auto;left:-3px;top:auto;bottom:0;
+    border-left:3.5px solid transparent;border-right:3.5px solid transparent;
+    border-top:5px solid var(--line-2);border-bottom:0;
+  }
+}
+
+/* ---- 22.7 independent validation, as a register ---- */
+/* The rating was a centered claim over a row of pills. It is now the
+   claim on the left and the reviewers' own words as a ticked register on
+   the right: one rule, one station per theme, the quotes and the link
+   under it. No pill survives the change and no word changed. */
+.pl-themes{display:flex;flex-wrap:wrap;gap:0;margin:0}
+.pl-themes .chip{
+  position:relative;border:0;border-top:1px solid var(--line-2);border-radius:0;background:none;
+  padding:13px clamp(18px,2.6vw,34px) 0 10px;
+  font-size:10.5px;line-height:1.5;letter-spacing:.12em;color:var(--ink-body);
+}
+.pl-themes .chip::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.pl-rev .proof-foot{margin-top:clamp(26px,3vw,36px)}
+@media (min-width:981px){
+  .pl-rev-grid{
+    display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+    gap:clamp(36px,4.4vw,72px);align-items:start;
+  }
+  .pl-rev .sec-head{margin-bottom:0}
+}
+
+/* ---- 22.8 responsive ---- */
+@media (max-width:900px){
+  /* the objects are no longer on the trail's grid, so the risers would
+     point at nothing: the trail stands as its own measured rule */
+  .pl-trail{--pl-riser:0px;margin-top:clamp(26px,3.2vw,34px)}
+  .pl-trail span::after{display:none}
+}
+@media (max-width:760px){
+  /* one theme per row, each rule the full width of the column: stations
+     of different word lengths on one rule each read as a staircase */
+  .pl-themes{display:grid;grid-template-columns:minmax(0,1fr)}
+  .pl-themes .chip{padding-right:0}
+  /* the diagram is simplified, not shrunk: the rule turns vertical and
+     the stations hang off it, which is what the rail does on this site
+     at the same width */
+  .pl-trail{grid-template-columns:minmax(0,1fr);padding-left:16px;margin-top:clamp(24px,4vw,32px)}
+  .pl-trail::before{content:"";position:absolute;left:0;top:10px;bottom:12px;width:1px;background:var(--line-2)}
+  .pl-trail span{border-top:0;padding:9px 0 9px 16px}
+  /* the station marks turn with the rule: the long ticks that measured
+     height against the object row above would read as blocks here */
+  .pl-trail span::before,.pl-trail span:nth-of-type(n+4)::before{
+    top:50%;left:-16px;width:9px;height:1px;background:var(--line-3);transform:translateY(-50%);
+  }
+  .pl-trail span:nth-of-type(n+4)::before{width:13px;background:var(--ink-dim)}
+  .pl-trail span:last-child::before{width:17px;height:2px;background:var(--accent)}
+  .pl-run{display:none}
+  .pl-row{grid-template-columns:minmax(0,1fr);gap:10px}
+}
 
 /* ---- end 22 ---- */
 
