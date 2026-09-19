@@ -3069,7 +3069,162 @@ html.js .reveal.in .pl-run{transform:scaleX(1)}
    become one evidence area with selectable views; fine line, amber state,
    technical label, restrained transition; never generic SaaS tabs. */
 
-/* (section 27 body follows) */
+/* Two devices, both progressive enhancements over section 22: the four
+   proof moments become one evidence area with a station rail, and the
+   intelligence trail becomes selectable. Every rule that moves a layout is
+   gated on html.js, so the page without JS is exactly the page round nine
+   shipped, and every state here is temporary emphasis on a static figure.
+   Amber keeps its one meaning: the selected view, the selected station,
+   and the run between what enters a station and what leaves it. */
+
+/* ---- 27.1 the capability walk: one evidence area, four views ---- */
+/* Four full-width product plates printed in a run were four textures read
+   at once, and the brief's instruction is to stop showing them
+   simultaneously. The selector is built from the page's OWN printed
+   labels: each moment's station line (01 · MONITOR ... 04 · ACT) is MOVED
+   by the script onto one rule above the evidence area, so the rail invents
+   no word, nothing is printed twice, and the site keeps its single set of
+   stage words. UNDERSTAND, MODEL and OPERATIONALIZE stay composition logic
+   and stay unprinted, exactly as section 22 ruled.
+   The other three moments are collapsed to their station, never deleted:
+   copy, INPUT/OUTPUT pair and plate all come forward on a click, an arrow
+   key or a tap, and with JS off all four print in full as before. */
+html.js .px-rail{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;
+}
+/* A station hangs from a rule: its own hairline across its own extent, a
+   tick at its leading edge, the label under it. Separation is padding and
+   never gap, so the four hairlines abut into one continuous rule (the
+   lesson .cadence-v1 and .trail both record). */
+html.js .px-rail .px-st{
+  position:relative;margin:0;cursor:pointer;
+  border-top:1px solid var(--line-2);
+  padding:15px clamp(14px,2vw,28px) 17px 0;
+  color:var(--ink-dim);
+  transition:color .16s ease,border-color .16s ease;
+}
+html.js .px-rail .px-st::before{
+  content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3);
+  transition:height .16s ease,width .16s ease,background-color .16s ease;
+}
+/* section 11 closes .stage-num with a 34px trailing rule. Under the rail
+   the station tick carries that job, and four trailing dashes in one row
+   read as noise rather than as notation. */
+html.js .px-rail .px-st::after{display:none}
+/* pointer and keyboard get the same emphasis, and neither switches the
+   view: a 1200px evidence area changing under a passing cursor is motion
+   without intent. Selection is a click, Enter, Space or an arrow key.
+   The hover half is gated on a pointer that actually hovers: a phone
+   leaves an emulated hover on the element it last tapped, which would
+   hold this emphasis on a station the reader has finished with. */
+@media (hover:hover){
+  html.js .px-rail .px-st:hover{color:var(--ink)}
+  html.js .px-rail .px-st:hover::before{height:12px;background:var(--ink-dim)}
+}
+html.js .px-rail .px-st:focus-visible{color:var(--ink)}
+html.js .px-rail .px-st:focus-visible::before{height:12px;background:var(--ink-dim)}
+/* Selected. Section 11 prints EVERY .stage-num in the accent, which is
+   right for four moments read in sequence and wrong for four stations read
+   as a set: in a set the accent has to mean the one that is selected, so
+   the other three step back to label ink. The selected station also takes
+   its own segment of the rule, which is how this site marks an extent. */
+html.js .px-rail .px-st[aria-selected="true"]{color:var(--accent);border-top-color:var(--accent)}
+html.js .px-rail .px-st[aria-selected="true"]::before{width:2px;height:14px;background:var(--accent)}
+
+/* The evidence area. The hidden views keep their markup and their place in
+   the document; [hidden] alone cannot hide them because .stage sets
+   display:grid, which outranks the UA rule. */
+html.js .px-view[hidden]{display:none}
+html.js .px-view{opacity:0;transition:opacity .2s ease}
+html.js .px-view.px-shown{opacity:1}
+/* the moment sits under the rail now, so it does not need to open with a
+   full section's worth of air above it */
+html.js .px-walk .px-view{padding-top:clamp(24px,2.8vw,38px)}
+@media (min-width:981px){
+  /* section 22 opened the copy grid with the station line across both
+     columns and put the claim in row 2. The station line is on the rail
+     now, so the claim takes row 1 and the argument keeps its column. */
+  html.js .px-walk .pl-mom .stage-copy h3{grid-row:1}
+}
+
+/* ---- 27.2 the intelligence trail, selectable ---- */
+/* At rest the figure is exactly what section 22 draws, down to the one
+   line drawn once on arrival. What the script adds is a reading of it:
+   hover or focus previews a station, a click or Enter holds it, Escape or
+   a second tap releases it. A held station lights the decision object
+   standing over it (that object's own sentence is what happens there,
+   already printed, so the emphasis costs no word), holds the station
+   before it and the station after it one register up as what enters and
+   what leaves, and draws the accent over the run between them. */
+html.js .pl-trail span{cursor:pointer}
+.pl-trail span{transition:color .16s ease}
+.pl-trail span::before,
+.pl-trail span::after{transition:background-color .16s ease,height .16s ease,width .16s ease}
+.pl-trail span.px-on{color:var(--accent)}
+.pl-trail span.px-on::before{background:var(--accent);height:12px;width:2px}
+/* the riser is the drawn relationship between a station and its object, so
+   the accent runs up it to the cell that lights */
+.pl-trail span.px-on::after{background:var(--accent);width:2px}
+.pl-trail span.px-near{color:var(--ink)}
+/* every station that is neither in nor out of the selected one steps back
+   one register, including the last: while a station is held, amber means
+   that station, and the trail's resting destination mark stands down */
+.pl-trail.px-live span:not(.px-on):not(.px-near){color:var(--ink-dim)}
+.pl-trail.px-live span:not(.px-on):not(.px-near)::after{background:var(--line)}
+/* The run between what enters and what leaves. The stations are grid
+   cells, so their own extents are the only honest coordinates for it and
+   the script measures them rather than guessing a percentage; it is
+   redrawn on resize. Drawn over .pl-run, the line the figure already has. */
+.px-seg{
+  position:absolute;left:var(--px-x,0);top:0;width:var(--px-w,0);height:1px;z-index:1;
+  background:var(--accent);pointer-events:none;opacity:0;transition:opacity .16s ease;
+}
+.pl-trail.px-live .px-seg{opacity:1}
+/* The object standing over the station. Its accent tick already marks the
+   cell's leading edge; held, it runs the full edge, the ground lifts one
+   step and the sentence comes up to reading ink. No size changes: the five
+   objects keep one static weight, as every set on this site does. */
+.pl-eng-objs .dobj-cell{transition:background-color .16s ease}
+.pl-eng-objs .dobj-cell::before{transition:height .18s ease}
+.pl-eng-objs .dobj-cell.px-on{background:var(--bg-1)}
+.pl-eng-objs .dobj-cell.px-on::before{height:100%}
+.pl-eng-objs .dobj-cell.px-on .v{color:var(--ink-body)}
+
+/* ---- 27.3 touch and narrow screens ---- */
+/* Hover means nothing here, so the pointer preview is attached only where
+   the pointer hovers (the script tests hover:hover) and a tap is a hold
+   that a second tap releases. */
+@media (max-width:600px){
+  /* four stations across cannot hold a 12-character station label at
+     390px, so the rail becomes the ruled vertical list it already is at
+     large size, turned on its side: one rule per station, the tick at its
+     leading edge, the selected plate under the list. */
+  html.js .px-rail{grid-template-columns:minmax(0,1fr)}
+  html.js .px-rail .px-st{padding:13px 0 14px}
+}
+@media (max-width:760px){
+  /* the trail is a vertical spine at this width (section 22), so the run
+     between the stations is drawn down it rather than across */
+  .px-seg{left:0;top:var(--px-y,0);width:1px;height:var(--px-h,0)}
+  /* and the station marks turn with the rule, so the held station's mark
+     is the heavy horizontal dash the last station already uses here, not
+     the vertical riser mark of the wide layout */
+  .pl-trail span.px-on::before{width:17px;height:2px;background:var(--accent)}
+}
+
+/* ---- 27.4 reduced motion ---- */
+/* Every state above is a state, not an animation: with motion off they all
+   still apply, they simply arrive at once. */
+@media (prefers-reduced-motion:reduce){
+  html.js .px-view,
+  html.js .px-rail .px-st,html.js .px-rail .px-st::before,
+  .pl-trail span,.pl-trail span::before,.pl-trail span::after,
+  .pl-eng-objs .dobj-cell,.pl-eng-objs .dobj-cell::before,
+  .px-seg{transition:none}
+  html.js .px-view{opacity:1}
+}
+
+/* ---- end 27 ---- */
 
 
 
