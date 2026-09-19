@@ -1764,6 +1764,22 @@ left, the dek and the two calls to action in a hairline-ruled right rail
 whose last line ends level with the heading. The page's instruments start
 one rule below it and run to the footer.
 
+**The knowledge graph is cropped to what can be read** (send-back fix,
+after the critic's pass). The content area printed whole was about 1100px
+of undifferentiated multi-colour node field: nothing in it can be read at
+that size, it is the weakest interface on the site, and a dense coloured
+network is the one picture the counter-prompt names outright. The product
+draws no text on its nodes, so the readable evidence in the frame is the
+record it is open on and the shape of the relations around it. The crop is
+cut to exactly that: **source x 300 to 1072, y 0 to 250** of the 1920x1037
+asset, ending in the gap before the Level control rather than through it,
+and on a phone **x 300 to 636, y 0 to 340** at about 1:1. The field is cut
+by the plate, which is what the site does with the globe. `.pl-detail`
+stops the plate at 920px: a 772px crop stretched across the column upscales
+the product's own type by half again for nothing, and this is the one of
+the four moments whose proof is a detail rather than a whole screen, so the
+composition says so. Alt text follows the crop.
+
 **On the audit list after this round:** `.proof-between`,
 `.appshot.focus-space` and `.trust-grid` at four columns lost their only
 users. All three are in sections 17 and 18 and were left in place.
