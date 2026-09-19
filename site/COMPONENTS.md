@@ -1662,7 +1662,115 @@ two places, and the link is one click.
 
 ### Solutions (section 23, `so-`)
 
-(builder writes here)
+Solutions belongs to the same brand and may not read as technical as
+Platform: the reader is an executive buyer, and the page's job is the
+decision journey and what it costs to begin. So the page takes the
+system's grammar (stations hanging from rules, one measured lattice per
+view, the figure cut by its plate) and none of the other pages'
+compositions. No coordinate scale, no aperture, no trail. Nothing new in
+the palette, no new font, no new motion.
+
+**The fold (`.so-hero`).** One ruled eyebrow across the top, the claim
+hanging on the left, the cost of starting and the two calls to action on
+the right with their baselines meeting the claim's. Asymmetric, quiet,
+nothing centered, and the two CTAs sit inside the first screen because
+this is the commercial page.
+
+**The adoption progression (`.so-grid`, `.so-ext`, `.so-k`), the page's
+major visual.** Three bordered nodes with an arrow glyph between them were
+the feature-card run this pass exists to delete, and they answered none of
+the question a buyer arrives with: how far does this go. The section is now
+one figure. Above a continuous station rule each step carries its EXTENT.
+`ONE DECISION` is a bounded run of six divisions marked at both ends, the
+way a dimension is drawn, because a decision ends. `STANDING WATCH` is a
+run that starts at its own station, carries an origin mark only and does
+not close. `ORGANIZATIONAL INTELLIGENCE` is that same run carried three
+times over, because its growth is reach across the organization rather
+than a longer period. Left to right the ink accumulates from one line to
+four, which is the page's commercial argument drawn once: start small,
+keep it, spread it.
+
+- **The lattice is exact, and that is the whole licence for drawing it.**
+  The grid is twelve tracks and the steps span three, four and five of
+  them, so the stations fall at 0, 6 and 14 twenty-fourths of the figure
+  and every division on every run lands on the same lattice of 24. That is
+  why each run states its divisions as a COUNT (6, 18, 10) and never as a
+  pixel pitch: a pitch would drift out of phase between runs, and a ruler
+  whose marks do not register with the thing it measures is a HUD graphic,
+  which is exactly what the notation rule exists to stop. Any change to
+  the column spans has to keep the three starts on the lattice.
+- **Separation is padding, never gap.** The three heads abut into one
+  continuous station rule; a grid gap would break the rule where the gap
+  falls. Same reason `.trail` is built that way.
+- **One accent, and it is the decision point**: the entry mark at station
+  01 and the `01` itself. The two later step numbers are ink. The old
+  ladder put the accent on all three, which said the steps were three
+  equal grades rather than one entry that grows.
+- **The step is one block in the markup** (index, heading, sentence,
+  bullets), and only on the wide layout does `display:contents` lift its
+  parts into the figure's own grid. A screen reader therefore hears each
+  step whole, and the extents can still share one lattice above the
+  stations (WCAG 2.1 SC 1.3.2).
+- **Mobile simplifies, it does not shrink.** Under 901px the steps stack
+  and each one keeps its own extent at its own length (34, 67, 100 percent
+  with the third tripled), so the growth still reads in one pass.
+- The closing bar (`.level-out`) keeps its words and sets its sentence in
+  sans, with only its label in mono. A full sentence in letter-spaced
+  uppercase is a label pretending to be a sentence, and this page has to
+  stay easy. `.ladder`, `.ladder-node`, `.ladder-meter`, `.idx` and
+  `.loop-arrow` lost their last user with this section and join the audit
+  list in section 16; nothing was deleted, because section 16 is frozen
+  this round.
+
+**The customer-specific application (`.so-app`, `.so-ev-*`).** The proof
+that the layer takes the customer's shape, printed as an evidence plate on
+the `.ev-*` pattern and composed differently from Home: the reading hangs
+on the left of one rule and the plate sits to the right of it, so the
+product is read inside Mission Grey's page rather than filling it. It is
+not a stage and it is not a screenshot dropped in a column.
+
+- **The crop is stated in source pixels.** Desktop: x 317 to 1107, y 378
+  to 679 of the 1920x1039 asset, which is `aspect-ratio:790/301`,
+  `width:243.038%`, `left:-40.127%`, `top:-125.581%`. It holds the
+  briefing's own opening assessment whole and the two indexes under it
+  whole, and it ends on the card boundary at source y 678. Dropped: the
+  application title, the product sidebar, the ticker and the two further
+  indexes. Four indexes side by side read as an equal card grid with
+  status pills, which is the vocabulary this pass removes; the assessment
+  is what says the intelligence was shaped around this customer's
+  business, which is what the section claims.
+- **The phone crop is a different vertical rect, deliberately.** The
+  assessment is a paragraph: narrowing the plate would cut every one of
+  its lines mid-word at the frame edge, and a sliced paragraph at a frame
+  edge is the site making a mess and blaming the app. So under 520px the
+  plate drops to the first index alone, whole: x 315 to 711, y 497 to 679,
+  `aspect-ratio:396/182`, `width:484.848%`, `left:-79.545%`,
+  `top:-273.077%`.
+- **The switch is at 520px, not the site's usual 600.** The phone rect is
+  396 source pixels wide, so above 520 it is being upscaled past 1.2x
+  while the wide crop still prints its assessment at a readable size.
+  Under 520 the wide crop is the one that fails. Where a crop's source
+  rect is narrow, the breakpoint follows the arithmetic, not the habit.
+- **One leader, landing on a mark the image actually draws**: the
+  direction mark the product prints beside the figure, labelled `Change`.
+  The stem stands in the clear corridor to its right (source x 574, 22px
+  clear of the last glyph) and rises from the plate's bottom edge, which
+  is the card's own boundary, so the leader crosses no rule of the
+  artwork. The artwork here is white, so the leader is drawn in page ink
+  rather than in the light the Home plate uses. `Change` is the only word
+  added to this page in this round.
+- **The alt text describes what both crops show and no more.** An alt that
+  names the assessment would be describing something the phone reader
+  cannot see.
+
+**The two ruled indexes (`.so-funcs`, `.so-roles`).** Daily use by
+function and the three ways of working were already ruled rows rather than
+cards, so they keep their layout and take the one thing the system asks of
+a list: a station tick at the leading edge of every row. Nothing else in
+those two sections changed. The worked chain (`.rail`), the recommended
+actions screenshot, the quotes and the access panel are untouched: they
+already follow the system, and a page whose job is to stay easy does not
+need a fourth device.
 
 ### About (section 24, `ab-`)
 
