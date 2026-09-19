@@ -1836,6 +1836,197 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
    sections above render unchanged on every other page. Tokens only, no
    new font file, no new accent value, no gradient as decoration, no glow.
    Written in the same voice as section 19: the why beside the what. */
-/* ---- 24.1 ---- */
+/* ---- 24.1 the fold: a masthead, not an instrument ---- */
+/* About is the one page whose subject is people and places, so its fold is
+   set rather than drawn: title at full measure, then one hairline with the
+   dek hanging from it on the right rail, with the left half left empty.
+   The tick at the head of the dek column is the page's first station, which
+   is the grammar every ruled object below repeats. No instrument here on
+   purpose: the home fold owns the drawn world, and a second globe on About
+   would be the same page twice. */
+.ab-hero{padding-bottom:clamp(60px,6.6vw,100px)}
+.ab-hero h1{max-width:20ch}
+.ab-fold{
+  position:relative;margin-top:clamp(38px,4.8vw,64px);padding-top:26px;
+  border-top:1px solid var(--line-2);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);
+  column-gap:clamp(30px,4vw,64px);
+}
+.ab-dek{position:relative;grid-column:2;margin-top:0;max-width:540px}
+.ab-dek::before{content:"";position:absolute;left:0;top:-27px;width:1px;height:9px;background:var(--line-3)}
+
+/* ---- 24.2 the four disciplines, as a ledger ---- */
+/* Four hairline cells were a four-column card grid, which is the first item
+   on the brief's counter-prompt. The same four words and four sentences are
+   now stations hanging from one rule: mono name over the sentence, a tick
+   per station at its leading edge. The separation is padding rather than a
+   column gap so the four rules abut into one continuous line (the lesson
+   the cadence ledger in section 19 records). */
+.ab-disc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.ab-disc-i{position:relative;border-top:1px solid var(--line-2);padding:18px clamp(16px,2.4vw,34px) 0 14px}
+.ab-disc-i::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.ab-disc-i h3{
+  font:500 11px/1.5 var(--mono);letter-spacing:.17em;text-transform:uppercase;
+  color:var(--ink);margin-bottom:12px;
+}
+.ab-disc-i p{font-size:14.5px;line-height:1.65;color:var(--ink-mute)}
+
+/* ---- 24.3 the name band ---- */
+/* The mark sequence is the company's own picture of ambiguity resolving, so
+   on the page that explains the name it is printed larger and hung from its
+   own rule instead of sitting as a small row beside the copy. */
+.ab-seq{border-top:1px solid var(--line-2);padding-top:clamp(20px,2.6vw,32px)}
+.ab-name .name-copy p{max-width:48ch}
+.ab-name .resolve svg{width:clamp(54px,7.4vw,98px)}
+@media (min-width:901px){
+  .ab-name{grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);align-items:end}
+}
+
+/* ---- 24.4 the people, in three registers ---- */
+/* One team card grid became three rhythms, because the content already has
+   three: the two roles the page opens with, the rest of the core team, and
+   the advisors and network. Nothing is regrouped and no role distinction is
+   invented; the larger portraits are an editorial device, not a ranking.
+   Every person keeps name, title, bio, credentials and profile link.
+   Portrait scale is limited by the source files (112 to 221px square, the
+   largest a 221px JPEG), so the hierarchy is carried by type, measure and
+   whitespace and only partly by portrait size: a 190px headshot printed at
+   300px is a blur, and a blurred face is worse than a small one. */
+.ab-key{
+  display:flex;flex-wrap:wrap;gap:8px 30px;margin:22px 0 clamp(30px,4vw,46px);
+  font:400 10.5px/1.8 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim);
+}
+/* the two roles the page opens with */
+.ab-leads{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.ab-lead{
+  position:relative;border-top:1px solid var(--line-2);
+  padding:26px clamp(20px,3vw,52px) 0 16px;
+  display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,2.4vw,32px);
+}
+.ab-lead::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:9px;background:var(--line-3)}
+.ab-por{width:152px;height:152px}
+.ab-lead h3{font-size:clamp(20px,1.9vw,24px);letter-spacing:-.015em;line-height:1.15}
+.ab-lead .ab-bio{margin-top:14px;font-size:15.5px;color:var(--ink-body)}
+/* the rest of the core team: a ruled register, two columns */
+.ab-reg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:clamp(40px,5vw,66px)}
+.ab-p{
+  position:relative;border-top:1px solid var(--line);
+  padding:22px clamp(20px,3vw,52px) 30px 16px;
+  display:grid;grid-template-columns:76px minmax(0,1fr);gap:20px;
+}
+.ab-p::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
+.ab-p h3{font-size:17px;letter-spacing:-.01em;line-height:1.3}
+.ab-por-s{width:76px;height:76px}
+/* advisors and network: portrait over name, four stations on one rule */
+.ab-rl2{margin-top:clamp(46px,5.6vw,72px)}
+.ab-adv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(26px,3vw,38px)}
+.ab-a{position:relative;border-top:1px solid var(--line-2);padding:24px clamp(16px,2.4vw,38px) 0 14px}
+.ab-a::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:9px;background:var(--line-3)}
+.ab-a h3{font-size:17px;letter-spacing:-.01em;line-height:1.3}
+.ab-por-m{width:92px;height:92px;margin-bottom:20px}
+/* shared fields */
+.ab-role{
+  margin-top:9px;font:500 10.5px/1.5 var(--mono);letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-dim);
+}
+.ab-bio{margin-top:11px;font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
+.ab-cred{margin-top:8px;font-size:13.5px;line-height:1.6;color:var(--ink-dim)}
+.ab-foot{margin-top:15px}
+.ab-prof{
+  display:inline-flex;align-items:center;min-height:24px;
+  font:500 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-dim);border-bottom:1px solid var(--line-2);white-space:nowrap;
+}
+.ab-prof:hover{color:var(--ink)}
+/* The research strip's cross-link. It was page-local (.strip-link, a copy of
+   .strip-g2 without the rating semantics) and moves here with the page's
+   other work, so About declares nothing of its own outside this section. */
+.ab-strip-link{
+  margin-left:auto;font:500 11px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-mute);border-bottom:1px solid var(--line-2);padding-bottom:2px;white-space:nowrap;
+}
+.ab-strip-link:hover{color:var(--ink)}
+
+/* ---- 24.5 where we are, as a west to east register ---- */
+/* The three offices were three boxes in a row, which says the regions are
+   three equal products. They are places, so they are drawn as places: one
+   rule, one station per office at its own meridian, the label under the
+   tick. The scale is real (San Francisco 122W on the left edge, Singapore
+   104E on the right), which is why each station may print its meridian:
+   a coordinate is only allowed against something that actually has that
+   coordinate. Other offices and operations hang from a second rule on the
+   same scale, so the reader sees one company spread across the working
+   day rather than a list with a footnote. No instrument chrome: this is a
+   statement of where the company is, not a claimed view of data, the same
+   reasoning that keeps the .steps row out of a .frame. */
+.ab-geo{margin-top:6px}
+.ab-geo-t{position:relative;height:132px;border-top:1px solid var(--line-2)}
+.ab-geo-t2{height:76px}
+.ab-geo-s{position:absolute;top:0;left:var(--x);width:220px;padding:14px 0 0 13px}
+.ab-geo-s::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:10px;background:var(--line-3)}
+.ab-geo-e{transform:translateX(-100%);text-align:right;padding:14px 13px 0 0}
+.ab-geo-e::before{left:auto;right:0}
+.ab-lon{
+  display:block;font:400 10px/1.4 var(--mono);letter-spacing:.2em;color:var(--ink-dim);
+}
+/* Two lines of region label are reserved in every station: EMEA wraps and
+   the other two do not, and a label that wraps drops its own city one line
+   and breaks the row's baseline, which is the one thing a register may not
+   do (the same reservation the cadence ledger makes at 700px). */
+.ab-geo-s h3{
+  margin-top:9px;min-height:3em;font:500 10.5px/1.5 var(--mono);letter-spacing:.17em;
+  text-transform:uppercase;color:var(--ink-dim);
+}
+.ab-geo-s p{margin-top:9px;font:600 16px/1.35 var(--sans);letter-spacing:-.01em;color:var(--ink)}
+.ab-geo-s p small{display:block;margin-top:5px;font:400 13.5px/1.5 var(--sans);letter-spacing:0;color:var(--ink-mute)}
+.ab-geo-t2 .ab-geo-s p{font-size:14.5px;font-weight:500;color:var(--ink-mute)}
+.ab-geo-k{
+  margin-top:clamp(30px,3.6vw,46px);margin-bottom:14px;
+  font:400 10.5px/1.6 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);
+}
+
+/* ---- 24.6 responsive ---- */
+@media (max-width:1080px){
+  /* A 226 degree spread drawn 900px wide puts Puteaux under Singapore, so
+     below this width the register stops being a map and becomes a ruled
+     list. The notation stays: the meridian is what the stations were
+     ordered by, and it is still true in a column. */
+  .ab-geo-t,.ab-geo-t2{height:auto;border-top:0}
+  .ab-geo-s h3{min-height:0}
+  .ab-geo-s,.ab-geo-e{position:static;width:auto;transform:none;text-align:left;
+    border-top:1px solid var(--line-2);padding:14px 0 20px 13px}
+  .ab-geo-e::before{left:0;right:auto}
+  .ab-geo-t2 .ab-geo-s{border-top-color:var(--line)}
+}
+@media (max-width:980px){
+  .ab-fold{grid-template-columns:minmax(0,1fr)}
+  .ab-dek{grid-column:1}
+  .ab-adv{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ab-a:nth-child(n+3){margin-top:clamp(24px,3vw,34px)}
+}
+@media (max-width:900px){
+  .ab-disc{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ab-disc-i:nth-child(n+3){margin-top:clamp(26px,3.4vw,38px)}
+  .ab-leads,.ab-reg{grid-template-columns:minmax(0,1fr)}
+  .ab-lead{padding-right:0}
+  .ab-lead:nth-child(n+2){margin-top:clamp(30px,4vw,42px)}
+  .ab-p{padding-right:0}
+  .ab-name .resolve{justify-content:flex-start}
+  .ab-strip-link{margin-left:0}
+}
+@media (max-width:560px){
+  /* Portraits stay large enough to be a face rather than an avatar: the
+     lead pair keeps a 116px head and the register keeps 64px, which is
+     the size at which a 180px source is still sharp on a 2x screen. */
+  .ab-disc{grid-template-columns:minmax(0,1fr)}
+  .ab-disc-i:nth-child(n+2){margin-top:26px}
+  .ab-adv{grid-template-columns:minmax(0,1fr)}
+  .ab-a:nth-child(n+2){margin-top:26px}
+  .ab-lead{grid-template-columns:minmax(0,1fr);gap:18px}
+  .ab-por{width:116px;height:116px}
+  .ab-p{grid-template-columns:64px minmax(0,1fr);gap:16px}
+  .ab-por-s{width:64px;height:64px}
+  .ab-key{gap:6px 0;flex-direction:column}
+}
 
 /* ---- end 24 ---- */

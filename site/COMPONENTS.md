@@ -1542,4 +1542,97 @@ page's builder and documents the binding decisions for that page.
 
 ### About (section 24, `ab-`)
 
-(builder writes here)
+About is the page about people and places, so it is the one page in this
+round that draws no instrument. Its composition is a document: a set
+masthead, one ruled ledger, three portrait registers and a geographic
+register. Everything it needed already existed in the tree (22 real
+portraits, five real places, the mark sequence); nothing was added to
+`assets/`.
+
+**The fold is set, not drawn.** Title at a 20ch measure across the left
+two thirds, then one hairline with the dek hanging from its right half and
+a tick at the head of that column. The left half under the rule stays
+empty on purpose. A second globe, or any instrument, would make About read
+as Home with different words; the page's job at the fold is a masthead.
+
+**Atmospheric imagery is material this round did not have.** The commission
+allows About more documentary imagery than any other page (global city
+details, infrastructure, travel, international working environments,
+restrained nocturnal imagery). No such photograph exists in `assets/` and
+the round forbids new image assets, so the atmosphere is carried by the
+system's own means instead: real geography as notation, the portraits the
+page already has, large controlled whitespace and editorial hierarchy. If
+photography is approved later, the two places it belongs are a full-bleed
+band between the name band and the people (one nocturnal city detail,
+grayscale, no type over a face), and a second, quieter plate beside the
+geographic register. Both are additive; nothing in this section has to
+move to make room.
+
+**The four disciplines are a ledger, not four cells.** Operators,
+Intelligence experts, Risk experts and Research hung from one rule with a
+tick per station, mono name over the sentence. The separation is padding
+rather than a column gap, so the four rules abut into one continuous line
+(the lesson `.cadence-v1` records in section 19). A four-column hairline
+card grid is the first item on the brief's counter-prompt, and this
+section carried one.
+
+**People, in three registers, binding.** The content already carries three
+groups and exactly three were drawn:
+
+| Register | Who | Portrait | Why |
+|---|---|---|---|
+| `.ab-leads` | the two roles the page opens with (Chief Executive Officer, Founder and Chairman) | 152px | the page's own reading order, printed at reading order's scale |
+| `.ab-reg` | the rest of the core team, 16 people, two columns of ruled rows | 76px | a register, not cards: hairline per row, tick at its leading edge, no box and no fill |
+| `.ab-adv` | Advisors and network, four stations on one rule | 92px, over the name | the entries carry no role line, so the rhythm changes with the content |
+
+Nobody was regrouped, no role distinction was invented, and every person
+keeps name, title where the content gives one, bio, credentials line and
+profile link. **The larger portraits are an editorial device, not a
+ranking**, the same rule the Guild page works under.
+
+**Portrait scale is capped by the source files, not by taste.**
+`assets/people/` holds 22 grayscale headshots between 112x124 and 221x221;
+`MAPPING.json` records larger dimensions for three of them that the files
+themselves no longer have. So 152px is the largest a portrait can print
+and stay sharp on a 1x screen, and 116px is the phone ceiling. The
+hierarchy is therefore carried by type, measure and whitespace, and only
+partly by portrait size: a 190px headshot printed at 300px is a blur, and
+a blurred face is worse than a small one. Higher-resolution files would
+let `.ab-por` grow without any other change. Grayscale and the `--line-2`
+edge stay exactly as section 14 sets them: no filter, no crop treatment
+and no decoration on a face, ever.
+
+**Where we are, as a west-to-east register.** The three offices were three
+boxes in a row, which says the regions are three equal products. They are
+places, so they are drawn as places: one rule, one station per office at
+its true meridian (Arlington 77W, Puteaux 2E, Singapore 104E on a scale
+whose ends are San Francisco 122W and Singapore), the label hanging under
+its tick. Other offices and operations hang from a second rule on the same
+scale. **The meridians are the only text this page added, and they are
+allowed for the same reason the home scale's labels are: a coordinate may
+only be printed against something that actually has that coordinate.** UTC
+offsets were the first draft and were dropped: half of them are wrong for
+half of the year, and this site struck "real time" from the home page for
+less. Two rules learned here: two lines of region label are reserved in
+every station (`min-height:3em`), because EMEA wraps and the other two do
+not and a wrapped label drops its own city one line; and below 1080px the
+register stops being a map and becomes a ruled list, because a 226 degree
+spread drawn 900px wide puts Puteaux under Singapore. The notation stays
+in the list, since the meridian is what the stations were ordered by.
+It wears no `.frame`: this is a statement of where the company is, not a
+claimed view of data, the same reasoning that keeps `.steps` out of
+instrument chrome.
+
+**No amber on this page beyond the chassis.** The eyebrow ticks and the
+one primary button are the page's whole accent. Amber means active,
+changed, selected or decision point, and nothing About says is any of
+those; a highlighted office or a highlighted person would be a signal
+about a human being. Restraint here is the accent working, not the accent
+missing.
+
+**Page-local CSS is now one line.** The About `<style>` block held the
+roster, the monogram fallback, the office grid and a copy of the strip
+cross-link. All of it is in section 24 or deleted; the block keeps only
+the current-page nav state. `.person-photo` (section 14) is still the
+portrait component and is only ever given a new size, never a new
+treatment.
