@@ -2036,7 +2036,123 @@ documents the binding decisions.
 
 ### Platform (section 27, `px-`): the trail and the proof views
 
-(written by the platform builder)
+Two devices on the machinery page, both progressive enhancements over
+round nine: the capability walk becomes one evidence area with four
+selectable views, and the intelligence trail becomes readable one station
+at a time. **No word on the page changed** (source textdiff: 2301 words
+in and out, zero changes; live DOM with JS on: the same 2292 words with
+the same counts, in a different reading order, because the four station
+lines are lifted onto the rail). No asset, crop or caption changed. Every
+selector is prefixed `px-`; only rules that move a layout are gated on
+`html.js`.
+
+**The rail is made of the page's own labels, and that is the whole
+licence for it.** The brief's list of views is MONITOR / UNDERSTAND /
+MODEL / OPERATIONALIZE; section 22 already ruled that the last three are
+composition logic and are not printed, because Home's pipeline and this
+page both print MONITOR, ANALYZE, DECIDE, ACT and a second set of stage
+words on one site is the failure the one-diagram-one-direction rule
+exists to stop. That ruling stands: the script **moves** each moment's
+own `p.stage-num` into the rail rather than writing a label, so nothing
+is printed twice, nothing is invented, and the rail cannot drift out of
+sync with the moments it selects. Add a fifth moment and the rail grows
+with it; only `repeat(4,...)` in 27.1 has to follow.
+
+**The rail sits above the evidence area, never beside it.** A left rail
+costs the plate a third of the column, and printing a 1920px product
+screen small is the decoration round six ruled out and round nine
+repeated. So the four stations hang from one rule across the width, the
+selected one takes the accent and its own segment of that rule, and the
+selected moment prints under it exactly as section 22 composes it. The
+three unselected moments collapse to their station.
+
+- **Selection is a click, Enter, Space or an arrow key; hover and focus
+  give emphasis only.** Hovering a station lifts its tick and brings its
+  label to ink, and that is all: switching a 1200px evidence area under a
+  passing cursor is motion without intent, and a reader would lose the
+  view they were reading by crossing the rail. This is the one place the
+  brief's "selects or hovers" was read as "selects"; if it is ever
+  reversed, it belongs behind a dwell delay, not on `mouseenter`.
+- **Proper tab semantics.** `role="tablist"` on the rail (named by the
+  section's own `h2`, so no interface word was invented), `role="tab"`
+  with `aria-selected` and roving `tabindex` on the stations,
+  `role="tabpanel"` with `aria-labelledby` on the moments, Left/Right,
+  Up/Down, Home and End moving and selecting. A panel with no link of its
+  own takes `tabindex="0"`; moment 04 carries two and does not need it.
+- **The next plate is fetched before it is asked for.** All four images
+  stay `loading="lazy"`; selecting a view promotes its two neighbours to
+  `eager`, so a switch never opens on an empty frame while a reader who
+  never touches the rail still downloads one screenshot.
+- **Under 600px the rail is a vertical ruled list** with the selected
+  plate under it: four 12-character station labels cannot sit across a
+  390px column, and shrinking the label to make them fit would put the
+  page's smallest type on its primary control. Tap selects; there is
+  nothing to release, because one view is always shown.
+- Three traps worth recording. `[hidden]` does not hide a `.stage`: the
+  UA rule loses to `.stage{display:grid}`, so `.px-view[hidden]` has to be
+  declared. A collapsed view never intersects, so the reveal observer
+  would hand it over at `opacity:0`; the script drops `.reveal` from all
+  four as it builds the rail. And every `:hover` rule here is wrapped in
+  `@media (hover:hover)`: a phone leaves an emulated hover on the element
+  it last tapped, which would hold the emphasis on a station the reader
+  has finished with.
+
+**The intelligence trail reads what it already draws.** At rest it is
+exactly the figure section 22 shipped, including the one line drawn once
+on arrival. Held, it answers the brief's question — what enters a stage,
+what happens there, what comes out — using only what is already printed:
+
+| Drawn | Reading |
+|---|---|
+| the station takes the accent, and the accent runs up its riser | the stage the reader selected |
+| the decision object standing over it lights: full-height accent edge, ground one step up, its sentence to reading ink | **what happens there**, in the object's own words (`What we measure.`, `What could happen, and what we would do.`) |
+| the station before and the station after hold one register up | what enters, what comes out |
+| the accent is drawn over the run between those two | the relationship to the adjacent stages |
+| every other station steps back one register, the last one included | while a station is held, amber means that station |
+
+Nothing is revealed that was not already on the page. The stations were
+not linked to the walk moments a screen above: a marker that cannot be
+seen next to what it marks is notation for its own sake.
+
+- **The stations are controls, not a picture, once the script runs.** The
+  figure ships as `role="img"` with a label naming all seven stations,
+  which is what it must stay without JS. With JS it becomes
+  `role="group"` keeping that same label, and each station takes
+  `role="button"`, `tabindex="0"` and `aria-pressed`. The elements stay
+  `<span>`: every rule in section 22 addresses `.pl-trail span` and
+  `:nth-of-type`, and swapping in `<button>` would have rewritten the
+  figure to gain nothing a role does not give.
+- **Hover previews, click holds, Escape or a second tap releases.** The
+  pointer preview is attached only where `(hover:hover)` matches, so a
+  tap is a hold and a second tap releases it rather than leaving a sticky
+  hover behind; focus previews exactly as hover does, and releasing with
+  the pointer still on the station keeps the preview.
+- **Nothing may be appended after the last station, binding.** The figure
+  styles its destination with `span:last-child`, so the first cut, which
+  appended the run segment to `.pl-trail`, silently took the accent riser
+  and the reading ink off ACTION at rest on both layouts — a defect
+  invisible in a screenshot and obvious in a computed-style diff against
+  the base. The segment is inserted as the FIRST child, beside `.pl-run`,
+  and lifted over it with `z-index`. Any future element added to this
+  figure goes in front of the stations, not behind them.
+- **The run is measured, never guessed.** The stations are grid cells, so
+  their own extents are the only honest coordinates for the segment
+  between them; the script writes four custom properties from their
+  rects and redraws on resize. Below 761px the trail is a vertical spine
+  and the same segment is drawn down it.
+- **Below 901px the risers are gone** (section 22), so the lit object
+  cell is the only link between a station and its object and on a phone
+  it can be off screen above. The reading holds locally through the
+  neighbours and the run; the alternative was scrolling the page under
+  the reader, which this site does not do.
+
+**On the audit list after this round.** The three unselected moments are
+in the DOM but `display:none`, so assistive technology reaches them the
+way a sighted reader does, by activating their station — acceptable for
+four peers behind a visible rail, worth re-examining if a fifth view or a
+deep link lands here. `.stage-num` is printed in the accent by section
+11, right for moments read in sequence and overridden here for a set read
+as one control.
 
 
 

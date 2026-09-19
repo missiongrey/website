@@ -154,6 +154,10 @@
         <p>Four moments, in the order the work happens: monitor, understand, model, operationalize. One screen each, plus the report the work is circulated as.</p>
       </div>
 
+      <!-- The four moments print in full in this order without JS. With JS the
+           script at the end of this file lifts each moment's own station line
+           onto one rule above them and shows one moment at a time under it
+           (stylesheet section 27): no label is duplicated and none is invented. -->
       <div class="stage stage-stack pl-mom reveal">
         <div class="stage-copy">
           <p class="stage-num">01 &middot; MONITOR</p>
@@ -344,6 +348,10 @@
           <div class="dobj-cell"><p class="k">Trigger</p><p class="v">When a decision is due.</p></div>
           <div class="dobj-cell"><p class="k">Action</p><p class="v">What the organization does.</p></div>
         </div>
+        <!-- Without JS this is the drawn annotation it has always been. The script
+             at the end of this file makes each station selectable: the object
+             standing over it lights, its neighbours hold one register up, and the
+             run between them is drawn in the accent (stylesheet section 27). -->
         <p class="trail pl-trail" role="img" aria-label="The intelligence trail: source, signal, exposure, indicator, scenario, trigger, action">
           <i class="pl-run" aria-hidden="true"></i><span>Source</span><span>Signal</span><span>Exposure</span><span>Indicator</span><span>Scenario</span><span>Trigger</span><span>Action</span>
         </p>
@@ -779,6 +787,174 @@
     mn.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mn.removeAttribute('open');});});
     document.addEventListener('click',function(e){if(mn.hasAttribute('open')&&!mn.contains(e.target)){mn.removeAttribute('open');}});
     document.addEventListener('keydown',function(e){if(e.key==='Escape'){mn.removeAttribute('open');}});
+  }
+})();
+
+(function(){
+  /* ROUND TEN · PLATFORM INTERACTION (stylesheet section 27, prefix px-)
+     Two devices, both progressive enhancements. With this script off the
+     walk prints its four moments in full and the trail is the drawn
+     annotation round nine shipped; nothing below adds a word to the page. */
+
+  /* ---- the capability walk: one evidence area, four selectable views ----
+     Each moment's own station line (01 · MONITOR ... 04 · ACT) is moved
+     onto one rule above the moments, and one moment is shown under it at a
+     time. The rail is made of labels the page already prints, so no second
+     set of stage words appears anywhere. */
+  var walk=document.getElementById('walk');
+  var moms=walk?[].slice.call(walk.querySelectorAll('.pl-mom')):[];
+  if(moms.length>1&&moms[0].querySelector('.stage-num')){
+    var box=document.createElement('div');
+    box.className='px-walk';
+    moms[0].parentNode.insertBefore(box,moms[0]);
+    var rail=document.createElement('div');
+    rail.className='px-rail';
+    rail.setAttribute('role','tablist');
+    /* the section's own heading names the set: no interface word invented */
+    rail.setAttribute('aria-labelledby','walk-h');
+    box.appendChild(rail);
+
+    var tabs=[],shots=[];
+    moms.forEach(function(m,i){
+      box.appendChild(m);
+      /* a view that is not on screen never intersects, so the reveal
+         observer would hand it over at opacity 0 when it is selected */
+      m.classList.remove('reveal');
+      m.classList.add('px-view','px-shown');
+      m.id='px-view-'+(i+1);
+      m.setAttribute('role','tabpanel');
+      if(!m.querySelector('a,button,input,select,textarea')){m.setAttribute('tabindex','0');}
+      var lab=m.querySelector('.stage-num');
+      lab.id='px-tab-'+(i+1);
+      lab.classList.add('px-st');
+      lab.setAttribute('role','tab');
+      lab.setAttribute('aria-controls',m.id);
+      m.setAttribute('aria-labelledby',lab.id);
+      rail.appendChild(lab);
+      lab.addEventListener('click',function(){show(i,true);});
+      tabs.push(lab);
+      shots.push(m.querySelector('img'));
+    });
+
+    var cur=-1;
+    /* the neighbouring plates are fetched before they are asked for, so a
+       switch never opens on an empty frame; the rest stay lazy */
+    function warm(i){
+      [i-1,i+1].forEach(function(n){
+        var g=shots[(n+shots.length)%shots.length];
+        if(g&&g.getAttribute('loading')==='lazy'){g.setAttribute('loading','eager');}
+      });
+    }
+    function show(i,move){
+      if(i!==cur){
+        cur=i;
+        tabs.forEach(function(t,n){
+          t.setAttribute('aria-selected',n===i?'true':'false');
+          t.setAttribute('tabindex',n===i?'0':'-1');
+        });
+        moms.forEach(function(m,n){
+          if(n===i){
+            m.removeAttribute('hidden');
+            void m.offsetWidth;   /* lay the view out before the crossfade starts */
+            m.classList.add('px-shown');
+          }else{
+            m.classList.remove('px-shown');
+            m.setAttribute('hidden','');
+          }
+        });
+        warm(i);
+      }
+      if(move){tabs[i].focus();}
+    }
+    rail.addEventListener('keydown',function(e){
+      var i=tabs.indexOf(document.activeElement),n=-1;
+      if(i<0){return;}
+      if(e.key==='ArrowRight'||e.key==='ArrowDown'){n=(i+1)%tabs.length;}
+      else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){n=(i+tabs.length-1)%tabs.length;}
+      else if(e.key==='Home'){n=0;}
+      else if(e.key==='End'){n=tabs.length-1;}
+      else if(e.key==='Enter'||e.key===' '||e.key==='Spacebar'){n=i;}
+      else{return;}
+      e.preventDefault();
+      show(n,true);
+    });
+    show(0,false);
+  }
+
+  /* ---- the intelligence trail, read one station at a time ----
+     Hover or focus previews a station, a click or Enter holds it, Escape or
+     a second tap releases it. Held: the station takes the accent, the
+     object standing over it lights with its riser (its own sentence is what
+     happens there), the stations before and after it hold one register up
+     as what enters and what leaves, and the accent is drawn over the run
+     between them. Nothing is revealed that was not already on the page. */
+  var trail=document.querySelector('.pl-trail');
+  var objs=[].slice.call(document.querySelectorAll('.pl-eng-objs .dobj-cell'));
+  var st=trail?[].slice.call(trail.querySelectorAll('span')):[];
+  if(trail&&st.length===7&&objs.length===5){
+    /* which object stands over each station: the tracker watches the three
+       evidence stations, the other four each stand over their namesake */
+    var OVER=[0,0,0,1,2,3,4];
+    var seg=document.createElement('i');
+    seg.className='px-seg';
+    seg.setAttribute('aria-hidden','true');
+    /* FIRST child, beside .pl-run and never after the stations: the figure's
+       last station is styled with :last-child, and an element appended after
+       it silently takes that state away (the accent riser on ACTION). The
+       segment is lifted over .pl-run with z-index instead. */
+    trail.insertBefore(seg,trail.firstChild);
+    /* the figure was one labelled image; its stations are controls now and
+       each carries its own name, so the group keeps the same label */
+    trail.setAttribute('role','group');
+    var canHover=window.matchMedia('(hover:hover)').matches;
+    var held=-1,over=-1;
+
+    function place(i){
+      var a=st[Math.max(0,i-1)],b=st[Math.min(st.length-1,i+1)];
+      var t=trail.getBoundingClientRect(),ra=a.getBoundingClientRect(),rb=b.getBoundingClientRect();
+      seg.style.setProperty('--px-x',(ra.left-t.left)+'px');
+      seg.style.setProperty('--px-w',(rb.right-ra.left)+'px');
+      seg.style.setProperty('--px-y',(ra.top-t.top)+'px');
+      seg.style.setProperty('--px-h',(rb.bottom-ra.top)+'px');
+    }
+    function draw(){
+      var i=held>=0?held:over;
+      st.forEach(function(s,n){
+        s.classList.toggle('px-on',n===i);
+        s.classList.toggle('px-near',i>=0&&(n===i-1||n===i+1));
+      });
+      objs.forEach(function(o,n){o.classList.toggle('px-on',i>=0&&n===OVER[i]);});
+      trail.classList.toggle('px-live',i>=0);
+      if(i>=0){place(i);}
+    }
+    function hold(i,el){
+      held=i;
+      st.forEach(function(s,n){s.setAttribute('aria-pressed',n===i?'true':'false');});
+      /* released with the pointer still on the station: a mouse reader keeps
+         the preview, a touch reader has none to keep */
+      if(i<0&&el){over=(canHover&&el.matches(':hover'))?st.indexOf(el):-1;}
+      draw();
+    }
+    st.forEach(function(s,i){
+      s.setAttribute('role','button');
+      s.setAttribute('tabindex','0');
+      s.setAttribute('aria-pressed','false');
+      if(canHover){
+        s.addEventListener('mouseenter',function(){over=i;draw();});
+        s.addEventListener('mouseleave',function(){if(over===i){over=-1;draw();}});
+      }
+      s.addEventListener('focus',function(){over=i;draw();});
+      s.addEventListener('blur',function(){if(over===i){over=-1;draw();}});
+      s.addEventListener('click',function(){hold(held===i?-1:i,s);});
+      s.addEventListener('keydown',function(e){
+        if(e.key==='Enter'||e.key===' '||e.key==='Spacebar'){e.preventDefault();hold(held===i?-1:i,s);}
+        else if(e.key==='Escape'){hold(-1,null);}
+        else if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();st[(i+1)%st.length].focus();}
+        else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();st[(i+st.length-1)%st.length].focus();}
+      });
+    });
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&held>=0){hold(-1,null);}});
+    window.addEventListener('resize',function(){if(held>=0||over>=0){draw();}});
   }
 })();
 </script>
