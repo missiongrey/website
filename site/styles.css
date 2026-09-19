@@ -1826,7 +1826,208 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
    sections above render unchanged on every other page. Tokens only, no
    new font file, no new accent value, no gradient as decoration, no glow.
    Written in the same voice as section 19: the why beside the what. */
-/* ---- 23.1 ---- */
+/* ---- 23.1 the fold ---- */
+/* The page's own composition, not Home's: no instrument plate, no
+   coordinate scale. One ruled eyebrow across the top, the claim hanging
+   on the left, and the cost of starting plus the two ways in hanging on
+   the right with their baselines meeting the claim's. Solutions is a
+   commercial page, so the fold is quiet and the two calls to action are
+   the first thing after the promise. */
+.so-hero .hero-eyebrow{margin-bottom:26px}
+.so-hero .hero-eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
+.so-hero-grid{display:grid;gap:clamp(26px,3.4vw,44px)}
+@media (min-width:981px){
+  .so-hero-grid{grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:clamp(36px,5vw,72px);align-items:end}
+  .so-hero .hero-dek{margin-top:0;max-width:44ch}
+}
+
+/* ---- 23.2 the adoption progression (#start) ---- */
+/* The three steps were three bordered nodes with an arrow glyph between
+   them: a feature-card run, and one that answered none of the question a
+   buyer actually arrives with, which is how far this goes and what it
+   costs to begin. The section is now one figure, measured on its own
+   lattice.
+   
+   The figure reads top down. Above the station rule each step carries its
+   EXTENT. ONE DECISION is a bounded run of six divisions that stops,
+   because a decision is a thing that ends. STANDING WATCH is a run that
+   starts at its own station and does not end inside the frame, because it
+   does not end. ORGANIZATIONAL INTELLIGENCE is that same run carried three
+   times over, because the reach is the organization rather than a longer
+   period. Left to right the ink accumulates from one line to four, which
+   is the commercial argument of the page drawn once: start small, keep it,
+   spread it.
+   
+   The lattice is exact and that is the point. The grid is twelve tracks,
+   the steps span three, four and five of them, so the stations fall at 0,
+   6 and 14 twenty-fourths of the figure and every division on every run
+   falls on the same lattice of 24. That is why each run carries its
+   divisions as a COUNT (6, 18, 10) and never a pixel pitch: a ruler whose
+   marks do not register with the thing it measures is a HUD graphic, which
+   is what the notation rule exists to stop.
+   
+   One accent, and it is the decision point: the entry mark at station 01
+   and the 01 itself. Nothing else on the figure may take it, which is why
+   the two later step numbers are ink. */
+/* the section opens directly under the fold, so it carries no top pad */
+.so-start{padding-top:0}
+.so-grid{
+  display:grid;grid-template-columns:repeat(12,minmax(0,1fr));
+  padding:clamp(22px,2.8vw,34px) clamp(16px,2.2vw,28px) clamp(26px,3vw,36px);
+}
+/* A run: one hairline with its divisions ticked under it, and a taller
+   mark at the station it starts from. The bounded run closes with a
+   second tall mark at its far end, the way a dimension is drawn; the two
+   runs that do not close carry an origin mark only. That difference is
+   the notation doing the work the copy also does. */
+.so-ext{display:grid;gap:13px}
+.so-ext i{
+  position:relative;display:block;height:8px;border-top:1px solid var(--line-2);
+  background-image:linear-gradient(to right,var(--line-3) 0 1px,transparent 1px);
+  background-position:left top;
+}
+.so-ext i::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:13px;background:var(--line-3)}
+.so-s1 .so-ext i::after{content:"";position:absolute;right:0;top:-1px;width:1px;height:13px;background:var(--line-3)}
+/* the station rule: three heads abutting into one continuous hairline,
+   each with its tick at its leading edge (padding, never gap, or the rule
+   breaks where the gap falls) */
+.so-k{
+  position:relative;border-top:1px solid var(--line-2);
+  padding:15px 26px 0 0;margin-top:clamp(22px,2.6vw,32px);
+  font:400 10.5px/1.5 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);
+}
+.so-k::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.so-k b{color:var(--ink);font-weight:500}
+.so-s1 .so-k::before{width:2px;height:12px;background:var(--accent)}
+.so-s1 .so-k b{color:var(--accent)}
+.so-step h3{margin:16px 26px 0 0;font-size:17px;line-height:1.24;letter-spacing:-.01em}
+.so-step .v{margin:10px 26px 0 0;font-size:14px;line-height:1.6;color:var(--ink-mute)}
+.so-step .pts{margin:18px 26px 0 0;padding-top:18px;border-top:1px solid var(--line)}
+.so-step .pts li{color:var(--ink-body)}
+.so-s3 .so-k{padding-right:0}
+.so-s3 h3,.so-s3 .v,.so-s3 .pts{margin-right:0}
+/* the closing bar states the layer in prose; only its label is mono. A
+   full sentence set in letter-spaced uppercase is a label pretending to
+   be a sentence, and this page has to stay easy. */
+.so-path .level-out{
+  font:400 14.5px/1.6 var(--sans);letter-spacing:0;text-transform:none;color:var(--ink-mute);
+}
+.so-path .level-out b{
+  font:500 10.5px/1.6 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink);
+}
+@media (min-width:901px){
+  /* the step is one block in the markup, so a screen reader hears index,
+     heading and copy together; on the wide layout its parts become items
+     of the figure's own grid, which is what lets the three extents share
+     one lattice above the three stations */
+  .so-step{display:contents}
+  .so-s1 .so-ext{grid-column:1/4;grid-row:1}
+  .so-s2 .so-ext{grid-column:4/-1;grid-row:2;margin-top:14px}
+  .so-s3 .so-ext{grid-column:8/-1;grid-row:3;margin-top:14px}
+  .so-s1 .so-ext i{background-size:calc(100% / 6) 100%}
+  .so-s2 .so-ext i{background-size:calc(100% / 18) 100%}
+  .so-s3 .so-ext i{background-size:calc(100% / 10) 100%}
+  .so-k{grid-row:4}
+  .so-step h3{grid-row:5}
+  .so-step .v{grid-row:6}
+  .so-step .pts{grid-row:7}
+  .so-s1 .so-k,.so-s1 h3,.so-s1 .v{grid-column:1/4}
+  .so-s2 .so-k,.so-s2 h3,.so-s2 .v,.so-s2 .pts{grid-column:4/8}
+  .so-s3 .so-k,.so-s3 h3,.so-s3 .v,.so-s3 .pts{grid-column:8/-1}
+}
+@media (max-width:900px){
+  /* simplified, not shrunk: the steps stack and each one keeps its own
+     extent at its own length, so the growth is still read in one pass */
+  .so-grid{display:block}
+  .so-step + .so-step{margin-top:clamp(30px,5vw,44px)}
+  .so-ext i{background-size:calc(100% / 12) 100%}
+  .so-s1 .so-ext i{width:34%;background-size:calc(100% / 4) 100%}
+  .so-s2 .so-ext i{width:67%;background-size:calc(100% / 8) 100%}
+  .so-k{margin-top:14px;padding-right:0}
+  .so-step h3,.so-step .v,.so-step .pts{margin-right:0}
+}
+
+/* ---- 23.3 the customer-specific application (#practice) ---- */
+/* The proof that the layer takes the customer's shape, printed the way
+   the evidence object is printed on Home and composed differently: the
+   reading hangs on the left of one rule and the plate sits to the right
+   of it, so the product is read inside Mission Grey's own page rather
+   than filling it.
+   
+   The crop is stated in source pixels. Desktop: x 317 to 1107, y 378 to
+   679 of a 1920x1039 asset, which is aspect-ratio 790/301,
+   width 243.038%, left -40.127%, top -125.581%. It holds the briefing's
+   own opening assessment whole and the two indexes under it whole, ends
+   on the card boundary at source y 678, and drops the application title
+   and the two further indexes: four indexes side by side read as an
+   equal card grid with status pills, which is the vocabulary this pass
+   exists to remove.
+   
+   The phone crop is a different vertical rect, and that is deliberate.
+   The assessment is a paragraph: narrowing the plate would cut every one
+   of its lines mid-word at the frame edge, so under 600px the plate drops
+   to the first index alone, whole. Phone: x 315 to 711, y 497 to 679,
+   aspect-ratio 396/182, width 484.848%, left -79.545%, top -273.077%.
+   The alt text describes what BOTH crops show and no more.
+   
+   One leader, landing on a mark the image actually draws: the direction
+   mark the product prints beside the figure. The stem stands in the clear
+   corridor to the right of it (source x 574, 22px clear of the last
+   glyph), rises from the plate's bottom edge, which is the card's own
+   boundary, so the leader crosses no rule of the artwork, and the cap
+   reaches left toward the mark and stops short of it. The artwork here is
+   white, so the leader is drawn in page ink rather than in the light the
+   Home plate uses. */
+.so-app{
+  display:grid;gap:clamp(26px,3.2vw,48px);align-items:start;
+  margin-top:clamp(38px,4.6vw,60px);padding-top:clamp(22px,2.6vw,32px);
+  position:relative;border-top:1px solid var(--line-2);
+}
+.so-app::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.so-app-copy h3{font-size:var(--fs-h3);line-height:1.15;max-width:18ch}
+.so-app-copy p{margin-top:16px;font-size:15px;line-height:1.62;color:var(--ink-mute);max-width:46ch}
+.so-ev-frame{--ax:32.532%}
+.appshot.so-ev-crop{position:relative;overflow:hidden;aspect-ratio:790/301}
+.appshot.so-ev-crop img{
+  position:absolute;max-width:none;height:auto;
+  width:243.038%;left:-40.127%;top:-125.581%;
+}
+.so-ev-lead{position:absolute;left:var(--ax);bottom:0;width:1px;height:22.924%;background:var(--line-3)}
+.so-ev-lead::before{content:"";position:absolute;left:-12px;top:0;width:12px;height:1px;background:var(--ink-dim)}
+.so-ev-ann{position:relative;height:24px;margin:0}
+.so-ev-ann b{
+  position:absolute;left:var(--ax);top:0;bottom:0;display:flex;align-items:center;
+  padding:0 0 0 12px;border-left:1px solid var(--line-3);
+  font:500 10.5px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);
+  white-space:nowrap;
+}
+@media (min-width:901px){
+  .so-app{grid-template-columns:minmax(0,38fr) minmax(0,62fr)}
+}
+/* The switch is at 520 and not at the site's usual 600: the plate is a
+   396px source rect, so above 520 a phone crop is being upscaled past
+   1.2x while the wide crop still prints its assessment at a readable
+   size. Under 520 the wide crop is the one that fails. */
+@media (max-width:520px){
+  .so-ev-frame{--ax:65.404%}
+  .appshot.so-ev-crop{aspect-ratio:396/182}
+  .appshot.so-ev-crop img{width:484.848%;left:-79.545%;top:-273.077%}
+  .so-ev-lead{height:37.912%}
+}
+
+/* ---- 23.4 the two ruled indexes (#functions, #ways) ---- */
+/* Both were already ruled rows rather than cards, so they keep their
+   layout and take the one thing the system asks of a list: a station tick
+   at the leading edge of every row. Nothing else on these two sections
+   changed, which is the restraint this page needs more than it needs
+   another device. */
+.so-funcs .func,.so-roles>div{position:relative}
+.so-funcs .func::before,.so-roles>div::before{
+  content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3);
+}
+.so-funcs .func{padding-left:14px}
+.so-funcs .func::before{top:0}
+.so-roles>div{padding-left:14px}
 
 /* ---- end 23 ---- */
 
