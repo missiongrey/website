@@ -1381,3 +1381,136 @@ names the copy that has to sit with it, and those two instructions and
 "do not make Home longer" cannot all three be satisfied; the visual and
 its copy won. Solutions is the page the document asks to grow, and the
 impact chain with its product proof is most of its 176 words.
+
+## Round eight (2026-09-19): the home visual system, section 19
+
+A visual-development pass over three areas of the home page only: the
+fold, the external-world figure and the application proof. It lives in
+`styles.css` section 19 as a pure append, and every selector in it is
+scoped to a class that exists on no other page, so sections 01 to 18 are
+untouched and every sibling page renders as it did before. If the
+direction is adopted, this is the section the rest of the site extends;
+until then, do not reach for these classes on a page other than Home.
+
+One line holds it together: **stations hang from rules, and the grid
+becomes visible once per view.** Three of the four devices below are that
+sentence applied.
+
+### `.hz`, the longitude scale (Home only, binding)
+
+A hairline across the full viewport at the top of the fold, ticked every
+30 degrees from 180W to 180E, with five mono labels and one accent caret.
+The caret is not decoration: the hero script writes it from `rot`, the
+same rotation state the globe canvas renders from, so the scale and the
+sphere under it report the same meridian. The whole strip is
+`aria-hidden="true"` (the globe's own alt text says what is watched) and
+the caret falls back to `var(--x,67.22%)`, the resting aspect, without JS.
+
+Binding, if this is ever reused: a coordinate scale may only be drawn
+against something that actually has that coordinate. A ruler with a caret
+that does not track anything is a HUD graphic, which is the one thing the
+brief's notation rule exists to stop. Two consequences in the script: the
+caret is written from inside the render loop, and the runtime
+`prefers-reduced-motion` handler has to re-mark it by hand, because
+`setRun()` stops that loop before the next frame can.
+
+Keep it a home-page signature. On every page it becomes wallpaper.
+
+### The ticked-station ledger (`.cadence-v1`, `.ap-sys`)
+
+A list is a rule with stations hanging under it, never a row of boxes.
+One continuous hairline, one 1px tick per station at its leading edge,
+mono label over its value. It is `.trail` (round seven, device A) promoted
+from an annotation to a layout: the cadence band lost its four cells to
+it, and the organization register inside the aperture is the same grammar
+at label size.
+
+Two rules learned here. **Every station gets the same padding, including
+the last**: a `flex:1 0 auto` on `:last-child` makes a wrapped row's rule
+run to the container edge while the row above stops at its last word, and
+a register whose rule ends in two places is not an even register.
+**Reserve the tallest label in the row**: each cell is its own grid, so
+a label that wraps drops its own value one line and breaks the row's
+baseline. `.cadence-v1 .k{min-height:2em}` under 700px is that reservation.
+
+### `.ap`, the aperture (the macro-to-micro figure)
+
+WORLD, MARKET, PLACE, ORGANIZATION, DECISION as one figure rather than
+five cards. Three external registers, each inset further than the one
+above (0, 5, 10 percent), then the organization at 15 and the decision at
+22, with the walls between them drawn as stretched SVG. The signals sit
+on the external registers as stations; the systems sit in the
+organization as an even register. The texture difference between a
+scattered field and a ruled row is the section's argument, drawn.
+
+Four binding notes:
+
+- **One taper for every width.** The insets are percentages of the same
+  measure and the wall SVGs carry those percentages as path coordinates,
+  so they register exactly at any width. They must be chosen so the
+  narrowest band still holds its words at 390px; that is why the taper
+  stops at 22 percent and not at 29.
+- **`vector-effect="non-scaling-stroke"` is mandatory** on those paths. A
+  `preserveAspectRatio="none"` viewBox scaled eleven times horizontally
+  draws an eleven-pixel hairline without it.
+- **Markup order is the figure's order.** The registers come before the
+  organization band in the DOM because that is the order the figure
+  reads; a grid that reorders two labelled blocks delivers the funnel
+  inverted to a screen reader (WCAG 2.1 SC 1.3.2).
+- **One baseline per register, and a field a reader can see.** Per-signal
+  depth offsets with no axis read as misalignment, not as depth. A dot
+  field whose pitch change is invisible at 1x is decoration claiming to
+  be meaning: the pitch here triples across three registers (8, 16, 28px)
+  and the dot carries enough ink to be read. Labels over a field knock it
+  out behind themselves with a 4px halo of page ground, the way a place
+  name does on a chart.
+
+### The evidence object (`.ev-*`), binding
+
+The third tier of the honesty convention gains a treatment. An
+application built on the platform stays in `.frame` with `Example
+application` in the frame bar, and is printed as a plate: an exact crop
+around the marks it is read for, one leader, editorial whitespace, no
+browser chrome. `.ev-fig` holds the figure to three quarters of the
+column; the rest is the air the figure is read in.
+
+- **The crop is stated in source pixels and the aspect ratio is derived
+  from it.** Here: x 314 to 1113, y 214 to 566 of a 1920x1032 asset, which
+  is `aspect-ratio:799/352`, `width:240.300%`, `left:-39.299%`,
+  `top:-60.795%`. Keeping the same vertical rect at both breakpoints means
+  the phone crop changes only `--ax`, the width and the left offset, and
+  the leader keeps its height and its target.
+- **Crop to what the figure is about, not to what fits.** The first
+  attempt kept the dashboard title and all four indexes; it read as an
+  equal four-column card grid with status pills, which is the vocabulary
+  the whole pass exists to avoid, and it sliced the tops of the row below.
+  Two indexes, whole, clear of the next row, with the title dropped
+  because the frame bar already names the application.
+- **The alt text describes the crop, not the asset.** A crop is not
+  covered by a wording freeze and never was: it is the one attribute that
+  has to change when the frame changes, for the same reason
+  `.cap-desk` exists.
+- **Home no longer uses `.appshot.focus-space`.** Round seven's phone-crop
+  note above still lists it for Home; that is now `.ev-crop`, which crops
+  at every width rather than only under 600px. The round-seven rules stay
+  in section 17 because Platform and Solutions still use
+  `.focus-space` and `.focus-country`.
+- **At most one or two leadered labels, each landing on a mark the image
+  actually draws** (device B's ceiling, round seven). Here: one,
+  `Confidence`, on the confidence figure the product prints beside each
+  index. The cap reaches the mark and stops short of the glyphs, and the
+  stem stands in a clear corridor of the artwork. An annotation that
+  strikes through its subject, or that scratches across the picture on the
+  way to it, is worse than no annotation. A column of notation labels
+  with no values and no leaders is not an annotation at all: it names
+  fields the figure does not show, which is the defect device B was
+  written to stop.
+
+### Capturing this page, method note
+
+Two traps, both of which produced wrong numbers before they were found.
+Headless Chromium clamps the layout viewport to 500px, so
+`--window-size=390,844` renders a 500px layout and crops it: every phone
+claim has to be captured through a 390px iframe inside a wider window.
+And `--virtual-time-budget` screenshots catch `.reveal` blocks mid
+transition, so a settled page needs `--force-prefers-reduced-motion`.

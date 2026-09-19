@@ -1595,12 +1595,17 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
 @media (min-width:981px){
   .hero-v1 .hero-grid{grid-template-columns:minmax(0,.97fr) minmax(0,1.03fr);gap:clamp(26px,3.2vw,48px)}
 }
-/* the scope: the sphere is drawn larger than the plate and cropped by it,
+/* The scope: the sphere is drawn larger than the plate and cropped by it,
    so the fold carries a view onto the world instead of a globe centered
-   in a box. The canvas keeps its own aspect ratio; only the plate clips. */
+   in a box. The canvas keeps its own aspect ratio; only the plate clips.
+   The plate takes --bg-2, the recessed ground, not --bg-1: at --bg-1 the
+   plane was invisible and the sphere floated on nothing. Recessed, the
+   fold has three grey planes and the sphere sits INSIDE something, which
+   is the whole of the depth this page is allowed. It is a plane, not a
+   dark block, and there is still exactly one theme. */
 .hero-v1 .scope{
   position:relative;aspect-ratio:1/.62;overflow:hidden;
-  background:var(--bg-1);border-left:1px solid var(--line);border-block:1px solid var(--line);
+  background:var(--bg-2);border-left:1px solid var(--line);border-block:1px solid var(--line);
 }
 .hero-v1 .scope canvas{
   position:absolute;left:8%;top:-16%;width:100%;max-width:none;height:auto;aspect-ratio:1.15/1;
@@ -1639,11 +1644,6 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
    grid puts the outside field above the organization band because that is
    where a funnel has to put it. */
 .ap{display:grid;padding:clamp(18px,2.4vw,30px) clamp(16px,2.2vw,28px) clamp(22px,2.8vw,34px)}
-.ap-out{grid-row:1}
-.ap-w-po{grid-row:2}
-.ap-band{grid-row:3}
-.ap-w-od{grid-row:4}
-.ap-core{grid-row:5}
 .ap-k{margin-bottom:16px;color:var(--ink-mute)}
 .ap-k-out{margin-bottom:18px}
 /* the IN / OUT mark loses its box: one accent per figure, and in this one
@@ -1656,30 +1656,39 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
   margin:0 14px;vertical-align:3px;
 }
 .ap-name{
-  margin:0;font:500 11px/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink);
+  margin:0;justify-self:start;width:max-content;
+  font:500 11px/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink);
 }
 .ap-row{
   margin-inline:var(--in);border:1px solid var(--line);border-bottom:0;
   padding:14px clamp(14px,1.8vw,22px) 20px;
   display:grid;grid-template-columns:clamp(104px,12%,152px) repeat(12,minmax(0,1fr));column-gap:14px;
 }
-/* the noise thins register by register: the field is being filtered */
-.ap-r1{background-image:radial-gradient(circle,rgba(15,23,32,.17) .9px,transparent 1px);background-size:9px 9px;min-height:104px}
-.ap-r2{background-image:radial-gradient(circle,rgba(15,23,32,.14) .9px,transparent 1px);background-size:13px 13px;min-height:96px}
-.ap-r3{background-image:radial-gradient(circle,rgba(15,23,32,.11) .9px,transparent 1px);background-size:18px 18px;min-height:92px}
+/* The noise thins register by register: the field is being filtered. The
+   pitch triples across three registers and the dot carries enough ink to
+   be seen at 1x, because a density change nobody can read is decoration
+   claiming to be meaning. Dot count per unit area falls about 12 to 1
+   from world to place. */
+.ap-r1{background-image:radial-gradient(circle,rgba(15,23,32,.30) 1.1px,transparent 1.2px);background-size:8px 8px;min-height:96px}
+.ap-r2{background-image:radial-gradient(circle,rgba(15,23,32,.26) 1.1px,transparent 1.2px);background-size:16px 16px;min-height:88px}
+.ap-r3{background-image:radial-gradient(circle,rgba(15,23,32,.22) 1.1px,transparent 1.2px);background-size:28px 28px;min-height:84px}
 /* a plotted signal: a station hanging from the register rule at its own
    depth, written in the editorial face because it is a thing that happens
    in the world, not a system identifier */
+/* One baseline per register. The earlier per-signal depth offsets had no
+   axis to be read against, so they read as misalignment rather than as
+   depth; the register itself carries the depth. */
 .ap-sig{
   position:relative;grid-column:calc(1 + var(--c)) / span 4;grid-row:1;
-  margin-top:var(--y,0px);align-self:start;
+  align-self:start;justify-self:start;width:max-content;max-width:100%;
   font:400 14.5px/1.4 var(--sans);letter-spacing:-.005em;color:var(--ink);
 }
-.ap-sig::before{
-  content:"";position:absolute;left:0;top:calc(-14px - var(--y,0px));
-  width:1px;height:calc(11px + var(--y,0px));background:var(--line-3);
-}
-.ap-sig::after{content:"";position:absolute;left:-1px;top:calc(-15px - var(--y,0px));width:3px;height:3px;background:var(--ink-mute)}
+/* A label on a plotted field knocks the field out behind itself, the way
+   a place name does on a chart. The halo is the page ground, so it is
+   invisible everywhere except over the dots. */
+.ap-sig,.ap-row .ap-name{background:var(--bg);box-shadow:0 0 0 4px var(--bg)}
+.ap-sig::before{content:"";position:absolute;left:0;top:-14px;width:1px;height:11px;background:var(--line-3)}
+.ap-sig::after{content:"";position:absolute;left:-1px;top:-15px;width:3px;height:3px;background:var(--ink-mute)}
 /* the organization: the same seven words, printed as an even register */
 .ap-band{
   margin-inline:var(--in);border:1px solid var(--line);border-bottom:0;background:var(--bg-1);
@@ -1694,50 +1703,51 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
   font:500 10.5px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);
   white-space:nowrap;
 }
-.ap-sys span:last-child{padding-right:0;flex:1 0 auto}
 .ap-sys span::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
 /* the convergence */
 .ap-core{
   margin-inline:var(--in);border:1px solid var(--line-2);border-top:2px solid var(--accent);
   background:var(--bg-2);padding:20px;display:flex;justify-content:center;
 }
-.ap-w{display:block;width:100%;height:34px;fill:none;stroke:var(--line-2)}
+.ap-w{display:block;width:100%;height:34px;fill:none;stroke:var(--line-3)}
 .ap-w-od{height:60px}
 .ap-stem{stroke:var(--accent)}
 
 /* ---- 19.4 the evidence object (the example application) ---- */
-/* Not a screenshot printed whole: a plate cropped onto the indexes the
-   application is read for, one leader pointing at a mark that is visibly
-   in the image, and the notation language beside it. The notation carries
-   labels and no values, because an illustrative figure has no real
-   metadata to print and inventing some is the one thing the honesty
-   convention exists to stop. */
-.ev-grid{
-  display:grid;grid-template-columns:minmax(0,1fr) clamp(176px,19%,236px);
-  gap:clamp(22px,3vw,44px);align-items:start;
-}
-.ev-frame{--ax:20.18%}
-.appshot.ev-crop{position:relative;overflow:hidden;aspect-ratio:1576/524}
-.appshot.ev-crop img{position:absolute;max-width:none;width:121.827%;left:-20.558%;top:-11.45%;height:auto}
-/* the leader runs over the plate in the plate's own light and continues
-   in page ink below it; both are placed from --ax on the same box, so the
-   two halves stay one line at every width */
-.ev-lead{position:absolute;left:var(--ax);bottom:0;width:1px;height:44.3%;background:rgba(250,251,252,.45)}
-.ev-lead::before{content:"";position:absolute;left:-3px;top:0;width:7px;height:1px;background:rgba(250,251,252,.85)}
-.ev-ann{position:relative;height:44px;margin:0}
+/* Not a screenshot printed whole: a plate cropped onto two of the indexes
+   the application is read for, and ONE leader.
+   The crop is exact. Source rect x 314 to 1113, y 214 to 566 of a
+   1920x1032 asset: the two index cards whole, the row below them clear of
+   the frame by two source pixels, no status pills, no dashboard title (the
+   frame bar already names the application, and one fact gets one home).
+   The plate takes three quarters of the column; the rest is the
+   whitespace the figure is read in.
+   The annotation names a mark the image actually draws, the confidence
+   figure the product prints on every index, and there is exactly one of
+   them: the site's device B ceiling is two, and no second mark on this
+   plate can be leadered without the stem crossing product text. */
+.ev-fig{max-width:74%}
+.ev-frame{--ax:46.496%}
+.appshot.ev-crop{position:relative;overflow:hidden;aspect-ratio:799/352}
+.appshot.ev-crop img{position:absolute;max-width:none;width:240.300%;left:-39.299%;top:-60.795%;height:auto}
+/* The leader runs over the plate in the plate's own light and continues in
+   page ink below it; both are placed from --ax on the same box, so the two
+   halves stay one line at every width, and the vertical geometry is shared
+   by both crops so one height serves both.
+   The stem stands in the clear corridor between the card's trend line and
+   its right edge (source x 685 of 671 to 704) and the cap reaches LEFT to
+   the string it names, stopping five source pixels short of the last
+   glyph. An annotation that strikes through its own subject, or that
+   scratches across the artwork on the way to it, is worse than none. */
+.ev-lead{position:absolute;left:var(--ax);bottom:0;width:1px;height:61.36%;background:rgba(250,251,252,.45)}
+.ev-lead::before{content:"";position:absolute;left:-12px;top:0;width:12px;height:1px;background:rgba(250,251,252,.85)}
+.ev-ann{position:relative;height:24px;margin:0}
 .ev-ann b{
-  position:absolute;left:var(--ax);top:0;bottom:0;display:flex;align-items:flex-end;
+  position:absolute;left:var(--ax);top:0;bottom:0;display:flex;align-items:center;
   padding:0 0 0 12px;border-left:1px solid var(--line-3);
   font:500 10.5px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);
   white-space:nowrap;
 }
-.ev-note{border-top:1px solid var(--line-2)}
-.ev-m{display:flex;align-items:center;gap:12px;margin:0;padding:11px 0 10px;border-bottom:1px solid var(--line)}
-.ev-m i{
-  font:400 10.5px/1.4 var(--mono);font-style:normal;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--ink-mute);white-space:nowrap;
-}
-.ev-m::after{content:"";flex:1;height:1px;background:var(--line)}
 
 /* ---- 19.5 responsive ---- */
 @media (max-width:980px){
@@ -1758,19 +1768,24 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
   .ap-row .ap-sig::before{top:13px;left:0;height:15px}
   .ap-row .ap-sig::after{display:none}
   .ap-r1,.ap-r2,.ap-r3{min-height:0}
-  .ev-grid{grid-template-columns:minmax(0,1fr)}
-  .ev-note{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(16px,4vw,30px)}
+  .ev-fig{max-width:100%}
 }
 @media (max-width:700px){
   .cadence-v1{grid-template-columns:1fr 1fr;row-gap:4px}
-  .cadence-v1>div{border:0;padding-right:16px}
+  .cadence-v1>div{border:0;padding-right:12px}
   .cadence-v1>div:nth-child(n+3){margin-top:14px;border-top:1px solid var(--line)}
+  /* Each cell is its own grid, so a label that wraps would drop its own
+     value one line and break the row's baseline, which is the one thing a
+     ledger may not do. Two lines of label are reserved in every cell. */
+  .cadence-v1 .k{min-height:2em}
 }
 @media (max-width:600px){
-  /* the phone plate crops harder still: one index, read at full size */
-  .ev-frame{--ax:81.04%}
-  .appshot.ev-crop{aspect-ratio:385/326}
-  .appshot.ev-crop img{width:498.7%;left:-85.714%;top:-72.39%}
-  .ev-lead{height:64.4%}
+  /* The phone plate crops harder still: the first index alone, read at
+     full size. Same vertical rect as the desktop crop (source y 214 to
+     566), so --ax is the only thing that moves and the leader keeps its
+     height and its target, source (642.5, 363). */
+  .ev-frame{--ax:92.875%}
+  .appshot.ev-crop{aspect-ratio:400/352}
+  .appshot.ev-crop img{width:480%;left:-78.5%;top:-60.795%}
   .ev-ann b{padding:0 12px 0 0;border-left:0;border-right:1px solid var(--line-3);transform:translateX(-100%)}
 }
