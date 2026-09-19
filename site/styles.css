@@ -1253,7 +1253,7 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
    what it says, not despite what it is. An ordinary section heading is
    never serif. */
 .net-lede,.principle,.quote-main blockquote,.statement{
-  font-family:var(--serif);font-weight:600;letter-spacing:-.015em;
+  font-family:var(--sans);font-weight:600;letter-spacing:-.015em;
 }
 .net-lede{font-size:clamp(23px,2.7vw,31px);line-height:1.24}
 .quote-main blockquote{font-size:clamp(22px,2.7vw,30px);line-height:1.34;max-width:31ch}
@@ -2027,7 +2027,7 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
   gap:clamp(26px,3.4vw,44px) clamp(32px,5vw,72px);align-items:start;
 }
 .gd-claim{
-  font-family:var(--serif);font-weight:600;letter-spacing:-.015em;
+  font-family:var(--sans);font-weight:600;letter-spacing:-.015em;
   font-size:clamp(22px,2.6vw,30px);line-height:1.26;color:var(--ink);max-width:21ch;
 }
 .gd-net{font-size:16.5px;line-height:1.7;color:var(--ink-body);max-width:58ch}
@@ -2669,7 +2669,7 @@ html.js .reveal.in .pl-run{transform:scaleX(1)}
   display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,2.4vw,32px);
 }
 .ab-lead::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:9px;background:var(--line-3)}
-.ab-por{width:152px;height:152px}
+.ab-por{width:112px;height:112px}
 .ab-lead h3{font-size:clamp(20px,1.9vw,24px);letter-spacing:-.015em;line-height:1.15}
 .ab-lead .ab-bio{margin-top:14px;font-size:15.5px;color:var(--ink-body)}
 /* the rest of the core team: a ruled register, two columns */
@@ -2681,14 +2681,14 @@ html.js .reveal.in .pl-run{transform:scaleX(1)}
 }
 .ab-p::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
 .ab-p h3{font-size:17px;letter-spacing:-.01em;line-height:1.3}
-.ab-por-s{width:76px;height:76px}
+.ab-por-s{width:64px;height:64px}
 /* advisors and network: portrait over name, four stations on one rule */
 .ab-rl2{margin-top:clamp(46px,5.6vw,72px)}
 .ab-adv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(26px,3vw,38px)}
 .ab-a{position:relative;border-top:1px solid var(--line-2);padding:24px clamp(16px,2.4vw,38px) 0 14px}
 .ab-a::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:9px;background:var(--line-3)}
 .ab-a h3{font-size:17px;letter-spacing:-.01em;line-height:1.3}
-.ab-por-m{width:92px;height:92px;margin-bottom:20px}
+.ab-por-m{width:80px;height:80px;margin-bottom:20px}
 /* shared fields */
 .ab-role{
   margin-top:9px;font:500 10.5px/1.5 var(--mono);letter-spacing:.16em;
@@ -2788,9 +2788,9 @@ html.js .reveal.in .pl-run{transform:scaleX(1)}
   .ab-adv{grid-template-columns:minmax(0,1fr)}
   .ab-a:nth-child(n+2){margin-top:26px}
   .ab-lead{grid-template-columns:minmax(0,1fr);gap:18px}
-  .ab-por{width:116px;height:116px}
+  .ab-por{width:96px;height:96px}
   .ab-p{grid-template-columns:64px minmax(0,1fr);gap:16px}
-  .ab-por-s{width:64px;height:64px}
+  .ab-por-s{width:56px;height:56px}
   .ab-key{gap:6px 0;flex-direction:column}
 }
 

@@ -100,11 +100,16 @@ Non-breaking hyphen `&#8209;` in compound words that must not break
 
 Three tiers of imagery, three chromes. Never mix them.
 
-1. **Real product screenshot** → `.window` with browser chrome and the
-   `app.missiongrey.com` url pill. Only actual, unretouched screenshots of
-   the shipping product may sit inside a `.window`. The chrome is the
-   claim "this is the product"; putting anything else in it is a false
-   claim.
+1. **Real product screenshot** → `.window`. Only actual, unretouched
+   screenshots of the shipping product may sit inside a `.window`; the
+   product address in the bar is the claim "this is the product", and
+   putting anything else in it is a false claim. Since round nine the
+   window prints as a PLATE (`.window.win-plate`, section 25): a hairline
+   frame and a ruled bar the address hangs from, no traffic lights, no
+   lifted shadow, no radius. The address carries the claim; the operating
+   system costume never did, and the chairman's counter-prompt names
+   browser-window mockups as the thing to avoid. The bare `.window` chrome
+   survives only for pages not yet in the visual system.
 2. **Illustrative instrument** (drawn SVG maps, charts, diagrams) →
    `.frame` with corner ticks and a `.frame-bar` that carries the label
    `Illustrative view` on the right (`<span class="dim">Illustrative
@@ -1587,8 +1592,12 @@ repeated as the label of a drawn register). No portrait exists for any
 Guild member in this repo, and none was invented.
 
 **`.gd-reg`, the member register, binding.** One rule, one tick per member
-of the roster, in the roster's own order, with the four members printed at
-plate scale marked in the accent at their own positions. It is the page's
+of the roster, in the order the roster PRINTS (the four plate-scale members
+first, then the directory), with those four marked in the accent at stations
+1 to 4. Binding: the `--n` indices in the markup index the printed list, so
+reordering the roster means rewriting them; the first cut carried the four
+members' positions from the old alphabetical order and pointed at the wrong
+people until a review counted the ticks. It is the page's
 signature figure and it appears on both surfaces this section covers, so a
 reader who follows `Meet the Guild` arrives at a figure they have already
 met. It obeys the section 19 rule that a scale may only be drawn against
@@ -1646,8 +1655,10 @@ expertise areas as a ruled register (`.gd-doms`, which also removes ten
 pills), and each member's own domains as notation on a rule. If the Guild
 ever publishes a location per member, the map is the figure to build next.
 
-**Home (`.gd-home`).** The same three sentences: the claim set apart in
-the statement register (serif, section 18's type ladder), the network
+**Home (`.gd-home`).** The same three sentences: the claim set apart at
+heading scale in the sans voice (it sits one screen above the mission quote,
+which holds the page's one serif statement; two adjacent statements in the
+same voice halve the weight of both), the network
 sentence at reading measure beside it, the consequence hanging from its
 own rule under that, and the register ruling the foot with `Meet the
 Guild` at its end. It is bounded above by a rule because it is a different
@@ -1937,9 +1948,9 @@ groups and exactly three were drawn:
 
 | Register | Who | Portrait | Why |
 |---|---|---|---|
-| `.ab-leads` | the two roles the page opens with (Chief Executive Officer, Founder and Chairman) | 152px | the page's own reading order, printed at reading order's scale |
-| `.ab-reg` | the rest of the core team, 16 people, two columns of ruled rows | 76px | a register, not cards: hairline per row, tick at its leading edge, no box and no fill |
-| `.ab-adv` | Advisors and network, four stations on one rule | 92px, over the name | the entries carry no role line, so the rhythm changes with the content |
+| `.ab-leads` | the two roles the page opens with (Chief Executive Officer, Founder and Chairman) | 112px | the page's own reading order, printed at reading order's scale |
+| `.ab-reg` | the rest of the core team, 16 people, two columns of ruled rows | 64px | a register, not cards: hairline per row, tick at its leading edge, no box and no fill |
+| `.ab-adv` | Advisors and network, four stations on one rule | 80px, over the name | the entries carry no role line, so the rhythm changes with the content |
 
 Nobody was regrouped, no role distinction was invented, and every person
 keeps name, title where the content gives one, bio, credentials line and
@@ -1949,8 +1960,10 @@ ranking**, the same rule the Guild page works under.
 **Portrait scale is capped by the source files, not by taste.**
 `assets/people/` holds 22 grayscale headshots between 112x124 and 221x221;
 `MAPPING.json` records larger dimensions for three of them that the files
-themselves no longer have. So 152px is the largest a portrait can print
-and stay sharp on a 1x screen, and 116px is the phone ceiling. The
+themselves no longer have. So 112px is the largest a lead portrait can
+print and stay sharp on a 2x screen (a 190px source at 224 device pixels is
+a mild upscale; the first cut's 152px was 304, a blur on every laptop the
+chairman reads on), 64px the register and 96px the phone ceiling. The
 hierarchy is therefore carried by type, measure and whitespace, and only
 partly by portrait size: a 190px headshot printed at 300px is a blur, and
 a blurred face is worse than a small one. Higher-resolution files would
@@ -1992,3 +2005,15 @@ cross-link. All of it is in section 24 or deleted; the block keeps only
 the current-page nav state. `.person-photo` (section 14) is still the
 portrait component and is only ever given a new size, never a new
 treatment.
+
+### Plates (section 25, `.win-plate`)
+
+Integration-round addition. Six real product screens on Home, Platform and
+Solutions carried the macOS-style window chrome on desktop while every
+phone crop of the same screens already printed as a plate. `.win-plate` on
+the `.window` element drops the traffic lights, the shadow and the radius,
+sets a hairline frame, and prints the product address in the bar as a mono
+label behind one accent tick. The honesty tier is unchanged: a plate is
+still the container for a real screen and nothing else. Unprefixed on
+purpose, because it modifies a shared component rather than a page, and
+scoped to `.window` so nothing outside a window can take it.
