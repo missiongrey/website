@@ -100,11 +100,16 @@ Non-breaking hyphen `&#8209;` in compound words that must not break
 
 Three tiers of imagery, three chromes. Never mix them.
 
-1. **Real product screenshot** → `.window` with browser chrome and the
-   `app.missiongrey.com` url pill. Only actual, unretouched screenshots of
-   the shipping product may sit inside a `.window`. The chrome is the
-   claim "this is the product"; putting anything else in it is a false
-   claim.
+1. **Real product screenshot** → `.window`. Only actual, unretouched
+   screenshots of the shipping product may sit inside a `.window`; the
+   product address in the bar is the claim "this is the product", and
+   putting anything else in it is a false claim. Since round nine the
+   window prints as a PLATE (`.window.win-plate`, section 25): a hairline
+   frame and a ruled bar the address hangs from, no traffic lights, no
+   lifted shadow, no radius. The address carries the claim; the operating
+   system costume never did, and the chairman's counter-prompt names
+   browser-window mockups as the thing to avoid. The bare `.window` chrome
+   survives only for pages not yet in the visual system.
 2. **Illustrative instrument** (drawn SVG maps, charts, diagrams) →
    `.frame` with corner ticks and a `.frame-bar` that carries the label
    `Illustrative view` on the right (`<span class="dim">Illustrative
@@ -1381,3 +1386,634 @@ names the copy that has to sit with it, and those two instructions and
 "do not make Home longer" cannot all three be satisfied; the visual and
 its copy won. Solutions is the page the document asks to grow, and the
 impact chain with its product proof is most of its 176 words.
+
+## Round eight (2026-09-19): the home visual system, section 19
+
+A visual-development pass over three areas of the home page only: the
+fold, the external-world figure and the application proof. It lives in
+`styles.css` section 19 as a pure append, and every selector in it is
+scoped to a class that exists on no other page, so sections 01 to 18 are
+untouched and every sibling page renders as it did before. If the
+direction is adopted, this is the section the rest of the site extends;
+until then, do not reach for these classes on a page other than Home.
+
+One line holds it together: **stations hang from rules, and the grid
+becomes visible once per view.** Three of the four devices below are that
+sentence applied.
+
+### `.hz`, the longitude scale (Home only, binding)
+
+A hairline across the full viewport at the top of the fold, ticked every
+30 degrees from 180W to 180E, with five mono labels and one accent caret.
+The caret is not decoration: the hero script writes it from `rot`, the
+same rotation state the globe canvas renders from, so the scale and the
+sphere under it report the same meridian. The whole strip is
+`aria-hidden="true"` (the globe's own alt text says what is watched) and
+the caret falls back to `var(--x,67.22%)`, the resting aspect, without JS.
+
+Binding, if this is ever reused: a coordinate scale may only be drawn
+against something that actually has that coordinate. A ruler with a caret
+that does not track anything is a HUD graphic, which is the one thing the
+brief's notation rule exists to stop. Two consequences in the script: the
+caret is written from inside the render loop, and the runtime
+`prefers-reduced-motion` handler has to re-mark it by hand, because
+`setRun()` stops that loop before the next frame can.
+
+Keep it a home-page signature. On every page it becomes wallpaper.
+
+### The ticked-station ledger (`.cadence-v1`, `.ap-sys`)
+
+A list is a rule with stations hanging under it, never a row of boxes.
+One continuous hairline, one 1px tick per station at its leading edge,
+mono label over its value. It is `.trail` (round seven, device A) promoted
+from an annotation to a layout: the cadence band lost its four cells to
+it, and the organization register inside the aperture is the same grammar
+at label size.
+
+Two rules learned here. **Every station gets the same padding, including
+the last**: a `flex:1 0 auto` on `:last-child` makes a wrapped row's rule
+run to the container edge while the row above stops at its last word, and
+a register whose rule ends in two places is not an even register.
+**Reserve the tallest label in the row**: each cell is its own grid, so
+a label that wraps drops its own value one line and breaks the row's
+baseline. `.cadence-v1 .k{min-height:2em}` under 700px is that reservation.
+
+### `.ap`, the aperture (the macro-to-micro figure)
+
+WORLD, MARKET, PLACE, ORGANIZATION, DECISION as one figure rather than
+five cards. Three external registers, each inset further than the one
+above (0, 5, 10 percent), then the organization at 15 and the decision at
+22, with the walls between them drawn as stretched SVG. The signals sit
+on the external registers as stations; the systems sit in the
+organization as an even register. The texture difference between a
+scattered field and a ruled row is the section's argument, drawn.
+
+Four binding notes:
+
+- **One taper for every width.** The insets are percentages of the same
+  measure and the wall SVGs carry those percentages as path coordinates,
+  so they register exactly at any width. They must be chosen so the
+  narrowest band still holds its words at 390px; that is why the taper
+  stops at 22 percent and not at 29.
+- **`vector-effect="non-scaling-stroke"` is mandatory** on those paths. A
+  `preserveAspectRatio="none"` viewBox scaled eleven times horizontally
+  draws an eleven-pixel hairline without it.
+- **Markup order is the figure's order.** The registers come before the
+  organization band in the DOM because that is the order the figure
+  reads; a grid that reorders two labelled blocks delivers the funnel
+  inverted to a screen reader (WCAG 2.1 SC 1.3.2).
+- **One baseline per register, and a field a reader can see.** Per-signal
+  depth offsets with no axis read as misalignment, not as depth. A dot
+  field whose pitch change is invisible at 1x is decoration claiming to
+  be meaning: the pitch here triples across three registers (8, 16, 28px)
+  and the dot carries enough ink to be read. Labels over a field knock it
+  out behind themselves with a 4px halo of page ground, the way a place
+  name does on a chart.
+
+### The evidence object (`.ev-*`), binding
+
+The third tier of the honesty convention gains a treatment. An
+application built on the platform stays in `.frame` with `Example
+application` in the frame bar, and is printed as a plate: an exact crop
+around the marks it is read for, one leader, editorial whitespace, no
+browser chrome. `.ev-fig` holds the figure to three quarters of the
+column; the rest is the air the figure is read in.
+
+- **The crop is stated in source pixels and the aspect ratio is derived
+  from it.** Here: x 314 to 1113, y 214 to 566 of a 1920x1032 asset, which
+  is `aspect-ratio:799/352`, `width:240.300%`, `left:-39.299%`,
+  `top:-60.795%`. Keeping the same vertical rect at both breakpoints means
+  the phone crop changes only `--ax`, the width and the left offset, and
+  the leader keeps its height and its target.
+- **Crop to what the figure is about, not to what fits.** The first
+  attempt kept the dashboard title and all four indexes; it read as an
+  equal four-column card grid with status pills, which is the vocabulary
+  the whole pass exists to avoid, and it sliced the tops of the row below.
+  Two indexes, whole, clear of the next row, with the title dropped
+  because the frame bar already names the application.
+- **The alt text describes the crop, not the asset.** A crop is not
+  covered by a wording freeze and never was: it is the one attribute that
+  has to change when the frame changes, for the same reason
+  `.cap-desk` exists.
+- **Home no longer uses `.appshot.focus-space`.** Round seven's phone-crop
+  note above still lists it for Home; that is now `.ev-crop`, which crops
+  at every width rather than only under 600px. The round-seven rules stay
+  in section 17 because Platform and Solutions still use
+  `.focus-space` and `.focus-country`.
+- **At most one or two leadered labels, each landing on a mark the image
+  actually draws** (device B's ceiling, round seven). Here: one,
+  `Confidence`, on the confidence figure the product prints beside each
+  index. The cap reaches the mark and stops short of the glyphs, and the
+  stem stands in a clear corridor of the artwork. An annotation that
+  strikes through its subject, or that scratches across the picture on the
+  way to it, is worse than no annotation. A column of notation labels
+  with no values and no leaders is not an annotation at all: it names
+  fields the figure does not show, which is the defect device B was
+  written to stop.
+
+### Capturing this page, method note
+
+Two traps, both of which produced wrong numbers before they were found.
+Headless Chromium clamps the layout viewport to 500px, so
+`--window-size=390,844` renders a 500px layout and crops it: every phone
+claim has to be captured through a 390px iframe inside a wider window.
+And `--virtual-time-budget` screenshots catch `.reveal` blocks mid
+transition, so a settled page needs `--force-prefers-reduced-motion`.
+
+## Round nine (2026-09-19): the visual system extended, sections 20 to 24
+
+The second visual-development pass. Home is refined, not redesigned; the
+system section 19 proposed is carried to Guild, Platform, Solutions and
+About, each page with its own composition and its own stylesheet section.
+No wording changed anywhere except the hero indicator that replaced
+"Maritime tracking, Real time". Each subsection below is written by the
+page's builder and documents the binding decisions for that page.
+
+### Home (section 20, `hv-`)
+
+Home was refined, not redesigned. The longitude scale, the UTC notation,
+the globe, the amber signals, the technical labels, the asymmetric hero and
+the grey atmosphere all stand as round eight left them; section 20 holds
+one selector, and the rest of the round is the hero indicator, the globe's
+signal model and one measured correction inside section 19.
+
+**The hero indicator, the one wording change on the site.** The cadence
+ledger's third station read `Real time / Maritime tracking`. It now reads
+`Global events / Monitored`: maritime tracking is one feed of many and
+described the proposition too narrowly, and "real time" is a claim the
+cadence cannot make for the whole watch. The station keeps its place, its
+grammar and its ledger; only the two words changed. The hero names one
+broad category and lists nothing: the breadth is the point, an index of
+domains in the fold would be a second argument.
+
+**The globe watches developments, not routes, binding.** The instrument
+drew six maritime chokepoints with route arcs between them and a `Route
+signal` readout. It now draws **five signal stations at real coordinates,
+one per development type**: Panama Canal (infrastructure), Brussels
+(regulatory), the Strait of Hormuz (geopolitical), the Bay of Bengal
+(climate) and Singapore (market). The arcs are gone with the routes. An arc
+between two typed stations says nothing the stations do not, and a globe
+strung with lit connections is the generic network image the brief exists
+to avoid. What moves instead is the world and one station at a time: a
+station facing the reader activates, its mark opens one ring and rests, and
+the readout prints the type over the place, six to nine seconds apart. No
+new colour, no second accent, no node added: the set got smaller.
+
+**The readout names a TYPE and a PLACE, never an event, binding.** It is a
+drawn figure under an `illustrative view` caption, and a drawn figure may
+not report a fact it did not measure. `REGULATORY SIGNAL / BRUSSELS` is the
+kind of development Mission Grey watches and where such a development is
+illustrated; `Brussels adopts X` would be fabricated metadata, which is the
+defect the honesty convention and the `.evi` rule already forbid elsewhere.
+The station the readout is naming is drawn one step larger while its line
+is up and steps back as the line fades, so the words and the place on the
+sphere read as one fact.
+
+`.hv-sig` is section 20's only selector: it sets the readout as label over
+value, the same grammar as every other list in the fold. Run on one line
+the longer strings crossed the sphere's dot grid; stacked they clear the
+limb, and the type reads first. The globe's `aria-label` and the no-JS
+plate's `alt` follow the drawing, as alt text always does.
+
+**One measured correction in section 19.** The cadence ledger reserved two
+lines of label below 700px only. The four-across row wraps its longest
+label from about 775px down, so between 701 and 775 one value sat a line
+below the other three and the ledger's baseline broke. The reservation now
+runs to 860px. Nothing else on the page changed: the walk at 1440 and 390
+found no other defect worth a rule.
+
+### Guild and the Home Guild section (section 21, `gd-`)
+
+The Guild page is rebuilt as an expert network and the Home Guild block is
+rebuilt as the page's one human moment. No word changed on either surface
+(textdiff: Guild 828 words in and out, nothing added or removed; Home two
+words added, `28 members`, which is the Guild roster key's own line
+repeated as the label of a drawn register). No portrait exists for any
+Guild member in this repo, and none was invented.
+
+**`.gd-reg`, the member register, binding.** One rule, one tick per member
+of the roster, in the order the roster PRINTS (the four plate-scale members
+first, then the directory), with those four marked in the accent at stations
+1 to 4. Binding: the `--n` indices in the markup index the printed list, so
+reordering the roster means rewriting them; the first cut carried the four
+members' positions from the old alphabetical order and pointed at the wrong
+people until a review counted the ticks. It is the page's
+signature figure and it appears on both surfaces this section covers, so a
+reader who follows `Meet the Guild` arrives at a figure they have already
+met. It obeys the section 19 rule that a scale may only be drawn against
+something that actually has that measure: twenty-eight members,
+twenty-eight ticks, and the divisor in `background-size` and in the accent
+tick's `left` is the roster length. **Change the roster length and both
+numbers change with it**, on both pages. The label is the roster key's
+count line, which is why the key above the directory now carries two items
+and not three.
+
+**One list, one markup, binding.** Every member is an `<li>` in one
+`<ul class="gd-roster" role="list">` carrying the same `article.gd-p` with
+the same fields (plate, name, bio, domains, profile link). A featured
+member is that same entry with `gd-m-lead` added, so the editorial choice
+is a class and an order and never a different kind of record: a chairman
+swaps a featured member by moving the `<li>` and toggling the class.
+Nothing in the markup encodes rank. The four currently featured are
+Mathieu Boulègue, Kelly Couto, Zsuzsa Anna Ferenczy and Toshihisa Nagai,
+read across the register for the widest regional arc and domain mix the
+page's own bios and tags carry (their four tag sets cover all seven
+domains the roster uses), not for seniority.
+
+**`.gd-plate` is the portrait slot.** It carries the monogram in the
+instrument voice on a recessed plate with registration corners, and it is
+built to stand as a typographic object on its own: no silhouette, no grey
+figure, no word "placeholder" anywhere. When photographs exist, an `<img>`
+goes inside the same div (`.gd-plate img` is already positioned and
+cropped) and the monogram stands down. **Portraits are the one piece of
+material this page is waiting on**; everything else on it is finished
+without them.
+
+**`.gd-sys`, human and system in one figure.** The four things Guild
+expertise adds were four cells of a hairline grid, which says they are
+four separate features. They are four entry points into one process, so
+they are drawn as one: a rule carrying the system's continuous work as an
+even two-graduation comb, with each station's accent tick rising THROUGH
+the rule into the comb and continuing below it. That is the section's own
+dek drawn rather than restated, and it is the answer to the brief's
+data / signals / models + human domain knowledge + structured expert
+input relationship without a three-box diagram and without a new word on
+the page. The figure carries no label and no value, so it claims nothing,
+and a figure that claims nothing wears no instrument chrome (the same
+reading that keeps `.steps` out of a `.frame`). Below 760px the four
+columns become four ruled rows under the same comb; the desktop graphic is
+never shrunk.
+
+**Geography is only what the page already says.** The roster's regional
+range lives inside the bios (Transatlantic, Latin American, EU-China and
+Indo-Pacific, ASEAN, East Asia, APAC and the EU, LATAM, Americas, French
+and European, Sino-Lusophone) and nowhere else. Printing those as map or
+region notation would repeat words the page carries once, and inventing a
+country for any member is out of the question, so **the network is drawn
+as registers, not as a map**: the member register on the fold, the ten
+expertise areas as a ruled register (`.gd-doms`, which also removes ten
+pills), and each member's own domains as notation on a rule. If the Guild
+ever publishes a location per member, the map is the figure to build next.
+
+**Home (`.gd-home`).** The same three sentences: the claim set apart at
+heading scale in the sans voice (it sits one screen above the mission quote,
+which holds the page's one serif statement; two adjacent statements in the
+same voice halve the weight of both), the network
+sentence at reading measure beside it, the consequence hanging from its
+own rule under that, and the register ruling the foot with `Meet the
+Guild` at its end. It is bounded above by a rule because it is a different
+kind of evidence from the trust architecture above it: not a property of
+the system, a person. Names do not appear on Home. Twenty-eight names
+would be twenty-eight words the home page does not carry, maintained in
+two places, and the link is one click.
+
+### Platform (section 22, `pl-`)
+
+Platform is the machinery page, so the round's object was to make it read
+as an examined instrument rather than as a scroll of browser windows. It
+carried five product plates in one run, each the full width of the column
+under its own copy, and the run read as one texture. Everything below is
+composition: **no word on the page changed** (textdiff: nothing added,
+nothing removed), and every new selector is prefixed `pl-`.
+
+**The four proof moments, and the exhibit pair.** The walk is now four
+moments and one exhibit. The four are the document's own logic (monitor,
+understand, model, operationalize, which the section dek already names in
+that order) and they keep the site's stage words MONITOR, ANALYZE,
+DECIDE, ACT: Home's pipeline prints the same four, and a second set of
+names on one site is the failure the one-diagram-one-direction rule
+exists to stop. **So UNDERSTAND, MODEL and OPERATIONALIZE are used as
+composition logic and are not printed as labels**; MONITOR is already
+printed, and printing it twice would be notation for its own sake.
+`.pl-mom` is the ledger grammar applied to a narrative row: a rule across
+the width with the index hanging from it as a station, the claim on the
+left rail, the argument in the wide column, the INPUT/OUTPUT pair closing
+that column, and the plate at content width below. Nothing shrank: a
+1920px product screen printed small is decoration, and round six's ruling
+stands.
+
+The sourced report moved from between moments 01 and 02 to after moment
+04, where it joins the Morning Brief as `.pl-deliv`, the delivery
+exhibits: one statement across the width, then the real screen on the
+wide rail and the printed artifact beside it. They answer one question,
+how the work leaves the platform, and the fourth moment is the one that
+asks it. The two honesty tiers keep their own chrome and labels; nothing
+about `.window`, `.frame` or `.sheet` changed. This supersedes round
+seven's `.proof-between` placement (that component is now unused on this
+page and has no other user).
+
+**Every plate starts at the edge of the product sidebar.** The scenario
+simulation already did (round seven). The globe and the knowledge graph
+did not, so three quarters of a fifth of each frame was the same repeated
+navigation, and it is also the only part of the captures carrying beta
+tags and a report count, which is interface state rather than evidence.
+Both now crop at the sidebar edge (source x 296 and x 300 of 1920); the
+graph keeps round six's right edge, which is what holds its raw property
+list off the page, so its frame is the app's own content area between the
+two. The phone crops in section 17 are untouched, and no asset changed.
+
+**The example application is cropped to its operating band.** Printed
+whole it is the one dark object on a light page and it is a wall: eight
+index cards, a signal map and a live feed at one weight. `.pl-evcrop`
+takes source y 0 to 566 at the asset's full width, which is the layer
+strip the caption names, the application title whole and the first card
+row ending in the gutter above the second. On a phone that band would be
+356px of texture, so the crop changes rather than scales: x 0 to 712, y
+200 to 566, the customer's own intelligence layers beside one whole
+index. Both crops end on a gap in the sidebar list and neither cuts a
+card or a word. Home's plate on the same asset is a different rect at a
+different scale, so the two pages do not print the same picture.
+`.appshot.focus-space` (section 17) now has no user.
+
+**The intelligence trail is the page's signature figure, and it is still
+an annotation.** It stays under the five decision objects, carries no
+heading of its own, and remains the only trail on the page: the round
+seven rule holds and the decision here was to grow the figure, not to
+promote it into a section. What changed is that it now annotates the
+objects EXACTLY. Both rows are drawn on one grid of seven stations, three
+narrow and four wide: **Tracker stands over SOURCE, SIGNAL and EXPOSURE,
+the evidence it watches, and Indicator, Scenario, Trigger and Action each
+stand over the station that bears their name.** A riser under every
+station reaches up to the object it belongs to, so the relationship is
+drawn rather than asserted, and it costs no words. Three graded ink
+registers carry the progression without a second colour (evidence dim,
+objects mute, the last station full ink), the ticks change state at the
+same boundary, and the accent is the one role in the figure: the station
+the trail exists to reach. Equal sevenths were the first cut and left
+Tracker as a wide empty cell while Scenario's sentence wrapped to three
+lines, which is why the grid is 0.74 and 1.19.
+
+One line is drawn once, left to right, when the figure arrives: `.pl-run`
+is a transition on the existing reveal (the observer's own `.in` class is
+the trigger), not a loop. It rests where it stops, section 13's
+reduced-motion block collapses it, and without JS the line is simply
+there. That is the document's "a line progressing through the
+intelligence trail", built inside the permitted motion inventory rather
+than beside it.
+
+Below 901px the objects are no longer on the trail's grid, so the risers
+would point at nothing and they go; below 761px the rule turns vertical
+with the stations hanging off it, which is what the rail does at that
+width. The station marks turn with it, because the long ticks that
+measured height against the object row read as blocks on a vertical
+spine.
+
+**The rest of the page, by restraint.** `.lens` (#breadth), the full
+recipe, the method comparison, the instrument list and the `.rail` system
+diagram (#apps) already follow the system and were left alone, which is
+most of the page. Two card runs were replaced: the four trust cells are
+now `.pl-rows`, label left and sentence right, a list in a document
+rather than four boxes; and the G2 themes are now a ticked register
+beside the rating instead of a row of pills under it, with the quotes and
+the link under the register. The trust pipeline chain wrapped at 390px
+and left an arrow pointing off the right edge, so under 700px it turns
+vertical with its arrowhead redrawn downward from the same borders.
+
+**The fold** is the cover sheet of a specification and deliberately
+carries no instrument: ruled eyebrow across the width, the h1 on the
+left, the dek and the two calls to action in a hairline-ruled right rail
+whose last line ends level with the heading. The page's instruments start
+one rule below it and run to the footer.
+
+**The knowledge graph is cropped to what can be read** (send-back fix,
+after the critic's pass). The content area printed whole was about 1100px
+of undifferentiated multi-colour node field: nothing in it can be read at
+that size, it is the weakest interface on the site, and a dense coloured
+network is the one picture the counter-prompt names outright. The product
+draws no text on its nodes, so the readable evidence in the frame is the
+record it is open on and the shape of the relations around it. The crop is
+cut to exactly that: **source x 300 to 1072, y 0 to 250** of the 1920x1037
+asset, ending in the gap before the Level control rather than through it,
+and on a phone **x 300 to 636, y 0 to 340** at about 1:1. The field is cut
+by the plate, which is what the site does with the globe. `.pl-detail`
+stops the plate at 920px: a 772px crop stretched across the column upscales
+the product's own type by half again for nothing, and this is the one of
+the four moments whose proof is a detail rather than a whole screen, so the
+composition says so. Alt text follows the crop.
+
+**On the audit list after this round:** `.proof-between`,
+`.appshot.focus-space` and `.trust-grid` at four columns lost their only
+users. All three are in sections 17 and 18 and were left in place.
+
+### Solutions (section 23, `so-`)
+
+Solutions belongs to the same brand and may not read as technical as
+Platform: the reader is an executive buyer, and the page's job is the
+decision journey and what it costs to begin. So the page takes the
+system's grammar (stations hanging from rules, one measured lattice per
+view, the figure cut by its plate) and none of the other pages'
+compositions. No coordinate scale, no aperture, no trail. Nothing new in
+the palette, no new font, no new motion.
+
+**The fold (`.so-hero`).** One ruled eyebrow across the top, the claim
+hanging on the left, the cost of starting and the two calls to action on
+the right with their baselines meeting the claim's. Asymmetric, quiet,
+nothing centered, and the two CTAs sit inside the first screen because
+this is the commercial page.
+
+**The adoption progression (`.so-grid`, `.so-ext`, `.so-k`), the page's
+major visual.** Three bordered nodes with an arrow glyph between them were
+the feature-card run this pass exists to delete, and they answered none of
+the question a buyer arrives with: how far does this go. The section is now
+one figure. Above a continuous station rule each step carries its EXTENT.
+`ONE DECISION` is a bounded run of six divisions marked at both ends, the
+way a dimension is drawn, because a decision ends. `STANDING WATCH` is a
+run that starts at its own station, carries an origin mark only and does
+not close. `ORGANIZATIONAL INTELLIGENCE` is that same run carried three
+times over, because its growth is reach across the organization rather
+than a longer period. Left to right the ink accumulates from one line to
+four, which is the page's commercial argument drawn once: start small,
+keep it, spread it.
+
+- **The lattice is exact, and that is the whole licence for drawing it.**
+  The grid is twelve tracks and the steps span three, four and five of
+  them, so the stations fall at 0, 6 and 14 twenty-fourths of the figure
+  and every division on every run lands on the same lattice of 24. That is
+  why each run states its divisions as a COUNT (6, 18, 10) and never as a
+  pixel pitch: a pitch would drift out of phase between runs, and a ruler
+  whose marks do not register with the thing it measures is a HUD graphic,
+  which is exactly what the notation rule exists to stop. Any change to
+  the column spans has to keep the three starts on the lattice.
+- **Separation is padding, never gap.** The three heads abut into one
+  continuous station rule; a grid gap would break the rule where the gap
+  falls. Same reason `.trail` is built that way.
+- **One accent, and it is the decision point**: the entry mark at station
+  01 and the `01` itself. The two later step numbers are ink. The old
+  ladder put the accent on all three, which said the steps were three
+  equal grades rather than one entry that grows.
+- **The step is one block in the markup** (index, heading, sentence,
+  bullets), and only on the wide layout does `display:contents` lift its
+  parts into the figure's own grid. A screen reader therefore hears each
+  step whole, and the extents can still share one lattice above the
+  stations (WCAG 2.1 SC 1.3.2).
+- **Mobile simplifies, it does not shrink.** Under 901px the steps stack
+  and each one keeps its own extent at its own length (34, 67, 100 percent
+  with the third tripled), so the growth still reads in one pass.
+- The closing bar (`.level-out`) keeps its words and sets its sentence in
+  sans, with only its label in mono. A full sentence in letter-spaced
+  uppercase is a label pretending to be a sentence, and this page has to
+  stay easy. `.ladder`, `.ladder-node`, `.ladder-meter`, `.idx` and
+  `.loop-arrow` lost their last user with this section and join the audit
+  list in section 16; nothing was deleted, because section 16 is frozen
+  this round.
+
+**The customer-specific application (`.so-app`, `.so-ev-*`).** The proof
+that the layer takes the customer's shape, printed as an evidence plate on
+the `.ev-*` pattern and composed differently from Home: the reading hangs
+on the left of one rule and the plate sits to the right of it, so the
+product is read inside Mission Grey's page rather than filling it. It is
+not a stage and it is not a screenshot dropped in a column.
+
+- **The crop is stated in source pixels.** Desktop: x 317 to 1107, y 378
+  to 679 of the 1920x1039 asset, which is `aspect-ratio:790/301`,
+  `width:243.038%`, `left:-40.127%`, `top:-125.581%`. It holds the
+  briefing's own opening assessment whole and the two indexes under it
+  whole, and it ends on the card boundary at source y 678. Dropped: the
+  application title, the product sidebar, the ticker and the two further
+  indexes. Four indexes side by side read as an equal card grid with
+  status pills, which is the vocabulary this pass removes; the assessment
+  is what says the intelligence was shaped around this customer's
+  business, which is what the section claims.
+- **The phone crop is a different vertical rect, deliberately.** The
+  assessment is a paragraph: narrowing the plate would cut every one of
+  its lines mid-word at the frame edge, and a sliced paragraph at a frame
+  edge is the site making a mess and blaming the app. So under 520px the
+  plate drops to the first index alone, whole: x 315 to 711, y 497 to 679,
+  `aspect-ratio:396/182`, `width:484.848%`, `left:-79.545%`,
+  `top:-273.077%`.
+- **The switch is at 520px, not the site's usual 600.** The phone rect is
+  396 source pixels wide, so above 520 it is being upscaled past 1.2x
+  while the wide crop still prints its assessment at a readable size.
+  Under 520 the wide crop is the one that fails. Where a crop's source
+  rect is narrow, the breakpoint follows the arithmetic, not the habit.
+- **One leader, landing on a mark the image actually draws**: the
+  direction mark the product prints beside the figure, labelled `Change`.
+  The stem stands in the clear corridor to its right (source x 574, 22px
+  clear of the last glyph) and rises from the plate's bottom edge, which
+  is the card's own boundary, so the leader crosses no rule of the
+  artwork. The artwork here is white, so the leader is drawn in page ink
+  rather than in the light the Home plate uses. `Change` is the only word
+  added to this page in this round.
+- **The alt text describes what both crops show and no more.** An alt that
+  names the assessment would be describing something the phone reader
+  cannot see.
+
+**The two ruled indexes (`.so-funcs`, `.so-roles`).** Daily use by
+function and the three ways of working were already ruled rows rather than
+cards, so they keep their layout and take the one thing the system asks of
+a list: a station tick at the leading edge of every row. Nothing else in
+those two sections changed. The worked chain (`.rail`), the recommended
+actions screenshot, the quotes and the access panel are untouched: they
+already follow the system, and a page whose job is to stay easy does not
+need a fourth device.
+
+### About (section 24, `ab-`)
+
+About is the page about people and places, so it is the one page in this
+round that draws no instrument. Its composition is a document: a set
+masthead, one ruled ledger, three portrait registers and a geographic
+register. Everything it needed already existed in the tree (22 real
+portraits, five real places, the mark sequence); nothing was added to
+`assets/`.
+
+**The fold is set, not drawn.** Title at a 20ch measure across the left
+two thirds, then one hairline with the dek hanging from its right half and
+a tick at the head of that column. The left half under the rule stays
+empty on purpose. A second globe, or any instrument, would make About read
+as Home with different words; the page's job at the fold is a masthead.
+
+**Atmospheric imagery is material this round did not have.** The commission
+allows About more documentary imagery than any other page (global city
+details, infrastructure, travel, international working environments,
+restrained nocturnal imagery). No such photograph exists in `assets/` and
+the round forbids new image assets, so the atmosphere is carried by the
+system's own means instead: real geography as notation, the portraits the
+page already has, large controlled whitespace and editorial hierarchy. If
+photography is approved later, the two places it belongs are a full-bleed
+band between the name band and the people (one nocturnal city detail,
+grayscale, no type over a face), and a second, quieter plate beside the
+geographic register. Both are additive; nothing in this section has to
+move to make room.
+
+**The four disciplines are a ledger, not four cells.** Operators,
+Intelligence experts, Risk experts and Research hung from one rule with a
+tick per station, mono name over the sentence. The separation is padding
+rather than a column gap, so the four rules abut into one continuous line
+(the lesson `.cadence-v1` records in section 19). A four-column hairline
+card grid is the first item on the brief's counter-prompt, and this
+section carried one.
+
+**People, in three registers, binding.** The content already carries three
+groups and exactly three were drawn:
+
+| Register | Who | Portrait | Why |
+|---|---|---|---|
+| `.ab-leads` | the two roles the page opens with (Chief Executive Officer, Founder and Chairman) | 112px | the page's own reading order, printed at reading order's scale |
+| `.ab-reg` | the rest of the core team, 16 people, two columns of ruled rows | 64px | a register, not cards: hairline per row, tick at its leading edge, no box and no fill |
+| `.ab-adv` | Advisors and network, four stations on one rule | 80px, over the name | the entries carry no role line, so the rhythm changes with the content |
+
+Nobody was regrouped, no role distinction was invented, and every person
+keeps name, title where the content gives one, bio, credentials line and
+profile link. **The larger portraits are an editorial device, not a
+ranking**, the same rule the Guild page works under.
+
+**Portrait scale is capped by the source files, not by taste.**
+`assets/people/` holds 22 grayscale headshots between 112x124 and 221x221;
+`MAPPING.json` records larger dimensions for three of them that the files
+themselves no longer have. So 112px is the largest a lead portrait can
+print and stay sharp on a 2x screen (a 190px source at 224 device pixels is
+a mild upscale; the first cut's 152px was 304, a blur on every laptop the
+chairman reads on), 64px the register and 96px the phone ceiling. The
+hierarchy is therefore carried by type, measure and whitespace, and only
+partly by portrait size: a 190px headshot printed at 300px is a blur, and
+a blurred face is worse than a small one. Higher-resolution files would
+let `.ab-por` grow without any other change. Grayscale and the `--line-2`
+edge stay exactly as section 14 sets them: no filter, no crop treatment
+and no decoration on a face, ever.
+
+**Where we are, as a west-to-east register.** The three offices were three
+boxes in a row, which says the regions are three equal products. They are
+places, so they are drawn as places: one rule, one station per office at
+its true meridian (Arlington 77W, Puteaux 2E, Singapore 104E on a scale
+whose ends are San Francisco 122W and Singapore), the label hanging under
+its tick. Other offices and operations hang from a second rule on the same
+scale. **The meridians are the only text this page added, and they are
+allowed for the same reason the home scale's labels are: a coordinate may
+only be printed against something that actually has that coordinate.** UTC
+offsets were the first draft and were dropped: half of them are wrong for
+half of the year, and this site struck "real time" from the home page for
+less. Two rules learned here: two lines of region label are reserved in
+every station (`min-height:3em`), because EMEA wraps and the other two do
+not and a wrapped label drops its own city one line; and below 1080px the
+register stops being a map and becomes a ruled list, because a 226 degree
+spread drawn 900px wide puts Puteaux under Singapore. The notation stays
+in the list, since the meridian is what the stations were ordered by.
+It wears no `.frame`: this is a statement of where the company is, not a
+claimed view of data, the same reasoning that keeps `.steps` out of
+instrument chrome.
+
+**No amber on this page beyond the chassis.** The eyebrow ticks and the
+one primary button are the page's whole accent. Amber means active,
+changed, selected or decision point, and nothing About says is any of
+those; a highlighted office or a highlighted person would be a signal
+about a human being. Restraint here is the accent working, not the accent
+missing.
+
+**Page-local CSS is now one line.** The About `<style>` block held the
+roster, the monogram fallback, the office grid and a copy of the strip
+cross-link. All of it is in section 24 or deleted; the block keeps only
+the current-page nav state. `.person-photo` (section 14) is still the
+portrait component and is only ever given a new size, never a new
+treatment.
+
+### Plates (section 25, `.win-plate`)
+
+Integration-round addition. Six real product screens on Home, Platform and
+Solutions carried the macOS-style window chrome on desktop while every
+phone crop of the same screens already printed as a plate. `.win-plate` on
+the `.window` element drops the traffic lights, the shadow and the radius,
+sets a hairline frame, and prints the product address in the bar as a mono
+label behind one accent tick. The honesty tier is unchanged: a plate is
+still the container for a real screen and nothing else. Unprefixed on
+purpose, because it modifies a shared component rather than a page, and
+scoped to `.window` so nothing outside a window can take it.

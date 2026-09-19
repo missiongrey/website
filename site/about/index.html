@@ -21,44 +21,10 @@
 <link rel="apple-touch-icon" href="/assets/favicon-180.png">
 <link rel="stylesheet" href="../styles.css">
 <style>
-/* Page-local layout only. System tokens exclusively; nothing restyled.
-   People are rendered as a directory (hairline rows, headshot gutter —
-   .person-photo lives in the system, section 14; the monogram is the
-   fallback where no photo exists), the same idiom as the Guild roster
-   on /guild/. */
+/* Page-local: the current-page nav state only. Everything this page draws
+   lives in styles.css section 24 (every selector prefixed `ab-`), including
+   the research strip's cross-link, which used to be declared here. */
 .nav-main a[aria-current="page"],.mnav-panel a[aria-current="page"]{color:var(--ink)}
-/* people directory */
-.roster{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(28px,4vw,64px);border-bottom:1px solid var(--line)}
-.person{display:grid;grid-template-columns:48px 1fr;gap:18px;padding:22px 6px;border-top:1px solid var(--line);transition:background-color .2s ease}
-.person:hover{background:var(--bg-1)}
-.mgram{width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line-2);border-radius:2px;font:500 11px/1 var(--mono);letter-spacing:.1em;color:var(--ink-mute)}
-.person h3{font-size:16.5px;font-weight:600;letter-spacing:-.01em}
-.person .role{margin-top:7px;font:500 10.5px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
-.person .bio{margin-top:10px;font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
-.person .cred{margin-top:7px;font-size:13.5px;line-height:1.6;color:var(--ink-dim)}
-.person-foot{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:14px}
-.prof{display:inline-flex;align-items:center;min-height:24px;font:500 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);border-bottom:1px solid var(--line-2);white-space:nowrap}
-.prof:hover{color:var(--ink)}
-.roster-key{display:flex;flex-wrap:wrap;gap:8px 24px;margin:24px 0;font:400 10.5px/1.8 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
-/* research strip cross-link (mirrors .strip-g2 without the G2 semantics) */
-.strip-link{margin-left:auto;font:500 11px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);border-bottom:1px solid var(--line-2);padding-bottom:2px;white-space:nowrap}
-.strip-link:hover{color:var(--ink)}
-/* offices */
-.offices{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-.office{background:var(--bg-1);padding:26px 24px 28px}
-.office h3{font:500 10.5px/1.5 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:16px}
-.office p{font:600 16px/1.45 var(--sans);letter-spacing:-.01em;color:var(--ink)}
-.office p small{display:block;margin-top:6px;font:400 13.5px/1.5 var(--sans);letter-spacing:0;color:var(--ink-mute)}
-.office-foot{margin-top:20px;display:flex;flex-wrap:wrap;gap:6px 24px;font:400 10.5px/1.9 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
-@media (max-width:900px){
-  .roster{grid-template-columns:1fr}
-  .offices{grid-template-columns:1fr}
-  .strip-link{margin-left:0}
-}
-@media (max-width:560px){
-  .person{grid-template-columns:1fr;gap:14px}
-  .person-foot{flex-direction:column;align-items:flex-start;gap:12px}
-}
 </style>
 <script src="../../assets/consent.js" data-ga="__GA_MEASUREMENT_ID__" defer></script>
 </head>
@@ -109,11 +75,13 @@
 <main id="main">
 
   <!-- ============ HERO ============ -->
-  <section class="sec hero" aria-labelledby="h1">
+  <section class="sec hero ab-hero" aria-labelledby="h1">
     <div class="wrap">
       <p class="eyebrow hero-eyebrow">About Mission Grey</p>
       <h1 id="h1">Built by operators, researchers, and intelligence experts.</h1>
-      <p class="hero-dek">Mission Grey builds the intelligence layer between the world and enterprise decisions. Organizations operate in a world shaped by external forces. The company exists to connect those forces directly to the decisions they affect.</p>
+      <div class="ab-fold">
+        <p class="hero-dek ab-dek">Mission Grey builds the intelligence layer between the world and enterprise decisions. Organizations operate in a world shaped by external forces. The company exists to connect those forces directly to the decisions they affect.</p>
+      </div>
     </div>
   </section>
 
@@ -125,20 +93,20 @@
         <h2 id="why-h">Why Mission Grey exists.</h2>
         <p>External intelligence is not one job. It takes people who have run international businesses, people who read the world for a living, people who can price risk, and people who build the models underneath. All four are in the company.</p>
       </div>
-      <div class="trust-grid reveal">
-        <div class="trust-cell">
+      <div class="ab-disc reveal">
+        <div class="ab-disc-i">
           <h3>Operators</h3>
           <p>Entrepreneurs and executives who have built and scaled international businesses.</p>
         </div>
-        <div class="trust-cell">
+        <div class="ab-disc-i">
           <h3>Intelligence experts</h3>
           <p>Specialists in geopolitical analysis and global systems who translate complexity into strategic implications.</p>
         </div>
-        <div class="trust-cell">
+        <div class="ab-disc-i">
           <h3>Risk experts</h3>
           <p>Experts in risk management and financial modeling who quantify impact.</p>
         </div>
-        <div class="trust-cell">
+        <div class="ab-disc-i">
           <h3>Research</h3>
           <p>Economists, data scientists, and complex systems researchers building the models behind the platform.</p>
         </div>
@@ -149,13 +117,13 @@
   <!-- ============ NAME ============ -->
   <section class="sec" id="why-grey" aria-labelledby="name-h">
     <div class="wrap">
-      <div class="name-grid">
+      <div class="name-grid ab-name">
         <div class="name-copy reveal">
           <p class="eyebrow" style="margin-bottom:18px">Why grey</p>
           <h2 id="name-h">Built for the grey zone.</h2>
           <p>The world does not arrive in black and white. Every consequential decision is made in between, where signals conflict, incentives collide, and certainty is not on offer. The mark is black and white resolving into grey. Mission Grey is the instrument for operating there.</p>
         </div>
-        <div class="reveal">
+        <div class="ab-seq reveal">
           <div class="resolve" aria-hidden="true">
             <svg viewBox="0 0 180 180"><rect width="180" height="180"/><path d="M0 0h90v90H0zM90 90h90v90H90z"/></svg>
             <svg viewBox="0 0 180 180"><rect width="180" height="180"/><path d="M55 20.5h34.5v34.5H55zM124 20.5h34.5v34.5H124zM20.5 55h34.5v34.5H20.5zM89.5 55h34.5v34.5H89.5zM55 89.5h34.5v34.5H55zM124 89.5h34.5v34.5H124zM20.5 124h34.5v34.5H20.5zM89.5 124h34.5v34.5H89.5z"/></svg>
@@ -176,290 +144,286 @@
       <div class="sec-head reveal" style="margin-top:44px">
         <h2 id="team-h">The people accountable for the work.</h2>
       </div>
-      <div class="roster-key">
-        <span>Names, roles, and prior work</span>
-        <span>Profiles link out where public</span>
-      </div>
-      <div class="roster reveal">
+      <p class="ab-key">
+        <span>Names, roles, and prior work</span><span>Profiles link out where public</span>
+      </p>
 
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/lauri-t-htinen.jpg" alt="Lauri Tähtinen, Chief Executive Officer" width="48" height="48" loading="lazy">
+      <div class="ab-leads reveal">
+
+        <article class="ab-lead">
+          <img class="person-photo ab-por" src="../../assets/people/lauri-t-htinen.jpg" alt="Lauri Tähtinen, Chief Executive Officer" width="152" height="152" loading="lazy">
           <div>
             <h3>Lauri Tähtinen</h3>
-            <p class="role">Chief Executive Officer</p>
-            <p class="bio">Strategist and entrepreneur at the intersection of geopolitics, technology, and business</p>
-            <p class="cred">Harvard, Cambridge PhD. Advised public and private sector leaders globally.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/lauri-t%C3%A4htinen-7b510722/" aria-label="Lauri Tähtinen on LinkedIn">LinkedIn</a>
+            <p class="ab-role">Chief Executive Officer</p>
+            <p class="ab-bio">Strategist and entrepreneur at the intersection of geopolitics, technology, and business</p>
+            <p class="ab-cred">Harvard, Cambridge PhD. Advised public and private sector leaders globally.</p>
+            <div class="ab-foot">
+              <a class="ab-prof" href="https://www.linkedin.com/in/lauri-t%C3%A4htinen-7b510722/" aria-label="Lauri Tähtinen on LinkedIn">LinkedIn</a>
             </div>
           </div>
         </article>
 
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/jouko-ahvenainen.png" alt="Jouko Ahvenainen, Founder &amp; Chairman" width="48" height="48" loading="lazy">
+        <article class="ab-lead">
+          <img class="person-photo ab-por" src="../../assets/people/jouko-ahvenainen.png" alt="Jouko Ahvenainen, Founder &amp; Chairman" width="152" height="152" loading="lazy">
           <div>
             <h3>Jouko Ahvenainen</h3>
-            <p class="role">Founder &amp; Chairman</p>
-            <p class="bio">Serial entrepreneur in data analytics, fintech, and external intelligence</p>
-            <p class="cred">Built and scaled companies across Asia, Europe, and the US.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/joukoahvenainen/" aria-label="Jouko Ahvenainen on LinkedIn">LinkedIn</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/janaki-kates.jpeg" alt="Janaki Kates, Head of Intelligence" width="48" height="48" loading="lazy">
-          <div>
-            <h3>Janaki Kates</h3>
-            <p class="role">Head of Intelligence</p>
-            <p class="bio">National security expert with 18 years in intelligence and government</p>
-            <p class="cred">Former CIA analyst. Briefed executives at the Department of State and National Security Council.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/janaki-kates-a925241/" aria-label="Janaki Kates on LinkedIn">LinkedIn</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/jani-kinnunen.jpeg" alt="Jani Kinnunen, Chief Research Officer" width="48" height="48" loading="lazy">
-          <div>
-            <h3>Jani Kinnunen</h3>
-            <p class="role">Chief Research Officer</p>
-            <p class="bio">Senior researcher in economics, finance, and computational modeling</p>
-            <p class="cred">100+ peer-reviewed publications.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.researchgate.net/profile/Jani-Kinnunen-2" aria-label="Jani Kinnunen on ResearchGate">ResearchGate</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/andrew-ong.jpeg" alt="Andrew Ong, Chief Growth Officer" width="48" height="48" loading="lazy">
-          <div>
-            <h3>Andrew Ong</h3>
-            <p class="role">Chief Growth Officer</p>
-            <p class="bio">C-level executive with 30+ years scaling fintech and SaaS businesses globally</p>
-            <p class="cred">Delivered triple-digit growth across Asia-Pacific markets.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/ong-andrew/" aria-label="Andrew Ong on LinkedIn">LinkedIn</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/akseli-kettula.jpg" alt="Akseli Kettula, VP, Product &amp; Business Development" width="48" height="48" loading="lazy">
-          <div>
-            <h3>Akseli Kettula</h3>
-            <p class="role">VP, Product &amp; Business Development</p>
-            <p class="bio">Expert in insurance, risk management, and large-scale corporate exposure</p>
-            <p class="cred">Managed portfolios for 40+ organizations.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/akselikettula/" aria-label="Akseli Kettula on LinkedIn">LinkedIn</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/teppo-koskinen.png" alt="Teppo Koskinen, Founder &amp; Chief Technology Officer" width="48" height="48" loading="lazy">
-          <div>
-            <h3>Teppo Koskinen</h3>
-            <p class="role">Founder &amp; Chief Technology Officer</p>
-            <p class="bio">Technology entrepreneur specializing in scalable software and machine learning systems</p>
-            <p class="cred">20+ years building products from architecture to production.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/teppo-koskinen" aria-label="Teppo Koskinen on LinkedIn">LinkedIn</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/mercy-kuo.png" alt="Mercy Kuo, Head of Strategy, United States" width="48" height="48" loading="lazy">
-          <div>
-            <h3>Mercy Kuo</h3>
-            <p class="role">Head of Strategy, United States</p>
-            <p class="bio">Geopolitics, strategic risk, and external intelligence expert with experience across government, corporate advisory, and international affairs</p>
-            <p class="cred">Former CIA analyst and executive in U.S. risk intelligence, helping organizations understand how external developments shape business decisions.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/mercyakuo/" aria-label="Mercy Kuo on LinkedIn">LinkedIn</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/runi-irnandari-arnowo.jpg" alt="Runi Irnandari Arnowo, Head of Enterprise, APAC" width="48" height="48" loading="lazy">
-          <div>
-            <h3>Runi Irnandari Arnowo</h3>
-            <p class="role">Head of Enterprise, APAC</p>
-            <p class="bio">Senior banking executive with 30+ years in corporate, transaction, and investment banking across Asia-Pacific</p>
-            <p class="cred">Former Managing Director at Deutsche Bank. Led multinational client coverage and transaction banking across ASEAN and Australia.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/runi-irnandari-arnowo-64273931/" aria-label="Runi Irnandari Arnowo on LinkedIn">LinkedIn</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/richard-andrew.jpg" alt="Richard Andrew, Head of Public Affairs and Strategic Partnerships" width="48" height="48" loading="lazy">
-          <div>
-            <h3>Richard Andrew</h3>
-            <p class="role">Head of Public Affairs and Strategic Partnerships</p>
-            <p class="bio">Public affairs and geopolitical strategy expert with 25 years advising organizations across Asia</p>
-            <p class="cred">Former Chairperson, Public &amp; Government Affairs Asia Pacific at Edelman. Led public policy for Mastercard and DHL in Asia Pacific.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/richard-a-6337292/" aria-label="Richard Andrew on LinkedIn">LinkedIn</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/lauri-byckling.jpeg" alt="Lauri Byckling, Strategic Advisor" width="48" height="48" loading="lazy">
-          <div>
-            <h3>Lauri Byckling</h3>
-            <p class="role">Strategic Advisor</p>
-            <p class="bio">Senior executive and advisor with 30+ years in consulting, technology, and business transformation</p>
-            <p class="cred">Former Deloitte Managing Partner. Helps global organizations build practical business and technology solutions.</p>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/erno-pirinen.jpeg" alt="Erno Pirinen, VP, Technical Product Management" width="48" height="48" loading="lazy">
-          <div>
-            <h3>Erno Pirinen</h3>
-            <p class="role">VP, Technical Product Management</p>
-            <p class="bio">Product leader in AI and data-driven enterprise platforms</p>
-            <p class="cred">Scaled a cloud orchestration platform from concept to Fortune 500 adoption.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/ernopirinen/" aria-label="Erno Pirinen on LinkedIn">LinkedIn</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/monique-boddington.jpeg" alt="Monique Boddington, Head of Campus" width="48" height="48" loading="lazy">
-          <div>
-            <h3>Monique Boddington</h3>
-            <p class="role">Head of Campus</p>
-            <p class="bio">Professor at Cambridge Judge Business School</p>
-            <p class="cred">Directs the Master's in Entrepreneurship. Leads research collaborations.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/monique-ingrid-boddington-b550a321/" aria-label="Monique Boddington on LinkedIn">LinkedIn</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/peter-steube.jpeg" alt="Peter Steube, Head of Community" width="48" height="48" loading="lazy">
-          <div>
-            <h3>Peter Steube</h3>
-            <p class="role">Head of Community</p>
-            <p class="bio">Strategic community builder for executive-level intelligence networks</p>
-            <p class="cred">Former Gartner executive community lead.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/petersteube/" aria-label="Peter Steube on LinkedIn">LinkedIn</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/thorsten-terweiden.jpg" alt="Thorsten Terweiden, Director, Business Development" width="48" height="48" loading="lazy">
-          <div>
-            <h3>Thorsten Terweiden</h3>
-            <p class="role">Director, Business Development</p>
-            <p class="bio">Senior trade and investment professional with 20+ years across Europe, Asia, and Australia</p>
-            <p class="cred">Part of the core team that secured Intel's landmark investment in Germany.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/thorsten-terweiden-08295217/" aria-label="Thorsten Terweiden on LinkedIn">LinkedIn</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/pekka-virkki.png" alt="Pekka Virkki, Co-founder &amp; Intelligence Recruiter" width="48" height="48" loading="lazy">
-          <div>
-            <h3>Pekka Virkki</h3>
-            <p class="role">Co-founder &amp; Intelligence Recruiter</p>
-            <p class="bio">Geopolitical author and journalist specializing in international power dynamics</p>
-            <p class="cred">Published by The Times, El País, CEPA.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/pekka-virkki-b504a0181/" aria-label="Pekka Virkki on LinkedIn">LinkedIn</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/eva-mikkonen.png" alt="Eva Mikkonen, OSINT Specialist &amp; Software Developer" width="48" height="48" loading="lazy">
-          <div>
-            <h3>Eva Mikkonen</h3>
-            <p class="role">OSINT Specialist &amp; Software Developer</p>
-            <p class="bio">OSINT specialist and cybersecurity professional</p>
-            <p class="cred">Full-stack security experience. Specializes in open-source intelligence.</p>
-          </div>
-        </article>
-
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/se-n-mcloughlin.jpg" alt="Seán McLoughlin, Practice &amp; Community Developer" width="48" height="48" loading="lazy">
-          <div>
-            <h3>Seán McLoughlin</h3>
-            <p class="role">Practice &amp; Community Developer</p>
-            <p class="bio">International politics researcher focused on geopolitical complexity</p>
-            <p class="cred">Background in municipal politics, civil society, and global insurance brokerage.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/se%C3%A1n-mcloughlin-b05aa5207/" aria-label="Seán McLoughlin on LinkedIn">LinkedIn</a>
+            <p class="ab-role">Founder &amp; Chairman</p>
+            <p class="ab-bio">Serial entrepreneur in data analytics, fintech, and external intelligence</p>
+            <p class="ab-cred">Built and scaled companies across Asia, Europe, and the US.</p>
+            <div class="ab-foot">
+              <a class="ab-prof" href="https://www.linkedin.com/in/joukoahvenainen/" aria-label="Jouko Ahvenainen on LinkedIn">LinkedIn</a>
             </div>
           </div>
         </article>
 
       </div>
 
-      <p class="rule-label" style="margin-top:clamp(44px,5vw,64px)">Advisors and network</p>
-      <div class="roster reveal" style="margin-top:24px">
+      <div class="ab-reg reveal">
 
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/kuan-yen-tan.jpeg" alt="Kuan Yen Tan, Advisor" width="48" height="48" loading="lazy">
+        <article class="ab-p">
+          <img class="person-photo ab-por-s" src="../../assets/people/janaki-kates.jpeg" alt="Janaki Kates, Head of Intelligence" width="76" height="76" loading="lazy">
           <div>
-            <h3>Kuan Yen Tan</h3>
-            <p class="bio">Co-founder of IQM Quantum Computers. PhD in experimental physics</p>
-            <p class="cred">Named CTO of the Year 2023 by Technology Industries of Finland.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/kuan-yen-tan/" aria-label="Kuan Yen Tan on LinkedIn">LinkedIn</a>
+            <h3>Janaki Kates</h3>
+            <p class="ab-role">Head of Intelligence</p>
+            <p class="ab-bio">National security expert with 18 years in intelligence and government</p>
+            <p class="ab-cred">Former CIA analyst. Briefed executives at the Department of State and National Security Council.</p>
+            <div class="ab-foot">
+              <a class="ab-prof" href="https://www.linkedin.com/in/janaki-kates-a925241/" aria-label="Janaki Kates on LinkedIn">LinkedIn</a>
             </div>
           </div>
         </article>
 
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/pasi-eronen-watt.jpg" alt="Pasi Eronen Watt, Advisor" width="48" height="48" loading="lazy">
+        <article class="ab-p">
+          <img class="person-photo ab-por-s" src="../../assets/people/jani-kinnunen.jpeg" alt="Jani Kinnunen, Chief Research Officer" width="76" height="76" loading="lazy">
           <div>
-            <h3>Pasi Eronen Watt</h3>
-            <p class="bio">Expert in information operations, strategic analysis, and hybrid threat assessment</p>
-            <p class="cred">Career spanning NATO, OSCE, EU missions.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/peronen/" aria-label="Pasi Eronen Watt on LinkedIn">LinkedIn</a>
+            <h3>Jani Kinnunen</h3>
+            <p class="ab-role">Chief Research Officer</p>
+            <p class="ab-bio">Senior researcher in economics, finance, and computational modeling</p>
+            <p class="ab-cred">100+ peer-reviewed publications.</p>
+            <div class="ab-foot">
+              <a class="ab-prof" href="https://www.researchgate.net/profile/Jani-Kinnunen-2" aria-label="Jani Kinnunen on ResearchGate">ResearchGate</a>
             </div>
           </div>
         </article>
 
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/jay-tannon.jpeg" alt="Jay Tannon, Advisor" width="48" height="48" loading="lazy">
+        <article class="ab-p">
+          <img class="person-photo ab-por-s" src="../../assets/people/andrew-ong.jpeg" alt="Andrew Ong, Chief Growth Officer" width="76" height="76" loading="lazy">
           <div>
-            <h3>Jay Tannon</h3>
-            <p class="bio">Business lawyer and principal investor in infrastructure and renewable energy</p>
-            <p class="cred">Recognized by Best Lawyers in America for 25 consecutive years.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/jaymtannon/" aria-label="Jay Tannon on LinkedIn">LinkedIn</a>
+            <h3>Andrew Ong</h3>
+            <p class="ab-role">Chief Growth Officer</p>
+            <p class="ab-bio">C-level executive with 30+ years scaling fintech and SaaS businesses globally</p>
+            <p class="ab-cred">Delivered triple-digit growth across Asia-Pacific markets.</p>
+            <div class="ab-foot">
+              <a class="ab-prof" href="https://www.linkedin.com/in/ong-andrew/" aria-label="Andrew Ong on LinkedIn">LinkedIn</a>
             </div>
           </div>
         </article>
 
-        <article class="person">
-          <img class="person-photo" src="../../assets/people/markus-lampinen.jpeg" alt="Markus Lampinen, Advisor" width="48" height="48" loading="lazy">
+        <article class="ab-p">
+          <img class="person-photo ab-por-s" src="../../assets/people/akseli-kettula.jpg" alt="Akseli Kettula, VP, Product &amp; Business Development" width="76" height="76" loading="lazy">
           <div>
-            <h3>Markus Lampinen</h3>
-            <p class="bio">Serial entrepreneur and investor with global fintech and AI scaling experience</p>
-            <p class="cred">Based in Silicon Valley.</p>
-            <div class="person-foot">
-              <a class="prof" href="https://www.linkedin.com/in/markuslampinen/" aria-label="Markus Lampinen on LinkedIn">LinkedIn</a>
+            <h3>Akseli Kettula</h3>
+            <p class="ab-role">VP, Product &amp; Business Development</p>
+            <p class="ab-bio">Expert in insurance, risk management, and large-scale corporate exposure</p>
+            <p class="ab-cred">Managed portfolios for 40+ organizations.</p>
+            <div class="ab-foot">
+              <a class="ab-prof" href="https://www.linkedin.com/in/akselikettula/" aria-label="Akseli Kettula on LinkedIn">LinkedIn</a>
             </div>
+          </div>
+        </article>
+
+        <article class="ab-p">
+          <img class="person-photo ab-por-s" src="../../assets/people/teppo-koskinen.png" alt="Teppo Koskinen, Founder &amp; Chief Technology Officer" width="76" height="76" loading="lazy">
+          <div>
+            <h3>Teppo Koskinen</h3>
+            <p class="ab-role">Founder &amp; Chief Technology Officer</p>
+            <p class="ab-bio">Technology entrepreneur specializing in scalable software and machine learning systems</p>
+            <p class="ab-cred">20+ years building products from architecture to production.</p>
+            <div class="ab-foot">
+              <a class="ab-prof" href="https://www.linkedin.com/in/teppo-koskinen" aria-label="Teppo Koskinen on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ab-p">
+          <img class="person-photo ab-por-s" src="../../assets/people/mercy-kuo.png" alt="Mercy Kuo, Head of Strategy, United States" width="76" height="76" loading="lazy">
+          <div>
+            <h3>Mercy Kuo</h3>
+            <p class="ab-role">Head of Strategy, United States</p>
+            <p class="ab-bio">Geopolitics, strategic risk, and external intelligence expert with experience across government, corporate advisory, and international affairs</p>
+            <p class="ab-cred">Former CIA analyst and executive in U.S. risk intelligence, helping organizations understand how external developments shape business decisions.</p>
+            <div class="ab-foot">
+              <a class="ab-prof" href="https://www.linkedin.com/in/mercyakuo/" aria-label="Mercy Kuo on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ab-p">
+          <img class="person-photo ab-por-s" src="../../assets/people/runi-irnandari-arnowo.jpg" alt="Runi Irnandari Arnowo, Head of Enterprise, APAC" width="76" height="76" loading="lazy">
+          <div>
+            <h3>Runi Irnandari Arnowo</h3>
+            <p class="ab-role">Head of Enterprise, APAC</p>
+            <p class="ab-bio">Senior banking executive with 30+ years in corporate, transaction, and investment banking across Asia-Pacific</p>
+            <p class="ab-cred">Former Managing Director at Deutsche Bank. Led multinational client coverage and transaction banking across ASEAN and Australia.</p>
+            <div class="ab-foot">
+              <a class="ab-prof" href="https://www.linkedin.com/in/runi-irnandari-arnowo-64273931/" aria-label="Runi Irnandari Arnowo on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ab-p">
+          <img class="person-photo ab-por-s" src="../../assets/people/richard-andrew.jpg" alt="Richard Andrew, Head of Public Affairs and Strategic Partnerships" width="76" height="76" loading="lazy">
+          <div>
+            <h3>Richard Andrew</h3>
+            <p class="ab-role">Head of Public Affairs and Strategic Partnerships</p>
+            <p class="ab-bio">Public affairs and geopolitical strategy expert with 25 years advising organizations across Asia</p>
+            <p class="ab-cred">Former Chairperson, Public &amp; Government Affairs Asia Pacific at Edelman. Led public policy for Mastercard and DHL in Asia Pacific.</p>
+            <div class="ab-foot">
+              <a class="ab-prof" href="https://www.linkedin.com/in/richard-a-6337292/" aria-label="Richard Andrew on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ab-p">
+          <img class="person-photo ab-por-s" src="../../assets/people/lauri-byckling.jpeg" alt="Lauri Byckling, Strategic Advisor" width="76" height="76" loading="lazy">
+          <div>
+            <h3>Lauri Byckling</h3>
+            <p class="ab-role">Strategic Advisor</p>
+            <p class="ab-bio">Senior executive and advisor with 30+ years in consulting, technology, and business transformation</p>
+            <p class="ab-cred">Former Deloitte Managing Partner. Helps global organizations build practical business and technology solutions.</p>
+          </div>
+        </article>
+
+        <article class="ab-p">
+          <img class="person-photo ab-por-s" src="../../assets/people/erno-pirinen.jpeg" alt="Erno Pirinen, VP, Technical Product Management" width="76" height="76" loading="lazy">
+          <div>
+            <h3>Erno Pirinen</h3>
+            <p class="ab-role">VP, Technical Product Management</p>
+            <p class="ab-bio">Product leader in AI and data-driven enterprise platforms</p>
+            <p class="ab-cred">Scaled a cloud orchestration platform from concept to Fortune 500 adoption.</p>
+            <div class="ab-foot">
+              <a class="ab-prof" href="https://www.linkedin.com/in/ernopirinen/" aria-label="Erno Pirinen on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ab-p">
+          <img class="person-photo ab-por-s" src="../../assets/people/monique-boddington.jpeg" alt="Monique Boddington, Head of Campus" width="76" height="76" loading="lazy">
+          <div>
+            <h3>Monique Boddington</h3>
+            <p class="ab-role">Head of Campus</p>
+            <p class="ab-bio">Professor at Cambridge Judge Business School</p>
+            <p class="ab-cred">Directs the Master's in Entrepreneurship. Leads research collaborations.</p>
+            <div class="ab-foot">
+              <a class="ab-prof" href="https://www.linkedin.com/in/monique-ingrid-boddington-b550a321/" aria-label="Monique Boddington on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ab-p">
+          <img class="person-photo ab-por-s" src="../../assets/people/peter-steube.jpeg" alt="Peter Steube, Head of Community" width="76" height="76" loading="lazy">
+          <div>
+            <h3>Peter Steube</h3>
+            <p class="ab-role">Head of Community</p>
+            <p class="ab-bio">Strategic community builder for executive-level intelligence networks</p>
+            <p class="ab-cred">Former Gartner executive community lead.</p>
+            <div class="ab-foot">
+              <a class="ab-prof" href="https://www.linkedin.com/in/petersteube/" aria-label="Peter Steube on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ab-p">
+          <img class="person-photo ab-por-s" src="../../assets/people/thorsten-terweiden.jpg" alt="Thorsten Terweiden, Director, Business Development" width="76" height="76" loading="lazy">
+          <div>
+            <h3>Thorsten Terweiden</h3>
+            <p class="ab-role">Director, Business Development</p>
+            <p class="ab-bio">Senior trade and investment professional with 20+ years across Europe, Asia, and Australia</p>
+            <p class="ab-cred">Part of the core team that secured Intel's landmark investment in Germany.</p>
+            <div class="ab-foot">
+              <a class="ab-prof" href="https://www.linkedin.com/in/thorsten-terweiden-08295217/" aria-label="Thorsten Terweiden on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ab-p">
+          <img class="person-photo ab-por-s" src="../../assets/people/pekka-virkki.png" alt="Pekka Virkki, Co-founder &amp; Intelligence Recruiter" width="76" height="76" loading="lazy">
+          <div>
+            <h3>Pekka Virkki</h3>
+            <p class="ab-role">Co-founder &amp; Intelligence Recruiter</p>
+            <p class="ab-bio">Geopolitical author and journalist specializing in international power dynamics</p>
+            <p class="ab-cred">Published by The Times, El País, CEPA.</p>
+            <div class="ab-foot">
+              <a class="ab-prof" href="https://www.linkedin.com/in/pekka-virkki-b504a0181/" aria-label="Pekka Virkki on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ab-p">
+          <img class="person-photo ab-por-s" src="../../assets/people/eva-mikkonen.png" alt="Eva Mikkonen, OSINT Specialist &amp; Software Developer" width="76" height="76" loading="lazy">
+          <div>
+            <h3>Eva Mikkonen</h3>
+            <p class="ab-role">OSINT Specialist &amp; Software Developer</p>
+            <p class="ab-bio">OSINT specialist and cybersecurity professional</p>
+            <p class="ab-cred">Full-stack security experience. Specializes in open-source intelligence.</p>
+          </div>
+        </article>
+
+        <article class="ab-p">
+          <img class="person-photo ab-por-s" src="../../assets/people/se-n-mcloughlin.jpg" alt="Seán McLoughlin, Practice &amp; Community Developer" width="76" height="76" loading="lazy">
+          <div>
+            <h3>Seán McLoughlin</h3>
+            <p class="ab-role">Practice &amp; Community Developer</p>
+            <p class="ab-bio">International politics researcher focused on geopolitical complexity</p>
+            <p class="ab-cred">Background in municipal politics, civil society, and global insurance brokerage.</p>
+            <div class="ab-foot">
+              <a class="ab-prof" href="https://www.linkedin.com/in/se%C3%A1n-mcloughlin-b05aa5207/" aria-label="Seán McLoughlin on LinkedIn">LinkedIn</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="rule-label ab-rl2">Advisors and network</p>
+      <div class="ab-adv reveal">
+
+        <article class="ab-a">
+          <img class="person-photo ab-por-m" src="../../assets/people/kuan-yen-tan.jpeg" alt="Kuan Yen Tan, Advisor" width="92" height="92" loading="lazy">
+          <h3>Kuan Yen Tan</h3>
+          <p class="ab-bio">Co-founder of IQM Quantum Computers. PhD in experimental physics</p>
+          <p class="ab-cred">Named CTO of the Year 2023 by Technology Industries of Finland.</p>
+          <div class="ab-foot">
+            <a class="ab-prof" href="https://www.linkedin.com/in/kuan-yen-tan/" aria-label="Kuan Yen Tan on LinkedIn">LinkedIn</a>
+          </div>
+        </article>
+
+        <article class="ab-a">
+          <img class="person-photo ab-por-m" src="../../assets/people/pasi-eronen-watt.jpg" alt="Pasi Eronen Watt, Advisor" width="92" height="92" loading="lazy">
+          <h3>Pasi Eronen Watt</h3>
+          <p class="ab-bio">Expert in information operations, strategic analysis, and hybrid threat assessment</p>
+          <p class="ab-cred">Career spanning NATO, OSCE, EU missions.</p>
+          <div class="ab-foot">
+            <a class="ab-prof" href="https://www.linkedin.com/in/peronen/" aria-label="Pasi Eronen Watt on LinkedIn">LinkedIn</a>
+          </div>
+        </article>
+
+        <article class="ab-a">
+          <img class="person-photo ab-por-m" src="../../assets/people/jay-tannon.jpeg" alt="Jay Tannon, Advisor" width="92" height="92" loading="lazy">
+          <h3>Jay Tannon</h3>
+          <p class="ab-bio">Business lawyer and principal investor in infrastructure and renewable energy</p>
+          <p class="ab-cred">Recognized by Best Lawyers in America for 25 consecutive years.</p>
+          <div class="ab-foot">
+            <a class="ab-prof" href="https://www.linkedin.com/in/jaymtannon/" aria-label="Jay Tannon on LinkedIn">LinkedIn</a>
+          </div>
+        </article>
+
+        <article class="ab-a">
+          <img class="person-photo ab-por-m" src="../../assets/people/markus-lampinen.jpeg" alt="Markus Lampinen, Advisor" width="92" height="92" loading="lazy">
+          <h3>Markus Lampinen</h3>
+          <p class="ab-bio">Serial entrepreneur and investor with global fintech and AI scaling experience</p>
+          <p class="ab-cred">Based in Silicon Valley.</p>
+          <div class="ab-foot">
+            <a class="ab-prof" href="https://www.linkedin.com/in/markuslampinen/" aria-label="Markus Lampinen on LinkedIn">LinkedIn</a>
           </div>
         </article>
 
@@ -475,7 +439,7 @@
       <span class="inst">Aalto University</span>
       <span class="inst">Tampere University</span>
       <span class="strip-rule" aria-hidden="true"></span>
-      <a class="strip-link" href="/partners-guild/">Partners</a>
+      <a class="ab-strip-link" href="/partners-guild/">Partners</a>
     </div>
   </section>
 
@@ -487,23 +451,36 @@
         <p class="eyebrow">Three regions</p>
         <h2 id="off-h">Globally present, locally connected.</h2>
       </div>
-      <div class="offices reveal">
-        <div class="office">
-          <h3>Americas</h3>
-          <p>Arlington, VA<small>United States</small></p>
+      <div class="ab-geo reveal">
+        <div class="ab-geo-t">
+          <div class="ab-geo-s" style="--x:20.0%">
+            <span class="ab-lon">77W</span>
+            <h3>Americas</h3>
+            <p>Arlington, VA<small>United States</small></p>
+          </div>
+          <div class="ab-geo-s" style="--x:55.1%">
+            <span class="ab-lon">2E</span>
+            <h3>Europe, Middle East &amp; Africa</h3>
+            <p>Puteaux<small>France</small></p>
+          </div>
+          <div class="ab-geo-s ab-geo-e" style="--x:100%">
+            <span class="ab-lon">104E</span>
+            <h3>Asia</h3>
+            <p>Singapore</p>
+          </div>
         </div>
-        <div class="office">
-          <h3>Europe, Middle East &amp; Africa</h3>
-          <p>Puteaux<small>France</small></p>
-        </div>
-        <div class="office">
-          <h3>Asia</h3>
-          <p>Singapore</p>
+        <p class="ab-geo-k">Other offices and operations</p>
+        <div class="ab-geo-t ab-geo-t2">
+          <div class="ab-geo-s" style="--x:0%">
+            <span class="ab-lon">122W</span>
+            <p>San Francisco, USA</p>
+          </div>
+          <div class="ab-geo-s" style="--x:64.6%">
+            <span class="ab-lon">24E</span>
+            <p>Tampere, Finland</p>
+          </div>
         </div>
       </div>
-      <p class="office-foot reveal">
-        <span>Other offices and operations</span><span>Tampere, Finland</span><span>San Francisco, USA</span>
-      </p>
     </div>
   </section>
 
