@@ -22,23 +22,11 @@
 <link rel="stylesheet" href="../styles.css">
 <style>
 /* Page-local layout only. System tokens exclusively; nothing restyled.
-   The roster moved here from /partners-guild/ and keeps that page's
-   directory idiom: hairline rows, monogram gutter, domains and profile
-   link on one metadata line. */
+   The roster, the register and the expert-layer figure moved into
+   styles.css section 21 in round nine, because the home page carries the
+   same register; what is left here is the two link cells, which nothing
+   else on the site uses. */
 .nav-main a[aria-current="page"],.mnav-panel a[aria-current="page"]{color:var(--ink)}
-/* people directory */
-.roster{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(28px,4vw,64px);border-bottom:1px solid var(--line)}
-.person{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:22px 6px;border-top:1px solid var(--line);transition:background-color .2s ease}
-.person:hover{background:var(--bg-1)}
-.mgram{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line-2);font:500 11px/1 var(--mono);letter-spacing:.1em;color:var(--ink-mute)}
-.person h3{font-size:16.5px;font-weight:600;letter-spacing:-.01em}
-.person .bio{margin-top:8px;font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
-.person-foot{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:14px}
-.tags{display:flex;flex-wrap:wrap;gap:6px}
-.tags span{font:400 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);border:1px solid var(--line);padding:7px 9px;border-radius:2px}
-.prof{margin-left:auto;display:inline-flex;align-items:center;min-height:24px;font:500 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);border-bottom:1px solid var(--line-2);white-space:nowrap}
-.prof:hover{color:var(--ink)}
-.roster-key{display:flex;flex-wrap:wrap;gap:8px 24px;margin:24px 0;font:400 10.5px/1.8 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim)}
 /* from the guild: two link cells, the hairline-cell idiom made clickable */
 .fromguild{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
 .fg{display:block;background:var(--bg-1);padding:26px 24px 28px;transition:background-color .2s ease}
@@ -50,12 +38,6 @@
 .fg .go svg{flex:none;color:var(--accent)}
 @media (max-width:900px){
   .fromguild{grid-template-columns:1fr}
-  .roster{grid-template-columns:1fr}
-}
-@media (max-width:560px){
-  .person{grid-template-columns:1fr;gap:14px}
-  .person-foot{flex-direction:column;align-items:flex-start;gap:12px}
-  .prof{margin-left:0}
 }
 </style>
 <script src="../../assets/consent.js" data-ga="__GA_MEASUREMENT_ID__" defer></script>
@@ -107,11 +89,24 @@
 <main id="main">
 
   <!-- ============ HERO ============ -->
-  <section class="sec hero" aria-labelledby="h1">
+  <!-- The fold is the claim and the network under it. The register is the
+       roster drawn: one tick per member, in the roster's own order, with
+       the four members this page prints at plate scale marked in the
+       accent. It measures something real, which is the only condition
+       under which this site draws a scale at all. The count beside it is
+       the roster key's own line, moved here because the scale of the
+       network belongs at the top of the page that is about the network. -->
+  <section class="sec hero gd-hero" aria-labelledby="h1">
     <div class="wrap">
       <p class="eyebrow hero-eyebrow">The Mission Grey Guild</p>
-      <h1 id="h1">Human expertise, built into the intelligence system.</h1>
-      <p class="hero-dek">The Mission Grey Guild is a curated network of domain and regional experts whose knowledge feeds analysis, structured assessments, and high&#8209;impact decisions. It is part of the intelligence process when the question requires it, not an advisory board beside it.</p>
+      <div class="gd-hero-grid">
+        <h1 id="h1">Human expertise, built into the intelligence system.</h1>
+        <p class="hero-dek">The Mission Grey Guild is a curated network of domain and regional experts whose knowledge feeds analysis, structured assessments, and high&#8209;impact decisions. It is part of the intelligence process when the question requires it, not an advisory board beside it.</p>
+      </div>
+      <div class="gd-reg">
+        <p class="gd-count">28 members</p>
+        <span class="gd-reg-rule" aria-hidden="true"><i style="--n:3"></i><i style="--n:6"></i><i style="--n:7"></i><i style="--n:18"></i></span>
+      </div>
     </div>
   </section>
 
@@ -124,29 +119,43 @@
         <h2 id="role-h">What Guild expertise adds to the analysis.</h2>
         <p>Expert judgment enters at defined points in the process, in a form the system carries rather than a comment beside it.</p>
       </div>
-      <div class="trust-grid reveal">
-        <div class="trust-cell">
-          <h3>Validation</h3>
-          <p>Experts validate and challenge outputs in high&#8209;impact situations, before a decision is taken on them.</p>
-        </div>
-        <div class="trust-cell">
-          <h3>Context</h3>
-          <p>Domain and regional knowledge that data alone does not capture, read against what the platform already sees.</p>
-        </div>
-        <div class="trust-cell">
-          <h3>Expert reviews</h3>
-          <p>Reviews and surveys that put structured expert judgment next to the quantitative work.</p>
-        </div>
-        <div class="trust-cell">
-          <h3>Delphi rounds</h3>
-          <p>Structured rounds that gather expert judgment and feed it back into Mission Grey methods.</p>
+      <!-- HUMAN AND SYSTEM, DRAWN. Not three boxes and not four cards:
+           one rule carrying the system's own continuous work as an even
+           tick field, and the four ways expert judgment enters hanging
+           from it as stations. Each station's accent tick rises through
+           the rule into the field, which is the section's dek drawn:
+           expert judgment enters at defined points in the process, in a
+           form the system carries. The figure adds no words and claims
+           no data, so it wears no instrument chrome. -->
+      <div class="gd-sys reveal">
+        <div class="gd-field" aria-hidden="true"></div>
+        <div class="gd-stations">
+          <div class="gd-st">
+            <h3>Validation</h3>
+            <p>Experts validate and challenge outputs in high&#8209;impact situations, before a decision is taken on them.</p>
+          </div>
+          <div class="gd-st">
+            <h3>Context</h3>
+            <p>Domain and regional knowledge that data alone does not capture, read against what the platform already sees.</p>
+          </div>
+          <div class="gd-st">
+            <h3>Expert reviews</h3>
+            <p>Reviews and surveys that put structured expert judgment next to the quantitative work.</p>
+          </div>
+          <div class="gd-st">
+            <h3>Delphi rounds</h3>
+            <p>Structured rounds that gather expert judgment and feed it back into Mission Grey methods.</p>
+          </div>
         </div>
       </div>
 
       <p class="rule-label" style="margin-top:clamp(40px,5vw,60px)">Expertise areas</p>
-      <div class="chips reveal" aria-label="Guild expertise areas">
-        <span class="chip">Geopolitics</span><span class="chip">Economics</span><span class="chip">Finance</span><span class="chip">Technology</span><span class="chip">Regulation</span><span class="chip">Security</span><span class="chip">Industry</span><span class="chip">Operations</span><span class="chip">Strategy</span><span class="chip">Regional and local knowledge</span>
-      </div>
+      <!-- The areas are a register, not ten pills: the same words hung
+           from one rule, each with its own tick. A list on this site is a
+           rule with stations under it. -->
+      <ul class="gd-doms reveal" role="list" aria-label="Guild expertise areas">
+        <li>Geopolitics</li><li>Economics</li><li>Finance</li><li>Technology</li><li>Regulation</li><li>Security</li><li>Industry</li><li>Operations</li><li>Strategy</li><li>Regional and local knowledge</li>
+      </ul>
     </div>
   </section>
 
@@ -158,349 +167,385 @@
         <p class="eyebrow">The members</p>
         <h2 id="mem-h">A curated network, named in full.</h2>
       </div>
-      <div class="roster-key">
-        <span>28 members</span>
+      <!-- The key keeps the two lines that read the directory below it;
+           its third line, the count, is the fold's register label now. -->
+      <div class="gd-key">
         <span>Domains listed per member</span>
         <span>Most profiles link to LinkedIn</span>
       </div>
-      <div class="roster reveal">
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">MA</span>
-          <div>
-            <h3>Marino Auffant</h3>
-            <p class="bio">Harvard-awarded historian and strategist</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span><span>Strategy</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/mauffant/" aria-label="Marino Auffant on LinkedIn">LinkedIn</a>
+      <!-- One list, twenty-eight entries, one markup. A featured entry is
+           the same <li> with one class on it, so the editorial choice is a
+           class and an order, never a different kind of record: same
+           fields, same link, same list semantics for a screen reader. The
+           four printed at plate scale are read across the register for
+           domain and regional spread, not by seniority. The plate is the
+           portrait slot: it carries the monogram now and takes an <img>
+           the day the photographs exist, with no other change. -->
+      <ul class="gd-roster reveal" role="list">
+        <li class="gd-m gd-m-lead">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">MB</span></div>
+            <div class="gd-body">
+              <h3>Mathieu Boulègue</h3>
+              <p class="gd-bio">Transatlantic security researcher and consultant</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span><span>Security</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/mathieu-boul%C3%A8gue-18a1a621/" aria-label="Mathieu Boulègue on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">SJ</span>
-          <div>
-            <h3>Stephen J Blank</h3>
-            <p class="bio">Senior foreign policy expert and fellow</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/stephen-j-blank/" aria-label="Stephen J Blank on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m gd-m-lead">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">KC</span></div>
+            <div class="gd-body">
+              <h3>Kelly Couto</h3>
+              <p class="gd-bio">Latin American specialist and business consultant</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span><span>Finance</span><span>Operations</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/kellycoutooficial/" aria-label="Kelly Couto on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">MB</span>
-          <div>
-            <h3>Mathieu Boulègue</h3>
-            <p class="bio">Transatlantic security researcher and consultant</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span><span>Security</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/mathieu-boul%C3%A8gue-18a1a621/" aria-label="Mathieu Boulègue on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m gd-m-lead">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">ZA</span></div>
+            <div class="gd-body">
+              <h3>Zsuzsa Anna Ferenczy</h3>
+              <p class="gd-bio">EU-China and Indo-Pacific specialist, academic and former European Parliament political advisor</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span><span>Regulation</span><span>Strategy</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/zsuzsa-anna-ferenczy-phd-041946193/" aria-label="Zsuzsa Anna Ferenczy on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">GC</span>
-          <div>
-            <h3>Gloria Chen</h3>
-            <p class="bio">Multidimensional geopolitical analyst with a focus on space geopolitics</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/gloria-chen-b8b481383/" aria-label="Gloria Chen on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m gd-m-lead">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">TN</span></div>
+            <div class="gd-body">
+              <h3>Toshihisa Nagai</h3>
+              <p class="gd-bio">Geoeconomic risk and regulatory intelligence strategist focused on sanctions, export controls, and capital architecture across APAC and the EU</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span><span>Regulation</span><span>Finance</span><span>Technology</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/toshihisa-nagai/" aria-label="Toshihisa Nagai on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">RC</span>
-          <div>
-            <h3>Rori Comiskey</h3>
-            <p class="bio">US Special Forces officer with operational intelligence expertise</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span><span>Security</span><span>Operations</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/rori-comiskey-051b2030b/" aria-label="Rori Comiskey on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">MA</span></div>
+            <div class="gd-body">
+              <h3>Marino Auffant</h3>
+              <p class="gd-bio">Harvard-awarded historian and strategist</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span><span>Strategy</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/mauffant/" aria-label="Marino Auffant on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">KC</span>
-          <div>
-            <h3>Kelly Couto</h3>
-            <p class="bio">Latin American specialist and business consultant</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span><span>Finance</span><span>Operations</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/kellycoutooficial/" aria-label="Kelly Couto on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">SJ</span></div>
+            <div class="gd-body">
+              <h3>Stephen J Blank</h3>
+              <p class="gd-bio">Senior foreign policy expert and fellow</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/stephen-j-blank/" aria-label="Stephen J Blank on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">ZA</span>
-          <div>
-            <h3>Zsuzsa Anna Ferenczy</h3>
-            <p class="bio">EU-China and Indo-Pacific specialist, academic and former European Parliament political advisor</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span><span>Regulation</span><span>Strategy</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/zsuzsa-anna-ferenczy-phd-041946193/" aria-label="Zsuzsa Anna Ferenczy on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">GC</span></div>
+            <div class="gd-body">
+              <h3>Gloria Chen</h3>
+              <p class="gd-bio">Multidimensional geopolitical analyst with a focus on space geopolitics</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/gloria-chen-b8b481383/" aria-label="Gloria Chen on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">FF</span>
-          <div>
-            <h3>Fabio Frettoli</h3>
-            <p class="bio">International security analyst and project designer</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span><span>Security</span></div>
-              <a class="prof" href="https://it.linkedin.com/in/fabio-frettoli" aria-label="Fabio Frettoli on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">RC</span></div>
+            <div class="gd-body">
+              <h3>Rori Comiskey</h3>
+              <p class="gd-bio">US Special Forces officer with operational intelligence expertise</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span><span>Security</span><span>Operations</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/rori-comiskey-051b2030b/" aria-label="Rori Comiskey on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">JG</span>
-          <div>
-            <h3>Joseph Gozoya</h3>
-            <p class="bio">PhD candidate in economics, focusing on tax data, policy, and labour markets</p>
-            <div class="person-foot">
-              <div class="tags"><span>Finance</span><span>Regulation</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/josephgozoya/" aria-label="Joseph Gozoya on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">FF</span></div>
+            <div class="gd-body">
+              <h3>Fabio Frettoli</h3>
+              <p class="gd-bio">International security analyst and project designer</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span><span>Security</span></div>
+                <a class="gd-prof" href="https://it.linkedin.com/in/fabio-frettoli" aria-label="Fabio Frettoli on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">JI</span>
-          <div>
-            <h3>Justin Izzo</h3>
-            <p class="bio">Startup and venture research leader; executive advisor and former Brown professor</p>
-            <div class="person-foot">
-              <div class="tags"><span>Strategy</span><span>Finance</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/justin-izzo/" aria-label="Justin Izzo on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">JG</span></div>
+            <div class="gd-body">
+              <h3>Joseph Gozoya</h3>
+              <p class="gd-bio">PhD candidate in economics, focusing on tax data, policy, and labour markets</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Finance</span><span>Regulation</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/josephgozoya/" aria-label="Joseph Gozoya on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">SK</span>
-          <div>
-            <h3>Samantha Karlin</h3>
-            <p class="bio">Global empowerment strategist and CEO</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span><span>Strategy</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/samanthakarlinspeaker/" aria-label="Samantha Karlin on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">JI</span></div>
+            <div class="gd-body">
+              <h3>Justin Izzo</h3>
+              <p class="gd-bio">Startup and venture research leader; executive advisor and former Brown professor</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Strategy</span><span>Finance</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/justin-izzo/" aria-label="Justin Izzo on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">AL</span>
-          <div>
-            <h3>Alan Leung</h3>
-            <p class="bio">Enterprise risk and geopolitical intelligence advisor</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span><span>Finance</span><span>Security</span><span>Strategy</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/alan-leung2/" aria-label="Alan Leung on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">SK</span></div>
+            <div class="gd-body">
+              <h3>Samantha Karlin</h3>
+              <p class="gd-bio">Global empowerment strategist and CEO</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span><span>Strategy</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/samanthakarlinspeaker/" aria-label="Samantha Karlin on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">LT</span>
-          <div>
-            <h3>Looi Teck Kheong</h3>
-            <p class="bio">Global legal and political strategist, ASEAN specialist</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span><span>Regulation</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/teck-kheong-looi-342399169/" aria-label="Looi Teck Kheong on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">AL</span></div>
+            <div class="gd-body">
+              <h3>Alan Leung</h3>
+              <p class="gd-bio">Enterprise risk and geopolitical intelligence advisor</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span><span>Finance</span><span>Security</span><span>Strategy</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/alan-leung2/" aria-label="Alan Leung on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">LL</span>
-          <div>
-            <h3>Ludvig Lund</h3>
-            <p class="bio">Seasoned security consultant</p>
-            <div class="person-foot">
-              <div class="tags"><span>Security</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/youfoundmegood/" aria-label="Ludvig Lund on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">LT</span></div>
+            <div class="gd-body">
+              <h3>Looi Teck Kheong</h3>
+              <p class="gd-bio">Global legal and political strategist, ASEAN specialist</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span><span>Regulation</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/teck-kheong-looi-342399169/" aria-label="Looi Teck Kheong on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">DM</span>
-          <div>
-            <h3>Dorota Maczuga</h3>
-            <p class="bio">East Asia expert and co-founder of Polylocal</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/dorota-maczuga/" aria-label="Dorota Maczuga on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">LL</span></div>
+            <div class="gd-body">
+              <h3>Ludvig Lund</h3>
+              <p class="gd-bio">Seasoned security consultant</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Security</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/youfoundmegood/" aria-label="Ludvig Lund on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">AM</span>
-          <div>
-            <h3>Andrew Marshall</h3>
-            <p class="bio">Global media, IP and commercial strategy leader</p>
-            <div class="person-foot">
-              <div class="tags"><span>Strategy</span><span>Operations</span><span>Finance</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/marshallandrew/" aria-label="Andrew Marshall on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">DM</span></div>
+            <div class="gd-body">
+              <h3>Dorota Maczuga</h3>
+              <p class="gd-bio">East Asia expert and co-founder of Polylocal</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/dorota-maczuga/" aria-label="Dorota Maczuga on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">SM</span>
-          <div>
-            <h3>Shabab Muhaddes</h3>
-            <p class="bio">FinTech and financial risk executive</p>
-            <div class="person-foot">
-              <div class="tags"><span>Finance</span><span>Technology</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/shababmuhaddes/" aria-label="Shabab Muhaddes on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">AM</span></div>
+            <div class="gd-body">
+              <h3>Andrew Marshall</h3>
+              <p class="gd-bio">Global media, IP and commercial strategy leader</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Strategy</span><span>Operations</span><span>Finance</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/marshallandrew/" aria-label="Andrew Marshall on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">TN</span>
-          <div>
-            <h3>Toshihisa Nagai</h3>
-            <p class="bio">Geoeconomic risk and regulatory intelligence strategist focused on sanctions, export controls, and capital architecture across APAC and the EU</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span><span>Regulation</span><span>Finance</span><span>Technology</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/toshihisa-nagai/" aria-label="Toshihisa Nagai on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">SM</span></div>
+            <div class="gd-body">
+              <h3>Shabab Muhaddes</h3>
+              <p class="gd-bio">FinTech and financial risk executive</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Finance</span><span>Technology</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/shababmuhaddes/" aria-label="Shabab Muhaddes on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">FP</span>
-          <div>
-            <h3>Fernando Prats</h3>
-            <p class="bio">LATAM political, regulatory and public affairs advisor</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span><span>Regulation</span><span>Strategy</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/fernandoprats/" aria-label="Fernando Prats on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">FP</span></div>
+            <div class="gd-body">
+              <h3>Fernando Prats</h3>
+              <p class="gd-bio">LATAM political, regulatory and public affairs advisor</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span><span>Regulation</span><span>Strategy</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/fernandoprats/" aria-label="Fernando Prats on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">RR</span>
-          <div>
-            <h3>Rwizi Rweizooba Ainomugisha</h3>
-            <p class="bio">Freelance wargame researcher, analyst and designer</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span><span>Strategy</span><span>Technology</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/rwizirweizooba/" aria-label="Rwizi Rweizooba Ainomugisha on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">RR</span></div>
+            <div class="gd-body">
+              <h3>Rwizi Rweizooba Ainomugisha</h3>
+              <p class="gd-bio">Freelance wargame researcher, analyst and designer</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span><span>Strategy</span><span>Technology</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/rwizirweizooba/" aria-label="Rwizi Rweizooba Ainomugisha on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">AS</span>
-          <div>
-            <h3>Amandine Schneickert</h3>
-            <p class="bio">International strategic policy executive and lobbyist</p>
-            <div class="person-foot">
-              <div class="tags"><span>Regulation</span><span>Geopolitics</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/amuskus/" aria-label="Amandine Schneickert on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">AS</span></div>
+            <div class="gd-body">
+              <h3>Amandine Schneickert</h3>
+              <p class="gd-bio">International strategic policy executive and lobbyist</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Regulation</span><span>Geopolitics</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/amuskus/" aria-label="Amandine Schneickert on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">SS</span>
-          <div>
-            <h3>Stéphane Schwander</h3>
-            <p class="bio">Independent sports business advisor; former FEI and UEFA executive</p>
-            <div class="person-foot">
-              <div class="tags"><span>Strategy</span><span>Finance</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/stephaneschwander/" aria-label="Stéphane Schwander on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">SS</span></div>
+            <div class="gd-body">
+              <h3>Stéphane Schwander</h3>
+              <p class="gd-bio">Independent sports business advisor; former FEI and UEFA executive</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Strategy</span><span>Finance</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/stephaneschwander/" aria-label="Stéphane Schwander on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">SR</span>
-          <div>
-            <h3>Scott R. Siler</h3>
-            <p class="bio">Political risk advisor and strategy professor</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span><span>Regulation</span><span>Strategy</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/scottrsiler/" aria-label="Scott R. Siler on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">SR</span></div>
+            <div class="gd-body">
+              <h3>Scott R. Siler</h3>
+              <p class="gd-bio">Political risk advisor and strategy professor</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span><span>Regulation</span><span>Strategy</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/scottrsiler/" aria-label="Scott R. Siler on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">DT</span>
-          <div>
-            <h3>Diana The Hui Ling</h3>
-            <p class="bio">Senior legal, insurance, and risk management expert</p>
-            <div class="person-foot">
-              <div class="tags"><span>Finance</span><span>Regulation</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/diana-the-hui-ling/" aria-label="Diana The Hui Ling on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">DT</span></div>
+            <div class="gd-body">
+              <h3>Diana The Hui Ling</h3>
+              <p class="gd-bio">Senior legal, insurance, and risk management expert</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Finance</span><span>Regulation</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/diana-the-hui-ling/" aria-label="Diana The Hui Ling on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">DV</span>
-          <div>
-            <h3>Daniel Valerio</h3>
-            <p class="bio">Former EY Partner in charge of Americas Retail Risk and Audit</p>
-            <div class="person-foot">
-              <div class="tags"><span>Finance</span><span>Operations</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/dan-valerio-2864a23/" aria-label="Daniel Valerio on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">DV</span></div>
+            <div class="gd-body">
+              <h3>Daniel Valerio</h3>
+              <p class="gd-bio">Former EY Partner in charge of Americas Retail Risk and Audit</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Finance</span><span>Operations</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/dan-valerio-2864a23/" aria-label="Daniel Valerio on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">PV</span>
-          <div>
-            <h3>Pekka Väisänen</h3>
-            <p class="bio">Political scientist focused on French and European affairs</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span><span>Regulation</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/pekka-v%C3%A4is%C3%A4nen-373a40268/" aria-label="Pekka Väisänen on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">PV</span></div>
+            <div class="gd-body">
+              <h3>Pekka Väisänen</h3>
+              <p class="gd-bio">Political scientist focused on French and European affairs</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span><span>Regulation</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/pekka-v%C3%A4is%C3%A4nen-373a40268/" aria-label="Pekka Väisänen on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">WV</span>
-          <div>
-            <h3>William Vogt</h3>
-            <p class="bio">Emerging Markets Expert, with an emphasis on Sino-Lusophone (China/Portuguese-speaking) Affairs.</p>
-            <div class="person-foot">
-              <div class="tags"><span>Technology</span><span>Geopolitics</span></div>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">WV</span></div>
+            <div class="gd-body">
+              <h3>William Vogt</h3>
+              <p class="gd-bio">Emerging Markets Expert, with an emphasis on Sino-Lusophone (China/Portuguese-speaking) Affairs.</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Technology</span><span>Geopolitics</span></div>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="person">
-          <span class="mgram" aria-hidden="true">PV</span>
-          <div>
-            <h3>Pekka Virkki</h3>
-            <p class="bio">Guildmaster, geopolitical author and journalist</p>
-            <div class="person-foot">
-              <div class="tags"><span>Geopolitics</span></div>
-              <a class="prof" href="https://www.linkedin.com/in/pekka-virkki-b504a0181/" aria-label="Pekka Virkki on LinkedIn">LinkedIn</a>
+          </article>
+        </li>
+        <li class="gd-m">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">PV</span></div>
+            <div class="gd-body">
+              <h3>Pekka Virkki</h3>
+              <p class="gd-bio">Guildmaster, geopolitical author and journalist</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/pekka-virkki-b504a0181/" aria-label="Pekka Virkki on LinkedIn">LinkedIn</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-      </div>
+          </article>
+        </li>
+      </ul>
     </div>
   </section>
 

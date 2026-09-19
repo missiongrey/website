@@ -1579,7 +1579,82 @@ found no other defect worth a rule.
 
 ### Guild and the Home Guild section (section 21, `gd-`)
 
-(builder writes here)
+The Guild page is rebuilt as an expert network and the Home Guild block is
+rebuilt as the page's one human moment. No word changed on either surface
+(textdiff: Guild 828 words in and out, nothing added or removed; Home two
+words added, `28 members`, which is the Guild roster key's own line
+repeated as the label of a drawn register). No portrait exists for any
+Guild member in this repo, and none was invented.
+
+**`.gd-reg`, the member register, binding.** One rule, one tick per member
+of the roster, in the roster's own order, with the four members printed at
+plate scale marked in the accent at their own positions. It is the page's
+signature figure and it appears on both surfaces this section covers, so a
+reader who follows `Meet the Guild` arrives at a figure they have already
+met. It obeys the section 19 rule that a scale may only be drawn against
+something that actually has that measure: twenty-eight members,
+twenty-eight ticks, and the divisor in `background-size` and in the accent
+tick's `left` is the roster length. **Change the roster length and both
+numbers change with it**, on both pages. The label is the roster key's
+count line, which is why the key above the directory now carries two items
+and not three.
+
+**One list, one markup, binding.** Every member is an `<li>` in one
+`<ul class="gd-roster" role="list">` carrying the same `article.gd-p` with
+the same fields (plate, name, bio, domains, profile link). A featured
+member is that same entry with `gd-m-lead` added, so the editorial choice
+is a class and an order and never a different kind of record: a chairman
+swaps a featured member by moving the `<li>` and toggling the class.
+Nothing in the markup encodes rank. The four currently featured are
+Mathieu Boulègue, Kelly Couto, Zsuzsa Anna Ferenczy and Toshihisa Nagai,
+read across the register for the widest regional arc and domain mix the
+page's own bios and tags carry (their four tag sets cover all seven
+domains the roster uses), not for seniority.
+
+**`.gd-plate` is the portrait slot.** It carries the monogram in the
+instrument voice on a recessed plate with registration corners, and it is
+built to stand as a typographic object on its own: no silhouette, no grey
+figure, no word "placeholder" anywhere. When photographs exist, an `<img>`
+goes inside the same div (`.gd-plate img` is already positioned and
+cropped) and the monogram stands down. **Portraits are the one piece of
+material this page is waiting on**; everything else on it is finished
+without them.
+
+**`.gd-sys`, human and system in one figure.** The four things Guild
+expertise adds were four cells of a hairline grid, which says they are
+four separate features. They are four entry points into one process, so
+they are drawn as one: a rule carrying the system's continuous work as an
+even two-graduation comb, with each station's accent tick rising THROUGH
+the rule into the comb and continuing below it. That is the section's own
+dek drawn rather than restated, and it is the answer to the brief's
+data / signals / models + human domain knowledge + structured expert
+input relationship without a three-box diagram and without a new word on
+the page. The figure carries no label and no value, so it claims nothing,
+and a figure that claims nothing wears no instrument chrome (the same
+reading that keeps `.steps` out of a `.frame`). Below 760px the four
+columns become four ruled rows under the same comb; the desktop graphic is
+never shrunk.
+
+**Geography is only what the page already says.** The roster's regional
+range lives inside the bios (Transatlantic, Latin American, EU-China and
+Indo-Pacific, ASEAN, East Asia, APAC and the EU, LATAM, Americas, French
+and European, Sino-Lusophone) and nowhere else. Printing those as map or
+region notation would repeat words the page carries once, and inventing a
+country for any member is out of the question, so **the network is drawn
+as registers, not as a map**: the member register on the fold, the ten
+expertise areas as a ruled register (`.gd-doms`, which also removes ten
+pills), and each member's own domains as notation on a rule. If the Guild
+ever publishes a location per member, the map is the figure to build next.
+
+**Home (`.gd-home`).** The same three sentences: the claim set apart in
+the statement register (serif, section 18's type ladder), the network
+sentence at reading measure beside it, the consequence hanging from its
+own rule under that, and the register ruling the foot with `Meet the
+Guild` at its end. It is bounded above by a rule because it is a different
+kind of evidence from the trust architecture above it: not a property of
+the system, a person. Names do not appear on Home. Twenty-eight names
+would be twenty-eight words the home page does not carry, maintained in
+two places, and the link is one click.
 
 ### Platform (section 22, `pl-`)
 
