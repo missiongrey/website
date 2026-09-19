@@ -2826,7 +2826,240 @@ html.js .reveal.in .pl-run{transform:scaleX(1)}
    static weight; hover, focus, selection add temporary emphasis only;
    nothing core lives only on hover; touch gets a selected state. */
 
-/* (section 26 body follows) */
+/* ---- 26.1 what this section deletes, and why ---- */
+/* Round nine printed four Guild members at plate scale ahead of
+   twenty-four directory rows, marked those four in the fold register, and
+   printed two of eighteen core-team members at 112px ahead of sixteen at
+   64px. Every one of those choices was editorial (regional and domain
+   spread on Guild, reading order on About) and none of them was rank. It
+   does not matter: a PERMANENT size difference between people in one
+   group is read as rank whatever it was chosen for, and a register that
+   ranks colleagues is a liability before it is a design. So the sizes are
+   gone, in one direction only — everyone joins the register, nobody is
+   promoted out of it — and the order of both lists is untouched, because
+   re-sorting names is an editorial act nobody asked for.
+   Five rules in sections 21 and 24 lost their only user this round and
+   are on the audit list, not deleted (those sections are closed):
+   `.gd-m-lead` and its eleven descendants, `.gd-reg-rule i`, `.ab-leads`,
+   `.ab-lead`, `.ab-por`. The markup that carried them is gone from the
+   three pages.
+   What replaces permanent prominence is interaction, which is this
+   round's whole argument: STATIC = ORDER, INTERACTION = ATTENTION. Every
+   field a member has is printed at full legibility in the default state;
+   activation changes ink, edge and one accent mark, and reveals nothing.
+   That is the licence for using amber on a person at all — amber means
+   selected, and a pointed-at record IS selected. About's round-nine rule
+   (no amber on a human being) still holds for every permanent mark. */
+
+/* ---- 26.2 the state model, once ---- */
+/* Three triggers, one set of values: hover (a pointer), focus-within (a
+   keyboard reaching the record's profile link) and `.pi-on` (a tap, set by
+   the page script). The values are custom properties on the record and the
+   consumers below are written once, so a fourth trigger would cost one
+   selector. The block is repeated once for the hover trigger inside
+   `@media (hover:hover)`: a phone must not inherit a hover state it can
+   only leave by loading another page. */
+.gd-m,.ab-p,.ab-a{
+  --pi-tick:var(--line-3);     /* the record's leading station mark */
+  --pi-tick-h:8px;
+  --pi-ground:transparent;
+  --pi-edge:var(--line-2);     /* the plate / portrait edge */
+  --pi-scale:1;
+  --pi-q:1;                    /* how loud this record's plate is */
+  --pi-rule:var(--line);
+  --pi-link:var(--ink-dim);
+}
+.gd-m{--pi-gram:var(--ink-mute);--pi-bio:var(--ink-mute);--pi-tag:var(--ink-dim)}
+.ab-p,.ab-a{--pi-por:grayscale(1);--pi-role:var(--ink-dim);--pi-bio:var(--ink-mute);--pi-cred:var(--ink-dim)}
+
+.gd-m:focus-within,.gd-m.pi-on{
+  --pi-tick:var(--accent);--pi-tick-h:26px;--pi-ground:var(--bg-1);
+  --pi-edge:var(--line-3);--pi-scale:1.05;--pi-rule:var(--line-2);
+  --pi-gram:var(--ink);--pi-bio:var(--ink-body);--pi-tag:var(--ink-mute);--pi-link:var(--ink);
+}
+.ab-p:focus-within,.ab-p.pi-on,.ab-a:focus-within,.ab-a.pi-on{
+  --pi-tick:var(--accent);--pi-tick-h:24px;--pi-ground:var(--bg-1);
+  --pi-edge:var(--line-3);--pi-scale:1.04;--pi-rule:var(--line-2);
+  --pi-por:grayscale(1) contrast(1.08);
+  --pi-role:var(--ink-mute);--pi-bio:var(--ink-body);--pi-cred:var(--ink-mute);--pi-link:var(--ink);
+}
+@media (hover:hover){
+  .gd-m:hover{
+    --pi-tick:var(--accent);--pi-tick-h:26px;--pi-ground:var(--bg-1);
+    --pi-edge:var(--line-3);--pi-scale:1.05;--pi-rule:var(--line-2);
+    --pi-gram:var(--ink);--pi-bio:var(--ink-body);--pi-tag:var(--ink-mute);--pi-link:var(--ink);
+  }
+  .ab-p:hover,.ab-a:hover{
+    --pi-tick:var(--accent);--pi-tick-h:24px;--pi-ground:var(--bg-1);
+    --pi-edge:var(--line-3);--pi-scale:1.04;--pi-rule:var(--line-2);
+    --pi-por:grayscale(1) contrast(1.08);
+    --pi-role:var(--ink-mute);--pi-bio:var(--ink-body);--pi-cred:var(--ink-mute);--pi-link:var(--ink);
+  }
+}
+
+/* The register quiets around whatever is active. Binding: what quiets is
+   the PLATE and the STATION MARK, never the words. Dropping opacity on a
+   biography takes --ink-dim metadata below the 4.5:1 the body text is set
+   to clear, so twenty-seven people would be made slightly unreadable to
+   emphasise one; the register's own marks carry the recession instead and
+   the emphasis still reads. A record that is itself active is never
+   quieted, which is why each selector carries the three negations: with a
+   record tapped and another hovered, both are forward. `:has()` is the
+   only precise way to say this in CSS, so it is guarded — a browser
+   without it simply gets no recession, which costs nothing. */
+@supports selector(:has(*)){
+  [data-people]:has([data-person]:focus-within) [data-person]:not(:hover):not(:focus-within):not(.pi-on),
+  [data-people]:has(.pi-on) [data-person]:not(:hover):not(:focus-within):not(.pi-on){
+    --pi-q:.55;--pi-tick:var(--line);
+  }
+  /* a face recedes less than a monogram: the plate is typography, the
+     portrait is a person, and a half-faded colleague is a statement */
+  .ab-reg:has([data-person]:focus-within) [data-person]:not(:hover):not(:focus-within):not(.pi-on),
+  .ab-reg:has(.pi-on) [data-person]:not(:hover):not(:focus-within):not(.pi-on),
+  .ab-adv:has([data-person]:focus-within) [data-person]:not(:hover):not(:focus-within):not(.pi-on),
+  .ab-adv:has(.pi-on) [data-person]:not(:hover):not(:focus-within):not(.pi-on){
+    --pi-q:.78;
+  }
+  /* The hover TRIGGER is guarded the same way the hover state is. A phone
+     leaves an emulated hover on the last element tapped, so an unguarded
+     `:has(:hover)` would keep twenty-seven records recessed around a
+     record that no longer shows any emphasis, after the second tap
+     released it. The negations inside the selectors do not need the same
+     guard: on a touch device the stale hover only ever sits on the record
+     that was tapped, which is the record `.pi-on` already exempts. */
+  @media (hover:hover){
+    [data-people]:has([data-person]:hover) [data-person]:not(:hover):not(:focus-within):not(.pi-on){
+      --pi-q:.55;--pi-tick:var(--line);
+    }
+    .ab-reg:has([data-person]:hover) [data-person]:not(:hover):not(:focus-within):not(.pi-on),
+    .ab-adv:has([data-person]:hover) [data-person]:not(:hover):not(:focus-within):not(.pi-on){
+      --pi-q:.78;
+    }
+  }
+}
+
+/* ---- 26.3 the Guild roster: twenty-eight equal records ---- */
+/* Losing the four plates cost the page its only large object, so the
+   register had to become the interest. Three moves, all of them devices
+   the site already owns: the monogram plate goes to 56px for EVERYONE and
+   takes the registration corners that used to mark a featured member, so
+   twenty-eight plates read as one instrument rather than four portraits
+   and twenty-four bullets; a hairline runs down the gutter, so two columns
+   read as one ledger instead of two lists; and each record's domain
+   notation hangs from its own rule inside the body column, which gives the
+   row the two-rule structure a record has and the interaction something to
+   activate. Nothing was added to the page: same words, same order, same
+   twenty-eight links. */
+.gd-m .gd-p{
+  grid-template-columns:56px minmax(0,1fr);gap:20px;
+  padding:24px 12px 26px 8px;background:var(--pi-ground);
+}
+.gd-m::before{
+  height:var(--pi-tick-h);width:2px;background:var(--pi-tick);
+  transition:height .18s ease,background-color .18s ease;
+}
+.gd-m .gd-plate{
+  width:56px;height:56px;background:var(--bg-2);border-color:var(--pi-edge);
+  opacity:var(--pi-q);transform:scale(var(--pi-scale));transform-origin:left center;
+  transition:transform .18s ease,border-color .18s ease,opacity .18s ease;
+}
+/* registration corners on every plate: the plate is a plate, not an empty
+   photo box, and it is the slot a photograph drops into unchanged */
+.gd-m .gd-plate::before,.gd-m .gd-plate::after{
+  content:"";position:absolute;width:6px;height:6px;pointer-events:none;
+}
+.gd-m .gd-plate::before{top:4px;left:4px;border-top:1px solid var(--line-3);border-left:1px solid var(--line-3)}
+.gd-m .gd-plate::after{bottom:4px;right:4px;border-bottom:1px solid var(--line-3);border-right:1px solid var(--line-3)}
+.gd-m .gd-gram{font-size:13px;letter-spacing:.12em;color:var(--pi-gram);transition:color .18s ease}
+.gd-m .gd-p h3{font-size:17px}
+.gd-m .gd-bio{color:var(--pi-bio);max-width:44ch;transition:color .18s ease}
+.gd-m .gd-foot{
+  position:relative;margin-top:16px;padding-top:12px;
+  border-top:1px solid var(--pi-rule);transition:border-color .18s ease;
+}
+.gd-m .gd-tags span{color:var(--pi-tag);transition:color .18s ease}
+.gd-m .gd-prof{color:var(--pi-link);transition:color .18s ease}
+.gd-m:focus-within .gd-prof,.gd-m.pi-on .gd-prof{border-bottom-color:var(--line-3)}
+@media (min-width:901px){
+  /* the gutter rule. The gap is symmetric, so the middle of the gap is
+     exactly 50 percent of the list; the line is drawn there rather than
+     on a column, which would have to pick a side. */
+  .gd-roster{
+    background-image:linear-gradient(to right,
+      transparent 0 calc(50% - .5px),var(--line) calc(50% - .5px) calc(50% + .5px),transparent calc(50% + .5px));
+    background-repeat:no-repeat;
+  }
+}
+
+/* ---- 26.4 About: one portrait size on the page, the same interaction ---- */
+/* The core team is one register of eighteen at 64px, the leads included.
+   The advisors were at 80px and are now at 64 as well. The hard rule only
+   asks for equality WITHIN a group and the advisors are a real second
+   group with their own rhythm (no role line, four across, portrait above
+   the name), so 80 was legal — but a reader does not read the rule, they
+   read the page, and an advisor's head printed larger than the chief
+   executive's is precisely the question this round exists to stop being
+   asked. The rhythm carries the grouping on its own. 64 is also the size
+   the sources allow the register: two core-team files are 112px wide and
+   cap it there, so one size for the page means that size. */
+.ab-reg{margin-top:0}
+.ab-por-m{width:64px;height:64px;margin-bottom:18px}
+.ab-p,.ab-a{background:var(--pi-ground);border-top-color:var(--pi-rule);transition:background-color .18s ease,border-color .18s ease}
+.ab-p::before,.ab-a::before{
+  height:var(--pi-tick-h);width:2px;background:var(--pi-tick);
+  transition:height .18s ease,background-color .18s ease;
+}
+.ab-p .person-photo,.ab-a .person-photo{
+  filter:var(--pi-por);border-color:var(--pi-edge);opacity:var(--pi-q);
+  transform:scale(var(--pi-scale));transform-origin:left center;
+  transition:transform .18s ease,border-color .18s ease,filter .18s ease,opacity .18s ease;
+}
+.ab-p .ab-role,.ab-a .ab-role{color:var(--pi-role);transition:color .18s ease}
+.ab-p .ab-bio,.ab-a .ab-bio{color:var(--pi-bio);transition:color .18s ease}
+.ab-p .ab-cred,.ab-a .ab-cred{color:var(--pi-cred);transition:color .18s ease}
+.ab-p .ab-prof,.ab-a .ab-prof{color:var(--pi-link);transition:color .18s ease}
+.ab-p:focus-within .ab-prof,.ab-p.pi-on .ab-prof,
+.ab-a:focus-within .ab-prof,.ab-a.pi-on .ab-prof{border-bottom-color:var(--line-3)}
+/* the register's ground reaches the station rule rather than starting a
+   pixel inside it: a fill that misses its own rule reads as a hover card */
+.ab-p{padding-left:14px;padding-right:clamp(16px,2.6vw,44px)}
+
+/* ---- 26.5 mobile ---- */
+/* Hover does not exist here, so `.pi-on` is the whole model: tap a record
+   to bring it forward, tap it again or tap the page to release. Nothing
+   opens, nothing collapses, and the default state is twenty-eight (and
+   eighteen, and four) equal records exactly as on the desktop. */
+@media (max-width:900px){
+  /* both registers are one column here, so the right inset that separated
+     them has nothing to separate. Restated rather than inherited: section
+     24 sets the same thing at this width and 26.4 above it now wins. */
+  .gd-m .gd-p{padding-right:0}
+  .ab-p{padding-right:0}
+}
+@media (max-width:560px){
+  .gd-m .gd-p{grid-template-columns:48px minmax(0,1fr);gap:16px}
+  .gd-m .gd-plate{width:48px;height:48px}
+  .gd-m .gd-gram{font-size:11.5px}
+}
+
+/* ---- 26.6 reduced motion ---- */
+/* Under reduce there is no scale at all, not a faster one: the state is
+   carried entirely by ink, edge and the accent mark, which is what the
+   state was always for. Section 13 already clamps every duration; these
+   two blocks make the intent explicit at the seam that owns it. */
+@media (prefers-reduced-motion:reduce){
+  .gd-m:hover,.gd-m:focus-within,.gd-m.pi-on,
+  .ab-p:hover,.ab-p:focus-within,.ab-p.pi-on,
+  .ab-a:hover,.ab-a:focus-within,.ab-a.pi-on{--pi-scale:1}
+  .gd-m::before,.gd-m .gd-plate,.gd-m .gd-gram,.gd-m .gd-bio,.gd-m .gd-foot,
+  .gd-m .gd-tags span,.gd-m .gd-prof,
+  .ab-p,.ab-a,.ab-p::before,.ab-a::before,
+  .ab-p .person-photo,.ab-a .person-photo,
+  .ab-p .ab-role,.ab-a .ab-role,.ab-p .ab-bio,.ab-a .ab-bio,
+  .ab-p .ab-cred,.ab-a .ab-cred,.ab-p .ab-prof,.ab-a .ab-prof{transition:none}
+}
+
+/* ---- end 26 ---- */
 
 
 

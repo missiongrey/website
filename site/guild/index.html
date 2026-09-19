@@ -90,12 +90,15 @@
 
   <!-- ============ HERO ============ -->
   <!-- The fold is the claim and the network under it. The register is the
-       roster drawn: one tick per member, in the roster's own order, with
-       the four members this page prints at plate scale marked in the
-       accent. It measures something real, which is the only condition
-       under which this site draws a scale at all. The count beside it is
-       the roster key's own line, moved here because the scale of the
-       network belongs at the top of the page that is about the network. -->
+       roster drawn: one tick per member, in the roster's own order, and
+       nothing else. It measures something real, which is the only
+       condition under which this site draws a scale at all. Round ten
+       removed its four accent marks: they pointed at four members printed
+       larger below, and a permanent mark on four people in a register of
+       twenty-eight is a ranking whatever it was chosen for. The count
+       beside it is the roster key's own line, moved here because the
+       scale of the network belongs at the top of the page that is about
+       the network. -->
   <section class="sec hero gd-hero" aria-labelledby="h1">
     <div class="wrap">
       <p class="eyebrow hero-eyebrow">The Mission Grey Guild</p>
@@ -105,7 +108,7 @@
       </div>
       <div class="gd-reg">
         <p class="gd-count">28 members</p>
-        <span class="gd-reg-rule" aria-hidden="true"><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i><i style="--n:4"></i></span>
+        <span class="gd-reg-rule" aria-hidden="true"></span>
       </div>
     </div>
   </section>
@@ -173,16 +176,17 @@
         <span>Domains listed per member</span>
         <span>Most profiles link to LinkedIn</span>
       </div>
-      <!-- One list, twenty-eight entries, one markup. A featured entry is
-           the same <li> with one class on it, so the editorial choice is a
-           class and an order, never a different kind of record: same
-           fields, same link, same list semantics for a screen reader. The
-           four printed at plate scale are read across the register for
-           domain and regional spread, not by seniority. The plate is the
-           portrait slot: it carries the monogram now and takes an <img>
-           the day the photographs exist, with no other change. -->
-      <ul class="gd-roster reveal" role="list">
-        <li class="gd-m gd-m-lead">
+      <!-- One list, twenty-eight entries, one markup, ONE SIZE. Every
+           member carries the same plate, the same type scale and the same
+           fields, in the order the roster already had; nothing in the
+           markup encodes rank. Prominence is temporary and belongs to the
+           reader: point at a member, or tab to one, or tap one, and that
+           record comes forward while the register quiets around it
+           (styles.css section 26). The plate is the portrait slot: it
+           carries the monogram now and takes an <img> the day the
+           photographs exist, with no other change. -->
+      <ul class="gd-roster reveal" role="list" data-people>
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">MB</span></div>
             <div class="gd-body">
@@ -195,7 +199,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m gd-m-lead">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">KC</span></div>
             <div class="gd-body">
@@ -208,7 +212,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m gd-m-lead">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">ZA</span></div>
             <div class="gd-body">
@@ -221,7 +225,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m gd-m-lead">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">TN</span></div>
             <div class="gd-body">
@@ -234,7 +238,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">MA</span></div>
             <div class="gd-body">
@@ -247,7 +251,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">SJ</span></div>
             <div class="gd-body">
@@ -260,7 +264,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">GC</span></div>
             <div class="gd-body">
@@ -273,7 +277,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">RC</span></div>
             <div class="gd-body">
@@ -286,7 +290,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">FF</span></div>
             <div class="gd-body">
@@ -299,7 +303,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">JG</span></div>
             <div class="gd-body">
@@ -312,7 +316,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">JI</span></div>
             <div class="gd-body">
@@ -325,7 +329,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">SK</span></div>
             <div class="gd-body">
@@ -338,7 +342,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">AL</span></div>
             <div class="gd-body">
@@ -351,7 +355,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">LT</span></div>
             <div class="gd-body">
@@ -364,7 +368,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">LL</span></div>
             <div class="gd-body">
@@ -377,7 +381,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">DM</span></div>
             <div class="gd-body">
@@ -390,7 +394,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">AM</span></div>
             <div class="gd-body">
@@ -403,7 +407,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">SM</span></div>
             <div class="gd-body">
@@ -416,7 +420,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">FP</span></div>
             <div class="gd-body">
@@ -429,7 +433,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">RR</span></div>
             <div class="gd-body">
@@ -442,7 +446,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">AS</span></div>
             <div class="gd-body">
@@ -455,7 +459,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">SS</span></div>
             <div class="gd-body">
@@ -468,7 +472,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">SR</span></div>
             <div class="gd-body">
@@ -481,7 +485,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">DT</span></div>
             <div class="gd-body">
@@ -494,7 +498,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">DV</span></div>
             <div class="gd-body">
@@ -507,7 +511,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">PV</span></div>
             <div class="gd-body">
@@ -520,7 +524,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">WV</span></div>
             <div class="gd-body">
@@ -532,7 +536,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m">
+        <li class="gd-m" data-person>
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">PV</span></div>
             <div class="gd-body">
@@ -687,6 +691,40 @@
     document.addEventListener('click',function(e){if(mn.hasAttribute('open')&&!mn.contains(e.target)){mn.removeAttribute('open');}});
     document.addEventListener('keydown',function(e){if(e.key==='Escape'){mn.removeAttribute('open');}});
   }
+})();
+</script>
+
+<script>
+/* PEOPLE REGISTER, the selected state (round ten).
+   Hover and focus are CSS; this adds the one state CSS cannot give a
+   phone. Tap a record and it comes forward, tap it again or tap the page
+   or press Escape and it steps back. It reveals NOTHING: every field of
+   every person is printed at full legibility in the default state, so the
+   state is emphasis, carries no information, and is therefore deliberately
+   not exposed as a control — a button whose whole effect is that a row
+   gets darker is noise in a screen reader, and a keyboard already reaches
+   the state through each record's own profile link. With the script off
+   the register is complete and every link works. */
+(function(){
+  var regs=document.querySelectorAll('[data-people]');
+  if(!regs.length){return;}
+  var on=null;
+  function release(){if(on){on.classList.remove('pi-on');on=null;}}
+  function select(el){if(on===el){release();return;}release();el.classList.add('pi-on');on=el;}
+  regs.forEach(function(reg){
+    reg.addEventListener('click',function(e){
+      if(e.target.closest('a')){return;}            /* a link stays a link */
+      if(String(getSelection())){return;}           /* a drag is a text selection */
+      var rec=e.target.closest('[data-person]');
+      if(rec){select(rec);}else{release();}
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('[data-people]')){release();}
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){release();}
+  });
 })();
 </script>
 </body>

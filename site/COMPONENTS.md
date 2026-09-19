@@ -2030,7 +2030,127 @@ documents the binding decisions.
 
 ### People (section 26, `pi-`): Guild, About, the register
 
-(written by the people builder)
+Two pages carried a permanent size difference between colleagues and both
+lost it. Nothing was regrouped, no category was invented, no name moved,
+and no word changed on any of the three surfaces (textdiff, alt text and
+`aria-label` included: Guild 1048 words in and out, About 1337, Home 1377,
+nothing added, nothing removed). What the sizes used to do, interaction
+does now.
+
+**Equal static weight is the rule, and it is one-directional, binding.**
+Guild printed four members at plate scale ahead of twenty-four directory
+rows and marked those four in the fold register; About printed two of
+eighteen core-team members at 112px ahead of sixteen at 64px. Both choices
+were editorial and neither was rank. It does not matter: a PERMANENT size
+difference between people in one group is read as rank whatever it was
+chosen for, and a register that appears to rank colleagues is a liability
+before it is a design. So the levelling always goes one way — everybody
+joins the register, nobody is promoted out of it — and order is untouched
+on both pages, because re-sorting names is an editorial act nobody asked
+for. The two About leads are simply the register's first two rows.
+
+**One portrait size on About, across both groups.** The hard rule only
+asks for equality within a group, and Advisors and network is a real
+second group with its own rhythm (four across, portrait over the name, no
+role line), so its 80px was legal. It went to 64 anyway: a reader does not
+read the rule, they read the page, and an advisor's head printed larger
+than the chief executive's is exactly the question this round exists to
+stop being asked. 64 is also what the sources allow — two core-team files
+are 112px wide and cap that register — so one size for the page means that
+size. Grouping is carried by the heading, the rhythm and the role line.
+
+**The register replaces the plates as the page's object (Guild).** Losing
+the four large plates cost the roster its only large thing, so the
+directory became the interest, using only devices the site owns: the
+monogram plate goes to 56px for everyone and takes the registration
+corners that used to mark a featured member; a hairline runs down the
+gutter at 50 percent, so two columns read as one ledger rather than two
+lists; and each record's domain notation hangs from its own rule inside
+the body column. The plate is still the portrait slot.
+
+**The interaction model, three triggers and one set of values.** Hover
+(pointer), `:focus-within` (a keyboard reaching the record's own profile
+link) and `.pi-on` (a tap). All three set the same custom properties on
+the record, and the consumers are written once, so a fourth trigger would
+cost one selector. Active means: the leading station mark grows from 8px
+of `--line-3` to 24–26px of `--accent`, the row takes the raised ground,
+the plate or portrait gains a `--line-3` edge and scales 4–5 percent from
+its left edge, a portrait picks up `contrast(1.08)` on top of its
+grayscale, and bio, domains, role, credentials and the profile link each
+step up exactly one ink. Nothing is revealed and nothing moves position:
+every field of every person is printed at full legibility in the default
+state, which is what makes the emphasis honest.
+
+**What recedes is the register's marks, never the words, binding.** The
+brief asks for surrounding profiles to reduce emphasis. Dropping opacity
+on a row takes `--ink-dim` metadata below the 4.5:1 the body text is set
+to clear, so twenty-seven people would be made slightly unreadable to
+emphasise one. Instead the quieted records lose their plate (to .55 for a
+monogram, .78 for a face — a face recedes less than a piece of typography)
+and their station mark drops to `--line`. The delta reads and no
+biography is dimmed. A record that is itself active is never quieted,
+which is why each selector carries three negations: with one record
+tapped and another hovered, both are forward.
+
+**No expanded panel was built, and that is the finding.** A panel would
+carry the larger plate, the full role, the expertise, the domain tags and
+the profile link — which is the list of fields the row already prints. It
+would add a modal, a focus trap and a second copy of every member's words
+to maintain, in exchange for the same five fields at a different size. The
+brief's own condition (`if a panel adds nothing the row does not already
+show, do not build it`) is met, so it was not built. If Guild ever
+publishes a field the row cannot hold — a location, a language, a
+publication list — that is the moment to build the disclosure, and it
+should be a real `aria-expanded` disclosure inside the record, not a
+modal.
+
+**Keyboard and touch.** Keyboard needs no new control: every record's own
+profile link is the focus stop, and `:focus-within` puts the record
+forward when it is reached, so tabbing the roster walks the register.
+Touch gets `.pi-on` from a delegated click handler on each register — tap
+a record to bring it forward, tap it again, tap the page, or press Escape
+to release. The state is deliberately NOT exposed as a control: a button
+whose whole effect is that a row gets darker is noise in a screen reader,
+and there is nothing behind it to reach. Three records (William Vogt on
+Guild, Lauri Byckling and Eva Mikkonen on About) carry no public profile
+and therefore no focus stop; they lose nothing, because the state carries
+no information. If parity is ever wanted there, the fix is a link for
+those three, not a fake control.
+
+**Guard the hover TRIGGER, not only the hover state, binding.** A phone
+leaves an emulated hover on the last element tapped. The state block is
+inside `@media (hover:hover)` for that reason, but so is the `:has(:hover)`
+selector that makes the other records recede — without that second guard,
+the second tap releases the record in the DOM while twenty-seven
+neighbours stay recessed around a record showing no emphasis. Verified
+under real `hover:none` by launching Chromium with
+`--blink-settings=primaryHoverType=1,availableHoverTypes=1,primaryPointerType=2,availablePointerTypes=2`;
+a Playwright `isMobile` context alone still reports `hover:hover` and will
+not catch this. The `:not(:hover)` negations inside those selectors need
+no guard: on a touch device the stale hover only ever sits on the record
+that was tapped, which `.pi-on` already exempts.
+
+**Amber on a person is allowed only while it is temporary.** Round nine
+ruled no amber on About beyond the chassis; that still holds for every
+PERMANENT mark, and it is why the four accent marks are gone from the
+member register on BOTH Guild and Home — the two registers stay identical,
+twenty-eight ticks and `28 members`, and neither singles anyone out. Amber
+means selected, and a record the reader is pointing at IS selected: that
+is the whole licence, and it expires when the pointer leaves. Home gained
+no interaction; it names no member, so there is nobody to bring forward.
+
+**Reduced motion** drops the scale entirely rather than shortening it: the
+state is then carried by ink, edge and the accent mark, which is what it
+was always for. **Without JS** the registers are complete, every link
+works, and hover and focus still do everything except persist.
+
+**On the audit list after this round:** `.gd-m-lead` and its eleven
+descendant rules, `.gd-reg-rule i`, `.ab-leads`, `.ab-lead` and `.ab-por`
+lost their only users. All are in sections 21 and 24, which are closed, so
+nothing was deleted. Also unresolved: the Guild plates still hold
+monograms, and portraits are the one piece of material that page is
+waiting on — twenty-eight equal plates is the composition that makes
+twenty-eight equal photographs a drop-in.
 
 
 
