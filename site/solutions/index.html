@@ -118,19 +118,24 @@
            intelligence is that same run carried three times over. Left to
            right the ink goes from one line to four. Every tick falls on one
            lattice of 24 divisions across the figure, and the only accent is
-           the entry mark at station 01. -->
+           the entry mark at station 01.
+
+           Round ten: the figure progresses. Each station label is the
+           stage's own control, so hover, focus or tap activates that
+           stage and the other two settle back; the runs draw once,
+           01 then 02 then 03, when the figure arrives. -->
       <div class="frame so-path reveal"><span class="tick"></span>
         <div class="frame-bar"><span>Adoption path</span><span class="dim">Illustrative view</span></div>
         <div class="so-grid">
           <div class="so-step so-s1">
             <div class="so-ext" aria-hidden="true"><i></i></div>
-            <p class="so-k"><b>01</b>&#8201;/&#8201;ONE DECISION</p>
+            <button class="so-k sx-k" type="button" aria-pressed="false"><b>01</b>&#8201;/&#8201;ONE DECISION</button>
             <h3>Start with a decision.</h3>
             <p class="v">Bring one difficult decision, investment, market question or risk. Mission Grey builds the external context, scenarios and recommendations around it.</p>
           </div>
           <div class="so-step so-s2">
             <div class="so-ext" aria-hidden="true"><i></i></div>
-            <p class="so-k"><b>02</b>&#8201;/&#8201;STANDING WATCH</p>
+            <button class="so-k sx-k" type="button" aria-pressed="false"><b>02</b>&#8201;/&#8201;STANDING WATCH</button>
             <h3>Keep it under watch.</h3>
             <p class="v">The assumptions and exposures behind that decision stay under watch, and recurring questions become trackers, indicators, scenarios, triggers and alerts.</p>
             <ul class="pts">
@@ -141,7 +146,7 @@
           </div>
           <div class="so-step so-s3">
             <div class="so-ext" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-            <p class="so-k"><b>03</b>&#8201;/&#8201;ORGANIZATIONAL INTELLIGENCE</p>
+            <button class="so-k sx-k" type="button" aria-pressed="false"><b>03</b>&#8201;/&#8201;ORGANIZATIONAL INTELLIGENCE</button>
             <h3>Make it part of the organization.</h3>
             <p class="v">Shared dashboards, role&#8209;specific applications, agents, APIs and workflows, built on the same intelligence layer rather than beside it.</p>
             <ul class="pts">
@@ -474,6 +479,56 @@
     document.addEventListener('click',function(e){if(mn.hasAttribute('open')&&!mn.contains(e.target)){mn.removeAttribute('open');}});
     document.addEventListener('keydown',function(e){if(e.key==='Escape'){mn.removeAttribute('open');}});
   }
+})();
+
+/* The adoption path. Hover and focus are CSS, so the figure already
+   answers a pointer and a keyboard with this script absent; what is added
+   here is the sticky selection a touch screen needs, where hover means
+   nothing: tap a station label to select its stage, tap it again, tap
+   outside the figure or press Escape to release. When both are in play
+   the pointer wins, so only one stage is ever lit: moving onto another
+   stage drops the selection and the hover takes it. */
+(function(){
+  var path=document.querySelector('.so-path');
+  if(!path)return;
+  var grid=path.querySelector('.so-grid');
+  var btns=[].slice.call(path.querySelectorAll('.sx-k'));
+  if(!grid||!btns.length||!btns[0].closest)return;
+  var sel=null;
+  function set(step){
+    sel=step;
+    path.classList.toggle('sx-act',!!step);
+    btns.forEach(function(b){
+      var s=b.closest('.so-step');
+      s.classList.toggle('sx-on',s===step);
+      b.setAttribute('aria-pressed',s===step?'true':'false');
+    });
+  }
+  function elsewhere(e){
+    if(!sel)return;
+    var s=e.target.closest?e.target.closest('.so-step'):null;
+    if(s!==sel)set(null);
+  }
+  /* On a phone a tap also FOCUSES the button it lands on, so a release
+     that only cleared the selection would leave the stage lit by
+     :focus-within. A pointer release therefore drops the focus with it;
+     a keyboard release (Escape, or Enter on an already selected stage,
+     which reports detail 0) keeps it, because taking the tab position
+     away from someone using the keyboard is the worse failure. */
+  function release(blur){
+    if(blur&&btns.indexOf(document.activeElement)>-1)document.activeElement.blur();
+    set(null);
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click',function(e){
+      var s=b.closest('.so-step');
+      if(sel===s){release(e.detail>0);}else{set(s);}
+    });
+  });
+  grid.addEventListener('mouseover',elsewhere);
+  grid.addEventListener('focusin',elsewhere);
+  document.addEventListener('click',function(e){if(sel&&!path.contains(e.target))release(true);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&sel)release(false);});
 })();
 </script>
 </body>

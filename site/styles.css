@@ -2846,4 +2846,170 @@ html.js .reveal.in .pl-run{transform:scaleX(1)}
    relevant stage; scroll progression draws one line, then the standing
    watch, then the organizational lines; slow, controlled, no autoplay. */
 
-/* (section 28 body follows) */
+/* ---- 28.1 the station label is the stage's control ---- */
+/* The stage needed one real control, for the keyboard and for the phone,
+   and the figure already carried the right element: the station label.
+   `01 / ONE DECISION` is now a <button> holding exactly the words it held
+   as a <p>, so the drawing is unchanged and the control is the thing a
+   reader points at anyway. No tab strip, no chevron, no new word: a tab
+   row over a drawn figure is the generic component this pass exists to
+   delete, and the label is already the stage's name.
+   The button keeps `.so-k`, so section 23 still sets its type, its
+   padding and its border-top; only the browser's own button costume is
+   reset here, and the top border is left alone because it is the station
+   rule and the three heads abut into it. */
+.sx-k{
+  -webkit-appearance:none;appearance:none;display:block;width:100%;
+  border-right:0;border-bottom:0;border-left:0;background:none;
+  text-align:left;cursor:pointer;
+}
+
+/* ---- 28.2 the path draws once, 01 then 02 then 03 ---- */
+/* The chairman's progression, drawn with the figure's own lines: the
+   bounded run of ONE DECISION, then the sustained line of STANDING
+   WATCH extending, then the four lines of ORGANIZATIONAL INTELLIGENCE
+   arriving one after another. It is a clip sweeping left to right, never
+   a scale: a scaled run would compress its own divisions on the way in
+   and the lattice would read wrong for half a second, which is the one
+   thing this figure may not do. The trigger is the existing reveal
+   observer's `.in` class, the same seam `.pl-run` uses on Platform, so
+   it happens once, on arrival, and rests in the static state after.
+   Stage 01 runs .55s from .12s, stage 02 .80s from .72s, stage 03 .52s
+   from 1.60s with .10s between its four lines: 2.42s end to end, one
+   pass, no loop. An animation rather than a transition, so the runs keep
+   their `transition` free for the state change in 28.3.
+   The insets are negative on three sides because the station marks
+   overhang the run's own box by up to 12px; clipping at the box edge
+   would cut the marks off at rest. */
+html.js .so-path .so-ext i{clip-path:inset(-14px 100% -14px 0)}
+html.js .so-path.in .so-ext i{animation:sx-draw .55s cubic-bezier(.33,0,.2,1) .12s both}
+html.js .so-path.in .so-s2 .so-ext i{animation-duration:.8s;animation-delay:.72s}
+html.js .so-path.in .so-s3 .so-ext i{animation-duration:.52s;animation-delay:1.6s}
+html.js .so-path.in .so-s3 .so-ext i:nth-child(2){animation-delay:1.7s}
+html.js .so-path.in .so-s3 .so-ext i:nth-child(3){animation-delay:1.8s}
+html.js .so-path.in .so-s3 .so-ext i:nth-child(4){animation-delay:1.9s}
+@keyframes sx-draw{to{clip-path:inset(-14px -14px -14px 0)}}
+
+/* ---- 28.3 one stage active, the other two quieter ---- */
+/* DEFAULT is the figure exactly as round nine left it, and that state is
+   complete: every word, every station and every run is legible with
+   nothing hovered, focused or selected. Activation is temporary emphasis
+   and nothing else. Three sources, one state: `:hover`, `:focus-within`
+   (both pure CSS, so the figure answers a pointer and a keyboard with no
+   JS at all) and `.sx-on`, the sticky selection a touch screen needs,
+   which the page script sets on tap.
+   The quiet register is a step down, never a disappearance: heading to
+   --ink-mute (6.1:1), sentence to --ink-dim (4.9:1), bullets to
+   --ink-mute, all of them still AA at their size. Nothing moves, nothing
+   resizes, and no station or division changes position: the states are
+   colour, weight and opacity only.
+   Amber follows the round-ten law rather than the round-nine one. At
+   REST the figure still carries exactly one accent, the decision point
+   at station 01; while a stage is active, amber marks THAT stage,
+   because amber means active here as everywhere else, and station 01's
+   own accent stands down while 02 or 03 is the live one and returns the
+   moment the reader lets go. A second permanent accent would have been
+   the round-nine rule broken; a temporary one is the rule working. */
+.so-path .so-k::before,.so-path .so-k b,.so-path .so-step h3,.so-path .so-step .v,
+.so-path .so-step .pts li,.so-path .so-step .checker,.so-path .so-ext i,
+.so-path .so-ext i::before,.so-path .so-ext i::after{
+  transition:color .18s ease,background-color .18s ease,border-color .18s ease,
+             opacity .18s ease,width .18s ease,height .18s ease;
+}
+/* the quiet register: every stage steps back as soon as one is live */
+.so-grid:focus-within .so-step .so-ext i,
+.sx-act .so-grid .so-step .so-ext i{border-top-color:var(--line-2)}
+.so-grid:focus-within .so-step .so-ext i::before,.so-grid:focus-within .so-step .so-ext i::after,
+.sx-act .so-grid .so-step .so-ext i::before,.sx-act .so-grid .so-step .so-ext i::after{
+  background:var(--line-3);
+}
+.so-grid:focus-within .so-step .so-k::before,
+.sx-act .so-grid .so-step .so-k::before{background:var(--line-2)}
+.so-grid:focus-within .so-step .so-k b,
+.sx-act .so-grid .so-step .so-k b{color:var(--ink-mute)}
+.so-grid:focus-within .so-step h3,
+.sx-act .so-grid .so-step h3{color:var(--ink-mute)}
+.so-grid:focus-within .so-step .v,
+.sx-act .so-grid .so-step .v{color:var(--ink-dim)}
+.so-grid:focus-within .so-step .pts li,
+.sx-act .so-grid .so-step .pts li{color:var(--ink-mute)}
+.so-grid:focus-within .so-step .checker,
+.sx-act .so-grid .so-step .checker{opacity:.38}
+/* the live stage: its run to full ink, its station and index to amber,
+   its heading, sentence and bullets back to their resting weight. Every
+   selector here outranks the quiet block above by one class, so a hover
+   still wins over a selection and only one stage is ever lit. */
+.so-path .so-grid .so-step:focus-within .so-ext i,
+.so-path .so-grid .so-step.sx-on .so-ext i{border-top-color:var(--ink)}
+.so-path .so-grid .so-step:focus-within .so-ext i::before,.so-path .so-grid .so-step:focus-within .so-ext i::after,
+.so-path .so-grid .so-step.sx-on .so-ext i::before,.so-path .so-grid .so-step.sx-on .so-ext i::after{
+  background:var(--ink);
+}
+.so-path .so-grid .so-s1:focus-within .so-ext i::before,
+.so-path .so-grid .so-s1.sx-on .so-ext i::before{background:var(--accent)}
+/* the station tick of the live stage takes the mark station 01 wears at
+   rest: same position, 2px wide, 12px tall, amber */
+.so-path .so-grid .so-step:focus-within .so-k::before,
+.so-path .so-grid .so-step.sx-on .so-k::before{width:2px;height:12px;background:var(--accent)}
+.so-path .so-grid .so-step:focus-within .so-k b,
+.so-path .so-grid .so-step.sx-on .so-k b{color:var(--accent)}
+.so-path .so-grid .so-step:focus-within h3,
+.so-path .so-grid .so-step.sx-on h3{color:var(--ink)}
+.so-path .so-grid .so-step:focus-within .v,
+.so-path .so-grid .so-step.sx-on .v{color:var(--ink-mute)}
+.so-path .so-grid .so-step:focus-within .pts li,
+.so-path .so-grid .so-step.sx-on .pts li{color:var(--ink-body)}
+.so-path .so-grid .so-step:focus-within .checker,
+.so-path .so-grid .so-step.sx-on .checker{opacity:1}
+/* Hover is the same state, and it is declared ONLY where a pointer that
+   can hover exists. A phone's browser leaves an emulated hover on the
+   last element tapped, so without this gate the second tap released the
+   selection (aria-pressed went back to false) while the stage stayed
+   lit: the release was true in the record and invisible on the screen,
+   which is the touch defect the round's rules name outright. Specificity
+   carries the order rather than source position: every loud selector is
+   one class ahead of every quiet one, so a hover still beats a standing
+   selection and exactly one stage is ever live. */
+@media (hover:hover){
+  .so-grid:hover .so-step .so-ext i{border-top-color:var(--line-2)}
+  .so-grid:hover .so-step .so-ext i::before,.so-grid:hover .so-step .so-ext i::after{background:var(--line-3)}
+  .so-grid:hover .so-step .so-k::before{background:var(--line-2)}
+  .so-grid:hover .so-step .so-k b{color:var(--ink-mute)}
+  .so-grid:hover .so-step h3{color:var(--ink-mute)}
+  .so-grid:hover .so-step .v{color:var(--ink-dim)}
+  .so-grid:hover .so-step .pts li{color:var(--ink-mute)}
+  .so-grid:hover .so-step .checker{opacity:.38}
+  .so-path .so-grid .so-step:hover .so-ext i{border-top-color:var(--ink)}
+  .so-path .so-grid .so-step:hover .so-ext i::before,
+  .so-path .so-grid .so-step:hover .so-ext i::after{background:var(--ink)}
+  .so-path .so-grid .so-s1:hover .so-ext i::before{background:var(--accent)}
+  .so-path .so-grid .so-step:hover .so-k::before{width:2px;height:12px;background:var(--accent)}
+  .so-path .so-grid .so-step:hover .so-k b{color:var(--accent)}
+  .so-path .so-grid .so-step:hover h3{color:var(--ink)}
+  .so-path .so-grid .so-step:hover .v{color:var(--ink-mute)}
+  .so-path .so-grid .so-step:hover .pts li{color:var(--ink-body)}
+  .so-path .so-grid .so-step:hover .checker{opacity:1}
+}
+
+/* ---- 28.4 the phone ---- */
+@media (max-width:900px){
+  /* The stacked label is 31px of type and a tap target has to be bigger
+     than its ink, so the button's own hit area is extended into the
+     margins above and below it. It reaches nothing else: the extent above
+     clears by 14px and the heading below by 16px, so no word and no line
+     is covered and the layout does not move by a pixel. */
+  .sx-k::after{content:"";position:absolute;left:0;right:0;top:-12px;bottom:-14px}
+}
+
+/* ---- 28.5 reduced motion ---- */
+/* The figure is simply there: no draw, no state transition. The states
+   themselves stay, because a colour change that arrives instantly is not
+   motion, and a reader who asks for less motion still gets the emphasis. */
+@media (prefers-reduced-motion:reduce){
+  html.js .so-path .so-ext i,html.js .so-path.in .so-ext i{clip-path:none;animation:none}
+  .so-path .so-k::before,.so-path .so-k b,.so-path .so-step h3,.so-path .so-step .v,
+  .so-path .so-step .pts li,.so-path .so-step .checker,.so-path .so-ext i,
+  .so-path .so-ext i::before,.so-path .so-ext i::after{transition:none}
+}
+
+/* ---- end 28 ---- */

@@ -2042,5 +2042,102 @@ documents the binding decisions.
 
 ### Solutions (section 28, `sx-`): the adoption path, progressing
 
-(written by the solutions builder)
+The adoption figure was not redesigned and not moved: it is the round-nine
+drawing exactly, given a state. Proof rather than claim — the resting
+figure at 1440 and at 390 is **pixel-identical** to the base tree
+(`ImageChops.difference` bbox `None` on the `.so-path` element at both
+widths), every station, run, heading and bullet reports the same x, width
+and height, and the page's rendered text is 1065 words in and 1065 out
+with no word-level difference. Nothing in section 23 was edited; section
+28 only adds states and one draw, and where it changes a section 23
+colour it does so from a selector one class ahead.
+
+**The station label is the stage's control, binding.** `01 / ONE
+DECISION` is now a `<button class="so-k sx-k">` holding exactly the words
+it held as a `<p>`. The figure needed one real control for the keyboard
+and for the phone, and inventing a tab strip over a drawn diagram would
+have been the generic component this pass exists to delete; the station
+label is already the stage's name and already the thing a reader points
+at. `.sx-k` resets the browser's button costume and nothing else — the
+top border is left alone, because it is the station rule and the three
+heads still abut into one continuous hairline. `display:contents` on the
+wide layout is untouched, and `:hover` and `:focus-within` match through
+it, so the whole step is the hover target while the button is the
+keyboard and tap target.
+
+**Three sources, one state.** `:hover`, `:focus-within` and `.sx-on` (the
+sticky selection the script sets on tap) all produce the same activation;
+`.sx-act` on the frame is what puts the other two stages into the quiet
+register. Hover and focus are pure CSS, so the figure answers a pointer
+and a keyboard with the script absent. Specificity carries the order
+rather than source position: every loud selector is exactly one class
+ahead of every quiet one, so a hover beats a standing selection and
+**exactly one stage is ever live**.
+
+**What activation is.** The live stage's station tick takes the mark
+station 01 wears at rest (same position, 2px by 12px, amber), its index
+goes amber, its extent run lifts to full ink and its marks with it; its
+heading, sentence and bullets stay at their resting weight while the
+other two step back: heading to `--ink-mute` (6.1:1), sentence to
+`--ink-dim` (4.9:1), bullets to `--ink-mute`, checkers to `.38` opacity,
+runs to `--line-2`. Nothing moves, nothing resizes, no station or
+division changes position: the states are colour, weight and opacity
+only, which is why the lattice survives them.
+
+**Amber, and the round-nine rule.** At REST the figure still carries
+exactly one accent, the decision point at station 01 — that is unchanged
+and visible in the pixel comparison. While a stage is active, amber marks
+THAT stage and station 01 stands down if it is not the live one, because
+amber means active here as everywhere else on the site. A second
+permanent accent would have broken the round-nine ruling; a temporary one
+is that ruling working. The accent returns to 01 the moment the reader
+lets go.
+
+**The draw: clip, not scale, and once.** The runs arrive drawn rather than
+present: `clip-path:inset()` sweeping left to right, 01 (.55s from .12s),
+then 02 extending (.80s from .72s), then 03's four lines one after
+another (.52s each from 1.60s, .10s apart) — 2.42s end to end, one pass,
+no loop, resting in the static state. `transform:scaleX()` was rejected:
+it compresses the run's own divisions on the way in, and a lattice that
+reads wrong for half a second is the one thing this figure may not do.
+The trigger is the existing reveal observer's `.in` class, the seam
+`.pl-run` uses on Platform, so with JS off the figure is simply there and
+under `prefers-reduced-motion` it is simply there too (`clip-path:none`,
+explicitly, not merely a collapsed duration). **The insets are negative on
+three sides** (`-14px`): the station marks overhang the run's own box by
+up to 12px, and clipping at the box edge cuts them off at rest.
+
+**Touch, and the defect that was found there.** `:hover` is declared only
+inside `@media (hover:hover)`. Without that gate the second tap released
+the selection in the record (`aria-pressed` back to `false`, `.sx-act`
+gone) while the stage stayed lit by the phone's emulated hover — a
+release that is true in the DOM and invisible on the screen. Verified by
+forcing `availableHoverTypes=1, availablePointerTypes=2` in the browser:
+tap selects, second tap returns the figure to rest, tapping another stage
+moves the selection, tapping outside the figure releases it. A tap also
+FOCUSES the button it lands on, so a pointer release drops the focus with
+it; a keyboard release (Escape, or Enter on the selected stage, which
+reports `detail === 0`) keeps the focus, because taking the tab position
+away from someone using the keyboard is the worse failure. On the phone
+the label's hit area is extended into the margins above and below it by a
+transparent `::after` (31px of ink, about 57px of target) — it reaches no
+word and no line and the layout does not move by a pixel.
+
+**Keyboard.** Each stage's label is in the tab order and carries
+`aria-pressed`; focus alone activates the stage, Enter or Space makes it
+stick, Escape releases the selection. Escape does not blur, so a focused
+stage stays active after its selection is dropped: for a keyboard reader
+focus is the pointer, and the state follows it.
+
+**Not done, deliberately.** The brief allows the activation of stage 01 to
+reach down into the `first-engagement` block. It is not built: that block
+already carries a permanent amber rule along its top edge, so "lighting"
+it would mean brightening something already lit, and it would put a
+second, distant thing in motion for a hover on a figure above it. The
+figure states end at the figure.
+
+**On the audit list:** nothing was deleted and nothing lost its last user
+this round. `.sx-k` is the only new class in the page's markup, and the
+three `<p class="so-k">` elements that became buttons are the only markup
+change on Solutions.
 
