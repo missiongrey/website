@@ -1806,7 +1806,250 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
    sections above render unchanged on every other page. Tokens only, no
    new font file, no new accent value, no gradient as decoration, no glow.
    Written in the same voice as section 19: the why beside the what. */
-/* ---- 21.1 ---- */
+/* ---- 21.1 the member register ---- */
+/* The Guild's one figure, and the only one this section draws twice: a
+   rule with one tick per member of the roster, in the roster's own
+   order. It measures something real (twenty-eight members, twenty-eight
+   ticks), which is the condition section 19 put on drawing a scale at
+   all; a ruler that tracks nothing is a HUD graphic. The four accent
+   ticks are the four members printed at plate scale further down the
+   page, and they sit at those members' own positions in the register
+   rather than at its head, because the four were read ACROSS the roster
+   and the figure should say so. Its label is the roster key's own count
+   line. Home carries the same object at the same reading, so a visitor
+   who follows the link arrives at a figure they have already met.
+   If the roster changes length, the divisor below changes with it. */
+.gd-reg{margin-top:clamp(34px,4.6vw,62px)}
+.gd-count{
+  font:500 10.5px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);
+}
+.gd-reg-rule{
+  position:relative;display:block;height:17px;margin-top:13px;
+  border-top:1px solid var(--line-2);
+  background-image:linear-gradient(to right,var(--line-2) 0 1px,transparent 1px);
+  background-size:calc(100% / 28) 9px;background-repeat:repeat-x;background-position:left top;
+}
+/* the closing tick: a background repeat draws the leading edge of each
+   cell, so the twenty-eighth station has a tick and the rule's own end
+   does not. The register is a measure and a measure is closed. */
+.gd-reg-rule::after{content:"";position:absolute;right:0;top:0;width:1px;height:9px;background:var(--line-2)}
+.gd-reg-rule i{
+  position:absolute;top:-1px;left:calc(100% * (var(--n) - 1) / 28);
+  width:2px;height:17px;background:var(--accent);
+}
+
+/* ---- 21.2 the fold ---- */
+/* Asymmetric and quiet: the claim on the left, the network sentence on
+   the right at its own measure and sitting on the same baseline, the
+   register ruling the full width under both. No instrument plate here.
+   The page's subject is people, and the one thing drawn on the fold is
+   the roster itself. */
+@media (min-width:981px){
+  .gd-hero-grid{
+    display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);
+    gap:clamp(30px,4.2vw,70px);align-items:end;
+  }
+  .gd-hero .hero-dek{margin-top:0;padding-bottom:7px}
+}
+
+/* ---- 21.3 the expert layer, drawn ---- */
+/* The four things Guild expertise adds were four cells of a hairline
+   grid, which says they are four separate features. They are four
+   entry points into one process, so they are drawn as one: a rule
+   carrying the system's own continuous work as an even comb, and the
+   four stations hanging under it. Each station's accent tick RISES
+   through the rule into the comb and continues below it, which is the
+   section's dek drawn rather than restated: expert judgment enters at
+   defined points, in a form the system carries.
+   The comb has two graduations, fine and major, the way a measuring
+   rule does. It carries no label and no value, so it claims nothing,
+   and a figure that claims nothing wears no instrument chrome (the same
+   reading that keeps .steps out of a .frame in section 16). */
+.gd-sys{margin-top:clamp(26px,3.4vw,42px)}
+.gd-field{
+  height:clamp(34px,4.4vw,52px);border-bottom:1px solid var(--line-2);
+  background-image:
+    linear-gradient(to right,var(--line-2) 0 1px,transparent 1px),
+    linear-gradient(to right,var(--line) 0 1px,transparent 1px);
+  background-size:29px 13px,7.25px 6px;
+  background-repeat:repeat-x,repeat-x;
+  background-position:left bottom,left bottom;
+}
+.gd-stations{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 clamp(16px,2.2vw,32px)}
+.gd-st{position:relative;padding:28px clamp(8px,1.2vw,18px) 0 15px}
+.gd-st::before{
+  content:"";position:absolute;left:0;top:-15px;width:2px;height:31px;background:var(--accent);
+}
+.gd-st h3{
+  font:500 12px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
+  margin-bottom:12px;
+}
+.gd-st p{font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
+
+/* ---- 21.4 the expertise areas, as a register ---- */
+/* Ten pills become ten stations on one rule: same words, same order,
+   one fewer pill run on a site whose brief names pills as a thing to
+   avoid. The idiom is section 19's organization register at label size. */
+.gd-doms{list-style:none;display:flex;flex-wrap:wrap;margin-top:24px}
+.gd-doms li{
+  position:relative;border-top:1px solid var(--line-2);
+  padding:13px clamp(16px,2.4vw,36px) 0 9px;
+  font:500 10.5px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);
+}
+.gd-doms li::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
+
+/* ---- 21.5 the roster ---- */
+/* ONE list, twenty-eight entries, one markup. A featured entry is the
+   same <li> carrying one extra class, so what the page treats as an
+   editorial choice is an editorial choice in the source too: same
+   fields, same profile link, same list semantics for a screen reader,
+   and swapping a member in or out is moving an <li> and toggling
+   .gd-m-lead. Nothing here encodes rank, and the larger plates are a
+   reading device, not a ranking.
+   THE PLATE IS THE PORTRAIT SLOT. No Guild photographs exist in this
+   repo, so it is built to stand as a typographic object first: the
+   monogram in the instrument voice on a ruled plate with registration
+   corners. The day photographs arrive, an <img> goes inside the same
+   div and the monogram stands down; nothing else changes. */
+.gd-key{
+  display:flex;flex-wrap:wrap;gap:8px 24px;margin:24px 0;
+  font:400 10.5px/1.8 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim);
+}
+.gd-roster{
+  list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(28px,4vw,64px);
+  margin-top:clamp(26px,3.2vw,40px);border-bottom:1px solid var(--line);
+}
+.gd-m{position:relative;border-top:1px solid var(--line)}
+.gd-m::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
+.gd-p{
+  display:grid;grid-template-columns:40px minmax(0,1fr);gap:18px;
+  padding:22px 6px;transition:background-color .2s ease;
+}
+.gd-m:hover .gd-p,.gd-m:focus-within .gd-p{background:var(--bg-1)}
+.gd-plate{
+  position:relative;width:40px;height:40px;flex:none;
+  border:1px solid var(--line-2);background:var(--bg);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.gd-gram{font:500 11px/1 var(--mono);letter-spacing:.1em;color:var(--ink-mute)}
+/* the portrait, when there is one */
+.gd-plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.gd-p h3{font-size:16.5px;font-weight:600;letter-spacing:-.01em}
+.gd-bio{margin-top:8px;font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
+.gd-foot{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin-top:14px}
+/* domains as notation, not as tags: mono at label size, spaced rather
+   than boxed. Twenty-eight rows of bordered pills is the card grid this
+   round exists to stop, printed small. */
+.gd-tags{display:flex;flex-wrap:wrap;gap:6px clamp(12px,1.5vw,20px)}
+.gd-tags span{
+  font:400 10.5px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);
+}
+.gd-prof{
+  margin-left:auto;display:inline-flex;align-items:center;min-height:24px;
+  font:500 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);
+  border-bottom:1px solid var(--line-2);white-space:nowrap;
+}
+.gd-prof:hover{color:var(--ink)}
+
+/* the featured entry: the same record at plate scale */
+.gd-m-lead{border-top:1px solid var(--line-2)}
+.gd-m-lead::before{height:11px;background:var(--accent)}
+.gd-m-lead .gd-p{
+  grid-template-columns:clamp(92px,10.5vw,124px) minmax(0,1fr);
+  gap:clamp(18px,2.4vw,30px);padding:clamp(24px,2.8vw,34px) 6px clamp(26px,3vw,36px);
+}
+/* The plate takes the recessed ground, not the raised one: at --bg-1 on
+   a --bg page the rectangle read as a hole where a photograph is
+   missing. Recessed, it reads as a plate with a monogram set on it, and
+   it is the same plane section 19 puts the globe inside. */
+.gd-m-lead .gd-plate{width:100%;height:auto;aspect-ratio:3/4;background:var(--bg-2)}
+/* registration corners: the plate is a plate, not an empty photo box */
+.gd-m-lead .gd-plate::before,.gd-m-lead .gd-plate::after{
+  content:"";position:absolute;width:9px;height:9px;pointer-events:none;
+}
+.gd-m-lead .gd-plate::before{top:5px;left:5px;border-top:1px solid var(--line-3);border-left:1px solid var(--line-3)}
+.gd-m-lead .gd-plate::after{bottom:5px;right:5px;border-bottom:1px solid var(--line-3);border-right:1px solid var(--line-3)}
+.gd-m-lead .gd-gram{font-size:clamp(26px,3vw,36px);letter-spacing:.14em;color:var(--ink-mute)}
+.gd-m-lead .gd-p h3{font-size:clamp(20px,2.1vw,25px);line-height:1.15;letter-spacing:-.02em}
+.gd-m-lead .gd-bio{margin-top:12px;font-size:16px;line-height:1.62;color:var(--ink-body);max-width:46ch}
+.gd-m-lead .gd-foot{align-items:stretch;gap:0;margin-top:clamp(18px,2.2vw,26px)}
+/* the featured entry's own domains hang from a rule, like every other
+   list on this page */
+.gd-m-lead .gd-tags{gap:0}
+.gd-m-lead .gd-tags span,.gd-m-lead .gd-prof{
+  position:relative;border-top:1px solid var(--line-2);border-bottom:0;
+  padding:12px clamp(14px,1.8vw,26px) 0 9px;min-height:0;
+}
+.gd-m-lead .gd-tags span::before,.gd-m-lead .gd-prof::before{
+  content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3);
+}
+/* the profile link keeps a link's affordance while it stands on the
+   station rule: without the underline it read as a fifth domain */
+.gd-m-lead .gd-prof{
+  margin-left:0;color:var(--ink-mute);padding-right:0;
+  border-bottom:1px solid var(--line-2);padding-bottom:3px;
+}
+.gd-m-lead .gd-tags span{color:var(--ink-mute)}
+.gd-m-lead .gd-prof:hover{color:var(--ink)}
+
+/* ---- 21.6 the Guild moment on Home ---- */
+/* The same three sentences the page already carried, composed as its one
+   human counterpoint: the claim set apart in the editorial face (the
+   type ladder of section 18, statement register), the network sentence
+   at reading measure beside it, the consequence hanging from its own
+   rule under that, and the Guild's register ruling the foot with the
+   link at its end. It is bounded above by a rule because it is a
+   different kind of evidence from the trust architecture above it: not
+   a property of the system, a person. */
+.gd-home{
+  margin-top:clamp(40px,5.2vw,64px);padding-top:clamp(32px,4.2vw,52px);
+  border-top:1px solid var(--line-2);
+  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+  gap:clamp(26px,3.4vw,44px) clamp(32px,5vw,72px);align-items:start;
+}
+.gd-claim{
+  font-family:var(--serif);font-weight:600;letter-spacing:-.015em;
+  font-size:clamp(22px,2.6vw,30px);line-height:1.26;color:var(--ink);max-width:21ch;
+}
+.gd-net{font-size:16.5px;line-height:1.7;color:var(--ink-body);max-width:58ch}
+.gd-coda{
+  position:relative;margin-top:clamp(18px,2.2vw,24px);padding-top:16px;
+  border-top:1px solid var(--line);
+  font-size:15.5px;line-height:1.6;color:var(--ink-mute);max-width:52ch;
+}
+.gd-coda::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
+.gd-home-foot{
+  grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,1fr) auto;
+  gap:16px clamp(28px,4vw,56px);align-items:end;
+}
+.gd-home-foot .gd-reg{margin-top:0}
+.gd-home-foot .more-link{margin-top:0;padding-bottom:2px}
+
+/* ---- 21.7 responsive ---- */
+@media (max-width:900px){
+  .gd-home{grid-template-columns:minmax(0,1fr)}
+  .gd-roster{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  /* The figure keeps its idea and changes its shape: the comb still runs
+     across the section, and under it each station hangs from its own
+     rule with its own accent tick. Four columns of 85px would be a
+     shrunken desktop graphic, which is the one thing the brief forbids. */
+  .gd-stations{grid-template-columns:minmax(0,1fr)}
+  .gd-st{padding:20px 0 22px 15px;border-top:1px solid var(--line)}
+  .gd-st:first-child{border-top:0}
+  .gd-st::before{top:-1px;height:24px}
+  .gd-st:first-child::before{top:-15px;height:38px}
+}
+@media (max-width:560px){
+  /* the featured plate stays beside the name and stays a portrait: a
+     plate that drops under the text stops being a portrait slot */
+  .gd-m-lead .gd-p{grid-template-columns:78px minmax(0,1fr);gap:16px}
+  .gd-foot{gap:10px 14px}
+  .gd-prof{margin-left:0}
+  .gd-m-lead .gd-prof{margin-left:0}
+  .gd-home-foot{grid-template-columns:minmax(0,1fr)}
+}
 
 /* ---- end 21 ---- */
 
