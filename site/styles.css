@@ -2144,11 +2144,46 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
   .pl-mom .win-body.focus-globe img{
     position:absolute;left:-18.227%;top:0;width:118.227%;max-width:none;height:auto;
   }
-  .pl-mom .win-body.focus-graph{position:relative;overflow:hidden;aspect-ratio:1140/1037}
+}
+
+/* ---- 22.2c the knowledge graph, cropped to what can be read ---- */
+/* Printing the graph's content area whole put about 1100px of undifferentiated
+   multi-colour node field on the page: at that size nothing in it can be read,
+   it is the weakest interface on the site, and a dense coloured network is the
+   one picture the counter-prompt names outright. The product draws no text on
+   its nodes, so the readable evidence in this frame is the record it is open
+   on and the shape of the relations around it, and the crop is cut to exactly
+   that: source x 300 to 1072, y 0 to 250 of a 1920x1037 asset. That is the
+   breadcrumb with the entity and its type tag, the entity search beside it,
+   and the sparse upper rim of the network where single nodes and the edges
+   between them can still be followed. It ends in the gap before the Level
+   control rather than through it, and the field is cut by the plate, which is
+   what the site does with the globe: a figure is a view, not an object.
+   On a phone the same rect at 0.44 scale would be unreadable, so the crop
+   changes rather than scales: x 300 to 636, y 0 to 340, printed at about 1:1,
+   the entity at full size over a handful of nodes and their relations.
+   The frame stays a real product screen at the real address; only the rect
+   changed, and the alt text changed with it. */
+@media (min-width:601px){
+  .pl-mom .win-body.focus-graph{position:relative;overflow:hidden;aspect-ratio:772/250}
   .pl-mom .win-body.focus-graph img{
-    position:absolute;left:-26.316%;top:0;width:168.421%;max-width:none;height:auto;
+    position:absolute;left:-38.860%;top:0;width:248.705%;max-width:none;height:auto;
   }
 }
+@media (max-width:600px){
+  .pl-mom .win-body.focus-graph{position:relative;overflow:hidden;aspect-ratio:336/340}
+  .pl-mom .win-body.focus-graph img{
+    position:absolute;left:-89.286%;top:0;width:571.429%;max-width:none;height:auto;
+  }
+}
+
+/* A detail is printed at the size it was cut for. The graph crop is a
+   772px region, and stretching it across 1200px of column upscales the
+   product's own type by half again for no gain in what can be read, so the
+   plate stops at the width where the crop is close to its own scale and the
+   rest of the row is air. It is also the one of the four moments whose proof
+   is a detail rather than a whole screen, and the composition says so. */
+.pl-detail{max-width:920px}
 
 /* ---- 22.3 the delivery exhibits ---- */
 /* The sourced report and the daily brief are both answers to one
