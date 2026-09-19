@@ -1526,7 +1526,56 @@ page's builder and documents the binding decisions for that page.
 
 ### Home (section 20, `hv-`)
 
-(builder writes here)
+Home was refined, not redesigned. The longitude scale, the UTC notation,
+the globe, the amber signals, the technical labels, the asymmetric hero and
+the grey atmosphere all stand as round eight left them; section 20 holds
+one selector, and the rest of the round is the hero indicator, the globe's
+signal model and one measured correction inside section 19.
+
+**The hero indicator, the one wording change on the site.** The cadence
+ledger's third station read `Real time / Maritime tracking`. It now reads
+`Global events / Monitored`: maritime tracking is one feed of many and
+described the proposition too narrowly, and "real time" is a claim the
+cadence cannot make for the whole watch. The station keeps its place, its
+grammar and its ledger; only the two words changed. The hero names one
+broad category and lists nothing: the breadth is the point, an index of
+domains in the fold would be a second argument.
+
+**The globe watches developments, not routes, binding.** The instrument
+drew six maritime chokepoints with route arcs between them and a `Route
+signal` readout. It now draws **five signal stations at real coordinates,
+one per development type**: Panama Canal (infrastructure), Brussels
+(regulatory), the Strait of Hormuz (geopolitical), the Bay of Bengal
+(climate) and Singapore (market). The arcs are gone with the routes. An arc
+between two typed stations says nothing the stations do not, and a globe
+strung with lit connections is the generic network image the brief exists
+to avoid. What moves instead is the world and one station at a time: a
+station facing the reader activates, its mark opens one ring and rests, and
+the readout prints the type over the place, six to nine seconds apart. No
+new colour, no second accent, no node added: the set got smaller.
+
+**The readout names a TYPE and a PLACE, never an event, binding.** It is a
+drawn figure under an `illustrative view` caption, and a drawn figure may
+not report a fact it did not measure. `REGULATORY SIGNAL / BRUSSELS` is the
+kind of development Mission Grey watches and where such a development is
+illustrated; `Brussels adopts X` would be fabricated metadata, which is the
+defect the honesty convention and the `.evi` rule already forbid elsewhere.
+The station the readout is naming is drawn one step larger while its line
+is up and steps back as the line fades, so the words and the place on the
+sphere read as one fact.
+
+`.hv-sig` is section 20's only selector: it sets the readout as label over
+value, the same grammar as every other list in the fold. Run on one line
+the longer strings crossed the sphere's dot grid; stacked they clear the
+limb, and the type reads first. The globe's `aria-label` and the no-JS
+plate's `alt` follow the drawing, as alt text always does.
+
+**One measured correction in section 19.** The cadence ledger reserved two
+lines of label below 700px only. The four-across row wraps its longest
+label from about 775px down, so between 701 and 775 one value sat a line
+below the other three and the ledger's baseline broke. The reservation now
+runs to 860px. Nothing else on the page changed: the walk at 1440 and 390
+found no other defect worth a rule.
 
 ### Guild and the Home Guild section (section 21, `gd-`)
 

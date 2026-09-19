@@ -1770,14 +1770,22 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
   .ap-r1,.ap-r2,.ap-r3{min-height:0}
   .ev-fig .frame{max-width:100%}
 }
+/* Each cell is its own grid, so a label that wraps drops its own value one
+   line and breaks the row's baseline, which is the one thing a ledger may
+   not do. Two lines of label are reserved in every cell. The reservation
+   was scoped to the 2x2 layout below 700px, but the four-across row wraps
+   its longest label from about 775px down (measured: two lines at 740,
+   one at 780), so between 701 and 775 the ledger printed three values on
+   one line and the fourth a line lower. The reservation now covers the
+   whole band where a label can wrap, with margin above the measured edge;
+   above it the cells are wide enough that no label has two lines. */
+@media (max-width:860px){
+  .cadence-v1 .k{min-height:2em}
+}
 @media (max-width:700px){
   .cadence-v1{grid-template-columns:1fr 1fr;row-gap:4px}
   .cadence-v1>div{border:0;padding-right:12px}
   .cadence-v1>div:nth-child(n+3){margin-top:14px;border-top:1px solid var(--line)}
-  /* Each cell is its own grid, so a label that wraps would drop its own
-     value one line and break the row's baseline, which is the one thing a
-     ledger may not do. Two lines of label are reserved in every cell. */
-  .cadence-v1 .k{min-height:2em}
 }
 @media (max-width:600px){
   /* The phone plate crops harder still: the first index alone, read at
@@ -1796,7 +1804,18 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
    sections above render unchanged on every other page. Tokens only, no
    new font file, no new accent value, no gradient as decoration, no glow.
    Written in the same voice as section 19: the why beside the what. */
-/* ---- 20.1 ---- */
+/* ---- 20.1 the signal readout ---- */
+/* The globe prints ONE signal moment at a time, and it prints it the way
+   every other list on this page is set: the label over the value. The
+   type is the label, in the accent, because the type is what the moment
+   is about; the place is the value, in ink. Stacked rather than run on,
+   the readout also clears the sphere's limb at the fold's width instead
+   of running across the dot grid, which a one-line readout did as soon as
+   the words stopped being two port names. Nothing else about the readout
+   changes: it is the same mono at the same size in the same corner, and
+   it still fades out between moments. */
+.hv-sig{line-height:1.5}
+.hv-sig b{display:block;margin-right:0}
 
 /* ---- end 20 ---- */
 
