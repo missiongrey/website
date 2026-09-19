@@ -2390,19 +2390,32 @@ html.js .reveal.in .pl-run{transform:scaleX(1)}
   display:grid;grid-template-columns:repeat(12,minmax(0,1fr));
   padding:clamp(22px,2.8vw,34px) clamp(16px,2.2vw,28px) clamp(26px,3vw,36px);
 }
-/* A run: one hairline with its divisions ticked under it, and a taller
-   mark at the station it starts from. The bounded run closes with a
-   second tall mark at its far end, the way a dimension is drawn; the two
-   runs that do not close carry an origin mark only. That difference is
-   the notation doing the work the copy also does. */
-.so-ext{display:grid;gap:13px}
+/* A run: a ruled line with its divisions ticked under it and a mark at
+   the station it starts from. The three runs step in WEIGHT as well as in
+   length, because a progression drawn in one hairline weight is a
+   progression nobody sees: ONE DECISION is a single amber mark on a short
+   hairline closed at both ends, the way a dimension is drawn; STANDING
+   WATCH is one sustained 2px line in ink that does not close; and
+   ORGANIZATIONAL INTELLIGENCE is that same line multiplied into a field of
+   four, twice the ink of the line before it in half its length. One mark,
+   one line, one field, left to right. */
+.so-ext{display:grid;gap:11px}
 .so-ext i{
-  position:relative;display:block;height:8px;border-top:1px solid var(--line-2);
+  position:relative;display:block;height:11px;border-top:1px solid var(--line-3);
   background-image:linear-gradient(to right,var(--line-3) 0 1px,transparent 1px);
   background-position:left top;
 }
-.so-ext i::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:13px;background:var(--line-3)}
-.so-s1 .so-ext i::after{content:"";position:absolute;right:0;top:-1px;width:1px;height:13px;background:var(--line-3)}
+.so-ext i::before{content:"";position:absolute;left:0;top:-1px;width:2px;height:17px;background:var(--ink-mute)}
+/* the bounded run: a short hairline closed at both ends, and the decision
+   itself standing at its origin in the figure's one accent */
+.so-s1 .so-ext i{height:13px}
+.so-s1 .so-ext i::before{width:3px;height:22px;background:var(--accent)}
+.so-s1 .so-ext i::after{content:"";position:absolute;right:0;top:-1px;width:1px;height:15px;background:var(--ink-mute)}
+/* the sustained line, and the field that multiplies it */
+.so-s2 .so-ext i,.so-s3 .so-ext i{border-top-width:2px;border-top-color:var(--ink-mute)}
+.so-s3 .so-ext{gap:6px}
+.so-s3 .so-ext i{height:7px}
+.so-s3 .so-ext i::before{height:13px}
 /* the station rule: three heads abutting into one continuous hairline,
    each with its tick at its leading edge (padding, never gap, or the rule
    breaks where the gap falls) */
@@ -2458,6 +2471,7 @@ html.js .reveal.in .pl-run{transform:scaleX(1)}
   .so-ext i{background-size:calc(100% / 12) 100%}
   .so-s1 .so-ext i{width:34%;background-size:calc(100% / 4) 100%}
   .so-s2 .so-ext i{width:67%;background-size:calc(100% / 8) 100%}
+  .so-s1 .so-ext i::before{height:26px}
   .so-k{margin-top:14px;padding-right:0}
   .so-step h3,.so-step .v,.so-step .pts{margin-right:0}
 }
