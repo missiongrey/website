@@ -1514,3 +1514,32 @@ Headless Chromium clamps the layout viewport to 500px, so
 claim has to be captured through a 390px iframe inside a wider window.
 And `--virtual-time-budget` screenshots catch `.reveal` blocks mid
 transition, so a settled page needs `--force-prefers-reduced-motion`.
+
+## Round nine (2026-09-19): the visual system extended, sections 20 to 24
+
+The second visual-development pass. Home is refined, not redesigned; the
+system section 19 proposed is carried to Guild, Platform, Solutions and
+About, each page with its own composition and its own stylesheet section.
+No wording changed anywhere except the hero indicator that replaced
+"Maritime tracking, Real time". Each subsection below is written by the
+page's builder and documents the binding decisions for that page.
+
+### Home (section 20, `hv-`)
+
+(builder writes here)
+
+### Guild and the Home Guild section (section 21, `gd-`)
+
+(builder writes here)
+
+### Platform (section 22, `pl-`)
+
+(builder writes here)
+
+### Solutions (section 23, `so-`)
+
+(builder writes here)
+
+### About (section 24, `ab-`)
+
+(builder writes here)
