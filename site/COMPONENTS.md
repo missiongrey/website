@@ -2017,3 +2017,30 @@ label behind one accent tick. The honesty tier is unchanged: a plate is
 still the container for a real screen and nothing else. Unprefixed on
 purpose, because it modifies a shared component rather than a page, and
 scoped to `.window` so nothing outside a window can take it.
+
+## Round ten (2026-09-19): interaction, people hierarchy, sections 26 to 28
+
+The third visual-development pass, built on round nine from the chairman's
+"Visual system v0.3" brief: no wording change, no brand change, no
+redesign. Static design stays stable; interaction creates temporary
+emphasis; motion means active, changed, selected, connected, progressing
+and nothing more. People within a group carry equal static weight,
+always. Each subsection below is written by the area's builder and
+documents the binding decisions.
+
+### People (section 26, `pi-`): Guild, About, the register
+
+(written by the people builder)
+
+
+
+### Platform (section 27, `px-`): the trail and the proof views
+
+(written by the platform builder)
+
+
+
+### Solutions (section 28, `sx-`): the adoption path, progressing
+
+(written by the solutions builder)
+

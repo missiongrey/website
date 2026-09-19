@@ -2819,3 +2819,31 @@ html.js .reveal.in .pl-run{transform:scaleX(1)}
 }
 @media (max-width:760px){.win-plate .chrome .url{display:inline}}
 /* ---- end 25 ---- */
+
+/* ============ 26 PEOPLE INTERACTION (round ten, 2026-09-19): equal by default, emphasis on hover/focus/select ============ */
+/* Owner of this section: the people builder (Guild, About, the gd-reg
+   register on Home and Guild). Rules: every person in a group has the same
+   static weight; hover, focus, selection add temporary emphasis only;
+   nothing core lives only on hover; touch gets a selected state. */
+
+/* (section 26 body follows) */
+
+
+
+/* ============ 27 PLATFORM INTERACTION (round ten, 2026-09-19): the trail and the proof views ============ */
+/* Owner of this section: the platform builder. Rules: the intelligence
+   trail highlights a stage on hover/focus/select; the four proof moments
+   become one evidence area with selectable views; fine line, amber state,
+   technical label, restrained transition; never generic SaaS tabs. */
+
+/* (section 27 body follows) */
+
+
+
+/* ============ 28 SOLUTIONS INTERACTION (round ten, 2026-09-19): the adoption path, progressing ============ */
+/* Owner of this section: the solutions builder. Rules: the three-stage
+   path is fully visible by default; hover/focus/scroll activates the
+   relevant stage; scroll progression draws one line, then the standing
+   watch, then the organizational lines; slow, controlled, no autoplay. */
+
+/* (section 28 body follows) */
