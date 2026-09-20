@@ -2589,4 +2589,23 @@ range. Nothing in sections 01 to 28 was edited.
 
 ### Real-world texture (section 33)
 
-(one paragraph per page builder, plus the asset register in assets/texture/CREDITS.md)
+The asset register is assets/texture/CREDITS.md. One paragraph per page builder below.
+
+#### Home texture (33.1)
+
+(written by the home and solutions builder)
+
+
+
+
+#### Platform texture (33.2)
+
+(written by the platform builder)
+
+
+
+
+#### About texture (33.3)
+
+(written by the people builder)
+
