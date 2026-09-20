@@ -2577,7 +2577,143 @@ range. Nothing in sections 01 to 28 was edited.
 
 ### Home and Solutions (section 30)
 
-(written by the home and solutions builder)
+Home is balanced, atmospheric and immediate; Solutions is clean and
+commercially direct. Both pages keep every word, every section, every
+figure and every interaction. The built pages are word for word
+identical before and after this pass with one exception, the sanctioned
+one: the metadata credit under Home's new documentary plate and that
+image's alt text (Home 1144 visible words in, 1154 out, the ten added
+words being the credit line; Solutions 1065 in, 1065 out; alt and
+`aria-label` entries unchanged on Solutions, one added on Home). Nothing
+in section 29 was re-tuned: the ladder and the two rhythm tokens are read
+here, never redeclared, and every composition below is a layout on top of
+them.
+
+#### The fold ends on evidence, not on ground (Home)
+
+The brief asks for more of the page's argument inside the first screen
+without changing what the globe is doing, so nothing about the instrument
+moved: the longitude scale, the scope, the crop, the caption, the pause
+control and the cadence ledger are exactly as rounds eight and nine left
+them. What came out is ground. The fold was carrying three stacked runs
+of air in one screen (76px above the scale, 54 between the scale and the
+grid, 95 under the whole thing), and they are now 46, 30 and 72. At 1440
+the proof strip, which is the research partnerships and the G2 rating,
+moved from 904 to 817 and is the last thing inside 900px. **The first
+screen is the proposition, the instrument, the operating cadence and the
+outside evidence for all three**, which is what this fold was one run of
+ground short of.
+
+#### Three bands that were the same band (Home)
+
+The brief's section 19 names the rhythm to break: small technical label,
+huge headline, blank area, bordered graphic, repeated. Three bands on
+Home were that shape and each one is now an unequal pair, with the
+asymmetry coming from the information rather than from an offset:
+
+| Band | Before | After | Height |
+|---|---|---|---|
+| `#prepared`, "Being ready" | head, lede and three thin rows queueing down a very tall band | the claim in a 36 percent column, the three consequences carrying the density in the 64 | 685 to 520 |
+| `.sec.mission`, the quote | one quote in a whole screen under its own label | the label as a left rail, the quote in the wide column beside it, the band at .74 of the page's rhythm | 452 to 353 |
+| `#shared`, the statement | a 40px heading and two paragraphs in the left 55 percent, the right half empty | heading left, the reading that supports it right | 729 to 631 |
+
+No row, sentence, rule or accent inside them changed. `#prepared` also
+narrows its own label column, because the three row labels are two and
+three words and the sentences are what a reader scans.
+
+#### The first engagement is a flow, binding (Solutions)
+
+The page's most commercially important block, and the brief's section 7:
+every word stays, the big bordered container goes. It is now three
+stations hanging from one continuous rule, read left to right, with the
+shared 14x10 arrow on the rule between them. The rule is continuous
+because the separation is padding and never gap, which is the lesson the
+cadence ledger records in section 19.
+
+**Amber is the sequence, and that is the component's one accent role.**
+The block used to spend its accent on a 2px panel edge, which is
+decoration wearing a signal colour. It now spends it on three marks, one
+at the leading edge of each station, which is position in a sequence and
+is what amber means everywhere else on this site. Three marks of one role
+are not three roles, and the block carries no other accent.
+
+**Timing is an annotation, not a fourth group.** It sits under the flow
+on its own hairline, label left and sentence right, in the mute register
+at 15px. It stays LAST in the markup, where a reader meets it after the
+three groups it dates; placing it visually beside the heading would have
+put it ahead of them in the reading order for no gain (WCAG 2.1 SC
+1.3.2). Below 900px the flow stacks, the arrows turn ninety degrees, and
+each station keeps its rule and its mark: an arrow still pointing right
+between two blocks that sit one above the other is a direction the page
+does not have.
+
+#### The adoption path, refined and not redrawn (Solutions)
+
+The brief keeps this figure and asks for proportions, spacing, line
+weights and the subtlety of the activation. **The lattice is untouched**:
+the twelve tracks, the three spans, the division counts of 6, 18 and 10,
+the bounded run, the sustained run, the field of four and the accent at
+station 01 are exactly as section 23 drew them, because a ruler that
+stops registering with what it measures is the one thing this figure may
+not become. What changed is the air inside the frame (the grid's padding,
+the gap above the station rule, the two gaps inside a step) and how far
+the two quiet stages step back.
+
+**What recedes is the marks, not the words.** The quiet register used to
+drop a stage's sentence two inks, to `--ink-dim`, and its checkers to
+.38, which reads as the figure dimming rather than as one stage coming
+forward. The sentence now holds its resting ink and the checkers hold
+.55; the delta is carried by the station mark, the index, the extent run
+and the heading. That is round ten's own rule for the people registers,
+applied to a diagram.
+
+**A trap worth recording: the hover pair in section 28 is equal
+specificity.** `.so-grid:has(.so-step:hover) .so-step .v` and
+`.so-path .so-grid .so-step:hover .v` are both (0,5,0), and section 28
+relies on source order for the loud one to win. Re-declaring the quiet
+rule in a later section without re-declaring the loud one after it
+silently inverts the figure, so section 30 repeats BOTH, in that order.
+Verified by computed style: at rest every sentence is `--ink-mute`; with
+station 02 hovered, step 01's heading is mute while 02's is ink and 03's
+checkers are .55; with 03 selected by click, 03 is the only live stage.
+
+#### The two sparse runs the brief names (Solutions)
+
+The ground between the fold and the adoption figure (the hero's bottom
+padding, now .56 of the page's section padding) and the ground above "How
+each function uses the same layer" (that section's top padding, now .72).
+Both are cut against the page's own clean register rather than by a fixed
+number, so the page keeps one rhythm. The chapter label above the
+adoption figure gained 18px in the same move, because it had been sitting
+directly on the frame's top edge with nothing between them.
+
+#### Measured, at 1440 and at 390
+
+| Page | 1440 before | 1440 after | 390 before | 390 after |
+|---|---|---|---|---|
+| Home | 11514 | 11319 | 13902 | 14076 |
+| Solutions | 7440 | 7254 | 10077 | 9945 |
+
+Home is 1.7 percent shorter at 1440 while GAINING a figure it did not
+have: the three recomposed bands and the fold give back 449px and the
+documentary plate spends 256 of it. At 390 Home is 174px longer for the
+same reason, and that is the honest statement of the trade: the brief
+asks this page for a real-world moment, a figure has a height, and the
+phone hero gives back about 55px of it. Everything else on the phone is
+tighter than it was. No page scrolls horizontally at either width
+(`scrollWidth` equals the viewport on both, at both widths).
+
+#### Not done, deliberately
+
+The globe and its scope (the brief's own limit), the aperture figure, the
+pipeline, the recipe, the daily steps, the role views, the trust section
+and the Guild moment on Home; the worked chain, the two ruled indexes,
+the example application and the quotes on Solutions. They already follow
+the system, and the round-eleven instruction is refinement, not a pass
+over everything. The adoption figure's activation was softened but not
+re-timed, and the first-engagement block was not given a hover state:
+nothing in it is selectable, and motion on a block a reader is reading is
+motion without meaning.
 
 ### Platform (section 31)
 
@@ -2737,7 +2873,41 @@ The asset register is assets/texture/CREDITS.md. One paragraph per page builder 
 
 #### Home texture (33.1)
 
-(written by the home and solutions builder)
+Home's one documentary moment is `suez-ship-backlog-landsat.jpg`: about a
+hundred cargo ships and tankers at anchor in the Gulf of Suez while the
+canal was blocked, from Landsat, public domain. It sits in `#outside`
+beside "The cost is often not ignorance. It is delay.", because that is
+the sentence it is evidence for: a queue is what delay looks like from
+orbit. It is not a hero background, not a section break and not a
+texture behind type. The reading hangs on the left of the block and the
+plate runs off the right page edge, using the same expression the hero's
+scope uses, so the page's two bleeds register with each other.
+
+**A real photograph takes none of the three honesty chromes.** `.window`
+would claim it is the product, `Illustrative view` would call a published
+photograph drawn, and `.sheet` would call it an illustrative document.
+It is printed as a plate with a `--line-2` edge and nothing else, which
+is the reading the newsletter covers already take. The credit hangs under
+it in the metadata voice at caption size and carries no checker marker:
+that marker belongs to figures of Mission Grey's own work. The credit
+line is the only text this figure adds to the page, and it is the
+sanctioned exception to the wording freeze.
+
+**The file is prepared once, not by CSS.** One 1800x750 rectangle of the
+source (x 180 to 1980, y 900 to 1650) at full resolution, converted to
+grayscale, contrast lifted, written at quality 82, 115KB. Two rules the
+next texture should keep: the white point is held just under the page
+ground, so a documentary frame never prints brighter than the paper it
+sits on and the hairline edge always has something to separate; and the
+geometry inside the crop is the source's geometry, because a crop is
+honest and a composite is not. **The phone gets a different rect, for the
+reason the product plates already do**: an 1800px satellite frame printed
+366px wide is texture, and a hundred ships stop being countable, so under
+700px the plate is a window on x 300 to 1380, y 105 to 645 of the same
+file at the same printed scale, keeping the ships and both shores. The
+alt text describes what the image actually shows and names no date; the
+date, the licence, the full credit and the source URL are in
+`assets/texture/CREDITS.md`.
 
 
 
