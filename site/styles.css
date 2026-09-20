@@ -1253,7 +1253,7 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
    what it says, not despite what it is. An ordinary section heading is
    never serif. */
 .net-lede,.principle,.quote-main blockquote,.statement{
-  font-family:var(--serif);font-weight:600;letter-spacing:-.015em;
+  font-family:var(--sans);font-weight:600;letter-spacing:-.015em;
 }
 .net-lede{font-size:clamp(23px,2.7vw,31px);line-height:1.24}
 .quote-main blockquote{font-size:clamp(22px,2.7vw,30px);line-height:1.34;max-width:31ch}
@@ -1535,3 +1535,3316 @@ html.motion-off .globe-cap::before,html.motion-off .utc::before{animation:none}
   .appfig figcaption::before{display:inline-block;margin-right:10px;vertical-align:1px}
   .cap-desk{display:none}
 }
+
+/* ============ 19 HOME VISUAL DEVELOPMENT V1 (2026-09) ============ */
+/* A first visual-development pass over three areas of the home page only:
+   the fold, the external-world figure, and the application proof. Every
+   selector below is scoped to a class that exists on no other page, so
+   nothing in sections 01 to 18 is rewritten and every sibling page renders
+   exactly as it did before. Same standing rules: tokens only, no new font
+   file, no new accent value, no gradient used as decoration, no glow.
+
+   The system this pass proposes, in one line: MISSION GREY READS A RULED
+   WORLD. Three ideas carry it.
+
+   1 THE GRID BECOMES VISIBLE ONCE PER VIEW. A measured rule, drawn from
+     the thing being measured: a longitude scale across the fold whose
+     caret sits at the meridian the instrument under it is drawn at.
+   2 STATIONS HANG FROM RULES. Every list in these three areas is a rule
+     with ticked stations under it, never a row of boxes: the cadence, the
+     signals plotted on the external field, the systems inside the
+     organization. It is the site's own .trail grammar, extended.
+   3 THE FIGURE IS A VIEW, NOT AN OBJECT. The globe and the application
+     are both cropped by their plate rather than fitted inside it, which
+     is the difference between an instrument and an illustration. */
+
+/* ---- 19.1 the longitude scale (hero) ---- */
+/* Real coordinates, no claim attached: a 30 degree scale from 180W to
+   180E with the meridians ticked. The caret is written by the hero
+   script from the globe's own rotation, so the page and the sphere agree
+   about where the view is. Decorative to a screen reader (the globe's
+   alt text already says what is being watched), so the whole strip is
+   aria-hidden in the markup. */
+.hz{position:relative;height:28px}
+.hz::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--line-2)}
+.hz-ticks{
+  position:absolute;left:0;right:0;top:0;height:5px;
+  background-image:linear-gradient(to right,var(--line-2) 0 1px,transparent 1px);
+  background-size:calc(100% / 12) 100%;
+}
+.hz-ticks::after{content:"";position:absolute;right:0;top:0;width:1px;height:5px;background:var(--line-2)}
+.hz-m{
+  position:absolute;top:11px;left:var(--x);transform:translateX(-50%);
+  font:500 10px/1 var(--mono);letter-spacing:.2em;color:var(--ink-dim);white-space:nowrap;
+}
+/* the fallback longitude is the aspect the globe rests at without JS */
+.hz-now{position:absolute;left:var(--x,67.22%);top:-4px;width:1px;height:13px;background:var(--accent)}
+.hz-now::before{
+  content:"";position:absolute;left:-3px;top:-4px;width:7px;height:5px;background:var(--accent);
+  clip-path:polygon(0 0,100% 0,50% 100%);
+}
+
+/* ---- 19.2 the fold ---- */
+/* Asymmetric: the scale rules the whole width, the copy hangs on the left
+   third under a ruled eyebrow, the instrument is a tall plate on the
+   right that runs off the page edge. */
+.hero-v1{padding-top:26px}
+.hero-v1 .wrap{padding-top:clamp(30px,3.8vw,54px)}
+.hero-v1 .hero-eyebrow{margin-bottom:24px}
+.hero-v1 .hero-eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
+@media (min-width:981px){
+  .hero-v1 .hero-grid{grid-template-columns:minmax(0,.97fr) minmax(0,1.03fr);gap:clamp(26px,3.2vw,48px)}
+}
+/* The scope: the sphere is drawn larger than the plate and cropped by it,
+   so the fold carries a view onto the world instead of a globe centered
+   in a box. The canvas keeps its own aspect ratio; only the plate clips.
+   The plate takes --bg-2, the recessed ground, not --bg-1: at --bg-1 the
+   plane was invisible and the sphere floated on nothing. Recessed, the
+   fold has three grey planes and the sphere sits INSIDE something, which
+   is the whole of the depth this page is allowed. It is a plane, not a
+   dark block, and there is still exactly one theme. */
+.hero-v1 .scope{
+  position:relative;aspect-ratio:1/.62;overflow:hidden;
+  background:var(--bg-2);border-left:1px solid var(--line);border-block:1px solid var(--line);
+}
+.hero-v1 .scope canvas{
+  position:absolute;left:8%;top:-16%;width:100%;max-width:none;height:auto;aspect-ratio:1.15/1;
+}
+.hero-v1 .globe-route{left:18px;bottom:16px;top:auto}
+.hero-v1 .globe-cap{position:static;margin-top:14px;padding-left:18px;align-items:center}
+.hero-v1 .globe-cap::before{margin-top:0}
+/* no JS: the static plate is a dark photograph and cannot be cropped into
+   a light ground, so the scope stands down and the image is a plate again */
+html:not(.js) .hero-v1 .scope{aspect-ratio:auto;overflow:visible;background:none;border-left:0}
+html:not(.js) .hero-v1 .globe-cap{padding-left:0}
+
+/* the cadence, as a ledger: one rule, four ticked stations, label over
+   value. The four facts are unchanged; the boxes are gone. */
+.cadence-v1{
+  border:0;border-top:1px solid var(--line-2);
+  margin-top:clamp(44px,5.6vw,72px);
+}
+.cadence-v1>div{
+  position:relative;border:0;display:grid;align-content:start;
+  padding:16px clamp(16px,2.4vw,32px) 0 14px;
+}
+.cadence-v1>div::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.cadence-v1 .k{grid-row:1;margin-top:0}
+.cadence-v1 .v{grid-row:2;margin-top:10px;font-size:16px;letter-spacing:.02em}
+
+/* ---- 19.3 the aperture (#outside) ---- */
+/* One figure, read top down. The external field is ruled into three
+   registers at world, market and place scale, each one narrower than the
+   one above it and each one carrying less noise; the organization sits
+   under them as an even ruled register, which is the whole argument of
+   the section drawn as texture: outside is scattered, inside is gridded.
+   The walls between registers are the only diagonals on the site, drawn
+   with a non-scaling stroke so a stretched viewBox cannot thicken them.
+   The two existing columns keep their words; the markup places the outside
+   field before the organization band, which is where a funnel has to put
+   it, and the grid follows source order. */
+.ap{display:grid;padding:clamp(18px,2.4vw,30px) clamp(16px,2.2vw,28px) clamp(22px,2.8vw,34px)}
+.ap-k{margin-bottom:16px;color:var(--ink-mute)}
+.ap-k-out{margin-bottom:18px}
+/* the IN / OUT mark loses its box: one accent per figure, and in this one
+   the accent belongs to the decision at the bottom */
+.ap .rx-i{
+  border:0;padding:0;margin-right:0;font-size:10px;letter-spacing:.24em;color:var(--ink-dim);
+}
+.ap .rx-i::after{
+  content:"";display:inline-block;width:16px;height:1px;background:var(--line-2);
+  margin:0 14px;vertical-align:3px;
+}
+.ap-name{
+  margin:0;justify-self:start;width:max-content;
+  font:500 11px/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink);
+}
+.ap-row{
+  margin-inline:var(--in);border:1px solid var(--line);border-bottom:0;
+  padding:14px clamp(14px,1.8vw,22px) 20px;
+  display:grid;grid-template-columns:clamp(104px,12%,152px) repeat(12,minmax(0,1fr));column-gap:14px;
+}
+/* The noise thins register by register: the field is being filtered. The
+   pitch triples across three registers and the dot carries enough ink to
+   be seen at 1x, because a density change nobody can read is decoration
+   claiming to be meaning. Dot count per unit area falls about 12 to 1
+   from world to place. */
+.ap-r1{background-image:radial-gradient(circle,rgba(15,23,32,.30) 1.1px,transparent 1.2px);background-size:8px 8px;min-height:96px}
+.ap-r2{background-image:radial-gradient(circle,rgba(15,23,32,.26) 1.1px,transparent 1.2px);background-size:16px 16px;min-height:88px}
+.ap-r3{background-image:radial-gradient(circle,rgba(15,23,32,.22) 1.1px,transparent 1.2px);background-size:28px 28px;min-height:84px}
+/* a plotted signal: a station hanging from the register rule at its own
+   depth, written in the editorial face because it is a thing that happens
+   in the world, not a system identifier */
+/* One baseline per register. The earlier per-signal depth offsets had no
+   axis to be read against, so they read as misalignment rather than as
+   depth; the register itself carries the depth. */
+.ap-sig{
+  position:relative;grid-column:calc(1 + var(--c)) / span 4;grid-row:1;
+  align-self:start;justify-self:start;width:max-content;max-width:100%;
+  font:400 14.5px/1.4 var(--sans);letter-spacing:-.005em;color:var(--ink);
+}
+/* A label on a plotted field knocks the field out behind itself, the way
+   a place name does on a chart. The halo is the page ground, so it is
+   invisible everywhere except over the dots. */
+.ap-sig,.ap-row .ap-name{background:var(--bg);box-shadow:0 0 0 4px var(--bg)}
+.ap-sig::before{content:"";position:absolute;left:0;top:-14px;width:1px;height:11px;background:var(--line-3)}
+.ap-sig::after{content:"";position:absolute;left:-1px;top:-15px;width:3px;height:3px;background:var(--ink-mute)}
+/* the organization: the same seven words, printed as an even register */
+.ap-band{
+  margin-inline:var(--in);border:1px solid var(--line);border-bottom:0;background:var(--bg-1);
+  padding:16px clamp(14px,1.8vw,22px) 20px;
+  display:grid;grid-template-columns:clamp(104px,12%,152px) minmax(0,1fr);column-gap:14px;
+}
+.ap-band .ap-k{grid-column:1 / -1;grid-row:1}
+.ap-band .ap-name{grid-column:1;grid-row:2;padding-top:14px}
+.ap-sys{grid-column:2;grid-row:2;display:flex;flex-wrap:wrap}
+.ap-sys span{
+  position:relative;border-top:1px solid var(--line-2);padding:14px clamp(16px,2.4vw,34px) 0 9px;
+  font:500 10.5px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);
+  white-space:nowrap;
+}
+.ap-sys span::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
+/* the convergence */
+.ap-core{
+  margin-inline:var(--in);border:1px solid var(--line-2);border-top:2px solid var(--accent);
+  background:var(--bg-2);padding:20px;display:flex;justify-content:center;
+}
+.ap-w{display:block;width:100%;height:34px;fill:none;stroke:var(--line-3)}
+.ap-w-od{height:60px}
+.ap-stem{stroke:var(--accent)}
+
+/* ---- 19.4 the evidence object (the example application) ---- */
+/* Not a screenshot printed whole: a plate cropped onto two of the indexes
+   the application is read for, and ONE leader.
+   The crop is exact. Source rect x 314 to 1113, y 214 to 566 of a
+   1920x1032 asset: the two index cards whole, the row below them clear of
+   the frame by two source pixels, no status pills, no dashboard title (the
+   frame bar already names the application, and one fact gets one home).
+   The plate takes three quarters of the column; the rest is the
+   whitespace the figure is read in.
+   The annotation names a mark the image actually draws, the confidence
+   figure the product prints on every index, and there is exactly one of
+   them: the site's device B ceiling is two, and no second mark on this
+   plate can be leadered without the stem crossing product text. */
+.ev-fig .frame{max-width:74%}
+.ev-frame{--ax:46.496%}
+.appshot.ev-crop{position:relative;overflow:hidden;aspect-ratio:799/352}
+.appshot.ev-crop img{position:absolute;max-width:none;width:240.300%;left:-39.299%;top:-60.795%;height:auto}
+/* The leader runs over the plate in the plate's own light and continues in
+   page ink below it; both are placed from --ax on the same box, so the two
+   halves stay one line at every width, and the vertical geometry is shared
+   by both crops so one height serves both.
+   The stem stands in the clear corridor between the card's trend line and
+   its right edge (source x 685 of 671 to 704) and the cap reaches LEFT to
+   the string it names, stopping five source pixels short of the last
+   glyph. An annotation that strikes through its own subject, or that
+   scratches across the artwork on the way to it, is worse than none. */
+.ev-lead{position:absolute;left:var(--ax);bottom:0;width:1px;height:61.36%;background:rgba(250,251,252,.45)}
+.ev-lead::before{content:"";position:absolute;left:-12px;top:0;width:12px;height:1px;background:rgba(250,251,252,.85)}
+.ev-ann{position:relative;height:24px;margin:0}
+.ev-ann b{
+  position:absolute;left:var(--ax);top:0;bottom:0;display:flex;align-items:center;
+  padding:0 0 0 12px;border-left:1px solid var(--line-3);
+  font:500 10.5px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);
+  white-space:nowrap;
+}
+
+/* ---- 19.5 responsive ---- */
+@media (max-width:980px){
+  .hero-v1 .scope{aspect-ratio:1/.66;border-left:0;border-block:1px solid var(--line)}
+  .hero-v1 .scope canvas{left:0;top:-15%;width:100%;aspect-ratio:1/.96}
+  .hero-v1 .globe-route{left:var(--pad);bottom:14px;top:auto}
+  .hero-v1 .globe-cap{padding-left:var(--pad)}
+}
+@media (max-width:760px){
+  /* the registers keep their taper but stack their content: a plotted
+     field 340px wide is a smudge, an indented list is still a funnel */
+  .ap{padding-inline:clamp(10px,3vw,28px)}
+  .ap-row,.ap-band{grid-template-columns:minmax(0,1fr)}
+  .ap-band .ap-name{grid-column:1;grid-row:2;padding-top:0;padding-bottom:12px}
+  .ap-sys{grid-column:1;grid-row:3}
+  .ap-sys span{padding:12px 20px 0 8px}
+  .ap-row .ap-sig{grid-column:1;grid-row:auto;margin-top:0;padding:10px 0 0 15px}
+  .ap-row .ap-sig::before{top:13px;left:0;height:15px}
+  .ap-row .ap-sig::after{display:none}
+  .ap-r1,.ap-r2,.ap-r3{min-height:0}
+  .ev-fig .frame{max-width:100%}
+}
+/* Each cell is its own grid, so a label that wraps drops its own value one
+   line and breaks the row's baseline, which is the one thing a ledger may
+   not do. Two lines of label are reserved in every cell. The reservation
+   was scoped to the 2x2 layout below 700px, but the four-across row wraps
+   its longest label from about 775px down (measured: two lines at 740,
+   one at 780), so between 701 and 775 the ledger printed three values on
+   one line and the fourth a line lower. The reservation now covers the
+   whole band where a label can wrap, with margin above the measured edge;
+   above it the cells are wide enough that no label has two lines. */
+@media (max-width:860px){
+  .cadence-v1 .k{min-height:2em}
+}
+@media (max-width:700px){
+  .cadence-v1{grid-template-columns:1fr 1fr;row-gap:4px}
+  .cadence-v1>div{border:0;padding-right:12px}
+  .cadence-v1>div:nth-child(n+3){margin-top:14px;border-top:1px solid var(--line)}
+}
+@media (max-width:600px){
+  /* The phone plate crops harder still: the first index alone, read at
+     full size. Same vertical rect as the desktop crop (source y 214 to
+     566), so --ax is the only thing that moves and the leader keeps its
+     height and its target, source (642.5, 363). */
+  .ev-frame{--ax:92.875%}
+  .appshot.ev-crop{aspect-ratio:400/352}
+  .appshot.ev-crop img{width:480%;left:-78.5%;top:-60.795%}
+  .ev-ann b{padding:0 12px 0 0;border-left:0;border-right:1px solid var(--line-3);transform:translateX(-100%)}
+}
+
+/* ============ 20 HOME V2 (2026-09): fold refinements, signal language ============ */
+/* Round nine, second visual-development pass. Every selector in this
+   section is prefixed `hv-` and used on no page but its own, so the
+   sections above render unchanged on every other page. Tokens only, no
+   new font file, no new accent value, no gradient as decoration, no glow.
+   Written in the same voice as section 19: the why beside the what. */
+/* ---- 20.1 the signal readout ---- */
+/* The globe prints ONE signal moment at a time, and it prints it the way
+   every other list on this page is set: the label over the value. The
+   type is the label, in the accent, because the type is what the moment
+   is about; the place is the value, in ink. Stacked rather than run on,
+   the readout also clears the sphere's limb at the fold's width instead
+   of running across the dot grid, which a one-line readout did as soon as
+   the words stopped being two port names. Nothing else about the readout
+   changes: it is the same mono at the same size in the same corner, and
+   it still fades out between moments. */
+.hv-sig{line-height:1.5}
+.hv-sig b{display:block;margin-right:0}
+
+/* ---- end 20 ---- */
+
+/* ============ 21 GUILD V2 (2026-09): the expert network, on Guild and in Home section 10 ============ */
+/* Round nine, second visual-development pass. Every selector in this
+   section is prefixed `gd-` and used on no page but its own, so the
+   sections above render unchanged on every other page. Tokens only, no
+   new font file, no new accent value, no gradient as decoration, no glow.
+   Written in the same voice as section 19: the why beside the what. */
+/* ---- 21.1 the member register ---- */
+/* The Guild's one figure, and the only one this section draws twice: a
+   rule with one tick per member of the roster, in the roster's own
+   order. It measures something real (twenty-eight members, twenty-eight
+   ticks), which is the condition section 19 put on drawing a scale at
+   all; a ruler that tracks nothing is a HUD graphic. The four accent
+   ticks are the four members printed at plate scale further down the
+   page, and they sit at those members' own positions in the register
+   rather than at its head, because the four were read ACROSS the roster
+   and the figure should say so. Its label is the roster key's own count
+   line. Home carries the same object at the same reading, so a visitor
+   who follows the link arrives at a figure they have already met.
+   If the roster changes length, the divisor below changes with it. */
+.gd-reg{margin-top:clamp(34px,4.6vw,62px)}
+.gd-count{
+  font:500 10.5px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);
+}
+.gd-reg-rule{
+  position:relative;display:block;height:17px;margin-top:13px;
+  border-top:1px solid var(--line-2);
+  background-image:linear-gradient(to right,var(--line-2) 0 1px,transparent 1px);
+  background-size:calc(100% / 28) 9px;background-repeat:repeat-x;background-position:left top;
+}
+/* the closing tick: a background repeat draws the leading edge of each
+   cell, so the twenty-eighth station has a tick and the rule's own end
+   does not. The register is a measure and a measure is closed. */
+.gd-reg-rule::after{content:"";position:absolute;right:0;top:0;width:1px;height:9px;background:var(--line-2)}
+.gd-reg-rule i{
+  position:absolute;top:-1px;left:calc(100% * (var(--n) - 1) / 28);
+  width:2px;height:17px;background:var(--accent);
+}
+
+/* ---- 21.2 the fold ---- */
+/* Asymmetric and quiet: the claim on the left, the network sentence on
+   the right at its own measure and sitting on the same baseline, the
+   register ruling the full width under both. No instrument plate here.
+   The page's subject is people, and the one thing drawn on the fold is
+   the roster itself. */
+@media (min-width:981px){
+  .gd-hero-grid{
+    display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);
+    gap:clamp(30px,4.2vw,70px);align-items:end;
+  }
+  .gd-hero .hero-dek{margin-top:0;padding-bottom:7px}
+}
+
+/* ---- 21.3 the expert layer, drawn ---- */
+/* The four things Guild expertise adds were four cells of a hairline
+   grid, which says they are four separate features. They are four
+   entry points into one process, so they are drawn as one: a rule
+   carrying the system's own continuous work as an even comb, and the
+   four stations hanging under it. Each station's accent tick RISES
+   through the rule into the comb and continues below it, which is the
+   section's dek drawn rather than restated: expert judgment enters at
+   defined points, in a form the system carries.
+   The comb has two graduations, fine and major, the way a measuring
+   rule does. It carries no label and no value, so it claims nothing,
+   and a figure that claims nothing wears no instrument chrome (the same
+   reading that keeps .steps out of a .frame in section 16). */
+.gd-sys{margin-top:clamp(26px,3.4vw,42px)}
+.gd-field{
+  height:clamp(34px,4.4vw,52px);border-bottom:1px solid var(--line-2);
+  background-image:
+    linear-gradient(to right,var(--line-2) 0 1px,transparent 1px),
+    linear-gradient(to right,var(--line) 0 1px,transparent 1px);
+  background-size:29px 13px,7.25px 6px;
+  background-repeat:repeat-x,repeat-x;
+  background-position:left bottom,left bottom;
+}
+.gd-stations{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 clamp(16px,2.2vw,32px)}
+.gd-st{position:relative;padding:28px clamp(8px,1.2vw,18px) 0 15px}
+.gd-st::before{
+  content:"";position:absolute;left:0;top:-15px;width:2px;height:31px;background:var(--accent);
+}
+.gd-st h3{
+  font:500 12px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
+  margin-bottom:12px;
+}
+.gd-st p{font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
+
+/* ---- 21.4 the expertise areas, as a register ---- */
+/* Ten pills become ten stations on one rule: same words, same order,
+   one fewer pill run on a site whose brief names pills as a thing to
+   avoid. The idiom is section 19's organization register at label size. */
+.gd-doms{list-style:none;display:flex;flex-wrap:wrap;margin-top:24px}
+.gd-doms li{
+  position:relative;border-top:1px solid var(--line-2);
+  padding:13px clamp(16px,2.4vw,36px) 0 9px;
+  font:500 10.5px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);
+}
+.gd-doms li::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
+
+/* ---- 21.5 the roster ---- */
+/* ONE list, twenty-eight entries, one markup. A featured entry is the
+   same <li> carrying one extra class, so what the page treats as an
+   editorial choice is an editorial choice in the source too: same
+   fields, same profile link, same list semantics for a screen reader,
+   and swapping a member in or out is moving an <li> and toggling
+   .gd-m-lead. Nothing here encodes rank, and the larger plates are a
+   reading device, not a ranking.
+   THE PLATE IS THE PORTRAIT SLOT. No Guild photographs exist in this
+   repo, so it is built to stand as a typographic object first: the
+   monogram in the instrument voice on a ruled plate with registration
+   corners. The day photographs arrive, an <img> goes inside the same
+   div and the monogram stands down; nothing else changes. */
+.gd-key{
+  display:flex;flex-wrap:wrap;gap:8px 24px;margin:24px 0;
+  font:400 10.5px/1.8 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim);
+}
+.gd-roster{
+  list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(28px,4vw,64px);
+  margin-top:clamp(26px,3.2vw,40px);border-bottom:1px solid var(--line);
+}
+.gd-m{position:relative;border-top:1px solid var(--line)}
+.gd-m::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
+.gd-p{
+  display:grid;grid-template-columns:40px minmax(0,1fr);gap:18px;
+  padding:22px 6px;transition:background-color .2s ease;
+}
+.gd-m:hover .gd-p,.gd-m:focus-within .gd-p{background:var(--bg-1)}
+.gd-plate{
+  position:relative;width:40px;height:40px;flex:none;
+  border:1px solid var(--line-2);background:var(--bg);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.gd-gram{font:500 11px/1 var(--mono);letter-spacing:.1em;color:var(--ink-mute)}
+/* the portrait, when there is one */
+.gd-plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.gd-p h3{font-size:16.5px;font-weight:600;letter-spacing:-.01em}
+.gd-bio{margin-top:8px;font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
+.gd-foot{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin-top:14px}
+/* domains as notation, not as tags: mono at label size, spaced rather
+   than boxed. Twenty-eight rows of bordered pills is the card grid this
+   round exists to stop, printed small. */
+.gd-tags{display:flex;flex-wrap:wrap;gap:6px clamp(12px,1.5vw,20px)}
+.gd-tags span{
+  font:400 10.5px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);
+}
+.gd-prof{
+  margin-left:auto;display:inline-flex;align-items:center;min-height:24px;
+  font:500 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);
+  border-bottom:1px solid var(--line-2);white-space:nowrap;
+}
+.gd-prof:hover{color:var(--ink)}
+
+/* the featured entry: the same record at plate scale */
+.gd-m-lead{border-top:1px solid var(--line-2)}
+.gd-m-lead::before{height:11px;background:var(--accent)}
+.gd-m-lead .gd-p{
+  grid-template-columns:clamp(92px,10.5vw,124px) minmax(0,1fr);
+  gap:clamp(18px,2.4vw,30px);padding:clamp(24px,2.8vw,34px) 6px clamp(26px,3vw,36px);
+}
+/* The plate takes the recessed ground, not the raised one: at --bg-1 on
+   a --bg page the rectangle read as a hole where a photograph is
+   missing. Recessed, it reads as a plate with a monogram set on it, and
+   it is the same plane section 19 puts the globe inside. */
+.gd-m-lead .gd-plate{width:100%;height:auto;aspect-ratio:3/4;background:var(--bg-2)}
+/* registration corners: the plate is a plate, not an empty photo box */
+.gd-m-lead .gd-plate::before,.gd-m-lead .gd-plate::after{
+  content:"";position:absolute;width:9px;height:9px;pointer-events:none;
+}
+.gd-m-lead .gd-plate::before{top:5px;left:5px;border-top:1px solid var(--line-3);border-left:1px solid var(--line-3)}
+.gd-m-lead .gd-plate::after{bottom:5px;right:5px;border-bottom:1px solid var(--line-3);border-right:1px solid var(--line-3)}
+.gd-m-lead .gd-gram{font-size:clamp(26px,3vw,36px);letter-spacing:.14em;color:var(--ink-mute)}
+.gd-m-lead .gd-p h3{font-size:clamp(20px,2.1vw,25px);line-height:1.15;letter-spacing:-.02em}
+.gd-m-lead .gd-bio{margin-top:12px;font-size:16px;line-height:1.62;color:var(--ink-body);max-width:46ch}
+.gd-m-lead .gd-foot{align-items:stretch;gap:0;margin-top:clamp(18px,2.2vw,26px)}
+/* the featured entry's own domains hang from a rule, like every other
+   list on this page */
+.gd-m-lead .gd-tags{gap:0}
+.gd-m-lead .gd-tags span,.gd-m-lead .gd-prof{
+  position:relative;border-top:1px solid var(--line-2);border-bottom:0;
+  padding:12px clamp(14px,1.8vw,26px) 0 9px;min-height:0;
+}
+.gd-m-lead .gd-tags span::before,.gd-m-lead .gd-prof::before{
+  content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3);
+}
+/* the profile link keeps a link's affordance while it stands on the
+   station rule: without the underline it read as a fifth domain */
+.gd-m-lead .gd-prof{
+  margin-left:0;color:var(--ink-mute);padding-right:0;
+  border-bottom:1px solid var(--line-2);padding-bottom:3px;
+}
+.gd-m-lead .gd-tags span{color:var(--ink-mute)}
+.gd-m-lead .gd-prof:hover{color:var(--ink)}
+
+/* ---- 21.6 the Guild moment on Home ---- */
+/* The same three sentences the page already carried, composed as its one
+   human counterpoint: the claim set apart in the editorial face (the
+   type ladder of section 18, statement register), the network sentence
+   at reading measure beside it, the consequence hanging from its own
+   rule under that, and the Guild's register ruling the foot with the
+   link at its end. It is bounded above by a rule because it is a
+   different kind of evidence from the trust architecture above it: not
+   a property of the system, a person. */
+.gd-home{
+  margin-top:clamp(40px,5.2vw,64px);padding-top:clamp(32px,4.2vw,52px);
+  border-top:1px solid var(--line-2);
+  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+  gap:clamp(26px,3.4vw,44px) clamp(32px,5vw,72px);align-items:start;
+}
+.gd-claim{
+  font-family:var(--sans);font-weight:600;letter-spacing:-.015em;
+  font-size:clamp(22px,2.6vw,30px);line-height:1.26;color:var(--ink);max-width:21ch;
+}
+.gd-net{font-size:16.5px;line-height:1.7;color:var(--ink-body);max-width:58ch}
+.gd-coda{
+  position:relative;margin-top:clamp(18px,2.2vw,24px);padding-top:16px;
+  border-top:1px solid var(--line);
+  font-size:15.5px;line-height:1.6;color:var(--ink-mute);max-width:52ch;
+}
+.gd-coda::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
+.gd-home-foot{
+  grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,1fr) auto;
+  gap:16px clamp(28px,4vw,56px);align-items:end;
+}
+.gd-home-foot .gd-reg{margin-top:0}
+.gd-home-foot .more-link{margin-top:0;padding-bottom:2px}
+
+/* ---- 21.7 responsive ---- */
+@media (max-width:900px){
+  .gd-home{grid-template-columns:minmax(0,1fr)}
+  .gd-roster{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  /* The figure keeps its idea and changes its shape: the comb still runs
+     across the section, and under it each station hangs from its own
+     rule with its own accent tick. Four columns of 85px would be a
+     shrunken desktop graphic, which is the one thing the brief forbids. */
+  .gd-stations{grid-template-columns:minmax(0,1fr)}
+  .gd-st{padding:20px 0 22px 15px;border-top:1px solid var(--line)}
+  .gd-st:first-child{border-top:0}
+  .gd-st::before{top:-1px;height:24px}
+  .gd-st:first-child::before{top:-15px;height:38px}
+}
+@media (max-width:560px){
+  /* the featured plate stays beside the name and stays a portrait: a
+     plate that drops under the text stops being a portrait slot */
+  .gd-m-lead .gd-p{grid-template-columns:78px minmax(0,1fr);gap:16px}
+  .gd-foot{gap:10px 14px}
+  .gd-prof{margin-left:0}
+  .gd-m-lead .gd-prof{margin-left:0}
+  .gd-home-foot{grid-template-columns:minmax(0,1fr)}
+}
+
+/* ---- end 21 ---- */
+
+/* ============ 22 PLATFORM V2 (2026-09): evidence and machinery ============ */
+/* Round nine, second visual-development pass. Every selector in this
+   section is prefixed `pl-` and used on no page but its own, so the
+   sections above render unchanged on every other page. Tokens only, no
+   new font file, no new accent value, no gradient as decoration, no glow.
+   Written in the same voice as section 19: the why beside the what. */
+/* ---- 22.1 the fold: the claim on the left, the offer on a ruled rail ---- */
+/* Home's fold is a view of the world. Platform's is the cover sheet of a
+   specification: the eyebrow rules the full width, the h1 hangs on the
+   left, and the dek with the two calls to action sits in a hairline-ruled
+   right column whose last line ends level with the heading. Same system,
+   a different composition, and no instrument in the fold: the page's
+   instruments start one rule below it and run to the footer. */
+.pl-fold .hero-eyebrow{margin-bottom:clamp(26px,3vw,40px)}
+.pl-fold .hero-eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
+@media (min-width:981px){
+  .pl-fold-grid{
+    display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+    gap:clamp(36px,4.2vw,64px);align-items:end;
+  }
+  .pl-fold-side{border-left:1px solid var(--line);padding-left:clamp(26px,3vw,46px);padding-bottom:6px}
+  .pl-fold-side .hero-dek{margin-top:0;max-width:42ch}
+}
+
+/* ---- 22.2 the proof moments ---- */
+/* The walk carried five product plates in one run, each the full width of
+   the column under its own copy, and the run read as one texture: five
+   browser windows stacked. It is now four moments and one exhibit. The
+   four are the document's own composition logic (monitor, understand,
+   model, operationalize, which the section dek already names in that
+   order) and they keep the site's four stage words, because Home's
+   pipeline prints the same four and a second set of names on one site is
+   the failure the one-diagram-one-direction rule exists to stop.
+   The moment itself is the ledger grammar applied to a narrative row: a
+   rule across the width with the index hanging from it as a station, the
+   claim on the left rail, the argument in the wide column, the
+   INPUT/OUTPUT pair closing that column, and the plate at content width
+   below. Nothing here shrinks a screenshot: a 1920px product screen
+   printed small is decoration, and that ruling stands. */
+.pl-mom{position:relative;border-top:1px solid var(--line)}
+.pl-mom::before{content:"";position:absolute;left:0;top:0;width:1px;height:12px;background:var(--line-3)}
+.pl-mom .stage-media{margin-top:clamp(8px,1.4vw,20px)}
+@media (min-width:981px){
+  .pl-mom .stage-copy{
+    max-width:none;display:grid;
+    grid-template-columns:minmax(0,4fr) minmax(0,7fr);
+    column-gap:clamp(32px,4vw,72px);align-items:start;
+  }
+  .pl-mom .stage-num{grid-column:1/-1;margin-bottom:clamp(22px,2.6vw,32px)}
+  /* the claim takes the rail it hangs in, not a measure of its own: a
+     15ch cap broke the longest of the four into four lines in a column
+     wide enough for three */
+  .pl-mom .stage-copy h3{grid-column:1;grid-row:2;margin-bottom:0;max-width:none}
+  .pl-mom .stage-copy p:not(.stage-num){grid-column:2;max-width:58ch}
+}
+
+/* ---- 22.2b every plate starts at the edge of the product sidebar ---- */
+/* The scenario simulation already dropped the sidebar at desktop width
+   (round seven), for two reasons that apply to all four plates: it
+   repeats in every capture on the site, and it costs the frame a fifth
+   of its width. The globe and the knowledge graph were still printing
+   it, and it is also the one part of the captures carrying beta tags and
+   a report count, which is interface state rather than evidence. Both
+   frames now start at the edge of the sidebar, source x 296 and x 300 of
+   1920. The graph keeps round six's right edge, which is what holds its
+   raw property list off the page, so the frame is the app's own content
+   area between the two. The phone crops in section 17 are untouched. */
+@media (min-width:601px){
+  .pl-mom .win-body.focus-globe{position:relative;overflow:hidden;aspect-ratio:1624/1040}
+  .pl-mom .win-body.focus-globe img{
+    position:absolute;left:-18.227%;top:0;width:118.227%;max-width:none;height:auto;
+  }
+}
+
+/* ---- 22.2c the knowledge graph, cropped to what can be read ---- */
+/* Printing the graph's content area whole put about 1100px of undifferentiated
+   multi-colour node field on the page: at that size nothing in it can be read,
+   it is the weakest interface on the site, and a dense coloured network is the
+   one picture the counter-prompt names outright. The product draws no text on
+   its nodes, so the readable evidence in this frame is the record it is open
+   on and the shape of the relations around it, and the crop is cut to exactly
+   that: source x 300 to 1072, y 0 to 250 of a 1920x1037 asset. That is the
+   breadcrumb with the entity and its type tag, the entity search beside it,
+   and the sparse upper rim of the network where single nodes and the edges
+   between them can still be followed. It ends in the gap before the Level
+   control rather than through it, and the field is cut by the plate, which is
+   what the site does with the globe: a figure is a view, not an object.
+   On a phone the same rect at 0.44 scale would be unreadable, so the crop
+   changes rather than scales: x 300 to 636, y 0 to 340, printed at about 1:1,
+   the entity at full size over a handful of nodes and their relations.
+   The frame stays a real product screen at the real address; only the rect
+   changed, and the alt text changed with it. */
+@media (min-width:601px){
+  .pl-mom .win-body.focus-graph{position:relative;overflow:hidden;aspect-ratio:772/250}
+  .pl-mom .win-body.focus-graph img{
+    position:absolute;left:-38.860%;top:0;width:248.705%;max-width:none;height:auto;
+  }
+}
+@media (max-width:600px){
+  .pl-mom .win-body.focus-graph{position:relative;overflow:hidden;aspect-ratio:336/340}
+  .pl-mom .win-body.focus-graph img{
+    position:absolute;left:-89.286%;top:0;width:571.429%;max-width:none;height:auto;
+  }
+}
+
+/* A detail is printed at the size it was cut for. The graph crop is a
+   772px region, and stretching it across 1200px of column upscales the
+   product's own type by half again for no gain in what can be read, so the
+   plate stops at the width where the crop is close to its own scale and the
+   rest of the row is air. It is also the one of the four moments whose proof
+   is a detail rather than a whole screen, and the composition says so. */
+.pl-detail{max-width:920px}
+
+/* ---- 22.3 the delivery exhibits ---- */
+/* The sourced report and the daily brief are both answers to one
+   question, how the work leaves the platform, so they are read together
+   after the fourth moment instead of interrupting the walk between the
+   first and the second. They are two honesty tiers and each keeps its
+   own chrome: a real screen in its window, a printed artifact on its
+   sheet, labelled as it always was. The statement heads the pair, the
+   brief sits on the right rail at artifact scale, and the report keeps
+   its reading width on the left with the air beside it. */
+.pl-deliv{border-block:1px solid var(--line);padding-block:clamp(44px,5.5vw,80px)}
+.pl-deliv .statement{margin-top:0}
+.pl-deliv-doc{margin-inline:0;margin-top:clamp(34px,4.2vw,54px);max-width:820px}
+.pl-deliv-brief{margin-top:clamp(34px,4vw,48px);max-width:520px}
+@media (min-width:981px){
+  /* The statement opens the block across the width, and the two
+     artifacts are read as a pair under it: the real screen on the wide
+     rail, the printed object beside it. An earlier cut put the statement
+     and the brief in one row and the report under them, which left a
+     third of the block as dead ground under three lines of type. */
+  .pl-deliv{
+    display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+    column-gap:clamp(36px,4.4vw,70px);
+  }
+  .pl-deliv-say{grid-column:1/-1;grid-row:1}
+  .pl-deliv-doc{grid-column:1;grid-row:2}
+  .pl-deliv-brief{grid-column:2;grid-row:2;align-self:start;max-width:440px;margin-top:clamp(34px,4.2vw,54px)}
+}
+
+/* ---- 22.4 the example application, cropped to its operating band ---- */
+/* The application is the one dark object on a light page, and printed
+   whole it is a wall: eight index cards, a signal map and a live feed at
+   one size. The plate takes the top band of the source instead, x 0 to
+   1920 and y 0 to 566 of a 1920x1032 asset, which is the frame's own
+   full width (so nothing is cut vertically), the layer strip the caption
+   names, the application title whole, and the first card row ending in
+   the gutter above the second. On a phone the band would be 356px of
+   texture, so the crop changes rather than scales: x 0 to 712, y 200 to
+   566, the customer's own intelligence layers beside one whole index.
+   Both crops end on a gap in the sidebar list, and neither cuts a card
+   or a word. Home's plate on the same asset is a different rect at a
+   different scale; this one is Platform's. */
+.pl-evcrop{position:relative;overflow:hidden;aspect-ratio:1920/566}
+.pl-evcrop img{position:absolute;left:0;top:0;width:100%;height:auto;max-width:none}
+@media (max-width:600px){
+  .pl-evcrop{aspect-ratio:712/366}
+  .pl-evcrop img{width:269.663%;left:0;top:-54.645%}
+}
+
+/* ---- 22.5 the intelligence trail, grown into the page's signature ---- */
+/* SOURCE, SIGNAL, EXPOSURE, INDICATOR, SCENARIO, TRIGGER, ACTION was a
+   footnote-scale strip under the decision objects. It is still an
+   annotation and still the only trail on the page, and it still carries
+   no heading of its own; what changed is that it now annotates the five
+   objects EXACTLY, because both are drawn on one seven-station grid.
+   Tracker stands over the three evidence stations, the thing it watches;
+   Indicator, Scenario, Trigger and Action each stand over the station
+   that bears their name. The riser under every station reaches up to the
+   object it belongs to, so the relationship is drawn rather than
+   asserted, and it costs no words.
+   Three graded registers carry the progression without a second colour:
+   the evidence stations are dim, the object stations are mute ink, the
+   last station is full ink with the accent tick the device always gave
+   it. The accent is the one role in the figure, the point the trail
+   exists to reach. */
+.pl-eng .dobj-set{margin-top:clamp(30px,3.6vw,44px)}
+/* One grid serves both rows: three narrow stations for the evidence the
+   tracker watches, four wider ones for the objects that carry the
+   decision. Equal sevenths left Tracker as a wide empty cell and
+   squeezed Scenario's sentence to three lines. */
+@media (min-width:901px){
+  .pl-eng-objs{grid-template-columns:repeat(3,minmax(0,.74fr)) repeat(4,minmax(0,1.19fr))}
+  .pl-eng-objs .dobj-cell:first-child{grid-column:span 3}
+}
+.pl-trail{
+  --pl-riser:32px;
+  position:relative;display:grid;
+  grid-template-columns:repeat(3,minmax(0,.74fr)) repeat(4,minmax(0,1.19fr));
+  gap:0;margin-top:var(--pl-riser);font-size:11px;letter-spacing:.14em;
+}
+.pl-trail span{padding:15px 12px 0 0;color:var(--ink-dim);font-size:11.5px}
+.pl-trail span::before{height:8px}
+.pl-trail span::after{
+  content:"";position:absolute;left:0;top:calc(-1 * var(--pl-riser));
+  width:1px;height:var(--pl-riser);background:var(--line);
+}
+.pl-trail span:nth-of-type(n+4){color:var(--ink-mute)}
+.pl-trail span:nth-of-type(n+4)::before{height:12px;background:var(--ink-dim)}
+.pl-trail span:nth-of-type(n+4)::after{background:var(--line-2)}
+.pl-trail span:last-child{color:var(--ink);padding-right:0}
+.pl-trail span:last-child::after{background:var(--accent);width:2px}
+/* One line, drawn once, left to right: the trail is a path and the page
+   says so as it arrives. It is the existing reveal doing the work (the
+   observer's own .in class is the trigger), it is a transition and not a
+   loop, it rests where it stops, and the reduced-motion block in section
+   13 collapses it to nothing. Without JS the line is simply there. */
+.pl-run{
+  position:absolute;left:0;top:0;width:100%;height:1px;background:var(--ink-dim);
+  transform:scaleX(0);transform-origin:left center;
+}
+html:not(.js) .pl-run{transform:scaleX(1)}
+html.js .pl-run{transition:transform 1.15s cubic-bezier(.33,0,.2,1) .25s}
+html.js .reveal.in .pl-run{transform:scaleX(1)}
+
+/* ---- 22.6 the trust facts, as a document list ---- */
+/* Four hairline cells side by side are a card run. The same four facts
+   ruled, label left and sentence right, are a list in a document, which
+   is what this section is. The pipe above them is unchanged. */
+.pl-rows{border-top:1px solid var(--line)}
+.pl-row{
+  position:relative;display:grid;
+  grid-template-columns:clamp(190px,23vw,300px) minmax(0,1fr);
+  gap:8px clamp(24px,3.4vw,52px);align-items:baseline;
+  padding:clamp(18px,2.2vw,26px) 2px;border-bottom:1px solid var(--line);
+}
+.pl-row::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.pl-row h3{font:500 12px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.pl-row p{font-size:15.5px;line-height:1.62;color:var(--ink-body);max-width:64ch}
+
+/* ---- 22.6b the pipeline chain on a narrow screen ---- */
+/* Four nodes and three connectors wrap at 390px, which left an arrow
+   pointing off the right edge into nothing. The chain turns vertical
+   instead: same four nodes, same three connectors, the arrowhead
+   redrawn downward from the same borders. */
+@media (max-width:700px){
+  .pl-trust .pipe{flex-direction:column;align-items:flex-start}
+  .pl-trust .pipe .link{width:1px;height:16px;min-width:0;max-width:none;flex:none;margin-left:26px}
+  .pl-trust .pipe .link::after{
+    right:auto;left:-3px;top:auto;bottom:0;
+    border-left:3.5px solid transparent;border-right:3.5px solid transparent;
+    border-top:5px solid var(--line-2);border-bottom:0;
+  }
+}
+
+/* ---- 22.7 independent validation, as a register ---- */
+/* The rating was a centered claim over a row of pills. It is now the
+   claim on the left and the reviewers' own words as a ticked register on
+   the right: one rule, one station per theme, the quotes and the link
+   under it. No pill survives the change and no word changed. */
+.pl-themes{display:flex;flex-wrap:wrap;gap:0;margin:0}
+.pl-themes .chip{
+  position:relative;border:0;border-top:1px solid var(--line-2);border-radius:0;background:none;
+  padding:13px clamp(18px,2.6vw,34px) 0 10px;
+  font-size:10.5px;line-height:1.5;letter-spacing:.12em;color:var(--ink-body);
+}
+.pl-themes .chip::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.pl-rev .proof-foot{margin-top:clamp(26px,3vw,36px)}
+@media (min-width:981px){
+  .pl-rev-grid{
+    display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+    gap:clamp(36px,4.4vw,72px);align-items:start;
+  }
+  .pl-rev .sec-head{margin-bottom:0}
+}
+
+/* ---- 22.8 responsive ---- */
+@media (max-width:900px){
+  /* the objects are no longer on the trail's grid, so the risers would
+     point at nothing: the trail stands as its own measured rule */
+  .pl-trail{--pl-riser:0px;margin-top:clamp(26px,3.2vw,34px)}
+  .pl-trail span::after{display:none}
+}
+@media (max-width:760px){
+  /* one theme per row, each rule the full width of the column: stations
+     of different word lengths on one rule each read as a staircase */
+  .pl-themes{display:grid;grid-template-columns:minmax(0,1fr)}
+  .pl-themes .chip{padding-right:0}
+  /* the diagram is simplified, not shrunk: the rule turns vertical and
+     the stations hang off it, which is what the rail does on this site
+     at the same width */
+  .pl-trail{grid-template-columns:minmax(0,1fr);padding-left:16px;margin-top:clamp(24px,4vw,32px)}
+  .pl-trail::before{content:"";position:absolute;left:0;top:10px;bottom:12px;width:1px;background:var(--line-2)}
+  .pl-trail span{border-top:0;padding:9px 0 9px 16px}
+  /* the station marks turn with the rule: the long ticks that measured
+     height against the object row above would read as blocks here */
+  .pl-trail span::before,.pl-trail span:nth-of-type(n+4)::before{
+    top:50%;left:-16px;width:9px;height:1px;background:var(--line-3);transform:translateY(-50%);
+  }
+  .pl-trail span:nth-of-type(n+4)::before{width:13px;background:var(--ink-dim)}
+  .pl-trail span:last-child::before{width:17px;height:2px;background:var(--accent)}
+  .pl-run{display:none}
+  .pl-row{grid-template-columns:minmax(0,1fr);gap:10px}
+}
+
+/* ---- end 22 ---- */
+
+/* ============ 23 SOLUTIONS V2 (2026-09): the decision journey ============ */
+/* Round nine, second visual-development pass. Every selector in this
+   section is prefixed `so-` and used on no page but its own, so the
+   sections above render unchanged on every other page. Tokens only, no
+   new font file, no new accent value, no gradient as decoration, no glow.
+   Written in the same voice as section 19: the why beside the what. */
+/* ---- 23.1 the fold ---- */
+/* The page's own composition, not Home's: no instrument plate, no
+   coordinate scale. One ruled eyebrow across the top, the claim hanging
+   on the left, and the cost of starting plus the two ways in hanging on
+   the right with their baselines meeting the claim's. Solutions is a
+   commercial page, so the fold is quiet and the two calls to action are
+   the first thing after the promise. */
+.so-hero .hero-eyebrow{margin-bottom:26px}
+.so-hero .hero-eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
+.so-hero-grid{display:grid;gap:clamp(26px,3.4vw,44px)}
+@media (min-width:981px){
+  .so-hero-grid{grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:clamp(36px,5vw,72px);align-items:end}
+  .so-hero .hero-dek{margin-top:0;max-width:44ch}
+}
+
+/* ---- 23.2 the adoption progression (#start) ---- */
+/* The three steps were three bordered nodes with an arrow glyph between
+   them: a feature-card run, and one that answered none of the question a
+   buyer actually arrives with, which is how far this goes and what it
+   costs to begin. The section is now one figure, measured on its own
+   lattice.
+   
+   The figure reads top down. Above the station rule each step carries its
+   EXTENT. ONE DECISION is a bounded run of six divisions that stops,
+   because a decision is a thing that ends. STANDING WATCH is a run that
+   starts at its own station and does not end inside the frame, because it
+   does not end. ORGANIZATIONAL INTELLIGENCE is that same run carried three
+   times over, because the reach is the organization rather than a longer
+   period. Left to right the ink accumulates from one line to four, which
+   is the commercial argument of the page drawn once: start small, keep it,
+   spread it.
+   
+   The lattice is exact and that is the point. The grid is twelve tracks,
+   the steps span three, four and five of them, so the stations fall at 0,
+   6 and 14 twenty-fourths of the figure and every division on every run
+   falls on the same lattice of 24. That is why each run carries its
+   divisions as a COUNT (6, 18, 10) and never a pixel pitch: a ruler whose
+   marks do not register with the thing it measures is a HUD graphic, which
+   is what the notation rule exists to stop.
+   
+   One accent, and it is the decision point: the entry mark at station 01
+   and the 01 itself. Nothing else on the figure may take it, which is why
+   the two later step numbers are ink. */
+/* the section opens directly under the fold, so it carries no top pad */
+.so-start{padding-top:0}
+.so-grid{
+  display:grid;grid-template-columns:repeat(12,minmax(0,1fr));
+  padding:clamp(22px,2.8vw,34px) clamp(16px,2.2vw,28px) clamp(26px,3vw,36px);
+}
+/* A run: a ruled line with its divisions ticked under it and a mark at
+   the station it starts from. The three runs step in WEIGHT as well as in
+   length, because a progression drawn in one hairline weight is a
+   progression nobody sees: ONE DECISION is a single amber mark on a short
+   hairline closed at both ends, the way a dimension is drawn; STANDING
+   WATCH is one sustained 2px line in ink that does not close; and
+   ORGANIZATIONAL INTELLIGENCE is that same line multiplied into a field of
+   four, twice the ink of the line before it in half its length. One mark,
+   one line, one field, left to right. */
+.so-ext{display:grid;gap:11px}
+.so-ext i{
+  position:relative;display:block;height:11px;border-top:1px solid var(--line-3);
+  background-image:linear-gradient(to right,var(--line-3) 0 1px,transparent 1px);
+  background-position:left top;
+}
+.so-ext i::before{content:"";position:absolute;left:0;top:-1px;width:2px;height:17px;background:var(--ink-mute)}
+/* the bounded run: a short hairline closed at both ends, and the decision
+   itself standing at its origin in the figure's one accent */
+.so-s1 .so-ext i{height:13px}
+.so-s1 .so-ext i::before{width:3px;height:22px;background:var(--accent)}
+.so-s1 .so-ext i::after{content:"";position:absolute;right:0;top:-1px;width:1px;height:15px;background:var(--ink-mute)}
+/* the sustained line, and the field that multiplies it */
+.so-s2 .so-ext i,.so-s3 .so-ext i{border-top-width:2px;border-top-color:var(--ink-mute)}
+.so-s3 .so-ext{gap:6px}
+.so-s3 .so-ext i{height:7px}
+.so-s3 .so-ext i::before{height:13px}
+/* the station rule: three heads abutting into one continuous hairline,
+   each with its tick at its leading edge (padding, never gap, or the rule
+   breaks where the gap falls) */
+.so-k{
+  position:relative;border-top:1px solid var(--line-2);
+  padding:15px 26px 0 0;margin-top:clamp(22px,2.6vw,32px);
+  font:400 10.5px/1.5 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);
+}
+.so-k::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.so-k b{color:var(--ink);font-weight:500}
+.so-s1 .so-k::before{width:2px;height:12px;background:var(--accent)}
+.so-s1 .so-k b{color:var(--accent)}
+.so-step h3{margin:16px 26px 0 0;font-size:17px;line-height:1.24;letter-spacing:-.01em}
+.so-step .v{margin:10px 26px 0 0;font-size:14px;line-height:1.6;color:var(--ink-mute)}
+.so-step .pts{margin:18px 26px 0 0;padding-top:18px;border-top:1px solid var(--line)}
+.so-step .pts li{color:var(--ink-body)}
+.so-s3 .so-k{padding-right:0}
+.so-s3 h3,.so-s3 .v,.so-s3 .pts{margin-right:0}
+/* the closing bar states the layer in prose; only its label is mono. A
+   full sentence set in letter-spaced uppercase is a label pretending to
+   be a sentence, and this page has to stay easy. */
+.so-path .level-out{
+  font:400 14.5px/1.6 var(--sans);letter-spacing:0;text-transform:none;color:var(--ink-mute);
+}
+.so-path .level-out b{
+  font:500 10.5px/1.6 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink);
+}
+@media (min-width:901px){
+  /* the step is one block in the markup, so a screen reader hears index,
+     heading and copy together; on the wide layout its parts become items
+     of the figure's own grid, which is what lets the three extents share
+     one lattice above the three stations */
+  .so-step{display:contents}
+  .so-s1 .so-ext{grid-column:1/4;grid-row:1}
+  .so-s2 .so-ext{grid-column:4/-1;grid-row:2;margin-top:14px}
+  .so-s3 .so-ext{grid-column:8/-1;grid-row:3;margin-top:14px}
+  .so-s1 .so-ext i{background-size:calc(100% / 6) 100%}
+  .so-s2 .so-ext i{background-size:calc(100% / 18) 100%}
+  .so-s3 .so-ext i{background-size:calc(100% / 10) 100%}
+  .so-k{grid-row:4}
+  .so-step h3{grid-row:5}
+  .so-step .v{grid-row:6}
+  .so-step .pts{grid-row:7}
+  .so-s1 .so-k,.so-s1 h3,.so-s1 .v{grid-column:1/4}
+  .so-s2 .so-k,.so-s2 h3,.so-s2 .v,.so-s2 .pts{grid-column:4/8}
+  .so-s3 .so-k,.so-s3 h3,.so-s3 .v,.so-s3 .pts{grid-column:8/-1}
+}
+@media (max-width:900px){
+  /* simplified, not shrunk: the steps stack and each one keeps its own
+     extent at its own length, so the growth is still read in one pass */
+  .so-grid{display:block}
+  .so-step + .so-step{margin-top:clamp(30px,5vw,44px)}
+  .so-ext i{background-size:calc(100% / 12) 100%}
+  .so-s1 .so-ext i{width:34%;background-size:calc(100% / 4) 100%}
+  .so-s2 .so-ext i{width:67%;background-size:calc(100% / 8) 100%}
+  .so-s1 .so-ext i::before{height:26px}
+  .so-k{margin-top:14px;padding-right:0}
+  .so-step h3,.so-step .v,.so-step .pts{margin-right:0}
+}
+
+/* ---- 23.3 the customer-specific application (#practice) ---- */
+/* The proof that the layer takes the customer's shape, printed the way
+   the evidence object is printed on Home and composed differently: the
+   reading hangs on the left of one rule and the plate sits to the right
+   of it, so the product is read inside Mission Grey's own page rather
+   than filling it.
+   
+   The crop is stated in source pixels. Desktop: x 317 to 1107, y 378 to
+   679 of a 1920x1039 asset, which is aspect-ratio 790/301,
+   width 243.038%, left -40.127%, top -125.581%. It holds the briefing's
+   own opening assessment whole and the two indexes under it whole, ends
+   on the card boundary at source y 678, and drops the application title
+   and the two further indexes: four indexes side by side read as an
+   equal card grid with status pills, which is the vocabulary this pass
+   exists to remove.
+   
+   The phone crop is a different vertical rect, and that is deliberate.
+   The assessment is a paragraph: narrowing the plate would cut every one
+   of its lines mid-word at the frame edge, so under 600px the plate drops
+   to the first index alone, whole. Phone: x 315 to 711, y 497 to 679,
+   aspect-ratio 396/182, width 484.848%, left -79.545%, top -273.077%.
+   The alt text describes what BOTH crops show and no more.
+   
+   One leader, landing on a mark the image actually draws: the direction
+   mark the product prints beside the figure. The stem stands in the clear
+   corridor to the right of it (source x 574, 22px clear of the last
+   glyph), rises from the plate's bottom edge, which is the card's own
+   boundary, so the leader crosses no rule of the artwork, and the cap
+   reaches left toward the mark and stops short of it. The artwork here is
+   white, so the leader is drawn in page ink rather than in the light the
+   Home plate uses. */
+.so-app{
+  display:grid;gap:clamp(26px,3.2vw,48px);align-items:start;
+  margin-top:clamp(38px,4.6vw,60px);padding-top:clamp(22px,2.6vw,32px);
+  position:relative;border-top:1px solid var(--line-2);
+}
+.so-app::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.so-app-copy h3{font-size:var(--fs-h3);line-height:1.15;max-width:18ch}
+.so-app-copy p{margin-top:16px;font-size:15px;line-height:1.62;color:var(--ink-mute);max-width:46ch}
+.so-ev-frame{--ax:32.532%}
+.appshot.so-ev-crop{position:relative;overflow:hidden;aspect-ratio:790/301}
+.appshot.so-ev-crop img{
+  position:absolute;max-width:none;height:auto;
+  width:243.038%;left:-40.127%;top:-125.581%;
+}
+.so-ev-lead{position:absolute;left:var(--ax);bottom:0;width:1px;height:22.924%;background:var(--line-3)}
+.so-ev-lead::before{content:"";position:absolute;left:-12px;top:0;width:12px;height:1px;background:var(--ink-dim)}
+.so-ev-ann{position:relative;height:24px;margin:0}
+.so-ev-ann b{
+  position:absolute;left:var(--ax);top:0;bottom:0;display:flex;align-items:center;
+  padding:0 0 0 12px;border-left:1px solid var(--line-3);
+  font:500 10.5px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);
+  white-space:nowrap;
+}
+@media (min-width:901px){
+  .so-app{grid-template-columns:minmax(0,38fr) minmax(0,62fr)}
+}
+/* The switch is at 520 and not at the site's usual 600: the plate is a
+   396px source rect, so above 520 a phone crop is being upscaled past
+   1.2x while the wide crop still prints its assessment at a readable
+   size. Under 520 the wide crop is the one that fails. */
+@media (max-width:520px){
+  .so-ev-frame{--ax:65.404%}
+  .appshot.so-ev-crop{aspect-ratio:396/182}
+  .appshot.so-ev-crop img{width:484.848%;left:-79.545%;top:-273.077%}
+  .so-ev-lead{height:37.912%}
+}
+
+/* ---- 23.4 the two ruled indexes (#functions, #ways) ---- */
+/* Both were already ruled rows rather than cards, so they keep their
+   layout and take the one thing the system asks of a list: a station tick
+   at the leading edge of every row. Nothing else on these two sections
+   changed, which is the restraint this page needs more than it needs
+   another device. */
+.so-funcs .func,.so-roles>div{position:relative}
+.so-funcs .func::before,.so-roles>div::before{
+  content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3);
+}
+.so-funcs .func{padding-left:14px}
+.so-funcs .func::before{top:0}
+.so-roles>div{padding-left:14px}
+
+/* ---- end 23 ---- */
+
+/* ============ 24 ABOUT V2 (2026-09): people and place ============ */
+/* Round nine, second visual-development pass. Every selector in this
+   section is prefixed `ab-` and used on no page but its own, so the
+   sections above render unchanged on every other page. Tokens only, no
+   new font file, no new accent value, no gradient as decoration, no glow.
+   Written in the same voice as section 19: the why beside the what. */
+/* ---- 24.1 the fold: a masthead, not an instrument ---- */
+/* About is the one page whose subject is people and places, so its fold is
+   set rather than drawn: title at full measure, then one hairline with the
+   dek hanging from it on the right rail, with the left half left empty.
+   The tick at the head of the dek column is the page's first station, which
+   is the grammar every ruled object below repeats. No instrument here on
+   purpose: the home fold owns the drawn world, and a second globe on About
+   would be the same page twice. */
+.ab-hero{padding-bottom:clamp(60px,6.6vw,100px)}
+.ab-hero h1{max-width:20ch}
+.ab-fold{
+  position:relative;margin-top:clamp(38px,4.8vw,64px);padding-top:26px;
+  border-top:1px solid var(--line-2);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);
+  column-gap:clamp(30px,4vw,64px);
+}
+.ab-dek{position:relative;grid-column:2;margin-top:0;max-width:540px}
+.ab-dek::before{content:"";position:absolute;left:0;top:-27px;width:1px;height:9px;background:var(--line-3)}
+
+/* ---- 24.2 the four disciplines, as a ledger ---- */
+/* Four hairline cells were a four-column card grid, which is the first item
+   on the brief's counter-prompt. The same four words and four sentences are
+   now stations hanging from one rule: mono name over the sentence, a tick
+   per station at its leading edge. The separation is padding rather than a
+   column gap so the four rules abut into one continuous line (the lesson
+   the cadence ledger in section 19 records). */
+.ab-disc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.ab-disc-i{position:relative;border-top:1px solid var(--line-2);padding:18px clamp(16px,2.4vw,34px) 0 14px}
+.ab-disc-i::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.ab-disc-i h3{
+  font:500 11px/1.5 var(--mono);letter-spacing:.17em;text-transform:uppercase;
+  color:var(--ink);margin-bottom:12px;
+}
+.ab-disc-i p{font-size:14.5px;line-height:1.65;color:var(--ink-mute)}
+
+/* ---- 24.3 the name band ---- */
+/* The mark sequence is the company's own picture of ambiguity resolving, so
+   on the page that explains the name it is printed larger and hung from its
+   own rule instead of sitting as a small row beside the copy. */
+.ab-seq{border-top:1px solid var(--line-2);padding-top:clamp(20px,2.6vw,32px)}
+.ab-name .name-copy p{max-width:48ch}
+.ab-name .resolve svg{width:clamp(54px,7.4vw,98px)}
+@media (min-width:901px){
+  .ab-name{grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);align-items:end}
+}
+
+/* ---- 24.4 the people, in three registers ---- */
+/* One team card grid became three rhythms, because the content already has
+   three: the two roles the page opens with, the rest of the core team, and
+   the advisors and network. Nothing is regrouped and no role distinction is
+   invented; the larger portraits are an editorial device, not a ranking.
+   Every person keeps name, title, bio, credentials and profile link.
+   Portrait scale is limited by the source files (112 to 221px square, the
+   largest a 221px JPEG), so the hierarchy is carried by type, measure and
+   whitespace and only partly by portrait size: a 190px headshot printed at
+   300px is a blur, and a blurred face is worse than a small one. */
+.ab-key{
+  display:flex;flex-wrap:wrap;gap:8px 30px;margin:22px 0 clamp(30px,4vw,46px);
+  font:400 10.5px/1.8 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim);
+}
+/* the two roles the page opens with */
+.ab-leads{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.ab-lead{
+  position:relative;border-top:1px solid var(--line-2);
+  padding:26px clamp(20px,3vw,52px) 0 16px;
+  display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,2.4vw,32px);
+}
+.ab-lead::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:9px;background:var(--line-3)}
+.ab-por{width:112px;height:112px}
+.ab-lead h3{font-size:clamp(20px,1.9vw,24px);letter-spacing:-.015em;line-height:1.15}
+.ab-lead .ab-bio{margin-top:14px;font-size:15.5px;color:var(--ink-body)}
+/* the rest of the core team: a ruled register, two columns */
+.ab-reg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:clamp(40px,5vw,66px)}
+.ab-p{
+  position:relative;border-top:1px solid var(--line);
+  padding:22px clamp(20px,3vw,52px) 30px 16px;
+  display:grid;grid-template-columns:76px minmax(0,1fr);gap:20px;
+}
+.ab-p::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
+.ab-p h3{font-size:17px;letter-spacing:-.01em;line-height:1.3}
+.ab-por-s{width:64px;height:64px}
+/* advisors and network: portrait over name, four stations on one rule */
+.ab-rl2{margin-top:clamp(46px,5.6vw,72px)}
+.ab-adv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(26px,3vw,38px)}
+.ab-a{position:relative;border-top:1px solid var(--line-2);padding:24px clamp(16px,2.4vw,38px) 0 14px}
+.ab-a::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:9px;background:var(--line-3)}
+.ab-a h3{font-size:17px;letter-spacing:-.01em;line-height:1.3}
+.ab-por-m{width:80px;height:80px;margin-bottom:20px}
+/* shared fields */
+.ab-role{
+  margin-top:9px;font:500 10.5px/1.5 var(--mono);letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-dim);
+}
+.ab-bio{margin-top:11px;font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
+.ab-cred{margin-top:8px;font-size:13.5px;line-height:1.6;color:var(--ink-dim)}
+.ab-foot{margin-top:15px}
+.ab-prof{
+  display:inline-flex;align-items:center;min-height:24px;
+  font:500 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-dim);border-bottom:1px solid var(--line-2);white-space:nowrap;
+}
+.ab-prof:hover{color:var(--ink)}
+/* The research strip's cross-link. It was page-local (.strip-link, a copy of
+   .strip-g2 without the rating semantics) and moves here with the page's
+   other work, so About declares nothing of its own outside this section. */
+.ab-strip-link{
+  margin-left:auto;font:500 11px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-mute);border-bottom:1px solid var(--line-2);padding-bottom:2px;white-space:nowrap;
+}
+.ab-strip-link:hover{color:var(--ink)}
+
+/* ---- 24.5 where we are, as a west to east register ---- */
+/* The three offices were three boxes in a row, which says the regions are
+   three equal products. They are places, so they are drawn as places: one
+   rule, one station per office at its own meridian, the label under the
+   tick. The scale is real (San Francisco 122W on the left edge, Singapore
+   104E on the right), which is why each station may print its meridian:
+   a coordinate is only allowed against something that actually has that
+   coordinate. Other offices and operations hang from a second rule on the
+   same scale, so the reader sees one company spread across the working
+   day rather than a list with a footnote. No instrument chrome: this is a
+   statement of where the company is, not a claimed view of data, the same
+   reasoning that keeps the .steps row out of a .frame. */
+.ab-geo{margin-top:6px}
+.ab-geo-t{position:relative;height:132px;border-top:1px solid var(--line-2)}
+.ab-geo-t2{height:76px}
+.ab-geo-s{position:absolute;top:0;left:var(--x);width:220px;padding:14px 0 0 13px}
+.ab-geo-s::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:10px;background:var(--line-3)}
+.ab-geo-e{transform:translateX(-100%);text-align:right;padding:14px 13px 0 0}
+.ab-geo-e::before{left:auto;right:0}
+.ab-lon{
+  display:block;font:400 10px/1.4 var(--mono);letter-spacing:.2em;color:var(--ink-dim);
+}
+/* Two lines of region label are reserved in every station: EMEA wraps and
+   the other two do not, and a label that wraps drops its own city one line
+   and breaks the row's baseline, which is the one thing a register may not
+   do (the same reservation the cadence ledger makes at 700px). */
+.ab-geo-s h3{
+  margin-top:9px;min-height:3em;font:500 10.5px/1.5 var(--mono);letter-spacing:.17em;
+  text-transform:uppercase;color:var(--ink-dim);
+}
+.ab-geo-s p{margin-top:9px;font:600 16px/1.35 var(--sans);letter-spacing:-.01em;color:var(--ink)}
+.ab-geo-s p small{display:block;margin-top:5px;font:400 13.5px/1.5 var(--sans);letter-spacing:0;color:var(--ink-mute)}
+.ab-geo-t2 .ab-geo-s p{font-size:14.5px;font-weight:500;color:var(--ink-mute)}
+.ab-geo-k{
+  margin-top:clamp(30px,3.6vw,46px);margin-bottom:14px;
+  font:400 10.5px/1.6 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);
+}
+
+/* ---- 24.6 responsive ---- */
+@media (max-width:1080px){
+  /* A 226 degree spread drawn 900px wide puts Puteaux under Singapore, so
+     below this width the register stops being a map and becomes a ruled
+     list. The notation stays: the meridian is what the stations were
+     ordered by, and it is still true in a column. */
+  .ab-geo-t,.ab-geo-t2{height:auto;border-top:0}
+  .ab-geo-s h3{min-height:0}
+  .ab-geo-s,.ab-geo-e{position:static;width:auto;transform:none;text-align:left;
+    border-top:1px solid var(--line-2);padding:14px 0 20px 13px}
+  .ab-geo-e::before{left:0;right:auto}
+  .ab-geo-t2 .ab-geo-s{border-top-color:var(--line)}
+}
+@media (max-width:980px){
+  .ab-fold{grid-template-columns:minmax(0,1fr)}
+  .ab-dek{grid-column:1}
+  .ab-adv{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ab-a:nth-child(n+3){margin-top:clamp(24px,3vw,34px)}
+}
+@media (max-width:900px){
+  .ab-disc{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ab-disc-i:nth-child(n+3){margin-top:clamp(26px,3.4vw,38px)}
+  .ab-leads,.ab-reg{grid-template-columns:minmax(0,1fr)}
+  .ab-lead{padding-right:0}
+  .ab-lead:nth-child(n+2){margin-top:clamp(30px,4vw,42px)}
+  .ab-p{padding-right:0}
+  .ab-name .resolve{justify-content:flex-start}
+  .ab-strip-link{margin-left:0}
+}
+@media (max-width:560px){
+  /* Portraits stay large enough to be a face rather than an avatar: the
+     lead pair keeps a 116px head and the register keeps 64px, which is
+     the size at which a 180px source is still sharp on a 2x screen. */
+  .ab-disc{grid-template-columns:minmax(0,1fr)}
+  .ab-disc-i:nth-child(n+2){margin-top:26px}
+  .ab-adv{grid-template-columns:minmax(0,1fr)}
+  .ab-a:nth-child(n+2){margin-top:26px}
+  .ab-lead{grid-template-columns:minmax(0,1fr);gap:18px}
+  .ab-por{width:96px;height:96px}
+  .ab-p{grid-template-columns:64px minmax(0,1fr);gap:16px}
+  .ab-por-s{width:56px;height:56px}
+  .ab-key{gap:6px 0;flex-direction:column}
+}
+
+/* ---- end 24 ---- */
+
+/* ============ 25 THE PLATE: a product screen without the browser mockup ============ */
+/* Round nine, integration. The chairman's counter-prompt names browser-window
+   mockups on every proof as the thing to avoid, and the second pass had six
+   real screens in .window chrome on desktop while every phone crop already
+   printed them as plates. .win-plate keeps the honesty claim of the window
+   (the product address, in the instrument voice) and drops the pretence of
+   an operating system around it: no traffic lights, no lifted shadow, no
+   radius, a hairline frame and a ruled bar the address hangs from. A real
+   screen still sits in .window; only its costume changed. Applied on Home,
+   Platform and Solutions, to the .window elements only. */
+.window.win-plate{border-radius:0;box-shadow:none;border-color:var(--line)}
+.win-plate .chrome{height:30px;padding:0 14px;gap:0;background:var(--bg-2)}
+.win-plate .chrome i{display:none}
+.win-plate .chrome .url{
+  position:static;transform:none;background:none;border:0;border-radius:0;padding:0;
+  letter-spacing:.14em;text-transform:uppercase;font-size:10px;color:var(--ink-mute);
+}
+.win-plate .chrome .url::before{
+  content:"";display:inline-block;width:5px;height:5px;background:var(--accent);
+  margin-right:10px;vertical-align:1px;
+}
+@media (max-width:760px){.win-plate .chrome .url{display:inline}}
+/* ---- end 25 ---- */
+
+/* ============ 26 PEOPLE INTERACTION (round ten, 2026-09-19): equal by default, emphasis on hover/focus/select ============ */
+/* Owner of this section: the people builder (Guild, About, the gd-reg
+   register on Home and Guild). Rules: every person in a group has the same
+   static weight; hover, focus, selection add temporary emphasis only;
+   nothing core lives only on hover; touch gets a selected state. */
+
+/* ---- 26.1 what this section deletes, and why ---- */
+/* Round nine printed four Guild members at plate scale ahead of
+   twenty-four directory rows, marked those four in the fold register, and
+   printed two of eighteen core-team members at 112px ahead of sixteen at
+   64px. Every one of those choices was editorial (regional and domain
+   spread on Guild, reading order on About) and none of them was rank. It
+   does not matter: a PERMANENT size difference between people in one
+   group is read as rank whatever it was chosen for, and a register that
+   ranks colleagues is a liability before it is a design. So the sizes are
+   gone, in one direction only — everyone joins the register, nobody is
+   promoted out of it — and the order of both lists is untouched, because
+   re-sorting names is an editorial act nobody asked for.
+   Five rules in sections 21 and 24 lost their only user this round and
+   are on the audit list, not deleted (those sections are closed):
+   `.gd-m-lead` and its eleven descendants, `.gd-reg-rule i`, `.ab-leads`,
+   `.ab-lead`, `.ab-por`. The markup that carried them is gone from the
+   three pages.
+   What replaces permanent prominence is interaction, which is this
+   round's whole argument: STATIC = ORDER, INTERACTION = ATTENTION. Every
+   field a member has is printed at full legibility in the default state;
+   activation changes ink, edge and one accent mark, and reveals nothing.
+   That is the licence for using amber on a person at all — amber means
+   selected, and a pointed-at record IS selected. About's round-nine rule
+   (no amber on a human being) still holds for every permanent mark. */
+
+/* ---- 26.2 the state model, once ---- */
+/* Three triggers, one set of values: hover (a pointer), focus-within (a
+   keyboard reaching the record's profile link) and `.pi-on` (a tap, set by
+   the page script). The values are custom properties on the record and the
+   consumers below are written once, so a fourth trigger would cost one
+   selector. The block is repeated once for the hover trigger inside
+   `@media (hover:hover)`: a phone must not inherit a hover state it can
+   only leave by loading another page. */
+.gd-m,.ab-p,.ab-a{
+  --pi-tick:var(--line-3);     /* the record's leading station mark */
+  --pi-tick-h:8px;
+  --pi-ground:transparent;
+  --pi-edge:var(--line-2);     /* the plate / portrait edge */
+  --pi-scale:1;
+  --pi-q:1;                    /* how loud this record's plate is */
+  --pi-rule:var(--line);
+  --pi-link:var(--ink-dim);
+}
+.gd-m{--pi-gram:var(--ink-mute);--pi-bio:var(--ink-mute);--pi-tag:var(--ink-dim)}
+.ab-p,.ab-a{--pi-por:grayscale(1);--pi-role:var(--ink-dim);--pi-bio:var(--ink-mute);--pi-cred:var(--ink-dim)}
+
+.gd-m:focus-within,.gd-m.pi-on{
+  --pi-tick:var(--accent);--pi-tick-h:26px;--pi-ground:var(--bg-1);
+  --pi-edge:var(--line-3);--pi-scale:1.05;--pi-rule:var(--line-2);
+  --pi-gram:var(--ink);--pi-bio:var(--ink-body);--pi-tag:var(--ink-mute);--pi-link:var(--ink);
+}
+.ab-p:focus-within,.ab-p.pi-on,.ab-a:focus-within,.ab-a.pi-on{
+  --pi-tick:var(--accent);--pi-tick-h:24px;--pi-ground:var(--bg-1);
+  --pi-edge:var(--line-3);--pi-scale:1.04;--pi-rule:var(--line-2);
+  --pi-por:grayscale(1) contrast(1.08);
+  --pi-role:var(--ink-mute);--pi-bio:var(--ink-body);--pi-cred:var(--ink-mute);--pi-link:var(--ink);
+}
+@media (hover:hover){
+  .gd-m:hover{
+    --pi-tick:var(--accent);--pi-tick-h:26px;--pi-ground:var(--bg-1);
+    --pi-edge:var(--line-3);--pi-scale:1.05;--pi-rule:var(--line-2);
+    --pi-gram:var(--ink);--pi-bio:var(--ink-body);--pi-tag:var(--ink-mute);--pi-link:var(--ink);
+  }
+  .ab-p:hover,.ab-a:hover{
+    --pi-tick:var(--accent);--pi-tick-h:24px;--pi-ground:var(--bg-1);
+    --pi-edge:var(--line-3);--pi-scale:1.04;--pi-rule:var(--line-2);
+    --pi-por:grayscale(1) contrast(1.08);
+    --pi-role:var(--ink-mute);--pi-bio:var(--ink-body);--pi-cred:var(--ink-mute);--pi-link:var(--ink);
+  }
+}
+
+/* The register quiets around whatever is active. Binding: what quiets is
+   the PLATE and the STATION MARK, never the words. Dropping opacity on a
+   biography takes --ink-dim metadata below the 4.5:1 the body text is set
+   to clear, so twenty-seven people would be made slightly unreadable to
+   emphasise one; the register's own marks carry the recession instead and
+   the emphasis still reads. A record that is itself active is never
+   quieted, which is why each selector carries the three negations: with a
+   record tapped and another hovered, both are forward. `:has()` is the
+   only precise way to say this in CSS, so it is guarded — a browser
+   without it simply gets no recession, which costs nothing. */
+@supports selector(:has(*)){
+  [data-people]:has([data-person]:focus-within) [data-person]:not(:hover):not(:focus-within):not(.pi-on),
+  [data-people]:has(.pi-on) [data-person]:not(:hover):not(:focus-within):not(.pi-on){
+    --pi-q:.55;--pi-tick:var(--line);
+  }
+  /* a face recedes less than a monogram: the plate is typography, the
+     portrait is a person, and a half-faded colleague is a statement */
+  .ab-reg:has([data-person]:focus-within) [data-person]:not(:hover):not(:focus-within):not(.pi-on),
+  .ab-reg:has(.pi-on) [data-person]:not(:hover):not(:focus-within):not(.pi-on),
+  .ab-adv:has([data-person]:focus-within) [data-person]:not(:hover):not(:focus-within):not(.pi-on),
+  .ab-adv:has(.pi-on) [data-person]:not(:hover):not(:focus-within):not(.pi-on){
+    --pi-q:.78;
+  }
+  /* The hover TRIGGER is guarded the same way the hover state is. A phone
+     leaves an emulated hover on the last element tapped, so an unguarded
+     `:has(:hover)` would keep twenty-seven records recessed around a
+     record that no longer shows any emphasis, after the second tap
+     released it. The negations inside the selectors do not need the same
+     guard: on a touch device the stale hover only ever sits on the record
+     that was tapped, which is the record `.pi-on` already exempts. */
+  @media (hover:hover){
+    [data-people]:has([data-person]:hover) [data-person]:not(:hover):not(:focus-within):not(.pi-on){
+      --pi-q:.55;--pi-tick:var(--line);
+    }
+    .ab-reg:has([data-person]:hover) [data-person]:not(:hover):not(:focus-within):not(.pi-on),
+    .ab-adv:has([data-person]:hover) [data-person]:not(:hover):not(:focus-within):not(.pi-on){
+      --pi-q:.78;
+    }
+  }
+}
+
+/* ---- 26.3 the Guild roster: twenty-eight equal records ---- */
+/* Losing the four plates cost the page its only large object, so the
+   register had to become the interest. Three moves, all of them devices
+   the site already owns: the monogram plate goes to 56px for EVERYONE and
+   takes the registration corners that used to mark a featured member, so
+   twenty-eight plates read as one instrument rather than four portraits
+   and twenty-four bullets; a hairline runs down the gutter, so two columns
+   read as one ledger instead of two lists; and each record's domain
+   notation hangs from its own rule inside the body column, which gives the
+   row the two-rule structure a record has and the interaction something to
+   activate. Nothing was added to the page: same words, same order, same
+   twenty-eight links. */
+.gd-m .gd-p{
+  grid-template-columns:56px minmax(0,1fr);gap:20px;
+  padding:24px 12px 26px 8px;background:var(--pi-ground);
+}
+.gd-m::before{
+  height:var(--pi-tick-h);width:2px;background:var(--pi-tick);
+  transition:height .18s ease,background-color .18s ease;
+}
+.gd-m .gd-plate{
+  width:56px;height:56px;background:var(--bg-2);border-color:var(--pi-edge);
+  opacity:var(--pi-q);transform:scale(var(--pi-scale));transform-origin:left center;
+  transition:transform .18s ease,border-color .18s ease,opacity .18s ease;
+}
+/* registration corners on every plate: the plate is a plate, not an empty
+   photo box, and it is the slot a photograph drops into unchanged */
+.gd-m .gd-plate::before,.gd-m .gd-plate::after{
+  content:"";position:absolute;width:6px;height:6px;pointer-events:none;
+}
+.gd-m .gd-plate::before{top:4px;left:4px;border-top:1px solid var(--line-3);border-left:1px solid var(--line-3)}
+.gd-m .gd-plate::after{bottom:4px;right:4px;border-bottom:1px solid var(--line-3);border-right:1px solid var(--line-3)}
+.gd-m .gd-gram{font-size:13px;letter-spacing:.12em;color:var(--pi-gram);transition:color .18s ease}
+.gd-m .gd-p h3{font-size:17px}
+.gd-m .gd-bio{color:var(--pi-bio);max-width:44ch;transition:color .18s ease}
+.gd-m .gd-foot{
+  position:relative;margin-top:16px;padding-top:12px;
+  border-top:1px solid var(--pi-rule);transition:border-color .18s ease;
+}
+.gd-m .gd-tags span{color:var(--pi-tag);transition:color .18s ease}
+.gd-m .gd-prof{color:var(--pi-link);transition:color .18s ease}
+.gd-m:focus-within .gd-prof,.gd-m.pi-on .gd-prof{border-bottom-color:var(--line-3)}
+@media (min-width:901px){
+  /* the gutter rule. The gap is symmetric, so the middle of the gap is
+     exactly 50 percent of the list; the line is drawn there rather than
+     on a column, which would have to pick a side. */
+  .gd-roster{
+    background-image:linear-gradient(to right,
+      transparent 0 calc(50% - .5px),var(--line) calc(50% - .5px) calc(50% + .5px),transparent calc(50% + .5px));
+    background-repeat:no-repeat;
+  }
+}
+
+/* ---- 26.4 About: one portrait size on the page, the same interaction ---- */
+/* The core team is one register of eighteen at 64px, the leads included.
+   The advisors were at 80px and are now at 64 as well. The hard rule only
+   asks for equality WITHIN a group and the advisors are a real second
+   group with their own rhythm (no role line, four across, portrait above
+   the name), so 80 was legal — but a reader does not read the rule, they
+   read the page, and an advisor's head printed larger than the chief
+   executive's is precisely the question this round exists to stop being
+   asked. The rhythm carries the grouping on its own. 64 is also the size
+   the sources allow the register: two core-team files are 112px wide and
+   cap it there, so one size for the page means that size. */
+.ab-reg{margin-top:0}
+.ab-por-m{width:64px;height:64px;margin-bottom:18px}
+.ab-p,.ab-a{background:var(--pi-ground);border-top-color:var(--pi-rule);transition:background-color .18s ease,border-color .18s ease}
+.ab-p::before,.ab-a::before{
+  height:var(--pi-tick-h);width:2px;background:var(--pi-tick);
+  transition:height .18s ease,background-color .18s ease;
+}
+.ab-p .person-photo,.ab-a .person-photo{
+  filter:var(--pi-por);border-color:var(--pi-edge);opacity:var(--pi-q);
+  transform:scale(var(--pi-scale));transform-origin:left center;
+  transition:transform .18s ease,border-color .18s ease,filter .18s ease,opacity .18s ease;
+}
+.ab-p .ab-role,.ab-a .ab-role{color:var(--pi-role);transition:color .18s ease}
+.ab-p .ab-bio,.ab-a .ab-bio{color:var(--pi-bio);transition:color .18s ease}
+.ab-p .ab-cred,.ab-a .ab-cred{color:var(--pi-cred);transition:color .18s ease}
+.ab-p .ab-prof,.ab-a .ab-prof{color:var(--pi-link);transition:color .18s ease}
+.ab-p:focus-within .ab-prof,.ab-p.pi-on .ab-prof,
+.ab-a:focus-within .ab-prof,.ab-a.pi-on .ab-prof{border-bottom-color:var(--line-3)}
+/* the register's ground reaches the station rule rather than starting a
+   pixel inside it: a fill that misses its own rule reads as a hover card */
+.ab-p{padding-left:14px;padding-right:clamp(16px,2.6vw,44px)}
+
+/* ---- 26.5 mobile ---- */
+/* Hover does not exist here, so `.pi-on` is the whole model: tap a record
+   to bring it forward, tap it again or tap the page to release. Nothing
+   opens, nothing collapses, and the default state is twenty-eight (and
+   eighteen, and four) equal records exactly as on the desktop. */
+@media (max-width:900px){
+  /* both registers are one column here, so the right inset that separated
+     them has nothing to separate. Restated rather than inherited: section
+     24 sets the same thing at this width and 26.4 above it now wins. */
+  .gd-m .gd-p{padding-right:0}
+  .ab-p{padding-right:0}
+}
+@media (max-width:560px){
+  .gd-m .gd-p{grid-template-columns:48px minmax(0,1fr);gap:16px}
+  .gd-m .gd-plate{width:48px;height:48px}
+  .gd-m .gd-gram{font-size:11.5px}
+  .ab-por-m{width:56px;height:56px}
+}
+
+/* ---- 26.6 reduced motion ---- */
+/* Under reduce there is no scale at all, not a faster one: the state is
+   carried entirely by ink, edge and the accent mark, which is what the
+   state was always for. Section 13 already clamps every duration; these
+   two blocks make the intent explicit at the seam that owns it. */
+@media (prefers-reduced-motion:reduce){
+  .gd-m:hover,.gd-m:focus-within,.gd-m.pi-on,
+  .ab-p:hover,.ab-p:focus-within,.ab-p.pi-on,
+  .ab-a:hover,.ab-a:focus-within,.ab-a.pi-on{--pi-scale:1}
+  .gd-m::before,.gd-m .gd-plate,.gd-m .gd-gram,.gd-m .gd-bio,.gd-m .gd-foot,
+  .gd-m .gd-tags span,.gd-m .gd-prof,
+  .ab-p,.ab-a,.ab-p::before,.ab-a::before,
+  .ab-p .person-photo,.ab-a .person-photo,
+  .ab-p .ab-role,.ab-a .ab-role,.ab-p .ab-bio,.ab-a .ab-bio,
+  .ab-p .ab-cred,.ab-a .ab-cred,.ab-p .ab-prof,.ab-a .ab-prof{transition:none}
+}
+
+/* ---- end 26 ---- */
+
+
+
+/* ============ 27 PLATFORM INTERACTION (round ten, 2026-09-19): the trail and the proof views ============ */
+/* Owner of this section: the platform builder. Rules: the intelligence
+   trail highlights a stage on hover/focus/select; the four proof moments
+   become one evidence area with selectable views; fine line, amber state,
+   technical label, restrained transition; never generic SaaS tabs. */
+
+/* Two devices, both progressive enhancements over section 22: the four
+   proof moments become one evidence area with a station rail, and the
+   intelligence trail becomes selectable. Every rule that moves a layout is
+   gated on html.js, so the page without JS is exactly the page round nine
+   shipped, and every state here is temporary emphasis on a static figure.
+   Amber keeps its one meaning: the selected view, the selected station,
+   and the run between what enters a station and what leaves it. */
+
+/* ---- 27.1 the capability walk: one evidence area, four views ---- */
+/* Four full-width product plates printed in a run were four textures read
+   at once, and the brief's instruction is to stop showing them
+   simultaneously. The selector is built from the page's OWN printed
+   labels: each moment's station line (01 · MONITOR ... 04 · ACT) is MOVED
+   by the script onto one rule above the evidence area, so the rail invents
+   no word, nothing is printed twice, and the site keeps its single set of
+   stage words. UNDERSTAND, MODEL and OPERATIONALIZE stay composition logic
+   and stay unprinted, exactly as section 22 ruled.
+   The other three moments are collapsed to their station, never deleted:
+   copy, INPUT/OUTPUT pair and plate all come forward on a click, an arrow
+   key or a tap, and with JS off all four print in full as before. */
+html.js .px-rail{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;
+}
+/* A station hangs from a rule: its own hairline across its own extent, a
+   tick at its leading edge, the label under it. Separation is padding and
+   never gap, so the four hairlines abut into one continuous rule (the
+   lesson .cadence-v1 and .trail both record). */
+html.js .px-rail .px-st{
+  position:relative;margin:0;cursor:pointer;
+  border-top:1px solid var(--line-2);
+  padding:15px clamp(14px,2vw,28px) 17px 0;
+  color:var(--ink-dim);
+  transition:color .16s ease,border-color .16s ease;
+}
+html.js .px-rail .px-st::before{
+  content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3);
+  transition:height .16s ease,width .16s ease,background-color .16s ease;
+}
+/* section 11 closes .stage-num with a 34px trailing rule. Under the rail
+   the station tick carries that job, and four trailing dashes in one row
+   read as noise rather than as notation. */
+html.js .px-rail .px-st::after{display:none}
+/* pointer and keyboard get the same emphasis, and neither switches the
+   view: a 1200px evidence area changing under a passing cursor is motion
+   without intent. Selection is a click, Enter, Space or an arrow key.
+   The hover half is gated on a pointer that actually hovers: a phone
+   leaves an emulated hover on the element it last tapped, which would
+   hold this emphasis on a station the reader has finished with. */
+@media (hover:hover){
+  html.js .px-rail .px-st:hover{color:var(--ink)}
+  html.js .px-rail .px-st:hover::before{height:12px;background:var(--ink-dim)}
+}
+html.js .px-rail .px-st:focus-visible{color:var(--ink)}
+html.js .px-rail .px-st:focus-visible::before{height:12px;background:var(--ink-dim)}
+/* Selected. Section 11 prints EVERY .stage-num in the accent, which is
+   right for four moments read in sequence and wrong for four stations read
+   as a set: in a set the accent has to mean the one that is selected, so
+   the other three step back to label ink. The selected station also takes
+   its own segment of the rule, which is how this site marks an extent. */
+html.js .px-rail .px-st[aria-selected="true"]{color:var(--accent);border-top-color:var(--accent)}
+html.js .px-rail .px-st[aria-selected="true"]::before{width:2px;height:14px;background:var(--accent)}
+
+/* The evidence area. The hidden views keep their markup and their place in
+   the document; [hidden] alone cannot hide them because .stage sets
+   display:grid, which outranks the UA rule. */
+html.js .px-view[hidden]{display:none}
+html.js .px-view{opacity:0;transition:opacity .2s ease}
+html.js .px-view.px-shown{opacity:1}
+/* the moment sits under the rail now, so it does not need to open with a
+   full section's worth of air above it */
+html.js .px-walk .px-view{padding-top:clamp(24px,2.8vw,38px)}
+@media (min-width:981px){
+  /* section 22 opened the copy grid with the station line across both
+     columns and put the claim in row 2. The station line is on the rail
+     now, so the claim takes row 1 and the argument keeps its column. */
+  html.js .px-walk .pl-mom .stage-copy h3{grid-row:1}
+}
+
+/* ---- 27.2 the intelligence trail, selectable ---- */
+/* At rest the figure is exactly what section 22 draws, down to the one
+   line drawn once on arrival. What the script adds is a reading of it:
+   hover or focus previews a station, a click or Enter holds it, Escape or
+   a second tap releases it. A held station lights the decision object
+   standing over it (that object's own sentence is what happens there,
+   already printed, so the emphasis costs no word), holds the station
+   before it and the station after it one register up as what enters and
+   what leaves, and draws the accent over the run between them. */
+html.js .pl-trail span{cursor:pointer}
+.pl-trail span{transition:color .16s ease}
+.pl-trail span::before,
+.pl-trail span::after{transition:background-color .16s ease,height .16s ease,width .16s ease}
+.pl-trail span.px-on{color:var(--accent)}
+.pl-trail span.px-on::before{background:var(--accent);height:12px;width:2px}
+/* the riser is the drawn relationship between a station and its object, so
+   the accent runs up it to the cell that lights */
+.pl-trail span.px-on::after{background:var(--accent);width:2px}
+.pl-trail span.px-near{color:var(--ink)}
+/* every station that is neither in nor out of the selected one steps back
+   one register, including the last: while a station is held, amber means
+   that station, and the trail's resting destination mark stands down */
+.pl-trail.px-live span:not(.px-on):not(.px-near){color:var(--ink-dim)}
+.pl-trail.px-live span:not(.px-on):not(.px-near)::after{background:var(--line)}
+/* The run between what enters and what leaves. The stations are grid
+   cells, so their own extents are the only honest coordinates for it and
+   the script measures them rather than guessing a percentage; it is
+   redrawn on resize. Drawn over .pl-run, the line the figure already has. */
+.px-seg{
+  position:absolute;left:var(--px-x,0);top:0;width:var(--px-w,0);height:1px;z-index:1;
+  background:var(--accent);pointer-events:none;opacity:0;transition:opacity .16s ease;
+}
+.pl-trail.px-live .px-seg{opacity:1}
+/* The object standing over the station. Its accent tick already marks the
+   cell's leading edge; held, it runs the full edge, the ground lifts one
+   step and the sentence comes up to reading ink. No size changes: the five
+   objects keep one static weight, as every set on this site does. */
+.pl-eng-objs .dobj-cell{transition:background-color .16s ease}
+.pl-eng-objs .dobj-cell::before{transition:height .18s ease}
+.pl-eng-objs .dobj-cell.px-on{background:var(--bg-1)}
+.pl-eng-objs .dobj-cell.px-on::before{height:100%}
+.pl-eng-objs .dobj-cell.px-on .v{color:var(--ink-body)}
+
+/* ---- 27.3 touch and narrow screens ---- */
+/* Hover means nothing here, so the pointer preview is attached only where
+   the pointer hovers (the script tests hover:hover) and a tap is a hold
+   that a second tap releases. */
+@media (max-width:600px){
+  /* four stations across cannot hold a 12-character station label at
+     390px, so the rail becomes the ruled vertical list it already is at
+     large size, turned on its side: one rule per station, the tick at its
+     leading edge, the selected plate under the list. */
+  html.js .px-rail{grid-template-columns:minmax(0,1fr)}
+  html.js .px-rail .px-st{padding:13px 0 14px}
+}
+@media (max-width:760px){
+  /* the trail is a vertical spine at this width (section 22), so the run
+     between the stations is drawn down it rather than across */
+  .px-seg{left:0;top:var(--px-y,0);width:1px;height:var(--px-h,0)}
+  /* and the station marks turn with the rule, so the held station's mark
+     is the heavy horizontal dash the last station already uses here, not
+     the vertical riser mark of the wide layout */
+  .pl-trail span.px-on::before{width:17px;height:2px;background:var(--accent)}
+}
+
+/* ---- 27.4 reduced motion ---- */
+/* Every state above is a state, not an animation: with motion off they all
+   still apply, they simply arrive at once. */
+@media (prefers-reduced-motion:reduce){
+  html.js .px-view,
+  html.js .px-rail .px-st,html.js .px-rail .px-st::before,
+  .pl-trail span,.pl-trail span::before,.pl-trail span::after,
+  .pl-eng-objs .dobj-cell,.pl-eng-objs .dobj-cell::before,
+  .px-seg{transition:none}
+  html.js .px-view{opacity:1}
+}
+
+/* ---- end 27 ---- */
+
+
+
+/* ============ 28 SOLUTIONS INTERACTION (round ten, 2026-09-19): the adoption path, progressing ============ */
+/* Owner of this section: the solutions builder. Rules: the three-stage
+   path is fully visible by default; hover/focus/scroll activates the
+   relevant stage; scroll progression draws one line, then the standing
+   watch, then the organizational lines; slow, controlled, no autoplay. */
+
+/* ---- 28.1 the station label is the stage's control ---- */
+/* The stage needed one real control, for the keyboard and for the phone,
+   and the figure already carried the right element: the station label.
+   `01 / ONE DECISION` is now a <button> holding exactly the words it held
+   as a <p>, so the drawing is unchanged and the control is the thing a
+   reader points at anyway. No tab strip, no chevron, no new word: a tab
+   row over a drawn figure is the generic component this pass exists to
+   delete, and the label is already the stage's name.
+   The button keeps `.so-k`, so section 23 still sets its type, its
+   padding and its border-top; only the browser's own button costume is
+   reset here, and the top border is left alone because it is the station
+   rule and the three heads abut into it. */
+.sx-k{
+  -webkit-appearance:none;appearance:none;display:block;width:100%;
+  border-right:0;border-bottom:0;border-left:0;background:none;
+  text-align:left;cursor:pointer;
+}
+
+/* ---- 28.2 the path draws once, 01 then 02 then 03 ---- */
+/* The chairman's progression, drawn with the figure's own lines: the
+   bounded run of ONE DECISION, then the sustained line of STANDING
+   WATCH extending, then the four lines of ORGANIZATIONAL INTELLIGENCE
+   arriving one after another. It is a clip sweeping left to right, never
+   a scale: a scaled run would compress its own divisions on the way in
+   and the lattice would read wrong for half a second, which is the one
+   thing this figure may not do. The trigger is the existing reveal
+   observer's `.in` class, the same seam `.pl-run` uses on Platform, so
+   it happens once, on arrival, and rests in the static state after.
+   Stage 01 runs .55s from .12s, stage 02 .80s from .72s, stage 03 .52s
+   from 1.60s with .10s between its four lines: 2.42s end to end, one
+   pass, no loop. An animation rather than a transition, so the runs keep
+   their `transition` free for the state change in 28.3.
+   The insets are negative on three sides because the station marks
+   overhang the run's own box by up to 12px; clipping at the box edge
+   would cut the marks off at rest. */
+html.js .so-path .so-ext i{clip-path:inset(-14px 100% -14px -14px)}
+html.js .so-path.in .so-ext i{animation:sx-draw .55s cubic-bezier(.33,0,.2,1) .12s both}
+html.js .so-path.in .so-s2 .so-ext i{animation-duration:.8s;animation-delay:.72s}
+html.js .so-path.in .so-s3 .so-ext i{animation-duration:.52s;animation-delay:1.6s}
+html.js .so-path.in .so-s3 .so-ext i:nth-child(2){animation-delay:1.7s}
+html.js .so-path.in .so-s3 .so-ext i:nth-child(3){animation-delay:1.8s}
+html.js .so-path.in .so-s3 .so-ext i:nth-child(4){animation-delay:1.9s}
+@keyframes sx-draw{to{clip-path:inset(-14px -14px -14px -14px)}}
+
+/* ---- 28.3 one stage active, the other two quieter ---- */
+/* DEFAULT is the figure exactly as round nine left it, and that state is
+   complete: every word, every station and every run is legible with
+   nothing hovered, focused or selected. Activation is temporary emphasis
+   and nothing else. Three sources, one state: `:hover`, `:focus-within`
+   (both pure CSS, so the figure answers a pointer and a keyboard with no
+   JS at all) and `.sx-on`, the sticky selection a touch screen needs,
+   which the page script sets on tap.
+   The quiet register is a step down, never a disappearance: heading to
+   --ink-mute (6.1:1), sentence to --ink-dim (4.9:1), bullets to
+   --ink-mute, all of them still AA at their size. Nothing moves, nothing
+   resizes, and no station or division changes position: the states are
+   colour, weight and opacity only.
+   Amber follows the round-ten law rather than the round-nine one. At
+   REST the figure still carries exactly one accent, the decision point
+   at station 01; while a stage is active, amber marks THAT stage,
+   because amber means active here as everywhere else, and station 01's
+   own accent stands down while 02 or 03 is the live one and returns the
+   moment the reader lets go. A second permanent accent would have been
+   the round-nine rule broken; a temporary one is the rule working. */
+.so-path .so-k::before,.so-path .so-k b,.so-path .so-step h3,.so-path .so-step .v,
+.so-path .so-step .pts li,.so-path .so-step .checker,.so-path .so-ext i,
+.so-path .so-ext i::before,.so-path .so-ext i::after{
+  transition:color .18s ease,background-color .18s ease,border-color .18s ease,
+             opacity .18s ease,width .18s ease,height .18s ease;
+}
+/* the quiet register: every stage steps back as soon as one is live */
+.so-grid:focus-within .so-step .so-ext i,
+.sx-act .so-grid .so-step .so-ext i{border-top-color:var(--line-2)}
+.so-grid:focus-within .so-step .so-ext i::before,.so-grid:focus-within .so-step .so-ext i::after,
+.sx-act .so-grid .so-step .so-ext i::before,.sx-act .so-grid .so-step .so-ext i::after{
+  background:var(--line-3);
+}
+.so-grid:focus-within .so-step .so-k::before,
+.sx-act .so-grid .so-step .so-k::before{background:var(--line-2)}
+.so-grid:focus-within .so-step .so-k b,
+.sx-act .so-grid .so-step .so-k b{color:var(--ink-mute)}
+.so-grid:focus-within .so-step h3,
+.sx-act .so-grid .so-step h3{color:var(--ink-mute)}
+.so-grid:focus-within .so-step .v,
+.sx-act .so-grid .so-step .v{color:var(--ink-dim)}
+.so-grid:focus-within .so-step .pts li,
+.sx-act .so-grid .so-step .pts li{color:var(--ink-mute)}
+.so-grid:focus-within .so-step .checker,
+.sx-act .so-grid .so-step .checker{opacity:.38}
+/* the live stage: its run to full ink, its station and index to amber,
+   its heading, sentence and bullets back to their resting weight. Every
+   selector here outranks the quiet block above by one class, so a hover
+   still wins over a selection and only one stage is ever lit. */
+.so-path .so-grid .so-step:focus-within .so-ext i,
+.so-path .so-grid .so-step.sx-on .so-ext i{border-top-color:var(--ink)}
+.so-path .so-grid .so-step:focus-within .so-ext i::before,.so-path .so-grid .so-step:focus-within .so-ext i::after,
+.so-path .so-grid .so-step.sx-on .so-ext i::before,.so-path .so-grid .so-step.sx-on .so-ext i::after{
+  background:var(--ink);
+}
+.so-path .so-grid .so-s1:focus-within .so-ext i::before,
+.so-path .so-grid .so-s1.sx-on .so-ext i::before{background:var(--accent)}
+/* the station tick of the live stage takes the mark station 01 wears at
+   rest: same position, 2px wide, 12px tall, amber */
+.so-path .so-grid .so-step:focus-within .so-k::before,
+.so-path .so-grid .so-step.sx-on .so-k::before{width:2px;height:12px;background:var(--accent)}
+.so-path .so-grid .so-step:focus-within .so-k b,
+.so-path .so-grid .so-step.sx-on .so-k b{color:var(--accent)}
+.so-path .so-grid .so-step:focus-within h3,
+.so-path .so-grid .so-step.sx-on h3{color:var(--ink)}
+.so-path .so-grid .so-step:focus-within .v,
+.so-path .so-grid .so-step.sx-on .v{color:var(--ink-mute)}
+.so-path .so-grid .so-step:focus-within .pts li,
+.so-path .so-grid .so-step.sx-on .pts li{color:var(--ink-body)}
+.so-path .so-grid .so-step:focus-within .checker,
+.so-path .so-grid .so-step.sx-on .checker{opacity:1}
+/* Hover is the same state, and it is declared ONLY where a pointer that
+   can hover exists. A phone's browser leaves an emulated hover on the
+   last element tapped, so without this gate the second tap released the
+   selection (aria-pressed went back to false) while the stage stayed
+   lit: the release was true in the record and invisible on the screen,
+   which is the touch defect the round's rules name outright. Specificity
+   carries the order rather than source position: every loud selector is
+   one class ahead of every quiet one, so a hover still beats a standing
+   selection and exactly one stage is ever live. */
+@media (hover:hover){
+  .so-grid:has(.so-step:hover) .so-step .so-ext i{border-top-color:var(--line-2)}
+  .so-grid:has(.so-step:hover) .so-step .so-ext i::before,.so-grid:has(.so-step:hover) .so-step .so-ext i::after{background:var(--line-3)}
+  .so-grid:has(.so-step:hover) .so-step .so-k::before{background:var(--line-2)}
+  .so-grid:has(.so-step:hover) .so-step .so-k b{color:var(--ink-mute)}
+  .so-grid:has(.so-step:hover) .so-step h3{color:var(--ink-mute)}
+  .so-grid:has(.so-step:hover) .so-step .v{color:var(--ink-dim)}
+  .so-grid:has(.so-step:hover) .so-step .pts li{color:var(--ink-mute)}
+  .so-grid:has(.so-step:hover) .so-step .checker{opacity:.38}
+  .so-path .so-grid .so-step:hover .so-ext i{border-top-color:var(--ink)}
+  .so-path .so-grid .so-step:hover .so-ext i::before,
+  .so-path .so-grid .so-step:hover .so-ext i::after{background:var(--ink)}
+  .so-path .so-grid .so-s1:hover .so-ext i::before{background:var(--accent)}
+  .so-path .so-grid .so-step:hover .so-k::before{width:2px;height:12px;background:var(--accent)}
+  .so-path .so-grid .so-step:hover .so-k b{color:var(--accent)}
+  .so-path .so-grid .so-step:hover h3{color:var(--ink)}
+  .so-path .so-grid .so-step:hover .v{color:var(--ink-mute)}
+  .so-path .so-grid .so-step:hover .pts li{color:var(--ink-body)}
+  .so-path .so-grid .so-step:hover .checker{opacity:1}
+}
+
+/* ---- 28.4 the phone ---- */
+@media (max-width:900px){
+  /* The stacked label is 31px of type and a tap target has to be bigger
+     than its ink, so the button's own hit area is extended into the
+     margins above and below it. It reaches nothing else: the extent above
+     clears by 14px and the heading below by 16px, so no word and no line
+     is covered and the layout does not move by a pixel. */
+  .sx-k::after{content:"";position:absolute;left:0;right:0;top:-12px;bottom:-14px}
+}
+
+/* ---- 28.5 reduced motion ---- */
+/* The figure is simply there: no draw, no state transition. The states
+   themselves stay, because a colour change that arrives instantly is not
+   motion, and a reader who asks for less motion still gets the emphasis. */
+@media (prefers-reduced-motion:reduce){
+  html.js .so-path .so-ext i,html.js .so-path.in .so-ext i{clip-path:none;animation:none}
+  .so-path .so-k::before,.so-path .so-k b,.so-path .so-step h3,.so-path .so-step .v,
+  .so-path .so-step .pts li,.so-path .so-step .checker,.so-path .so-ext i,
+  .so-path .so-ext i::before,.so-path .so-ext i::after{transition:none}
+}
+
+/* ---- end 28 ---- */
+
+/* ============ 29 ROUND ELEVEN SCALE (2026-09-20): rhythm, headline scale, the typographic ladder ============ */
+/* Owner of this section: the system builder. Rules: the chairman's v0.4
+   brief, refinement not redesign. Site-wide vertical rhythm 10 to 20
+   percent tighter where a section is sparse, headline scale reduced
+   selectively, six deliberate type levels (page proposition, section
+   argument, functional heading, technical label, body, metadata). No
+   wording change. Mobile reviewed separately. Page builders do not edit
+   this section; they build on it. */
+
+/* ---- 29.1 THE LADDER: six levels, one token each ----------------------
+   Round seven set three FACES (sans structural, mono instrument, serif
+   statement). Those are unchanged. This is the missing second axis: six
+   SIZES, each with a job, so importance is carried by level and not by
+   adding points to a heading.
+
+     L1  page proposition   --fs-l1     clamp(32px,3.5vw,50px)   50.0 at 1440
+     L2  section argument   --fs-l2     clamp(25px,2.3vw,32px)   32.0 at 1440
+     L3  functional heading --fs-l3     clamp(19px,1.75vw,24px)  24.0 at 1440
+     TECHNICAL LABEL        --fs-label  11px mono, .18em, uppercase
+     BODY                   --fs-body   16px sans / 1.6
+     METADATA               --fs-meta   10.5px mono
+
+   The steps are 1.56 (L1 to L2), 1.33 (L2 to L3) and 1.50 (L3 to body):
+   each level is told apart from the one below it by size alone, which is
+   what round ten's note that "some headline levels feel too similar" was
+   asking for. L1 came down from 64px and L2 from 40px; the RATIO between
+   them widened (1.60 to 1.56 is flat, but L2 to L3 was 1.29 and is now
+   1.33, and L3 to body was 1.94 and is now 1.50), so the page reads as
+   four graded voices rather than two loud ones and a floor.
+
+   --fs-hero, --fs-h2 and --fs-h3 stay as the names sections 01 to 28 use;
+   they now READ FROM the ladder, so no rule outside this section had to
+   change to follow it. */
+:root{
+  --fs-l1:clamp(32px,3.5vw,50px);
+  --fs-l2:clamp(25px,2.3vw,32px);
+  --fs-l3:clamp(19px,1.75vw,24px);
+  --fs-meta:10.5px;
+  --fs-hero:var(--fs-l1);
+  --fs-h2:var(--fs-l2);
+  --fs-h3:var(--fs-l3);
+  /* the supporting registers: a dek is not a level, it is body copy with
+     a little more presence, so it sits between body and L3 and moves
+     with them */
+  --fs-lede:clamp(16px,1.35vw,17.5px);
+  --fs-dek:16.5px;
+}
+/* BODY, relatively compact: 16px over 1.6 rather than 1.65. Three percent
+   of leading across every paragraph on the site, which is the cheapest
+   vertical tightening available and the one a reader never notices. */
+body{line-height:1.6}
+/* METADATA keeps the size it already had; naming it is what makes it a
+   level rather than a habit. */
+.rule-label{font-size:var(--fs-meta)}
+/* TECHNICAL LABEL, restored. `.sec-head p` (0,1,1) outranked `.eyebrow`
+   (0,1,0), so every eyebrow inside a section head printed at 17px mono
+   with .18em tracking: the instrument voice set at reading size, which is
+   both the "too much technical type" the brief warns about and the reason
+   the label level was invisible in the ladder. `p.eyebrow` is (0,1,1) and
+   sits after it, so the label is 11px again everywhere. Measured on
+   /guild/ before this rule: font-size 17px, letter-spacing 3.06px. */
+.sec-head p{font-size:var(--fs-dek)}
+.sec-head p.eyebrow,p.eyebrow{font-size:var(--fs-label)}
+.sec-head{gap:14px}
+
+/* ---- 29.2 HEADLINE SCALE, the sizes that carried their own clamp ------
+   Sections 15 to 24 set eight display sizes locally, five of them above
+   L2 and two of them above the new L1. They are brought onto the ladder
+   here rather than in place, because sections 01 to 28 are frozen this
+   round. Each one keeps its measure, its weight and its role. */
+/* the closing panel is a section argument, not a second page proposition:
+   it was 48px, one step ABOVE the page's own h1 at a third of the words */
+.access-panel h2{font-size:var(--fs-l2)}
+/* the statement section is the one section per page allowed to print
+   above L2. It is a modifier of L2, not a seventh level, and it never
+   reaches L1: 40px against L1's 50px at 1440. */
+.sec-statement .sec-head h2{font-size:clamp(28px,2.9vw,40px);line-height:1.1}
+.name-copy h2{font-size:var(--fs-l2)}
+/* the statement voices: set apart by face and measure, not by size */
+.net-lede{font-size:clamp(21px,2.2vw,27px)}
+.quote-main blockquote{font-size:clamp(21px,2.2vw,27px)}
+.statement{font-size:clamp(22px,2.4vw,30px)}
+.gd-claim{font-size:clamp(21px,2.2vw,27px)}
+
+/* ---- 29.3 VERTICAL RHYTHM ---------------------------------------------
+   Ten to twenty percent out of the rhythm, taken from the tokens first so
+   that one change moves every page. --sec-pad 136 to 116 (-15%) and
+   --head-gap 64 to 52 (-19%) at 1440; the clamp MINIMA come down by less
+   (84 to 76, 40 to 34) because 390px was never the sparse width.
+   --label-gap is new: it names the 44px that sits in 22 inline style
+   attributes between a chapter label and the head under it. */
+:root{
+  --sec-pad:clamp(76px,8.4vw,116px);
+  --head-gap:clamp(34px,4.4vw,52px);
+  --label-gap:34px;
+}
+/* The inline 44px can only be answered with !important: the markup is
+   frozen for the page builders working after this pass, and an inline
+   style outranks every selector. When those attributes are eventually
+   removed the rule still holds the same value, so nothing regresses.
+   This section carries two of these (the other is in 29.6). There is a
+   third in the stylesheet, `.pf-ext .sec-head` in 31.1, and it is the
+   same case for the same reason: the Platform head moved inside a
+   wrapper, so it stopped being the `.rule-label +` sibling and had to
+   beat this rule's own !important to give the gap back once. Those
+   three are the whole set, and a fourth should have to argue for
+   itself. */
+.rule-label + .sec-head{margin-top:var(--label-gap)!important}
+/* the fold: the measured gaps above, below and around the hero. The hero
+   ends into the first rule of the page rather than into another section's
+   head, so it needs less air under it than a section boundary does: .82
+   of the page's own section padding. That run is what the brief means by
+   "a long empty area before the Guild section". */
+.hero{padding-top:clamp(48px,5.6vw,76px);padding-bottom:calc(var(--sec-pad) * .82)}
+.hero-eyebrow{margin-bottom:20px}
+.hero-dek{margin-top:20px}
+.hero-cta{margin-top:28px}
+/* the sparse blocks, named. Each one is a container that was carrying
+   more air than content at 1440. */
+.sec-statement{padding-block:clamp(80px,9.4vw,130px)}
+.sec-statement .sec-head{margin-bottom:clamp(24px,2.9vw,34px)}
+.statement{margin-top:clamp(36px,4.4vw,60px)}
+.access-panel{padding:clamp(38px,5.4vw,66px) clamp(24px,5vw,72px)}
+.cadence{margin-top:clamp(40px,5vw,56px)}
+.site-foot{padding-top:clamp(40px,5vw,60px)}
+/* the long empty runs before the people registers, which the brief names
+   directly. The registers themselves are the page builders' work and are
+   untouched; only the run of ground above them changes. */
+.ab-hero{padding-bottom:clamp(52px,5.6vw,82px)}
+.ab-reg{margin-top:clamp(34px,4.2vw,54px)}
+.ab-rl2{margin-top:clamp(38px,4.6vw,58px)}
+.gd-reg{margin-top:clamp(28px,3.8vw,50px)}
+
+/* ---- 29.4 PAGE-SPECIFIC DENSITY ---------------------------------------
+   One system, not one repeated template. Every page declares its own
+   register on `<body data-density>` and the two rhythm tokens follow it.
+   The attribute is the only markup this section needs, and a page that
+   declares nothing gets the balanced base above.
+
+     home       balanced    116 / 52    atmospheric, immediate
+     platform   dense       100 / 44    analytical, technical
+     solutions  clean       112 / 48    commercially direct
+     about      human       120 / 56    people and brand
+     guild      editorial   124 / 56    a roster reads like a page of print
+     use cases  structured  104 / 44    practical, indexed
+
+   The spread is 100 to 124 against a flat 136 before, so every page is
+   tighter than it was AND no two neighbouring registers read alike. */
+body[data-density="balanced"]{--sec-pad:clamp(76px,8.4vw,116px);--head-gap:clamp(34px,4.4vw,52px);--label-gap:34px}
+body[data-density="dense"]{--sec-pad:clamp(68px,7.4vw,100px);--head-gap:clamp(30px,3.8vw,44px);--label-gap:28px}
+body[data-density="clean"]{--sec-pad:clamp(74px,8.1vw,112px);--head-gap:clamp(32px,4.1vw,48px);--label-gap:32px}
+body[data-density="human"]{--sec-pad:clamp(78px,8.7vw,120px);--head-gap:clamp(36px,4.7vw,56px);--label-gap:36px}
+body[data-density="editorial"]{--sec-pad:clamp(80px,9vw,124px);--head-gap:clamp(36px,4.7vw,56px);--label-gap:36px}
+body[data-density="structured"]{--sec-pad:clamp(70px,7.6vw,104px);--head-gap:clamp(30px,3.8vw,44px);--label-gap:28px}
+
+/* ---- 29.5 MONO DISCIPLINE ---------------------------------------------
+   Mono stays the instrument voice: labels, numbering, categories,
+   navigation, timestamps, source and state labels, captions, annotations.
+   What it may not be is a sentence of running text set in letter-spaced
+   uppercase, which round nine already ruled against for `.level-out`
+   ("a label pretending to be a sentence"). One instance was left on the
+   site: the note under the instrument index on /platform/. It keeps its
+   words, its place and its ink and moves to the sans body register. */
+.caps-note{
+  font-family:var(--sans);font-size:var(--fs-small);line-height:1.6;
+  letter-spacing:0;text-transform:none;
+}
+
+/* ---- 29.6 MOBILE ------------------------------------------------------
+   Reviewed separately at 390. The ladder's minima (32 / 25 / 19) are
+   below the old ones (38 / 28 / 24), so a title occupies LESS of a phone
+   screen after this pass, not more, and the tightened rhythm arrives at
+   390 as a smaller cut than at 1440 by design (the clamp minima moved
+   8px and 6px against 20px and 12px at the wide end). What follows is the
+   one place where the wide rhythm would have crowded a phone: a section
+   head whose chapter label, eyebrow, heading and dek stack into four
+   blocks in a 342px column needs its internal gap back. */
+@media (max-width:560px){
+  .sec-head{gap:16px}
+  .rule-label + .sec-head{margin-top:30px!important}
+  .access-panel{padding:clamp(34px,7vw,48px) 20px}
+}
+/* The sticky header's REQUEST ACCESS is the site's one accent BLOCK, and
+   on a phone it printed 161px of amber in a 390px bar, directly above a
+   hero whose own first control is the same words in the same amber. Two
+   identical loud verbs in one viewport is not two calls to action, it is
+   one call and an echo, and the echo is the one the reader did not scroll
+   for. Under 640px the header instance takes the hairline register
+   `.btn-ghost` already carries, so the fill belongs to the hero alone and
+   the bar keeps a control rather than a poster. Not a word and not a link
+   changes; the button is still first in the tab order after the logo and
+   still reads REQUEST ACCESS. */
+@media (max-width:640px){
+  .site-head .btn-primary{
+    padding:9px 13px;font-size:11px;letter-spacing:.08em;
+    background:transparent;border-color:var(--line-2);color:var(--ink);
+  }
+  .site-head .btn-primary:hover{
+    background:var(--accent-soft);border-color:var(--accent);color:var(--accent);
+  }
+}
+
+/* ---- 29.7 USE CASES, the fold that was half a page --------------------
+   The structured register's hero printed its eyebrow, headline, dek and
+   both buttons in a single left column and left the right half of the
+   fold empty for 490px of height: the "huge headline plus very little
+   else plus large empty space" the brief names outright, and the one
+   page on the site still doing it. Solutions and Platform already answer
+   it with a two-column fold, so this page takes the same shape rather
+   than a new one: headline left, dek and the two controls right, both
+   columns opening on the same top. No word moves out of order, because
+   the reading order in the markup is exactly the order the grid places
+   them in, and the stacked layout under 981px is untouched.
+   The page is selected by its density register, which is the only thing
+   that is unique to it without adding markup; `structured` belongs to
+   this page alone (29.4). */
+@media (min-width:981px){
+  body[data-density="structured"] .hero .wrap{
+    display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);
+    column-gap:clamp(36px,5vw,72px);align-items:start;
+  }
+  body[data-density="structured"] .hero .hero-eyebrow{grid-column:1/-1}
+  body[data-density="structured"] .hero h1{grid-column:1;grid-row:2;margin:0}
+  body[data-density="structured"] .hero .hero-dek{grid-column:2;grid-row:2;margin-top:0;max-width:46ch}
+  body[data-density="structured"] .hero .hero-cta{grid-column:2;grid-row:3;margin-top:28px}
+}
+
+/* ---- end 29 ---- */
+
+/* ============ 30 ROUND ELEVEN HOME AND SOLUTIONS (2026-09-20): the first engagement as a flow, the path refined ============ */
+/* Owner of this section: the home and solutions builder. */
+
+/* Rules: the chairman's v0.4 brief, sections 3, 4, 6, 7, 8, 10, 15 and
+   19. Home is balanced, atmospheric and immediate; Solutions is clean and
+   commercially direct. Nothing here re-tunes section 29: the ladder and
+   the rhythm tokens are read, never redeclared. No word changed on either
+   page. Classes added by this section are prefixed hs-; where a rule has
+   to answer an earlier section it repeats that section's own selector
+   here rather than editing it in place, because 01 to 29 are frozen. */
+
+/* ---- 30.1 HOME, THE FOLD ---------------------------------------------
+   The brief asks for more of the page's argument inside the first screen
+   without changing what the globe is doing. Nothing about the instrument
+   moves: the scale, the scope, the crop, the caption and the ledger are
+   exactly as rounds eight and nine left them. What comes out is ground.
+   The fold carried 76px above the longitude scale, another 54 between the
+   scale and the grid, and 95 under the whole thing before the proof
+   strip, which is three runs of air stacked in one screen. At 1440 the
+   research partnerships and the G2 rating now sit inside 900px, so the
+   first screen carries the proposition, the instrument, the operating
+   cadence AND the outside evidence for all three. */
+.hero-v1{padding-top:clamp(34px,3.2vw,46px);padding-bottom:calc(var(--sec-pad) * .62)}
+.hero-v1 .wrap{padding-top:clamp(20px,2.2vw,30px)}
+.hero-v1 .cadence{margin-top:clamp(34px,3.6vw,46px)}
+
+/* ---- 30.2 HOME, "BEING READY" AS AN ASYMMETRIC PAIR -------------------
+   The section ran label, heading, lede, then three thin rows down the
+   middle of a very tall band: the exact template the brief's section 19
+   names (small label, big heading, blank area, ruled graphic). The claim
+   now hangs in a narrow left column and the three consequences carry the
+   density on the right, which is asymmetry that comes from the
+   information rather than from an offset. Every word and every row is
+   unchanged, and the band loses about 200px of its height because the
+   head and the rows stopped queueing. */
+@media (min-width:901px){
+  .hs-ready .wrap{
+    display:grid;grid-template-columns:minmax(0,36fr) minmax(0,64fr);
+    column-gap:clamp(36px,4.6vw,76px);align-items:start;
+  }
+  .hs-ready .sec-head{margin-bottom:0;max-width:32ch}
+  .hs-ready .sec-head p{max-width:34ch}
+  /* the label column can be narrower than the site default here: the three
+     row labels are two and three words, and the sentences are what the
+     reader is scanning */
+  .hs-ready .ruled-row{
+    grid-template-columns:clamp(150px,14vw,200px) minmax(0,1fr);
+    gap:8px clamp(20px,2.6vw,40px);
+  }
+}
+
+/* ---- 30.3 HOME, THE MISSION LINE -------------------------------------
+   One quote in a whole screen was the second repetition of the same
+   rhythm. The label becomes a left rail and the quote takes the wide
+   column beside it, so the band reads as one object rather than as a
+   section with a heading, and the run of ground around it comes down to
+   three quarters of the page's own rhythm. The quote itself, its accent
+   rule, its scale and its attribution are untouched. */
+.hs-mission{padding-block:calc(var(--sec-pad) * .74)}
+.hs-mission .quote-main{margin-top:26px}
+@media (min-width:901px){
+  .hs-mission .wrap{
+    display:grid;grid-template-columns:minmax(0,20fr) minmax(0,80fr);
+    column-gap:clamp(28px,3.4vw,56px);align-items:start;
+  }
+  .hs-mission .eyebrow{margin-top:7px}
+  .hs-mission .quote-main{margin-top:0;max-width:58ch}
+}
+
+/* ---- 30.4 HOME, THE ORGANIZATIONAL STATEMENT -------------------------
+   The page's one statement section printed a 40px heading and two
+   paragraphs in the left 55 percent with the right half empty for the
+   whole screen. Heading left, reading right: the claim is set apart and
+   the column beside it carries the analytical density, which is the
+   brief's own description of natural asymmetry. The .principle below
+   keeps its measure and its place. */
+.hs-read p + p{margin-top:16px}
+@media (min-width:901px){
+  .hs-statement{
+    max-width:none;display:grid;
+    grid-template-columns:minmax(0,48fr) minmax(0,52fr);
+    column-gap:clamp(36px,4.4vw,64px);align-items:start;
+  }
+  .hs-statement p.eyebrow{grid-column:1;grid-row:1}
+  .hs-statement h2{grid-column:1;grid-row:2}
+  .hs-statement .hs-read{grid-column:2;grid-row:1/span 2}
+  .hs-statement .hs-read p{max-width:62ch}
+}
+
+/* ---- 30.5 SOLUTIONS, THE FIRST ENGAGEMENT AS A FLOW ------------------
+   The page's most important commercial block, and the brief's section 7:
+   every word stays, the big bordered container goes. It is now three
+   stations hanging from one continuous rule, read left to right: an
+   amber sequence mark at the leading edge of each station, a fine
+   connecting rule between them carrying the shared 14x10 arrow, and the
+   station label in the instrument voice over its sentence. The rule is
+   continuous because the separation is padding and never gap, which is
+   the lesson the cadence ledger records in section 19.
+
+   AMBER IS THE SEQUENCE, and that is the component's one accent role.
+   The block used to spend its accent on a 2px panel edge, which is
+   decoration wearing a signal colour; the three marks spend it on
+   position in a sequence, which is what amber means on this site. Three
+   marks of one role is not three roles.
+
+   TIMING is a separate annotation under the flow, set as label left and
+   sentence right on its own hairline, so it reads as metadata about the
+   engagement rather than as a fourth group inside it. It stays last in
+   the markup, where a reader meets it after the three groups it dates. */
+.hs-fe{
+  border:0;background:none;padding:0;
+  margin-top:clamp(34px,4.2vw,56px);
+}
+.hs-fe .fe-idx{margin-bottom:15px;color:var(--ink-dim)}
+.hs-fe h3{max-width:30ch}
+.hs-flow{
+  display:grid;gap:0;border-top:0;padding-top:0;
+  margin-top:clamp(26px,3vw,36px);
+}
+.hs-fc{
+  position:relative;border-top:1px solid var(--line-2);
+  padding:17px clamp(18px,2.2vw,32px) 0 0;
+}
+/* the sequence mark: the same 2 by 12 amber tick the adoption path wears
+   at its own entry station, one per position */
+.hs-fc::before{content:"";position:absolute;left:0;top:-1px;width:2px;height:12px;background:var(--accent)}
+.hs-fc .k{color:var(--ink)}
+.hs-fc p:not(.k){max-width:38ch}
+.hs-link{
+  position:relative;border-top:1px solid var(--line-2);
+  display:flex;justify-content:center;padding:13px clamp(8px,1.4vw,20px) 0;
+  color:var(--ink-dim);
+}
+.hs-fe .fe-timing{
+  display:grid;grid-template-columns:clamp(140px,15vw,210px) minmax(0,62ch);
+  gap:6px clamp(24px,3.2vw,48px);align-items:baseline;
+  margin-top:clamp(28px,3.4vw,42px);padding-top:clamp(16px,2vw,22px);
+  border-top:1px solid var(--line);max-width:none;
+  font-size:15px;line-height:1.6;color:var(--ink-mute);
+}
+.hs-fe .fe-timing b{margin-bottom:0;color:var(--ink-dim)}
+@media (min-width:901px){
+  .hs-flow{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr)}
+}
+@media (max-width:900px){
+  /* stacked, and the connector turns with the flow: an arrow that still
+     points right between two blocks that sit one above the other is a
+     direction the page does not have */
+  .hs-fc{padding-right:0}
+  .hs-link{justify-content:flex-start;border-top:0;padding:14px 0 0}
+  .hs-link svg{transform:rotate(90deg)}
+  .hs-fe .fe-timing{grid-template-columns:minmax(0,1fr);gap:10px}
+}
+
+/* ---- 30.6 SOLUTIONS, THE ADOPTION PATH, REFINED ----------------------
+   The brief keeps this figure and asks for proportions, spacing, line
+   weights and the subtlety of the activation. So the lattice is
+   untouched: the twelve tracks, the three spans, the division counts of
+   6, 18 and 10 and the accent at station 01 are exactly as section 23
+   drew them, because a ruler that stops registering with what it
+   measures is the one thing this figure may not become. What changes is
+   the air inside the frame and how far the two quiet stages step back. */
+.so-path .so-grid{padding:clamp(20px,2.4vw,28px) clamp(16px,2vw,26px) clamp(22px,2.6vw,30px)}
+.so-path .so-k{margin-top:clamp(20px,2.3vw,27px);padding-top:14px}
+.so-path .so-step h3{margin-top:14px}
+.so-path .so-step .pts{margin-top:16px;padding-top:16px}
+/* The quiet register dropped most of the checker marks with the ink,
+   which read as the figure dimming rather than as one stage coming
+   forward, so the checkers hold more of themselves: .38 becomes .55.
+   The INK is section 28's and is not touched here. That is the
+   correction of a defect this subsection shipped with: it also moved the
+   quiet sentence from --ink-dim to --ink-mute, which is the ink the LIVE
+   stage's sentence already carries, so quiet and live printed the same
+   colour and the sentence stopped saying anything about state. Measured
+   at 1440 hovering stage 02: every `.v` on the figure read
+   rgb(84,92,103). Nothing below re-declares `.v`, and a rule that lands
+   on the value the rule under it already set is not a refinement, it is
+   a rule that hides the one underneath.
+   Both the quiet and the loud checker rules are repeated here, in that
+   order: section 28 wins the hover case on source order at equal
+   specificity, so re-declaring one of the pair in isolation would
+   silently invert it. */
+.so-grid:focus-within .so-step .checker,
+.sx-act .so-grid .so-step .checker{opacity:.55}
+.so-path .so-grid .so-step:focus-within .checker,
+.so-path .so-grid .so-step.sx-on .checker{opacity:1}
+@media (hover:hover){
+  .so-grid:has(.so-step:hover) .so-step .checker{opacity:.55}
+  .so-path .so-grid .so-step:hover .checker{opacity:1}
+}
+
+/* ---- 30.7 SOLUTIONS, THE TWO SPARSE RUNS -----------------------------
+   Named in the brief: the ground between the fold and the adoption
+   figure, and the ground above "How each function uses the same layer".
+   Both are section boundaries doing nothing, and both are cut against
+   the page's own clean register rather than by a fixed number, so the
+   page keeps one rhythm. */
+.hs-so-hero{padding-bottom:calc(var(--sec-pad) * .56)}
+.hs-start .rule-label + .frame{margin-top:18px}
+.hs-funcs{padding-top:calc(var(--sec-pad) * .72)}
+
+/* ---- 30.8 THE PHONE --------------------------------------------------
+   Tighter desktop spacing may not arrive as a crowded phone. Every
+   composition above is a wide-layout rule and the stacked page keeps the
+   air section 29 gives it; what follows is only the two places where a
+   stacked block needed its own spacing back. */
+@media (max-width:900px){
+  .hs-ready .sec-head{margin-bottom:var(--head-gap)}
+  .hs-mission{padding-block:calc(var(--sec-pad) * .82)}
+}
+
+/* ---- 30.9 HOME, WHERE THE EVIDENCE SITS ------------------------------
+   The "why now" block was two equal columns of words. It is now the
+   reading on the left and the documentary plate on the right, running
+   off the page edge the way the fold's instrument does, so the section
+   ends on the outside world rather than on a second paragraph. The
+   figure's own chrome is in 33.1; this is only its place in the page.
+   Below 900 the .net grid collapses (section 12) and the plate stacks
+   under the reading at full width, which is the right order: the words
+   it is evidence for come first. */
+@media (min-width:901px){
+  .hs-why{
+    grid-template-columns:minmax(0,42fr) minmax(0,58fr);
+    grid-template-rows:auto 1fr;
+    row-gap:clamp(18px,2vw,26px);align-items:start;
+  }
+  .hs-why>.reveal:first-child{grid-column:1;grid-row:1}
+  .hs-why .net-body{grid-column:1;grid-row:2}
+  .hs-why .hs-tex{grid-column:2;grid-row:1/span 2}
+  .hs-why .net-body p{max-width:46ch}
+}
+/* ---- end 30 ---- */
+
+/* ============ 31 ROUND ELEVEN PLATFORM (2026-09-20): analytical, one crop, annotated ============ */
+/* Owner of this section: the platform builder. Rules: the page's register
+   is denser, analytical, technical (brief 15); the capability walk keeps
+   MONITOR / ANALYZE / DECIDE / ACT and stops being a sequence of
+   full-height product plates (brief 9); padding around the diagrams comes
+   in; the label/headline/blank/bordered-graphic formula is broken where
+   the page's own information gives a reason to break it (briefs 3, 6, 19).
+   Built ON section 29's ladder and density tokens, never editing them, and
+   on the round-ten rail in section 27, which is unchanged. No word on the
+   page changed: everything here is composition, plus one documentary plate
+   whose only new text is its source credit and its alt (33.2). */
+
+/* ---- 31.1 the external-context head, and the one real-world plate ----
+   #breadth opened with the page's fourth consecutive
+   label -> eyebrow -> headline -> dek -> blank -> bordered graphic, which
+   is the formula brief 19 names. It is also the one place on the page that
+   talks about the outside world in its own voice, so it is where the
+   round's documentary material belongs (briefs 10 and 11). The head keeps
+   every word and takes the left of the rule; a published nighttime-lights
+   map of a real regional blackout takes the right of it. That is the
+   asymmetry brief 6 asks for: two unequal columns because the information
+   is two kinds, an argument and a piece of evidence, not an offset for its
+   own sake. The plate's chrome is in 33.2, where the other pages' texture
+   chrome sits beside it.
+   The wrapper takes the chapter label's own gap, because `.rule-label +
+   .sec-head` (29.3) no longer matches through it, and hands the section's
+   head gap back at the bottom of the pair. */
+.rule-label + .pf-ext{margin-top:var(--label-gap)}
+.pf-ext{margin-bottom:var(--head-gap)}
+.pf-ext .sec-head{margin-top:0!important;margin-bottom:0}
+@media (min-width:1101px){
+  .pf-ext{
+    display:grid;grid-template-columns:minmax(0,6.6fr) minmax(0,5.4fr);
+    column-gap:clamp(32px,3.6vw,52px);align-items:start;
+  }
+  /* the head's 760px measure is for a head that owns the width; in a
+     column of its own the column is the measure */
+  .pf-ext .sec-head{max-width:none}
+}
+@media (max-width:1100px){
+  .pf-ext .pf-fig{margin-top:clamp(24px,3vw,34px)}
+}
+
+/* ---- 31.2 the capability walk: one crop, at a controlled height -------
+   Round ten made the four moments one evidence area with a station rail,
+   which stopped them being read as one texture. What was left is the
+   height of the plate the selected station opens: at 1440 the globe
+   printed 736px tall and the simulation 755px, which is four fifths of
+   the viewport for one screenshot and is the "giant product screenshot"
+   brief 9 names. Both are now cropped to the part that matters for their
+   stage, stated in source pixels, and no plate in the walk passes .56 of
+   a 900px viewport at 1440.
+   The knowledge graph (772x250, section 22.2c) and the example
+   application (1920x566, section 22.4) were already crops at 298px and
+   339px and are untouched: a crop that is already a crop does not get
+   re-cut to make a rule look tidy. */
+@media (min-width:601px){
+  /* MONITOR. Source x 296 to 1920, y 130 to 840 of a 1920x1040 asset:
+     the product's own content area (the sidebar goes, 22.2b), the globe's
+     lit band with its event marks, and the tracking panel from LIVE
+     TRACKING through MILITARY & STRATEGIC. It opens under the globe
+     projection toggle, which is a view control rather than evidence, and
+     it ends in the gap under Naval and above Spaceports, so no layer row
+     is cut in half. The sphere is cut by the plate, which is what this
+     site does with the globe: a figure is a view, not an object.
+     1624/710 = 2.29, so 503px at 1440 against 736 before. */
+  .pl-mom .win-body.focus-globe{aspect-ratio:1624/710}
+  .pl-mom .win-body.focus-globe img{left:-18.227%;top:-18.310%;width:118.227%}
+  /* DECIDE. Source x 360 to 1880, y 38 to 624 of a 1920x1036 asset: the
+     same left edge round seven cut (the sidebar again), the scenario
+     title bar whole, the actor list whole with its own bottom rule, and
+     the primary strategic option whole with the three lines of reasoning
+     under it. The cut falls in the 15px gap the product leaves between
+     the primary option and the alternative one, measured on the asset
+     rather than guessed, so the plate ends on the alternative's top edge
+     and no line of reasoning is sliced. What the caption promises, the
+     actors and the options each one has, is all inside the rect.
+     1520/586 = 2.59, so 443px at 1440 against 755 before. */
+  .pl-mom .win-body.focus-sim{aspect-ratio:1520/586}
+  .pl-mom .win-body.focus-sim img{left:-23.684%;top:-6.485%;width:126.316%}
+}
+/* ---- 31.2b the two phone rects that did not show what they claimed ----
+   Both are overrides on section 17 and section 22, which are frozen: the
+   rects live there, the corrections live here.
+   MONITOR at 390 printed source x 1498 to 1920, y 0 to 316 of the
+   1920x1040 asset, which is the far right edge of the screen: a star
+   field, the projection toggle and a column of unchecked layer boxes,
+   and NOT ONE PIXEL OF THE GLOBE. The caption under it reads "tracked
+   events and infrastructure on one globe", so the crop was describing
+   something the reader could not see. The rect is now source x 520 to
+   1420, y 60 to 735: the lit limb against the star field on two sides,
+   the coastlines, and the event marks dense enough to be counted at
+   342px. The layer panel goes, because at this width the picture can
+   carry the globe or the controls and the caption is about the globe.
+   Scale 342/900 = .38, so a 6px source mark prints 2.3px at 2x.
+   THE REPORT printed source x 28 to 712 of a 1642-wide document: every
+   line of the executive summary ran off the right edge of the plate
+   mid-word, and the thesis line with it. A vertical cut through a
+   paragraph cuts words on every line it crosses, so the rect takes the
+   frame's OWN FULL WIDTH and cuts only horizontally: source y 0 to 730,
+   which is the document toolbar with its version control, the title,
+   the italic thesis, the rule, the Executive summary heading and the
+   whole first paragraph. 730 falls inside the blank band the document
+   leaves between that paragraph and the next (rows 706 to 753, found by
+   scanning the asset for rows with no dark pixel between x 40 and
+   x 1600), so the crop ends on a line boundary and no word is sliced.
+   That is exactly what the phone caption promises: the head of the
+   report, shown as a detail. The cost is scale, 342/1642 = .21 against
+   .50 before; at 2x the body still resolves and a cut word never does. */
+@media (max-width:600px){
+  .pl-mom .win-body.focus-globe img{width:213.333%;left:-57.778%;top:-8.889%}
+  .pl-deliv-doc .win-body.focus-sourced{aspect-ratio:1642/730}
+  .pl-deliv-doc .win-body.focus-sourced img{width:100%;left:0;top:0}
+}
+
+/* ---- 31.3 the crop's foot carries the annotations ---------------------
+   Brief 9 asks for one or two short annotations that explain what
+   matters, and brief 8 of the dispatch forbids new wording for them. So
+   nothing is written: the two annotations each stage already owns are
+   MOVED to the foot of the plate they annotate, the way round ten moved
+   the station line onto the rail. The figure's own caption (what this
+   screen is, and what to look at in it) takes the left of one hairline
+   under the crop, and the stage's INPUT/OUTPUT pair takes the right of
+   the same hairline with a station tick at its leading edge. Word for
+   word the page is unchanged; what changed is that the pair now sits
+   against the evidence instead of closing a column of prose two hundred
+   pixels away from it.
+   Separation is padding and never a column gap, so the two rules abut
+   into one line across the plate's foot: the lesson `.cadence-v1`,
+   `.trail` and the round-ten rail all record.
+   Nothing is drawn OVER the product pixels. A label on top of a real
+   screenshot inside a `.window` reads as part of the product's own
+   interface, which is a claim about the product that the honesty tiers
+   exist to stop; the leader-onto-a-mark device (section 19.4) is for the
+   drawn and the example-application registers, where the site owns the
+   artwork. */
+@media (min-width:701px){
+  .stage.stage-stack.pl-mom figure{
+    display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:0;align-items:start;
+  }
+  .stage.stage-stack.pl-mom figure > .window,
+  .stage.stage-stack.pl-mom figure > .frame{grid-column:1/-1}
+  .stage.stage-stack.pl-mom figure > figcaption{
+    grid-column:1;margin-top:16px;padding:12px clamp(22px,2.8vw,44px) 0 0;
+    border-top:1px solid var(--line);align-items:start;
+  }
+  .stage.stage-stack.pl-mom .pf-io{
+    position:relative;grid-column:2;justify-self:end;
+    display:flex;flex-wrap:nowrap;gap:0 18px;max-width:none;
+    margin-top:16px;padding:12px 0 0 14px;border-top:1px solid var(--line);
+  }
+  .stage.stage-stack.pl-mom .pf-io::before{
+    content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3);
+  }
+}
+@media (max-width:700px){
+  /* stacked, the pair keeps the rule it has carried since round seven */
+  .stage.stage-stack.pl-mom .pf-io{
+    display:flex;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);max-width:none;
+  }
+}
+
+/* ---- 31.4 the walk's own rhythm ---------------------------------------
+   A moment used to open with a full section's worth of air because four
+   of them were read in sequence. One is shown at a time now, under a rail
+   that already separates it from the head, so the air above and below the
+   evidence is the air around one figure and not around four. */
+.stage.stage-stack.pl-mom{padding-block:clamp(26px,3vw,42px)}
+html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
+.pl-mom .stage-media{margin-top:clamp(6px,1vw,14px)}
+
+/* ---- 31.5 the delivery exhibits, and the report that could not be cut --
+   The block's own padding comes in with the page. The sourced report is
+   the one plate on the page still printing over 700px tall, and it is
+   left whole deliberately: it is a portrait document whose caption names
+   its version control (the top edge of the asset) and its sources panel
+   (the bottom edge), so every controlled-height crop of it describes
+   something the reader cannot see, and the caption may not be rewritten
+   this round. The finding is recorded in COMPONENTS.md rather than fixed
+   with a crop that would make the caption false. */
+.pl-deliv{padding-block:clamp(34px,4vw,58px)}
+.pl-deliv-doc{margin-top:clamp(26px,3.2vw,40px)}
+
+/* ---- 31.6 padding around the diagrams ---------------------------------
+   Brief 3, on a page whose density register is already `dense` (29.4).
+   Each of these is a container that was carrying more air than content at
+   1440, and each is scoped so it cannot reach another page's copy of the
+   same component: the lens only exists inside a frame on this page, the
+   chain and the instrument index only exist here, and `.rx-stack` is
+   deliberately NOT touched because Home carries one too. */
+.frame .lens{padding:clamp(10px,1.4vw,16px) 0 clamp(12px,1.6vw,18px)}
+.frame .chain-list li{padding:13px 18px}
+.instr-list .instr{padding:16px 2px 18px}
+.sec .agents{margin-top:clamp(26px,3.2vw,38px)}
+.pl-fold .hero-eyebrow{margin-bottom:clamp(20px,2.4vw,32px)}
+
+/* ---- end 31 ---- */
+
+/* ============ 32 ROUND ELEVEN ABOUT AND GUILD (2026-09-20): the brand story, people, density ============ */
+/* Owner of this section: the people builder. Rules: the chairman's v0.4
+   brief, sections 2, 12, 13, 14 and 15. About is human and brand-led,
+   Guild is editorial and people-led, and the equal-weight rule of round
+   ten (section 26) is one-directional and untouched: nobody is promoted
+   out of a register and no person is printed at a second size. What
+   changes here is the ground between things, the scale of the one brand
+   object, and one documentary plate. Sections 21, 24 and 26 are frozen,
+   so everything below is an override written on their own selectors and
+   the new classes are prefixed `ag-`. No word changed on either page. */
+
+/* ---- 32.1 ABOUT, the fold: headline and intro, one row --------------
+   The fold was a headline across the top, a full-width hairline under
+   it, and the dek hanging in the right half of the row below. Reducing
+   the run above the rule made the empty half smaller without making it
+   anything: at 1440 the left half of that row was a 452 by 155 hole
+   beside a paragraph, and a rule that spans a row is a promise that
+   something sits on both ends of it.
+   So the row becomes the composition instead of sitting under it: the
+   headline takes the left column and the intro takes the right, the two
+   sharing one top, which is the shape the Platform and Solutions folds
+   already use. This page's own marks survive the move: the hairline is
+   still there and still carries the first station tick, but it is now
+   the rule the intro column opens on rather than a span across nothing,
+   and it aligns with the cap line of the headline beside it. The left
+   half of the fold is no longer empty, it is the headline.
+   Below 981px the grid collapses to one column (24.6) and the fold
+   stacks in reading order: eyebrow, headline, rule, intro. */
+.ab-hero{padding-bottom:clamp(44px,4.8vw,66px)}
+.ab-fold{margin-top:clamp(24px,3vw,40px);padding-top:22px}
+@media (min-width:981px){
+  .ab-hero .wrap{
+    display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);
+    column-gap:clamp(32px,4vw,64px);align-items:start;
+  }
+  .ab-hero .hero-eyebrow{grid-column:1/-1}
+  .ab-hero h1{grid-column:1;max-width:none;margin:0}
+  /* the intro column: its own rule, its own tick, level with the
+     headline's cap line rather than with its line box */
+  .ab-fold{
+    grid-column:2;margin-top:12px;padding-top:22px;
+    grid-template-columns:minmax(0,1fr);
+  }
+  .ab-dek{grid-column:1;max-width:none}
+}
+
+/* ---- 32.2 THE BRAND MOMENT: the full progression, across the page ----
+   Black and white resolving into grey is the company's own story and
+   this is the page where identity is expressed, so it stops being a
+   small strip beside a paragraph. The five marks now run the full
+   content width, hanging from the same rule they already hung from, at
+   roughly 1.7 times their old size; the copy sits above them at its own
+   measure instead of beside them. Nothing is added: same five marks,
+   same rule, same caption, same words, and the caption still ends under
+   the grey square, which is where the sequence resolves.
+   The marks are a grid of five equal cells rather than a flex row with a
+   fixed size, so the progression divides the page's own measure at every
+   width and the gap scales with the viewport rather than pooling at one
+   end. Checkerboard motifs stay off every other page: this is the one
+   place the device is printed in full. */
+@media (min-width:901px){
+  .ab-name{grid-template-columns:minmax(0,1fr);gap:clamp(28px,3.4vw,44px);align-items:start}
+}
+.ab-seq{padding-top:clamp(22px,2.8vw,34px)}
+.ab-name .resolve{
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:clamp(10px,6.4vw,92px);align-items:start;
+}
+.ab-name .resolve svg{width:100%;max-width:none}
+/* the band's own ground: the section carried 120px above and below a
+   130px object, which is the "large container with little content"
+   the brief names. The object is now the content. */
+.ag-about #why-grey{padding-top:clamp(56px,6.2vw,84px);padding-bottom:clamp(52px,5.8vw,78px)}
+
+/* ---- 32.3 ABOUT, the runs the brief names --------------------------
+   Two named gaps: the one before "Four disciplines, one system" (a fold
+   ending into a raised band that opened with 202px of ground between
+   them) and the one before the core team. Section 29 took the rhythm
+   down for the whole site; these two are cut a second step because they
+   are the two the brief points at by name. The human register still
+   reads as the airiest page on the site: 154px between the fold and the
+   first band, against Home's 116px section padding alone. */
+.ag-about #why{padding-top:clamp(64px,7vw,88px);padding-bottom:clamp(70px,7.6vw,98px)}
+.ag-about #team{padding-top:clamp(62px,6.8vw,88px);padding-bottom:clamp(58px,6.4vw,82px)}
+.ag-about #offices{padding-top:clamp(62px,6.8vw,88px);padding-bottom:clamp(54px,6vw,78px)}
+/* the page closes on the access panel, and a closing panel ends into the
+   footer rather than into another section */
+.ag-about #category{padding-bottom:clamp(64px,7vw,96px)}
+
+/* ---- 32.4 ABOUT, the people register: density, never size ----------
+   The brief allows the register's row spacing and information density to
+   be tightened and forbids reintroducing size differences, so nothing
+   here touches a portrait: all 22 people stay at 64px (56 under 560px),
+   one size per viewport, which the round's measurement confirms. What
+   changes is the ground inside a row, between a person's own fields, and
+   above the register. Each row gives up 14px of padding and 8px between
+   its four fields, which is about 12 percent of a row and is why more of
+   the team reads in one screen without a single field moving or
+   shrinking. */
+.ab-key{margin:16px 0 clamp(20px,2.4vw,26px)}
+.ab-reg{margin-top:clamp(24px,2.8vw,36px)}
+.ab-p{padding-top:14px;padding-bottom:20px;gap:18px}
+.ab-rl2{margin-top:clamp(32px,3.8vw,46px)}
+.ab-adv{margin-top:clamp(20px,2.4vw,28px)}
+.ab-a{padding-top:20px}
+.ab-por-m{margin-bottom:14px}
+.ab-role{margin-top:7px}
+.ab-bio{margin-top:9px}
+.ab-cred{margin-top:7px}
+.ab-foot{margin-top:12px}
+
+/* ---- 32.5 ABOUT, where we are: the register and the plate ----------
+   The west-to-east register keeps the full measure, because its stations
+   are meridians and a scale drawn narrow stops registering with what it
+   measures (section 24.5). So the documentary plate takes the empty
+   right half of the SECTION HEAD instead, above the register: the head
+   is three short lines and carried nothing beside it. The plate is
+   evidence for the section under it rather than atmosphere over it, and
+   the figure chrome is in 33.3 with the other documentary material.
+   The head's third track is what keeps the two objects level. A spanned
+   grid item distributes its height across the auto rows it spans, so a
+   400px plate spanning the label and the heading pushed the heading a
+   third of the way down its own column; the text rows are content-sized
+   and one empty `1fr` row under them takes the remainder instead. */
+@media (min-width:981px){
+  .ag-about #offices .sec-head{
+    display:grid;max-width:none;align-items:start;
+    grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+    grid-template-rows:auto auto 1fr;
+    column-gap:clamp(32px,4.4vw,64px);row-gap:14px;
+  }
+  .ag-about #offices .sec-head .eyebrow{grid-row:1;max-width:520px}
+  .ag-about #offices .sec-head h2{grid-row:2;max-width:520px}
+  .ag-about #offices .sec-head .eyebrow,.ag-about #offices .sec-head h2{grid-column:1}
+  .ag-about #offices .ag-fig{grid-column:2;grid-row:1 / -1;align-self:start}
+}
+/* The register's track height is a WIDE-LAYOUT value and has to be
+   written inside the same breakpoint section 24.6 uses. Below 1081px the
+   stations stop being positioned and the track is `height:auto`; a bare
+   `.ab-geo-t{height}` written later in the file has equal specificity, no
+   media query to lose to, and silently stacked three absolutely
+   positioned offices on top of each other at 390. Found in the phone
+   walk, not in a desktop screenshot. */
+@media (min-width:1081px){
+  .ab-geo-t{height:112px}
+}
+.ab-geo-k{margin-top:clamp(24px,2.8vw,34px)}
+
+/* ---- 32.6 GUILD, the editorial register: tighter rows, same records --
+   The roster is the page and the brief asks for more of it per screen
+   without crowding, so every row gives up 12px of padding and 6px inside
+   its own foot, and the gutter between the two columns comes in by 16px,
+   which the biographies take back as measure. Nothing is removed, no
+   plate changes size, no record is reordered and the two-column ledger
+   rule down the middle is where it was. A row is still taller than its
+   plate at every width, which is the floor this register may not cross.
+   The figure above the roster and the areas register give up the same
+   proportion, so the page keeps one rhythm. */
+.gd-sys{margin-top:clamp(20px,2.4vw,30px)}
+.gd-field{height:clamp(28px,3.4vw,42px)}
+.gd-st{padding-top:22px}
+.gd-doms{margin-top:18px}
+.gd-key{margin:18px 0}
+.gd-roster{margin-top:clamp(20px,2.4vw,28px);gap:0 clamp(24px,3vw,48px)}
+.gd-m .gd-p{padding-top:18px;padding-bottom:20px}
+.gd-m .gd-bio{margin-top:7px}
+.gd-m .gd-foot{margin-top:12px;padding-top:10px}
+
+/* ---- 32.7 GUILD, the hover trigger, guarded ------------------------
+   A defect, found while tuning the roster's states. Section 21 sets the
+   record's raised ground on `.gd-m:hover .gd-p` with no `(hover:hover)`
+   guard, and it outranks the custom-property model section 26 built
+   (0,3,0 against 0,2,0). A phone leaves an emulated hover on the last
+   element tapped, so after a second tap released a record the row kept
+   the raised ground while its tick, its ink and its plate had all
+   stepped back: a state that is released in the DOM and still on the
+   screen, which is exactly the failure round ten documented twice and
+   guarded everywhere else. Restating the selector here hands the ground
+   back to `--pi-ground`, which IS guarded, so hover, focus and tap now
+   produce one state from one place. Section 21 is frozen; this is the
+   override that neutralises it. */
+.gd-m:hover .gd-p,.gd-m:focus-within .gd-p{background:var(--pi-ground)}
+.gd-p{transition:background-color .18s ease}
+
+/* ---- 32.8 MOBILE ----------------------------------------------------
+   Reviewed at 390 on both pages. The tightened rows arrive on a phone as
+   a smaller cut than at 1440 (the clamp minima move 6 to 8px against 12
+   to 14), because a 342px column is where crowding starts, not where the
+   sparse ground was. Two reservations: the brand progression keeps five
+   marks in one row down to 390, where each mark is 60px and the finest
+   checker is still drawn rather than smudged, and the documentary plate
+   goes full width under the heading it belongs to rather than beside
+   it. */
+@media (max-width:900px){
+  .ab-fold{margin-top:clamp(22px,3vw,32px)}
+  .ag-about #offices .sec-head{max-width:760px}
+}
+@media (max-width:560px){
+  .ab-name .resolve{gap:10px}
+  .ab-p{padding-top:15px;padding-bottom:20px}
+  .gd-m .gd-p{padding-top:16px;padding-bottom:18px}
+}
+
+/* ---- end 32 ---- */
+
+/* ============ 33 ROUND ELEVEN TEXTURE (2026-09-20): real-world material as evidence ============ */
+/* Owner of this section: shared by the page builders. THREE pages carry a
+   documentary plate (33.1 home, 33.2 platform, 33.3 about) and they share
+   ONE chrome, written once in 33.0. The page subsections below it carry
+   nothing but placement and the source rect each width prints; a page may
+   not invent its own credit form, because a credit that reads three ways
+   on three pages is three claims rather than one register. Use cases
+   carries no documentary material, so there is no 33.4.
+   The material itself: desaturated, high contrast, geometry untouched,
+   used as evidence or context and never as decoration or wallpaper. The
+   full credit, the licence, the acquisition date and the source URL of
+   every file are in CREDITS.md at the repo root, which the build does not
+   publish. */
+
+/* ---- 33.0 the shared documentary chrome (tex-) ------------------------
+   A real photograph or a published data product takes NONE of the three
+   honesty chromes. `.window` would claim it is the product, an
+   `Illustrative view` bar would call a published picture drawn, and
+   `.sheet` would call it an illustrative document. What it takes instead
+   is what this system gives every photograph on a light ground: a
+   `--line-2` hairline, because an image separates itself here with a rule
+   and never with a shadow, over the recessed plate ground.
+   Under it, two lines and no more. The FIRST names the subject in the
+   site's figcaption voice, the register `.win-cap` already sets for a
+   product plate: mono, uppercase, 10.5px, .14em. It states a fact about
+   what the picture shows and it carries no checker marker, because that
+   marker belongs to figures of Mission Grey's own work.
+   The SECOND is the credit, quieter by two moves rather than by going
+   dimmer than `--ink-dim`, which is this system's floor for text: it
+   drops the uppercase and most of the tracking. It is not uppercased
+   because it is a name and an institution printed as the register
+   requires them, and shouting a source is not crediting it. It carries no
+   accent: amber means active, changed, selected or decision point on this
+   site, and a credit is none of those. No date is printed on any page. */
+.tex-fig{margin:0}
+.tex-fig img{display:block;width:100%;height:auto}
+/* the edge goes on whichever direct child of the figure holds the
+   picture: a cropping div on Home and Platform, the `img` itself on
+   About, which has no rect to cut at any width */
+.tex-fig > img,.tex-fig > div{
+  border:1px solid var(--line-2);background:var(--bg-2);
+  line-height:0;overflow:hidden;
+}
+.tex-cap{
+  margin-top:12px;
+  font:500 var(--fs-meta)/1.6 var(--mono);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-dim);
+}
+.tex-cred{
+  display:block;margin-top:6px;
+  font-weight:400;letter-spacing:.06em;text-transform:none;
+}
+
+/* ---- 33.1 home, placement and rect (hs-) ------------------------------
+   Home's one documentary moment sits in #outside beside "The cost is
+   often not ignorance. It is delay.", because that is the sentence it is
+   evidence for: a queue is what delay looks like from orbit. Not a hero
+   background, not a section break, not decoration. Its place in the page
+   grid is in 30.9; what is here is the bleed and the phone rect.
+   The file is prepared once, not by CSS: one 1800x750 rectangle taken
+   from the source at full resolution, grayscale, contrast lifted, quality
+   82, with its white point held just under the page ground so the image
+   never prints brighter than the paper it sits on. */
+@media (min-width:901px){
+  /* the plate runs to the page edge, using the same expression the hero's
+     scope uses, so the two bleeds on this page register with each other.
+     A bled plate keeps three edges and drops the fourth, because the
+     fourth is the page. */
+  .hs-tex{margin-right:calc(-1 * max(0px,(100vw - var(--max)) / 2) - var(--pad))}
+  .hs-tex-plate{border-right:0}
+}
+/* THE PHONE GETS A DIFFERENT RECT, for the reason the product plates
+   already do: an 1800px satellite frame printed 366px wide is texture,
+   and a hundred ships at anchor stop being countable at that scale. The
+   rect is source x 300 to 1380 and y 105 to 645 of 1800x750, which is the
+   water with the anchored ships and both shores still in frame, at the
+   same printed scale as the wide layout. Nothing is scaled up: this is a
+   smaller window on the same file. */
+@media (max-width:700px){
+  .hs-tex-plate{position:relative;aspect-ratio:2/1}
+  .hs-tex img{position:absolute;max-width:none;width:166.667%;left:-27.778%;top:-19.444%}
+}
+
+/* ---- 33.2 platform, placement and rect (pf-) --------------------------
+   One documentary plate on this page, in #breadth beside the head
+   "External change arrives on four levels.". It is a DATA PRODUCT rather
+   than a photograph, which is the honest texture for a page about what a
+   platform emits, and it is a real, published, citable artefact, which is
+   what separates it from the fabricated evidence brief 11 forbids. Its
+   column is set in 31.1; what is here is the rect.
+   The file is the published frame at 1800x1200, desaturated and contrast
+   lifted, geometry untouched, with its full credit in the JPEG metadata.
+   The page shows a rect of it, stated the way every other crop on this
+   site is stated: each rect below is the TOP EDGE the declaration beside
+   it computes, exactly, and it runs to the bottom of the box. One caveat
+   that applies to every edged plate on this site and is stated once here:
+   `aspect-ratio` sizes the BORDER box, so the plate's own 1px hairline
+   takes the outermost source row or two at each edge (two rows at
+   1000px, six at 390). The statement is the image geometry; the hairline
+   is the chrome sitting on it. */
+.pf-plate{
+  position:relative;
+  aspect-ratio:12/5; /* source y 330 to 1080, the frame's own full width:
+                        the inland light clusters and the whole south
+                        coast. top:-44% of a .41667 box = 330/1800. */
+}
+.pf-plate img{
+  position:absolute;left:0;top:-44%;display:block;
+  width:100%;height:auto;max-width:none;
+}
+@media (max-width:1100px){
+  /* stacked under the head the plate is the width of the column, so a
+     2.4:1 band would print as a letterbox strip: the rect opens up
+     instead of the plate scaling down. Source y 188 to 1200, which is
+     1012 rows, so the box carries the rect's own ratio rather than a
+     tidy 16/9 that missed it by six rows. */
+  .pf-plate{aspect-ratio:1800/1012}
+  .pf-plate img{top:-18.577%}
+}
+
+/* ---- 33.3 about, placement and stop width (ag-) -----------------------
+   One documentary photograph on About: Singapore and southern Johor at
+   night from the International Space Station, two countries and the
+   strait between them in one frame. It is the brief's "global city at
+   night" answered without being literal, since from orbit a city is a
+   lattice rather than a skyline. It takes the empty right half of the
+   "Where we are" section head, above the west-to-east register (32.5).
+   The file is graded, not composited: cropped to 3100x2325 of the
+   3601x3001 original (black margin off three sides), grayscale, contrast
+   lifted, resized to 1600x1200 at quality 78. No rect is cut by CSS at
+   any width: this plate prints the whole file everywhere, which is why
+   the figure's own `img` carries the edge.
+   At 1440 the plate measures 490px, which is where the credit line was
+   tuned to fit; 33.0 sets it at .06em, well inside that. */
+/* Under 981px the plate stacks below the heading it belongs to and stops
+   at a reading width: a 700px night frame on a 390px phone is texture,
+   and this one is only worth printing while the lattice, the strait and
+   the anchorage can each be told apart. At 390 it prints 342px wide,
+   which is the narrowest width at which that still holds. */
+@media (max-width:980px){
+  .ag-fig{margin-top:clamp(20px,3vw,30px);max-width:560px}
+}
+
+/* ---- end 33 ---- */
+
+/* ============ 34 ROUND TWELVE SOLUTIONS (2026-09-20): the closed loop, the operating model, the two ways in ============ */
+/* Owner of this section: the solutions builder. One commercial addition,
+   not a redesign: the page keeps every section, every figure and every
+   interaction it had, and this section only draws what arrives after the
+   recommendation. Nothing above is edited. Classes are `cl-` for the
+   closed loop and `om-` for the operating model, the workshop and the
+   two ways in; the ladder, the rhythm tokens and the page's density
+   register are read from sections 29 and 30, never redeclared. */
+
+/* ---- 34.1 THE CLOSED LOOP, SEVEN STATIONS ON ONE RULE -----------------
+   The chain is EXTERNAL CHANGE, ASSESSMENT, SCENARIOS, DECISION, OWNER,
+   ACTION, REVIEW, and then it comes back. It is drawn as one horizontal
+   station rule with seven stations hanging from it and a return arm
+   running back under the run, because a loop is the one shape this
+   figure has to carry and a vertical spine cannot close without
+   doubling back through its own rows. The page already spends a rail on
+   the impact chain in #practice; a second one two sections above it
+   would have made the two diagrams one texture.
+
+   NO ARROW GLYPH, and no connector between stations. The rule is
+   continuous because each station's own border-top spans its whole
+   column and the separation is padding, never gap, which is the lesson
+   the cadence ledger records in section 19 and the first engagement
+   repeats in 30.5. Direction is carried by the index, the way it is on
+   every other figure on this site.
+
+   ONE ACCENT, AND IT IS STATE. At rest the figure carries exactly one,
+   the entry station, exactly as the adoption path carries one at its
+   own station 01. Under a pointer the accent moves to the station being
+   read and station 01 stands down, which is the round-ten law: amber
+   means active here as everywhere else, so a second permanent accent
+   would break it and a temporary one is it working.
+
+   THE OWNERSHIP NODE. Station 05 is the only station drawn with a node
+   rather than a tick: 6px of solid ink on the rule where the other six
+   carry a 1px hairline. Responsibility is the step a process usually
+   leaves implicit, so it is the one station that is visible before it
+   is read. It is ink and never a second accent. */
+/* the section opens on the page's own clean register, less the run of
+   ground a chapter rule does not need under the closing line of the
+   section before it */
+.cl-sec{padding-top:calc(var(--sec-pad) * .8)}
+.cl-body{padding:clamp(20px,2.4vw,28px) clamp(16px,2vw,26px) clamp(22px,2.6vw,30px)}
+.cl-row{
+  --cl-gut:20px;
+  position:relative;display:grid;gap:0;
+  padding-left:var(--cl-gut);padding-bottom:clamp(12px,1.4vw,16px);
+}
+/* a station: its own rule, its own tick, its index over its name */
+.cl-k{
+  position:relative;border-top:1px solid var(--line-2);
+  padding:13px clamp(12px,1.6vw,22px) 0 0;
+  font:500 10.5px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim);
+}
+.cl-k::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.cl-k b{display:block;font-weight:500;color:var(--ink)}
+.cl-q{margin:9px clamp(12px,1.6vw,22px) 0 0;font-size:14px;line-height:1.55;color:var(--ink-mute)}
+/* .cl-s2, .cl-s3, .cl-s4 and .cl-s6 carry no rules of their own. The set
+   is written whole so any station can be addressed later without
+   renumbering seven blocks of markup, which is how .so-s1 to .so-s3 are
+   written on the figure above. */
+/* the entry station wears the figure's one resting accent */
+.cl-s1 .cl-k::before{width:2px;height:12px;background:var(--accent)}
+/* the ownership node, centered on the rule and independent of the ground
+   under it: a filled mark reads as a station that is occupied, which is
+   what naming an owner means */
+.cl-s5 .cl-k::before{box-sizing:border-box;left:0;top:-3.5px;width:6px;height:6px;background:var(--ink-mute)}
+/* THE RETURN ARM IS A BRACKET THAT MEETS THE RULE AT BOTH ENDS, BINDING.
+   Its first form hung both risers under the chain and stopped them short
+   of the station rule, which drew a detached open rectangle under the
+   figure: a reader met an empty box rather than a line coming back (fix
+   pass, after review, measured 124 to 157px of clear air at 1440, 1024
+   and 901). The arm now leaves the chain at its END, runs back under the
+   whole run, rises in a gutter of its own outside station 01 and turns in
+   along the station rule itself. Both ends touch the rule they belong to,
+   and the band it encloses carries the return's own label instead of
+   being empty, which is what made the first form read as a form field.
+
+   THE GUTTER IS WHY THIS WORKS. A riser drawn at x=0 without it would run
+   down the left edge of station 01's own type, and a line that crosses
+   the words it measures is the one thing every figure here avoids. The
+   stations start at --cl-gut, the riser stands in the gutter, and the cap
+   is exactly the gutter wide, so it lands on the first pixel of the
+   station rule and the two read as one line. The leaving end rises at
+   station 07's own mark, 14.286% in from the right, which is a corridor
+   the lattice already keeps clear: station 06's padding-right ends its
+   type before the mark, so the riser crosses no word either. It stops
+   there rather than at the row's edge for two reasons, one of meaning
+   and one of drawing. REVIEW is the station the loop leaves from, so its
+   mark is where the line should rise. And a bracket whose right edge
+   lands on the row's edge is concentric with the frame around it, which
+   draws a box inside a box: the one composition this system keeps
+   deleting.
+
+   The cap and the station rule are both --line-2 so the return arrives as
+   the same line, and the arm takes pointer-events:none because its box
+   covers the whole run and would otherwise swallow every station hover. */
+.cl-ret{
+  position:absolute;left:0;right:14.286%;top:0;bottom:0;pointer-events:none;
+  border:1px solid var(--line-2);border-top:0;
+}
+.cl-ret::before{content:"";position:absolute;left:0;top:0;width:var(--cl-gut);height:1px;background:var(--line-2)}
+/* the label rides INSIDE the return band, on the arm's own line, so the
+   loop carries what it returns */
+.cl-ret-k{
+  margin-top:clamp(18px,2.1vw,26px);
+  font:400 10.5px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);
+}
+.cl-ret-k b{font-weight:500;color:var(--ink-dim);margin-right:14px}
+/* the closing bar states the loop in prose and only its label is mono,
+   for the reason section 23 gives on the adoption frame: a full sentence
+   in letter-spaced uppercase is a label pretending to be a sentence */
+.cl-loop .level-out{
+  font:400 14.5px/1.6 var(--sans);letter-spacing:0;text-transform:none;color:var(--ink-mute);
+}
+.cl-loop .level-out b{
+  font:500 10.5px/1.6 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink);
+}
+@media (min-width:901px){
+  .cl-row{grid-template-columns:repeat(7,minmax(0,1fr))}
+  /* the name is given two lines of room so the seven questions sit on
+     one baseline: only EXTERNAL CHANGE takes both at 1440, and at 901
+     nothing in the set takes three */
+  .cl-k b{min-height:3em}
+  /* the label takes the row under the seven stations, so the arm closes
+     beneath it rather than beneath empty ground */
+  .cl-ret-k{grid-column:1/-1}
+}
+
+/* ---- 34.2 THE LOOP UNDER A POINTER ------------------------------------
+   Optional, and it adds emphasis only: nothing is hidden at rest, so a
+   reader who never hovers and a reader on a keyboard see the complete
+   chain with every station, every question and the return arm legible.
+   That is why no station here is a control. The adoption path's station
+   labels are buttons because they SELECT one of three stages in a
+   figure that reads differently per stage; seven buttons whose only
+   effect is to light themselves would be seven tab stops with nothing
+   behind them, which is the noise round ten ruled against.
+
+   What the state does: the station being read takes the accent on its
+   tick and its index, its own rule segment (the run from this station to
+   the next) goes to full ink, and station 01's resting accent stands
+   down unless it is the one being read. Nothing dims, nothing moves,
+   nothing resizes. Hovering REVIEW lights the return arm, which is the
+   one relationship in the figure a reader cannot infer from the order.
+
+   Declared inside (hover:hover) for the reason section 28 records: a
+   phone leaves an emulated hover on the last element tapped, and a state
+   that cannot be released is worse than no state. Specificity carries
+   the order rather than source position: every loud selector is one
+   class ahead of the quiet one it has to beat. */
+.cl-k,.cl-k::before,.cl-ret{
+  transition:color .18s ease,background-color .18s ease,border-color .18s ease,
+             width .18s ease,height .18s ease;
+}
+@media (hover:hover){
+  .cl-row:has(.cl-st:hover) .cl-s1 .cl-k::before{width:1px;height:8px;background:var(--line-3)}
+  .frame.cl-loop .cl-row .cl-st:hover .cl-k{color:var(--accent);border-top-color:var(--ink)}
+  .frame.cl-loop .cl-row .cl-st:hover .cl-k::before{width:2px;height:12px;background:var(--accent)}
+  .frame.cl-loop .cl-row .cl-s5:hover .cl-k::before{top:-3.5px;width:6px;height:6px;background:var(--accent)}
+  .cl-row:has(.cl-s7:hover) .cl-ret{border-color:var(--ink)}
+  .cl-row:has(.cl-s7:hover) .cl-ret::before{background:var(--ink)}
+}
+
+/* ---- 34.3 ORGANIZATIONAL MEMORY ---------------------------------------
+   The claim in the statement voice, the reading beside it, on the
+   hairline that closes the figure: the .so-app proportion, because this
+   is the same kind of object, one claim and the analytical column that
+   supports it. It is small on purpose. The chain above is the argument;
+   this says what keeping it is worth, and a compliance-software block
+   would say it at four times the length. */
+.cl-mem{
+  position:relative;display:grid;gap:clamp(16px,2vw,26px);align-items:start;
+  margin-top:clamp(34px,4.2vw,54px);padding-top:clamp(22px,2.6vw,32px);
+  border-top:1px solid var(--line-2);
+}
+.cl-mem::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+/* the claim takes L3, the functional-heading level, rather than the
+   statement size .net-lede carries on its own. At 27px it was the second
+   loudest line in the section and competed with the section's own
+   argument for the one loud statement a section is allowed; at L3 it is
+   what it is, the heading of the block under the figure. Face, weight and
+   measure stay the system's (fix pass, after review). */
+.cl-mem .net-lede{font-size:var(--fs-l3)}
+.cl-mem-body p{font-size:15px;line-height:1.62;color:var(--ink-mute);max-width:54ch}
+.cl-mem-body p + p{margin-top:14px}
+@media (min-width:901px){
+  .cl-mem{grid-template-columns:minmax(0,42fr) minmax(0,58fr);column-gap:clamp(32px,4vw,64px)}
+  .cl-mem .net-lede{max-width:24ch}
+}
+
+/* ---- 34.4 THE OPERATING MODEL, A TWO-COLUMN RULED REGISTER ------------
+   Six elements, each one a label and the question it answers. Six
+   hairline cells in a grid would be a card run, so this is a register
+   read across: the cells share one continuous rule per row, which they
+   can only do while the separation is padding and never gap, and each
+   one carries the station tick the two registers further down this page
+   already carry. Six generic rounded cards is the one form the brief
+   for this addition rules out by name, and the register is what the
+   page uses instead everywhere else. */
+.om-block{
+  position:relative;
+  margin-top:clamp(42px,5.2vw,68px);padding-top:clamp(24px,2.9vw,36px);
+  border-top:1px solid var(--line-2);
+}
+.om-block::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.om-head .eyebrow{margin-bottom:15px}
+.om-head h3{font-size:var(--fs-h3);line-height:1.15;max-width:22ch}
+.om-dek{margin-top:14px;font-size:var(--fs-dek);color:var(--ink-body);max-width:56ch}
+.om-reg{display:grid;margin-top:clamp(24px,2.8vw,34px);border-top:1px solid var(--line)}
+.om-cell{
+  position:relative;display:grid;gap:6px clamp(16px,2vw,28px);align-items:baseline;
+  padding:clamp(15px,1.8vw,20px) 0 clamp(15px,1.8vw,20px) 14px;
+  border-bottom:1px solid var(--line);
+}
+.om-cell::before{content:"";position:absolute;left:0;top:0;width:1px;height:7px;background:var(--line-3)}
+/* the last row does not close itself: the workshop's own rule below is
+   the register's closing rule, and two full-bleed hairlines 54px apart
+   closing for each other are one line too many (fix pass) */
+.om-cell:last-child{border-bottom:0}
+.om-k{font:500 11px/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.om-q{font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
+@media (min-width:561px){
+  .om-cell{grid-template-columns:clamp(150px,15vw,190px) minmax(0,1fr)}
+}
+@media (min-width:901px){
+  .om-reg{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .om-cell{padding-right:clamp(26px,3.2vw,54px)}
+  /* two columns, so the closing row is the last TWO cells */
+  .om-cell:nth-last-child(-n+2){border-bottom:0}
+}
+
+/* ---- 34.5 THE WORKSHOP AND THE TWO WAYS IN ----------------------------
+   The workshop takes the annotation form the first engagement uses for
+   its timing, label left and the offer right on one hairline, because it
+   is information about an engagement rather than a second product with a
+   panel of its own. Its outputs take the page's checker list in two
+   columns: seven items in one column would be the tallest thing in the
+   section and they are a set, not a sequence.
+
+   The two ways in are two doors on ONE rule, not two paths. A reader
+   who already has a decision reads the left one and goes back up to the
+   adoption path; a reader who does not reads the right one and the
+   workshop is directly above it. The convergence is stated in one line
+   under them, in the closing-line register this page already uses three
+   times. Neither door carries an accent: an alternative is not a
+   sequence and not a state, which are the only two things amber means. */
+.om-ws{
+  position:relative;display:grid;gap:14px;
+  margin-top:clamp(34px,4.2vw,54px);padding-top:clamp(22px,2.6vw,32px);
+  border-top:1px solid var(--line-2);
+}
+.om-ws::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.om-ws-k{font:500 11px/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.om-ws-lede{font-size:15.5px;line-height:1.62;color:var(--ink-body);max-width:60ch}
+.om-outs-k{
+  margin-top:clamp(17px,2vw,23px);
+  font:400 10.5px/1.5 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);
+}
+.om-outs{margin-top:13px}
+.om-doors{display:grid;margin-top:clamp(34px,4.2vw,54px);border-top:1px solid var(--line-2)}
+.om-door{position:relative;padding:clamp(16px,2vw,22px) 0 0 14px}
+.om-door::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.om-door .om-k b{display:inline-block;margin-right:14px;font-weight:500;color:var(--ink-dim)}
+.om-door .om-q{margin-top:9px;max-width:48ch}
+@media (min-width:601px){
+  /* four rows and column flow, so the seven outputs read DOWN the first
+     column and then down the second. A two-column grid in row order
+     would print them 1 4 2 5 3 6 7 down the page, which is a list a
+     reader has to reassemble.
+     Written from .om-ws and not from .om-outs alone: the page's own
+     <style> block sets `.pts{gap:10px}` at equal specificity and later in
+     the cascade, so the bare rule lost its column gap silently and the
+     outputs printed 10px apart (fix pass). A page-local style block beats
+     the stylesheet whenever the two are equally specific. */
+  .om-ws .om-outs{
+    grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,auto);
+    grid-auto-flow:column;column-gap:clamp(20px,2.6vw,42px);
+  }
+}
+@media (min-width:901px){
+  /* the label column holds EXTERNAL INTELLIGENCE WORKSHOP on ONE line at
+     1440 and at 1280: it is the round's one new product name, and a name
+     broken across two lines reads as two things. Under about 1100 it
+     wraps, which is the width where holding it would start taking the
+     measure the offer beside it needs. */
+  .om-ws{grid-template-columns:clamp(180px,23vw,300px) minmax(0,1fr);column-gap:clamp(24px,2.6vw,40px)}
+  .om-doors{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .om-door{padding-right:clamp(26px,3.2vw,54px)}
+}
+
+/* ---- 34.6 THE PHONE ---------------------------------------------------
+   The chain stacks and the return arm becomes a bracket up the left of
+   the stack, which is the same statement drawn for a column: it leaves
+   the last station, runs up the outside of the run and returns to the
+   first. The stations keep their rules, their ticks, their indexes and
+   their questions at full size; nothing is shortened, because a process
+   a reader cannot finish on a phone is not a process they will ask
+   about. The two doors take a rule each, since a rule that spans a row
+   means nothing when the row holds one door. */
+@media (max-width:900px){
+  .cl-st{padding-bottom:clamp(14px,3vw,18px)}
+  .cl-k{padding-right:0}
+  .cl-q{margin-right:0}
+  /* stacked, the same bracket with the leaving end dropped: the run is a
+     column, so there is no right-hand end for the arm to rise from */
+  .cl-ret{right:auto;width:var(--cl-gut);border-right:0}
+  .om-door + .om-door{
+    margin-top:clamp(18px,3vw,24px);padding-top:clamp(16px,2vw,22px);
+    border-top:1px solid var(--line);
+  }
+}
+
+/* ---- 34.7 REDUCED MOTION ---------------------------------------------
+   The figure is simply there. The pointer state stays, because a colour
+   that arrives instantly is not motion and a reader who asks for less
+   motion still gets the emphasis. */
+@media (prefers-reduced-motion:reduce){
+  .cl-k,.cl-k::before,.cl-ret{transition:none}
+}
+/* ---- end 34 ---- */
+
+
+
+/* ============ 35 ROUND TWELVE PLATFORM AND HOME (2026-09-20): the loop, lightly ============ */
+/* Owner of this section: the platform and home builder. The round's
+   commercial addition is that intelligence does not have to stop at the
+   recommendation: a decision has an owner, an action and a review, and
+   the review is what the next watch is set from. Solutions carries that
+   story in full (section 34). PLATFORM gets one small element beside the
+   capability walk and HOME gets one line of copy, which is the whole of
+   it here: no new section, no new diagram, no new page.
+   Built on what already exists. Nothing in sections 01 to 34 is edited,
+   no token is redeclared, and the walk's rail (section 27) is untouched:
+   the element below sits AFTER the rail's evidence area in the document
+   and shares no selector with it. */
+
+/* ---- 35.1 PLATFORM: what the decision hands over ---------------------
+   The walk prints four stages and the rail above them prints the same
+   four station lines, lifted there by the page's own script. A second
+   station line under it, MONITOR to REVIEW, would print the stage words
+   twice on one screen and give the page two sets of stage grammar, which
+   is the failure the one-diagram-one-direction rule exists to stop. So
+   the four stages stay exactly as they are and this is a NOTE: the two
+   stages it follows from named once as the place it starts from, a drop
+   line, and the three stations the decision hands over to.
+   The label sits ABOVE the rule and the drop line lands on the first
+   tick, so the relationship is drawn as a line and needs no arrow glyph,
+   which is how every other connection on this page is drawn.
+   Amber has one role here and it is the one .trail already sets: the
+   last station of a run, the one it ends on. Review is that station, and
+   nothing else in the note is accented.
+   WHERE IT SITS: last in #walk, under the worked chain, which is the
+   block above it on screen in both modes. With the rail active the four
+   moments collapse to one view, so source adjacency is not screen
+   adjacency and the note has to be measured where a reader meets it.
+   It closes the section, so its own bottom air is the section's. */
+.pl5-hand{
+  margin-top:clamp(34px,4vw,52px);
+  margin-bottom:0;
+}
+/* the two stages this follows from, named in the page's own words and at
+   label size: a label may not inherit a reading size (29.2) */
+.pl5-hand-k{
+  position:relative;margin:0;
+  padding-bottom:clamp(26px,3vw,36px);
+  font:500 var(--fs-label)/1 var(--mono);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-dim);
+}
+/* the drop: a 1px hairline from the label to the rule under it, ending
+   on the first station's tick */
+.pl5-hand-k::after{
+  content:"";position:absolute;left:0;top:calc(100% - clamp(22px,2.6vw,30px));
+  width:1px;height:clamp(22px,2.6vw,30px);background:var(--line-2);
+}
+/* THE RULE BELONGS TO THE STATIONS, and to nothing else. Each station
+   draws its own top hairline across its own extent and the separation is
+   padding rather than gap, so the three abut into one continuous line
+   that STOPS at Review, the last label on it (the last station drops its
+   trailing padding, so the rule and the word end on the same x). The
+   first cut drew the rule on the row and let the row take the width of
+   its content, which ran the hairline about 600px past Review and ended
+   it in air under the sentence. A hairline that runs on past the last
+   thing hanging from it promises something at its far end, which is the
+   lesson 32.1 records on the About fold and the lesson .trail records for
+   a wrapped row. The sentence beside the stations takes no rule: it is
+   the note's reading, not a fourth station. */
+.pl5-hand-set{
+  display:flex;flex-wrap:wrap;gap:0;margin:0;padding:0;list-style:none;
+  font:500 var(--fs-label)/1 var(--mono);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-dim);
+}
+.pl5-hand-set li{
+  position:relative;border-top:1px solid var(--line);
+  padding:14px clamp(20px,3vw,44px) 0 0;
+}
+.pl5-hand-set li::before{
+  content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3);
+}
+.pl5-hand-set li:last-child{color:var(--ink);padding-right:0}
+.pl5-hand-set li:last-child::before{width:2px;height:12px;background:var(--accent)}
+/* the one sentence, in the annotation register: mute, small, its own
+   measure, never a second claim set in reading type */
+.pl5-hand-v{
+  margin:16px 0 0;max-width:68ch;
+  font-size:var(--fs-small);color:var(--ink-mute);
+}
+@media (min-width:901px){
+  /* Stations left, sentence right, opening on the same top: the station
+     run is as wide as its three labels and the reading sits beside it.
+     The first track is max-content and the row is packed to the start,
+     because an `auto` track absorbs the leftover space and pushed the
+     sentence 380px clear of the station it belongs to. */
+  .pl5-hand-row{
+    display:grid;grid-template-columns:minmax(0,max-content) clamp(300px,40vw,540px);
+    column-gap:clamp(32px,4vw,60px);align-items:start;justify-content:start;
+  }
+  /* the sentence opens on the same baseline as the station labels beside
+     it: 11px mono over 1 and 14.5px sans over 1.6 do not meet at the same
+     padding, so the smaller pad is the reading text's */
+  .pl5-hand-v{margin-top:0;padding-top:8px;max-width:none}
+}
+
+/* ---- 35.2 HOME: one line, and no rule to go with it ------------------
+   Home's organizational-intelligence section gains one sentence inside
+   the reading column it already has: "That layer can keep the chain from
+   external change to decision, owner, action and review." It is a clause
+   of the argument around it, so it takes the register of the paragraph it
+   joins and needs no class, no wrapper and no declaration. The hv5-
+   namespace is reserved and deliberately unused: a rule written here
+   would be a rule with nothing to do, and the page's own instruction for
+   this round is one short line and not one more device. The line's cost
+   is measured in COMPONENTS.md beside the Platform note. */
+
+/* ---- end 35 ---- */
