@@ -4456,7 +4456,11 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
    section before it */
 .cl-sec{padding-top:calc(var(--sec-pad) * .8)}
 .cl-body{padding:clamp(20px,2.4vw,28px) clamp(16px,2vw,26px) clamp(22px,2.6vw,30px)}
-.cl-row{display:grid;gap:0}
+.cl-row{
+  --cl-gut:20px;
+  position:relative;display:grid;gap:0;
+  padding-left:var(--cl-gut);padding-bottom:clamp(12px,1.4vw,16px);
+}
 /* a station: its own rule, its own tick, its index over its name */
 .cl-k{
   position:relative;border-top:1px solid var(--line-2);
@@ -4466,31 +4470,55 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 .cl-k::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
 .cl-k b{display:block;font-weight:500;color:var(--ink)}
 .cl-q{margin:9px clamp(12px,1.6vw,22px) 0 0;font-size:14px;line-height:1.55;color:var(--ink-mute)}
+/* .cl-s2, .cl-s3, .cl-s4 and .cl-s6 carry no rules of their own. The set
+   is written whole so any station can be addressed later without
+   renumbering seven blocks of markup, which is how .so-s1 to .so-s3 are
+   written on the figure above. */
 /* the entry station wears the figure's one resting accent */
 .cl-s1 .cl-k::before{width:2px;height:12px;background:var(--accent)}
 /* the ownership node, centered on the rule and independent of the ground
    under it: a filled mark reads as a station that is occupied, which is
    what naming an owner means */
 .cl-s5 .cl-k::before{box-sizing:border-box;left:0;top:-3.5px;width:6px;height:6px;background:var(--ink-mute)}
-/* the return arm: it leaves under station 07, runs back under the whole
-   chain and rises at station 01. Three borders and no fourth, because
-   the open side IS the figure it returns into, and one cap at the head
-   of the rising end. The cap is the leader device section 23 uses on the
-   example application, a stem and a short arm, and it is what carries
-   the direction here: an arrowhead would be the flowchart clip art this
-   figure exists to avoid, and a bracket with two identical ends is a box
-   rather than a return. */
+/* THE RETURN ARM IS A BRACKET THAT MEETS THE RULE AT BOTH ENDS, BINDING.
+   Its first form hung both risers under the chain and stopped them short
+   of the station rule, which drew a detached open rectangle under the
+   figure: a reader met an empty box rather than a line coming back (fix
+   pass, after review, measured 124 to 157px of clear air at 1440, 1024
+   and 901). The arm now leaves the chain at its END, runs back under the
+   whole run, rises in a gutter of its own outside station 01 and turns in
+   along the station rule itself. Both ends touch the rule they belong to,
+   and the band it encloses carries the return's own label instead of
+   being empty, which is what made the first form read as a form field.
+
+   THE GUTTER IS WHY THIS WORKS. A riser drawn at x=0 without it would run
+   down the left edge of station 01's own type, and a line that crosses
+   the words it measures is the one thing every figure here avoids. The
+   stations start at --cl-gut, the riser stands in the gutter, and the cap
+   is exactly the gutter wide, so it lands on the first pixel of the
+   station rule and the two read as one line. The leaving end rises at
+   station 07's own mark, 14.286% in from the right, which is a corridor
+   the lattice already keeps clear: station 06's padding-right ends its
+   type before the mark, so the riser crosses no word either. It stops
+   there rather than at the row's edge for two reasons, one of meaning
+   and one of drawing. REVIEW is the station the loop leaves from, so its
+   mark is where the line should rise. And a bracket whose right edge
+   lands on the row's edge is concentric with the frame around it, which
+   draws a box inside a box: the one composition this system keeps
+   deleting.
+
+   The cap and the station rule are both --line-2 so the return arrives as
+   the same line, and the arm takes pointer-events:none because its box
+   covers the whole run and would otherwise swallow every station hover. */
 .cl-ret{
-  position:relative;display:block;height:clamp(14px,1.5vw,18px);
-  margin-top:clamp(20px,2.4vw,30px);
-  border-right:1px solid var(--line-2);border-bottom:1px solid var(--line-2);
+  position:absolute;left:0;right:14.286%;top:0;bottom:0;pointer-events:none;
+  border:1px solid var(--line-2);border-top:0;
 }
-/* the rising end is taller than the leaving end and carries the cap, so
-   the shape is a return rather than an open box */
-.cl-ret::after{content:"";position:absolute;left:0;bottom:0;width:1px;height:calc(100% + 15px);background:var(--line-2)}
-.cl-ret::before{content:"";position:absolute;left:0;bottom:calc(100% + 14px);width:14px;height:1px;background:var(--line-3)}
+.cl-ret::before{content:"";position:absolute;left:0;top:0;width:var(--cl-gut);height:1px;background:var(--line-2)}
+/* the label rides INSIDE the return band, on the arm's own line, so the
+   loop carries what it returns */
 .cl-ret-k{
-  margin-top:11px;
+  margin-top:clamp(18px,2.1vw,26px);
   font:400 10.5px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);
 }
 .cl-ret-k b{font-weight:500;color:var(--ink-dim);margin-right:14px}
@@ -4509,9 +4537,9 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
      one baseline: only EXTERNAL CHANGE takes both at 1440, and at 901
      nothing in the set takes three */
   .cl-k b{min-height:3em}
-  /* the arm spans the row and stops at station 07's own mark, which is
-     the left edge of the seventh of seven equal columns */
-  .cl-ret{grid-column:1/-1;margin-right:14.286%}
+  /* the label takes the row under the seven stations, so the arm closes
+     beneath it rather than beneath empty ground */
+  .cl-ret-k{grid-column:1/-1}
 }
 
 /* ---- 34.2 THE LOOP UNDER A POINTER ------------------------------------
@@ -4546,8 +4574,7 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
   .frame.cl-loop .cl-row .cl-st:hover .cl-k::before{width:2px;height:12px;background:var(--accent)}
   .frame.cl-loop .cl-row .cl-s5:hover .cl-k::before{top:-3.5px;width:6px;height:6px;background:var(--accent)}
   .cl-row:has(.cl-s7:hover) .cl-ret{border-color:var(--ink)}
-  .cl-row:has(.cl-s7:hover) .cl-ret::before,
-  .cl-row:has(.cl-s7:hover) .cl-ret::after{background:var(--ink)}
+  .cl-row:has(.cl-s7:hover) .cl-ret::before{background:var(--ink)}
 }
 
 /* ---- 34.3 ORGANIZATIONAL MEMORY ---------------------------------------
@@ -4563,11 +4590,18 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
   border-top:1px solid var(--line-2);
 }
 .cl-mem::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+/* the claim takes L3, the functional-heading level, rather than the
+   statement size .net-lede carries on its own. At 27px it was the second
+   loudest line in the section and competed with the section's own
+   argument for the one loud statement a section is allowed; at L3 it is
+   what it is, the heading of the block under the figure. Face, weight and
+   measure stay the system's (fix pass, after review). */
+.cl-mem .net-lede{font-size:var(--fs-l3)}
 .cl-mem-body p{font-size:15px;line-height:1.62;color:var(--ink-mute);max-width:54ch}
 .cl-mem-body p + p{margin-top:14px}
 @media (min-width:901px){
   .cl-mem{grid-template-columns:minmax(0,42fr) minmax(0,58fr);column-gap:clamp(32px,4vw,64px)}
-  .cl-mem .net-lede{max-width:20ch}
+  .cl-mem .net-lede{max-width:24ch}
 }
 
 /* ---- 34.4 THE OPERATING MODEL, A TWO-COLUMN RULED REGISTER ------------
@@ -4595,6 +4629,10 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
   border-bottom:1px solid var(--line);
 }
 .om-cell::before{content:"";position:absolute;left:0;top:0;width:1px;height:7px;background:var(--line-3)}
+/* the last row does not close itself: the workshop's own rule below is
+   the register's closing rule, and two full-bleed hairlines 54px apart
+   closing for each other are one line too many (fix pass) */
+.om-cell:last-child{border-bottom:0}
 .om-k{font:500 11px/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
 .om-q{font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
 @media (min-width:561px){
@@ -4603,6 +4641,8 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 @media (min-width:901px){
   .om-reg{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
   .om-cell{padding-right:clamp(26px,3.2vw,54px)}
+  /* two columns, so the closing row is the last TWO cells */
+  .om-cell:nth-last-child(-n+2){border-bottom:0}
 }
 
 /* ---- 34.5 THE WORKSHOP AND THE TWO WAYS IN ----------------------------
@@ -4642,14 +4682,24 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
   /* four rows and column flow, so the seven outputs read DOWN the first
      column and then down the second. A two-column grid in row order
      would print them 1 4 2 5 3 6 7 down the page, which is a list a
-     reader has to reassemble. */
-  .om-outs{
+     reader has to reassemble.
+     Written from .om-ws and not from .om-outs alone: the page's own
+     <style> block sets `.pts{gap:10px}` at equal specificity and later in
+     the cascade, so the bare rule lost its column gap silently and the
+     outputs printed 10px apart (fix pass). A page-local style block beats
+     the stylesheet whenever the two are equally specific. */
+  .om-ws .om-outs{
     grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,auto);
     grid-auto-flow:column;column-gap:clamp(20px,2.6vw,42px);
   }
 }
 @media (min-width:901px){
-  .om-ws{grid-template-columns:clamp(180px,19vw,250px) minmax(0,1fr);column-gap:clamp(28px,3.4vw,52px)}
+  /* the label column holds EXTERNAL INTELLIGENCE WORKSHOP on ONE line at
+     1440 and at 1280: it is the round's one new product name, and a name
+     broken across two lines reads as two things. Under about 1100 it
+     wraps, which is the width where holding it would start taking the
+     measure the offer beside it needs. */
+  .om-ws{grid-template-columns:clamp(180px,23vw,300px) minmax(0,1fr);column-gap:clamp(24px,2.6vw,40px)}
   .om-doors{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
   .om-door{padding-right:clamp(26px,3.2vw,54px)}
 }
@@ -4664,20 +4714,12 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
    about. The two doors take a rule each, since a rule that spans a row
    means nothing when the row holds one door. */
 @media (max-width:900px){
-  .cl-row{position:relative;padding-left:20px}
   .cl-st{padding-bottom:clamp(14px,3vw,18px)}
   .cl-k{padding-right:0}
   .cl-q{margin-right:0}
-  .cl-ret{
-    position:absolute;left:0;top:0;bottom:0;width:11px;height:auto;margin:0;
-    border-top:1px solid var(--line-2);border-left:1px solid var(--line-2);border-right:0;
-  }
-  /* stacked, the arm is a bracket up the outside of the run: the riser
-     is the bracket's own left edge, and the cap sits at the top of it
-     where the chain begins again */
-  .cl-ret::after{display:none}
-  .cl-ret::before{left:0;top:-1px;bottom:auto;width:11px}
-  .cl-ret-k{padding-left:20px}
+  /* stacked, the same bracket with the leaving end dropped: the run is a
+     column, so there is no right-hand end for the arm to rise from */
+  .cl-ret{right:auto;width:var(--cl-gut);border-right:0}
   .om-door + .om-door{
     margin-top:clamp(18px,3vw,24px);padding-top:clamp(16px,2vw,22px);
     border-top:1px solid var(--line);

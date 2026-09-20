@@ -3252,8 +3252,8 @@ new is one section between the adoption path and "Daily use", carrying
 the process that runs after a recommendation and the operating model and
 workshop around it. Nothing in sections 01 to 33 was edited, the ladder
 and the rhythm tokens are read from 29 and 30 rather than redeclared,
-and the page's `data-density="clean"` register is untouched. Two strings
-inside the existing page changed, both named below.
+and the page's `data-density="clean"` register is untouched. Three
+strings inside the existing page changed, all three named below.
 
 #### One section, not two
 
@@ -3289,16 +3289,28 @@ column and the separation is padding, never gap, which is the lesson the
 cadence ledger records in section 19 and the first engagement repeats in
 30.5. Direction is carried by the index, as on every other figure here.
 
-**The return arm has two different ends, binding.** A bracket whose two
-ends are identical is a box drawn under a diagram. The leaving end at
-station 07 is a short riser; the rising end at station 01 is taller and
-carries a 14px cap turning right into the chain, which is the leader
-device section 23 already uses on the example application. That
-asymmetry is the whole direction cue: an arrowhead here would be the
-flowchart clip art the visual direction rules out by name. The arm spans
-the row and stops at `14.286%` from the right, which is the left edge of
-the seventh of seven equal columns, so both ends land on the station
-marks they belong to rather than near them.
+**The return arm meets the station rule at both ends, binding.** It is
+one absolutely positioned bracket on the station row: it rises in a 20px
+gutter outside station 01, turns in along the station rule itself with a
+cap exactly the gutter wide, runs back under the chain and rises again at
+station 07's own mark, `14.286%` in from the right. Both ends touch the
+rule they belong to, and the mark each end lands on is the station it
+names. Two geometric rules hold it up, and the fix pass below records the
+defect that produced each one. **The gutter is not decoration**: a riser
+at x=0 without it runs down the left edge of station 01's own type, and a
+line that crosses the words it measures is the thing every figure here
+avoids; the leaving end needs no gutter because the lattice already keeps
+a padding corridor clear before each station's mark. **And the bracket
+stops at station 07 rather than at the row's edge**, because a bracket
+whose right edge lands on the row's edge is concentric with the frame
+around it, which draws a box inside a box: the one composition this
+system keeps deleting. Direction is carried by the cap, which is the
+leader device section 23 already uses on the example application; an
+arrowhead here would be the flowchart clip art the visual direction rules
+out by name. The arm takes `pointer-events:none`, because its box covers
+the whole run and would otherwise swallow every station's hover.
+**The band it encloses carries the return's own label**, so the loop
+carries what it returns and the enclosed area is never empty.
 
 **One accent, and its role in this component is STATE.** At rest the
 figure carries exactly one, the entry station, the way the adoption path
@@ -3320,7 +3332,7 @@ responds is the step a process usually leaves implicit, so it is the one
 station that is visible before it is read. It is INK and never a second
 accent, and it is filled rather than an open square with the page ground
 inside it, so the mark does not depend on the band it is printed on. The
-`.evi` row states it in words, `Owner · Named at station 05`, which is a
+`.evi` row states it in words, `Owner · Named at 05`, which is a
 thing this figure actually draws: round nine's rule against annotations
 that promise an absent feature is what that line is written against.
 
@@ -3348,11 +3360,14 @@ time somebody re-declares half of it.
 
 #### Organizational memory is small on purpose
 
-One claim in the statement register (`.net-lede`, the system's own class)
-and three sentences beside it, on the hairline that closes the figure, in
-the `.so-app` proportion because it is the same kind of object: one claim
-and the analytical column that supports it. It is deliberately the
-shortest block in the section. The chain above is the argument; this says
+One claim in the statement register (`.net-lede`, the system's own class,
+printed at L3 here and not at its own 27px, see the fix pass) and three
+sentences beside it, on the hairline that closes the figure, in the
+`.so-app` proportion because it is the same kind of object: one claim and
+the analytical column that supports it. It is deliberately the shortest
+block in the section, and it does not restate the chain: the figure draws
+it and the dek names it, so the paragraph says "Mission Grey can preserve
+that chain" and moves on. The chain above is the argument; this says
 what keeping it is worth, and the failure mode the spec names (compliance
 software, ticketing, an audit trail) is reached by saying it at four
 times the length and calling the record a system of record. The last
@@ -3382,16 +3397,18 @@ list a reader has to reassemble.
 **The two ways in are two doors on ONE rule, binding.** Not two entry
 paths: the same implementation, entered from the side the organization
 is standing on, with the convergence stated in one line under them in the
-closing-line register this page already uses three times. Door A links to
-`#start`, which is the step it names. **Door B carries no link**, because
-the workshop it names is the block directly above it and a link that
-scrolls a reader 250px back up the page is a control that undoes their
-last scroll. If the workshop ever becomes a request of its own, that is
-the door's link and it is a chairman's call, not a builder's. Neither
-door carries an accent: an alternative is not a sequence and not a state,
-which are the only two things amber means here.
+closing-line register this page already uses three times. **Both doors
+link FORWARD, to `/contact/`, and that is the rule**: the convergence the
+spec asks for is a claim until both doors do the same thing, and a door
+that ends in a full stop is a door the reader closes. The first form had
+door A pointing back to `#start` and door B pointing at nothing, which
+measured as a 3,290px jump back up the page and a dead end beside it
+(fix pass). The workshop block carries `id="workshop"` so a sales
+conversation can address it directly. Neither door carries an accent: an
+alternative is not a sequence and not a state, which are the only two
+things amber means here.
 
-#### The two strings that changed inside the existing page
+#### The three strings that changed inside the existing page
 
 **Stage 03 of the adoption path gains one checker line**, "Decision
 ownership, actions and review, kept as organizational memory". The
@@ -3407,26 +3424,36 @@ clause "make it part of the organization" becomes "make it part of how
 the organization decides, acts and reviews". Same sentence, same length
 class, and the summary now says what the page's last third is about.
 
+**The Access panel takes one clause**, "Tell us the decision in front of
+you, or the area where your external intelligence is fragmented." The
+panel is where both doors land, and it asked for the one thing a door-B
+reader has just told the page they do not have. Nothing else in the panel
+moved: same heading, same two controls, same notes.
+
 #### Measured, at 1440 and at 390
+
+Measured on the merged tree, after the fix pass below:
 
 | | Before | After |
 |---|---|---|
-| page height at 1440 | 7254 | **9477** (+30.6%) |
-| page height at 390 | 9945 | **13372** (+34.5%) |
-| the new section at 1440 | n/a | 2168 |
-| the new section at 390 | n/a | 3371 |
-| the loop figure at 1440 | n/a | 379 |
-| the loop figure at 390 | n/a | 935 |
+| page height at 1440 | 7254 | **9487** (+30.8%) |
+| page height at 390 | 9945 | **13441** (+35.2%) |
+| the new section at 1440 | n/a | 2152 |
+| the new section at 390 | n/a | 3389 |
+| the loop figure at 1440 | n/a | 362 |
+| the loop figure at 390 | n/a | 929 |
 | adoption figure at 1440 | 624 | 679 |
 | `scrollWidth` at 390 | 390 | **390** |
 
 The page is a third longer and every pixel of it is new argument: the
-section is 2168 of the 2223 added at 1440, and the adoption figure's
+section is 2152 of the 2233 added at 1440, and the adoption figure's
 extra bullet is the other 55. No page scrolls horizontally at 390, the
 figure stacks into seven stations with the return drawn as a bracket up
 the outside of the run, and nothing in the section is hidden at any
-width. Solutions is still the shortest of the three main pages at 1440,
-against Home at 11342 and Platform at 12849 measured in the same pass.
+width. Solutions is still the shortest of the three main pages at 1440:
+Home and Platform measure 11368 and 13037 in the same pass, and both are
+still moving while their own fix pass runs, so those two numbers are
+context rather than a record.
 
 #### A finding, and it is not this section's to fix
 
@@ -3449,11 +3476,13 @@ chairman's call, not a builder's.
   section prints, and under `prefers-reduced-motion` the hover state
   arrives instantly rather than not at all, which is section 28's own
   rule for the figure above it.
-- **The hero dek, the `.ladder-foot` under `#start` and the Access panel
-  are untouched.** Each was checked against the second door and none of
-  them needed a clause to carry it: the doors name themselves where they
-  stand, and the Access panel's "Tell us the decision in front of you"
-  still answers both of them.
+- **The hero dek and the `.ladder-foot` under `#start` are untouched.**
+  Both were checked against the second door and neither needed a clause:
+  the doors name themselves where they stand. **The Access panel did need
+  one** and now carries it, "or the area where your external intelligence
+  is fragmented", because the panel asked for the decision in front of
+  you, which is exactly what a door-B reader has just said they do not
+  have (fix pass).
 - **No pricing, no separate service page, no second figure for the
   operating model.** The six elements are a register because a second
   drawn diagram in one section would have made the loop one of two
@@ -3462,6 +3491,53 @@ chairman's call, not a builder's.
   first engagement, the worked chain, the two ruled indexes, the example
   application and the quotes are exactly as rounds ten and eleven left
   them.
+
+#### The fix pass (2026-09-20, after review)
+
+A correction round over this section after an adversarial review and a
+whole-page critique measured the composed page. Nothing here is new
+design; each item is a defect one of them measured, and each one is
+recorded above where the rule it corrects lives.
+
+| Fix | Where | What was wrong |
+|---|---|---|
+| The return arm | 34.1 | both risers stopped 124 to 157px short of the station rule at 1440, 1024 and 901, so the loop drew a detached open rectangle under the chain. One critic read it as an empty input field |
+| Two doors, one dead end | markup, and the Access panel | door A pointed BACK to `#start`, a 3,290px jump up the page, and door B pointed at nothing, so the convergence the spec asks for was a claim the page did not keep |
+| The outputs' column gap | 34.5 | `.om-ws .om-outs` was written as `.om-outs`, and the page's own `<style>` block sets `.pts{gap:10px}` at equal specificity and later in the cascade, so the gap was silently 10px. Now 37.44px at 1440 |
+| Two hairlines closing for each other | 34.4 | the register's last row and the workshop's rule, both full bleed, 54px apart. The last row no longer closes itself |
+| A product name broken in half | 34.5 | EXTERNAL INTELLIGENCE WORKSHOP wrapped after two words at 1440. The label column now holds one line down to 1100px, 250.8px of type in a 253px column |
+| The chain said three times | markup | the dek, the memory paragraph and the register each enumerated it inside 700px with the figure drawing it between them |
+| Nothing named the stage it extends | markup | the loop restarts at 01 in the same frame chassis as the two figures around it, so it could be read as a second product rather than as what happens under a standing watch |
+| The memory claim at 27px | 34.3 | a size used nowhere else on the site as a subordinate heading, competing with the section's own argument for the one loud statement a section gets |
+| `id="om-h"`, and the unused station hooks | markup, 34.1 | an id nothing referenced, and four `.cl-s*` classes with no rules and no note saying why they exist |
+
+The wording that changed with them: the memory paragraph is now "Mission
+Grey can preserve that chain."; the figure's second annotation
+(`Return · Review updates the watch`) is dropped, because the return
+label under the arm already says it and the row was two labels saying one
+thing; `Named at station 05` is `Named at 05`, since "station" appears
+nowhere else in visible copy on this site; the dek opens on one bridge
+clause, "Under a standing watch, every decision runs the same chain, and
+it does not end at the recommendation."; and the Access panel takes the
+clause recorded above.
+
+Three notes worth carrying forward:
+
+- **A page-local `<style>` block beats `styles.css` at equal
+  specificity**, because it comes later in the document. Any rule written
+  in the stylesheet for a class the page declares locally (`.pts`,
+  `.roles`, `.ladder-foot` on this page) has to be scoped under an
+  ancestor the page-local rule does not name, or it loses without
+  warning. The stylesheet is not the last word by default.
+- **A line that returns has to touch what it returns to.** The first
+  form's comment said both ends landed on their station marks; the boxes
+  said 124px below them. Stating geometry in a comment is not drawing it,
+  and the check is to read the computed box back off the page: the arm's
+  `top` and the station rule's `top` are now the same number at 1440,
+  1280, 1100, 1024 and 901.
+- **A convergence needs both halves to move.** Two doors converge only if
+  both of them do the same thing. One link forward and one full stop is
+  not a pair of doors, it is a fork with a dead branch.
 
 ### Platform and Home (section 35, pl5- and hv5-)
 
