@@ -3502,7 +3502,14 @@ body{line-height:1.6}
 /* The inline 44px can only be answered with !important: the markup is
    frozen for the page builders working after this pass, and an inline
    style outranks every selector. When those attributes are eventually
-   removed the rule still holds the same value, so nothing regresses. */
+   removed the rule still holds the same value, so nothing regresses.
+   This section carries two of these (the other is in 29.6). There is a
+   third in the stylesheet, `.pf-ext .sec-head` in 31.1, and it is the
+   same case for the same reason: the Platform head moved inside a
+   wrapper, so it stopped being the `.rule-label +` sibling and had to
+   beat this rule's own !important to give the gap back once. Those
+   three are the whole set, and a fourth should have to argue for
+   itself. */
 .rule-label + .sec-head{margin-top:var(--label-gap)!important}
 /* the fold: the measured gaps above, below and around the hero. The hero
    ends into the first rule of the page rather than into another section's
@@ -3577,6 +3584,50 @@ body[data-density="structured"]{--sec-pad:clamp(70px,7.6vw,104px);--head-gap:cla
   .sec-head{gap:16px}
   .rule-label + .sec-head{margin-top:30px!important}
   .access-panel{padding:clamp(34px,7vw,48px) 20px}
+}
+/* The sticky header's REQUEST ACCESS is the site's one accent BLOCK, and
+   on a phone it printed 161px of amber in a 390px bar, directly above a
+   hero whose own first control is the same words in the same amber. Two
+   identical loud verbs in one viewport is not two calls to action, it is
+   one call and an echo, and the echo is the one the reader did not scroll
+   for. Under 640px the header instance takes the hairline register
+   `.btn-ghost` already carries, so the fill belongs to the hero alone and
+   the bar keeps a control rather than a poster. Not a word and not a link
+   changes; the button is still first in the tab order after the logo and
+   still reads REQUEST ACCESS. */
+@media (max-width:640px){
+  .site-head .btn-primary{
+    padding:9px 13px;font-size:11px;letter-spacing:.08em;
+    background:transparent;border-color:var(--line-2);color:var(--ink);
+  }
+  .site-head .btn-primary:hover{
+    background:var(--accent-soft);border-color:var(--accent);color:var(--accent);
+  }
+}
+
+/* ---- 29.7 USE CASES, the fold that was half a page --------------------
+   The structured register's hero printed its eyebrow, headline, dek and
+   both buttons in a single left column and left the right half of the
+   fold empty for 490px of height: the "huge headline plus very little
+   else plus large empty space" the brief names outright, and the one
+   page on the site still doing it. Solutions and Platform already answer
+   it with a two-column fold, so this page takes the same shape rather
+   than a new one: headline left, dek and the two controls right, both
+   columns opening on the same top. No word moves out of order, because
+   the reading order in the markup is exactly the order the grid places
+   them in, and the stacked layout under 981px is untouched.
+   The page is selected by its density register, which is the only thing
+   that is unique to it without adding markup; `structured` belongs to
+   this page alone (29.4). */
+@media (min-width:981px){
+  body[data-density="structured"] .hero .wrap{
+    display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);
+    column-gap:clamp(36px,5vw,72px);align-items:start;
+  }
+  body[data-density="structured"] .hero .hero-eyebrow{grid-column:1/-1}
+  body[data-density="structured"] .hero h1{grid-column:1;grid-row:2;margin:0}
+  body[data-density="structured"] .hero .hero-dek{grid-column:2;grid-row:2;margin-top:0;max-width:46ch}
+  body[data-density="structured"] .hero .hero-cta{grid-column:2;grid-row:3;margin-top:28px}
 }
 
 /* ---- end 29 ---- */
@@ -3747,25 +3798,28 @@ body[data-density="structured"]{--sec-pad:clamp(70px,7.6vw,104px);--head-gap:cla
 .so-path .so-k{margin-top:clamp(20px,2.3vw,27px);padding-top:14px}
 .so-path .so-step h3{margin-top:14px}
 .so-path .so-step .pts{margin-top:16px;padding-top:16px}
-/* The quiet register was a drop of two inks and most of the checker
-   marks, which reads as the figure dimming rather than as one stage
-   coming forward. The sentence now steps back one ink instead of two and
-   the checkers hold more of themselves. Both the quiet and the loud
-   rules are repeated here, in that order: section 28 wins the hover case
-   on source order at equal specificity, so re-declaring one of the pair
-   in isolation would silently invert it. */
-.so-grid:focus-within .so-step .v,
-.sx-act .so-grid .so-step .v{color:var(--ink-mute)}
+/* The quiet register dropped most of the checker marks with the ink,
+   which read as the figure dimming rather than as one stage coming
+   forward, so the checkers hold more of themselves: .38 becomes .55.
+   The INK is section 28's and is not touched here. That is the
+   correction of a defect this subsection shipped with: it also moved the
+   quiet sentence from --ink-dim to --ink-mute, which is the ink the LIVE
+   stage's sentence already carries, so quiet and live printed the same
+   colour and the sentence stopped saying anything about state. Measured
+   at 1440 hovering stage 02: every `.v` on the figure read
+   rgb(84,92,103). Nothing below re-declares `.v`, and a rule that lands
+   on the value the rule under it already set is not a refinement, it is
+   a rule that hides the one underneath.
+   Both the quiet and the loud checker rules are repeated here, in that
+   order: section 28 wins the hover case on source order at equal
+   specificity, so re-declaring one of the pair in isolation would
+   silently invert it. */
 .so-grid:focus-within .so-step .checker,
 .sx-act .so-grid .so-step .checker{opacity:.55}
-.so-path .so-grid .so-step:focus-within .v,
-.so-path .so-grid .so-step.sx-on .v{color:var(--ink-mute)}
 .so-path .so-grid .so-step:focus-within .checker,
 .so-path .so-grid .so-step.sx-on .checker{opacity:1}
 @media (hover:hover){
-  .so-grid:has(.so-step:hover) .so-step .v{color:var(--ink-mute)}
   .so-grid:has(.so-step:hover) .so-step .checker{opacity:.55}
-  .so-path .so-grid .so-step:hover .v{color:var(--ink-mute)}
   .so-path .so-grid .so-step:hover .checker{opacity:1}
 }
 
@@ -3892,6 +3946,39 @@ body[data-density="structured"]{--sec-pad:clamp(70px,7.6vw,104px);--head-gap:cla
   .pl-mom .win-body.focus-sim{aspect-ratio:1520/586}
   .pl-mom .win-body.focus-sim img{left:-23.684%;top:-6.485%;width:126.316%}
 }
+/* ---- 31.2b the two phone rects that did not show what they claimed ----
+   Both are overrides on section 17 and section 22, which are frozen: the
+   rects live there, the corrections live here.
+   MONITOR at 390 printed source x 1498 to 1920, y 0 to 316 of the
+   1920x1040 asset, which is the far right edge of the screen: a star
+   field, the projection toggle and a column of unchecked layer boxes,
+   and NOT ONE PIXEL OF THE GLOBE. The caption under it reads "tracked
+   events and infrastructure on one globe", so the crop was describing
+   something the reader could not see. The rect is now source x 520 to
+   1420, y 60 to 735: the lit limb against the star field on two sides,
+   the coastlines, and the event marks dense enough to be counted at
+   342px. The layer panel goes, because at this width the picture can
+   carry the globe or the controls and the caption is about the globe.
+   Scale 342/900 = .38, so a 6px source mark prints 2.3px at 2x.
+   THE REPORT printed source x 28 to 712 of a 1642-wide document: every
+   line of the executive summary ran off the right edge of the plate
+   mid-word, and the thesis line with it. A vertical cut through a
+   paragraph cuts words on every line it crosses, so the rect takes the
+   frame's OWN FULL WIDTH and cuts only horizontally: source y 0 to 730,
+   which is the document toolbar with its version control, the title,
+   the italic thesis, the rule, the Executive summary heading and the
+   whole first paragraph. 730 falls inside the blank band the document
+   leaves between that paragraph and the next (rows 706 to 753, found by
+   scanning the asset for rows with no dark pixel between x 40 and
+   x 1600), so the crop ends on a line boundary and no word is sliced.
+   That is exactly what the phone caption promises: the head of the
+   report, shown as a detail. The cost is scale, 342/1642 = .21 against
+   .50 before; at 2x the body still resolves and a cut word never does. */
+@media (max-width:600px){
+  .pl-mom .win-body.focus-globe img{width:213.333%;left:-57.778%;top:-8.889%}
+  .pl-deliv-doc .win-body.focus-sourced{aspect-ratio:1642/730}
+  .pl-deliv-doc .win-body.focus-sourced img{width:100%;left:0;top:0}
+}
 
 /* ---- 31.3 the crop's foot carries the annotations ---------------------
    Brief 9 asks for one or two short annotations that explain what
@@ -3987,22 +4074,39 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
    so everything below is an override written on their own selectors and
    the new classes are prefixed `ag-`. No word changed on either page. */
 
-/* ---- 32.1 ABOUT, the fold: the same masthead, less ground ------------
-   The fold was a headline, a 64px run, a hairline, and a dek hanging in
-   the right column at a 540px measure, which printed four lines and left
-   a 400 by 150 block of nothing under the rule beside it. The
-   composition is right and stays: title across the left two thirds, one
-   rule, the dek on the right rail, the left half deliberately empty. The
-   PROPORTIONS were the problem, so the run above the rule comes down and
-   the dek's column starts further left and runs wider, which prints it in
-   three lines instead of four. The empty block is a third smaller and the
-   fold reaches the first section sooner, which is what the brief means by
-   a long run to the intro paragraph. */
+/* ---- 32.1 ABOUT, the fold: headline and intro, one row --------------
+   The fold was a headline across the top, a full-width hairline under
+   it, and the dek hanging in the right half of the row below. Reducing
+   the run above the rule made the empty half smaller without making it
+   anything: at 1440 the left half of that row was a 452 by 155 hole
+   beside a paragraph, and a rule that spans a row is a promise that
+   something sits on both ends of it.
+   So the row becomes the composition instead of sitting under it: the
+   headline takes the left column and the intro takes the right, the two
+   sharing one top, which is the shape the Platform and Solutions folds
+   already use. This page's own marks survive the move: the hairline is
+   still there and still carries the first station tick, but it is now
+   the rule the intro column opens on rather than a span across nothing,
+   and it aligns with the cap line of the headline beside it. The left
+   half of the fold is no longer empty, it is the headline.
+   Below 981px the grid collapses to one column (24.6) and the fold
+   stacks in reading order: eyebrow, headline, rule, intro. */
 .ab-hero{padding-bottom:clamp(44px,4.8vw,66px)}
 .ab-fold{margin-top:clamp(24px,3vw,40px);padding-top:22px}
 @media (min-width:981px){
-  .ab-fold{grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr)}
-  .ab-dek{max-width:600px}
+  .ab-hero .wrap{
+    display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);
+    column-gap:clamp(32px,4vw,64px);align-items:start;
+  }
+  .ab-hero .hero-eyebrow{grid-column:1/-1}
+  .ab-hero h1{grid-column:1;max-width:none;margin:0}
+  /* the intro column: its own rule, its own tick, level with the
+     headline's cap line rather than with its line box */
+  .ab-fold{
+    grid-column:2;margin-top:12px;padding-top:22px;
+    grid-template-columns:minmax(0,1fr);
+  }
+  .ab-dek{grid-column:1;max-width:none}
 }
 
 /* ---- 32.2 THE BRAND MOMENT: the full progression, across the page ----
@@ -4165,95 +4269,111 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 /* ---- end 32 ---- */
 
 /* ============ 33 ROUND ELEVEN TEXTURE (2026-09-20): real-world material as evidence ============ */
-/* Owner of this section: shared by the page builders, one subsection each
-   (33.1 home, 33.2 platform, 33.3 about, 33.4 use cases). The figure
-   chrome for documentary imagery lives here so the four pages share one
-   treatment: desaturated, high contrast, edged, credited in metadata. */
+/* Owner of this section: shared by the page builders. THREE pages carry a
+   documentary plate (33.1 home, 33.2 platform, 33.3 about) and they share
+   ONE chrome, written once in 33.0. The page subsections below it carry
+   nothing but placement and the source rect each width prints; a page may
+   not invent its own credit form, because a credit that reads three ways
+   on three pages is three claims rather than one register. Use cases
+   carries no documentary material, so there is no 33.4.
+   The material itself: desaturated, high contrast, geometry untouched,
+   used as evidence or context and never as decoration or wallpaper. The
+   full credit, the licence, the acquisition date and the source URL of
+   every file are in CREDITS.md at the repo root, which the build does not
+   publish. */
 
-/* ---- 33.1 home (builder B, prefix hs-) ---- */
-
-/* Home's one documentary moment: about a hundred ships and tankers at
-   anchor in the Gulf of Suez while the canal was blocked, from Landsat.
-   It sits in #outside, beside "The cost is often not ignorance. It is
-   delay.", because that is the sentence it is evidence for: a queue is
-   what delay looks like from orbit. Not a hero background, not a
-   section break, not decoration.
-
-   The treatment is the one the site already gives a dark frame on a
-   light ground: a plate with a --line-2 edge and nothing else. No
-   corner ticks and no frame bar, because the three honesty chromes are
-   for product, drawn instruments and illustrative documents, and this
-   is none of them: it is a real published photograph, which is the same
-   reading the newsletter covers take. The credit hangs under the plate
-   in the metadata voice, at caption size, and it carries no checker
-   marker: the marker belongs to figures of Mission Grey's own work.
-
-   The file is prepared once, not by CSS: one 1800x750 rectangle taken
-   from the source at full resolution, converted to grayscale, contrast
-   lifted and written at quality 82 (115KB), with its white point held
-   just under the page ground so the image never prints brighter than
-   the paper it sits on. Geometry is untouched: one crop, no
-   compositing, no overlay, no fake data. The full credit, the licence
-   and the source URL are in assets/texture/CREDITS.md. */
-.hs-tex{margin:0}
-/* the plate runs to the page edge on the wide layout, using the same
-   expression the hero's scope uses, so the two bleeds on this page
-   register with each other. A bled plate keeps three edges and drops
-   the fourth, because the fourth is the page. */
-.hs-tex-plate{
+/* ---- 33.0 the shared documentary chrome (tex-) ------------------------
+   A real photograph or a published data product takes NONE of the three
+   honesty chromes. `.window` would claim it is the product, an
+   `Illustrative view` bar would call a published picture drawn, and
+   `.sheet` would call it an illustrative document. What it takes instead
+   is what this system gives every photograph on a light ground: a
+   `--line-2` hairline, because an image separates itself here with a rule
+   and never with a shadow, over the recessed plate ground.
+   Under it, two lines and no more. The FIRST names the subject in the
+   site's figcaption voice, the register `.win-cap` already sets for a
+   product plate: mono, uppercase, 10.5px, .14em. It states a fact about
+   what the picture shows and it carries no checker marker, because that
+   marker belongs to figures of Mission Grey's own work.
+   The SECOND is the credit, quieter by two moves rather than by going
+   dimmer than `--ink-dim`, which is this system's floor for text: it
+   drops the uppercase and most of the tracking. It is not uppercased
+   because it is a name and an institution printed as the register
+   requires them, and shouting a source is not crediting it. It carries no
+   accent: amber means active, changed, selected or decision point on this
+   site, and a credit is none of those. No date is printed on any page. */
+.tex-fig{margin:0}
+.tex-fig img{display:block;width:100%;height:auto}
+/* the edge goes on whichever direct child of the figure holds the
+   picture: a cropping div on Home and Platform, the `img` itself on
+   About, which has no rect to cut at any width */
+.tex-fig > img,.tex-fig > div{
   border:1px solid var(--line-2);background:var(--bg-2);
   line-height:0;overflow:hidden;
 }
-.hs-tex img{display:block;width:100%;height:auto}
-.hs-tex-cred{
+.tex-cap{
   margin-top:12px;
   font:500 var(--fs-meta)/1.6 var(--mono);letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink-dim);
 }
+.tex-cred{
+  display:block;margin-top:6px;
+  font-weight:400;letter-spacing:.06em;text-transform:none;
+}
+
+/* ---- 33.1 home, placement and rect (hs-) ------------------------------
+   Home's one documentary moment sits in #outside beside "The cost is
+   often not ignorance. It is delay.", because that is the sentence it is
+   evidence for: a queue is what delay looks like from orbit. Not a hero
+   background, not a section break, not decoration. Its place in the page
+   grid is in 30.9; what is here is the bleed and the phone rect.
+   The file is prepared once, not by CSS: one 1800x750 rectangle taken
+   from the source at full resolution, grayscale, contrast lifted, quality
+   82, with its white point held just under the page ground so the image
+   never prints brighter than the paper it sits on. */
 @media (min-width:901px){
+  /* the plate runs to the page edge, using the same expression the hero's
+     scope uses, so the two bleeds on this page register with each other.
+     A bled plate keeps three edges and drops the fourth, because the
+     fourth is the page. */
   .hs-tex{margin-right:calc(-1 * max(0px,(100vw - var(--max)) / 2) - var(--pad))}
   .hs-tex-plate{border-right:0}
 }
 /* THE PHONE GETS A DIFFERENT RECT, for the reason the product plates
    already do: an 1800px satellite frame printed 366px wide is texture,
    and a hundred ships at anchor stop being countable at that scale. The
-   rect is stated in source pixels, x 300 to 1380 and y 105 to 645 of
-   1800x750, which is the water with the anchored ships and both shores
-   still in frame, at the same printed scale as the wide layout. Nothing
-   is scaled up: this is a smaller window on the same file. */
+   rect is source x 300 to 1380 and y 105 to 645 of 1800x750, which is the
+   water with the anchored ships and both shores still in frame, at the
+   same printed scale as the wide layout. Nothing is scaled up: this is a
+   smaller window on the same file. */
 @media (max-width:700px){
-  .hs-tex-plate{position:relative;overflow:hidden;aspect-ratio:2/1}
+  .hs-tex-plate{position:relative;aspect-ratio:2/1}
   .hs-tex img{position:absolute;max-width:none;width:166.667%;left:-27.778%;top:-19.444%}
 }
 
-/* ---- 33.2 platform (builder C, prefix pf-) ---- */
-/* One documentary plate on this page: a NASA Black Marble nighttime-lights
-   map of southern Spain on the night of a regional power blackout. It is a
-   DATA PRODUCT rather than a photograph, which is the honest texture for a
-   page about what a platform emits, and it is a real, dated, published
-   artefact, which is what separates it from the fabricated evidence brief
-   11 forbids. It is context for the words beside it (external change
-   arrives on four levels) and it is never a hero or a wallpaper.
-   The chrome is the site's existing treatment for an image on a light
-   ground, and nothing more: a `--line-2` hairline, because a photograph on
-   this chassis earns its edge from a rule rather than from a shadow, and a
-   metadata line under it naming the source. No frame ticks, no frame bar,
-   no `Illustrative view`: the three honesty tiers are for the product, for
-   drawn instruments and for illustrative documents, and this is none of
-   them. It is a real thing from outside, and the credit is what says so. */
-.pf-fig{margin:0}
+/* ---- 33.2 platform, placement and rect (pf-) --------------------------
+   One documentary plate on this page, in #breadth beside the head
+   "External change arrives on four levels.". It is a DATA PRODUCT rather
+   than a photograph, which is the honest texture for a page about what a
+   platform emits, and it is a real, published, citable artefact, which is
+   what separates it from the fabricated evidence brief 11 forbids. Its
+   column is set in 31.1; what is here is the rect.
+   The file is the published frame at 1800x1200, desaturated and contrast
+   lifted, geometry untouched, with its full credit in the JPEG metadata.
+   The page shows a rect of it, stated the way every other crop on this
+   site is stated: each rect below is the TOP EDGE the declaration beside
+   it computes, exactly, and it runs to the bottom of the box. One caveat
+   that applies to every edged plate on this site and is stated once here:
+   `aspect-ratio` sizes the BORDER box, so the plate's own 1px hairline
+   takes the outermost source row or two at each edge (two rows at
+   1000px, six at 390). The statement is the image geometry; the hairline
+   is the chrome sitting on it. */
 .pf-plate{
-  position:relative;overflow:hidden;
-  border:1px solid var(--line-2);background:var(--bg-2);
-  aspect-ratio:12/5;
+  position:relative;
+  aspect-ratio:12/5; /* source y 330 to 1080, the frame's own full width:
+                        the inland light clusters and the whole south
+                        coast. top:-44% of a .41667 box = 330/1800. */
 }
-/* The file is the published frame at 1800x1200, desaturated and
-   contrast-lifted to sit in the grey system, with its full credit in the
-   JPEG metadata. The page shows a rect of it, stated here the way every
-   other crop on this site is stated: source y 330 to 1080 at the frame's
-   own full width, which holds the inland light clusters and the whole
-   south coast. Geometry is untouched, nothing is composited, and no
-   overlay is drawn on it. */
 .pf-plate img{
   position:absolute;left:0;top:-44%;display:block;
   width:100%;height:auto;max-width:none;
@@ -4261,61 +4381,32 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 @media (max-width:1100px){
   /* stacked under the head the plate is the width of the column, so a
      2.4:1 band would print as a letterbox strip: the rect opens up
-     instead of the plate scaling down. Source y 188 to 1200. */
-  .pf-plate{aspect-ratio:16/9}
-  .pf-plate img{top:-18%}
-}
-/* The credit is metadata, so it is the metadata voice: mono, --fs-meta,
-   dim, hanging from the plate under a hairline tick. It is NOT
-   uppercased, unlike the captions around it: it is a name and an
-   institution, printed the way the register requires them, and shouting a
-   source is not crediting it. It carries no accent, because amber means
-   active, changed, selected or decision point on this site and a credit
-   is none of those. Acquisition dates, licence and URL live in
-   assets/texture/CREDITS.md; no date is printed on any page. */
-.pf-cred{
-  position:relative;margin-top:11px;padding-left:14px;
-  font:400 var(--fs-meta)/1.6 var(--mono);letter-spacing:.06em;color:var(--ink-dim);
-}
-.pf-cred::before{
-  content:"";position:absolute;left:0;top:.55em;width:8px;height:1px;background:var(--line-3);
+     instead of the plate scaling down. Source y 188 to 1200, which is
+     1012 rows, so the box carries the rect's own ratio rather than a
+     tidy 16/9 that missed it by six rows. */
+  .pf-plate{aspect-ratio:1800/1012}
+  .pf-plate img{top:-18.577%}
 }
 
-/* ---- 33.3 about (builder D, prefix ag-) ---- */
-/* One documentary photograph on About: Singapore and southern Johor at
+/* ---- 33.3 about, placement and stop width (ag-) -----------------------
+   One documentary photograph on About: Singapore and southern Johor at
    night from the International Space Station, two countries and the
-   strait between them in one frame. It takes NONE of the three honesty
-   chromes, for the same reason the newsletter covers take none: a
-   `.window` would claim it is the product and an `Illustrative view`
-   label would call a real photograph drawn. What a real photograph
-   carries instead is an edge and its source. The edge is `--line-2`, the
-   token this system already gives every photograph on a light ground,
-   and the source is one metadata line in the instrument voice, at the
-   register every other label on this page uses.
-   The file is graded, not composited: cropped, converted to grayscale
-   and contrast-lifted so it sits in the grey palette, with its geometry
-   untouched. No date is printed here; acquisition dates live in
-   assets/texture/CREDITS.md with the full credit and the source URL. */
-.ag-fig{margin:0}
-.ag-fig img{
-  display:block;width:100%;height:auto;
-  border:1px solid var(--line-2);background:var(--bg-2);
-}
-/* The credit is the one line of type this figure adds, and it names an
-   institution, so it is set to fit the plate's own width on one line:
-   61 characters of 10.5px mono at .15em tracking measure 480px and
-   wrapped under a 496px plate, leaving `CENTER` alone on a second line.
-   Tracking is the cheapest thing to spend, so it goes to .1em here and
-   nowhere else. */
-.ag-cred{
-  margin-top:10px;
-  font:400 var(--fs-meta)/1.6 var(--mono);letter-spacing:.1em;
-  text-transform:uppercase;color:var(--ink-dim);
-}
+   strait between them in one frame. It is the brief's "global city at
+   night" answered without being literal, since from orbit a city is a
+   lattice rather than a skyline. It takes the empty right half of the
+   "Where we are" section head, above the west-to-east register (32.5).
+   The file is graded, not composited: cropped to 3100x2325 of the
+   3601x3001 original (black margin off three sides), grayscale, contrast
+   lifted, resized to 1600x1200 at quality 78. No rect is cut by CSS at
+   any width: this plate prints the whole file everywhere, which is why
+   the figure's own `img` carries the edge.
+   At 1440 the plate measures 490px, which is where the credit line was
+   tuned to fit; 33.0 sets it at .06em, well inside that. */
 /* Under 981px the plate stacks below the heading it belongs to and stops
    at a reading width: a 700px night frame on a 390px phone is texture,
    and this one is only worth printing while the lattice, the strait and
-   the anchorage can each be told apart. */
+   the anchorage can each be told apart. At 390 it prints 342px wide,
+   which is the narrowest width at which that still holds. */
 @media (max-width:980px){
   .ag-fig{margin-top:clamp(20px,3vw,30px);max-width:560px}
 }

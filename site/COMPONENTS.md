@@ -55,7 +55,12 @@ Nothing else in the stylesheet, and nothing at all in any page, declares an
 accent value: the whole site's accent is a single-block swap, and that is a
 property to preserve. If you need an accent, use a token. Never use the
 accent for decoration or for body text, and one accent per component is the
-ceiling.
+ceiling. A component may still print that one accent as several MARKS:
+round eleven's gloss, under "Amber is the sequence" in the first
+engagement's subsection below, is that three marks of one sequence role
+are one accent and not three, so a flow may tick every station in amber
+while a second, unrelated amber anywhere in the same component is still
+over the ceiling.
 
 ### Building on a light ground
 
@@ -1918,11 +1923,13 @@ register. Everything it needed already existed in the tree (22 real
 portraits, five real places, the mark sequence); nothing was added to
 `assets/`.
 
-**The fold is set, not drawn.** Title at a 20ch measure across the left
-two thirds, then one hairline with the dek hanging from its right half and
-a tick at the head of that column. The left half under the rule stays
-empty on purpose. A second globe, or any instrument, would make About read
-as Home with different words; the page's job at the fold is a masthead.
+**The fold is set, not drawn.** Title on the left, the intro on the
+right in its own column, opening on one hairline with a tick at the head
+of it, both columns sharing a top: the shape the Platform and Solutions
+folds already use (32.1 records why the earlier full-width rule with an
+empty half under it did not survive review). A second globe, or any
+instrument, would make About read as Home with different words; the
+page's job at the fold is a masthead.
 
 **Atmospheric imagery is material this round did not have.** The commission
 allows About more documentary imagery than any other page (global city
@@ -2568,6 +2575,35 @@ gets its internal gap back under 560px because four stacked blocks in a
 equals 390 on all ten). Labels are 11px everywhere, which is what they
 were specified as and what they now are.
 
+#### Two corrections this section carries for the fix pass
+
+**The header's primary button is a hairline control on a phone (29.6).**
+Under 640px `.site-head .btn-primary` printed 161px of accent BLOCK in a
+390px bar, directly above a hero whose first control is the same words in
+the same amber. Two identical loud verbs in one viewport is one call and
+an echo. Below 640px the header instance takes `.btn-ghost`'s register
+(hairline, ink text, no fill) at 11px and 9px/13px padding, 133px wide,
+so the fill belongs to the hero alone. Not a word and not a link changes,
+and the tab order is untouched.
+
+**Use cases gets a two-column fold (29.7).** It was the last hero on the
+site printing eyebrow, headline, dek and both buttons in one left column
+with the right half of the fold empty for 490px: the "huge headline plus
+very little else plus large empty space" the brief names outright. Above
+981px the headline takes the left column and the dek and the two controls
+take the right, both opening on the same top, which is the shape
+Solutions and Platform already use. The markup's reading order is exactly
+the order the grid places them in, so no word moves; the stacked layout
+under 981px is untouched. The page is selected by
+`body[data-density="structured"]`, which belongs to it alone (29.4), so
+no markup had to change. Hero height at 1440: 488px to 364px.
+
+**The `!important` count.** This section carries two (29.3 and 29.6) and
+section 31.1 carries a third for the same reason: `.pf-ext .sec-head` has
+to beat 29.3's own `!important` because the Platform head moved inside a
+wrapper and stopped being the `.rule-label +` sibling. Three is the whole
+set, and a fourth should have to argue for itself.
+
 #### Not done, deliberately
 
 The h3 sizes inside registers (above), the compositions themselves (the
@@ -2659,20 +2695,32 @@ not become. What changed is the air inside the frame (the grid's padding,
 the gap above the station rule, the two gaps inside a step) and how far
 the two quiet stages step back.
 
-**What recedes is the marks, not the words.** The quiet register used to
-drop a stage's sentence two inks, to `--ink-dim`, and its checkers to
-.38, which reads as the figure dimming rather than as one stage coming
-forward. The sentence now holds its resting ink and the checkers hold
-.55; the delta is carried by the station mark, the index, the extent run
-and the heading. That is round ten's own rule for the people registers,
-applied to a diagram.
+**What recedes is the marks, not the words.** The quiet register dropped
+a stage's checkers to .38 along with its ink, which reads as the figure
+dimming rather than as one stage coming forward. The checkers now hold
+.55 and the delta is carried by the station mark, the index, the extent
+run and the heading. That is round ten's own rule for the people
+registers, applied to a diagram.
+This subsection also, in its first form, moved the quiet sentence from
+`--ink-dim` to `--ink-mute`, which is the ink the LIVE stage's sentence
+already carries: quiet and live printed the same colour and the sentence
+stopped saying anything about state. The review measured it (every `.v`
+on the figure read rgb(84,92,103) with stage 02 hovered at 1440) and the
+fix pass removed the override, so section 28's ink stands: `--ink-dim`
+quiet, `--ink-mute` live, measured at rgb(98,107,119) against
+rgb(84,92,103).
 
 **A trap worth recording: the hover pair in section 28 is equal
-specificity.** `.so-grid:has(.so-step:hover) .so-step .v` and
-`.so-path .so-grid .so-step:hover .v` are both (0,5,0), and section 28
-relies on source order for the loud one to win. Re-declaring the quiet
+specificity.** `.so-grid:has(.so-step:hover) .so-step .checker` and
+`.so-path .so-grid .so-step:hover .checker` are both (0,5,0), and section
+28 relies on source order for the loud one to win. Re-declaring the quiet
 rule in a later section without re-declaring the loud one after it
 silently inverts the figure, so section 30 repeats BOTH, in that order.
+The second half of the trap is what the fix pass found: repeating a pair
+is only safe while ONE of the two values moves. Section 30 repeated the
+ink pair too and landed the quiet value on the loud one, which is a rule
+that hides the rule underneath rather than refining it. Repeat for source
+order, change one value, and say in the comment which one.
 Verified by computed style: at rest every sentence is `--ink-mute`; with
 station 02 hovered, step 01's heading is mute while 02's is ink and 03's
 checkers are .55; with 03 selected by click, 03 is the only live stage.
@@ -2744,6 +2792,31 @@ the walk now passes 0.56 of a 900px viewport**:
 | 02 ANALYZE | unchanged (22.2c, 772x250) | 297px | 297px |
 | 03 DECIDE | x 360 to 1880, y 38 to 624 of 1920x1036 | 443px | 755px |
 | 04 ACT | unchanged (22.4, 1920x566) | 339px | 339px |
+
+**The phone rects, corrected in the fix pass (31.2b).** The wide crops
+above were re-cut and the 390 ones were not looked at, and two of them
+described something the reader could not see. MONITOR at 390 printed
+source x 1498 to 1920, y 0 to 316: the far right edge of the screen, a
+star field, the projection toggle and a column of unchecked layer boxes,
+and not one pixel of the globe, under a caption that reads "tracked
+events and infrastructure on one globe". It is now source x 520 to 1420,
+y 60 to 735, which is the lit limb against the star field on two sides,
+the coastlines and the event marks dense enough to be counted at 342px;
+the layer panel goes, because at this width the picture can carry the
+globe or the controls and the caption is about the globe. The report
+plate printed source x 28 to 712 of a 1642-wide document, so every line
+of the executive summary and the thesis ran off the right edge of the
+plate mid-word; a vertical cut through a paragraph cuts words on every
+line it crosses, so the rect now takes the frame's own full width and
+cuts only horizontally, source y 0 to 730. That row falls inside the
+blank band the document leaves between the first executive-summary
+paragraph and the next (rows 706 to 753, found by scanning the asset for
+rows with no dark pixel between x 40 and x 1600), so the crop ends on a
+line boundary and no word is sliced. It is exactly what the phone caption
+promises: the head of the report, shown as a detail. The cost is scale,
+342/1642 against 342/684 before, and at 2x the body still resolves while
+a cut word never does. Both are overrides written from section 31 on the
+frozen rects in sections 17 and 22. Page height at 390: 19641 to 19380.
 
 The globe opens under the projection toggle, which is a view control
 rather than evidence, and ends in the gap under `Naval` and above
@@ -2853,10 +2926,12 @@ the lens figure and gains the one piece of the real world on the page.
   beside the worked chain, and that chain is a drawn `Illustrative view`:
   a real document laid against an illustrative figure invites the reader
   to read the figure as real too.
-- **The phone crop of the globe** (section 17) still shows about a third
-  of dark sky beside the tracking panel. It is a readability trade made in
-  round six (0.81 of source; widening it to reach the globe's marks takes
-  the layer labels under 8px) and re-opening it is not this round's brief.
+- ~~**The phone crop of the globe** (section 17) is not re-opened.~~
+  Overturned by the fix pass: the crop showed no globe at all, not "a
+  third of dark sky beside the tracking panel", and a crop that omits
+  what its caption names is a defect and not a trade. See "The phone
+  rects, corrected" above. The trade it described was real, and the fix
+  pays it the other way: the layer panel goes and the globe stays.
 - **No new control, no new motion, no new colour.** Reduced motion and
   no-JS were both verified: with JS off all four moments print in full
   with their INPUT/OUTPUT pairs and the texture plate renders at its
@@ -2874,6 +2949,21 @@ exactly the nine words of one source credit and one new `alt`, which is
 the one addition the round sanctions for a documentary image. Section 32
 is written as overrides on the selectors sections 21, 24 and 26 already
 use, because those sections are frozen; the new classes are `ag-`.
+
+**The About fold is two columns, corrected in the fix pass (32.1).** The
+fold was a headline across the top, a full-width hairline, and the intro
+hanging in the right half of the row under it. This section's first form
+kept that shape and tightened its proportions, which made the empty half
+smaller without making it anything: at 1440 the left half of that row was
+a 452 by 155 hole beside a paragraph, and a rule that spans a row is a
+promise that something sits on both ends of it. The row is now the
+composition: the headline takes the left column, the intro takes the
+right, and the two share one top, which is the shape the Platform and
+Solutions folds already use. The page's own marks survive the move, the
+hairline included, but it is now the rule the intro column opens on and
+it aligns with the cap line of the headline beside it. Under 981px the
+grid collapses and the fold stacks in reading order, unchanged. Hero
+height at 1440: 524px to 340px; page height 6690 to 6548.
 
 **Equal static weight is untouched and was measured, not assumed.** Round
 ten's rule (section 26) is one-directional and nothing here moves against
@@ -2908,8 +2998,8 @@ may not cross.
 the head of the "Where we are" section, on the right, above the
 west-to-east office register. Three placements were considered and two
 were rejected: the fold, because an image in the hero is the hero
-background the brief rules out and because the fold's empty left half is
-a round-nine composition decision, not slack; and beside the geographic
+background the brief rules out and the fold is a masthead; and beside the
+geographic
 register, which round nine proposed, because that register's stations are
 MERIDIANS and a scale drawn narrow stops registering with what it
 measures (section 24.5). The section head was three short lines with
@@ -2986,153 +3076,168 @@ first screen at 1440 About now reaches the first discipline row rather
 than ending on the section dek, and at 390 the first discipline row is
 whole above 900px.
 
-**Not done, deliberately.** The Guild filter (above). The fold's empty
-left half on About, which is round nine's composition and not slack; its
-proportions are tightened instead, so the dek column starts 142px further
-left and the block of nothing is a third smaller. The portrait sizes,
+**Not done, deliberately.** The Guild filter (above). The portrait
+sizes,
 which the sources cap and the equal-weight rule freezes. The roster
 order, on either page. And no second checkerboard anywhere.
 
 ### Real-world texture (section 33)
 
-The asset register is assets/texture/CREDITS.md. One paragraph per page builder below.
+**One chrome, three pages, one rule.** Home, Platform and About each
+carry a single documentary plate; Use cases carries none, so there is no
+33.4. The chrome is written once, in subsection 33.0, and the three page
+subsections below it hold nothing but placement and the source rect each
+width prints. A page may not invent its own credit form: a credit that
+reads three ways on three pages is three claims rather than one register.
+
+The rule, binding:
+
+- **A real photograph or published data product takes NONE of the three
+  honesty chromes.** `.window` would claim it is the product, an
+  `Illustrative view` bar would call a published picture drawn, and
+  `.sheet` would call it an illustrative document. It takes what this
+  system gives every photograph on a light ground instead: a `--line-2`
+  hairline over the plate ground, because an image separates itself here
+  with a rule and never with a shadow.
+- **Two lines under it and no more.** `.tex-cap` names the SUBJECT in the
+  site's figcaption voice, the register `.win-cap` already sets for a
+  product plate (mono, uppercase, `--fs-meta`, .14em, `--ink-dim`). It
+  states a fact about what the picture shows and carries no checker
+  marker, because that marker belongs to figures of Mission Grey's own
+  work. `.tex-cred` under it is the SOURCE, quieter by dropping the
+  uppercase and most of the tracking rather than by going dimmer than
+  `--ink-dim`, which is this system's floor for text. It is not
+  uppercased because it is a name and an institution printed as the
+  register requires them, and shouting a source is not crediting it.
+- **No accent, and no date.** Amber means active, changed, selected or
+  decision point on this site, and a credit is none of those. Acquisition
+  dates, licences, full credit lines and source URLs live in `CREDITS.md`
+  at the repo ROOT, beside `README.md`, which the build does not copy:
+  the register is a repo document and never a published page.
+- **The file is prepared once, not by CSS**, and geometry is never
+  touched: one crop, no compositing, no overlay, nothing added to or
+  taken out of the picture. Desaturated and contrast lifted to sit in the
+  grey palette, with the white point held just under the page ground so a
+  documentary frame never prints brighter than the paper it sits on. Each
+  file carries its full credit in its own metadata.
+- **The alt text describes the real image, not the subject's
+  significance.** A reader who cannot see it gets the picture, not an
+  argument about it.
+- **The phone gets a different rect, never a smaller plate**, for the
+  reason the product plates already do. Every rect is stated in SOURCE
+  PIXELS in the stylesheet comment, and the declaration next to it
+  computes to exactly those numbers.
+
+Markup, all three:
+
+```html
+<figure class="tex-fig hs-tex">
+  <div class="hs-tex-plate"><img src="..." alt="..." loading="lazy"></div>
+  <figcaption class="tex-cap">Subject line<span class="tex-cred">Source</span></figcaption>
+</figure>
+```
+
+About's figure has no cropping div because no rect is cut at any width;
+the edge goes on its `img` instead. That is the only structural
+difference, and 33.0 covers both.
 
 #### Home texture (33.1)
 
-Home's one documentary moment is `suez-ship-backlog-landsat.jpg`: about a
-hundred cargo ships and tankers at anchor in the Gulf of Suez while the
-canal was blocked, from Landsat, public domain. It sits in `#outside`
-beside "The cost is often not ignorance. It is delay.", because that is
-the sentence it is evidence for: a queue is what delay looks like from
-orbit. It is not a hero background, not a section break and not a
-texture behind type. The reading hangs on the left of the block and the
-plate runs off the right page edge, using the same expression the hero's
-scope uses, so the page's two bleeds register with each other.
+`suez-ship-backlog-landsat.jpg`, about a hundred cargo ships and tankers
+at anchor in the Gulf of Suez while the canal was blocked, from Landsat,
+public domain. It sits in `#outside` beside "The cost is often not
+ignorance. It is delay.", because that is the sentence it is evidence
+for: a queue is what delay looks like from orbit. Not a hero background,
+not a section break, not a texture behind type. The reading hangs on the
+left of the block and the plate runs off the right page edge, using the
+same expression the hero's scope uses, so the page's two bleeds register
+with each other; a bled plate keeps three edges and drops the fourth,
+because the fourth is the page. Its place in the page grid is in 30.9.
 
-**A real photograph takes none of the three honesty chromes.** `.window`
-would claim it is the product, `Illustrative view` would call a published
-photograph drawn, and `.sheet` would call it an illustrative document.
-It is printed as a plate with a `--line-2` edge and nothing else, which
-is the reading the newsletter covers already take. The credit hangs under
-it in the metadata voice at caption size and carries no checker marker:
-that marker belongs to figures of Mission Grey's own work. The credit
-line is the only text this figure adds to the page, and it is the
-sanctioned exception to the wording freeze.
-
-**The file is prepared once, not by CSS.** One 1800x750 rectangle of the
-source (x 180 to 1980, y 900 to 1650) at full resolution, converted to
-grayscale, contrast lifted, written at quality 82, 115KB. Two rules the
-next texture should keep: the white point is held just under the page
-ground, so a documentary frame never prints brighter than the paper it
-sits on and the hairline edge always has something to separate; and the
-geometry inside the crop is the source's geometry, because a crop is
-honest and a composite is not. **The phone gets a different rect, for the
-reason the product plates already do**: an 1800px satellite frame printed
-366px wide is texture, and a hundred ships stop being countable, so under
-700px the plate is a window on x 300 to 1380, y 105 to 645 of the same
-file at the same printed scale, keeping the ships and both shores. The
-alt text describes what the image actually shows and names no date; the
-date, the licence, the full credit and the source URL are in
-`assets/texture/CREDITS.md`.
-
-
-
+**Crop.** The file is one 1800x750 rectangle of the source (x 180 to
+1980, y 900 to 1650) at full resolution, grayscale, contrast lifted,
+quality 82, 115KB. Under 700px the plate is a window on source x 300 to
+1380, y 105 to 645 of that file at the same printed scale, which keeps
+the ships and both shores: an 1800px satellite frame printed 366px wide
+is texture, and a hundred ships stop being countable.
 
 #### Platform texture (33.2)
 
-One plate, `assets/texture/iberian-blackout-black-marble.jpg`: a NASA
-Black Marble nighttime-lights map of Andalusia on the night of the Iberian
-peninsula blackout, in `#breadth`, beside the head "External change
-arrives on four levels." It is a **data product rather than a
-photograph**, which is the honest texture for a page about what a platform
-emits, and it is a real, published, citable artefact, which is what
-separates it from the fabricated evidence brief 11 forbids. It is context
-for the words beside it and it is never a hero or a wallpaper. US federal
-government work, public domain; full credit, licence, source URL and the
-acquisition date are in `assets/texture/CREDITS.md`, and the date is
-printed on no page.
+`iberian-blackout-black-marble.jpg`, a NASA Black Marble nighttime-lights
+map of Andalusia on the night of the Iberian peninsula blackout, in
+`#breadth` beside the head "External change arrives on four levels." It
+is a **data product rather than a photograph**, which is the honest
+texture for a page about what a platform emits, and it is a real,
+published, citable artefact, which is what separates it from the
+fabricated evidence brief 11 forbids. It is context for the words beside
+it and it is never a hero or a wallpaper. Its column is set in 31.1.
 
-**The chrome is an edge and a credit, and nothing else, binding.** No
-frame ticks, no frame bar, no `Illustrative view`. The three honesty tiers
-are for the product (`.window`), for drawn instruments (`.frame`) and for
-illustrative documents (`.sheet`); a real thing from outside is none of
-them, and dressing it in instrument chrome would say the site drew it. It
-takes the `--line-2` hairline every photograph on this chassis takes,
-because on a light ground an image separates itself with a rule rather
-than with a shadow.
-
-**The credit is metadata, so it is the metadata voice, and it is not
-uppercased.** `.pf-cred` is mono at `--fs-meta`, `--ink-dim`, hanging from
-an 8px hairline tick. Every other mono line on the page is uppercase; this
-one is not, because it is a name and an institution printed as the
-register requires them, and shouting a source is not crediting it. It
-carries **no accent**: amber means active, changed, selected or decision
-point on this site, and a credit is none of those.
-
-**What was done to the file, and what was not.** Grayscale (the source is
-already near-monochrome: white settlement points on black with one thin
-cyan coastline stroke), resize 2871x1914 to 1800x1200, a sigmoidal
-contrast curve at (5, 18 percent) to lift the settlement points onto a
-light page, JPEG quality 80, 104KB. **Geometry is untouched: no crop into
-the file, no compositing, no overlay, nothing added to or taken out of the
-data.** The exact command is recorded in CREDITS.md so the file can be
-regenerated from the source at any time. The full credit line and the
-source URL are written into the JPEG's own metadata, so the file carries
-its provenance even when it leaves this repo.
-
-**The page shows a rect of the frame, stated like every other crop here**:
-source y 330 to 1080 at full width on the wide layout (`aspect-ratio:12/5`,
-`top:-44%`), and y 188 to 1200 under 1101px (`aspect-ratio:16/9`,
-`top:-18%`), where the plate has the column to itself. The rect opens up
-rather than the plate scaling down, for the same reason every phone crop
-on this site changes rather than shrinks.
-
-**The alt text describes the real image, not the subject's significance**:
-scattered white settlement lights on a black field with the south coast
-drawn as a thin pale line. A reader who cannot see it gets the picture,
-not an argument about it.
-
-
-
+**Crop.** The file is the published frame resized 2871x1914 to 1800x1200,
+grayscale, sigmoidal contrast (5, 18 percent), quality 80, 104KB, with no
+crop into the file at all. The page shows source y 330 to 1080 at the
+frame's own full width on the wide layout (`aspect-ratio:12/5`,
+`top:-44%`), and source y 188 to 1200 under 1101px
+(`aspect-ratio:1800/1012`, `top:-18.577%`), where the plate has the
+column to itself. Both declarations compute to exactly those top rows;
+the narrow one used to say 188 and compute 182, which is the kind of
+drift a stated crop exists to prevent. One caveat, true of every edged
+plate on this site and stated once in 33.2: `aspect-ratio` sizes the
+BORDER box, so the plate's own 1px hairline takes the outermost source
+row or two at each edge (two rows at 1000px, six at 390). A stated rect
+is the image geometry; the hairline is chrome sitting on it. The rect
+opens up rather than the plate scaling down, for the same reason every
+phone crop on this site changes rather than shrinks.
 
 #### About texture (33.3)
 
-One photograph on About: `assets/texture/singapore-malacca-night.jpg`,
-Singapore and southern Johor at night from the International Space
-Station, two countries and the strait between them in one frame. It is
-the brief's "global city at night" answered without being literal, since
-from orbit a city is a lattice rather than a skyline, and it is placed as
-context for the section about where the company operates rather than as
-atmosphere over the page (section 32 records the placement argument).
+`singapore-malacca-night.jpg`, Singapore and southern Johor at night from
+the International Space Station, two countries and the strait between
+them in one frame. It is the brief's "global city at night" answered
+without being literal, since from orbit a city is a lattice rather than a
+skyline, and it takes the empty right half of the "Where we are" section
+head, above the west-to-east register (32.5 records the placement
+argument).
 
-**A real photograph takes none of the three honesty chromes**, for the
-same reason the newsletter covers take none: a `.window` would claim it
-is the product and an `Illustrative view` label would call a real
-photograph drawn. What it carries instead is the `--line-2` hairline this
-system gives every photograph on a light ground, and its source. So
-`.ag-fig` is an image and one metadata line, nothing else: no frame, no
-corner ticks, no caption sentence, no overlay and no type on the picture.
+**Crop.** Cropped to 3100x2325 of the 3601x3001 original (black margin
+off three sides, geometry untouched), grayscale, contrast lifted
+(`-level 0%,40% -gamma 1.12`), resized to 1600x1200 at quality 78, 316KB.
+No rect is cut by CSS at any width: this plate prints the whole file
+everywhere, which is why its `img` carries the edge. At 1440 it measures
+490px. Under 981px it stacks below the heading it belongs to and stops at
+560px, because it is only worth printing while the lattice, the strait
+and the anchorage can each be told apart; at 390 it prints 342px wide,
+which is the narrowest width at which that still holds.
 
-**The credit is the only text the figure adds and it is set to fit.**
-`ISS Crew Earth Observations Facility, NASA Johnson Space Center`, in the
-metadata register under the plate. At the site's usual .15em tracking
-those 61 characters measure 480px and wrapped under a 490px plate,
-leaving `CENTER` alone on a second line, so `.ag-cred` tracks at .1em and
-nothing else does. No date is printed: the acquisition date, the full
-NASA credit line and the source URL are in `assets/texture/CREDITS.md`,
-which is where dates live.
+### The fix pass (2026-09-20, after review)
 
-**The file is graded, not composited.** Cropped to 3100x2325 of the
-3601x3001 original (black margin off three sides, geometry untouched),
-converted to grayscale, contrast lifted (`-level 0%,40% -gamma 1.12`) so
-silver-on-black sits in the grey system, resized to 1600x1200 at quality
-78, 316KB, and the same credit is written into the file's comment field.
-Nothing was added to or taken out of the picture. The dark plate sits on
-the light page the way the product plates do, which is the treatment this
-system already has for a dark rectangle.
+A correction round over the four merged area builds. Nothing here is new
+design; each item is a defect the review or the critique measured, and
+each one is recorded where the rule it corrects lives.
 
-**Under 981px the plate stacks** below the heading it belongs to and
-stops at 560px: it is only worth printing while the lattice, the strait
-and the anchorage can each be told apart, and at 390 it prints 342px
-wide, which is the narrowest width at which that still holds.
+| Fix | Where | What was wrong |
+|---|---|---|
+| Subject lines | `.tex-cap` on all three plates | three documentary plates carried a source and no statement of what they show |
+| One credit chrome | 33.0 replaces `.hs-tex-cred`, `.pf-cred`, `.ag-cred` | three pages argued three different credit forms for one register |
+| Credit register moved | `CREDITS.md` at the repo root | it sat in `assets/texture/`, inside the published tree |
+| Solutions quiet ink | 30.6 | the quiet stages' sentence was overridden to `--ink-mute`, the ink the LIVE stage already carries, so the state said nothing. Measured at 1440 hovering stage 02: every `.v` read rgb(84,92,103); it now reads rgb(98,107,119) quiet against rgb(84,92,103) live |
+| Platform phone rects | 31.2b | the monitoring crop at 390 showed a star field and a column of empty checkboxes and no globe; the report crop cut every line of the executive summary mid-word |
+| Two half-empty folds | 32.1 (About), 29.7 (Use cases) | a full-width rule with an empty half under it, and a hero occupying one column of two |
+| Header button on a phone | 29.6 | 161px of amber in a 390px bar, directly above the hero's identical amber button |
 
+Three notes worth carrying forward:
+
+- **A rule that re-declares the value underneath it is not a refinement,
+  it is a rule that hides the one beneath.** Solutions 30.6 restated the
+  live-stage ink verbatim and moved the quiet ink onto it; the figure kept
+  working and stopped meaning anything. Re-declaring a pair for source
+  order is legitimate, but then only ONE of the two values may move, and
+  the comment has to say which.
+- **A stated crop is a claim and gets checked like one.** Two of the
+  round's rects described something the reader could not see, and one
+  stated numbers its own declaration missed by six rows. State the rect in
+  source pixels, then read the computed geometry back off the page.
+- **Three marks of one sequence role count as ONE accent.** The gloss
+  lives under "Amber is the sequence" in the first engagement's
+  subsection, and the accent law near the top of this file now points at
+  it, because a reader who meets the ceiling first should not have to
+  find the exception five hundred lines later.
