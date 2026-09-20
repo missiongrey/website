@@ -2389,3 +2389,35 @@ this round. `.sx-k` is the only new class in the page's markup, and the
 three `<p class="so-k">` elements that became buttons are the only markup
 change on Solutions.
 
+
+## Round eleven (2026-09-20): refinement, density, scale and real-world texture, sections 29 to 33
+
+The fourth visual-development pass, built on round ten from the chairman's
+"Visual system v0.4" brief. Not a redesign: about 90 percent of the visual
+language stays. What changes: excessive empty space, oversized headings,
+visual rhythm, a few conventional container layouts, the use of real-world
+external-intelligence material, and page-to-page differentiation. No
+wording, navigation, logo or palette change; the black and white resolving
+into grey device stays, used in full on About and in fragments only
+sparingly elsewhere. Each subsection is written by the area's builder and
+records the binding decisions.
+
+### Scale and rhythm (section 29): the system builder
+
+(written by the system builder)
+
+### Home and Solutions (section 30)
+
+(written by the home and solutions builder)
+
+### Platform (section 31)
+
+(written by the platform builder)
+
+### About and Guild (section 32)
+
+(written by the people builder)
+
+### Real-world texture (section 33)
+
+(one paragraph per page builder, plus the asset register in assets/texture/CREDITS.md)
