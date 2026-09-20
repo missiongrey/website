@@ -421,13 +421,17 @@ because Pages serves it at every address.
 
 Social images: an article's `og:image` and `twitter:image` are that
 article's own cover, so a shared link previews the piece rather than the
-brand. Every other page uses `/assets/og-image.jpg`. Write both as
+brand. Every other page uses `/assets/share-card.jpg`. Write both as
 root-relative paths; the build makes them absolute.
 
 Structured data: the home page carries `Organization` + `WebSite`, each
 article carries `Article`, as `application/ld+json` in the head. Every value
 in them is a fact already printed on the page (h1, byline, `<time>`, cover
-image). Do not put anything in JSON-LD that a reader cannot see.
+image; the Organization `sameAs` list is exactly the footer's channel links,
+its `description` is the Home lede). Do not put anything in JSON-LD that a
+reader cannot see. The schema logo is `assets/mission-grey-logo.png`, the
+ink version of the wordmark (the white file is for the header, where CSS
+turns it to ink); Google shows the logo on white.
 
 ### Consent notice (styles.css section 14)
 
