@@ -3241,3 +3241,224 @@ Three notes worth carrying forward:
   subsection, and the accent law near the top of this file now points at
   it, because a reader who meets the ceiling first should not have to
   find the exception five hundred lines later.
+
+## Round twelve (2026-09-20): the commercial extension, sections 34 to 35
+
+### Solutions (section 34, `cl-` and `om-`)
+
+One commercial addition, not a pass over the page. Solutions keeps every
+section, every figure, every word and every interaction it had; what is
+new is one section between the adoption path and "Daily use", carrying
+the process that runs after a recommendation and the operating model and
+workshop around it. Nothing in sections 01 to 33 was edited, the ladder
+and the rhythm tokens are read from 29 and 30 rather than redeclared,
+and the page's `data-density="clean"` register is untouched. Two strings
+inside the existing page changed, both named below.
+
+#### One section, not two
+
+The new material is four arguments (the closed loop, organizational
+memory, the operating model, the two ways in) and it is ONE `<section>`,
+opening on one chapter rule and one `h2`, with the operating model
+opening on the section's own second hairline under an `h3`. Two sections
+would have read as two chapters and, more practically, would have put a
+second tinted band against "Daily use": the page alternates plain and
+`sec-alt` bands, `#functions` is the alt band that follows, and two alt
+bands in a row are one long band with a 2px seam in it. The section
+takes `.8` of the page's section padding at the top, because it opens on
+a chapter rule under the closing line of the section before it rather
+than on a fold.
+
+#### The loop is horizontal, and the reason is the page it sits on
+
+Seven stations hang from ONE horizontal rule, read left to right, with
+the return arm running back underneath. The alternative the brief
+offered, a `.rail` spine with the return bracketed back up it, was
+rejected on two counts. The page already spends a rail on the worked
+impact chain in `#practice`, and a second rail two sections above it
+makes the two diagrams one texture rather than two arguments. And a
+seven-row spine is 500px of column before the return even starts, which
+turns a process a reader should take in at a glance into something they
+scroll. The horizontal rule also states the thing the spec cares about
+most, that the chain CONTINUES past the decision, in the direction a
+reader already reads.
+
+**No arrow glyph, and no connector between stations, binding.** The rule
+is continuous because each station's own `border-top` spans its whole
+column and the separation is padding, never gap, which is the lesson the
+cadence ledger records in section 19 and the first engagement repeats in
+30.5. Direction is carried by the index, as on every other figure here.
+
+**The return arm has two different ends, binding.** A bracket whose two
+ends are identical is a box drawn under a diagram. The leaving end at
+station 07 is a short riser; the rising end at station 01 is taller and
+carries a 14px cap turning right into the chain, which is the leader
+device section 23 already uses on the example application. That
+asymmetry is the whole direction cue: an arrowhead here would be the
+flowchart clip art the visual direction rules out by name. The arm spans
+the row and stops at `14.286%` from the right, which is the left edge of
+the seventh of seven equal columns, so both ends land on the station
+marks they belong to rather than near them.
+
+**One accent, and its role in this component is STATE.** At rest the
+figure carries exactly one, the entry station, the way the adoption path
+carries one at its own station 01. Under a pointer the accent moves to
+the station being read and station 01 stands down unless it is the one
+being read. Measured at 1440 with hover forced on
+(`--blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4`,
+without which headless Chromium reports `(hover:hover)` false and the
+whole block is inert): at rest station 01's mark is `rgb(138,87,16)` at
+2 by 12 and station 07's is `rgba(15,23,32,.34)` at 1 by 8; with station
+07 hovered those swap and the return arm's borders go to `rgb(23,26,32)`;
+with station 01 hovered it keeps the accent and nothing else takes it.
+Exactly one station is lit at any time.
+
+**The ownership node at station 05, binding.** Station 05 is the only
+station drawn with a node rather than a tick: 6px of solid `--ink-mute`
+centred on the rule where the other six carry a 1px hairline. Naming who
+responds is the step a process usually leaves implicit, so it is the one
+station that is visible before it is read. It is INK and never a second
+accent, and it is filled rather than an open square with the page ground
+inside it, so the mark does not depend on the band it is printed on. The
+`.evi` row states it in words, `Owner · Named at station 05`, which is a
+thing this figure actually draws: round nine's rule against annotations
+that promise an absent feature is what that line is written against.
+
+**No station is a control, and that is a decision rather than an
+omission.** The spec allows an interaction and this figure takes the
+smallest honest one: a hover state, declared inside `(hover:hover)` for
+the reason section 28 records, that adds emphasis and hides nothing.
+Every station, every question and the return arm are legible at rest, so
+a reader on a keyboard and a reader who never hovers lose nothing. The
+adoption path's station labels are `<button>`s because they SELECT one of
+three stages in a figure that reads differently per stage; seven buttons
+whose only effect is to light themselves would be seven tab stops with
+nothing behind them, which is the noise round ten ruled against when it
+refused a disclosure control on a plate. Hovering REVIEW lights the
+return arm, which is the one relationship in the chain a reader cannot
+infer from the order.
+
+**The hover pair is written one class ahead, not one line later.** The
+stand-down rule (`.cl-row:has(.cl-st:hover) .cl-s1 .cl-k::before`) and
+the live rule are the same specificity as written, so the live ones are
+prefixed `.frame.cl-loop` to put them one class ahead. This is section
+28's trap, recorded there and checked here: at equal specificity source
+order decides, and a pair that relies on source order breaks the first
+time somebody re-declares half of it.
+
+#### Organizational memory is small on purpose
+
+One claim in the statement register (`.net-lede`, the system's own class)
+and three sentences beside it, on the hairline that closes the figure, in
+the `.so-app` proportion because it is the same kind of object: one claim
+and the analytical column that supports it. It is deliberately the
+shortest block in the section. The chain above is the argument; this says
+what keeping it is worth, and the failure mode the spec names (compliance
+software, ticketing, an audit trail) is reached by saying it at four
+times the length and calling the record a system of record. The last
+sentence, "What it produces is organizational learning rather than an
+archive", is the boundary stated once in the page's own voice.
+
+#### The operating model is a register read across, not six cards
+
+Six elements, each a label and the question it answers, as a two-column
+ruled register: three rows, the cells sharing one continuous rule per row
+because the separation is padding and never gap, each carrying the
+station tick the two registers lower down this page already carry. Six
+hairline cells in a grid would be a card run, which the spec rules out by
+name. Reading order is row major and matches the DOM. Under 901px it is
+one column; under 561px the label sits above its question, the same
+collapse the `.roles` register on this page already makes.
+
+**The workshop takes the annotation form, not a panel.** Label left, the
+offer and its outputs right, on one hairline: the shape `.fe-timing`
+already uses above it, because this is information about an engagement
+rather than a second product. The seven outputs take the page's checker
+list in two columns at 601px and up, with four rows and column flow, so
+they read DOWN the first column and then down the second; a two-column
+grid in row order prints them 1 4 2 5 3 6 7 down the page, which is a
+list a reader has to reassemble.
+
+**The two ways in are two doors on ONE rule, binding.** Not two entry
+paths: the same implementation, entered from the side the organization
+is standing on, with the convergence stated in one line under them in the
+closing-line register this page already uses three times. Door A links to
+`#start`, which is the step it names. **Door B carries no link**, because
+the workshop it names is the block directly above it and a link that
+scrolls a reader 250px back up the page is a control that undoes their
+last scroll. If the workshop ever becomes a request of its own, that is
+the door's link and it is a chairman's call, not a builder's. Neither
+door carries an accent: an alternative is not a sequence and not a state,
+which are the only two things amber means here.
+
+#### The two strings that changed inside the existing page
+
+**Stage 03 of the adoption path gains one checker line**, "Decision
+ownership, actions and review, kept as organizational memory". The
+lattice, the runs, the station rule, the accent and the whole round-ten
+interaction are untouched; the stage's list goes from three lines to
+four, and the frame grows 55px at 1440 (624 to 679) and about the same at
+390. That is the spec's "light reference" and nothing else in the figure
+was reopened.
+
+**The page description now names the loop**, in all three places that
+carry it (`description`, `og:description`, `twitter:description`): the
+clause "make it part of the organization" becomes "make it part of how
+the organization decides, acts and reviews". Same sentence, same length
+class, and the summary now says what the page's last third is about.
+
+#### Measured, at 1440 and at 390
+
+| | Before | After |
+|---|---|---|
+| page height at 1440 | 7254 | **9477** (+30.6%) |
+| page height at 390 | 9945 | **13372** (+34.5%) |
+| the new section at 1440 | n/a | 2168 |
+| the new section at 390 | n/a | 3371 |
+| the loop figure at 1440 | n/a | 379 |
+| the loop figure at 390 | n/a | 935 |
+| adoption figure at 1440 | 624 | 679 |
+| `scrollWidth` at 390 | 390 | **390** |
+
+The page is a third longer and every pixel of it is new argument: the
+section is 2168 of the 2223 added at 1440, and the adoption figure's
+extra bullet is the other 55. No page scrolls horizontally at 390, the
+figure stacks into seven stations with the return drawn as a bracket up
+the outside of the run, and nothing in the section is hidden at any
+width. Solutions is still the shortest of the three main pages at 1440,
+against Home at 11342 and Platform at 12849 measured in the same pass.
+
+#### A finding, and it is not this section's to fix
+
+**The statement voice is documented as serif and is set in sans.**
+"The type ladder is three faces, binding" above says `.net-lede`,
+`.principle`, `.quote-main blockquote` and `.statement` take Source Serif
+4, and the comment on the rule that sets them says so too, but the rule
+itself sets `font-family:var(--sans)` and that is what every page renders:
+the memory claim added here prints in Inter 600 like the three statement
+blocks already on this page. The class was reused as the system defines
+it, so this section inherits whichever face the ruling ends on. The two
+available fixes both move something that is marked binding, so it is a
+chairman's call, not a builder's.
+
+#### Not done, deliberately
+
+- **No JavaScript, and no new `.reveal` mechanism.** The section uses the
+  existing observer through the `.reveal` class and nothing else; the
+  page's script block is byte for byte unchanged. With JS off the whole
+  section prints, and under `prefers-reduced-motion` the hover state
+  arrives instantly rather than not at all, which is section 28's own
+  rule for the figure above it.
+- **The hero dek, the `.ladder-foot` under `#start` and the Access panel
+  are untouched.** Each was checked against the second door and none of
+  them needed a clause to carry it: the doors name themselves where they
+  stand, and the Access panel's "Tell us the decision in front of you"
+  still answers both of them.
+- **No pricing, no separate service page, no second figure for the
+  operating model.** The six elements are a register because a second
+  drawn diagram in one section would have made the loop one of two
+  figures rather than the one the section is about.
+- **The adoption path was not reopened** beyond its one new line, and the
+  first engagement, the worked chain, the two ruled indexes, the example
+  application and the quotes are exactly as rounds ten and eleven left
+  them.

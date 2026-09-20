@@ -4412,3 +4412,283 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 }
 
 /* ---- end 33 ---- */
+
+/* ============ 34 ROUND TWELVE SOLUTIONS (2026-09-20): the closed loop, the operating model, the two ways in ============ */
+/* Owner of this section: the solutions builder. One commercial addition,
+   not a redesign: the page keeps every section, every figure and every
+   interaction it had, and this section only draws what arrives after the
+   recommendation. Nothing above is edited. Classes are `cl-` for the
+   closed loop and `om-` for the operating model, the workshop and the
+   two ways in; the ladder, the rhythm tokens and the page's density
+   register are read from sections 29 and 30, never redeclared. */
+
+/* ---- 34.1 THE CLOSED LOOP, SEVEN STATIONS ON ONE RULE -----------------
+   The chain is EXTERNAL CHANGE, ASSESSMENT, SCENARIOS, DECISION, OWNER,
+   ACTION, REVIEW, and then it comes back. It is drawn as one horizontal
+   station rule with seven stations hanging from it and a return arm
+   running back under the run, because a loop is the one shape this
+   figure has to carry and a vertical spine cannot close without
+   doubling back through its own rows. The page already spends a rail on
+   the impact chain in #practice; a second one two sections above it
+   would have made the two diagrams one texture.
+
+   NO ARROW GLYPH, and no connector between stations. The rule is
+   continuous because each station's own border-top spans its whole
+   column and the separation is padding, never gap, which is the lesson
+   the cadence ledger records in section 19 and the first engagement
+   repeats in 30.5. Direction is carried by the index, the way it is on
+   every other figure on this site.
+
+   ONE ACCENT, AND IT IS STATE. At rest the figure carries exactly one,
+   the entry station, exactly as the adoption path carries one at its
+   own station 01. Under a pointer the accent moves to the station being
+   read and station 01 stands down, which is the round-ten law: amber
+   means active here as everywhere else, so a second permanent accent
+   would break it and a temporary one is it working.
+
+   THE OWNERSHIP NODE. Station 05 is the only station drawn with a node
+   rather than a tick: 6px of solid ink on the rule where the other six
+   carry a 1px hairline. Responsibility is the step a process usually
+   leaves implicit, so it is the one station that is visible before it
+   is read. It is ink and never a second accent. */
+/* the section opens on the page's own clean register, less the run of
+   ground a chapter rule does not need under the closing line of the
+   section before it */
+.cl-sec{padding-top:calc(var(--sec-pad) * .8)}
+.cl-body{padding:clamp(20px,2.4vw,28px) clamp(16px,2vw,26px) clamp(22px,2.6vw,30px)}
+.cl-row{display:grid;gap:0}
+/* a station: its own rule, its own tick, its index over its name */
+.cl-k{
+  position:relative;border-top:1px solid var(--line-2);
+  padding:13px clamp(12px,1.6vw,22px) 0 0;
+  font:500 10.5px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim);
+}
+.cl-k::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.cl-k b{display:block;font-weight:500;color:var(--ink)}
+.cl-q{margin:9px clamp(12px,1.6vw,22px) 0 0;font-size:14px;line-height:1.55;color:var(--ink-mute)}
+/* the entry station wears the figure's one resting accent */
+.cl-s1 .cl-k::before{width:2px;height:12px;background:var(--accent)}
+/* the ownership node, centered on the rule and independent of the ground
+   under it: a filled mark reads as a station that is occupied, which is
+   what naming an owner means */
+.cl-s5 .cl-k::before{box-sizing:border-box;left:0;top:-3.5px;width:6px;height:6px;background:var(--ink-mute)}
+/* the return arm: it leaves under station 07, runs back under the whole
+   chain and rises at station 01. Three borders and no fourth, because
+   the open side IS the figure it returns into, and one cap at the head
+   of the rising end. The cap is the leader device section 23 uses on the
+   example application, a stem and a short arm, and it is what carries
+   the direction here: an arrowhead would be the flowchart clip art this
+   figure exists to avoid, and a bracket with two identical ends is a box
+   rather than a return. */
+.cl-ret{
+  position:relative;display:block;height:clamp(14px,1.5vw,18px);
+  margin-top:clamp(20px,2.4vw,30px);
+  border-right:1px solid var(--line-2);border-bottom:1px solid var(--line-2);
+}
+/* the rising end is taller than the leaving end and carries the cap, so
+   the shape is a return rather than an open box */
+.cl-ret::after{content:"";position:absolute;left:0;bottom:0;width:1px;height:calc(100% + 15px);background:var(--line-2)}
+.cl-ret::before{content:"";position:absolute;left:0;bottom:calc(100% + 14px);width:14px;height:1px;background:var(--line-3)}
+.cl-ret-k{
+  margin-top:11px;
+  font:400 10.5px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);
+}
+.cl-ret-k b{font-weight:500;color:var(--ink-dim);margin-right:14px}
+/* the closing bar states the loop in prose and only its label is mono,
+   for the reason section 23 gives on the adoption frame: a full sentence
+   in letter-spaced uppercase is a label pretending to be a sentence */
+.cl-loop .level-out{
+  font:400 14.5px/1.6 var(--sans);letter-spacing:0;text-transform:none;color:var(--ink-mute);
+}
+.cl-loop .level-out b{
+  font:500 10.5px/1.6 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink);
+}
+@media (min-width:901px){
+  .cl-row{grid-template-columns:repeat(7,minmax(0,1fr))}
+  /* the name is given two lines of room so the seven questions sit on
+     one baseline: only EXTERNAL CHANGE takes both at 1440, and at 901
+     nothing in the set takes three */
+  .cl-k b{min-height:3em}
+  /* the arm spans the row and stops at station 07's own mark, which is
+     the left edge of the seventh of seven equal columns */
+  .cl-ret{grid-column:1/-1;margin-right:14.286%}
+}
+
+/* ---- 34.2 THE LOOP UNDER A POINTER ------------------------------------
+   Optional, and it adds emphasis only: nothing is hidden at rest, so a
+   reader who never hovers and a reader on a keyboard see the complete
+   chain with every station, every question and the return arm legible.
+   That is why no station here is a control. The adoption path's station
+   labels are buttons because they SELECT one of three stages in a
+   figure that reads differently per stage; seven buttons whose only
+   effect is to light themselves would be seven tab stops with nothing
+   behind them, which is the noise round ten ruled against.
+
+   What the state does: the station being read takes the accent on its
+   tick and its index, its own rule segment (the run from this station to
+   the next) goes to full ink, and station 01's resting accent stands
+   down unless it is the one being read. Nothing dims, nothing moves,
+   nothing resizes. Hovering REVIEW lights the return arm, which is the
+   one relationship in the figure a reader cannot infer from the order.
+
+   Declared inside (hover:hover) for the reason section 28 records: a
+   phone leaves an emulated hover on the last element tapped, and a state
+   that cannot be released is worse than no state. Specificity carries
+   the order rather than source position: every loud selector is one
+   class ahead of the quiet one it has to beat. */
+.cl-k,.cl-k::before,.cl-ret{
+  transition:color .18s ease,background-color .18s ease,border-color .18s ease,
+             width .18s ease,height .18s ease;
+}
+@media (hover:hover){
+  .cl-row:has(.cl-st:hover) .cl-s1 .cl-k::before{width:1px;height:8px;background:var(--line-3)}
+  .frame.cl-loop .cl-row .cl-st:hover .cl-k{color:var(--accent);border-top-color:var(--ink)}
+  .frame.cl-loop .cl-row .cl-st:hover .cl-k::before{width:2px;height:12px;background:var(--accent)}
+  .frame.cl-loop .cl-row .cl-s5:hover .cl-k::before{top:-3.5px;width:6px;height:6px;background:var(--accent)}
+  .cl-row:has(.cl-s7:hover) .cl-ret{border-color:var(--ink)}
+  .cl-row:has(.cl-s7:hover) .cl-ret::before,
+  .cl-row:has(.cl-s7:hover) .cl-ret::after{background:var(--ink)}
+}
+
+/* ---- 34.3 ORGANIZATIONAL MEMORY ---------------------------------------
+   The claim in the statement voice, the reading beside it, on the
+   hairline that closes the figure: the .so-app proportion, because this
+   is the same kind of object, one claim and the analytical column that
+   supports it. It is small on purpose. The chain above is the argument;
+   this says what keeping it is worth, and a compliance-software block
+   would say it at four times the length. */
+.cl-mem{
+  position:relative;display:grid;gap:clamp(16px,2vw,26px);align-items:start;
+  margin-top:clamp(34px,4.2vw,54px);padding-top:clamp(22px,2.6vw,32px);
+  border-top:1px solid var(--line-2);
+}
+.cl-mem::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.cl-mem-body p{font-size:15px;line-height:1.62;color:var(--ink-mute);max-width:54ch}
+.cl-mem-body p + p{margin-top:14px}
+@media (min-width:901px){
+  .cl-mem{grid-template-columns:minmax(0,42fr) minmax(0,58fr);column-gap:clamp(32px,4vw,64px)}
+  .cl-mem .net-lede{max-width:20ch}
+}
+
+/* ---- 34.4 THE OPERATING MODEL, A TWO-COLUMN RULED REGISTER ------------
+   Six elements, each one a label and the question it answers. Six
+   hairline cells in a grid would be a card run, so this is a register
+   read across: the cells share one continuous rule per row, which they
+   can only do while the separation is padding and never gap, and each
+   one carries the station tick the two registers further down this page
+   already carry. Six generic rounded cards is the one form the brief
+   for this addition rules out by name, and the register is what the
+   page uses instead everywhere else. */
+.om-block{
+  position:relative;
+  margin-top:clamp(42px,5.2vw,68px);padding-top:clamp(24px,2.9vw,36px);
+  border-top:1px solid var(--line-2);
+}
+.om-block::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.om-head .eyebrow{margin-bottom:15px}
+.om-head h3{font-size:var(--fs-h3);line-height:1.15;max-width:22ch}
+.om-dek{margin-top:14px;font-size:var(--fs-dek);color:var(--ink-body);max-width:56ch}
+.om-reg{display:grid;margin-top:clamp(24px,2.8vw,34px);border-top:1px solid var(--line)}
+.om-cell{
+  position:relative;display:grid;gap:6px clamp(16px,2vw,28px);align-items:baseline;
+  padding:clamp(15px,1.8vw,20px) 0 clamp(15px,1.8vw,20px) 14px;
+  border-bottom:1px solid var(--line);
+}
+.om-cell::before{content:"";position:absolute;left:0;top:0;width:1px;height:7px;background:var(--line-3)}
+.om-k{font:500 11px/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.om-q{font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
+@media (min-width:561px){
+  .om-cell{grid-template-columns:clamp(150px,15vw,190px) minmax(0,1fr)}
+}
+@media (min-width:901px){
+  .om-reg{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .om-cell{padding-right:clamp(26px,3.2vw,54px)}
+}
+
+/* ---- 34.5 THE WORKSHOP AND THE TWO WAYS IN ----------------------------
+   The workshop takes the annotation form the first engagement uses for
+   its timing, label left and the offer right on one hairline, because it
+   is information about an engagement rather than a second product with a
+   panel of its own. Its outputs take the page's checker list in two
+   columns: seven items in one column would be the tallest thing in the
+   section and they are a set, not a sequence.
+
+   The two ways in are two doors on ONE rule, not two paths. A reader
+   who already has a decision reads the left one and goes back up to the
+   adoption path; a reader who does not reads the right one and the
+   workshop is directly above it. The convergence is stated in one line
+   under them, in the closing-line register this page already uses three
+   times. Neither door carries an accent: an alternative is not a
+   sequence and not a state, which are the only two things amber means. */
+.om-ws{
+  position:relative;display:grid;gap:14px;
+  margin-top:clamp(34px,4.2vw,54px);padding-top:clamp(22px,2.6vw,32px);
+  border-top:1px solid var(--line-2);
+}
+.om-ws::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.om-ws-k{font:500 11px/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.om-ws-lede{font-size:15.5px;line-height:1.62;color:var(--ink-body);max-width:60ch}
+.om-outs-k{
+  margin-top:clamp(17px,2vw,23px);
+  font:400 10.5px/1.5 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);
+}
+.om-outs{margin-top:13px}
+.om-doors{display:grid;margin-top:clamp(34px,4.2vw,54px);border-top:1px solid var(--line-2)}
+.om-door{position:relative;padding:clamp(16px,2vw,22px) 0 0 14px}
+.om-door::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3)}
+.om-door .om-k b{display:inline-block;margin-right:14px;font-weight:500;color:var(--ink-dim)}
+.om-door .om-q{margin-top:9px;max-width:48ch}
+@media (min-width:601px){
+  /* four rows and column flow, so the seven outputs read DOWN the first
+     column and then down the second. A two-column grid in row order
+     would print them 1 4 2 5 3 6 7 down the page, which is a list a
+     reader has to reassemble. */
+  .om-outs{
+    grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,auto);
+    grid-auto-flow:column;column-gap:clamp(20px,2.6vw,42px);
+  }
+}
+@media (min-width:901px){
+  .om-ws{grid-template-columns:clamp(180px,19vw,250px) minmax(0,1fr);column-gap:clamp(28px,3.4vw,52px)}
+  .om-doors{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .om-door{padding-right:clamp(26px,3.2vw,54px)}
+}
+
+/* ---- 34.6 THE PHONE ---------------------------------------------------
+   The chain stacks and the return arm becomes a bracket up the left of
+   the stack, which is the same statement drawn for a column: it leaves
+   the last station, runs up the outside of the run and returns to the
+   first. The stations keep their rules, their ticks, their indexes and
+   their questions at full size; nothing is shortened, because a process
+   a reader cannot finish on a phone is not a process they will ask
+   about. The two doors take a rule each, since a rule that spans a row
+   means nothing when the row holds one door. */
+@media (max-width:900px){
+  .cl-row{position:relative;padding-left:20px}
+  .cl-st{padding-bottom:clamp(14px,3vw,18px)}
+  .cl-k{padding-right:0}
+  .cl-q{margin-right:0}
+  .cl-ret{
+    position:absolute;left:0;top:0;bottom:0;width:11px;height:auto;margin:0;
+    border-top:1px solid var(--line-2);border-left:1px solid var(--line-2);border-right:0;
+  }
+  /* stacked, the arm is a bracket up the outside of the run: the riser
+     is the bracket's own left edge, and the cap sits at the top of it
+     where the chain begins again */
+  .cl-ret::after{display:none}
+  .cl-ret::before{left:0;top:-1px;bottom:auto;width:11px}
+  .cl-ret-k{padding-left:20px}
+  .om-door + .om-door{
+    margin-top:clamp(18px,3vw,24px);padding-top:clamp(16px,2vw,22px);
+    border-top:1px solid var(--line);
+  }
+}
+
+/* ---- 34.7 REDUCED MOTION ---------------------------------------------
+   The figure is simply there. The pointer state stays, because a colour
+   that arrives instantly is not motion and a reader who asks for less
+   motion still gets the emphasis. */
+@media (prefers-reduced-motion:reduce){
+  .cl-k,.cl-k::before,.cl-ret{transition:none}
+}
+/* ---- end 34 ---- */
