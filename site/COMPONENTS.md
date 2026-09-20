@@ -3241,3 +3241,157 @@ Three notes worth carrying forward:
   subsection, and the accent law near the top of this file now points at
   it, because a reader who meets the ceiling first should not have to
   find the exception five hundred lines later.
+
+### Platform and Home (section 35, pl5- and hv5-)
+
+The round's two supporting pages. Solutions carries the commercial story
+in full (section 34); Platform gets one small element beside the
+capability walk, Home gets one line of copy, and that is the whole of the
+addition here. No new section, no new diagram, no new page and no new
+device on either. Nothing in sections 01 to 34 was edited, no token was
+redeclared, and the round-ten rail in section 27 was not touched.
+
+**What is new, word for word.** Platform gains four labels and one
+sentence: `Decide &middot; Act`, `Owner`, `Action`, `Review`, and
+"Mission Grey can retain the connection between signal, analysis,
+decision, owner, action and follow-up." Home gains one sentence inside a
+paragraph it already had: "That layer can keep the chain from external
+change to decision, owner, action and review." Nothing else on either
+page changed: no word was removed, reworded or reordered, no image, crop,
+caption, `alt` or `aria-label` moved, and the four stage texts, plates,
+captions and INPUT/OUTPUT pairs of the walk are exactly as section 31
+left them.
+
+#### The note under the walk, and the shape it is not (35.1)
+
+Two shapes were open: extend the walk itself to MONITOR, ANALYZE,
+SCENARIO, DECIDE, ACT, REVIEW as one station line with a return loop, or
+keep the four stages and hang a compact note under them for what the
+decision hands over. **The note is the one built, for three reasons that
+are already law in this file.**
+
+1. **The page prints one set of stage words, and the rail is where they
+   live.** With JS the four moments' own station lines are lifted onto one
+   rule (sections 22 and 27) precisely so that nothing invents a second
+   set. A six-station line under that rail would print MONITOR, ANALYZE,
+   DECIDE and ACT twice inside one screen, once as a control and once as a
+   picture, which is the failure the one-diagram-one-direction rule
+   exists to stop.
+2. **The station-run device is already spent on this page.** `.trail`
+   (device A) is at most one per page, and Platform's instance is the
+   seven-station intelligence trail on `#engine`. A second seven-station
+   run two screens above it is decoration.
+3. **A return loop here would return to nothing.** REVIEW closes back onto
+   monitoring, and on this page monitoring is a tab in the rail above, not
+   a station on the same rule. A line drawn back to an element that is not
+   printed beside it is notation for its own sake, which is the same
+   ruling section 27 made when it declined to link the trail's stations to
+   the walk moments a screen above. The loop belongs to the Solutions
+   figure; here it is a sentence.
+
+**The note is a note, never a second walk, binding.** It names the two
+stages it follows from once, above the rule, as the place it hangs from,
+and carries three stations that the page has not printed before: Owner,
+Action, Review. It adds no stage word to the walk and takes none away.
+
+**The relationship is drawn as a line.** A 1px hairline (`--line-2`, 30px
+at 1440) drops from the label and lands on the first station's tick. No
+arrow glyph: the rail, the lens, the aperture and both chains on this
+page draw every connection the same way.
+
+**Amber is the last station of the run, and that is the component's one
+accent role.** Review takes the accent tick (2px by 12px) and reading
+ink; Owner and Action take `--line-3` ticks at 1px by 8px and label ink.
+That is `.trail`'s own resting grammar, not a new one. The rail above
+spends its accent on the SELECTED station and this note spends its accent
+on the terminal one: two components, one role each, which is what the
+accent ceiling asks for.
+
+**The rule ends where the note ends, at every width.** Above 901px the
+stations take the left of one hairline and the sentence takes the right
+of the same hairline, over a measure of at most 540px. Below 901px the
+sentence sits under the stations and takes its own measure. Either way
+the row is `width:fit-content` and the hairline stops on the last thing
+hanging from it, at 786px of the page's 1152 at 1440 and at 622 of 712 at
+760. A hairline that runs on past that promises something at its far end,
+which is the lesson 32.1 records on the About fold: the first cut of this
+note ran the rule the full content width and left 322px of it empty at
+1440, and the second left 90px empty through the 760 to 900 band.
+
+**Where it sits, and why the walk's script does not notice it.** In the
+markup the note is the next sibling after the fourth moment and before
+`.pl-deliv`. The script inserts `.px-walk` BEFORE the first moment and
+then moves the four moments into it, so the note ends up after the whole
+evidence area and inside neither it nor a panel. Verified with JS on:
+`.px-walk` does not contain `.pl5-hand`, the rail still builds four tabs
+with `aria-selected` and a roving `tabindex`, ArrowRight still moves the
+selection to view 02, and the note prints unchanged under whichever view
+is open. With JS off all four moments print in full, the rail does not
+exist, and the note prints under the fourth moment exactly as it does
+with JS on (102px at 1440, both ways). It carries no control, no state
+and no transition of its own, so `prefers-reduced-motion` has nothing to
+switch off in it.
+
+**The second placement that was considered.** Directly under the "From
+developments to action" chain, which is the page's other home for this
+idea. Rejected: that chain is a worked example that already ends in
+Value, and a handover hanging under it would read as a seventh row of the
+example rather than as a statement about the walk's own stages. One
+placement, and it is the one the stages are on.
+
+#### Home: one line, and no rule to go with it (35.2)
+
+The line joins the second paragraph of `.hs-read` in `#shared`, directly
+before "The architectural difference, in full", which is the seam where
+the page hands the reader to Platform. It is a clause of the argument
+around it rather than a third paragraph, because the paragraph it joins
+is already the page's statement of what the layer adds and a one-sentence
+paragraph under it would be a coda the section did not ask for.
+
+**It is declarative and it is hedged, on purpose.** The source line reads
+"Keep the chain from external change to decision, owner, action and
+review." The reading column around it is declarative third person
+throughout, and an imperative dropped into it changes voice mid-column;
+"That layer can keep" keeps the wording, names its subject and states a
+capability rather than an instruction. The modal is the claims law
+working as intended: soften, never upgrade.
+
+**`hv5-` is reserved and deliberately unused.** The line needs no class,
+no wrapper and no declaration, and a rule written to fill a subsection
+number is a rule with nothing to do. 35.2 in the stylesheet is a comment
+that says so.
+
+#### Measured, at 1440 and at 390
+
+| | 1440 before | 1440 after | 390 before | 390 after |
+|---|---|---|---|---|
+| Platform page | 12829 | **13017** (+1.5%) | 19245 | **19450** (+1.1%) |
+| Home page | 11347 | **11374** (+0.2%) | 14048 | **14101** (+0.4%) |
+| Home `#shared` | 631 | **657** | 838 | **891** |
+| the note itself | n/a | **102** | n/a | **149** |
+
+Platform pays 188px at 1440 for the note and its two runs of ground, and
+the note itself is 102px of that: the rest is the gap that separates it
+from the walk above and from the delivery exhibits below, both taken from
+the page's own dense register rather than from a fixed number. Home is
+27px longer at 1440 and 53px at 390, which is one line of the reading
+column at the wide width and two on the phone. `scrollWidth` equals the
+viewport on both pages at both widths, measured through a 390px iframe
+inside a wider window as the method note above requires.
+
+#### Not done, deliberately
+
+- **The six-station line and its return loop** (above). It is the
+  Solutions figure's job, and repeating the same process on every page is
+  the thing the round is told not to do.
+- **No state on the three stations.** Nothing in the note is selectable,
+  and motion on a block a reader is reading is motion without meaning.
+  The page's interactive figures are the rail and the trail, both of which
+  answer a question a reader can ask; this note answers one it has just
+  been asked.
+- **No second line on Home**, and no diagram there. The page already runs
+  the pipeline, the aperture, the recipe, the daily steps and the role
+  views; the addition is a clause, not a figure.
+- **The chain (`.chain-list`) is untouched**, including its six items and
+  its ending on Value. It is a worked example and it was already correct.
+- **No new chrome, no new colour, no new dependency, no new asset.**

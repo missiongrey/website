@@ -4412,3 +4412,107 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 }
 
 /* ---- end 33 ---- */
+
+
+
+/* ============ 35 ROUND TWELVE PLATFORM AND HOME (2026-09-20): the loop, lightly ============ */
+/* Owner of this section: the platform and home builder. The round's
+   commercial addition is that intelligence does not have to stop at the
+   recommendation: a decision has an owner, an action and a review, and
+   the review is what the next watch is set from. Solutions carries that
+   story in full (section 34). PLATFORM gets one small element beside the
+   capability walk and HOME gets one line of copy, which is the whole of
+   it here: no new section, no new diagram, no new page.
+   Built on what already exists. Nothing in sections 01 to 34 is edited,
+   no token is redeclared, and the walk's rail (section 27) is untouched:
+   the element below sits AFTER the rail's evidence area in the document
+   and shares no selector with it. */
+
+/* ---- 35.1 PLATFORM: what the decision hands over ---------------------
+   The walk prints four stages and the rail above them prints the same
+   four station lines, lifted there by the page's own script. A second
+   station line under it, MONITOR to REVIEW, would print the stage words
+   twice on one screen and give the page two sets of stage grammar, which
+   is the failure the one-diagram-one-direction rule exists to stop. So
+   the four stages stay exactly as they are and this is a NOTE hanging
+   under them: the last two stages named once as the place it starts
+   from, a drop line, and the three stations the decision hands over to.
+   The label sits ABOVE the rule and the drop line lands on the first
+   tick, so the relationship is drawn as a line and needs no arrow glyph,
+   which is how every other connection on this page is drawn.
+   Amber has one role here and it is the one .trail already sets: the
+   last station of a run, the one it ends on. Review is that station, and
+   nothing else in the note is accented. */
+.pl5-hand{
+  margin-top:clamp(22px,2.6vw,34px);
+  margin-bottom:clamp(34px,4vw,52px);
+}
+/* the two stages this follows from, named in the page's own words and at
+   label size: a label may not inherit a reading size (29.2) */
+.pl5-hand-k{
+  position:relative;margin:0;
+  padding-bottom:clamp(26px,3vw,36px);
+  font:500 var(--fs-label)/1 var(--mono);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-dim);
+}
+/* the drop: a 1px hairline from the label to the rule under it, ending
+   on the first station's tick */
+.pl5-hand-k::after{
+  content:"";position:absolute;left:0;top:calc(100% - clamp(22px,2.6vw,30px));
+  width:1px;height:clamp(22px,2.6vw,30px);background:var(--line-2);
+}
+/* One hairline carries the note: the stations hang from it on the left
+   and the sentence hangs from the same line on the right, which is the
+   pairing the walk's own captions and INPUT/OUTPUT rows already use. The
+   rule sits on the row rather than on each station because these three
+   labels never wrap at any width the site supports, and the row is sized
+   by what hangs from it: a hairline that runs on past the last thing
+   under it promises something at its far end, which is the lesson 32.1
+   records on the About fold. fit-content takes the sentence's own measure
+   below 901px and the two-column extent above it, so the rule ends on the
+   text at both. */
+.pl5-hand-row{border-top:1px solid var(--line);width:fit-content;max-width:100%}
+.pl5-hand-set{
+  display:flex;flex-wrap:wrap;gap:0;margin:0;padding:0;list-style:none;
+  font:500 var(--fs-label)/1 var(--mono);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-dim);
+}
+.pl5-hand-set li{
+  position:relative;padding:14px clamp(20px,3vw,44px) 0 0;
+}
+.pl5-hand-set li::before{
+  content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3);
+}
+.pl5-hand-set li:last-child{color:var(--ink);padding-right:0}
+.pl5-hand-set li:last-child::before{width:2px;height:12px;background:var(--accent)}
+/* the one sentence, in the annotation register: mute, small, its own
+   measure, never a second claim set in reading type */
+.pl5-hand-v{
+  margin:16px 0 0;max-width:68ch;
+  font-size:var(--fs-small);color:var(--ink-mute);
+}
+@media (min-width:901px){
+  /* Stations left, sentence right, both opening on the same rule: three
+     stations, one gap, one measure, and the rule ends there. */
+  .pl5-hand-row{
+    display:grid;grid-template-columns:minmax(0,auto) clamp(300px,40vw,540px);
+    column-gap:clamp(32px,4vw,60px);align-items:start;
+  }
+  /* the sentence opens on the same baseline as the station labels beside
+     it: 11px mono over 1 and 14.5px sans over 1.6 do not meet at the same
+     padding, so the smaller pad is the reading text's */
+  .pl5-hand-v{margin-top:0;padding-top:8px;max-width:none}
+}
+
+/* ---- 35.2 HOME: one line, and no rule to go with it ------------------
+   Home's organizational-intelligence section gains one sentence inside
+   the reading column it already has: "That layer can keep the chain from
+   external change to decision, owner, action and review." It is a clause
+   of the argument around it, so it takes the register of the paragraph it
+   joins and needs no class, no wrapper and no declaration. The hv5-
+   namespace is reserved and deliberately unused: a rule written here
+   would be a rule with nothing to do, and the page's own instruction for
+   this round is one short line and not one more device. The line's cost
+   is measured in COMPONENTS.md beside the Platform note. */
+
+/* ---- end 35 ---- */
