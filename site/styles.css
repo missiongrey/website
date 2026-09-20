@@ -3584,6 +3584,231 @@ body[data-density="structured"]{--sec-pad:clamp(70px,7.6vw,104px);--head-gap:cla
 /* ============ 30 ROUND ELEVEN HOME AND SOLUTIONS (2026-09-20): the first engagement as a flow, the path refined ============ */
 /* Owner of this section: the home and solutions builder. */
 
+/* Rules: the chairman's v0.4 brief, sections 3, 4, 6, 7, 8, 10, 15 and
+   19. Home is balanced, atmospheric and immediate; Solutions is clean and
+   commercially direct. Nothing here re-tunes section 29: the ladder and
+   the rhythm tokens are read, never redeclared. No word changed on either
+   page. Classes added by this section are prefixed hs-; where a rule has
+   to answer an earlier section it repeats that section's own selector
+   here rather than editing it in place, because 01 to 29 are frozen. */
+
+/* ---- 30.1 HOME, THE FOLD ---------------------------------------------
+   The brief asks for more of the page's argument inside the first screen
+   without changing what the globe is doing. Nothing about the instrument
+   moves: the scale, the scope, the crop, the caption and the ledger are
+   exactly as rounds eight and nine left them. What comes out is ground.
+   The fold carried 76px above the longitude scale, another 54 between the
+   scale and the grid, and 95 under the whole thing before the proof
+   strip, which is three runs of air stacked in one screen. At 1440 the
+   research partnerships and the G2 rating now sit inside 900px, so the
+   first screen carries the proposition, the instrument, the operating
+   cadence AND the outside evidence for all three. */
+.hero-v1{padding-top:clamp(34px,3.2vw,46px);padding-bottom:calc(var(--sec-pad) * .62)}
+.hero-v1 .wrap{padding-top:clamp(20px,2.2vw,30px)}
+.hero-v1 .cadence{margin-top:clamp(34px,3.6vw,46px)}
+
+/* ---- 30.2 HOME, "BEING READY" AS AN ASYMMETRIC PAIR -------------------
+   The section ran label, heading, lede, then three thin rows down the
+   middle of a very tall band: the exact template the brief's section 19
+   names (small label, big heading, blank area, ruled graphic). The claim
+   now hangs in a narrow left column and the three consequences carry the
+   density on the right, which is asymmetry that comes from the
+   information rather than from an offset. Every word and every row is
+   unchanged, and the band loses about 200px of its height because the
+   head and the rows stopped queueing. */
+@media (min-width:901px){
+  .hs-ready .wrap{
+    display:grid;grid-template-columns:minmax(0,36fr) minmax(0,64fr);
+    column-gap:clamp(36px,4.6vw,76px);align-items:start;
+  }
+  .hs-ready .sec-head{margin-bottom:0;max-width:32ch}
+  .hs-ready .sec-head p{max-width:34ch}
+  /* the label column can be narrower than the site default here: the three
+     row labels are two and three words, and the sentences are what the
+     reader is scanning */
+  .hs-ready .ruled-row{
+    grid-template-columns:clamp(150px,14vw,200px) minmax(0,1fr);
+    gap:8px clamp(20px,2.6vw,40px);
+  }
+}
+
+/* ---- 30.3 HOME, THE MISSION LINE -------------------------------------
+   One quote in a whole screen was the second repetition of the same
+   rhythm. The label becomes a left rail and the quote takes the wide
+   column beside it, so the band reads as one object rather than as a
+   section with a heading, and the run of ground around it comes down to
+   three quarters of the page's own rhythm. The quote itself, its accent
+   rule, its scale and its attribution are untouched. */
+.hs-mission{padding-block:calc(var(--sec-pad) * .74)}
+.hs-mission .quote-main{margin-top:26px}
+@media (min-width:901px){
+  .hs-mission .wrap{
+    display:grid;grid-template-columns:minmax(0,20fr) minmax(0,80fr);
+    column-gap:clamp(28px,3.4vw,56px);align-items:start;
+  }
+  .hs-mission .eyebrow{margin-top:7px}
+  .hs-mission .quote-main{margin-top:0;max-width:58ch}
+}
+
+/* ---- 30.4 HOME, THE ORGANIZATIONAL STATEMENT -------------------------
+   The page's one statement section printed a 40px heading and two
+   paragraphs in the left 55 percent with the right half empty for the
+   whole screen. Heading left, reading right: the claim is set apart and
+   the column beside it carries the analytical density, which is the
+   brief's own description of natural asymmetry. The .principle below
+   keeps its measure and its place. */
+.hs-read p + p{margin-top:16px}
+@media (min-width:901px){
+  .hs-statement{
+    max-width:none;display:grid;
+    grid-template-columns:minmax(0,48fr) minmax(0,52fr);
+    column-gap:clamp(36px,4.4vw,64px);align-items:start;
+  }
+  .hs-statement p.eyebrow{grid-column:1;grid-row:1}
+  .hs-statement h2{grid-column:1;grid-row:2}
+  .hs-statement .hs-read{grid-column:2;grid-row:1/span 2}
+  .hs-statement .hs-read p{max-width:62ch}
+}
+
+/* ---- 30.5 SOLUTIONS, THE FIRST ENGAGEMENT AS A FLOW ------------------
+   The page's most important commercial block, and the brief's section 7:
+   every word stays, the big bordered container goes. It is now three
+   stations hanging from one continuous rule, read left to right: an
+   amber sequence mark at the leading edge of each station, a fine
+   connecting rule between them carrying the shared 14x10 arrow, and the
+   station label in the instrument voice over its sentence. The rule is
+   continuous because the separation is padding and never gap, which is
+   the lesson the cadence ledger records in section 19.
+
+   AMBER IS THE SEQUENCE, and that is the component's one accent role.
+   The block used to spend its accent on a 2px panel edge, which is
+   decoration wearing a signal colour; the three marks spend it on
+   position in a sequence, which is what amber means on this site. Three
+   marks of one role is not three roles.
+
+   TIMING is a separate annotation under the flow, set as label left and
+   sentence right on its own hairline, so it reads as metadata about the
+   engagement rather than as a fourth group inside it. It stays last in
+   the markup, where a reader meets it after the three groups it dates. */
+.hs-fe{
+  border:0;background:none;padding:0;
+  margin-top:clamp(34px,4.2vw,56px);
+}
+.hs-fe .fe-idx{margin-bottom:15px;color:var(--ink-dim)}
+.hs-fe h3{max-width:30ch}
+.hs-flow{
+  display:grid;gap:0;border-top:0;padding-top:0;
+  margin-top:clamp(26px,3vw,36px);
+}
+.hs-fc{
+  position:relative;border-top:1px solid var(--line-2);
+  padding:17px clamp(18px,2.2vw,32px) 0 0;
+}
+/* the sequence mark: the same 2 by 12 amber tick the adoption path wears
+   at its own entry station, one per position */
+.hs-fc::before{content:"";position:absolute;left:0;top:-1px;width:2px;height:12px;background:var(--accent)}
+.hs-fc .k{color:var(--ink)}
+.hs-fc p:not(.k){max-width:38ch}
+.hs-link{
+  position:relative;border-top:1px solid var(--line-2);
+  display:flex;justify-content:center;padding:13px clamp(8px,1.4vw,20px) 0;
+  color:var(--ink-dim);
+}
+.hs-fe .fe-timing{
+  display:grid;grid-template-columns:clamp(140px,15vw,210px) minmax(0,62ch);
+  gap:6px clamp(24px,3.2vw,48px);align-items:baseline;
+  margin-top:clamp(28px,3.4vw,42px);padding-top:clamp(16px,2vw,22px);
+  border-top:1px solid var(--line);max-width:none;
+  font-size:15px;line-height:1.6;color:var(--ink-mute);
+}
+.hs-fe .fe-timing b{margin-bottom:0;color:var(--ink-dim)}
+@media (min-width:901px){
+  .hs-flow{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr)}
+}
+@media (max-width:900px){
+  /* stacked, and the connector turns with the flow: an arrow that still
+     points right between two blocks that sit one above the other is a
+     direction the page does not have */
+  .hs-fc{padding-right:0}
+  .hs-link{justify-content:flex-start;border-top:0;padding:14px 0 0}
+  .hs-link svg{transform:rotate(90deg)}
+  .hs-fe .fe-timing{grid-template-columns:minmax(0,1fr);gap:10px}
+}
+
+/* ---- 30.6 SOLUTIONS, THE ADOPTION PATH, REFINED ----------------------
+   The brief keeps this figure and asks for proportions, spacing, line
+   weights and the subtlety of the activation. So the lattice is
+   untouched: the twelve tracks, the three spans, the division counts of
+   6, 18 and 10 and the accent at station 01 are exactly as section 23
+   drew them, because a ruler that stops registering with what it
+   measures is the one thing this figure may not become. What changes is
+   the air inside the frame and how far the two quiet stages step back. */
+.so-path .so-grid{padding:clamp(20px,2.4vw,28px) clamp(16px,2vw,26px) clamp(22px,2.6vw,30px)}
+.so-path .so-k{margin-top:clamp(20px,2.3vw,27px);padding-top:14px}
+.so-path .so-step h3{margin-top:14px}
+.so-path .so-step .pts{margin-top:16px;padding-top:16px}
+/* The quiet register was a drop of two inks and most of the checker
+   marks, which reads as the figure dimming rather than as one stage
+   coming forward. The sentence now steps back one ink instead of two and
+   the checkers hold more of themselves. Both the quiet and the loud
+   rules are repeated here, in that order: section 28 wins the hover case
+   on source order at equal specificity, so re-declaring one of the pair
+   in isolation would silently invert it. */
+.so-grid:focus-within .so-step .v,
+.sx-act .so-grid .so-step .v{color:var(--ink-mute)}
+.so-grid:focus-within .so-step .checker,
+.sx-act .so-grid .so-step .checker{opacity:.55}
+.so-path .so-grid .so-step:focus-within .v,
+.so-path .so-grid .so-step.sx-on .v{color:var(--ink-mute)}
+.so-path .so-grid .so-step:focus-within .checker,
+.so-path .so-grid .so-step.sx-on .checker{opacity:1}
+@media (hover:hover){
+  .so-grid:has(.so-step:hover) .so-step .v{color:var(--ink-mute)}
+  .so-grid:has(.so-step:hover) .so-step .checker{opacity:.55}
+  .so-path .so-grid .so-step:hover .v{color:var(--ink-mute)}
+  .so-path .so-grid .so-step:hover .checker{opacity:1}
+}
+
+/* ---- 30.7 SOLUTIONS, THE TWO SPARSE RUNS -----------------------------
+   Named in the brief: the ground between the fold and the adoption
+   figure, and the ground above "How each function uses the same layer".
+   Both are section boundaries doing nothing, and both are cut against
+   the page's own clean register rather than by a fixed number, so the
+   page keeps one rhythm. */
+.hs-so-hero{padding-bottom:calc(var(--sec-pad) * .56)}
+.hs-start .rule-label + .frame{margin-top:18px}
+.hs-funcs{padding-top:calc(var(--sec-pad) * .72)}
+
+/* ---- 30.8 THE PHONE --------------------------------------------------
+   Tighter desktop spacing may not arrive as a crowded phone. Every
+   composition above is a wide-layout rule and the stacked page keeps the
+   air section 29 gives it; what follows is only the two places where a
+   stacked block needed its own spacing back. */
+@media (max-width:900px){
+  .hs-ready .sec-head{margin-bottom:var(--head-gap)}
+  .hs-mission{padding-block:calc(var(--sec-pad) * .82)}
+}
+
+/* ---- 30.9 HOME, WHERE THE EVIDENCE SITS ------------------------------
+   The "why now" block was two equal columns of words. It is now the
+   reading on the left and the documentary plate on the right, running
+   off the page edge the way the fold's instrument does, so the section
+   ends on the outside world rather than on a second paragraph. The
+   figure's own chrome is in 33.1; this is only its place in the page.
+   Below 900 the .net grid collapses (section 12) and the plate stacks
+   under the reading at full width, which is the right order: the words
+   it is evidence for come first. */
+@media (min-width:901px){
+  .hs-why{
+    grid-template-columns:minmax(0,42fr) minmax(0,58fr);
+    grid-template-rows:auto 1fr;
+    row-gap:clamp(18px,2vw,26px);align-items:start;
+  }
+  .hs-why>.reveal:first-child{grid-column:1;grid-row:1}
+  .hs-why .net-body{grid-column:1;grid-row:2}
+  .hs-why .hs-tex{grid-column:2;grid-row:1/span 2}
+  .hs-why .net-body p{max-width:46ch}
+}
 /* ---- end 30 ---- */
 
 /* ============ 31 ROUND ELEVEN PLATFORM (2026-09-20): analytical, one crop, annotated ============ */
@@ -3604,10 +3829,59 @@ body[data-density="structured"]{--sec-pad:clamp(70px,7.6vw,104px);--head-gap:cla
 
 /* ---- 33.1 home (builder B, prefix hs-) ---- */
 
-/*                                                                    */
-/*                                                                    */
-/*                                                                    */
-/*                                                                    */
+/* Home's one documentary moment: about a hundred ships and tankers at
+   anchor in the Gulf of Suez while the canal was blocked, from Landsat.
+   It sits in #outside, beside "The cost is often not ignorance. It is
+   delay.", because that is the sentence it is evidence for: a queue is
+   what delay looks like from orbit. Not a hero background, not a
+   section break, not decoration.
+
+   The treatment is the one the site already gives a dark frame on a
+   light ground: a plate with a --line-2 edge and nothing else. No
+   corner ticks and no frame bar, because the three honesty chromes are
+   for product, drawn instruments and illustrative documents, and this
+   is none of them: it is a real published photograph, which is the same
+   reading the newsletter covers take. The credit hangs under the plate
+   in the metadata voice, at caption size, and it carries no checker
+   marker: the marker belongs to figures of Mission Grey's own work.
+
+   The file is prepared once, not by CSS: one 1800x750 rectangle taken
+   from the source at full resolution, converted to grayscale, contrast
+   lifted and written at quality 82 (115KB), with its white point held
+   just under the page ground so the image never prints brighter than
+   the paper it sits on. Geometry is untouched: one crop, no
+   compositing, no overlay, no fake data. The full credit, the licence
+   and the source URL are in assets/texture/CREDITS.md. */
+.hs-tex{margin:0}
+/* the plate runs to the page edge on the wide layout, using the same
+   expression the hero's scope uses, so the two bleeds on this page
+   register with each other. A bled plate keeps three edges and drops
+   the fourth, because the fourth is the page. */
+.hs-tex-plate{
+  border:1px solid var(--line-2);background:var(--bg-2);
+  line-height:0;overflow:hidden;
+}
+.hs-tex img{display:block;width:100%;height:auto}
+.hs-tex-cred{
+  margin-top:12px;
+  font:500 var(--fs-meta)/1.6 var(--mono);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-dim);
+}
+@media (min-width:901px){
+  .hs-tex{margin-right:calc(-1 * max(0px,(100vw - var(--max)) / 2) - var(--pad))}
+  .hs-tex-plate{border-right:0}
+}
+/* THE PHONE GETS A DIFFERENT RECT, for the reason the product plates
+   already do: an 1800px satellite frame printed 366px wide is texture,
+   and a hundred ships at anchor stop being countable at that scale. The
+   rect is stated in source pixels, x 300 to 1380 and y 105 to 645 of
+   1800x750, which is the water with the anchored ships and both shores
+   still in frame, at the same printed scale as the wide layout. Nothing
+   is scaled up: this is a smaller window on the same file. */
+@media (max-width:700px){
+  .hs-tex-plate{position:relative;overflow:hidden;aspect-ratio:2/1}
+  .hs-tex img{position:absolute;max-width:none;width:166.667%;left:-27.778%;top:-19.444%}
+}
 
 /* ---- 33.2 platform (builder C, prefix pf-) ---- */
 
