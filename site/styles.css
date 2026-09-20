@@ -3977,7 +3977,190 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 /* ---- end 31 ---- */
 
 /* ============ 32 ROUND ELEVEN ABOUT AND GUILD (2026-09-20): the brand story, people, density ============ */
-/* Owner of this section: the people builder. */
+/* Owner of this section: the people builder. Rules: the chairman's v0.4
+   brief, sections 2, 12, 13, 14 and 15. About is human and brand-led,
+   Guild is editorial and people-led, and the equal-weight rule of round
+   ten (section 26) is one-directional and untouched: nobody is promoted
+   out of a register and no person is printed at a second size. What
+   changes here is the ground between things, the scale of the one brand
+   object, and one documentary plate. Sections 21, 24 and 26 are frozen,
+   so everything below is an override written on their own selectors and
+   the new classes are prefixed `ag-`. No word changed on either page. */
+
+/* ---- 32.1 ABOUT, the fold: the same masthead, less ground ------------
+   The fold was a headline, a 64px run, a hairline, and a dek hanging in
+   the right column at a 540px measure, which printed four lines and left
+   a 400 by 150 block of nothing under the rule beside it. The
+   composition is right and stays: title across the left two thirds, one
+   rule, the dek on the right rail, the left half deliberately empty. The
+   PROPORTIONS were the problem, so the run above the rule comes down and
+   the dek's column starts further left and runs wider, which prints it in
+   three lines instead of four. The empty block is a third smaller and the
+   fold reaches the first section sooner, which is what the brief means by
+   a long run to the intro paragraph. */
+.ab-hero{padding-bottom:clamp(44px,4.8vw,66px)}
+.ab-fold{margin-top:clamp(24px,3vw,40px);padding-top:22px}
+@media (min-width:981px){
+  .ab-fold{grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr)}
+  .ab-dek{max-width:600px}
+}
+
+/* ---- 32.2 THE BRAND MOMENT: the full progression, across the page ----
+   Black and white resolving into grey is the company's own story and
+   this is the page where identity is expressed, so it stops being a
+   small strip beside a paragraph. The five marks now run the full
+   content width, hanging from the same rule they already hung from, at
+   roughly 1.7 times their old size; the copy sits above them at its own
+   measure instead of beside them. Nothing is added: same five marks,
+   same rule, same caption, same words, and the caption still ends under
+   the grey square, which is where the sequence resolves.
+   The marks are a grid of five equal cells rather than a flex row with a
+   fixed size, so the progression divides the page's own measure at every
+   width and the gap scales with the viewport rather than pooling at one
+   end. Checkerboard motifs stay off every other page: this is the one
+   place the device is printed in full. */
+@media (min-width:901px){
+  .ab-name{grid-template-columns:minmax(0,1fr);gap:clamp(28px,3.4vw,44px);align-items:start}
+}
+.ab-seq{padding-top:clamp(22px,2.8vw,34px)}
+.ab-name .resolve{
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:clamp(10px,6.4vw,92px);align-items:start;
+}
+.ab-name .resolve svg{width:100%;max-width:none}
+/* the band's own ground: the section carried 120px above and below a
+   130px object, which is the "large container with little content"
+   the brief names. The object is now the content. */
+.ag-about #why-grey{padding-top:clamp(56px,6.2vw,84px);padding-bottom:clamp(52px,5.8vw,78px)}
+
+/* ---- 32.3 ABOUT, the runs the brief names --------------------------
+   Two named gaps: the one before "Four disciplines, one system" (a fold
+   ending into a raised band that opened with 202px of ground between
+   them) and the one before the core team. Section 29 took the rhythm
+   down for the whole site; these two are cut a second step because they
+   are the two the brief points at by name. The human register still
+   reads as the airiest page on the site: 154px between the fold and the
+   first band, against Home's 116px section padding alone. */
+.ag-about #why{padding-top:clamp(64px,7vw,88px);padding-bottom:clamp(70px,7.6vw,98px)}
+.ag-about #team{padding-top:clamp(62px,6.8vw,88px);padding-bottom:clamp(58px,6.4vw,82px)}
+.ag-about #offices{padding-top:clamp(62px,6.8vw,88px);padding-bottom:clamp(54px,6vw,78px)}
+/* the page closes on the access panel, and a closing panel ends into the
+   footer rather than into another section */
+.ag-about #category{padding-bottom:clamp(64px,7vw,96px)}
+
+/* ---- 32.4 ABOUT, the people register: density, never size ----------
+   The brief allows the register's row spacing and information density to
+   be tightened and forbids reintroducing size differences, so nothing
+   here touches a portrait: all 22 people stay at 64px (56 under 560px),
+   one size per viewport, which the round's measurement confirms. What
+   changes is the ground inside a row, between a person's own fields, and
+   above the register. Each row gives up 14px of padding and 8px between
+   its four fields, which is about 12 percent of a row and is why more of
+   the team reads in one screen without a single field moving or
+   shrinking. */
+.ab-key{margin:16px 0 clamp(20px,2.4vw,26px)}
+.ab-reg{margin-top:clamp(24px,2.8vw,36px)}
+.ab-p{padding-top:14px;padding-bottom:20px;gap:18px}
+.ab-rl2{margin-top:clamp(32px,3.8vw,46px)}
+.ab-adv{margin-top:clamp(20px,2.4vw,28px)}
+.ab-a{padding-top:20px}
+.ab-por-m{margin-bottom:14px}
+.ab-role{margin-top:7px}
+.ab-bio{margin-top:9px}
+.ab-cred{margin-top:7px}
+.ab-foot{margin-top:12px}
+
+/* ---- 32.5 ABOUT, where we are: the register and the plate ----------
+   The west-to-east register keeps the full measure, because its stations
+   are meridians and a scale drawn narrow stops registering with what it
+   measures (section 24.5). So the documentary plate takes the empty
+   right half of the SECTION HEAD instead, above the register: the head
+   is three short lines and carried nothing beside it. The plate is
+   evidence for the section under it rather than atmosphere over it, and
+   the figure chrome is in 33.3 with the other documentary material.
+   The head's third track is what keeps the two objects level. A spanned
+   grid item distributes its height across the auto rows it spans, so a
+   400px plate spanning the label and the heading pushed the heading a
+   third of the way down its own column; the text rows are content-sized
+   and one empty `1fr` row under them takes the remainder instead. */
+@media (min-width:981px){
+  .ag-about #offices .sec-head{
+    display:grid;max-width:none;align-items:start;
+    grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+    grid-template-rows:auto auto 1fr;
+    column-gap:clamp(32px,4.4vw,64px);row-gap:14px;
+  }
+  .ag-about #offices .sec-head .eyebrow{grid-row:1;max-width:520px}
+  .ag-about #offices .sec-head h2{grid-row:2;max-width:520px}
+  .ag-about #offices .sec-head .eyebrow,.ag-about #offices .sec-head h2{grid-column:1}
+  .ag-about #offices .ag-fig{grid-column:2;grid-row:1 / -1;align-self:start}
+}
+/* The register's track height is a WIDE-LAYOUT value and has to be
+   written inside the same breakpoint section 24.6 uses. Below 1081px the
+   stations stop being positioned and the track is `height:auto`; a bare
+   `.ab-geo-t{height}` written later in the file has equal specificity, no
+   media query to lose to, and silently stacked three absolutely
+   positioned offices on top of each other at 390. Found in the phone
+   walk, not in a desktop screenshot. */
+@media (min-width:1081px){
+  .ab-geo-t{height:112px}
+}
+.ab-geo-k{margin-top:clamp(24px,2.8vw,34px)}
+
+/* ---- 32.6 GUILD, the editorial register: tighter rows, same records --
+   The roster is the page and the brief asks for more of it per screen
+   without crowding, so every row gives up 12px of padding and 6px inside
+   its own foot, and the gutter between the two columns comes in by 16px,
+   which the biographies take back as measure. Nothing is removed, no
+   plate changes size, no record is reordered and the two-column ledger
+   rule down the middle is where it was. A row is still taller than its
+   plate at every width, which is the floor this register may not cross.
+   The figure above the roster and the areas register give up the same
+   proportion, so the page keeps one rhythm. */
+.gd-sys{margin-top:clamp(20px,2.4vw,30px)}
+.gd-field{height:clamp(28px,3.4vw,42px)}
+.gd-st{padding-top:22px}
+.gd-doms{margin-top:18px}
+.gd-key{margin:18px 0}
+.gd-roster{margin-top:clamp(20px,2.4vw,28px);gap:0 clamp(24px,3vw,48px)}
+.gd-m .gd-p{padding-top:18px;padding-bottom:20px}
+.gd-m .gd-bio{margin-top:7px}
+.gd-m .gd-foot{margin-top:12px;padding-top:10px}
+
+/* ---- 32.7 GUILD, the hover trigger, guarded ------------------------
+   A defect, found while tuning the roster's states. Section 21 sets the
+   record's raised ground on `.gd-m:hover .gd-p` with no `(hover:hover)`
+   guard, and it outranks the custom-property model section 26 built
+   (0,3,0 against 0,2,0). A phone leaves an emulated hover on the last
+   element tapped, so after a second tap released a record the row kept
+   the raised ground while its tick, its ink and its plate had all
+   stepped back: a state that is released in the DOM and still on the
+   screen, which is exactly the failure round ten documented twice and
+   guarded everywhere else. Restating the selector here hands the ground
+   back to `--pi-ground`, which IS guarded, so hover, focus and tap now
+   produce one state from one place. Section 21 is frozen; this is the
+   override that neutralises it. */
+.gd-m:hover .gd-p,.gd-m:focus-within .gd-p{background:var(--pi-ground)}
+.gd-p{transition:background-color .18s ease}
+
+/* ---- 32.8 MOBILE ----------------------------------------------------
+   Reviewed at 390 on both pages. The tightened rows arrive on a phone as
+   a smaller cut than at 1440 (the clamp minima move 6 to 8px against 12
+   to 14), because a 342px column is where crowding starts, not where the
+   sparse ground was. Two reservations: the brand progression keeps five
+   marks in one row down to 390, where each mark is 60px and the finest
+   checker is still drawn rather than smudged, and the documentary plate
+   goes full width under the heading it belongs to rather than beside
+   it. */
+@media (max-width:900px){
+  .ab-fold{margin-top:clamp(22px,3vw,32px)}
+  .ag-about #offices .sec-head{max-width:760px}
+}
+@media (max-width:560px){
+  .ab-name .resolve{gap:10px}
+  .ab-p{padding-top:15px;padding-bottom:20px}
+  .gd-m .gd-p{padding-top:16px;padding-bottom:18px}
+}
 
 /* ---- end 32 ---- */
 
@@ -4099,10 +4282,42 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 }
 
 /* ---- 33.3 about (builder D, prefix ag-) ---- */
-
-/*                                                                    */
-/*                                                                    */
-/*                                                                    */
-/*                                                                    */
+/* One documentary photograph on About: Singapore and southern Johor at
+   night from the International Space Station, two countries and the
+   strait between them in one frame. It takes NONE of the three honesty
+   chromes, for the same reason the newsletter covers take none: a
+   `.window` would claim it is the product and an `Illustrative view`
+   label would call a real photograph drawn. What a real photograph
+   carries instead is an edge and its source. The edge is `--line-2`, the
+   token this system already gives every photograph on a light ground,
+   and the source is one metadata line in the instrument voice, at the
+   register every other label on this page uses.
+   The file is graded, not composited: cropped, converted to grayscale
+   and contrast-lifted so it sits in the grey palette, with its geometry
+   untouched. No date is printed here; acquisition dates live in
+   assets/texture/CREDITS.md with the full credit and the source URL. */
+.ag-fig{margin:0}
+.ag-fig img{
+  display:block;width:100%;height:auto;
+  border:1px solid var(--line-2);background:var(--bg-2);
+}
+/* The credit is the one line of type this figure adds, and it names an
+   institution, so it is set to fit the plate's own width on one line:
+   61 characters of 10.5px mono at .15em tracking measure 480px and
+   wrapped under a 496px plate, leaving `CENTER` alone on a second line.
+   Tracking is the cheapest thing to spend, so it goes to .1em here and
+   nowhere else. */
+.ag-cred{
+  margin-top:10px;
+  font:400 var(--fs-meta)/1.6 var(--mono);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-dim);
+}
+/* Under 981px the plate stacks below the heading it belongs to and stops
+   at a reading width: a 700px night frame on a 390px phone is texture,
+   and this one is only worth printing while the lattice, the strait and
+   the anchorage can each be told apart. */
+@media (max-width:980px){
+  .ag-fig{margin-top:clamp(20px,3vw,30px);max-width:560px}
+}
 
 /* ---- end 33 ---- */

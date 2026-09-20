@@ -2865,7 +2865,133 @@ the lens figure and gains the one piece of the real world on the page.
 
 ### About and Guild (section 32)
 
-(written by the people builder)
+The two people pages. Both were refined on the round-nine compositions
+and the round-ten interaction model, neither was redesigned, and **no
+word changed on either page**: the rendered text of /guild/ is 807 words
+in and 807 out at 1440 and 794 in and out at 390, with no word-level
+difference and no change to any `alt` or `aria-label`; /about/ gains
+exactly the nine words of one source credit and one new `alt`, which is
+the one addition the round sanctions for a documentary image. Section 32
+is written as overrides on the selectors sections 21, 24 and 26 already
+use, because those sections are frozen; the new classes are `ag-`.
+
+**Equal static weight is untouched and was measured, not assumed.** Round
+ten's rule (section 26) is one-directional and nothing here moves against
+it: every one of About's 22 people renders at 64x64 at 1440 and 56x56 at
+390, and all 28 Guild plates render at 56x56 at 1440 and 48x48 at 390.
+One size per group, per viewport, on both pages. Nothing in this round
+touched a portrait, a plate or a name's order.
+
+**The brand device is printed in full, once, on this page, binding.** The
+five marks ran at 98px in a column beside a paragraph, which is the
+"small strip" the brief names. They now run the full content width at
+157px (a grid of five equal cells, so the progression divides the page's
+own measure at every width and the gap scales with the viewport instead
+of pooling at one end), hanging from the same rule they already hung
+from, with the same caption still ending under the grey square, which is
+where the sequence resolves. The copy sits above them at its own measure
+rather than beside them. Nothing was added: same five marks, same rule,
+same words. The band costs 188px and it is the page's brand moment, which
+is what the brief asked for; checkerboard motifs stay off every other
+page, and this is the one place the device appears in full.
+
+**Density is ground, never size, binding.** Both registers give up
+padding and internal field spacing and nothing else: About's row loses
+14px of padding and 8px between a person's four fields (register 2251 to
+2017, -10.4%), Guild's row goes 162 to 143 (-11.7%) and the roster gutter
+comes in by 16px, which the biographies take back as measure. No field
+was dropped, no type size changed, no plate moved. A Guild row is still
+taller than its plate at every width, which is the floor this register
+may not cross.
+
+**Where the documentary plate went, and where it did not.** It sits in
+the head of the "Where we are" section, on the right, above the
+west-to-east office register. Three placements were considered and two
+were rejected: the fold, because an image in the hero is the hero
+background the brief rules out and because the fold's empty left half is
+a round-nine composition decision, not slack; and beside the geographic
+register, which round nine proposed, because that register's stations are
+MERIDIANS and a scale drawn narrow stops registering with what it
+measures (section 24.5). The section head was three short lines with
+nothing beside it, so the plate takes that ground and the register keeps
+its full width under it. The relationship is exact rather than
+atmospheric: the frame holds two countries, the strait between them and
+one of the three offices the register names. Figure chrome is in 33.3.
+
+**The Guild expertise filter was NOT built, and the reason is in the
+data.** The brief allows the "Expertise areas" strip to become a
+restrained filter. Counted against the roster's own tags, the ten areas
+the strip prints are carried by: Geopolitics 20 members, Strategy 10,
+Finance 10, Regulation 9, Security 5, Technology 4, Operations 4, and
+**Economics 0, Industry 0, Regional and local knowledge 0**. So three of
+the ten controls would select nobody and the most likely control would
+quiet 8 of 28 people, and the only honest way to explain either is words
+this round may not add. A filter whose first defect is a dead control on
+a page about people is worse than no filter. If the roster ever carries
+every area it advertises, or the areas are ever derived from the roster
+rather than listed beside it, this is the one interaction this page is
+waiting for; the quieting model it would use already exists in 26.2.
+
+**A defect fixed on the way past (32.7).** Section 21 sets the Guild
+record's raised ground on `.gd-m:hover .gd-p` with no `(hover:hover)`
+guard, and that selector outranks the custom-property model section 26
+built (0,3,0 against 0,2,0). Under a real touch device the second tap
+released the record in the DOM and left the raised ground on screen,
+which is the stale-hover failure round ten documented twice and guarded
+everywhere else. Verified both ways with
+`--blink-settings=primaryHoverType=1,availableHoverTypes=1,primaryPointerType=2,availablePointerTypes=2`:
+with section 21's rule re-injected the ground stays after the release,
+with 32.7 in place tap, second tap, tap-elsewhere, keyboard focus and
+pointer all produce one state from one place, and under
+`prefers-reduced-motion` the state is ink, edge and the accent mark with
+no scale.
+
+**`.ag-about` on About's `<main>`, and why an id is not a page.** Five of
+this section's rules address the About sections by id (`#why`,
+`#why-grey`, `#team`, `#offices`, `#category`), and `#offices` also
+exists on /contact/, so the first cut reached a page outside this area.
+Every one of them is now scoped by one class on About's `<main>`. That is
+the only markup change on the page besides the figure, it carries no
+words, and it makes the rest of the round-eleven work on this page
+un-leakable by construction. Proof: all eight other pages render at
+exactly the baseline height at 1440 after this section lands (home 11514,
+platform 13256, solutions 7440, use cases 4604, contact 3647, api 3554,
+insights 6951, partners 3328). **An id is not a page scope on this site;
+several ids repeat across pages.**
+
+**One rule that nearly shipped a defect of its own.** `.ab-geo-t{height}`
+written bare in section 32 has the same specificity as section 24.6's
+`height:auto` at `max-width:1080px` and sits later in the file, so it won
+at every width and stacked three absolutely positioned offices on top of
+each other at 390. Any value that belongs to the wide layout of a
+component whose narrow layout is already written has to be re-stated
+inside the same breakpoint. Found in the phone walk; invisible at 1440.
+
+**Measured, at 1440 and at 390.**
+
+| Page | 1440 before | 1440 after | 390 before | 390 after |
+|---|---|---|---|---|
+| About | 6717 | 6690 | 11831 | 11497 |
+| Guild | 5895 | 5595 | 10319 | 9665 |
+
+Guild is 5.1 percent shorter at 1440 and 6.3 at 390, all of it out of the
+roster and the figure above it. About is 27px shorter, and that number is
+worth reading honestly: the two things the brief asked this page to GROW
+cost it 539px (the documentary plate takes the offices head from 61 to
+412, the brand band from 466 to 654), and the runs of ground gave back
+566px (hero -43, the disciplines gap -54, the team section -358, the
+closer -24). The page absorbed a real photograph and a brand moment at
+1.6 times the scale and still came out shorter than it started. In the
+first screen at 1440 About now reaches the first discipline row rather
+than ending on the section dek, and at 390 the first discipline row is
+whole above 900px.
+
+**Not done, deliberately.** The Guild filter (above). The fold's empty
+left half on About, which is round nine's composition and not slack; its
+proportions are tightened instead, so the dek column starts 142px further
+left and the block of nothing is a third smaller. The portrait sizes,
+which the sources cap and the equal-weight rule freezes. The roster
+order, on either page. And no second checkerboard anywhere.
 
 ### Real-world texture (section 33)
 
@@ -2971,5 +3097,42 @@ not an argument about it.
 
 #### About texture (33.3)
 
-(written by the people builder)
+One photograph on About: `assets/texture/singapore-malacca-night.jpg`,
+Singapore and southern Johor at night from the International Space
+Station, two countries and the strait between them in one frame. It is
+the brief's "global city at night" answered without being literal, since
+from orbit a city is a lattice rather than a skyline, and it is placed as
+context for the section about where the company operates rather than as
+atmosphere over the page (section 32 records the placement argument).
+
+**A real photograph takes none of the three honesty chromes**, for the
+same reason the newsletter covers take none: a `.window` would claim it
+is the product and an `Illustrative view` label would call a real
+photograph drawn. What it carries instead is the `--line-2` hairline this
+system gives every photograph on a light ground, and its source. So
+`.ag-fig` is an image and one metadata line, nothing else: no frame, no
+corner ticks, no caption sentence, no overlay and no type on the picture.
+
+**The credit is the only text the figure adds and it is set to fit.**
+`ISS Crew Earth Observations Facility, NASA Johnson Space Center`, in the
+metadata register under the plate. At the site's usual .15em tracking
+those 61 characters measure 480px and wrapped under a 490px plate,
+leaving `CENTER` alone on a second line, so `.ag-cred` tracks at .1em and
+nothing else does. No date is printed: the acquisition date, the full
+NASA credit line and the source URL are in `assets/texture/CREDITS.md`,
+which is where dates live.
+
+**The file is graded, not composited.** Cropped to 3100x2325 of the
+3601x3001 original (black margin off three sides, geometry untouched),
+converted to grayscale, contrast lifted (`-level 0%,40% -gamma 1.12`) so
+silver-on-black sits in the grey system, resized to 1600x1200 at quality
+78, 316KB, and the same credit is written into the file's comment field.
+Nothing was added to or taken out of the picture. The dark plate sits on
+the light page the way the product plates do, which is the treatment this
+system already has for a dark rectangle.
+
+**Under 981px the plate stacks** below the heading it belongs to and
+stops at 560px: it is only worth printing while the lattice, the strait
+and the anchorage can each be told apart, and at 390 it prints 342px
+wide, which is the narrowest width at which that still holds.
 
