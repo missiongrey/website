@@ -19,8 +19,10 @@
 <style>
 /* 404: the access panel composition carrying an h1, plus a mono
    destination row. Tokens only. */
-.nf-sec{padding-block:clamp(72px,11vw,140px)}
-.access-panel h1{font-size:clamp(30px,4vw,48px);line-height:1.08;margin:20px auto 16px;max-width:18ch}
+.nf-sec{padding-block:clamp(64px,9vw,112px)}
+/* the panel's heading is a section argument like every other closing
+   panel on the site, so it reads from the ladder (styles.css section 29) */
+.access-panel h1{font-size:var(--fs-l2);line-height:1.1;margin:18px auto 14px;max-width:18ch}
 /* the .access-panel p rule wins on specificity, so these two ride it */
 .access-panel .nf-code{
   display:flex;justify-content:center;gap:14px;max-width:none;margin:0 auto 26px;

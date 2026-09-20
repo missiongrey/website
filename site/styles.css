@@ -3412,6 +3412,173 @@ html.js .so-path.in .so-s3 .so-ext i:nth-child(4){animation-delay:1.9s}
    wording change. Mobile reviewed separately. Page builders do not edit
    this section; they build on it. */
 
+/* ---- 29.1 THE LADDER: six levels, one token each ----------------------
+   Round seven set three FACES (sans structural, mono instrument, serif
+   statement). Those are unchanged. This is the missing second axis: six
+   SIZES, each with a job, so importance is carried by level and not by
+   adding points to a heading.
+
+     L1  page proposition   --fs-l1     clamp(32px,3.5vw,50px)   50.0 at 1440
+     L2  section argument   --fs-l2     clamp(25px,2.3vw,32px)   32.0 at 1440
+     L3  functional heading --fs-l3     clamp(19px,1.75vw,24px)  24.0 at 1440
+     TECHNICAL LABEL        --fs-label  11px mono, .18em, uppercase
+     BODY                   --fs-body   16px sans / 1.6
+     METADATA               --fs-meta   10.5px mono
+
+   The steps are 1.56 (L1 to L2), 1.33 (L2 to L3) and 1.50 (L3 to body):
+   each level is told apart from the one below it by size alone, which is
+   what round ten's note that "some headline levels feel too similar" was
+   asking for. L1 came down from 64px and L2 from 40px; the RATIO between
+   them widened (1.60 to 1.56 is flat, but L2 to L3 was 1.29 and is now
+   1.33, and L3 to body was 1.94 and is now 1.50), so the page reads as
+   four graded voices rather than two loud ones and a floor.
+
+   --fs-hero, --fs-h2 and --fs-h3 stay as the names sections 01 to 28 use;
+   they now READ FROM the ladder, so no rule outside this section had to
+   change to follow it. */
+:root{
+  --fs-l1:clamp(32px,3.5vw,50px);
+  --fs-l2:clamp(25px,2.3vw,32px);
+  --fs-l3:clamp(19px,1.75vw,24px);
+  --fs-meta:10.5px;
+  --fs-hero:var(--fs-l1);
+  --fs-h2:var(--fs-l2);
+  --fs-h3:var(--fs-l3);
+  /* the supporting registers: a dek is not a level, it is body copy with
+     a little more presence, so it sits between body and L3 and moves
+     with them */
+  --fs-lede:clamp(16px,1.35vw,17.5px);
+  --fs-dek:16.5px;
+}
+/* BODY, relatively compact: 16px over 1.6 rather than 1.65. Three percent
+   of leading across every paragraph on the site, which is the cheapest
+   vertical tightening available and the one a reader never notices. */
+body{line-height:1.6}
+/* METADATA keeps the size it already had; naming it is what makes it a
+   level rather than a habit. */
+.rule-label{font-size:var(--fs-meta)}
+/* TECHNICAL LABEL, restored. `.sec-head p` (0,1,1) outranked `.eyebrow`
+   (0,1,0), so every eyebrow inside a section head printed at 17px mono
+   with .18em tracking: the instrument voice set at reading size, which is
+   both the "too much technical type" the brief warns about and the reason
+   the label level was invisible in the ladder. `p.eyebrow` is (0,1,1) and
+   sits after it, so the label is 11px again everywhere. Measured on
+   /guild/ before this rule: font-size 17px, letter-spacing 3.06px. */
+.sec-head p{font-size:var(--fs-dek)}
+.sec-head p.eyebrow,p.eyebrow{font-size:var(--fs-label)}
+.sec-head{gap:14px}
+
+/* ---- 29.2 HEADLINE SCALE, the sizes that carried their own clamp ------
+   Sections 15 to 24 set eight display sizes locally, five of them above
+   L2 and two of them above the new L1. They are brought onto the ladder
+   here rather than in place, because sections 01 to 28 are frozen this
+   round. Each one keeps its measure, its weight and its role. */
+/* the closing panel is a section argument, not a second page proposition:
+   it was 48px, one step ABOVE the page's own h1 at a third of the words */
+.access-panel h2{font-size:var(--fs-l2)}
+/* the statement section is the one section per page allowed to print
+   above L2. It is a modifier of L2, not a seventh level, and it never
+   reaches L1: 40px against L1's 50px at 1440. */
+.sec-statement .sec-head h2{font-size:clamp(28px,2.9vw,40px);line-height:1.1}
+.name-copy h2{font-size:var(--fs-l2)}
+/* the statement voices: set apart by face and measure, not by size */
+.net-lede{font-size:clamp(21px,2.2vw,27px)}
+.quote-main blockquote{font-size:clamp(21px,2.2vw,27px)}
+.statement{font-size:clamp(22px,2.4vw,30px)}
+.gd-claim{font-size:clamp(21px,2.2vw,27px)}
+
+/* ---- 29.3 VERTICAL RHYTHM ---------------------------------------------
+   Ten to twenty percent out of the rhythm, taken from the tokens first so
+   that one change moves every page. --sec-pad 136 to 116 (-15%) and
+   --head-gap 64 to 52 (-19%) at 1440; the clamp MINIMA come down by less
+   (84 to 76, 40 to 34) because 390px was never the sparse width.
+   --label-gap is new: it names the 44px that sits in 22 inline style
+   attributes between a chapter label and the head under it. */
+:root{
+  --sec-pad:clamp(76px,8.4vw,116px);
+  --head-gap:clamp(34px,4.4vw,52px);
+  --label-gap:34px;
+}
+/* The inline 44px can only be answered with !important: the markup is
+   frozen for the page builders working after this pass, and an inline
+   style outranks every selector. When those attributes are eventually
+   removed the rule still holds the same value, so nothing regresses. */
+.rule-label + .sec-head{margin-top:var(--label-gap)!important}
+/* the fold: the measured gaps above, below and around the hero. The hero
+   ends into the first rule of the page rather than into another section's
+   head, so it needs less air under it than a section boundary does: .82
+   of the page's own section padding. That run is what the brief means by
+   "a long empty area before the Guild section". */
+.hero{padding-top:clamp(48px,5.6vw,76px);padding-bottom:calc(var(--sec-pad) * .82)}
+.hero-eyebrow{margin-bottom:20px}
+.hero-dek{margin-top:20px}
+.hero-cta{margin-top:28px}
+/* the sparse blocks, named. Each one is a container that was carrying
+   more air than content at 1440. */
+.sec-statement{padding-block:clamp(80px,9.4vw,130px)}
+.sec-statement .sec-head{margin-bottom:clamp(24px,2.9vw,34px)}
+.statement{margin-top:clamp(36px,4.4vw,60px)}
+.access-panel{padding:clamp(38px,5.4vw,66px) clamp(24px,5vw,72px)}
+.cadence{margin-top:clamp(40px,5vw,56px)}
+.site-foot{padding-top:clamp(40px,5vw,60px)}
+/* the long empty runs before the people registers, which the brief names
+   directly. The registers themselves are the page builders' work and are
+   untouched; only the run of ground above them changes. */
+.ab-hero{padding-bottom:clamp(52px,5.6vw,82px)}
+.ab-reg{margin-top:clamp(34px,4.2vw,54px)}
+.ab-rl2{margin-top:clamp(38px,4.6vw,58px)}
+.gd-reg{margin-top:clamp(28px,3.8vw,50px)}
+
+/* ---- 29.4 PAGE-SPECIFIC DENSITY ---------------------------------------
+   One system, not one repeated template. Every page declares its own
+   register on `<body data-density>` and the two rhythm tokens follow it.
+   The attribute is the only markup this section needs, and a page that
+   declares nothing gets the balanced base above.
+
+     home       balanced    116 / 52    atmospheric, immediate
+     platform   dense       100 / 44    analytical, technical
+     solutions  clean       112 / 48    commercially direct
+     about      human       120 / 56    people and brand
+     guild      editorial   124 / 56    a roster reads like a page of print
+     use cases  structured  104 / 44    practical, indexed
+
+   The spread is 100 to 124 against a flat 136 before, so every page is
+   tighter than it was AND no two neighbouring registers read alike. */
+body[data-density="balanced"]{--sec-pad:clamp(76px,8.4vw,116px);--head-gap:clamp(34px,4.4vw,52px);--label-gap:34px}
+body[data-density="dense"]{--sec-pad:clamp(68px,7.4vw,100px);--head-gap:clamp(30px,3.8vw,44px);--label-gap:28px}
+body[data-density="clean"]{--sec-pad:clamp(74px,8.1vw,112px);--head-gap:clamp(32px,4.1vw,48px);--label-gap:32px}
+body[data-density="human"]{--sec-pad:clamp(78px,8.7vw,120px);--head-gap:clamp(36px,4.7vw,56px);--label-gap:36px}
+body[data-density="editorial"]{--sec-pad:clamp(80px,9vw,124px);--head-gap:clamp(36px,4.7vw,56px);--label-gap:36px}
+body[data-density="structured"]{--sec-pad:clamp(70px,7.6vw,104px);--head-gap:clamp(30px,3.8vw,44px);--label-gap:28px}
+
+/* ---- 29.5 MONO DISCIPLINE ---------------------------------------------
+   Mono stays the instrument voice: labels, numbering, categories,
+   navigation, timestamps, source and state labels, captions, annotations.
+   What it may not be is a sentence of running text set in letter-spaced
+   uppercase, which round nine already ruled against for `.level-out`
+   ("a label pretending to be a sentence"). One instance was left on the
+   site: the note under the instrument index on /platform/. It keeps its
+   words, its place and its ink and moves to the sans body register. */
+.caps-note{
+  font-family:var(--sans);font-size:var(--fs-small);line-height:1.6;
+  letter-spacing:0;text-transform:none;
+}
+
+/* ---- 29.6 MOBILE ------------------------------------------------------
+   Reviewed separately at 390. The ladder's minima (32 / 25 / 19) are
+   below the old ones (38 / 28 / 24), so a title occupies LESS of a phone
+   screen after this pass, not more, and the tightened rhythm arrives at
+   390 as a smaller cut than at 1440 by design (the clamp minima moved
+   8px and 6px against 20px and 12px at the wide end). What follows is the
+   one place where the wide rhythm would have crowded a phone: a section
+   head whose chapter label, eyebrow, heading and dek stack into four
+   blocks in a 342px column needs its internal gap back. */
+@media (max-width:560px){
+  .sec-head{gap:16px}
+  .rule-label + .sec-head{margin-top:30px!important}
+  .access-panel{padding:clamp(34px,7vw,48px) 20px}
+}
+
 /* ---- end 29 ---- */
 
 /* ============ 30 ROUND ELEVEN HOME AND SOLUTIONS (2026-09-20): the first engagement as a flow, the path refined ============ */

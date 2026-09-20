@@ -2404,7 +2404,176 @@ records the binding decisions.
 
 ### Scale and rhythm (section 29): the system builder
 
-(written by the system builder)
+Section 29 is the round's chassis: one typographic ladder, one vertical
+rhythm, one per-page density mechanism, applied site-wide. It is written
+as overrides on the selectors sections 01 to 28 already use, because
+those sections are frozen this round, and it is the section the four page
+builders build on rather than edit. Nothing in it changes a word: the
+built tree before and after this pass is word for word identical on all
+27 pages, alt text and `aria-label` included (home 1421, platform 2614,
+solutions 1220, about 1313, guild 1039, use cases 892).
+
+#### The ladder is six levels, binding
+
+Round seven fixed three FACES. This fixes the second axis, six SIZES,
+each with a job, so importance is carried by level and never by adding
+points to a heading.
+
+| Level | Token | Value | Printed at 1440 | Where |
+|---|---|---|---|---|
+| L1 page proposition | `--fs-l1` | `clamp(32px,3.5vw,50px)` | 50px | `.hero h1` on every page, through `--fs-hero` |
+| L2 section argument | `--fs-l2` | `clamp(25px,2.3vw,32px)` | 32px | `.sec-head h2`, through `--fs-h2`, plus every closing panel |
+| L3 functional heading | `--fs-l3` | `clamp(19px,1.75vw,24px)` | 24px | `.stage h3`, `.first-engagement h3`, `.so-app-copy h3`, through `--fs-h3` |
+| TECHNICAL LABEL | `--fs-label` | `11px` | 11px | `.eyebrow`, and every mono uppercase label |
+| BODY | `--fs-body` | `16px / 1.6` | 16px | running copy; the dek register is `--fs-dek` 16.5px, the lede `clamp(16px,1.35vw,17.5px)` |
+| METADATA | `--fs-meta` | `10.5px` | 10.5px | `.rule-label`, captions, station labels, attributions |
+
+L1 came down from 64px and L2 from 40px. The steps are 1.56 (L1 to L2),
+1.33 (L2 to L3) and 1.50 (L3 to body), against 1.60, 1.29 and 1.94
+before: the two loud levels are closer to the page and the quiet ones are
+further apart, which is what the note that "some headline levels feel too
+similar" was asking for.
+
+`--fs-hero`, `--fs-h2` and `--fs-h3` keep their names and now read from
+the ladder, so no rule outside section 29 had to change to follow it.
+**Anything that needs a display size takes a level. A new clamp on a
+heading is a regression**, and the eight that already existed are brought
+onto the ladder in 29.2.
+
+#### A label may not inherit a reading size, binding
+
+`.sec-head p` (0,1,1) outranked `.eyebrow` (0,1,0), so every eyebrow
+inside a section head printed at **17px mono with .18em tracking**:
+measured on /guild/ before this pass, `font-size: 17px,
+letter-spacing: 3.06px`. That is the instrument voice set at reading
+size, and it is both the "too much technical type" the brief warns about
+and the reason the label level was invisible in the ladder. `p.eyebrow`
+and `.sec-head p.eyebrow` put it back to 11px everywhere. The lesson is
+general: a label class carries its size in a shorthand and loses to any
+element-plus-class rule written for the block around it, so a label that
+sits inside a styled container has to be re-stated there.
+
+#### Only one thing prints above L2, binding
+
+`.sec-statement .sec-head h2` is the one section per page allowed above
+L2, at `clamp(28px,2.9vw,40px)`. It is a modifier of L2 and **never
+reaches L1**: 40px against the page's own 50px. Everything else that
+carried its own display clamp comes down onto the ladder: the closing
+`.access-panel h2` was 48px, one step above the h1 of the page it closes
+and over a third of the words, and is now L2. `.name-copy h2` is L2. The
+statement voices (`.net-lede`, `.quote-main blockquote`, `.statement`,
+`.gd-claim`) are set apart by face and measure rather than by size and
+now top out between 27px and 30px. 404's page-local `.access-panel h1`
+reads `--fs-l2` too.
+
+**Record names in a register are not L3.** The 17px and 16.5px `h3`
+elements inside `.so-step`, `.gd-p`, `.ab-reg` and the ruled rows were
+left exactly as they are. They are the name of a row in a register, which
+is metadata with heading semantics, and printing them at L3 would turn
+every register on the site into a card run of headings. L3 is for a
+functional heading that opens a block of reading.
+
+#### Vertical rhythm, and the page-specific density mechanism
+
+The rhythm moves from the tokens first, so one change reaches every page:
+`--sec-pad` 136 to 116 at 1440 (15 percent) and `--head-gap` 64 to 52
+(19 percent). The clamp MINIMA come down by less (84 to 76, 40 to 34)
+because 390px was never the sparse width.
+
+**Each page declares its own register on `<body data-density>`**, and the
+rhythm tokens follow the attribute. This is the whole mechanism: one
+attribute per page, no page-local spacing, and a page that declares
+nothing gets the balanced base.
+
+| Page | `data-density` | `--sec-pad` at 1440 | `--head-gap` at 1440 |
+|---|---|---|---|
+| Home | `balanced` | 116 | 52 |
+| Platform | `dense` | 100 | 44 |
+| Solutions | `clean` | 112 | 48 |
+| About | `human` | 120 | 56 |
+| Guild | `editorial` | 124 | 56 |
+| Use cases | `structured` | 104 | 44 |
+| Contact | `clean` | 112 | 48 |
+| API | `dense` | 100 | 44 |
+| Insights | `editorial` | 124 | 56 |
+
+The spread is 100 to 124 against a flat 136 before, so every page is
+tighter than it was and no two neighbouring registers read alike. Guild
+and About are cut least on purpose: they are the people pages, and their
+air is the point.
+
+Six named runs of ground were carrying more air than content and are cut
+in 29.3: the hero's own padding (top to `clamp(48px,5.6vw,76px)`, bottom
+to `.82` of the page's section padding, because a fold ends into a rule
+rather than into another section's head), `.sec-statement` 168 to 130,
+`.statement`'s margin 76 to 60, `.access-panel`'s padding 84 to 66,
+`.cadence`'s margin 68 to 56, `.site-foot`'s padding 72 to 60, and the
+runs above the two people registers (`.ab-reg`, `.ab-rl2`, `.gd-reg`).
+Everything else keeps the air it had.
+
+**`--label-gap` names the 44px that lives in 22 inline style attributes**
+(`<div class="sec-head" style="margin-top:44px">`). It is the space
+between a chapter label and the head under it, it varies with density
+(28 to 36), and the rule has to carry `!important` because an inline
+style outranks every selector and the markup is frozen for the page
+builders working after this pass. When those attributes are removed the
+rule holds the same value, so nothing regresses.
+
+#### Mono discipline
+
+Mono stays the instrument voice: labels, numbering, categories,
+navigation, timestamps, source and state labels, captions, annotations.
+Round nine already ruled that a full sentence in letter-spaced uppercase
+is "a label pretending to be a sentence" (`.level-out`). One instance was
+left on the site, `.caps-note` under the instrument index on Platform,
+and it moves to the sans body register at `--fs-small`. Same words, same
+place, same ink. The audit for this was a walk of every leaf element on
+every page for mono text of nine words or more: everything else it found
+is a caption, a figure attribution or a podcast credit line, all of which
+are metadata and stay.
+
+#### Measured, at 1440 and at 390
+
+Page heights before and after, in pixels at 1440:
+
+| Page | Before | After | Change |
+|---|---|---|---|
+| Home | 12730 | 11514 | -9.6% |
+| Platform | 14790 | 13256 | -10.4% |
+| Solutions | 8148 | 7440 | -8.7% |
+| About | 7158 | 6717 | -6.2% |
+| Guild | 6387 | 5895 | -7.7% |
+| Use cases | 4966 | 4604 | -7.3% |
+| Contact | 4194 | 3647 | -13.0% |
+| API | 4172 | 3554 | -14.8% |
+| Insights | 7308 | 6951 | -4.9% |
+
+The rhythm itself is 15 to 19 percent tighter; a page drops less than
+that because registers, plates and diagrams do not scale with the
+rhythm, which is the correct outcome. The gain lands where the brief
+asks, in the first screen. Home now shows the cadence ledger under the
+fold's figure at 1440 (it began at 925px before and begins at 750px
+now). Platform reaches its first section heading, its dek and the top of
+the four-levels figure inside 900px; before, the fold ended at the two
+calls to action. Solutions opens the adoption figure at 465px rather
+than 607px. Guild and About reach their first section argument with the
+heading at 32px rather than 40px.
+
+At 390 the pass is deliberately smaller: the ladder's minima (32 / 25 /
+19) are BELOW the old ones (38 / 28 / 24), so a title takes less of a
+phone screen than before (8 to 16 percent of 844px against 12 to 22),
+the section padding gives up 8px and the head gap 6px, and `.sec-head`
+gets its internal gap back under 560px because four stacked blocks in a
+342px column need it. No page scrolls horizontally at 390 (`scrollWidth`
+equals 390 on all ten). Labels are 11px everywhere, which is what they
+were specified as and what they now are.
+
+#### Not done, deliberately
+
+The h3 sizes inside registers (above), the compositions themselves (the
+page builders own those in sections 30 to 33), and the `.principle`,
+`.arc-q` and `.agents-copy h3` clamps, which already sit inside L3's
+range. Nothing in sections 01 to 28 was edited.
 
 ### Home and Solutions (section 30)
 
