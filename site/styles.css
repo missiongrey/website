@@ -4756,18 +4756,23 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
    station line under it, MONITOR to REVIEW, would print the stage words
    twice on one screen and give the page two sets of stage grammar, which
    is the failure the one-diagram-one-direction rule exists to stop. So
-   the four stages stay exactly as they are and this is a NOTE hanging
-   under them: the last two stages named once as the place it starts
-   from, a drop line, and the three stations the decision hands over to.
+   the four stages stay exactly as they are and this is a NOTE: the two
+   stages it follows from named once as the place it starts from, a drop
+   line, and the three stations the decision hands over to.
    The label sits ABOVE the rule and the drop line lands on the first
    tick, so the relationship is drawn as a line and needs no arrow glyph,
    which is how every other connection on this page is drawn.
    Amber has one role here and it is the one .trail already sets: the
    last station of a run, the one it ends on. Review is that station, and
-   nothing else in the note is accented. */
+   nothing else in the note is accented.
+   WHERE IT SITS: last in #walk, under the worked chain, which is the
+   block above it on screen in both modes. With the rail active the four
+   moments collapse to one view, so source adjacency is not screen
+   adjacency and the note has to be measured where a reader meets it.
+   It closes the section, so its own bottom air is the section's. */
 .pl5-hand{
-  margin-top:clamp(22px,2.6vw,34px);
-  margin-bottom:clamp(34px,4vw,52px);
+  margin-top:clamp(34px,4vw,52px);
+  margin-bottom:0;
 }
 /* the two stages this follows from, named in the page's own words and at
    label size: a label may not inherit a reading size (29.2) */
@@ -4783,24 +4788,26 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
   content:"";position:absolute;left:0;top:calc(100% - clamp(22px,2.6vw,30px));
   width:1px;height:clamp(22px,2.6vw,30px);background:var(--line-2);
 }
-/* One hairline carries the note: the stations hang from it on the left
-   and the sentence hangs from the same line on the right, which is the
-   pairing the walk's own captions and INPUT/OUTPUT rows already use. The
-   rule sits on the row rather than on each station because these three
-   labels never wrap at any width the site supports, and the row is sized
-   by what hangs from it: a hairline that runs on past the last thing
-   under it promises something at its far end, which is the lesson 32.1
-   records on the About fold. fit-content takes the sentence's own measure
-   below 901px and the two-column extent above it, so the rule ends on the
-   text at both. */
-.pl5-hand-row{border-top:1px solid var(--line);width:fit-content;max-width:100%}
+/* THE RULE BELONGS TO THE STATIONS, and to nothing else. Each station
+   draws its own top hairline across its own extent and the separation is
+   padding rather than gap, so the three abut into one continuous line
+   that STOPS at Review, the last label on it (the last station drops its
+   trailing padding, so the rule and the word end on the same x). The
+   first cut drew the rule on the row and let the row take the width of
+   its content, which ran the hairline about 600px past Review and ended
+   it in air under the sentence. A hairline that runs on past the last
+   thing hanging from it promises something at its far end, which is the
+   lesson 32.1 records on the About fold and the lesson .trail records for
+   a wrapped row. The sentence beside the stations takes no rule: it is
+   the note's reading, not a fourth station. */
 .pl5-hand-set{
   display:flex;flex-wrap:wrap;gap:0;margin:0;padding:0;list-style:none;
   font:500 var(--fs-label)/1 var(--mono);letter-spacing:.18em;
   text-transform:uppercase;color:var(--ink-dim);
 }
 .pl5-hand-set li{
-  position:relative;padding:14px clamp(20px,3vw,44px) 0 0;
+  position:relative;border-top:1px solid var(--line);
+  padding:14px clamp(20px,3vw,44px) 0 0;
 }
 .pl5-hand-set li::before{
   content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3);
@@ -4814,11 +4821,14 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
   font-size:var(--fs-small);color:var(--ink-mute);
 }
 @media (min-width:901px){
-  /* Stations left, sentence right, both opening on the same rule: three
-     stations, one gap, one measure, and the rule ends there. */
+  /* Stations left, sentence right, opening on the same top: the station
+     run is as wide as its three labels and the reading sits beside it.
+     The first track is max-content and the row is packed to the start,
+     because an `auto` track absorbs the leftover space and pushed the
+     sentence 380px clear of the station it belongs to. */
   .pl5-hand-row{
-    display:grid;grid-template-columns:minmax(0,auto) clamp(300px,40vw,540px);
-    column-gap:clamp(32px,4vw,60px);align-items:start;
+    display:grid;grid-template-columns:minmax(0,max-content) clamp(300px,40vw,540px);
+    column-gap:clamp(32px,4vw,60px);align-items:start;justify-content:start;
   }
   /* the sentence opens on the same baseline as the station labels beside
      it: 11px mono over 1 and 14.5px sans over 1.6 do not meet at the same

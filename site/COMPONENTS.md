@@ -3542,7 +3542,7 @@ Three notes worth carrying forward:
 ### Platform and Home (section 35, pl5- and hv5-)
 
 The round's two supporting pages. Solutions carries the commercial story
-in full (section 34); Platform gets one small element beside the
+in full (section 34); Platform gets one small element at the foot of the
 capability walk, Home gets one line of copy, and that is the whole of the
 addition here. No new section, no new diagram, no new page and no new
 device on either. Nothing in sections 01 to 34 was edited, no token was
@@ -3559,12 +3559,12 @@ caption, `alt` or `aria-label` moved, and the four stage texts, plates,
 captions and INPUT/OUTPUT pairs of the walk are exactly as section 31
 left them.
 
-#### The note under the walk, and the shape it is not (35.1)
+#### The note that closes the walk, and the shape it is not (35.1)
 
 Two shapes were open: extend the walk itself to MONITOR, ANALYZE,
 SCENARIO, DECIDE, ACT, REVIEW as one station line with a return loop, or
-keep the four stages and hang a compact note under them for what the
-decision hands over. **The note is the one built, for three reasons that
+keep the four stages and close the section with a compact note for what
+the decision hands over. **The note is the one built, for three reasons that
 are already law in this file.**
 
 1. **The page prints one set of stage words, and the rail is where they
@@ -3587,7 +3587,7 @@ are already law in this file.**
    figure; here it is a sentence.
 
 **The note is a note, never a second walk, binding.** It names the two
-stages it follows from once, above the rule, as the place it hangs from,
+stages it follows from once, above the rule, as the place it starts from,
 and carries three stations that the page has not printed before: Owner,
 Action, Review. It adds no stage word to the walk and takes none away.
 
@@ -3604,37 +3604,46 @@ spends its accent on the SELECTED station and this note spends its accent
 on the terminal one: two components, one role each, which is what the
 accent ceiling asks for.
 
-**The rule ends where the note ends, at every width.** Above 901px the
-stations take the left of one hairline and the sentence takes the right
-of the same hairline, over a measure of at most 540px. Below 901px the
-sentence sits under the stations and takes its own measure. Either way
-the row is `width:fit-content` and the hairline stops on the last thing
-hanging from it, at 786px of the page's 1152 at 1440 and at 622 of 712 at
-760. A hairline that runs on past that promises something at its far end,
-which is the lesson 32.1 records on the About fold: the first cut of this
-note ran the rule the full content width and left 322px of it empty at
-1440, and the second left 90px empty through the 760 to 900 band.
+**The rule belongs to the stations and ends on Review, binding.** Each
+station draws its own top hairline across its own extent, the separation
+is padding rather than gap so the three abut into one line, and the last
+station drops its trailing padding, so the rule and the word REVIEW end
+on the same x. Measured: the rule's right edge and the REVIEW label's
+right edge are both 376 at 1440, 287 at 1280, 231 at 1024, 224 at 902 and
+210 at 600. The sentence beside the stations takes no rule of its own;
+it is the note's reading, not a fourth station. Above 901px the station
+run is a `max-content` grid track with the row packed to the start, so
+the reading sits beside the run rather than at the far side of the page;
+an `auto` track absorbs the leftover space and put 380px between Review
+and the sentence that explains it.
 
-**Where it sits, and why the walk's script does not notice it.** In the
-markup the note is the next sibling after the fourth moment and before
-`.pl-deliv`. The script inserts `.px-walk` BEFORE the first moment and
-then moves the four moments into it, so the note ends up after the whole
-evidence area and inside neither it nor a panel. Verified with JS on:
-`.px-walk` does not contain `.pl5-hand`, the rail still builds four tabs
-with `aria-selected` and a roving `tabindex`, ArrowRight still moves the
-selection to view 02, and the note prints unchanged under whichever view
-is open. With JS off all four moments print in full, the rail does not
-exist, and the note prints under the fourth moment exactly as it does
-with JS on (102px at 1440, both ways). It carries no control, no state
-and no transition of its own, so `prefers-reduced-motion` has nothing to
-switch off in it.
+**Where it sits, and the rule that placed it.** The note is the last
+element of `#walk`, under the worked chain, whose own last stations are
+05 Action and 06 Value. **A block's neighbours on this page are the ones
+on SCREEN, not the ones in the source**, because the rail collapses the
+four moments to one view: with JS on, the block above anything placed
+after the fourth moment is whichever moment is selected, which at rest is
+the globe captioned "the monitoring screen". A note headed DECIDE
+&middot; ACT under a monitoring plate is words contradicting the picture
+touching them. Under the chain there is one neighbour in both modes and
+it is the right one, so the note reads as what a decision hands over once
+the worked example has run.
+Verified with JS on: `.px-walk` does not contain `.pl5-hand`, the rail
+still builds four tabs with `aria-selected` and a roving `tabindex`,
+ArrowRight still moves the selection to view 02, and a scrolling capture
+shows the chain frame directly above the note at 1440, 1280, 1024, 902,
+760 and 600 and at 390. With JS off all four moments print in full, the
+rail does not exist, and the note prints in exactly the same place. It
+carries no control, no state and no transition of its own, so
+`prefers-reduced-motion` has nothing to switch off in it.
 
-**The second placement that was considered.** Directly under the "From
-developments to action" chain, which is the page's other home for this
-idea. Rejected: that chain is a worked example that already ends in
-Value, and a handover hanging under it would read as a seventh row of the
-example rather than as a statement about the walk's own stages. One
-placement, and it is the one the stages are on.
+**The two placements that were not taken.** Between the fourth moment and
+the delivery exhibits, which is where the note first shipped and which
+the rail turns into "under the monitoring plate" (above); and after
+`.pl-deliv`, which would separate the note from the chain by the report
+and the daily brief, two exhibits about how work leaves the platform.
+One placement, and it is the one the reader arrives at with the decision
+already made.
 
 #### Home: one line, and no rule to go with it (35.2)
 
@@ -3660,21 +3669,31 @@ that says so.
 
 #### Measured, at 1440 and at 390
 
+Measured on the merged tree, after the fix pass below.
+
 | | 1440 before | 1440 after | 390 before | 390 after |
 |---|---|---|---|---|
-| Platform page | 12829 | **13017** (+1.5%) | 19245 | **19450** (+1.1%) |
-| Home page | 11347 | **11374** (+0.2%) | 14048 | **14101** (+0.4%) |
+| Platform page | 12849 | **13002** (+1.2%) | 19380 | **19562** (+0.9%) |
+| Home page | 11347 | **11374** (+0.2%) | 14132 | **14185** (+0.4%) |
 | Home `#shared` | 631 | **657** | 838 | **891** |
-| the note itself | n/a | **102** | n/a | **149** |
+| the note itself | n/a | **101** | n/a | **149** |
 
-Platform pays 188px at 1440 for the note and its two runs of ground, and
-the note itself is 102px of that: the rest is the gap that separates it
-from the walk above and from the delivery exhibits below, both taken from
-the page's own dense register rather than from a fixed number. Home is
-27px longer at 1440 and 53px at 390, which is one line of the reading
-column at the wide width and two on the phone. `scrollWidth` equals the
-viewport on both pages at both widths, measured through a 390px iframe
-inside a wider window as the method note above requires.
+Platform pays 153px at 1440 for the note and the one run of ground above
+it, and the note itself is 101px of that. It closes its section, so it
+spends nothing below: the section's own padding is the air under it,
+which is why this is cheaper than the first cut at 188px. Home is 27px
+longer at 1440 and 53px at 390, which is one line of the reading column
+at the wide width and two on the phone. `scrollWidth` equals the viewport
+on both pages at 390, measured through a 390px iframe inside a wider
+window as the method note above requires.
+
+**The before figures are the same tree with `.pl5-hand` removed from the
+DOM and the layout read back**, which is the only way to price a block
+against a tree that cannot be reverted. Both readings come from the same
+browser build: chromium and chrome-headless-shell do not agree to the
+pixel on a page this long (20px at 1440, 134px at 390 on Platform), so a
+before and an after captured with different binaries is not a delta.
+Stated once here because every number in this subsection depends on it.
 
 #### Not done, deliberately
 
@@ -3692,3 +3711,24 @@ inside a wider window as the method note above requires.
 - **The chain (`.chain-list`) is untouched**, including its six items and
   its ending on Value. It is a worked example and it was already correct.
 - **No new chrome, no new colour, no new dependency, no new asset.**
+
+#### The fix pass (2026-09-20, after review)
+
+Two defects, both found by rendering the page and scrolling it rather
+than by reading the markup.
+
+| Fix | What was wrong |
+|---|---|
+| The note moved from after the fourth moment to the foot of `#walk`, under the worked chain | with the rail active the four moments are one view, so the block above the note was the selected moment, and at rest that is the globe captioned "the monitoring screen". `DECIDE &middot; ACT` printed directly under a monitoring plate: source adjacency is not screen adjacency, and the note has to be placed where a reader meets it |
+| The hairline moved from the row to the three stations | it ran about 600px past REVIEW at 1440 and ended in air under the sentence. The rule now stops on the last label, and the reading beside it carries no rule |
+
+A third thing came out of the same look: an `auto` grid track absorbs the
+leftover space, which had put 380px between Review and the sentence that
+explains it once the row stopped being `fit-content`. The track is
+`max-content` and the row is packed to the start.
+
+**Not this section's to fix, recorded here because the walk found it.**
+Between 981px and about 1080px the page scrolls horizontally by 14px, and
+the overflow is `.site-head .head-right` with its primary button, which is
+chassis and identical with the note removed (`scrollWidth` 1038 either
+way at 1024). It is on every page, not this one.
