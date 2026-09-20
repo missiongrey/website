@@ -96,10 +96,21 @@
   <section class="sec" id="breadth" aria-labelledby="breadth-h" style="padding-top:0">
     <div class="wrap">
       <p class="rule-label">External intelligence</p>
-      <div class="sec-head reveal" style="margin-top:44px">
-        <p class="eyebrow">Global to local, macro to micro</p>
-        <h2 id="breadth-h">External change arrives on four levels.</h2>
-        <p>External intelligence is what sits outside your organization and can still change a decision. One local decision often has to be read through several levels at once.</p>
+      <!-- The section head and one real-world plate share a rule (stylesheet
+           31.1); the plate's chrome is in 33.2. The image is a published NASA
+           data product of a real infrastructure failure, used as context for
+           the words beside it, and it carries its source in a metadata line.
+           Its credit and licence are recorded in assets/texture/CREDITS.md. -->
+      <div class="pf-ext">
+        <div class="sec-head reveal" style="margin-top:44px">
+          <p class="eyebrow">Global to local, macro to micro</p>
+          <h2 id="breadth-h">External change arrives on four levels.</h2>
+          <p>External intelligence is what sits outside your organization and can still change a decision. One local decision often has to be read through several levels at once.</p>
+        </div>
+        <figure class="pf-fig reveal">
+          <div class="pf-plate"><img src="../../assets/texture/iberian-blackout-black-marble.jpg" width="1800" height="1200" alt="A nighttime lights map of southern Spain during a regional power blackout: scattered white settlement lights on a black field, with the south coast drawn as a thin pale line"></div>
+          <figcaption class="pf-cred">NASA Black Marble, NASA Goddard Space Flight Center</figcaption>
+        </figure>
       </div>
 
       <div class="frame reveal"><span class="tick"></span>
@@ -163,7 +174,6 @@
           <p class="stage-num">01 &middot; MONITOR</p>
           <h3>What is changing.</h3>
           <p>Signals collected around the clock: regulation, markets and technology, political developments, supply chains and local conditions, company activity, specialist sources and physical&#8209;world data.</p>
-          <p class="stage-io"><span><b>INPUT</b> THE WORLD</span><span><b>OUTPUT</b> SIGNAL</span></p>
         </div>
         <div class="stage-media">
           <figure class="shotfig">
@@ -172,6 +182,7 @@
               <div class="win-body focus-globe"><img src="../../assets/product-screenshot-globe.jpg" width="1920" height="1040" loading="lazy" alt="Global monitoring on a live globe with selectable tracking layers for satellites, AIS vessels, news events, reports, natural hazards, military sites, maritime chokepoints and energy infrastructure"></div>
             </div>
             <figcaption class="win-cap">The monitoring screen &middot; tracked events and infrastructure on one globe, layer by layer<span class="cap-detail">&middot; shown as a detail</span></figcaption>
+            <p class="stage-io pf-io"><span><b>INPUT</b> THE WORLD</span><span><b>OUTPUT</b> SIGNAL</span></p>
           </figure>
         </div>
       </div>
@@ -181,7 +192,6 @@
           <p class="stage-num">02 &middot; ANALYZE</p>
           <h3>What it means for you.</h3>
           <p>Mission Grey connects a signal to your exposure: the entities involved, their relationships and history, and the assumptions your organization already holds. The knowledge graph keeps that structure persistent, quantitative models carry the numbers, and Guild experts weigh in where context decides the answer.</p>
-          <p class="stage-io"><span><b>INPUT</b> SIGNAL</span><span><b>OUTPUT</b> ASSESSMENT</span></p>
         </div>
         <div class="stage-media">
           <figure class="shotfig pl-detail">
@@ -190,6 +200,7 @@
               <div class="win-body focus-graph"><img src="../../assets/product-screenshot-knowledge-graph.png" width="1920" height="1037" loading="lazy" alt="A knowledge graph open in the platform, shown as a detail: a breadcrumb naming the company being viewed with its entity type tag, an entity search field beside it, and the upper edge of the network of shaped and colored nodes joined by relationship lines"></div>
             </div>
             <figcaption class="win-cap">The knowledge graph &middot; the company named in the breadcrumb, and the network the record holds around it<span class="cap-detail">&middot; shown as a detail</span></figcaption>
+            <p class="stage-io pf-io"><span><b>INPUT</b> SIGNAL</span><span><b>OUTPUT</b> ASSESSMENT</span></p>
           </figure>
         </div>
       </div>
@@ -199,7 +210,6 @@
           <p class="stage-num">03 &middot; DECIDE</p>
           <h3>What may happen, and what to do.</h3>
           <p>Multi&#8209;actor simulation sets out what could happen and what you would do about it, run with the actors who would be in the room and tested against the way they behave. Each actor carries the strategic options open to it, primary, alternative and wildcard, with the reasoning under each one.</p>
-          <p class="stage-io"><span><b>INPUT</b> ASSESSMENT</span><span><b>OUTPUT</b> DECISION</span></p>
         </div>
         <div class="stage-media">
           <figure class="shotfig">
@@ -208,6 +218,7 @@
               <div class="win-body focus-sim"><img src="../../assets/product-screenshot-simulation.png" width="1920" height="1036" loading="lazy" alt="Multi-actor scenario simulation of an oil and gas coalition responding to an escalation, with primary, alternative, and wildcard strategic options"></div>
             </div>
             <figcaption class="win-cap">Scenario simulation &middot; how the actors in a situation respond, with the strategic options each one has<span class="cap-detail">&middot; shown as a detail</span></figcaption>
+            <p class="stage-io pf-io"><span><b>INPUT</b> ASSESSMENT</span><span><b>OUTPUT</b> DECISION</span></p>
           </figure>
         </div>
       </div>
@@ -218,7 +229,6 @@
           <h3>How intelligence reaches the organization.</h3>
           <p>Intelligence arrives as reports and executive briefings, dashboards and alerts, role&#8209; and customer&#8209;specific applications, and agents that route what changed to the person who owns it. Through the <a class="ilink" href="/api/">API</a> it can flow directly into the views, workflows and systems where decisions are made.</p>
           <p>An application built around one customer's decision environment is the operational form of that: the same intelligence layer, <a class="ilink" href="#apps">shaped around their business</a>.</p>
-          <p class="stage-io"><span><b>INPUT</b> DECISION</span><span><b>OUTPUT</b> ACTION</span></p>
         </div>
         <div class="stage-media">
           <figure class="appfig">
@@ -227,6 +237,7 @@
               <div class="appshot pl-evcrop"><img src="../../assets/intelligence-app-space-infrastructure.jpg" width="1920" height="1032" loading="lazy" alt="An intelligence application built for one customer: a Southeast Asia space and infrastructure executive overview with a sovereignty risk index, an infrastructure expansion score, maritime tension and cable resilience levels, AI infrastructure growth, regulatory fragmentation, and an ASEAN signal geography below them"></div>
             </div>
             <figcaption>Example &middot; satellite, telecom, subsea cable, maritime and regulatory intelligence around one business environment &middot; figures illustrative</figcaption>
+            <p class="stage-io pf-io"><span><b>INPUT</b> DECISION</span><span><b>OUTPUT</b> ACTION</span></p>
           </figure>
         </div>
       </div>
@@ -287,7 +298,7 @@
         </figure>
       </div>
 
-      <div class="net" style="margin-top:clamp(44px,5.5vw,64px)">
+      <div class="net" style="margin-top:clamp(32px,3.8vw,46px)">
         <div class="reveal">
           <p class="eyebrow" style="margin-bottom:18px">An enterprise example</p>
           <h3 class="net-lede">Several developments, one decision.</h3>
@@ -485,7 +496,7 @@
         </div>
       </div>
 
-      <p class="net-partners reveal" style="margin-top:clamp(40px,5vw,56px)"><b>Research partnerships</b><br>Cambridge Judge Business School &middot; Aalto University &middot; Tampere University</p>
+      <p class="net-partners reveal" style="margin-top:clamp(30px,3.6vw,42px)"><b>Research partnerships</b><br>Cambridge Judge Business School &middot; Aalto University &middot; Tampere University</p>
     </div>
   </section>
 

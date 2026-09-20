@@ -2581,7 +2581,151 @@ range. Nothing in sections 01 to 28 was edited.
 
 ### Platform (section 31)
 
-(written by the platform builder)
+Platform is the analytical page, so this round's object was the two things
+the brief names for it: stop the walk reading as a sequence of giant
+product screenshots (brief 9), and put one piece of real external material
+on the page where it earns its place (briefs 10 and 11). Everything below
+is composition and density on top of section 29's ladder and the round-ten
+rail in section 27, neither of which was edited. **No word on the page
+changed.** Rendered word lists before and after are identical at 1440 and
+at 390 except the eight words of the image credit
+(`NASA Black Marble, NASA Goddard Space Flight Center`), and the one alt
+text that arrived with the image; nothing was removed, reworded or
+reordered, and the UTC clock is the only other string that differs between
+two captures. The rail still prints MONITOR, ANALYZE, DECIDE, ACT and the
+section eyebrow is untouched.
+
+**The evidence area is a crop, and the crop has a ceiling, binding.** Round
+ten made the four moments one selectable view; what was left was their
+height. At 1440 the globe printed **736px** and the simulation **755px**,
+four fifths of a viewport for one screenshot. Both are re-cut, stated in
+source pixels the way every crop on this site is stated, and **no plate in
+the walk now passes 0.56 of a 900px viewport**:
+
+| Stage | Source rect | At 1440 | Before |
+|---|---|---|---|
+| 01 MONITOR | x 296 to 1920, y 130 to 840 of 1920x1040 | 503px | 736px |
+| 02 ANALYZE | unchanged (22.2c, 772x250) | 297px | 297px |
+| 03 DECIDE | x 360 to 1880, y 38 to 624 of 1920x1036 | 443px | 755px |
+| 04 ACT | unchanged (22.4, 1920x566) | 339px | 339px |
+
+The globe opens under the projection toggle, which is a view control
+rather than evidence, and ends in the gap under `Naval` and above
+`Spaceports`, so no layer row is cut in half; the sphere is cut by the
+plate, which is what this site already does with a globe. The simulation
+keeps the scenario title bar whole (round seven) and ends in the **15px
+gap the product leaves between the primary option and the alternative
+one**, which was measured off the asset with a row scan rather than
+guessed: the actor list keeps its own bottom rule and no line of reasoning
+is sliced. What each caption promises is inside its rect, which is the
+condition a crop has to meet before the caption may stay.
+
+**A crop that is already a crop does not get re-cut** to make a rule look
+tidy. The knowledge graph and the example application were cut in rounds
+nine and ten to 298px and 339px and are untouched.
+
+**The annotations are moved, never written, binding.** The brief asks for
+one or two annotations that explain what matters and forbids new wording
+for them, so nothing was written: the two annotations each stage already
+owns are moved to the foot of the plate they annotate, exactly as round
+ten moved the station line onto the rail. The figure's own caption takes
+the left of one hairline under the crop and the stage's INPUT/OUTPUT pair
+takes the right of the same hairline, with a station tick at its leading
+edge. Separation is padding and never a column gap, so the two rules abut
+into one line (`capRight` and `ioLeft` both measure 801px at 1440). The
+pair moves in the markup, from the copy column into the `<figure>` after
+the `figcaption`, which is where it now belongs: it annotates the
+evidence, not a paragraph two hundred pixels above it. This supersedes
+round seven's placement of `.stage-io` for the four walk moments only;
+every other `.stage-io` on the site is untouched.
+
+**Nothing is drawn over the product pixels, binding.** A label sitting on
+top of a real screenshot inside a `.window` reads as part of the product's
+own interface, which is a claim about the product that the honesty tiers
+exist to stop. The leader-onto-a-mark device (section 19.4) stays what it
+was: a device for the drawn and example-application registers, where the
+site owns the artwork.
+
+**The sourced report could not be cropped, and that is a finding rather
+than an omission.** It is the one plate on the page still over 700px
+(711px at 1440). Its caption names its version control, which is the top
+edge of the asset, and its sources panel, which is the bottom edge, so
+**every controlled-height crop of it describes something the reader cannot
+see**, and the caption may not be rewritten this round. Cropping the
+bottom to drop a sliced source line was checked and rejected too: the row
+scan shows source `[3]` is complete in the asset, so the cut would delete
+a whole source to save 17px. The available fixes both need a word: either
+the wide caption clause loses `and the sources panel under it`, or the
+phone clause (which already names the head of the report alone) is
+promoted to every width. **That is a chairman's call, not a builder's.**
+
+**Density, and what was deliberately left alone.** The page already
+carries `data-density="dense"` from section 29. On top of that: the walk
+moment's own padding block (84 to 42 at 1440) and the view's opening gap
+(38 to 26), since one moment is read at a time under a rail that already
+separates it from the head; the delivery block (80 to 58); the lens, the
+worked chain, the instrument index, the agents block and the fold's
+eyebrow. **`.rx-stack` was NOT tightened**: Home carries one too, and a
+page builder does not reach into another page through a shared component.
+
+**One documentary plate, and the formula it breaks.** See "Platform
+texture (33.2)" below for the asset and its chrome. The composition
+decision belongs here: `#breadth` opened with the page's fourth
+consecutive `label -> eyebrow -> headline -> dek -> blank -> bordered
+graphic`, which is the formula brief 19 names, and it is the one place on
+the page that talks about the outside world in its own voice. The head
+keeps every word and takes the left of the chapter rule; the plate takes
+the right of it. Two unequal columns because the information is two kinds,
+an argument and a piece of evidence, which is the asymmetry brief 6 asks
+for rather than an offset for its own sake. Under 1101px the plate drops
+under the head and opens its rect rather than scaling down.
+
+**Measured, at 1440 and at 390.**
+
+| | Before | After |
+|---|---|---|
+| page height at 1440 | 13256 | **12808** (-3.4%) |
+| page height at 390 | 19638 | **19641** (+3px) |
+| tallest walk plate at 1440 | 755 | **503** |
+| `scrollWidth` at 390 | 390 | 390 |
+
+The page is 448px shorter at 1440 while carrying a new plate, and the
+three quarters of that which the two crops contribute are not visible in
+the page total, because only the selected view is in the layout: the
+simulation's 312px are a height the reader meets on selection. At 390 the
+page is flat rather than shorter, and that is the honest statement of it:
+the phone gained the documentary plate (about 240px with its credit) and
+the density work gave back about the same.
+
+**Above the 900px fold at 1440** the page now reaches the eyebrow, the
+h1, the dek, both calls to action, the chapter rule, the section head and
+the documentary plate with its credit, and the head of the levels frame.
+The trade is visible and deliberate: the fold gives up about one row of
+the lens figure and gains the one piece of the real world on the page.
+
+**Not done, deliberately.**
+
+- **No "reveal more UI" affordance.** The brief allows one. A control
+  whose whole effect is that the plate gets taller would re-introduce the
+  full-height screenshot the crop exists to remove, and round ten already
+  ruled that a control with nothing behind it is noise in a screen reader.
+  If a reader ever needs the whole screen, the honest form is a link to
+  the product, not a disclosure on a picture.
+- **The second texture asset** (a fragment of a published export-control
+  rule) was available and is not used. One moment per page is the ceiling
+  the round sets, the page's one place for a document fragment would be
+  beside the worked chain, and that chain is a drawn `Illustrative view`:
+  a real document laid against an illustrative figure invites the reader
+  to read the figure as real too.
+- **The phone crop of the globe** (section 17) still shows about a third
+  of dark sky beside the tracking panel. It is a readability trade made in
+  round six (0.81 of source; widening it to reach the globe's marks takes
+  the layer labels under 8px) and re-opening it is not this round's brief.
+- **No new control, no new motion, no new colour.** Reduced motion and
+  no-JS were both verified: with JS off all four moments print in full
+  with their INPUT/OUTPUT pairs and the texture plate renders at its
+  static size; under `prefers-reduced-motion` nothing in 31 or 33.2
+  animates at all.
 
 ### About and Guild (section 32)
 
@@ -2600,7 +2744,57 @@ The asset register is assets/texture/CREDITS.md. One paragraph per page builder 
 
 #### Platform texture (33.2)
 
-(written by the platform builder)
+One plate, `assets/texture/iberian-blackout-black-marble.jpg`: a NASA
+Black Marble nighttime-lights map of Andalusia on the night of the Iberian
+peninsula blackout, in `#breadth`, beside the head "External change
+arrives on four levels." It is a **data product rather than a
+photograph**, which is the honest texture for a page about what a platform
+emits, and it is a real, published, citable artefact, which is what
+separates it from the fabricated evidence brief 11 forbids. It is context
+for the words beside it and it is never a hero or a wallpaper. US federal
+government work, public domain; full credit, licence, source URL and the
+acquisition date are in `assets/texture/CREDITS.md`, and the date is
+printed on no page.
+
+**The chrome is an edge and a credit, and nothing else, binding.** No
+frame ticks, no frame bar, no `Illustrative view`. The three honesty tiers
+are for the product (`.window`), for drawn instruments (`.frame`) and for
+illustrative documents (`.sheet`); a real thing from outside is none of
+them, and dressing it in instrument chrome would say the site drew it. It
+takes the `--line-2` hairline every photograph on this chassis takes,
+because on a light ground an image separates itself with a rule rather
+than with a shadow.
+
+**The credit is metadata, so it is the metadata voice, and it is not
+uppercased.** `.pf-cred` is mono at `--fs-meta`, `--ink-dim`, hanging from
+an 8px hairline tick. Every other mono line on the page is uppercase; this
+one is not, because it is a name and an institution printed as the
+register requires them, and shouting a source is not crediting it. It
+carries **no accent**: amber means active, changed, selected or decision
+point on this site, and a credit is none of those.
+
+**What was done to the file, and what was not.** Grayscale (the source is
+already near-monochrome: white settlement points on black with one thin
+cyan coastline stroke), resize 2871x1914 to 1800x1200, a sigmoidal
+contrast curve at (5, 18 percent) to lift the settlement points onto a
+light page, JPEG quality 80, 104KB. **Geometry is untouched: no crop into
+the file, no compositing, no overlay, nothing added to or taken out of the
+data.** The exact command is recorded in CREDITS.md so the file can be
+regenerated from the source at any time. The full credit line and the
+source URL are written into the JPEG's own metadata, so the file carries
+its provenance even when it leaves this repo.
+
+**The page shows a rect of the frame, stated like every other crop here**:
+source y 330 to 1080 at full width on the wide layout (`aspect-ratio:12/5`,
+`top:-44%`), and y 188 to 1200 under 1101px (`aspect-ratio:16/9`,
+`top:-18%`), where the plate has the column to itself. The rect opens up
+rather than the plate scaling down, for the same reason every phone crop
+on this site changes rather than shrinks.
+
+**The alt text describes the real image, not the subject's significance**:
+scattered white settlement lights on a black field with the south coast
+drawn as a thin pale line. A reader who cannot see it gets the picture,
+not an argument about it.
 
 
 

@@ -3587,7 +3587,167 @@ body[data-density="structured"]{--sec-pad:clamp(70px,7.6vw,104px);--head-gap:cla
 /* ---- end 30 ---- */
 
 /* ============ 31 ROUND ELEVEN PLATFORM (2026-09-20): analytical, one crop, annotated ============ */
-/* Owner of this section: the platform builder. */
+/* Owner of this section: the platform builder. Rules: the page's register
+   is denser, analytical, technical (brief 15); the capability walk keeps
+   MONITOR / ANALYZE / DECIDE / ACT and stops being a sequence of
+   full-height product plates (brief 9); padding around the diagrams comes
+   in; the label/headline/blank/bordered-graphic formula is broken where
+   the page's own information gives a reason to break it (briefs 3, 6, 19).
+   Built ON section 29's ladder and density tokens, never editing them, and
+   on the round-ten rail in section 27, which is unchanged. No word on the
+   page changed: everything here is composition, plus one documentary plate
+   whose only new text is its source credit and its alt (33.2). */
+
+/* ---- 31.1 the external-context head, and the one real-world plate ----
+   #breadth opened with the page's fourth consecutive
+   label -> eyebrow -> headline -> dek -> blank -> bordered graphic, which
+   is the formula brief 19 names. It is also the one place on the page that
+   talks about the outside world in its own voice, so it is where the
+   round's documentary material belongs (briefs 10 and 11). The head keeps
+   every word and takes the left of the rule; a published nighttime-lights
+   map of a real regional blackout takes the right of it. That is the
+   asymmetry brief 6 asks for: two unequal columns because the information
+   is two kinds, an argument and a piece of evidence, not an offset for its
+   own sake. The plate's chrome is in 33.2, where the other pages' texture
+   chrome sits beside it.
+   The wrapper takes the chapter label's own gap, because `.rule-label +
+   .sec-head` (29.3) no longer matches through it, and hands the section's
+   head gap back at the bottom of the pair. */
+.rule-label + .pf-ext{margin-top:var(--label-gap)}
+.pf-ext{margin-bottom:var(--head-gap)}
+.pf-ext .sec-head{margin-top:0!important;margin-bottom:0}
+@media (min-width:1101px){
+  .pf-ext{
+    display:grid;grid-template-columns:minmax(0,6.6fr) minmax(0,5.4fr);
+    column-gap:clamp(32px,3.6vw,52px);align-items:start;
+  }
+  /* the head's 760px measure is for a head that owns the width; in a
+     column of its own the column is the measure */
+  .pf-ext .sec-head{max-width:none}
+}
+@media (max-width:1100px){
+  .pf-ext .pf-fig{margin-top:clamp(24px,3vw,34px)}
+}
+
+/* ---- 31.2 the capability walk: one crop, at a controlled height -------
+   Round ten made the four moments one evidence area with a station rail,
+   which stopped them being read as one texture. What was left is the
+   height of the plate the selected station opens: at 1440 the globe
+   printed 736px tall and the simulation 755px, which is four fifths of
+   the viewport for one screenshot and is the "giant product screenshot"
+   brief 9 names. Both are now cropped to the part that matters for their
+   stage, stated in source pixels, and no plate in the walk passes .56 of
+   a 900px viewport at 1440.
+   The knowledge graph (772x250, section 22.2c) and the example
+   application (1920x566, section 22.4) were already crops at 298px and
+   339px and are untouched: a crop that is already a crop does not get
+   re-cut to make a rule look tidy. */
+@media (min-width:601px){
+  /* MONITOR. Source x 296 to 1920, y 130 to 840 of a 1920x1040 asset:
+     the product's own content area (the sidebar goes, 22.2b), the globe's
+     lit band with its event marks, and the tracking panel from LIVE
+     TRACKING through MILITARY & STRATEGIC. It opens under the globe
+     projection toggle, which is a view control rather than evidence, and
+     it ends in the gap under Naval and above Spaceports, so no layer row
+     is cut in half. The sphere is cut by the plate, which is what this
+     site does with the globe: a figure is a view, not an object.
+     1624/710 = 2.29, so 503px at 1440 against 736 before. */
+  .pl-mom .win-body.focus-globe{aspect-ratio:1624/710}
+  .pl-mom .win-body.focus-globe img{left:-18.227%;top:-18.310%;width:118.227%}
+  /* DECIDE. Source x 360 to 1880, y 38 to 624 of a 1920x1036 asset: the
+     same left edge round seven cut (the sidebar again), the scenario
+     title bar whole, the actor list whole with its own bottom rule, and
+     the primary strategic option whole with the three lines of reasoning
+     under it. The cut falls in the 15px gap the product leaves between
+     the primary option and the alternative one, measured on the asset
+     rather than guessed, so the plate ends on the alternative's top edge
+     and no line of reasoning is sliced. What the caption promises, the
+     actors and the options each one has, is all inside the rect.
+     1520/586 = 2.59, so 443px at 1440 against 755 before. */
+  .pl-mom .win-body.focus-sim{aspect-ratio:1520/586}
+  .pl-mom .win-body.focus-sim img{left:-23.684%;top:-6.485%;width:126.316%}
+}
+
+/* ---- 31.3 the crop's foot carries the annotations ---------------------
+   Brief 9 asks for one or two short annotations that explain what
+   matters, and brief 8 of the dispatch forbids new wording for them. So
+   nothing is written: the two annotations each stage already owns are
+   MOVED to the foot of the plate they annotate, the way round ten moved
+   the station line onto the rail. The figure's own caption (what this
+   screen is, and what to look at in it) takes the left of one hairline
+   under the crop, and the stage's INPUT/OUTPUT pair takes the right of
+   the same hairline with a station tick at its leading edge. Word for
+   word the page is unchanged; what changed is that the pair now sits
+   against the evidence instead of closing a column of prose two hundred
+   pixels away from it.
+   Separation is padding and never a column gap, so the two rules abut
+   into one line across the plate's foot: the lesson `.cadence-v1`,
+   `.trail` and the round-ten rail all record.
+   Nothing is drawn OVER the product pixels. A label on top of a real
+   screenshot inside a `.window` reads as part of the product's own
+   interface, which is a claim about the product that the honesty tiers
+   exist to stop; the leader-onto-a-mark device (section 19.4) is for the
+   drawn and the example-application registers, where the site owns the
+   artwork. */
+@media (min-width:701px){
+  .stage.stage-stack.pl-mom figure{
+    display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:0;align-items:start;
+  }
+  .stage.stage-stack.pl-mom figure > .window,
+  .stage.stage-stack.pl-mom figure > .frame{grid-column:1/-1}
+  .stage.stage-stack.pl-mom figure > figcaption{
+    grid-column:1;margin-top:16px;padding:12px clamp(22px,2.8vw,44px) 0 0;
+    border-top:1px solid var(--line);align-items:start;
+  }
+  .stage.stage-stack.pl-mom .pf-io{
+    position:relative;grid-column:2;justify-self:end;
+    display:flex;flex-wrap:nowrap;gap:0 18px;max-width:none;
+    margin-top:16px;padding:12px 0 0 14px;border-top:1px solid var(--line);
+  }
+  .stage.stage-stack.pl-mom .pf-io::before{
+    content:"";position:absolute;left:0;top:-1px;width:1px;height:8px;background:var(--line-3);
+  }
+}
+@media (max-width:700px){
+  /* stacked, the pair keeps the rule it has carried since round seven */
+  .stage.stage-stack.pl-mom .pf-io{
+    display:flex;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);max-width:none;
+  }
+}
+
+/* ---- 31.4 the walk's own rhythm ---------------------------------------
+   A moment used to open with a full section's worth of air because four
+   of them were read in sequence. One is shown at a time now, under a rail
+   that already separates it from the head, so the air above and below the
+   evidence is the air around one figure and not around four. */
+.stage.stage-stack.pl-mom{padding-block:clamp(26px,3vw,42px)}
+html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
+.pl-mom .stage-media{margin-top:clamp(6px,1vw,14px)}
+
+/* ---- 31.5 the delivery exhibits, and the report that could not be cut --
+   The block's own padding comes in with the page. The sourced report is
+   the one plate on the page still printing over 700px tall, and it is
+   left whole deliberately: it is a portrait document whose caption names
+   its version control (the top edge of the asset) and its sources panel
+   (the bottom edge), so every controlled-height crop of it describes
+   something the reader cannot see, and the caption may not be rewritten
+   this round. The finding is recorded in COMPONENTS.md rather than fixed
+   with a crop that would make the caption false. */
+.pl-deliv{padding-block:clamp(34px,4vw,58px)}
+.pl-deliv-doc{margin-top:clamp(26px,3.2vw,40px)}
+
+/* ---- 31.6 padding around the diagrams ---------------------------------
+   Brief 3, on a page whose density register is already `dense` (29.4).
+   Each of these is a container that was carrying more air than content at
+   1440, and each is scoped so it cannot reach another page's copy of the
+   same component: the lens only exists inside a frame on this page, the
+   chain and the instrument index only exist here, and `.rx-stack` is
+   deliberately NOT touched because Home carries one too. */
+.frame .lens{padding:clamp(10px,1.4vw,16px) 0 clamp(12px,1.6vw,18px)}
+.frame .chain-list li{padding:13px 18px}
+.instr-list .instr{padding:16px 2px 18px}
+.sec .agents{margin-top:clamp(26px,3.2vw,38px)}
+.pl-fold .hero-eyebrow{margin-bottom:clamp(20px,2.4vw,32px)}
 
 /* ---- end 31 ---- */
 
@@ -3610,11 +3770,59 @@ body[data-density="structured"]{--sec-pad:clamp(70px,7.6vw,104px);--head-gap:cla
 /*                                                                    */
 
 /* ---- 33.2 platform (builder C, prefix pf-) ---- */
-
-/*                                                                    */
-/*                                                                    */
-/*                                                                    */
-/*                                                                    */
+/* One documentary plate on this page: a NASA Black Marble nighttime-lights
+   map of southern Spain on the night of a regional power blackout. It is a
+   DATA PRODUCT rather than a photograph, which is the honest texture for a
+   page about what a platform emits, and it is a real, dated, published
+   artefact, which is what separates it from the fabricated evidence brief
+   11 forbids. It is context for the words beside it (external change
+   arrives on four levels) and it is never a hero or a wallpaper.
+   The chrome is the site's existing treatment for an image on a light
+   ground, and nothing more: a `--line-2` hairline, because a photograph on
+   this chassis earns its edge from a rule rather than from a shadow, and a
+   metadata line under it naming the source. No frame ticks, no frame bar,
+   no `Illustrative view`: the three honesty tiers are for the product, for
+   drawn instruments and for illustrative documents, and this is none of
+   them. It is a real thing from outside, and the credit is what says so. */
+.pf-fig{margin:0}
+.pf-plate{
+  position:relative;overflow:hidden;
+  border:1px solid var(--line-2);background:var(--bg-2);
+  aspect-ratio:12/5;
+}
+/* The file is the published frame at 1800x1200, desaturated and
+   contrast-lifted to sit in the grey system, with its full credit in the
+   JPEG metadata. The page shows a rect of it, stated here the way every
+   other crop on this site is stated: source y 330 to 1080 at the frame's
+   own full width, which holds the inland light clusters and the whole
+   south coast. Geometry is untouched, nothing is composited, and no
+   overlay is drawn on it. */
+.pf-plate img{
+  position:absolute;left:0;top:-44%;display:block;
+  width:100%;height:auto;max-width:none;
+}
+@media (max-width:1100px){
+  /* stacked under the head the plate is the width of the column, so a
+     2.4:1 band would print as a letterbox strip: the rect opens up
+     instead of the plate scaling down. Source y 188 to 1200. */
+  .pf-plate{aspect-ratio:16/9}
+  .pf-plate img{top:-18%}
+}
+/* The credit is metadata, so it is the metadata voice: mono, --fs-meta,
+   dim, hanging from the plate under a hairline tick. It is NOT
+   uppercased, unlike the captions around it: it is a name and an
+   institution, printed the way the register requires them, and shouting a
+   source is not crediting it. It carries no accent, because amber means
+   active, changed, selected or decision point on this site and a credit
+   is none of those. Acquisition dates, licence and URL live in
+   assets/texture/CREDITS.md; no date is printed on any page. */
+.pf-cred{
+  position:relative;margin-top:11px;padding-left:14px;
+  font:400 var(--fs-meta)/1.6 var(--mono);letter-spacing:.06em;color:var(--ink-dim);
+}
+.pf-cred::before{
+  content:"";position:absolute;left:0;top:.55em;width:8px;height:1px;background:var(--line-3);
+}
 
 /* ---- 33.3 about (builder D, prefix ag-) ---- */
 
