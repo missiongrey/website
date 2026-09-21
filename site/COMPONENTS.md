@@ -944,7 +944,7 @@ cannot tell which one they want from two mono labels, so **every closing
 panel that offers a choice carries `.cta-notes`**: a two-column block under
 the button pair with one line per button, the button's own words as the mono
 label. Home, Platform, Solutions, Use cases, Guild, About, Partners, API,
-Insights and the eleven insight articles all carry it.
+Insights and the twelve insight articles all carry it.
 
 **Two deliberate exceptions.** `/contact/` is where `Request access` leads,
 so a panel there explaining the button the reader just followed is noise;
@@ -3745,3 +3745,16 @@ Between 981px and about 1080px the page scrolls horizontally by 14px, and
 the overflow is `.site-head .head-right` with its primary button, which is
 chassis and identical with the note removed (`scrollWidth` 1038 either
 way at 1024). It is on every page, not this one.
+
+## Article download control (2026-09-21)
+
+An article that publishes a file (the Guild Weak-Signal Snapshot series,
+`/insights/mission-grey-weak-signal-snapshot-<month>-<year>/`) carries ONE
+download control: `p.art-dl` under the cover figure, a `.btn.btn-primary`
+to the PDF with the `download` attribute, and the file facts beside it in
+the mono caption register (page count, edition). The cover is the PDF's
+page one, rendered at 900px wide, and takes `.art-cover.doc`: the image
+sits in an `a.art-sheet` download anchor instead of the paper `.mat` (the
+sheet has its own margins; a second frame reads as a scan), 340px wide like
+the newsletter cover, so the most clickable object on the page opens the
+file. Say "two pages" once; the caption is its home.
