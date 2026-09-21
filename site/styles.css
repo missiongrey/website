@@ -1828,7 +1828,7 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
 /* ---- 21.1 the member register ---- */
 /* The Guild's one figure, and the only one this section draws twice: a
    rule with one tick per member of the roster, in the roster's own
-   order. It measures something real (twenty-nine members, twenty-nine
+   order. It measures something real (thirty members, thirty
    ticks), which is the condition section 19 put on drawing a scale at
    all; a ruler that tracks nothing is a HUD graphic. The four accent
    ticks are the four members printed at plate scale further down the
@@ -1846,14 +1846,14 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
   position:relative;display:block;height:17px;margin-top:13px;
   border-top:1px solid var(--line-2);
   background-image:linear-gradient(to right,var(--line-2) 0 1px,transparent 1px);
-  background-size:calc(100% / 29) 9px;background-repeat:repeat-x;background-position:left top;
+  background-size:calc(100% / 30) 9px;background-repeat:repeat-x;background-position:left top;
 }
 /* the closing tick: a background repeat draws the leading edge of each
-   cell, so the twenty-ninth station has a tick and the rule's own end
+   cell, so the thirtieth station has a tick and the rule's own end
    does not. The register is a measure and a measure is closed. */
 .gd-reg-rule::after{content:"";position:absolute;right:0;top:0;width:1px;height:9px;background:var(--line-2)}
 .gd-reg-rule i{
-  position:absolute;top:-1px;left:calc(100% * (var(--n) - 1) / 29);
+  position:absolute;top:-1px;left:calc(100% * (var(--n) - 1) / 30);
   width:2px;height:17px;background:var(--accent);
 }
 
@@ -1918,7 +1918,7 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
 .gd-doms li::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
 
 /* ---- 21.5 the roster ---- */
-/* ONE list, twenty-nine entries, one markup. A featured entry is the
+/* ONE list, thirty entries, one markup. A featured entry is the
    same <li> carrying one extra class, so what the page treats as an
    editorial choice is an editorial choice in the source too: same
    fields, same profile link, same list semantics for a screen reader,
@@ -2829,7 +2829,7 @@ html.js .reveal.in .pl-run{transform:scaleX(1)}
 /* ---- 26.1 what this section deletes, and why ---- */
 /* Round nine printed four Guild members at plate scale ahead of
    twenty-four directory rows, marked those four in the fold register, and
-   printed two of eighteen core-team members at 112px ahead of sixteen at
+   printed two of seventeen core-team members at 112px ahead of fifteen at
    64px. Every one of those choices was editorial (regional and domain
    spread on Guild, reading order on About) and none of them was rank. It
    does not matter: a PERMANENT size difference between people in one
@@ -2992,7 +2992,7 @@ html.js .reveal.in .pl-run{transform:scaleX(1)}
 }
 
 /* ---- 26.4 About: one portrait size on the page, the same interaction ---- */
-/* The core team is one register of eighteen at 64px, the leads included.
+/* The core team is one register of seventeen at 64px, the leads included.
    The advisors were at 80px and are now at 64 as well. The hard rule only
    asks for equality WITHIN a group and the advisors are a real second
    group with their own rhythm (no role line, four across, portrait above
@@ -3028,7 +3028,7 @@ html.js .reveal.in .pl-run{transform:scaleX(1)}
 /* Hover does not exist here, so `.pi-on` is the whole model: tap a record
    to bring it forward, tap it again or tap the page to release. Nothing
    opens, nothing collapses, and the default state is twenty-eight (and
-   eighteen, and four) equal records exactly as on the desktop. */
+   seventeen, and four) equal records exactly as on the desktop. */
 @media (max-width:900px){
   /* both registers are one column here, so the right inset that separated
      them has nothing to separate. Restated rather than inherited: section
