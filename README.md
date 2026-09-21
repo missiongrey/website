@@ -119,6 +119,13 @@ cards in `/insights/#newsletters` link the previous editions from the same
 addresses. The latest edition is deliberately not linked: it is requested by
 mail through the contact page.
 
+The directory also holds the Guild Weak-Signal Snapshot series
+(`guild-weak-signal-snapshot-<month>-<year>.pdf`, from August 2026). Those
+are not newsletter issues: each one is attached to its own Insights article
+and is a direct download there, with the article's cover rendered from the
+PDF's page 1 into `assets/articles/`. The newsletter rotation below does not
+apply to them.
+
 Each edition also has a cover image under
 `assets/newsletters/<file>-cover.jpg`, a render of page 1 of the PDF with the
 white page margin trimmed off. There are two sizes, and which one an edition
