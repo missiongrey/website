@@ -421,13 +421,26 @@ because Pages serves it at every address.
 
 Social images: an article's `og:image` and `twitter:image` are that
 article's own cover, so a shared link previews the piece rather than the
-brand. Every other page uses `/assets/og-image.jpg`. Write both as
-root-relative paths; the build makes them absolute.
+brand. Every other page uses `/assets/share-card.jpg`, the light-theme card
+(2026-09-20). The filename is deliberate: LinkedIn, Slack and X refetch a new
+URL instead of serving their cached dark card, and `og-image.jpg` stays in
+the tree as a copy of the same card so links shared before the rename keep
+their image. Write both as root-relative paths; the build makes them
+absolute. Every page also carries `og:site_name`, `twitter:site`
+(`@MissionGrey`, the footer's X handle) and, on the section pages, the
+twitter title, description and image set; 404, Privacy, Terms and the
+articles rely on the `og:` fallback for the text.
 
 Structured data: the home page carries `Organization` + `WebSite`, each
 article carries `Article`, as `application/ld+json` in the head. Every value
 in them is a fact already printed on the page (h1, byline, `<time>`, cover
-image). Do not put anything in JSON-LD that a reader cannot see.
+image; the Organization `sameAs` list is exactly the channel and profile
+links the page prints, the footer's seven channels plus the G2 profile in
+the proof strip, never a booking or app link; its `description` is the Home
+lede). Do not put anything in JSON-LD that a
+reader cannot see. The schema logo is `assets/mission-grey-logo.png`, the
+ink version of the wordmark (the white file is for the header, where CSS
+turns it to ink); Google shows the logo on white.
 
 ### Consent notice (styles.css section 14)
 
