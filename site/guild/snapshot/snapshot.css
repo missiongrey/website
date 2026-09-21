@@ -192,6 +192,9 @@ h2{font:600 var(--fs-h2)/1.18 var(--serif);letter-spacing:-.012em;color:var(--na
 .cn-track{flex:1 1 auto;height:3px;background:rgba(20,43,69,.09)}
 .cn-fill{display:block;height:100%;width:var(--w);background:var(--teal)}
 .cn-val{flex:none;font:500 var(--fs-mark)/1 var(--mono);color:var(--navy);min-width:20px;text-align:right}
+/* One line under the connections list: the counts are answer-level, so a
+   pair can exceed the respondent count. */
+.panel-note{margin-top:10px;font:400 var(--fs-small)/1.5 var(--sans);color:var(--ink-3)}
 
 /* ============ 07 SIGNALS ============ */
 .signals{margin-top:22px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
@@ -359,6 +362,7 @@ h2{font:600 var(--fs-h2)/1.18 var(--serif);letter-spacing:-.012em;color:var(--na
   .evidence{margin-top:3px;gap:18px}
   .ev-note{margin-top:5px;padding-top:4px;font-size:calc(var(--pf)*8.6px);
     line-height:1.3;max-width:none}
+  .panel-note{margin-top:3px;font-size:calc(var(--pf)*8.6px);line-height:1.3}
   .chart,.conn{margin-top:4px}
   .chart li,.conn li{padding:1.4px 0}
   .ch-track{height:6px}
@@ -402,28 +406,29 @@ h2{font:600 var(--fs-h2)/1.18 var(--serif);letter-spacing:-.012em;color:var(--na
      carry comparable weight: page one runs masthead to the five signals,
      page two carries the indicators, the design rule, the bigger signal, the
      Guild and the note. Default printing is unaffected. */
-  body.two-page{--pf:1.22;--sec-gap:15px;--lh-body:1.32}
+  body.two-page{--pf:1.22;--sec-gap:14px;--lh-body:1.32}
   body.two-page .mh-logo{height:20px}
   body.two-page .mh-top{padding-bottom:9px}
-  body.two-page .mh-eyebrow{margin-top:10px}
-  body.two-page .mh-title{margin-top:8px;line-height:1.04}
-  body.two-page .mh-desc{margin-top:9px;line-height:1.42}
-  body.two-page .mh-evidence{margin-top:10px;padding:6px 0}
-  body.two-page .lead{margin-top:14px;padding:13px 18px}
+  body.two-page .mh-eyebrow{margin-top:9px}
+  body.two-page .mh-title{margin-top:7px;line-height:1.04}
+  body.two-page .mh-desc{margin-top:8px;line-height:1.42}
+  body.two-page .mh-evidence{margin-top:9px;padding:5px 0}
+  body.two-page .lead{margin-top:12px;padding:12px 18px}
   body.two-page .lead h2{margin-top:6px}
   body.two-page .lead p{margin-top:7px;line-height:1.42}
-  body.two-page .sec-head{padding-top:7px}
-  body.two-page .evidence{margin-top:9px;gap:26px}
-  body.two-page .ev-note{margin-top:10px;padding-top:7px;line-height:1.42}
+  body.two-page .sec-head{padding-top:6px}
+  body.two-page .evidence{margin-top:7px;gap:26px}
+  body.two-page .ev-note{margin-top:8px;padding-top:6px;line-height:1.42}
   body.two-page .chart,body.two-page .conn{margin-top:8px}
+  body.two-page .panel-note{margin-top:5px;line-height:1.36}
   body.two-page .chart li,body.two-page .conn li{padding:4px 0}
   body.two-page .ch-track{height:8px}
-  body.two-page .signals{margin-top:10px;gap:14px 26px}
-  body.two-page .sig{padding-top:9px}
-  body.two-page .sig p,body.two-page .sig-list,body.two-page .sig-inline{margin-top:5px;line-height:1.42}
+  body.two-page .signals{margin-top:8px;gap:11px 26px}
+  body.two-page .sig{padding-top:8px}
+  body.two-page .sig p,body.two-page .sig-list,body.two-page .sig-inline{margin-top:4px;line-height:1.42}
   body.two-page .sig-list li{margin-top:3px}
-  body.two-page .sig-key{margin-top:7px;line-height:1.38}
-  body.two-page .sig-mark{margin-top:7px}
+  body.two-page .sig-key{margin-top:6px;line-height:1.38}
+  body.two-page .sig-mark{margin-top:6px}
   body.two-page #indicators{break-before:page}
   body.two-page .baskets{margin-top:18px}
   body.two-page .basket{padding:18px 16px 20px}

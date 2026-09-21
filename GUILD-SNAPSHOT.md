@@ -30,7 +30,9 @@ restyle.
    connections as a share of the strongest pair. The reach list prints the
    share of respondents as a whole-number percent and nothing else beside
    the bar (Jouko, 2026-09-16: percentages only, no base line); the
-   connections list keeps its counts. Keep respondent reach and answer
+   connections list keeps its counts, with a one-line note under it saying
+   the counts are answer-level co-occurrences, so a pair can exceed the
+   respondent count (Jouko, 2026-09-21). Keep respondent reach and answer
    incidence labelled apart in the caption.
 4. Footer links are block 13. `CONFIG SITE_URL` is live. `CONFIG REPORT_URL`
    is the second link, commented out until the full analysis has a public
