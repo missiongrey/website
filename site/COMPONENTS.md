@@ -2062,7 +2062,7 @@ does now.
 **Equal static weight is the rule, and it is one-directional, binding.**
 Guild printed four members at plate scale ahead of twenty-four directory
 rows and marked those four in the fold register; About printed two of
-eighteen core-team members at 112px ahead of sixteen at 64px. Both choices
+seventeen core-team members at 112px ahead of fifteen at 64px. Both choices
 were editorial and neither was rank. It does not matter: a PERMANENT size
 difference between people in one group is read as rank whatever it was
 chosen for, and a register that appears to rank colleagues is a liability
