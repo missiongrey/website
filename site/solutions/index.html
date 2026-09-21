@@ -4,52 +4,44 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#F1F3F5">
-<title>Solutions &middot; Mission Grey</title>
-<meta name="description" content="Three ways to start with Mission Grey: a Decision Brief for one call, Continuous Monitoring for an ongoing exposure, or a Custom Intelligence Setup for your organization. Access is by request.">
+<title>Solutions. Start with one decision &middot; Mission Grey</title>
+<meta name="description" content="Start with one decision, keep it continuously current, then make it part of the organization: how teams adopt Mission Grey, from first engagement to standing watch.">
 <link rel="canonical" href="https://missiongrey.com/solutions/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Mission Grey">
 <meta property="og:url" content="https://missiongrey.com/solutions/">
-<meta property="og:title" content="Solutions &middot; Mission Grey">
-<meta property="og:description" content="A Decision Brief for one call, Continuous Monitoring for an ongoing exposure, or a Custom Intelligence Setup for your organization. All three run on the same platform.">
-<meta property="og:image" content="/assets/og-image.jpg">
+<meta property="og:title" content="Solutions. Start with one decision &middot; Mission Grey">
+<meta property="og:description" content="Start with one decision, keep it continuously current, then make it part of the organization: how teams adopt Mission Grey, from first engagement to standing watch.">
+<meta property="og:image" content="/assets/share-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@missiongrey">
-<meta name="twitter:title" content="Solutions &middot; Mission Grey">
-<meta name="twitter:description" content="A Decision Brief for one call, Continuous Monitoring for an ongoing exposure, or a Custom Intelligence Setup for your organization. All three run on the same platform.">
-<meta name="twitter:image" content="/assets/og-image.jpg">
+<meta name="twitter:site" content="@MissionGrey">
+<meta name="twitter:title" content="Solutions. Start with one decision &middot; Mission Grey">
+<meta name="twitter:description" content="Start with one decision, keep it continuously current, then make it part of the organization: how teams adopt Mission Grey, from first engagement to standing watch.">
+<meta name="twitter:image" content="/assets/share-card.jpg">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="../../assets/favicon-180.png">
 <link rel="apple-touch-icon" href="/assets/favicon-180.png">
 <link rel="stylesheet" href="../styles.css">
 <style>
-  /* Page-local: forms the system does not carry yet. Tokens only. */
+  /* Page-local: forms the system does not carry yet. Tokens only.
+     .ilink moved into styles.css section 16, and the industry index
+     left with the six industry rows: those now live only on Use cases. */
   .nav-main a[aria-current="page"],.mnav-panel a[aria-current="page"]{color:var(--ink)}
   .hero h1{max-width:19ch}
-  .ilink{color:var(--accent);border-bottom:1px solid var(--line-2);padding-bottom:1px}
-  .ilink:hover{color:var(--accent-hi);border-color:var(--accent)}
   /* checker-bullet list: the only list-marker treatment the system allows */
   .pts{display:grid;gap:10px}
   .pts li{display:flex;gap:11px;align-items:baseline;font-size:14.5px;line-height:1.55;color:var(--ink-mute)}
   .pts .checker{flex:none;position:relative;top:-1px}
-  .cap .pts{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
-  .cap .pts li{color:var(--ink-body)}
   .roles{border-top:1px solid var(--line);margin-top:24px}
   .roles>div{display:grid;grid-template-columns:170px 1fr;gap:8px 16px;padding:14px 0;border-bottom:1px solid var(--line)}
   .roles dt{font:500 11px/1.7 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
   .roles dd{font-size:14.5px;line-height:1.6;color:var(--ink-mute)}
-  /* industry index: the sector row, widened for a three-point column */
-  .ind .sector{grid-template-columns:260px 1fr}
-  .ind .pts{grid-template-columns:repeat(3,1fr);gap:10px 24px}
   .ladder-foot{margin-top:26px;font-size:15px;color:var(--ink-mute);max-width:70ch}
-  @media (max-width:900px){
-    .ind .sector{grid-template-columns:1fr}
-    .ind .pts{grid-template-columns:1fr}
-  }
   @media (max-width:560px){.roles>div{grid-template-columns:1fr;gap:6px}}
 </style>
 <script src="../../assets/consent.js" data-ga="__GA_MEASUREMENT_ID__" defer></script>
 </head>
-<body>
+<body data-density="clean">
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="site-head">
@@ -61,6 +53,7 @@
       <a href="/platform/">Platform</a>
       <a href="/solutions/" aria-current="page">Solutions</a>
       <a href="/use-cases/">Use cases</a>
+      <a href="/guild/">Guild</a>
       <a href="/partners-guild/">Partners</a>
       <a href="/api/">API</a>
       <a href="/insights/">Insights</a>
@@ -78,7 +71,8 @@
           <a href="/platform/">Platform</a>
           <a href="/solutions/" aria-current="page">Solutions</a>
           <a href="/use-cases/">Use cases</a>
-          <a href="/partners-guild/">Partners &amp; Guild</a>
+          <a href="/guild/">Guild</a>
+          <a href="/partners-guild/">Partners</a>
           <a href="/api/">API</a>
           <a href="/insights/">Insights</a>
           <a href="/about/">About</a>
@@ -94,74 +88,292 @@
 <main id="main">
 
   <!-- ============ HERO ============ -->
-  <section class="hero sec" aria-labelledby="h1">
+  <!-- The fold hangs from one ruled eyebrow: the claim on the left, what
+       it costs to begin and the two ways in on the right, their baselines
+       meeting. Asymmetric and quiet, and nothing is centered. -->
+  <section class="hero sec so-hero hs-so-hero" aria-labelledby="h1">
     <div class="wrap">
       <p class="eyebrow hero-eyebrow">Solutions &middot; Access by request</p>
-      <h1 id="h1">Start with a decision. Scale into continuous intelligence.</h1>
-      <p class="hero-dek">Mission Grey solutions support strategy and risk teams first, then scale into operations and financial decision&#8209;making. The entry point is yours to choose: one question, an exposure worth watching, or an intelligence environment built around your organization.</p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="/contact/">Request access</a>
-        <a class="btn btn-ghost" href="https://calendly.com/lauri-missiongrey/30min">Book a demo</a>
+      <div class="so-hero-grid">
+        <h1 id="h1">Start with a decision. Scale into continuous intelligence.</h1>
+        <div class="so-hero-side">
+          <p class="hero-dek">You do not have to deploy a large enterprise system to begin. One important decision is enough, and the same layer extends from there into continuous monitoring and the organization's own processes.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="/contact/">Request access</a>
+            <a class="btn btn-ghost" href="https://calendly.com/lauri-missiongrey/30min">See it on your decision</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ THE LADDER ============ -->
-  <section class="sec" id="start" aria-labelledby="start-h" style="padding-top:0">
+  <!-- ============ THE ADOPTION PROGRESSION ============ -->
+  <section class="sec so-start hs-start" id="start" aria-labelledby="start-h">
     <div class="wrap">
-      <p class="rule-label">How you can start</p>
+      <h2 class="rule-label" id="start-h">How adoption works</h2>
+
+      <!-- The progression, drawn rather than carded. Above the station
+           rule each step carries its extent: one decision is a run of six
+           divisions that stops, the standing watch is a run that starts at
+           its station and does not end inside the frame, and organizational
+           intelligence is that same run carried three times over. Left to
+           right the ink goes from one line to four. Every tick falls on one
+           lattice of 24 divisions across the figure, and the only accent is
+           the entry mark at station 01.
+
+           Round ten: the figure progresses. Each station label is the
+           stage's own control, so hover, focus or tap activates that
+           stage and the other two settle back; the runs draw once,
+           01 then 02 then 03, when the figure arrives. -->
+      <div class="frame so-path reveal"><span class="tick"></span>
+        <div class="frame-bar"><span>Adoption path</span><span class="dim">Illustrative view</span></div>
+        <div class="so-grid">
+          <div class="so-step so-s1">
+            <div class="so-ext" aria-hidden="true"><i></i></div>
+            <button class="so-k sx-k" type="button" aria-pressed="false"><b>01</b>&#8201;/&#8201;ONE DECISION</button>
+            <h3>Start with a decision.</h3>
+            <p class="v">Bring one difficult decision, investment, market question or risk. Mission Grey builds the external context, scenarios and recommendations around it.</p>
+          </div>
+          <div class="so-step so-s2">
+            <div class="so-ext" aria-hidden="true"><i></i></div>
+            <button class="so-k sx-k" type="button" aria-pressed="false"><b>02</b>&#8201;/&#8201;STANDING WATCH</button>
+            <h3>Keep it under watch.</h3>
+            <p class="v">The assumptions and exposures behind that decision stay under watch, and recurring questions become trackers, indicators, scenarios, triggers and alerts.</p>
+            <ul class="pts">
+              <li><span class="checker" aria-hidden="true"></span>Continuous signals against your own exposure</li>
+              <li><span class="checker" aria-hidden="true"></span>Scenarios that update as conditions move</li>
+              <li><span class="checker" aria-hidden="true"></span>Thresholds, triggers and decision alerts</li>
+            </ul>
+          </div>
+          <div class="so-step so-s3">
+            <div class="so-ext" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <button class="so-k sx-k" type="button" aria-pressed="false"><b>03</b>&#8201;/&#8201;ORGANIZATIONAL INTELLIGENCE</button>
+            <h3>Make it part of the organization.</h3>
+            <p class="v">Shared dashboards, role&#8209;specific applications, agents, APIs and workflows, built on the same intelligence layer rather than beside it.</p>
+            <ul class="pts">
+              <li><span class="checker" aria-hidden="true"></span>Role&#8209;specific views on shared evidence</li>
+              <li><span class="checker" aria-hidden="true"></span>Applications and dashboards around your decisions</li>
+              <li><span class="checker" aria-hidden="true"></span>Agents and API into the systems you already run</li>
+              <li><span class="checker" aria-hidden="true"></span>Decision ownership, actions and review, kept as organizational memory</li>
+            </ul>
+          </div>
+        </div>
+        <p class="level-out"><b>One layer throughout</b>One decision, then a standing watch that becomes continuous intelligence, then the organization's shared intelligence.</p>
+        <div class="evi">
+          <span><i>Entry</i>One decision</span>
+          <span><i>Layer</i>The same at every step</span>
+        </div>
+      </div>
+
+      <!-- STEP ONE, AS A FLOW. Every word of the engagement is unchanged;
+           the large bordered container is not. The three groups are three
+           stations hanging from one continuous rule, each with its amber
+           sequence mark at its leading edge and a fine connecting rule
+           carrying the reader from one to the next. Timing is a separate
+           annotation under the flow, label left and sentence right, so it
+           reads as metadata about the engagement rather than as a fourth
+           group inside it. -->
+      <div class="first-engagement hs-fe reveal">
+        <p class="fe-idx">Step one &middot; one decision</p>
+        <h3 id="first-engagement-h">What the first engagement looks like.</h3>
+        <div class="fe-cols hs-flow">
+          <div class="fe-col hs-fc">
+            <p class="k">You bring</p>
+            <p>One important decision, exposure, opportunity or question, plus the people who own it and relevant company context.</p>
+          </div>
+          <span class="hs-link" aria-hidden="true"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></span>
+          <div class="fe-col hs-fc">
+            <p class="k">Mission Grey brings</p>
+            <p>The external intelligence, sources, models, analysis and expert input relevant to that question.</p>
+          </div>
+          <span class="hs-link" aria-hidden="true"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></span>
+          <div class="fe-col hs-fc">
+            <p class="k">You receive</p>
+            <p>A decision&#8209;ready situation view, impact and exposure analysis, scenarios and concrete recommendations that can be used in an executive or management discussion.</p>
+          </div>
+        </div>
+        <p class="fe-timing"><b>Timing</b>A first version using standard Mission Grey data can typically be produced in about two weeks. Connecting proprietary data takes longer, and the schedule for agents and a customer dashboard follows your requirements and the systems involved.</p>
+      </div>
+
+      <p class="ladder-foot reveal">The steps can be combined. The first conversation is about which step carries your question.</p>
+    </div>
+  </section>
+
+  <!-- ============ THE CLOSED LOOP ============ -->
+  <!-- The page's third movement, and one section rather than two: the
+       adoption path says how far this goes, the first engagement says
+       how it begins, and this says what happens after the
+       recommendation and what it takes to run it.
+
+       The figure is seven stations on one horizontal rule, read left to
+       right, with a return arm running back under the run from REVIEW
+       to the station the chain restarts at. No arrow glyph, because the
+       rule carries the direction the way the adoption path and the
+       impact chain already do. One accent, the entry station, and under
+       a pointer it moves to the station being read. The node at station
+       05 is drawn heavier than the station ticks because naming who
+       responds is the step a process usually leaves implicit. -->
+  <section class="sec cl-sec" id="loop" aria-labelledby="loop-h">
+    <div class="wrap">
+      <p class="rule-label">The closed loop</p>
+      <div class="sec-head reveal">
+        <p class="eyebrow">From intelligence to accountable action</p>
+        <h2 id="loop-h">Don't stop at the recommendation.</h2>
+        <p>Under a standing watch, every decision runs the same chain, and it does not end at the recommendation. Mission Grey can keep a traceable record of the external development, the analysis, the decision, the owner, the action and the follow&#8209;up. Ownership is named against the function that carries it.</p>
+      </div>
+
+      <div class="frame cl-loop reveal"><span class="tick"></span>
+        <div class="frame-bar"><span>Decision, owner, action, review</span><span class="dim">Illustrative view</span></div>
+        <div class="cl-body">
+          <div class="cl-row">
+            <div class="cl-st cl-s1"><p class="cl-k">01<b>External change</b></p><p class="cl-q">What changed?</p></div>
+            <div class="cl-st cl-s2"><p class="cl-k">02<b>Assessment</b></p><p class="cl-q">What does it mean for us?</p></div>
+            <div class="cl-st cl-s3"><p class="cl-k">03<b>Scenarios</b></p><p class="cl-q">What could happen?</p></div>
+            <div class="cl-st cl-s4"><p class="cl-k">04<b>Decision</b></p><p class="cl-q">What did we decide?</p></div>
+            <div class="cl-st cl-s5"><p class="cl-k">05<b>Owner</b></p><p class="cl-q">Who owns the response?</p></div>
+            <div class="cl-st cl-s6"><p class="cl-k">06<b>Action</b></p><p class="cl-q">What was done?</p></div>
+            <div class="cl-st cl-s7"><p class="cl-k">07<b>Review</b></p><p class="cl-q">What happened next?</p></div>
+            <span class="cl-ret" aria-hidden="true"></span>
+            <p class="cl-ret-k"><b>Return</b>Updated assumptions and monitoring</p>
+          </div>
+        </div>
+        <p class="level-out"><b>One chain</b>What the organization decides can change what Mission Grey measures next.</p>
+        <div class="evi">
+          <span><i>Owner</i>Named at 05</span>
+        </div>
+      </div>
+
+      <!-- ORGANIZATIONAL MEMORY. The claim in the statement voice, the
+           reading beside it, on the hairline that closes the figure. It
+           is deliberately small: the chain above is the argument, and
+           this says what keeping it is worth. -->
+      <div class="cl-mem reveal">
+        <h3 class="net-lede">The system can remember what the organization did about it.</h3>
+        <div class="cl-mem-body">
+          <p>Mission Grey can preserve that chain.</p>
+          <p>That record carries the organization through the moments where the context is usually lost: people change, a decision is revisited, assumptions need updating, or a similar development appears again.</p>
+          <p>What it produces is organizational learning rather than an archive.</p>
+        </div>
+      </div>
+
+      <!-- THE OPERATING MODEL. The commercial half of the same
+           argument, inside the same section: the process the
+           intelligence runs in, and the two situations a customer
+           arrives in. It opens on the section's second hairline rather
+           than on a chapter rule of its own, because it is the same
+           subject seen from the organization's side. Six elements as a
+           two-column ruled register, the rules abutting into one line
+           per row because the separation is padding and never gap, each
+           cell carrying the station tick every register on this page
+           carries. Not six cards. -->
+      <div class="om-block reveal">
+        <div class="om-head">
+          <p class="eyebrow">Process, ownership and escalation</p>
+          <h3>Technology is only part of the answer.</h3>
+          <p class="om-dek">Mission Grey can also help establish the process around external intelligence.</p>
+        </div>
+        <div class="om-reg">
+          <div class="om-cell"><p class="om-k">What to watch</p><p class="om-q">Which external developments matter?</p></div>
+          <div class="om-cell"><p class="om-k">What they affect</p><p class="om-q">Which strategies, assumptions, assets and exposures?</p></div>
+          <div class="om-cell"><p class="om-k">Who owns them</p><p class="om-q">Which executive or function is responsible?</p></div>
+          <div class="om-cell"><p class="om-k">When to escalate</p><p class="om-q">Which signals or thresholds require attention?</p></div>
+          <div class="om-cell"><p class="om-k">How to decide</p><p class="om-q">How does intelligence reach the right decision process?</p></div>
+          <div class="om-cell"><p class="om-k">How to follow through</p><p class="om-q">How are decisions, owners, actions and outcomes reviewed?</p></div>
+        </div>
+      </div>
+
+      <!-- THE WORKSHOP. Label left, the offer and its outputs right, on
+           one hairline: the annotation form the first engagement already
+           uses for its timing, because this is information about an
+           engagement rather than a second product. -->
+      <div class="om-ws reveal" id="workshop">
+        <p class="om-ws-k">External intelligence workshop</p>
+        <div class="om-ws-body">
+          <p class="om-ws-lede">We can start by mapping the decisions, exposures, assumptions, monitoring priorities and ownership model that matter to your organization.</p>
+          <p class="om-outs-k">What it produces</p>
+          <ul class="pts om-outs">
+            <li><span class="checker" aria-hidden="true"></span>External intelligence map</li>
+            <li><span class="checker" aria-hidden="true"></span>Priority decisions and exposures</li>
+            <li><span class="checker" aria-hidden="true"></span>Key assumptions</li>
+            <li><span class="checker" aria-hidden="true"></span>Priority scenarios</li>
+            <li><span class="checker" aria-hidden="true"></span>Ownership model</li>
+            <li><span class="checker" aria-hidden="true"></span>Monitoring priorities</li>
+            <li><span class="checker" aria-hidden="true"></span>First Mission Grey use case</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TWO STARTING SITUATIONS, side by side on one rule. Not two
+           entry paths: the same implementation, entered from the side
+           the organization is standing on. -->
+      <div class="om-doors reveal">
+        <div class="om-door">
+          <p class="om-k"><b>A</b>One clear decision</p>
+          <p class="om-q">You already have a decision, exposure or question in front of you. <a class="ilink" href="/contact/">Start with one decision</a> and the first engagement built around it.</p>
+        </div>
+        <div class="om-door">
+          <p class="om-k"><b>B</b>No first use case yet</p>
+          <p class="om-q">External intelligence is fragmented across the organization and the right first use case is not yet defined. <a class="ilink" href="/contact/">Start with the external intelligence workshop</a>.</p>
+        </div>
+      </div>
+
+      <p class="ladder-foot reveal">Both lead into the same Mission Grey implementation on the same intelligence layer.</p>
+    </div>
+  </section>
+
+  <!-- ============ DAILY USE BY FUNCTION ============ -->
+  <section class="sec sec-alt hs-funcs" id="functions" aria-labelledby="func-h">
+    <div class="wrap">
+      <p class="rule-label">Daily use</p>
       <div class="sec-head reveal" style="margin-top:44px">
-        <p class="eyebrow">Three ways in</p>
-        <h2 id="start-h">From a single decision to continuous intelligence.</h2>
-        <p>Mission Grey is used in different ways depending on what you need it to carry. The three below are the usual starting points, and none of them is a dead end.</p>
+        <p class="eyebrow">One layer, different responsibilities</p>
+        <h2 id="func-h">How each function uses the same layer.</h2>
       </div>
 
-      <div class="caps reveal">
-        <article class="cap">
-          <div class="cap-meta"><span class="idx">START&#8201;/&#8201;01</span>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M6 2.5h8L18.5 7v14.5H6z"/><path d="M14 2.5V7h4.5"/><path d="M9.5 12.5h6M9.5 16.5h4"/></svg>
-          </div>
-          <h3>Decision Brief</h3>
-          <p>Focused intelligence for one specific decision. A targeted analysis that combines external intelligence with expert validation, delivered in a format ready for management or board discussion.</p>
-          <ul class="pts">
-            <li><span class="checker" aria-hidden="true"></span>Clear situation overview</li>
-            <li><span class="checker" aria-hidden="true"></span>Impact analysis for your exposure</li>
-            <li><span class="checker" aria-hidden="true"></span>Concrete recommendations</li>
-          </ul>
-        </article>
-        <article class="cap">
-          <div class="cap-meta"><span class="idx">START&#8201;/&#8201;02</span>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.6"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
-          </div>
-          <h3>Continuous Monitoring</h3>
-          <p>Ongoing tracking of the risks and opportunities around you. Monitor the external developments that affect your operations or your portfolio, and act while there is still room to act.</p>
-          <ul class="pts">
-            <li><span class="checker" aria-hidden="true"></span>Real&#8209;time signals</li>
-            <li><span class="checker" aria-hidden="true"></span>Scenario updates</li>
-            <li><span class="checker" aria-hidden="true"></span>Decision alerts</li>
-          </ul>
-        </article>
-        <article class="cap">
-          <div class="cap-meta"><span class="idx">START&#8201;/&#8201;03</span>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M3.5 6.5h17M3.5 12h17M3.5 17.5h17"/><circle cx="9" cy="6.5" r="2.2"/><circle cx="15.5" cy="12" r="2.2"/><circle cx="7.5" cy="17.5" r="2.2"/></svg>
-          </div>
-          <h3>Custom Intelligence Setup</h3>
-          <p>A tailored environment for your organization. Platform, models, and expert support combined into a dedicated intelligence setup, shaped around the way your teams already work.</p>
-          <ul class="pts">
-            <li><span class="checker" aria-hidden="true"></span>Customized scenarios</li>
-            <li><span class="checker" aria-hidden="true"></span>Integrated workflows</li>
-            <li><span class="checker" aria-hidden="true"></span>Ongoing support</li>
-          </ul>
-        </article>
+      <div class="funcs so-funcs reveal">
+        <div class="func">
+          <p class="k">Top management</p>
+          <p class="q">Is our strategy still based on the world that exists today?</p>
+          <p class="v">Whether strategy and capital allocation still hold between planning cycles.</p>
+        </div>
+        <div class="func">
+          <p class="k">Sales</p>
+          <p class="q">Where is demand moving before it appears in our pipeline?</p>
+          <p class="v">Where customer economics, regulation and competition are moving.</p>
+        </div>
+        <div class="func">
+          <p class="k">Operations</p>
+          <p class="q">What external development could affect our ability to deliver?</p>
+          <p class="v">Which suppliers, sites and routes need a decision, and when.</p>
+        </div>
+        <div class="func">
+          <p class="k">Finance&#8201;/&#8201;treasury</p>
+          <p class="q">Which external change is altering our economics?</p>
+          <p class="v">When to hedge, refinance or review a counterparty.</p>
+        </div>
+        <div class="func">
+          <p class="k">Risk&#8201;/&#8201;compliance</p>
+          <p class="q">Which emerging issue actually matters to us?</p>
+          <p class="v">Which issue is material, and who owns it.</p>
+        </div>
+        <div class="func">
+          <p class="k">Strategy&#8201;/&#8201;investment</p>
+          <p class="q">Which assumptions behind this investment are changing?</p>
+          <p class="v">Whether to proceed, adjust or exit.</p>
+        </div>
+        <div class="func">
+          <p class="k">Public affairs&#8201;/&#8201;regulation</p>
+          <p class="q">What is coming in regulation, and what does it mean for us?</p>
+          <p class="v">Where to engage, and what to prepare for.</p>
+        </div>
       </div>
 
-      <p class="stage-io reveal" style="margin-top:28px"><span><b>EXAMPLE</b> DECISION BRIEF</span><span><b>SIGNAL</b> REGULATORY CHANGE</span><span><b>IMPACT</b> COST INCREASE</span><span><b>DECISION</b> ADJUST SOURCING</span></p>
-      <p class="ladder-foot reveal">All three run on the same platform and can be combined, from initial decision support to a full enterprise intelligence system. Access is by request, and the first conversation is about which starting point fits.</p>
+      <p class="ladder-foot reveal">Where organizations use this, by decision context, is on <a class="ilink" href="/use-cases/">Use cases</a>.</p>
     </div>
   </section>
 
   <!-- ============ HOW YOU WORK WITH IT ============ -->
-  <section class="sec sec-alt" id="ways" aria-labelledby="ways-h">
+  <section class="sec so-ways" id="ways" aria-labelledby="ways-h">
     <div class="wrap">
       <div class="net">
         <div class="reveal">
@@ -169,151 +381,119 @@
           <h2 class="net-lede" id="ways-h">Mission Grey adapts to how your organization works.</h2>
         </div>
         <div class="net-body reveal">
-          <p>Use the platform directly, connect it to the systems you already run, or work through experts. Mission Grey fits into your decision processes rather than asking you to build new ones around it. All three approaches can be combined, from strategic decisions to operational execution and down to daily actions.</p>
-          <dl class="roles">
-            <div><dt>Direct use</dt><dd>Continuous external intelligence and decision support, used directly through the <a class="ilink" href="/platform/">platform</a>.</dd></div>
-            <div><dt>Integrated</dt><dd>Connect through the <a class="ilink" href="/api/">API</a> and bring external intelligence into your own workflows, dashboards, and decision processes.</dd></div>
-            <div><dt>Guided by experts</dt><dd>Work with the <a class="ilink" href="/partners-guild/">Mission Grey Guild</a> and partners for expert&#8209;driven analysis in complex situations.</dd></div>
+          <p>Use the platform directly, connect it to the systems you already run, or work with Mission Grey experts. The three combine.</p>
+          <dl class="roles so-roles">
+            <div><dt>Direct use</dt><dd>Your people work in the <a class="ilink" href="/platform/">platform</a> itself: asking, monitoring, and receiving what changed.</dd></div>
+            <div><dt>Integrated</dt><dd>Mission Grey connects through the <a class="ilink" href="/api/">API</a> into your workflows, dashboards and decision processes.</dd></div>
+            <div><dt>Guided</dt><dd>Mission Grey experts and the <a class="ilink" href="/guild/">Guild</a> support setup, interpretation and high&#8209;value decisions.</dd></div>
           </dl>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ INDUSTRIES ============ -->
-  <section class="sec" id="industries" aria-labelledby="ind-h">
-    <div class="wrap">
-      <p class="rule-label">Solutions by industry</p>
-      <div class="sec-head reveal" style="margin-top:44px">
-        <p class="eyebrow">Applied to real decisions</p>
-        <h2 id="ind-h">External intelligence, applied where the decision sits.</h2>
-        <p>Mission Grey connects external signals directly to decisions in your operations, your portfolios, and your strategy. What that looks like depends on the industry you are accountable in.</p>
-      </div>
-      <div class="sectors ind reveal">
-        <div class="sector">
-          <p class="code"><span>IND</span>Industrial &amp; Operations</p>
-          <ul class="pts">
-            <li><span class="checker" aria-hidden="true"></span>Manage supply chain disruptions and act before impact</li>
-            <li><span class="checker" aria-hidden="true"></span>Test sourcing and production decisions under real&#8209;world scenarios</li>
-            <li><span class="checker" aria-hidden="true"></span>Support continuity planning with external signals</li>
-          </ul>
-        </div>
-        <div class="sector">
-          <p class="code"><span>BNK</span>Banks &amp; Financial Institutions</p>
-          <ul class="pts">
-            <li><span class="checker" aria-hidden="true"></span>Stress test lending portfolios under real&#8209;world scenarios</li>
-            <li><span class="checker" aria-hidden="true"></span>Monitor regulatory and macro changes</li>
-            <li><span class="checker" aria-hidden="true"></span>Support risk and strategic decisions</li>
-          </ul>
-        </div>
-        <div class="sector">
-          <p class="code"><span>AST</span>Asset Management</p>
-          <ul class="pts">
-            <li><span class="checker" aria-hidden="true"></span>Stress test portfolios beyond financial models</li>
-            <li><span class="checker" aria-hidden="true"></span>Identify risks and opportunities from global developments</li>
-            <li><span class="checker" aria-hidden="true"></span>Support allocation and positioning decisions</li>
-          </ul>
-        </div>
-        <div class="sector">
-          <p class="code"><span>INS</span>Insurance</p>
-          <ul class="pts">
-            <li><span class="checker" aria-hidden="true"></span>Evaluate exposure across regions and sectors</li>
-            <li><span class="checker" aria-hidden="true"></span>Understand second&#8209; and third&#8209;order effects</li>
-            <li><span class="checker" aria-hidden="true"></span>Enhance risk models with external intelligence</li>
-          </ul>
-        </div>
-        <div class="sector">
-          <p class="code"><span>CON</span>Consulting &amp; Advisory</p>
-          <ul class="pts">
-            <li><span class="checker" aria-hidden="true"></span>Deliver continuous intelligence to clients</li>
-            <li><span class="checker" aria-hidden="true"></span>Enhance strategy and risk projects</li>
-            <li><span class="checker" aria-hidden="true"></span>Differentiate services with real&#8209;time insight</li>
-          </ul>
-        </div>
-        <div class="sector">
-          <p class="code"><span>GOV</span>Government &amp; Public Sector</p>
-          <ul class="pts">
-            <li><span class="checker" aria-hidden="true"></span>Monitor geopolitical and economic shifts</li>
-            <li><span class="checker" aria-hidden="true"></span>Support policy and strategic planning</li>
-            <li><span class="checker" aria-hidden="true"></span>Identify emerging risks and opportunities</li>
-          </ul>
-        </div>
-      </div>
-      <p class="ladder-foot reveal">The same six industries, read from the buyer's side, are on <a class="ilink" href="/use-cases/">Use cases</a>.</p>
-    </div>
-  </section>
-
   <!-- ============ IN PRACTICE ============ -->
-  <section class="sec" id="practice" aria-labelledby="prac-h" style="padding-top:0">
+  <section class="sec sec-alt" id="practice" aria-labelledby="prac-h">
     <div class="wrap">
       <p class="rule-label">In practice</p>
       <div class="sec-head reveal" style="margin-top:44px">
-        <p class="eyebrow">What the work looks like</p>
-        <h2 id="prac-h">Test decisions before the world tests them.</h2>
+        <p class="eyebrow">From external change to the action it forces</p>
+        <h2 id="prac-h">Intelligence you can work in, not only read.</h2>
+        <p>Every step of the chain is held, so a change in the world arrives as a decision to take rather than as a headline to read.</p>
       </div>
 
-      <div class="stage reveal" style="padding-top:0">
-        <div class="stage-copy">
-          <p class="eyebrow" style="margin-bottom:20px">Scenario testing</p>
-          <h3>Stress&#8209;testing that goes past the financial model.</h3>
-          <p>Scenarios are built on real&#8209;world events and run with the actors who would actually be in the room. What comes back is not a single number but a set of paths, including the ones your model would not have priced.</p>
-          <ul class="pts" style="margin-top:22px">
-            <li><span class="checker" aria-hidden="true"></span>Scenario simulation based on real&#8209;world events</li>
-            <li><span class="checker" aria-hidden="true"></span>Stress testing beyond financial models</li>
-            <li><span class="checker" aria-hidden="true"></span>Evaluation of second&#8209; and third&#8209;order effects</li>
-            <li><span class="checker" aria-hidden="true"></span>War&#8209;game style exploration of outcomes</li>
-          </ul>
-        </div>
-        <div class="stage-media">
-          <figure class="shotfig">
-            <div class="window">
-              <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">app.missiongrey.com</span></div>
-              <div class="win-body"><img src="../../assets/product-screenshot-simulation.png" width="1920" height="1169" loading="lazy" alt="Multi-actor scenario simulation of an oil and gas coalition responding to an escalation, with primary, alternative, and wildcard strategic options"></div>
+      <div class="frame reveal"><span class="tick"></span>
+        <div class="frame-bar"><span>Cleanroom operational risk &middot; worked chain</span><span class="dim">Illustrative view</span></div>
+        <div class="rail">
+          <div class="rail-row">
+            <p class="rail-k">01<b>External change</b></p>
+            <div class="rail-body">
+              <p>An export control tightens around a specialty input, and the region that hosts the plant reprices industrial power.</p>
             </div>
-            <figcaption class="win-cap">Multi&#8209;actor scenario simulation with strategic options</figcaption>
-          </figure>
+          </div>
+          <div class="rail-row">
+            <p class="rail-k">02<b>Business exposure</b></p>
+            <div class="rail-body">
+              <p>Two cleanroom lines run on that input, and the plant's energy cost sits inside a fixed&#8209;price customer agreement.</p>
+            </div>
+          </div>
+          <div class="rail-row">
+            <p class="rail-k">03<b>Affected process</b></p>
+            <div class="rail-body">
+              <p>Qualification of an alternate material, and the supply agreement whose renewal window is open now.</p>
+            </div>
+          </div>
+          <div class="rail-row">
+            <p class="rail-k">04<b>Implication</b></p>
+            <div class="rail-body">
+              <p>Unit cost and line availability move together, and the exposure concentrates in one quarter rather than spreading across the year.</p>
+            </div>
+          </div>
+          <div class="rail-row is-end">
+            <p class="rail-k">05<b>Recommended action</b></p>
+            <div class="rail-body">
+              <p>Begin qualification, price the alternate input, and take the renewal to a decision while the window is still open.</p>
+            </div>
+          </div>
+        </div>
+        <div class="evi">
+          <span><i>Chain</i>External change to action</span>
+          <span><i>Case</i>Illustrative</span>
         </div>
       </div>
 
-      <div class="stage flip reveal">
-        <div class="stage-copy">
-          <p class="eyebrow" style="margin-bottom:20px">Decision environments</p>
-          <h3>Intelligence you can work in, not only read.</h3>
-          <p>Mission Grey delivers intelligence as interactive environments as well as reports: explore signals and developments, test scenarios and assumptions, and evaluate decisions in real time. Custom dashboards and decision environments are created in minutes, not months.</p>
-          <p class="stage-io"><span><b>EXAMPLE</b> COUNTRY INTELLIGENCE APPLICATION</span></p>
+      <figure class="shotfig reveal proofblock">
+        <div class="window win-plate">
+          <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">app.missiongrey.com</span></div>
+          <div class="win-body focus-recs"><img src="../../assets/product-screenshot-recommendations.png" width="1920" height="1078" loading="lazy" alt="A recommended actions view in the platform, headed Management Focus, Six Priority Actions, with six numbered actions, each one a bold instruction over a single line of detail"></div>
         </div>
-        <div class="stage-media">
-          <figure class="shotfig">
-            <div class="window">
-              <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">app.missiongrey.com</span></div>
-              <div class="win-body"><img src="../../assets/intelligence-app-example.png" width="1920" height="1039" loading="lazy" alt="A country-level intelligence application: a strategic risks dashboard combining live signals, scenario views, and decision panels"></div>
-            </div>
-            <figcaption class="win-cap">Example &middot; a country&#8209;level intelligence application</figcaption>
-          </figure>
+        <figcaption class="win-cap">Recommended actions &middot; the prioritized management actions from a cleanroom operational risk analysis<span class="cap-detail">&middot; shown as a detail</span></figcaption>
+      </figure>
+
+      <!-- THE EVIDENCE OBJECT. The application is printed as a plate,
+           not as a screen: an exact crop onto the briefing's own opening
+           assessment and two of the indexes under it, with one leader
+           landing on a mark the image actually draws. Crop stated in
+           source pixels in styles.css section 23. -->
+      <div class="so-app reveal">
+        <div class="so-app-copy">
+          <h3>An application built around one decision environment.</h3>
+          <p>At the third step the layer carries applications and dashboards built around your organization: signals, scenarios, assumptions and decisions in one place.</p>
+          <p>Agents route what changed to the person who owns it.</p>
         </div>
+        <figure class="appfig so-ev">
+          <div class="frame so-ev-frame"><span class="tick"></span>
+            <div class="frame-bar"><span>Intelligence application</span><span class="dim">Example application</span></div>
+            <div class="appshot so-ev-crop"><img src="../../assets/intelligence-app-example.png" width="1920" height="1039" loading="lazy" alt="A detail from a country-level intelligence application built for one customer: an index from a briefing on German industry, printing its figure, the direction it moved, and the source line under it"><i class="so-ev-lead" aria-hidden="true"></i></div>
+            <p class="so-ev-ann" aria-hidden="true"><b>Change</b></p>
+          </div>
+          <figcaption>Example &middot; a country&#8209;level intelligence application &middot; figures illustrative</figcaption>
+        </figure>
       </div>
+
+      <p class="ladder-foot reveal">How the layer underneath is built is on <a class="ilink" href="/platform/">Platform</a>.</p>
     </div>
   </section>
 
   <!-- ============ TRUSTED IN PRACTICE ============ -->
-  <section class="sec sec-alt" id="proof" aria-labelledby="proof-h">
+  <section class="sec" id="proof" aria-labelledby="proof-h">
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="eyebrow">Quoted verbatim, names withheld</p>
         <h2 id="proof-h">Trusted in practice.</h2>
       </div>
       <div class="quote-main reveal">
-        <blockquote>&ldquo;Traditional stress testing is no longer sufficient. We need to evaluate real&#8209;world scenarios and understand where model assumptions break down. Mission Grey enables that.&rdquo;</blockquote>
-        <p class="attr">Partner &middot; Real Estate Portfolio Company</p>
+        <blockquote>&ldquo;We stopped relying on static reports. Mission Grey provides signals that directly influence our decisions.&rdquo;</blockquote>
+        <p class="attr">Head of Strategy &middot; Global Industrial</p>
       </div>
       <div class="quote-row reveal">
         <div class="quote-cell">
-          <blockquote>&ldquo;We use Mission Grey to enhance client work: delivering more relevant insights and enabling continuous monitoring.&rdquo;</blockquote>
-          <p class="attr">Partner &middot; Advisory Firm</p>
+          <blockquote>&ldquo;Traditional stress testing is no longer sufficient. We need to evaluate real&#8209;world scenarios and understand where model assumptions break down. Mission Grey enables that.&rdquo;</blockquote>
+          <p class="attr">Partner &middot; Real Estate Portfolio Company</p>
         </div>
         <div class="quote-cell">
-          <blockquote>&ldquo;We stopped relying on static reports. Mission Grey provides signals that directly influence our decisions.&rdquo;</blockquote>
-          <p class="attr">Head of Strategy &middot; Global Industrial</p>
+          <blockquote>&ldquo;We use Mission Grey to enhance client work: delivering more relevant insights and enabling continuous monitoring.&rdquo;</blockquote>
+          <p class="attr">Partner &middot; Advisory Firm</p>
         </div>
       </div>
     </div>
@@ -325,10 +505,14 @@
       <div class="frame access-panel reveal"><span class="tick"></span>
         <p class="eyebrow">Access</p>
         <h2 id="access-h">Find the right setup for your organization.</h2>
-        <p>Tell us the decision in front of you. We will tell you which starting point carries it. Mission Grey is an enterprise platform; access is by request.</p>
+        <p>Tell us the decision in front of you, or the area where your external intelligence is fragmented. We will tell you which step carries it. Mission Grey is an enterprise platform; access is by request.</p>
         <div class="access-cta">
           <a class="btn btn-primary" href="/contact/">Request access</a>
-          <a class="btn btn-ghost" href="https://calendly.com/lauri-missiongrey/30min">Book a demo</a>
+          <a class="btn btn-ghost" href="https://calendly.com/lauri-missiongrey/30min">See it on your decision</a>
+        </div>
+        <div class="cta-notes">
+          <p><b>Request access</b>For organizations ready to start working with Mission Grey.</p>
+          <p><b>See it on your decision</b>A short working session using a real question, exposure or opportunity from your organization.</p>
         </div>
         <p class="access-mail"><a href="mailto:contact@missiongrey.com">contact@missiongrey.com</a></p>
       </div>
@@ -364,7 +548,8 @@
         <h3>Company</h3>
         <ul>
           <li><a href="/about/">About us</a></li>
-          <li><a href="/partners-guild/">Partners &amp; Guild</a></li>
+          <li><a href="/guild/">Guild</a></li>
+          <li><a href="/partners-guild/">Partners</a></li>
           <li><a href="/insights/">Insights</a></li>
           <li><a href="/contact/">Contact</a></li>
         </ul>
@@ -373,15 +558,27 @@
         <h3>Contact</h3>
         <ul>
           <li><a href="/contact/">Request access</a></li>
-          <li><a href="https://calendly.com/lauri-missiongrey/30min">Book a demo</a></li>
+          <li><a href="https://calendly.com/lauri-missiongrey/30min">See it on your decision</a></li>
           <li><a href="mailto:contact@missiongrey.com">Email us</a></li>
           <li><a href="https://app.missiongrey.com/">Log in</a></li>
         </ul>
       </nav>
     </div>
-    <p class="foot-offices" aria-label="Offices">
-      <span>Arlington, VA</span><span>Puteaux, France</span><span>Singapore</span><span>Tampere, Finland</span><span>San Francisco, USA</span>
-    </p>
+    <div class="foot-strip">
+      <p class="foot-offices" aria-label="Offices">
+        <span>Arlington, VA</span><span>Puteaux, France</span><span>Singapore</span><span>Tampere, Finland</span><span>San Francisco, USA</span>
+      </p>
+      <nav class="foot-social" aria-label="Mission Grey channels">
+        <a href="https://x.com/MissionGrey" target="_blank" rel="noopener" aria-label="Mission Grey on X" title="Mission Grey on X"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#x"/></svg></a>
+        <a href="https://www.instagram.com/mg_missiongrey/" target="_blank" rel="noopener" aria-label="Mission Grey on Instagram" title="Mission Grey on Instagram"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#instagram"/></svg></a>
+        <a href="https://www.linkedin.com/company/mission-grey" target="_blank" rel="noopener" aria-label="Mission Grey on LinkedIn" title="Mission Grey on LinkedIn"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#linkedin"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=61557005876673" target="_blank" rel="noopener" aria-label="Mission Grey on Facebook" title="Mission Grey on Facebook"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#facebook"/></svg></a>
+        <span class="foot-social-rule" aria-hidden="true"></span>
+        <a href="https://www.youtube.com/@ThisWeekinBusinessRisk" target="_blank" rel="noopener" aria-label="This Week in Business Risk on YouTube" title="This Week in Business Risk on YouTube"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#youtube"/></svg></a>
+        <a href="https://open.spotify.com/show/033TrDLjqhXrrOJJ2sF1KD" target="_blank" rel="noopener" aria-label="This Week in Business Risk on Spotify" title="This Week in Business Risk on Spotify"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#spotify"/></svg></a>
+        <a href="https://podcasts.apple.com/us/podcast/this-week-in-business-risk/id6793223621" target="_blank" rel="noopener" aria-label="This Week in Business Risk on Apple Podcasts" title="This Week in Business Risk on Apple Podcasts"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#applepodcasts"/></svg></a>
+      </nav>
+    </div>
     <div class="foot-legal">
       <span>&copy; 2026 Mission Grey. All rights reserved.</span>
       <a href="/privacy/">Privacy Policy</a>
@@ -416,6 +613,56 @@
     document.addEventListener('click',function(e){if(mn.hasAttribute('open')&&!mn.contains(e.target)){mn.removeAttribute('open');}});
     document.addEventListener('keydown',function(e){if(e.key==='Escape'){mn.removeAttribute('open');}});
   }
+})();
+
+/* The adoption path. Hover and focus are CSS, so the figure already
+   answers a pointer and a keyboard with this script absent; what is added
+   here is the sticky selection a touch screen needs, where hover means
+   nothing: tap a station label to select its stage, tap it again, tap
+   outside the figure or press Escape to release. When both are in play
+   the pointer wins, so only one stage is ever lit: moving onto another
+   stage drops the selection and the hover takes it. */
+(function(){
+  var path=document.querySelector('.so-path');
+  if(!path)return;
+  var grid=path.querySelector('.so-grid');
+  var btns=[].slice.call(path.querySelectorAll('.sx-k'));
+  if(!grid||!btns.length||!btns[0].closest)return;
+  var sel=null;
+  function set(step){
+    sel=step;
+    path.classList.toggle('sx-act',!!step);
+    btns.forEach(function(b){
+      var s=b.closest('.so-step');
+      s.classList.toggle('sx-on',s===step);
+      b.setAttribute('aria-pressed',s===step?'true':'false');
+    });
+  }
+  function elsewhere(e){
+    if(!sel)return;
+    var s=e.target.closest?e.target.closest('.so-step'):null;
+    if(s!==sel)set(null);
+  }
+  /* On a phone a tap also FOCUSES the button it lands on, so a release
+     that only cleared the selection would leave the stage lit by
+     :focus-within. A pointer release therefore drops the focus with it;
+     a keyboard release (Escape, or Enter on an already selected stage,
+     which reports detail 0) keeps it, because taking the tab position
+     away from someone using the keyboard is the worse failure. */
+  function release(blur){
+    if(blur&&btns.indexOf(document.activeElement)>-1)document.activeElement.blur();
+    set(null);
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click',function(e){
+      var s=b.closest('.so-step');
+      if(sel===s){release(e.detail>0);}else{set(s);}
+    });
+  });
+  grid.addEventListener('mouseover',elsewhere);
+  grid.addEventListener('focusin',elsewhere);
+  document.addEventListener('click',function(e){if(sel&&!path.contains(e.target))release(true);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&sel)release(false);});
 })();
 </script>
 </body>

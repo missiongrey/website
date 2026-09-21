@@ -24,6 +24,10 @@ fonts/                 self hosted woff2 files, referenced from styles.css
 newsletters/           Guild newsletter PDFs, published as /newsletters/*.pdf
 deploy/build.sh        production build, writes deploy/prod/
 deploy/stage.sh        preview build under the /new/ prefix, writes deploy/stage/
+CREDITS.md             sources, licences and credits for the documentary
+                       imagery in assets/texture/. A repo doc: it sits here
+                       rather than beside the files so the build never
+                       publishes it.
 ```
 
 `deploy/prod/` and `deploy/stage/` are build output. They are ignored by git
