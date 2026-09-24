@@ -3816,13 +3816,18 @@ uses the paper's own pages as its images, on two rules.
   from the download control: hairline on the sheet edge, no paper `.mat`),
   and the `a.art-sheet` opens the paper.
 - A figure goes inside `.art-body` right after the paragraph it
-  illustrates, as `figure.art-fig`: the same hairline object at 300px,
+  illustrates, as `figure.art-fig`: the same hairline object at 260px,
   the printed "Figure N." line cropped off the image so the caption says
   it once, and the caption carries the credit (figure, authors, journal,
   year, licence). Reproduce figures only from open access papers under a
   licence that allows it (CC BY 4.0 for MDPI), and say the licence in
   the caption.
 
-Body links in an article (`.art-body a`) are underlined in the hairline
-colour and darken on hover; the site's global link style has no
+The share image (`og:image`, `twitter:image`, schema `image`) is a
+separate `<slug>-share.jpg` at 1200x627, the wide cover centred on white:
+the social cards crop to about 1.91:1 from the centre and would cut a 3:1
+band's logos and title ends.
+
+Body links in an article (`.art-body a`) are underlined in `--ink-dim`
+and darken on hover; the site's global link style has no
 underline, which inside running serif text reads as no link at all.
