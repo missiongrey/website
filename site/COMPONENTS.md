@@ -3764,29 +3764,37 @@ file. Say "two pages" once; the caption is its home.
 One compact section on About, `#grey-rhino`, after the core team and the
 research partnerships strip and before the offices, on the chairman's
 brief: a second meaning of grey, related to the name band and kept
-distinct from it. The chairman placed it there himself (2026-09-24): the
+distinct from it. Refined the same day (his second brief): the section
+opens on grey zones, the environment decisions are made in, and brings
+the Gray Rhino in second as a related outside idea, under the heading
+"Grey is where decisions happen." The chairman placed it there himself (2026-09-24): the
 two grey stories do not sit together, so never move it back beside the
 name band. The name band is untouched.
 
 - **Structure.** `.ab-rh` hangs from a hairline with a leading tick, the
   mark the people register rows use. Inside: `.ab-rh-head` (eyebrow
   `Another shade of grey` and the `h2`, spanning the row), `.ab-rh-copy`
-  (three paragraphs) and `.ab-rh-src`, the source note. From 901px the
-  copy sits left and the note on the right rail, TOP-aligned with the
-  first paragraph, the one it credits; a bottom-aligned note read as the
-  source of Mission Grey's own closing line. One column below 901px, the
+  (four paragraphs) and `.ab-rh-src`, the source note. From 901px the
+  copy sits left and the note on the right rail, level with the SECOND
+  paragraph, the Wucker one it credits: `.ab-rh-copy` goes
+  `display:contents` so each paragraph is its own grid row and the note
+  takes row 3. Beside the first paragraph it would read as the source of
+  the grey zone idea, which is Mission Grey's own; a bottom-aligned note
+  read as the source of the closing line. One column below 901px, the
   note under the copy.
 - **The note is discreet.** One link, no label, in the register's
   outside-link voice (10.5px mono, `--ink-dim`), `align-self:flex-start`
   so its focus ring and hit area stop at the text.
 - **Attribution is part of the content.** The concept is Michele
-  Wucker's: the first sentence names her, and `.ab-rh-src` links her own
-  page on the term. Her coined term keeps its American spelling ("gray
-  rhino") wherever it is her term; the heading uses the brand's "grey".
-  Never reword the section so that the concept reads as Mission Grey's.
+  Wucker's: the second paragraph names her, and `.ab-rh-src` links her
+  book page. Her coined term keeps its American spelling ("Gray Rhino")
+  wherever it is her term; everything else uses the brand's "grey".
+  Never reword the section so that the concept reads as Mission Grey's,
+  as the origin of the name, or as a partnership, and never make it more
+  prominent than the grey zone story.
 - **Copy is the requester's own**, placed verbatim; the section frames
-  the rhino as one analogy, and its last sentence keeps Mission Grey
-  broader than risk. Edits go back to the requester.
+  the rhino as one related concept, and its last sentence keeps Mission
+  Grey broader than threats. Edits go back to the requester.
 - **One amber mark**, the 6px `--accent-mark` square at the head of the
   source rule. No image, no icon, no motion.
 - **Compact on purpose.** The name band's top pad, so the hairline stands

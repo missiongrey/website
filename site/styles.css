@@ -4878,7 +4878,7 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 }
 .ab-rh::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:9px;background:var(--line-3)}
 .ab-rh-head h2{font-size:var(--fs-l2);line-height:1.12;margin-top:18px}
-.ab-rh-copy p{max-width:60ch;color:var(--ink-body)}
+.ab-rh-copy p{max-width:60ch;color:var(--ink-body);text-wrap:pretty}
 .ab-rh-copy p + p{margin-top:12px}
 .ab-rh-src{
   position:relative;display:flex;flex-direction:column;
@@ -4897,8 +4897,17 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
     grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);
     column-gap:clamp(40px,5vw,80px);align-items:start;
   }
-  .ab-rh-head{grid-column:1/-1}
-  .ab-rh-src{justify-self:end;width:100%;margin-top:6px}
+  /* The copy's paragraphs join the grid so the source note can sit
+     level with the second one, the Wucker paragraph it credits; beside
+     the first it would read as the source of the grey zone paragraph,
+     which is Mission Grey's own. Row 3 = paragraph two; the small top
+     margin sets the note's link on that paragraph's first line and its
+     rule in the gap above it. */
+  .ab-rh{row-gap:0}
+  .ab-rh-head{grid-column:1/-1;margin-bottom:24px}
+  .ab-rh-copy{display:contents}
+  .ab-rh-copy p{grid-column:1}
+  .ab-rh-src{grid-column:2;grid-row:3;justify-self:end;width:100%;margin-top:3px}
 }
 
 /* ---- end 36 ---- */
