@@ -3758,3 +3758,35 @@ sits in an `a.art-sheet` download anchor instead of the paper `.mat` (the
 sheet has its own margins; a second frame reads as a scan), 340px wide like
 the newsletter cover, so the most clickable object on the page opens the
 file. Say "two pages" once; the caption is its home.
+
+## About: the grey rhino (2026-09-24, styles.css section 36)
+
+One compact section on About, `#grey-rhino`, directly after the name band
+("Built for the grey zone." and its mark sequence) and before the core
+team, on the chairman's brief: a second meaning of grey, related to the
+name band and kept distinct from it. The name band is untouched.
+
+- **Structure.** `.ab-rh` hangs from a hairline with a leading tick, the
+  mark the people register rows use. Inside: `.ab-rh-head` (eyebrow
+  `Another shade of grey` and the `h2`, spanning the row), `.ab-rh-copy`
+  (three paragraphs) and `.ab-rh-src`, the source note. From 901px the
+  copy sits left and the note on the right rail, TOP-aligned with the
+  first paragraph, the one it credits; a bottom-aligned note read as the
+  source of Mission Grey's own closing line. One column below 901px, the
+  note under the copy.
+- **The note is discreet.** One link, no label, in the register's
+  outside-link voice (10.5px mono, `--ink-dim`), `align-self:flex-start`
+  so its focus ring and hit area stop at the text.
+- **Attribution is part of the content.** The concept is Michele
+  Wucker's: the first sentence names her, and `.ab-rh-src` links her own
+  page on the term. Her coined term keeps its American spelling ("gray
+  rhino") wherever it is her term; the heading uses the brand's "grey".
+  Never reword the section so that the concept reads as Mission Grey's.
+- **Copy is the requester's own**, placed verbatim; the section frames
+  the rhino as one analogy, and its last sentence keeps Mission Grey
+  broader than risk. Edits go back to the requester.
+- **One amber mark**, the 6px `--accent-mark` square at the head of the
+  source rule. No image, no icon, no motion.
+- **Compact on purpose.** No top padding (the rule is the division) and a
+  short bottom pad; the core team keeps its own section padding. Heading
+  at `--fs-l2`, the size of the name band and team headings beside it.
