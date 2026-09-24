@@ -3761,10 +3761,12 @@ file. Say "two pages" once; the caption is its home.
 
 ## About: the grey rhino (2026-09-24, styles.css section 36)
 
-One compact section on About, `#grey-rhino`, directly after the name band
-("Built for the grey zone." and its mark sequence) and before the core
-team, on the chairman's brief: a second meaning of grey, related to the
-name band and kept distinct from it. The name band is untouched.
+One compact section on About, `#grey-rhino`, after the core team and the
+research partnerships strip and before the offices, on the chairman's
+brief: a second meaning of grey, related to the name band and kept
+distinct from it. The chairman placed it there himself (2026-09-24): the
+two grey stories do not sit together, so never move it back beside the
+name band. The name band is untouched.
 
 - **Structure.** `.ab-rh` hangs from a hairline with a leading tick, the
   mark the people register rows use. Inside: `.ab-rh-head` (eyebrow
@@ -3787,6 +3789,7 @@ name band and kept distinct from it. The name band is untouched.
   broader than risk. Edits go back to the requester.
 - **One amber mark**, the 6px `--accent-mark` square at the head of the
   source rule. No image, no icon, no motion.
-- **Compact on purpose.** No top padding (the rule is the division) and a
-  short bottom pad; the core team keeps its own section padding. Heading
-  at `--fs-l2`, the size of the name band and team headings beside it.
+- **Compact on purpose.** The name band's top pad, so the hairline stands
+  clear of the strip's bordered band, and a short bottom pad; the offices
+  keep their own section padding. Heading at `--fs-l2`, the size of the
+  name band and team headings.

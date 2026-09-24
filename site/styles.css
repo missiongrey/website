@@ -4850,26 +4850,27 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 /* ---- end 35 ---- */
 
 /* ============ 36 ABOUT, THE GREY RHINO (2026-09-24): a second shade of grey ============ */
-/* One compact section between the name band and the core team, on the
-   chairman's brief: another meaning of grey, related to the name band and
-   kept distinct from it. It reuses the page's grammar and adds no token,
-   no font, no image and no motion. It hangs from a hairline with a
-   leading tick, the mark the people register rows use, so it reads as a
-   neighbour of the name band without merging into one argument.
-   It takes no top padding of its own: the rule is the division, and a
-   second full section gap on the same ground would be the large empty
-   container the brief rules out. For the same reason its bottom pad is
-   short: the core team opens below on its own section padding and rule.
+/* One compact section between the research partnerships strip and the
+   offices, on the chairman's brief: another meaning of grey, related to
+   the name band and kept apart from it (his placement: the two grey
+   stories do not sit together). It reuses the page's grammar and adds no
+   token, no font, no image and no motion. It hangs from a hairline with a
+   leading tick, the mark the people register rows use.
+   Its top pad matches the name band's, so the hairline stands clear of
+   the strip's bordered band instead of doubling its edge. Its bottom pad
+   is short: the offices open below on their own section padding, and a
+   second full gap on the same ground would be the large empty container
+   the brief rules out.
    The eyebrow and headline span the row; the headline takes the page's
    second-level size (--fs-l2), the size of the name band and team
-   headings beside it. Below them, copy on the left at a reading measure
+   headings. Below them, copy on the left at a reading measure
    and the source on the right rail as a margin note, top-aligned with the
    first paragraph, which is the one it credits (a bottom-aligned note
    read as the source of Mission Grey's own closing line). The source
    link takes the register's outside-link voice (10.5px mono, --ink-dim),
    so it stays discreet; its rule carries the section's one amber mark.
    Below 901px the source drops under the copy. */
-.ag-about #grey-rhino{padding-top:0;padding-bottom:clamp(20px,2.4vw,34px)}
+.ag-about #grey-rhino{padding-top:clamp(56px,6.2vw,84px);padding-bottom:clamp(20px,2.4vw,34px)}
 .ab-rh{
   position:relative;border-top:1px solid var(--line-2);
   padding-top:clamp(26px,3vw,38px);
