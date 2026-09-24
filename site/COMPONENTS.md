@@ -944,7 +944,7 @@ cannot tell which one they want from two mono labels, so **every closing
 panel that offers a choice carries `.cta-notes`**: a two-column block under
 the button pair with one line per button, the button's own words as the mono
 label. Home, Platform, Solutions, Use cases, Guild, About, Partners, API,
-Insights and the twelve insight articles all carry it.
+Insights and the thirteen insight articles all carry it.
 
 **Two deliberate exceptions.** `/contact/` is where `Request access` leads,
 so a panel there explaining the button the reader just followed is noise;
@@ -3801,3 +3801,28 @@ name band. The name band is untouched.
   clear of the strip's bordered band, and a short bottom pad; the offices
   keep their own section padding. Heading at `--fs-l2`, the size of the
   name band and team headings.
+
+## Article figures from a published paper (2026-09-24)
+
+An article about a published paper (first: the Symmetry Editor's Choice
+piece, `/insights/jani-kinnunens-research-on-risk-and-uncertainty-selected-as-editors-choice/`)
+uses the paper's own pages as its images, on two rules.
+
+- The cover is the paper's title band only: journal header, title and
+  author line, cropped above the affiliation block. That block prints the
+  authors' correspondence email addresses, which never go onto the site
+  as a picture, and the abstract is linked, not pasted. The crop is wide,
+  so it takes `.art-cover.doc` at the full column width (the sheet rule
+  from the download control: hairline on the sheet edge, no paper `.mat`),
+  and the `a.art-sheet` opens the paper.
+- A figure goes inside `.art-body` right after the paragraph it
+  illustrates, as `figure.art-fig`: the same hairline object at 300px,
+  the printed "Figure N." line cropped off the image so the caption says
+  it once, and the caption carries the credit (figure, authors, journal,
+  year, licence). Reproduce figures only from open access papers under a
+  licence that allows it (CC BY 4.0 for MDPI), and say the licence in
+  the caption.
+
+Body links in an article (`.art-body a`) are underlined in the hairline
+colour and darken on hover; the site's global link style has no
+underline, which inside running serif text reads as no link at all.
