@@ -548,8 +548,8 @@ cover equal gutters inside.
 The episodes run on the article grid: `.ins-cards.ep-cards`, three across,
 two at 1000px, one at 640px, newest first (Jouko, 2026-10-05, when the list
 grew long). Each `.ep-card` is an `.ins-card` anchor to the episode page:
-the tag row carries `Episode NN` in the signal ink and, on the newest
-episode only, the accent `Newest` mark; then the title as `h3`, the one
+the tag row carries `Episode NN` in the article tag grey and, on the newest
+episode only, the accent `Newest` mark, the one accent word in the row (the signal ink is the accent, so a coloured number would drown it); then the title as `h3`, the one
 sentence description as `.dek`, the mono `.guest` line (name, role,
 organisation) and the `Listen` link closing the card. When a new episode
 lands, the `Newest` span moves to it and nothing else changes.
