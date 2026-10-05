@@ -526,7 +526,7 @@ divider: `.nl-ed` carries the mono `Latest edition · <Month> <Year>` line,
 the edition title as the `h3`, and `.nl-hi` under them. The title heads the
 highlights instead of floating beside the cover, which is also what gives it
 a top edge to sit on. Each highlight is one hairline row, `h4` left and its
-sentence right, the same row grammar as the episode list; below 900px the
+sentence right; below 900px the
 row stacks and the frame moves to the left rail, where it still hugs the
 cover, so no width ever leaves dead space beside it.
 
@@ -542,6 +542,17 @@ block past the wrap on a phone, instead of letting the frame clamp to the
 section grid and the cover shrink with it. That clamp is what puts the
 frame's border on the same rails as the hairlines below it and leaves the
 cover equal gutters inside.
+
+### Podcast episode cards
+
+The episodes run on the article grid: `.ins-cards.ep-cards`, three across,
+two at 1000px, one at 640px, newest first (Jouko, 2026-10-05, when the list
+grew long). Each `.ep-card` is an `.ins-card` anchor to the episode page:
+the tag row carries `Episode NN` in the signal ink and, on the newest
+episode only, the accent `Newest` mark; then the title as `h3`, the one
+sentence description as `.dek`, the mono `.guest` line (name, role,
+organisation) and the `Listen` link closing the card. When a new episode
+lands, the `Newest` span moves to it and nothing else changes.
 
 ### Newsletter archive cards
 

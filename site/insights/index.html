@@ -45,7 +45,7 @@
 .ins-read{margin-top:auto;display:flex;align-items:center;gap:10px;font:500 10.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
 /* the 14x10 arrow is stroke="currentColor" everywhere on the site; the
    accent reaches it through the svg's own color, never through markup */
-.ins-read svg,.nl-dl svg,.ep .go svg{flex:none;color:var(--accent)}
+.ins-read svg,.nl-dl svg{flex:none;color:var(--accent)}
 .ins-card:hover .ins-read{color:var(--ink)}
 /* newsletter */
 /* two objects share the top row, the pitch and the edition cover, and each
@@ -116,14 +116,15 @@
 .pod-also{font:400 11px/1.9 var(--mono);letter-spacing:.1em;color:var(--ink-dim)}
 .pod-also a{color:var(--ink-dim);border-bottom:1px solid var(--line)}
 .pod-also a:hover{color:var(--ink)}
-.eps{margin-top:clamp(34px,4.5vw,48px);border-top:1px solid var(--line)}
-.ep{display:grid;grid-template-columns:64px 1fr auto;gap:16px 24px;align-items:baseline;padding:24px 4px;border-bottom:1px solid var(--line)}
-.ep .n{font:400 13px/1.3 var(--mono);letter-spacing:.16em;color:var(--signal)}
-.ep h3{font-size:17px;line-height:1.35;letter-spacing:-.012em;margin-bottom:9px}
-.ep p{font-size:14.5px;line-height:1.6;color:var(--ink-mute);max-width:62ch}
-.ep .guest{margin-top:10px;font:400 10.5px/1.7 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim)}
-.ep .go{font:500 10.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);white-space:nowrap;display:flex;align-items:center;gap:10px}
-.ep .go:hover{color:var(--ink)}
+/* episodes run on the article grid (Jouko, 2026-10-05: three across like the
+   articles, the list was getting long). The tag row carries the episode
+   number and, on the newest episode only, the accent "Newest" mark; the
+   guest line sits under the description and the Listen link closes the card */
+.ep-cards{margin-top:clamp(34px,4.5vw,48px)}
+.ep-card .ins-tag b{color:var(--signal)}
+.ep-new{color:var(--accent);font-weight:500}
+.ep-card .dek{margin-bottom:14px}
+.ep-card .guest{margin-bottom:22px;font:400 10.5px/1.7 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim)}
 @media (max-width:1000px){
   .ins-cards{grid-template-columns:1fr 1fr}
   .nl-cards{grid-template-columns:1fr 1fr}
@@ -140,8 +141,6 @@
 @media (max-width:640px){
   .ins-cards{grid-template-columns:1fr}
   .nl-cards{grid-template-columns:1fr}
-  .ep{grid-template-columns:1fr;gap:12px}
-  .ep .n{letter-spacing:.2em}
 }
 </style>
 <script src="../../assets/consent.js" data-ga="__GA_MEASUREMENT_ID__" defer></script>
@@ -427,79 +426,80 @@
         </p>
       </div>
 
-      <div class="eps reveal">
-        <article class="ep">
-          <p class="n">08</p>
-          <div>
-            <h3>What These Critical Minerals Deals Are Really About (US, EU, Canada, Brazil, Lithuania &amp; the DR)</h3>
-            <p>Host Rwizi Rweizooba Ainomugisha breaks down why four recent critical minerals deals involving the US, the EU, Canada, Brazil, Lithuania and the Dominican Republic are not really about critical minerals but about something much older and much less rational, and the concrete actions Mission Grey recommends for executives and investors.</p>
-            <p class="guest">Rwizi Rweizooba Ainomugisha &middot; Host &middot; Mission Grey Guild member</p>
-          </div>
-          <a class="go" href="https://podcasts.apple.com/us/podcast/8-what-these-critical-minerals-deals-are-really-about/id6793223621?i=1000791665619" aria-label="Listen to episode 08, What These Critical Minerals Deals Are Really About (US, EU, Canada, Brazil, Lithuania and the DR)">Listen<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="#E2A33C" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
-        </article>
-        <article class="ep">
-          <p class="n">07</p>
-          <div>
-            <h3>Amandine Schneickert on China Replacing the US, European Regulations, AVs &amp; Eating Puffer Fish Liver</h3>
-            <p>Amandine Schneickert joins Rwizi Rweizooba Ainomugisha to discuss China replacing the US, European regulations, autonomous vehicles, and how she ate puffer fish liver in Japan.</p>
-            <p class="guest">Amandine Schneickert &middot; Founder &middot; Pivot Point Strategies</p>
-          </div>
-          <a class="go" href="https://podcasts.apple.com/us/podcast/07-amandine-schneickert-on-china-replacing-the-us/id6793223621?i=1000790992500" aria-label="Listen to episode 07, Amandine Schneickert on China Replacing the US, European Regulations, AVs and Eating Puffer Fish Liver">Listen<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
-        </article>
-        <article class="ep">
-          <p class="n">06</p>
-          <div>
-            <h3>Sethu Nguna on Designing a Training Initiative, Wargaming U.S.&#8209;China Competition &amp; Eating Frog Legs</h3>
-            <p>Sethu Nguna joins Rwizi Rweizooba Ainomugisha to discuss Fractured Order, a Statecraft Simulations Group simulation about U.S.&#8209;China strategic competition, and how she ate frog legs in Virginia.</p>
-            <p class="guest">Sethu Nguna &middot; Training and Instructional Design Manager &middot; AidData, William &amp; Mary</p>
-          </div>
-          <a class="go" href="https://podcasts.apple.com/us/podcast/06-sethu-nguna-on-designing-a-training-initiative/id6793223621?i=1000790992516" aria-label="Listen to episode 06, Sethu Nguna on Designing a Training Initiative, Wargaming U.S.-China Competition and Eating Frog Legs">Listen<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
-        </article>
-        <article class="ep">
-          <p class="n">05</p>
-          <div>
-            <h3>US&#8209;Canada Trade War Is No Longer About Tariffs: What It Means for Autos, Steel &amp; Critical Minerals</h3>
-            <p>Host Rwizi Rweizooba Ainomugisha breaks down why the US&#8209;Canada trade dispute is no longer just about tariffs, the five sectors most affected (automotive, steel and aluminum, electricity, critical minerals, and logistics), and the concrete actions Mission Grey recommends for executives and investors with cross&#8209;border exposure.</p>
-            <p class="guest">Rwizi Rweizooba Ainomugisha &middot; Host &middot; Mission Grey Guild member</p>
-          </div>
-          <a class="go" href="https://podcasts.apple.com/us/podcast/05-us-canada-trade-war-is-no-longer-about-tariffs-what/id6793223621?i=1000790992499" aria-label="Listen to episode 05, US-Canada Trade War Is No Longer About Tariffs: What It Means for Autos, Steel and Critical Minerals">Listen<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
-        </article>
-        <article class="ep">
-          <p class="n">04</p>
-          <div>
-            <h3>Pekka Virkki on Ballots vs. Balance Sheets, Maritime Chokepoints, Post&#8209;Finlandization &amp; South Asian Food</h3>
-            <p>Pekka Virkki joins Rwizi Rweizooba Ainomugisha to discuss ballots versus balance sheets, maritime chokepoints, post&#8209;Finlandization, and South Asian food in Northern European restaurants.</p>
-            <p class="guest">Pekka Virkki &middot; Co&#8209;founder, Editor&#8209;in&#8209;Chief &amp; Guildmaster &middot; Mission Grey</p>
-          </div>
-          <a class="go" href="https://podcasts.apple.com/us/podcast/04-pekka-virkki-on-ballots-vs-balance-sheets-maritime/id6793223621?i=1000787038482" aria-label="Listen to episode 04, Pekka Virkki on Ballots vs. Balance Sheets, Maritime Chokepoints, Post-Finlandization and South Asian Food">Listen<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
-        </article>
-        <article class="ep">
-          <p class="n">03</p>
-          <div>
-            <h3>Rwizi on US Critical Minerals Push, Indian Mining &amp; Pax Silica Ultimatum</h3>
-            <p>Host Rwizi Rweizooba Ainomugisha breaks down the week's four biggest risk signals: a $3 billion US push to break China's grip on critical minerals, India's overhaul of mining taxation, a new India&#8209;Africa trade corridor, and a leaked ultimatum forcing 35 countries to pick a side in the AI race.</p>
-            <p class="guest">Rwizi Rweizooba Ainomugisha &middot; Host &middot; Mission Grey Guild member</p>
-          </div>
-          <a class="go" href="https://podcasts.apple.com/us/podcast/03-rwizi-on-us-critical-minerals-push-indian-mining/id6793223621?i=1000785784013" aria-label="Listen to episode 03, Rwizi on US Critical Minerals Push, Indian Mining and Pax Silica Ultimatum">Listen<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
-        </article>
-        <article class="ep">
-          <p class="n">02</p>
-          <div>
-            <h3>Mercy Kuo on Wargaming, China Risk, and Eating Black</h3>
-            <p>Mercy Kuo joins Rwizi Rweizooba Ainomugisha to discuss wargaming as a decision tool, how to think about China risk, and the discipline of turning uncertainty into action.</p>
-            <p class="guest">Mercy Kuo &middot; Author of The China Risk Report &middot; Mission Grey team member</p>
-          </div>
-          <a class="go" href="https://podcasts.apple.com/us/podcast/02-mercy-kuo-on-wargaming-china-risk-and-eating-black/id6793223621?i=1000779717563" aria-label="Listen to episode 02, Mercy Kuo on Wargaming, China Risk, and Eating Black">Listen<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
-        </article>
-        <article class="ep">
-          <p class="n">01</p>
-          <div>
-            <h3>Lauri T&auml;htinen on Human-Machine Teaming, Nairobi</h3>
-            <p>In the first episode, Lauri T&auml;htinen joins Rwizi Rweizooba Ainomugisha to discuss human&#8209;machine teaming and what it means for decision&#8209;makers operating in complex environments.</p>
-            <p class="guest">Lauri T&auml;htinen &middot; Human&#8209;machine teaming expert</p>
-          </div>
-          <a class="go" href="https://podcasts.apple.com/us/podcast/01-lauri-t%C3%A4htinen-on-human-machine-teaming-nairobi/id6793223621?i=1000777755314" aria-label="Listen to episode 01, Lauri Tähtinen on Human-Machine Teaming, Nairobi">Listen<svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg></a>
-        </article>
+      <div class="ins-cards ep-cards reveal">
+
+        <a class="ins-card ep-card" href="https://www.buzzsprout.com/2631797/episodes/19908725-9-mathieu-boulegue-on-russia-s-arctic-military-posture-four-emerging-opportunities-eating-horse-fat">
+          <p class="ins-tag"><b>Episode 09</b><span class="ep-new">Newest</span></p>
+          <h3>Mathieu Boul&egrave;gue on Russia&rsquo;s Arctic Military Posture, Four Emerging Opportunities &amp; Eating Horse Fat</h3>
+          <p class="dek">Mathieu Boul&egrave;gue joins Rwizi Rweizooba Ainomugisha to discuss the evolution of Russia&rsquo;s military posture in a changing Arctic, four emerging Arctic opportunities for Western businesses, and how he ate horse fat in Kazakhstan.</p>
+          <p class="guest">Mathieu Boul&egrave;gue &middot; Russia expert &middot; Chatham House, CEPA &amp; NYU</p>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Listen</span>
+        </a>
+
+        <a class="ins-card ep-card" href="https://podcasts.apple.com/us/podcast/8-what-these-critical-minerals-deals-are-really-about/id6793223621?i=1000791665619">
+          <p class="ins-tag"><b>Episode 08</b></p>
+          <h3>What These Critical Minerals Deals Are Really About (US, EU, Canada, Brazil, Lithuania &amp; the DR)</h3>
+          <p class="dek">Host Rwizi Rweizooba Ainomugisha breaks down why four recent critical minerals deals involving the US, the EU, Canada, Brazil, Lithuania and the Dominican Republic are not really about critical minerals but about something much older and much less rational, and the concrete actions Mission Grey recommends for executives and investors.</p>
+          <p class="guest">Rwizi Rweizooba Ainomugisha &middot; Host &middot; Mission Grey Guild member</p>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Listen</span>
+        </a>
+
+        <a class="ins-card ep-card" href="https://podcasts.apple.com/us/podcast/07-amandine-schneickert-on-china-replacing-the-us/id6793223621?i=1000790992500">
+          <p class="ins-tag"><b>Episode 07</b></p>
+          <h3>Amandine Schneickert on China Replacing the US, European Regulations, AVs &amp; Eating Puffer Fish Liver</h3>
+          <p class="dek">Amandine Schneickert joins Rwizi Rweizooba Ainomugisha to discuss China replacing the US, European regulations, autonomous vehicles, and how she ate puffer fish liver in Japan.</p>
+          <p class="guest">Amandine Schneickert &middot; Founder &middot; Pivot Point Strategies</p>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Listen</span>
+        </a>
+
+        <a class="ins-card ep-card" href="https://podcasts.apple.com/us/podcast/06-sethu-nguna-on-designing-a-training-initiative/id6793223621?i=1000790992516">
+          <p class="ins-tag"><b>Episode 06</b></p>
+          <h3>Sethu Nguna on Designing a Training Initiative, Wargaming U.S.&#8209;China Competition &amp; Eating Frog Legs</h3>
+          <p class="dek">Sethu Nguna joins Rwizi Rweizooba Ainomugisha to discuss Fractured Order, a Statecraft Simulations Group simulation about U.S.&#8209;China strategic competition, and how she ate frog legs in Virginia.</p>
+          <p class="guest">Sethu Nguna &middot; Training and Instructional Design Manager &middot; AidData, William &amp; Mary</p>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Listen</span>
+        </a>
+
+        <a class="ins-card ep-card" href="https://podcasts.apple.com/us/podcast/05-us-canada-trade-war-is-no-longer-about-tariffs-what/id6793223621?i=1000790992499">
+          <p class="ins-tag"><b>Episode 05</b></p>
+          <h3>US&#8209;Canada Trade War Is No Longer About Tariffs: What It Means for Autos, Steel &amp; Critical Minerals</h3>
+          <p class="dek">Host Rwizi Rweizooba Ainomugisha breaks down why the US&#8209;Canada trade dispute is no longer just about tariffs, the five sectors most affected (automotive, steel and aluminum, electricity, critical minerals, and logistics), and the concrete actions Mission Grey recommends for executives and investors with cross&#8209;border exposure.</p>
+          <p class="guest">Rwizi Rweizooba Ainomugisha &middot; Host &middot; Mission Grey Guild member</p>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Listen</span>
+        </a>
+
+        <a class="ins-card ep-card" href="https://podcasts.apple.com/us/podcast/04-pekka-virkki-on-ballots-vs-balance-sheets-maritime/id6793223621?i=1000787038482">
+          <p class="ins-tag"><b>Episode 04</b></p>
+          <h3>Pekka Virkki on Ballots vs. Balance Sheets, Maritime Chokepoints, Post&#8209;Finlandization &amp; South Asian Food</h3>
+          <p class="dek">Pekka Virkki joins Rwizi Rweizooba Ainomugisha to discuss ballots versus balance sheets, maritime chokepoints, post&#8209;Finlandization, and South Asian food in Northern European restaurants.</p>
+          <p class="guest">Pekka Virkki &middot; Co&#8209;founder, Editor&#8209;in&#8209;Chief &amp; Guildmaster &middot; Mission Grey</p>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Listen</span>
+        </a>
+
+        <a class="ins-card ep-card" href="https://podcasts.apple.com/us/podcast/03-rwizi-on-us-critical-minerals-push-indian-mining/id6793223621?i=1000785784013">
+          <p class="ins-tag"><b>Episode 03</b></p>
+          <h3>Rwizi on US Critical Minerals Push, Indian Mining &amp; Pax Silica Ultimatum</h3>
+          <p class="dek">Host Rwizi Rweizooba Ainomugisha breaks down the week's four biggest risk signals: a $3 billion US push to break China's grip on critical minerals, India's overhaul of mining taxation, a new India&#8209;Africa trade corridor, and a leaked ultimatum forcing 35 countries to pick a side in the AI race.</p>
+          <p class="guest">Rwizi Rweizooba Ainomugisha &middot; Host &middot; Mission Grey Guild member</p>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Listen</span>
+        </a>
+
+        <a class="ins-card ep-card" href="https://podcasts.apple.com/us/podcast/02-mercy-kuo-on-wargaming-china-risk-and-eating-black/id6793223621?i=1000779717563">
+          <p class="ins-tag"><b>Episode 02</b></p>
+          <h3>Mercy Kuo on Wargaming, China Risk, and Eating Black</h3>
+          <p class="dek">Mercy Kuo joins Rwizi Rweizooba Ainomugisha to discuss wargaming as a decision tool, how to think about China risk, and the discipline of turning uncertainty into action.</p>
+          <p class="guest">Mercy Kuo &middot; Author of The China Risk Report &middot; Mission Grey team member</p>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Listen</span>
+        </a>
+
+        <a class="ins-card ep-card" href="https://podcasts.apple.com/us/podcast/01-lauri-t%C3%A4htinen-on-human-machine-teaming-nairobi/id6793223621?i=1000777755314">
+          <p class="ins-tag"><b>Episode 01</b></p>
+          <h3>Lauri T&auml;htinen on Human-Machine Teaming, Nairobi</h3>
+          <p class="dek">In the first episode, Lauri T&auml;htinen joins Rwizi Rweizooba Ainomugisha to discuss human&#8209;machine teaming and what it means for decision&#8209;makers operating in complex environments.</p>
+          <p class="guest">Lauri T&auml;htinen &middot; Human&#8209;machine teaming expert</p>
+          <span class="ins-read"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 5h11M9 1.5L12.5 5 9 8.5"/></svg>Listen</span>
+        </a>
+
       </div>
     </div>
   </section>
