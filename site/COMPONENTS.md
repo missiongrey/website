@@ -3842,3 +3842,121 @@ band's logos and title ends.
 Body links in an article (`.art-body a`) are underlined in `--ink-dim`
 and darken on hover; the site's global link style has no
 underline, which inside running serif text reads as no link at all.
+
+## Careers (2026-10-26, styles.css section 37)
+
+`/careers/` and one compact section on About, `#join`, on the chairman's
+brief. No image, no new token, no motion beyond `.reveal`. The page is in
+the footer's Company column, after Partners, on every page (marked
+`aria-current="page"` on `/careers/` itself); it is deliberately not in
+the header nav or the mobile panel.
+
+**Whose words these are.** The headings, the paragraphs, the button labels
+and the About section's text are the chairman's, placed verbatim (straight
+apostrophes, per the chassis convention); edits to them go back to him.
+These strings are NOT his and were written for the build, so they can be
+changed without him:
+
+- the page title and the `og:title` / `twitter:title` (`Careers. Work with
+  Mission Grey`);
+- the second sentence of the meta description ("Work with Mission Grey on
+  a new generation of external intelligence solutions."); the first is his
+  lede;
+- the card titles, `Core team` and `Guild`;
+- the two role lines on the cards ("The operational team builds and grows
+  the business." and "The Guild contributes specialist expertise to the
+  intelligence system."), close to his brief's wording but not his copy;
+- the empty-state line under Open Positions;
+- every placeholder in the commented position template.
+
+### The page
+
+- **The fold** (`.cr-hero`, `.cr-fold`, `.cr-fold-body`) is the About
+  fold's shape. From 981px the title and the lede sit in the left column
+  and the three paragraphs in the right, on a hairline with a tick at its
+  head (`.cr-fold` goes `display:contents` so its two children can take
+  the two columns; the reading order is the DOM order, title, lede,
+  paragraphs). Below 981px one column: title, the rule, lede, paragraphs.
+- **`.cr-row`** is the text section: eyebrow and `h2` (at `--fs-l2`) on the
+  left, copy on the right at a 62ch measure, hung from a hairline with a
+  leading tick. The three middle sections take `.cr-sec`, half the page's
+  section padding on each side, so two rows meet on one full `--sec-pad`.
+- **`.cr-links`** are the two cards, to `/about/#team` and `/guild/`: the
+  Guild page's `.fromguild` / `.fg` idiom restated (that one is page-local
+  to `/guild/`). Each card names its group, says its role in one line and
+  links out. The cards share three subgrid rows (title, role line, link),
+  so the links start level even where one label wraps to two lines (901
+  to about 1100px); without subgrid they fall back to flex columns with the
+  link pushed to the bottom. No profile is repeated on Careers.
+- **The foot of the page is one raised band** (`.sec.sec-alt.cr-band`,
+  the practical part of the page as its own place) holding two
+  `.cr-row`s, each its own `<section>`: `#positions` and `#apply` ("Show us
+  what you can do."). The section before the band is not `sec-alt`; keep
+  it that way (two adjacent bands are a composition error). `#apply` is
+  left-aligned like every other row, with the primary `Get in touch`
+  button (a `mailto:` with the subject `Working with Mission Grey`) and
+  the `.access-mail` address line directly under its paragraphs. One
+  button is not a choice, so it carries no `.cta-notes`; the address line
+  says where the button goes. There is no closing `.access-panel` on this
+  page.
+
+### About, `#join`
+
+After the advisors and before the research strip, so the strip still
+leads straight into the grey rhino section. The same `.cr-row`, with
+`.cr-join`: no top padding, because it opens on the team section's own
+bottom padding, and the same measure below the button. The heading's
+second sentence is a `span.cr-l` (`display:block`), so each sentence
+opens its own line at every width; from 901px the head column is wider
+than on Careers (About has no other row to align with), so at desktop
+widths each sentence fits one line. A ghost button, because the one
+primary button on About belongs to its closing panel.
+
+### Open positions: add, update, close, remove
+
+Each position is one `<details class="cr-pos">` inside `.cr-pos-list` in
+`#positions`. The browser opens and closes it (a short script on the page
+only opens the record a `#id` link points to), and the keyboard
+reaches it through its `summary`. The summary carries the title as an
+`h3.cr-pos-t` and one metadata line (`.cr-pos-meta`) with three facts:
+area or function, location or remote eligibility, engagement type
+(employment, contract, advisory or other). The facts are separated by
+real text, `&nbsp;&middot; ` after each fact but the last, so the line
+extracts as words and a wrapped line never opens on a dot. The body
+(`.cr-pos-body`) carries the short description, `Responsibilities and
+expected contributions` and `Desired experience and capabilities` as
+`.cr-pos-ul` lists under `.cr-pos-k` labels, and `How to apply`.
+
+- **Add.** A fully worked template sits commented out inside
+  `.cr-pos-list`. Copy everything from `<details` to `</details>`, paste it
+  above the template comment (outside it), and replace every placeholder.
+  Give it an `id` (lowercase words joined by hyphens, e.g.
+  `id="analyst-europe"`) so the position can be linked as
+  `/careers/#analyst-europe`. Newest first. In the apply link, URL-encode the
+  subject (`%20` for a space, `%3A` for a colon). Run `deploy/build.sh`.
+- **Update.** Edit the block in place. Keep the facts in the same order;
+  drop a fact and its separator rather than leaving it empty if it does
+  not apply.
+- **Close or remove.** Delete the block. There is no closed state on
+  purpose: a listed role that cannot be applied for is noise.
+- **The empty state.** `.cr-pos-empty` ("Specific opportunities will be
+  listed here as they open...", with "write to us" linking `#apply`) stays
+  in the markup at all times. It is plain body copy. It hides itself while
+  at least one `.cr-pos` is in the list
+  (`.cr-pos-list:has(.cr-pos) .cr-pos-empty`) and comes back when the last
+  one is deleted, and the list's hairlines print only while a position is
+  listed (`.cr-pos-list:has(.cr-pos)`), so the line never contradicts the
+  list. Do not delete it.
+- **Labels and long text.** The template's three body labels are
+  defaults. A position written with its own section headings keeps
+  them as the `.cr-pos-k` labels, and its text stays as given: several
+  paragraphs, a list, then more paragraphs inside one labelled block are
+  fine (12px between siblings, the label keeps its 8px). The first two
+  positions (2026-10-26, from the chairman's careers PDF, senior role
+  first as in his document) are the worked example: his headings and
+  text verbatim, his bold lines bold, his three tags as the metadata line
+  in his order, and one apply address line (`.access-mail`, a mailto
+  with the position in the subject) under his closing paragraphs.
+- **What a position may say.** The claims law applies: no salary, benefit
+  or location promise that is not signed off, and remote eligibility is
+  stated per position, never implied for every country.
