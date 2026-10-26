@@ -3951,10 +3951,12 @@ expected contributions` and `Desired experience and capabilities` as
   defaults. A position written with its own section headings keeps
   them as the `.cr-pos-k` labels, and its text stays as given: several
   paragraphs, a list, then more paragraphs inside one labelled block are
-  fine (12px between siblings, the label keeps its 8px). The first
-  listed position (2026-10-26) is the worked example: the chairman's
-  headings and text verbatim, his three tags as the metadata line in his
-  order, and one apply address line under his closing paragraphs.
+  fine (12px between siblings, the label keeps its 8px). The first two
+  positions (2026-10-26, from the chairman's careers PDF, senior role
+  first as in his document) are the worked example: his headings and
+  text verbatim, his bold lines bold, his three tags as the metadata line
+  in his order, and one apply address line (`.access-mail`, a mailto
+  with the position in the subject) under his closing paragraphs.
 - **What a position may say.** The claims law applies: no salary, benefit
   or location promise that is not signed off, and remote eligibility is
   stated per position, never implied for every country.
