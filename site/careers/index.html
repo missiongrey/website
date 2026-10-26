@@ -171,8 +171,9 @@
   <div class="sec sec-alt cr-band">
     <div class="wrap">
 
-      <!-- ONE <details> PER POSITION. No script: the browser opens and
-           closes each record, and the keyboard reaches it through its
+      <!-- ONE <details> PER POSITION. The browser opens and
+           closes each record (one small script only opens the record a
+           link points to), and the keyboard reaches it through its
            summary. The empty-state line stays in the markup at all times.
            It hides itself while at least one position is listed
            (styles.css 37.4), and the list's rules only show then, so it
@@ -186,6 +187,71 @@
         <div class="cr-row-copy">
           <div class="cr-pos-list">
             <p class="cr-pos-empty">Specific opportunities will be listed here as they open. You can also <a class="ilink" href="#apply">write to us</a> at any time, below.</p>
+
+            <details class="cr-pos" id="senior-sales-business-development-manager">
+              <summary>
+                <h3 class="cr-pos-t">Senior Sales &amp; Business Development Manager</h3>
+                <span class="cr-pos-meta"><span>International opportunities</span>&nbsp;&middot; <span>Remote&#8209;first</span>&nbsp;&middot; <span>Enterprise Sales &amp; Strategic Accounts</span></span>
+              </summary>
+              <div class="cr-pos-body">
+                <div>
+                  <p>Build business at the intersection of global intelligence, AI and enterprise decision-making.</p>
+                  <p>Businesses face an increasingly complex world. Geopolitical developments, regulatory changes, economic uncertainty, technology disruption and shifting global markets affect decisions across virtually every industry.</p>
+                  <p>At the same time, AI, advanced data models and new intelligence capabilities are transforming how organizations can monitor these changes, evaluate their implications and respond.</p>
+                  <p>Mission Grey connects these developments through a new generation of external intelligence solutions.</p>
+                  <p>We are looking for experienced, commercially driven professionals who can help us expand internationally, win new customers and develop long-term strategic relationships.</p>
+                  <p>This is a demanding, entrepreneurial opportunity for people who can combine enterprise sales experience, business understanding and the ability to turn complex customer challenges into commercial opportunities.</p>
+                </div>
+                <div>
+                  <p class="cr-pos-k">Your responsibilities</p>
+                  <ul class="cr-pos-ul">
+                    <li><strong>Win new business.</strong> Identify, develop and close opportunities with corporate customers, professional services firms and other organizations.</li>
+                    <li><strong>Build strategic customer relationships.</strong> Engage with senior executives and decision-makers across management, strategy, risk management, finance, operations and technology.</li>
+                    <li><strong>Lead consultative sales.</strong> Understand customers' business models, strategic priorities, risks and opportunities, and translate these into relevant Mission Grey solutions.</li>
+                    <li><strong>Develop existing accounts.</strong> Work with customers to maximize the value they receive, identify additional applications and expand long-term relationships.</li>
+                    <li><strong>Connect business and technology.</strong> Understand our platform, AI capabilities, advanced data models and intelligence methodologies sufficiently to identify credible customer use cases and work with technical specialists.</li>
+                    <li><strong>Create new opportunities.</strong> Help customers recognize needs and possibilities they may not yet have identified themselves.</li>
+                    <li><strong>Manage complex sales processes.</strong> Navigate multiple stakeholders, commercial negotiations, customer requirements and enterprise decision-making.</li>
+                    <li><strong>Deliver commercial results.</strong> Take ownership of your pipeline, customer development, revenue generation and agreed business objectives.</li>
+                  </ul>
+                  <p>Depending on your experience and location, the role may include responsibility for specific countries, regions, industries or strategic accounts.</p>
+                </div>
+                <div>
+                  <p class="cr-pos-k">What we are looking for</p>
+                  <p>We value demonstrated achievement more than titles or years of experience.</p>
+                  <p>You should bring:</p>
+                  <ul class="cr-pos-ul">
+                    <li>A proven ability to develop business, win customers and generate revenue.</li>
+                    <li>Experience in consultative B2B sales, enterprise solutions, professional services or other complex commercial environments.</li>
+                    <li>The confidence and credibility to engage with senior business executives and specialist decision-makers.</li>
+                    <li>An understanding of how organizations operate, make decisions, manage risks and evaluate investments.</li>
+                    <li>The ability to connect customer needs with technology, data, analytics and business solutions.</li>
+                    <li>A strong interest in global affairs, market developments, emerging technologies and how they affect businesses.</li>
+                    <li>Excellent relationship-building, communication, negotiation and commercial execution skills.</li>
+                    <li>A highly independent and entrepreneurial working style, with the discipline and persistence needed to deliver results.</li>
+                  </ul>
+                  <p>Experience in enterprise software, AI, analytics, financial services, consulting, risk management, intelligence or related industries is valuable, but we welcome people who have demonstrated strong commercial capabilities in other fields.</p>
+                  <p>English is important for international collaboration. Local language skills and established market knowledge are valuable, depending on the territory.</p>
+                </div>
+                <div>
+                  <p class="cr-pos-k">Why Mission Grey?</p>
+                  <p>This is an opportunity to work on some of the most significant challenges facing businesses today: understanding global uncertainty, making better strategic and operational decisions, and turning new AI and intelligence capabilities into real business value.</p>
+                  <p>Our international team brings together experienced entrepreneurs, business executives, researchers, intelligence professionals and technology specialists.</p>
+                  <p>We are building a business and developing a market, not simply selling a conventional product in an established category.</p>
+                  <p>That creates significant opportunities for professionals who enjoy creating new business, opening markets, building customer relationships and shaping how solutions are used.</p>
+                  <p>It also means high expectations.</p>
+                  <p><strong>We are looking for people who can create business, not just manage sales processes.</strong></p>
+                  <p>You must be comfortable taking responsibility, working independently, developing opportunities from the ground up and demonstrating measurable results.</p>
+                  <p>We offer international collaboration and flexible working arrangements, including remote opportunities where practical. What matters is the value you create and the results you deliver.</p>
+                </div>
+                <div>
+                  <p class="cr-pos-k">Interested?</p>
+                  <p>Tell us about your commercial experience, the customers and markets you know, the results you have achieved, and how you believe you could help build Mission Grey's business.</p>
+                  <p>We are particularly interested in people who can explain concretely what they would bring to the organization.</p>
+                  <p class="access-mail"><a href="mailto:contact@missiongrey.com?subject=Application%3A%20Senior%20Sales%20%26%20Business%20Development%20Manager">contact@missiongrey.com</a></p>
+                </div>
+              </div>
+            </details>
 
             <!-- POSITION TEMPLATE. To publish a position, copy everything
                  from <details to </details> below, paste it ABOVE this
@@ -338,6 +404,11 @@
   }else{
     document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
   }
+
+  /* a link to one position opens it: the record is a <details>, so the
+     browser alone would scroll to it closed */
+  var op=function(){var h=location.hash.slice(1),d=h&&document.getElementById(h);if(d&&d.classList.contains('cr-pos')){d.open=true;d.scrollIntoView();}};
+  op();window.addEventListener('hashchange',op);
 
   /* close mobile menu after navigation or outside click */
   var mn=document.querySelector('.mnav');

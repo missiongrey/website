@@ -3915,7 +3915,8 @@ primary button on About belongs to its closing panel.
 ### Open positions: add, update, close, remove
 
 Each position is one `<details class="cr-pos">` inside `.cr-pos-list` in
-`#positions`. No script: the browser opens and closes it, and the keyboard
+`#positions`. The browser opens and closes it (a short script on the page
+only opens the record a `#id` link points to), and the keyboard
 reaches it through its `summary`. The summary carries the title as an
 `h3.cr-pos-t` and one metadata line (`.cr-pos-meta`) with three facts:
 area or function, location or remote eligibility, engagement type
@@ -3946,6 +3947,14 @@ expected contributions` and `Desired experience and capabilities` as
   one is deleted, and the list's hairlines print only while a position is
   listed (`.cr-pos-list:has(.cr-pos)`), so the line never contradicts the
   list. Do not delete it.
+- **Labels and long text.** The template's three body labels are
+  defaults. A position written with its own section headings keeps
+  them as the `.cr-pos-k` labels, and its text stays as given: several
+  paragraphs, a list, then more paragraphs inside one labelled block are
+  fine (12px between siblings, the label keeps its 8px). The first
+  listed position (2026-10-26) is the worked example: the chairman's
+  headings and text verbatim, his three tags as the metadata line in his
+  order, and one apply address line under his closing paragraphs.
 - **What a position may say.** The claims law applies: no salary, benefit
   or location promise that is not signed off, and remote eligibility is
   stated per position, never implied for every country.

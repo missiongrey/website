@@ -4928,8 +4928,8 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
    37.3 .cr-links, the two cards to About and Guild: the Guild page's
         .fromguild / .fg idiom (hairline cells made clickable), restated
         here because that one is page-local to /guild/;
-   37.4 .cr-pos, the open positions: one <details> per position, no
-        script. The empty-state line hides itself while a position is
+   37.4 .cr-pos, the open positions: one <details> per position; the
+        page's script only opens the one a link points to. The empty-state line hides itself while a position is
         listed. COMPONENTS.md, "Careers (2026-10-26)", is the edit guide. */
 
 /* ---- 37.1 the fold ---- */
@@ -5071,15 +5071,22 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 /* the separators are text in the markup ("&nbsp;&middot; " after each
    fact but the last), so the line extracts as words and a wrapped line
    never opens on a dot */
+/* a tag never breaks inside itself; the line wraps between tags */
+.cr-pos-meta > span{white-space:nowrap}
+/* anchors (#positions, #apply, a position's own id) land below the sticky header */
+.cr-row,.cr-pos{scroll-margin-top:88px}
 .cr-pos-meta{
   grid-column:1;display:block;
   font:500 var(--fs-meta)/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);
 }
-.cr-pos-body{display:grid;gap:20px;padding:6px 4px 30px;max-width:62ch}
+.cr-pos-body{display:grid;gap:34px;padding:6px 4px 30px;max-width:62ch}
 .cr-pos-body p{color:var(--ink-body)}
+/* a block can run to several paragraphs and a list: everything after a
+   sibling that is not the label sits 12px down, the label keeps its own 8px */
+.cr-pos-body > div > :not(.cr-pos-k) + *{margin-top:12px}
 .cr-pos-body .cr-pos-k{
   margin-bottom:8px;
-  font:500 var(--fs-label)/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);
+  font:500 var(--fs-label)/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink);
 }
 .cr-pos-ul{display:grid;gap:6px}
 .cr-pos-ul li{position:relative;padding-left:20px;color:var(--ink-body)}
