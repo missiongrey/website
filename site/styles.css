@@ -4911,3 +4911,178 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 }
 
 /* ---- end 36 ---- */
+
+/* ============ 37 CAREERS (2026-10-26): /careers/ and the About join section ============ */
+/* The chairman's Careers page, plus its one entry point on About. No new
+   token, font, image or motion beyond .reveal; every value below reads
+   from the ladder (section 29) or the palette. Four parts:
+   37.1 the fold, the About fold's shape: on a desktop the title and the
+        lede on the left, the intro paragraphs on the right on a hairline
+        with a tick at its head; on a phone one column, rule above lede;
+   37.2 .cr-row, the text section: head left, copy right at a reading
+        measure, hung from a hairline with a leading tick, the mark the
+        people register rows and the grey rhino use. Shared with About's
+        #join, so the way in and the page it leads to read as one family.
+        .cr-band is the one raised band at the foot of /careers/ holding
+        two rows, the positions and the open application;
+   37.3 .cr-links, the two cards to About and Guild: the Guild page's
+        .fromguild / .fg idiom (hairline cells made clickable), restated
+        here because that one is page-local to /guild/;
+   37.4 .cr-pos, the open positions: one <details> per position, no
+        script. The empty-state line hides itself while a position is
+        listed. COMPONENTS.md, "Careers (2026-10-26)", is the edit guide. */
+
+/* ---- 37.1 the fold ---- */
+.cr-hero{padding-bottom:clamp(44px,4.8vw,66px)}
+.cr-fold{
+  position:relative;margin-top:clamp(24px,3vw,40px);padding-top:22px;
+  border-top:1px solid var(--line-2);max-width:620px;
+}
+.cr-fold::before,.cr-fold-body::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:9px;background:var(--line-3)}
+.cr-fold-body::before{content:none}
+.cr-fold .cr-lede{margin-top:0;max-width:none;color:var(--ink)}
+.cr-fold-body{margin-top:18px}
+.cr-fold-body p{color:var(--ink-body);text-wrap:pretty}
+.cr-fold-body p + p{margin-top:12px}
+@media (min-width:981px){
+  .cr-hero .wrap{
+    display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);
+    /* the last row takes the slack, so the lede stays under the title
+       however tall the paragraphs beside them run */
+    grid-template-rows:auto auto 1fr;
+    column-gap:clamp(32px,4vw,64px);align-items:start;
+  }
+  .cr-hero .hero-eyebrow{grid-column:1/-1}
+  .cr-hero h1{grid-column:1;grid-row:2;margin:0}
+  /* the fold steps aside so the lede can sit under the title and the
+     paragraphs take the right column; the rule and its tick move to the
+     paragraphs' own box. DOM order, and so reading order, is unchanged. */
+  .cr-fold{display:contents}
+  .cr-fold::before{content:none}
+  .cr-fold .cr-lede{grid-column:1;grid-row:3;margin-top:24px;max-width:34ch}
+  .cr-fold-body{
+    position:relative;grid-column:2;grid-row:2/span 2;margin-top:12px;padding-top:22px;
+    border-top:1px solid var(--line-2);
+  }
+  .cr-fold-body::before{content:""}
+}
+
+/* ---- 37.2 the text row ---- */
+/* Half the page's section padding on each side, so two rows meet on one
+   full --sec-pad: four text sections at full padding each would be the
+   long run of ground round eleven cut everywhere else. */
+.cr-sec{padding-block:calc(var(--sec-pad) / 2)}
+.cr-row{
+  position:relative;border-top:1px solid var(--line-2);
+  padding-top:clamp(26px,3vw,38px);
+  display:grid;grid-template-columns:minmax(0,1fr);row-gap:24px;
+}
+.cr-row::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:9px;background:var(--line-3)}
+.cr-row-head h2{font-size:var(--fs-l2);line-height:1.12;max-width:20ch;text-wrap:balance}
+.cr-row-head .eyebrow{line-height:1.5}
+.cr-row-head .eyebrow + h2{margin-top:18px}
+.cr-row-dek{margin-top:14px;max-width:40ch;font-size:var(--fs-dek);color:var(--ink-mute)}
+.cr-row-copy > p{max-width:62ch;color:var(--ink-body);text-wrap:pretty}
+.cr-row-copy > p + p{margin-top:12px}
+.cr-row-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+@media (min-width:901px){
+  .cr-row{
+    grid-template-columns:minmax(0,1fr) minmax(0,1.55fr);
+    column-gap:clamp(40px,5vw,80px);align-items:start;
+  }
+}
+@media (max-width:560px){
+  .cr-row-cta .btn{flex:1 1 100%}
+}
+/* the practical part of /careers/: one raised band, two rows in it */
+.cr-band .cr-row + .cr-row{margin-top:calc(var(--sec-pad) / 2)}
+/* About's #join opens on the team section's own bottom padding and closes
+   on the same measure, so the button has the air the heading has above */
+.cr-join{padding-top:0;padding-bottom:clamp(58px,6.4vw,82px)}
+.cr-join .cr-row-head h2{max-width:none}
+/* a wider head column on About (the page has no other row to align
+   with), so at desktop widths each sentence of the heading fits its own
+   line; on a phone each still opens a new line and wraps within it */
+@media (min-width:901px){
+  .cr-join .cr-row{grid-template-columns:minmax(0,1.2fr) minmax(0,1.35fr)}
+}
+/* each of the heading's two sentences opens its own line */
+.cr-l{display:block}
+
+/* ---- 37.3 the two cards ---- */
+.cr-row-copy > .cr-links-lead{margin-top:28px;color:var(--ink)}
+.cr-links{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:16px;
+  background:var(--line);border:1px solid var(--line);
+}
+/* a column, so the two links sit on one line when one role line wraps
+   further than the other */
+.cr-link{display:flex;flex-direction:column;background:var(--bg-1);padding:24px 22px 26px;transition:background-color .2s ease}
+.cr-link:hover,.cr-link:focus-visible{background:var(--bg-2)}
+.cr-link h3{font-size:var(--fs-dek);font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+.cr-link p{margin-top:10px;font-size:var(--fs-small);line-height:1.6;color:var(--ink-mute)}
+.cr-link .go{
+  display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:18px;
+  font:500 var(--fs-meta)/1.8 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);
+}
+.cr-link:hover .go{color:var(--ink)}
+/* the arrow sits on the label's first line, so a two-line label keeps
+   its arrow level with the other card's */
+.cr-link .go{align-items:flex-start}
+.cr-link .go svg{flex:none;color:var(--accent);margin-top:calc((1.8em - 10px) / 2)}
+/* Where subgrid exists the two cards share their three rows, so title,
+   role line and link start level even when one link label wraps to two
+   lines (it does from 901 to about 1100px); the flex column above is the
+   fallback, which levels the links' last lines instead. */
+@supports (grid-template-rows:subgrid){
+  .cr-link{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0;align-content:start}
+  .cr-link .go{margin-top:0;align-self:start}
+}
+@media (max-width:700px){
+  .cr-links{grid-template-columns:1fr}
+}
+
+/* ---- 37.4 open positions ---- */
+/* A register of records, not cards: hairline per record, the title in
+   ink, the three facts on one mono metadata line under it, a drawn plus
+   that loses its upright when the record is open. The body keeps to a
+   reading measure. Hover deepens the ground, never lightens it. The
+   rules only print while a position is listed; with none, the empty
+   state is a plain sentence of body copy. */
+.cr-pos-list:has(.cr-pos){border-top:1px solid var(--line)}
+.cr-pos-empty{color:var(--ink-body)}
+.cr-pos-list:has(.cr-pos) .cr-pos-empty{display:none}
+.cr-pos{border-bottom:1px solid var(--line)}
+.cr-pos summary{
+  list-style:none;cursor:pointer;
+  display:grid;grid-template-columns:minmax(0,1fr) 12px;gap:6px 24px;align-items:center;
+  padding:18px 4px;transition:background-color .2s ease;
+}
+.cr-pos summary::-webkit-details-marker{display:none}
+.cr-pos summary:hover{background:var(--bg-2)}
+.cr-pos summary::after{
+  content:"";grid-column:2;grid-row:1/span 2;width:12px;height:12px;
+  background:
+    linear-gradient(var(--ink-mute),var(--ink-mute)) center/12px 1px no-repeat,
+    linear-gradient(var(--ink-mute),var(--ink-mute)) center/1px 12px no-repeat;
+}
+.cr-pos[open] summary::after{background:linear-gradient(var(--ink),var(--ink)) center/12px 1px no-repeat}
+.cr-pos-t{grid-column:1;font-size:var(--fs-dek);font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+/* the separators are text in the markup ("&nbsp;&middot; " after each
+   fact but the last), so the line extracts as words and a wrapped line
+   never opens on a dot */
+.cr-pos-meta{
+  grid-column:1;display:block;
+  font:500 var(--fs-meta)/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);
+}
+.cr-pos-body{display:grid;gap:20px;padding:6px 4px 30px;max-width:62ch}
+.cr-pos-body p{color:var(--ink-body)}
+.cr-pos-body .cr-pos-k{
+  margin-bottom:8px;
+  font:500 var(--fs-label)/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);
+}
+.cr-pos-ul{display:grid;gap:6px}
+.cr-pos-ul li{position:relative;padding-left:20px;color:var(--ink-body)}
+.cr-pos-ul li::before{content:"";position:absolute;left:0;top:.8em;width:9px;height:1px;background:var(--line-3)}
+
+/* ---- end 37 ---- */
