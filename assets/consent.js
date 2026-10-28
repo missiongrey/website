@@ -98,10 +98,9 @@
       writeCookie(CHOICE, 'accepted', MAX_AGE);
       return vid;
     }
-    if (state === 'declined') {
-      if (readCookie(READER) !== null) { writeCookie(READER, '', 0); }
-      writeCookie(CHOICE, 'declined', MAX_AGE);
-    }
+    // No id exists before a choice or after Decline, whatever is left over.
+    if (cookies && readCookie(READER) !== null) { writeCookie(READER, '', 0); }
+    if (state === 'declined') { writeCookie(CHOICE, 'declined', MAX_AGE); }
     return null;
   }
 
@@ -137,6 +136,13 @@
     return w < 640 ? 's' : w < 1024 ? 'm' : 'l';
   }
 
+  // Only where the visitor came from, never the page or its query string:
+  // the collector keeps the host alone, so nothing more needs to leave.
+  function referrerOrigin() {
+    var m = /^(https?:\/\/)(?:[^\/?#@]*@)?([^\/?#]+)/i.exec(document.referrer || '');
+    return m ? m[1] + m[2] + '/' : '';
+  }
+
   function utm(params, key) {
     var v = params ? params.get(key) : null;
     return v ? v.slice(0, 100) : null;
@@ -166,7 +172,7 @@
       t: 'pageview',
       id: view.id,
       path: window.location.pathname.slice(0, 300),
-      ref: (document.referrer || '').slice(0, 1000),
+      ref: referrerOrigin(),
       utm_source: utm(params, 'utm_source'),
       utm_medium: utm(params, 'utm_medium'),
       utm_campaign: utm(params, 'utm_campaign'),
@@ -219,22 +225,29 @@
   window.addEventListener('pageshow', function (e) {
     if (!e.persisted) { return; }
     settle();
+    if (cookies) {
+      if (choice() !== null) { closeBanner(); } else { banner(false); }
+    }
     begin();
   });
 
   // ---- the banner ------------------------------------------------------
 
   var box = null;
+  var settingsButton = null;
 
   function closeBanner() {
     if (box && box.parentNode) { box.parentNode.removeChild(box); }
     box = null;
+    document.body.style.paddingBottom = '';
   }
 
   function decide(value) {
+    var hadFocus = box && box.contains(document.activeElement);
     writeCookie(CHOICE, value, MAX_AGE);
     settle();
     closeBanner();
+    if (hadFocus && settingsButton) { settingsButton.focus(); }
     // A page view still waiting for the choice goes now, with the reader id
     // if the answer was Accept.
     sendPageView();
@@ -246,17 +259,27 @@
     box.className = 'consent';
     box.setAttribute('role', 'region');
     box.setAttribute('aria-label', 'Cookie choice');
+    box.tabIndex = -1;
 
     var p = document.createElement('p');
     p.className = 'consent-text';
     p.appendChild(document.createTextNode(
       'Mission Grey counts visits to this site with its own analytics. ' +
-      'Nothing goes to third parties. May we set our own cookie to recognise ' +
+      'No third-party cookies or trackers. May we set our own cookie to recognize ' +
       'your browser when you come back? '));
     var more = document.createElement('a');
     more.href = '/privacy/#s3';
-    more.textContent = 'Privacy policy';
+    more.textContent = 'Privacy Policy';
     p.appendChild(more);
+
+    var current = choice();
+    var stateLine = null;
+    if (current) {
+      stateLine = document.createElement('p');
+      stateLine.className = 'consent-now';
+      stateLine.textContent = 'Your current choice: ' +
+        (current === 'accepted' ? 'Accepted' : 'Declined') + '.';
+    }
 
     var row = document.createElement('div');
     row.className = 'consent-cta';
@@ -270,13 +293,23 @@
       return b;
     }
 
-    var accept = button('Accept', 'accepted');
-    row.appendChild(accept);
+    row.appendChild(button('Accept', 'accepted'));
     row.appendChild(button('Decline', 'declined'));
     box.appendChild(p);
+    if (stateLine) { box.appendChild(stateLine); }
     box.appendChild(row);
-    document.body.appendChild(box);
-    if (focus) { accept.focus(); }
+    // Early in the document, right after the skip link, so keyboard and
+    // screen-reader users meet it first; it is fixed, so it looks the same.
+    var skip = document.querySelector('.skip');
+    if (skip && skip.parentNode === document.body) {
+      document.body.insertBefore(box, skip.nextSibling);
+    } else {
+      document.body.insertBefore(box, document.body.firstChild);
+    }
+    // Room below the footer, so the slip never sits over its last links.
+    document.body.style.paddingBottom = (box.offsetHeight + 24) + 'px';
+    // Reopened from Cookie settings: focus the slip itself, not either answer.
+    if (focus) { box.focus(); }
   }
 
   // "Cookie settings" in the footer's legal row: changing or withdrawing the
@@ -289,6 +322,7 @@
     b.className = 'foot-legal-btn';
     b.textContent = 'Cookie settings';
     b.addEventListener('click', function () { banner(true); });
+    settingsButton = b;
     var terms = legal.querySelector('a[href="/terms/"]');
     if (terms && terms.nextSibling) { legal.insertBefore(b, terms.nextSibling); }
     else { legal.appendChild(b); }

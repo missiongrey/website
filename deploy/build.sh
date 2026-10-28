@@ -239,7 +239,10 @@ carrying = 0
 for p in html_files:
     text = open(p, encoding="utf-8").read()
     rel = os.path.relpath(p, PROD)
-    if SCRIPT.search(text):
+    found = len(SCRIPT.findall(text))
+    if found > 1:
+        problems.append("%s: consent script included %d times" % (rel, found))
+    if found:
         carrying += 1
     elif os.path.dirname(rel).replace(os.sep, "/") + "/" not in stub_dirs:
         problems.append("%s: consent script missing" % rel)
