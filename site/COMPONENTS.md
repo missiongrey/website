@@ -15,7 +15,7 @@ tells you how to stay on register. Read all of it before writing markup.
   page-specific layout that genuinely belongs nowhere else.
 - Fonts live at `../fonts/*.woff2` relative to `site/` and are declared in
   `styles.css`. Never reference any external host for anything: no CDN, no
-  analytics, no remote images. Assets come from `../assets/` on the ROOT page
+  third-party analytics, no remote images. Assets come from `../assets/` on the ROOT page
 (site/index.html) and `../../assets/` from sub-pages (`site/<page>/index.html`);
 article-depth pages (`site/insights/<slug>/`) use `../../../assets/` and link
 `../../styles.css`. Depth decides the prefix, always.
@@ -410,7 +410,7 @@ Below the existing title / description / canonical / og / twitter set:
 <link rel="icon" type="image/png" href="../assets/favicon-180.png">
 <link rel="apple-touch-icon" href="/assets/favicon-180.png">
 <link rel="stylesheet" href="styles.css">
-<script src="../assets/consent.js" data-ga="__GA_MEASUREMENT_ID__" defer></script>
+<script src="../assets/consent.js" defer></script>
 ```
 
 The two icon links that start with `/` are deliberate: the site is served
@@ -442,20 +442,23 @@ reader cannot see. The schema logo is `assets/mission-grey-logo.png`, the
 ink version of the wordmark (the white file is for the header, where CSS
 turns it to ink); Google shows the logo on white.
 
-### Consent notice (styles.css section 14)
+### Cookie choice (styles.css section 38)
 
-The one exception to "zero external network requests": Google Analytics 4,
-and only after the visitor clicks `Allow`. `assets/consent.js` renders the
-notice, stores the answer under `mg-consent`, and injects gtag.js only in
-the granted case. While `data-ga` still holds the build token, the script
-returns immediately: no banner, no request. So the default state of the
-site is still zero external requests.
+The one exception to "zero external network requests" is Mission Grey's
+own: `assets/consent.js` posts page-view beacons to the platform's
+collector on app.missiongrey.com (README, Analytics). No third-party host
+is ever contacted. The script also renders the cookie banner while the
+visitor has made no choice, and adds "Cookie settings" to the footer's
+legal row, which reopens it. Pages carry no banner markup of their own;
+every page needs only the script tag.
 
-The notice is the second paper object in the system, alongside `.sheet`. It
+The banner is the second paper object in the system, alongside `.sheet`. It
 reads as a printed slip laid on the desk rather than as UI chrome, which is
-why it uses the paper tokens rather than the chassis tokens. It has no motion of any
-kind. If the register ruling changes, the whole component is the
-`.consent*` block at the end of styles.css.
+why it uses the paper tokens rather than the chassis tokens. It has no
+motion of any kind. Accept and Decline are one button style, equal in size
+and weight: the choice is the visitor's, and the design does not lean
+either way. If the register ruling changes, the whole component is the
+`.consent*` block in section 38 of styles.css.
 
 ### Asset formats
 
