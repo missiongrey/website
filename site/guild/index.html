@@ -200,20 +200,20 @@
         <div class="gd-fg" role="group" aria-labelledby="gd-fg-exp">
           <p class="gd-fg-l" id="gd-fg-exp">Expertise</p>
           <div class="gd-fg-b" data-filter-group="expertise">
-            <button type="button" class="gd-fb" aria-pressed="true" data-value="">All</button>
+            <button type="button" class="gd-fb" aria-pressed="true" data-value="" aria-label="All expertise">All</button>
             <button type="button" class="gd-fb" aria-pressed="false" data-value="Geopolitics">Geopolitics</button>
-            <button type="button" class="gd-fb" aria-pressed="false" data-value="Strategy">Strategy</button>
             <button type="button" class="gd-fb" aria-pressed="false" data-value="Finance">Finance</button>
-            <button type="button" class="gd-fb" aria-pressed="false" data-value="Regulation">Regulation</button>
-            <button type="button" class="gd-fb" aria-pressed="false" data-value="Operations">Operations</button>
-            <button type="button" class="gd-fb" aria-pressed="false" data-value="Security">Security</button>
             <button type="button" class="gd-fb" aria-pressed="false" data-value="Technology">Technology</button>
+            <button type="button" class="gd-fb" aria-pressed="false" data-value="Regulation">Regulation</button>
+            <button type="button" class="gd-fb" aria-pressed="false" data-value="Security">Security</button>
+            <button type="button" class="gd-fb" aria-pressed="false" data-value="Operations">Operations</button>
+            <button type="button" class="gd-fb" aria-pressed="false" data-value="Strategy">Strategy</button>
           </div>
         </div>
         <div class="gd-fg" role="group" aria-labelledby="gd-fg-reg">
           <p class="gd-fg-l" id="gd-fg-reg">Region</p>
           <div class="gd-fg-b" data-filter-group="region">
-            <button type="button" class="gd-fb" aria-pressed="true" data-value="">All</button>
+            <button type="button" class="gd-fb" aria-pressed="true" data-value="" aria-label="All regions">All</button>
             <button type="button" class="gd-fb" aria-pressed="false" data-value="Asia">Asia</button>
             <button type="button" class="gd-fb" aria-pressed="false" data-value="Europe">Europe</button>
             <button type="button" class="gd-fb" aria-pressed="false" data-value="Middle East">Middle East</button>
@@ -861,7 +861,7 @@
    attribute, so the grid closes up with no gap. The result line is a polite
    live region: a screen reader hears the new count once per change, and
    nothing else on the page moves focus. The view is mirrored in the address
-   (?expertise=finance&region=middle-east) with replaceState, so a filtered
+   (?expertise=finance&region=asia) with replaceState, so a filtered
    roster can be linked without filling the back button with clicks. With
    the script off none of this exists: the bar stays hidden and the roster
    is complete. */
@@ -920,9 +920,10 @@
         b.setAttribute('aria-pressed',String(b.getAttribute('data-value')===state[key]));
       });
     });
-    count.textContent=shown===cards.length?
-      'Showing all '+cards.length+' members':
-      'Showing '+shown+' of '+cards.length+' members';
+    /* the fold already prints the whole count; the line speaks only while
+       a filter narrows the view, and gives way to the empty line at zero */
+    count.textContent=(state.expertise||state.region)&&shown?
+      'Showing '+shown+' of '+cards.length+' members':'';
     /* the empty list gives its place to the empty state rather than
        leaving its own closing rule under a sentence */
     list.hidden=shown===0;
@@ -953,7 +954,9 @@
       b.addEventListener('click',function(){
         var v=b.getAttribute('data-value');
         /* pressing the pressed choice again hands the register back to All */
-        state[key]=(v&&state[key]===v)?'':v;
+        var next=(v&&state[key]===v)?'':v;
+        if(next===state[key]){return;}
+        state[key]=next;
         apply();sync();
       });
     });
@@ -980,6 +983,9 @@
   }
   bar.hidden=false;
   apply();
+  if(location.search){sync();}
+  /* a shared filtered link lands on the filtered list, not on the fold */
+  if(state.expertise||state.region){bar.scrollIntoView({block:'start'});}
 })();
 </script>
 </body>

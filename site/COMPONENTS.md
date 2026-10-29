@@ -3966,8 +3966,8 @@ expected contributions` and `Desired experience and capabilities` as
 On the chairman's ask: with thirty-three members the roster needed a way to
 read only the part a visitor came for. Two registers of toggle buttons sit
 between the roster key (`.gd-key`) and the list, **Expertise** (All,
-Geopolitics, Strategy, Finance, Regulation, Operations, Security,
-Technology) and **Region** (All, Asia, Europe, Middle East, Africa,
+Geopolitics, Finance, Technology, Regulation, Security, Operations,
+Strategy, in the order of the Expertise areas register above) and **Region** (All, Asia, Europe, Middle East, Africa,
 Americas). One choice per register, `All` pressed by default, and the two
 combine: Finance and Asia shows the members tagged Finance whose regions
 include Asia. Pressing the pressed choice again returns that register to
@@ -3988,6 +3988,9 @@ above its stations and the stations wrap. Nothing animates.
   domains are written once. A button's `data-value` must match the tag text
   exactly. A tag that appears on a card but has no button is simply not
   filterable; add a button to the Expertise register to make it so.
+- Region means where the member is based, plus a second region only where
+  their work clearly centres on another (an EU-China specialist based in
+  Taipei carries `Asia|Europe`).
 - Region lives in `data-regions` on each `<li class="gd-m" data-person>`:
   the region names exactly as the buttons print them, several joined with
   `|`, no spaces around the bar (`data-regions="Europe|Middle East"`). An
@@ -4000,8 +4003,9 @@ above its stations and the stations wrap. Nothing animates.
   a card carries that value. The address ignores a hidden station's value.
 
 **Behaviour.**
-- The result line (`Showing 12 of 33 members`, `Showing all 33 members`)
-  is a polite live region, so a screen reader hears the new count once per
+- The result line (`Showing 12 of 33 members`) speaks only while a filter
+  narrows the view; at rest and in the empty state it is blank, because the
+  fold prints the count. It is a polite live region, so a screen reader hears the new count once per
   change. The totals are counted from the list, never written by hand.
 - When a pairing matches nobody the list is hidden and `.gd-none` stands in
   its place on the same rule: `No member matches Security and Africa.` and a
@@ -4012,7 +4016,7 @@ above its stations and the stations wrap. Nothing animates.
   hides lets go of its selection: the filter script fires a `gd-filter`
   event on the list and the selection script releases a hidden record.
 - The view is mirrored in the address with `history.replaceState`
-  (`/guild/?expertise=finance&region=middle-east`), so a filtered roster can
+  (`/guild/?expertise=finance&region=asia`), so a filtered roster can
   be linked; the page reads it on load and ignores values it does not
   know. No history entry is added per click.
 - **Without JavaScript the bar does not exist.** It ships with `hidden` and

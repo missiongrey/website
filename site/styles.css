@@ -5119,6 +5119,9 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 /* ---- 38.1 the bar ---- */
 .gd-filter{display:grid;gap:14px;margin-top:clamp(22px,2.6vw,30px)}
 .gd-filter[hidden],.gd-none[hidden],.gd-roster[hidden],.gd-m[hidden],.gd-fb[hidden]{display:none}
+/* a shared filtered link scrolls here; the margin keeps the bar clear of
+   the sticky header */
+.gd-filter{scroll-margin-top:108px}
 .gd-fg{
   display:grid;grid-template-columns:minmax(0,112px) minmax(0,1fr);
   gap:0 clamp(16px,2vw,28px);align-items:start;
@@ -5171,7 +5174,7 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 .gd-none p{font-size:var(--fs-small);line-height:1.6;color:var(--ink-mute)}
 .gd-none-b{
   appearance:none;-webkit-appearance:none;background:none;border:0;border-radius:0;margin:0;cursor:pointer;
-  display:inline-flex;align-items:center;min-height:32px;padding:0;
+  display:inline-flex;align-items:center;min-height:38px;padding:0;
   font:500 var(--fs-meta)/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
   border-bottom:1px solid var(--line-3);
 }
