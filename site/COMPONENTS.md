@@ -4035,7 +4035,7 @@ two register labels, `All`, the result line, the empty-state line and
 
 The site is English. A language landing page is one short standalone page
 in another language for visitors who want to understand Mission Grey in
-their own language first: `/fr/` is the first. It is **not** a
+their own language first: `/fr/` was the first, `/es/` the second. It is **not** a
 translation of Home and not a translated site. **No other page is ever
 translated**: Platform, Solutions, Use cases, Guild, Insights, About and
 the rest stay English only, and every link out of a language page that
@@ -4111,20 +4111,24 @@ prints "La Défense, Puteaux".
      `<a href="/<code>/" lang="<code>" hreflang="<code>">Name in its own language</a>`;
    - in `.mnav-lang`, the same link.
    Mark the current page's language with `aria-current="true"`, and keep
-   the summary's code (`EN`, `FR`) and its `aria-label` in the page's
+   the summary's code (`EN`, `FR`, `ES`) and its `aria-label` in the page's
    language. The menu is a `<details>` and needs no script; the shared
    header script closes it on outside click, Escape and after a choice.
 6. Home (`site/index.html`): add the new
    `<link rel="alternate" hreflang="<code>" ...>` line, and add it to every
    existing language page too. The hreflang set must be the same on every
    page that carries it.
-7. Footer: the English pages carry one quiet pointer in `.foot-legal`
-   (`Résumé en français` for French, written in the target language with
-   `lang` and `hreflang`). Decide with the gate-holders whether a second
-   language adds a second pointer or the pointers move to the language
-   menu alone; the footer row has room for one or two, not five. The
+7. Footer: the English pages carry two quiet pointers in `.foot-legal`,
+   `Résumé en français` and `Resumen en español`, each written in its
+   own language with `lang` and `hreflang`, held in one
+   `<span class="foot-langs">` so a narrow row wraps them together. Two
+   is the limit: the row has no room for a third. Before the next
+   language goes in, decide with the gate-holders what happens to the
+   pointers; the likely answer is to remove the `.foot-langs` group from
+   every English page and leave the language menu as the only way in. The
    language page's own footer translates headings and labels and carries
-   `English website` back to `/`.
+   one pointer, `English website` back to `/`; it does not point to the
+   other language pages, which its language menu already lists.
 8. Run `deploy/build.sh`. It counts the new page into the sitemap by
    itself; no build change is needed.
 
@@ -4182,3 +4186,56 @@ ponctuel"). One such device per page, and "intelligence" is rationed:
 "trois apports complémentaires", not "trois sources d'intelligence";
 "veille de marché", not "intelligence de marché". The CTA pair: `Discuter de vos enjeux` is
 the working session (Calendly), `Demander un accès` is `/contact/`.
+
+### Spanish typography
+
+- Questions open with `¿` and close with `?`, with no space inside
+  either mark; a question heading ends with `?` instead of a period.
+  After a colon a question starts lower case (`de negocio: ¿qué
+  decisiones...?`). No narrow spaces: Spanish puts none before `? : ;`.
+- The house style holds: no em dashes, no en dashes, and no exclamation
+  marks, so `¡` never appears either. Sentence case headings end with a
+  period.
+- Straight ASCII apostrophes, as everywhere (Spanish copy rarely needs
+  one). Accented capitals stay accented in the mono labels (`ANÁLISIS`,
+  `INICIAR SESIÓN`). The nav says `Nosotros` for About: `Quiénes somos`
+  pushed the bar's right group 26px past the column from 1381 up.
+- Proper names stay as the English site prints them (Mission Grey Guild,
+  University of Cambridge, Aalto University, Tampere University) and the
+  brand never splits (`Mission&nbsp;Grey`). Places take the Spanish form:
+  `Singapur`, `Finlandia`, `Estados Unidos`, `Francia`, `Bruselas`,
+  `estrecho de Ormuz`, `golfo de Bengala`, `canal de Panamá`. The Puteaux
+  office is `París La Défense` in the fold and on the map, `París La
+  Défense (Puteaux)` in the register under it, `Puteaux, Francia` in the
+  footer. The register under the map and the footer's place line print
+  `EE.&nbsp;UU.` instead of `Estados Unidos`: on the map the long form
+  pushed the San Francisco label (which hangs west of its tick) past the
+  map's left edge below about 1020px. The hero eyebrow keeps the whole
+  category name in one `.nw`.
+- Neutral Spanish for Spain and Latin America: `usted` throughout (`su
+  organización`), no `vosotros`, no regional words. Where the two
+  regions differ, take the word both read without effort (`paneles`, not
+  `tableros` or `cuadros de mando`; `modelar`; `Iniciar sesión`).
+
+### Spanish terminology, for the next writer
+
+The category is `Gestión de la Inteligencia Externa`, with the English
+`External Intelligence Management` beside it in the hero eyebrow, and
+`Inteligencia Externa` for the capability itself; both keep their
+capitals. Do not name the category *inteligencia competitiva*,
+*vigilancia estratégica*, *análisis de riesgos* or *inteligencia
+empresarial*: they describe narrower, related activities, and the page
+does not use them at all. In Spanish, *inteligencia* first suggests the
+state's intelligence services, so the page says once, in section 2,
+what the discipline is not: "No hablamos de inteligencia gubernamental
+ni de espionaje, ni de un simple seguimiento de riesgos o un servicio
+de información basado en IA, sino de una disciplina de gestión
+empresarial." One such device per page. The
+process is `Monitorear, Analizar, Decidir, Actuar` (the brief's own
+verbs); the globe caption says `Seguimiento de señales`. The Guild is
+masculine: `el Mission&nbsp;Grey Guild`. The CTA
+pair: `Hablemos de sus desafíos` is the working session (Calendly),
+`Solicitar acceso` is `/contact/`. Links to English pages carry `(EN)`
+in the label, as on `/fr/`. The page claims nothing about Spanish
+service: the platform, the session and support are not described as
+available in Spanish.

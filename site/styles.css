@@ -5193,8 +5193,8 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 
 /* ============ 39 LANGUAGES (2026-10-29): the header language menu, language landing pages ============ */
 /* Two parts, both language neutral. 39.1 is the language menu every page
-   carries in its header (a globe, the current language code, a two-line
-   menu) and the matching row at the foot of the phone menu. 39.2 onward
+   carries in its header (a globe, the current language code, a menu of
+   one line per language) and the matching row at the foot of the phone menu. 39.2 onward
    is the language landing page, /fr/ first: one short standalone page per
    language, built from Home's existing instruments plus the .lp-* blocks
    below. No class here names a language; the next language page is a
@@ -5206,7 +5206,7 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
    click, on Escape and after a choice through the shared header script.
    It sits in .head-right at the nav's own type, so the main navigation
    does not change. Under 641px the bar has no room beside the access
-   button and the burger, so the menu leaves the bar and the same two
+   button and the burger, so the menu leaves the bar and the same
    links print as the last row of the phone menu (.mnav-lang). */
 .lang{position:relative}
 .lang summary{
@@ -5242,6 +5242,10 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
   .lang{display:none}
   .mnav-lang{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;border-top:1px solid var(--line);padding-top:8px}
   .mnav-lang a{padding:13px 14px}
+}
+/* three languages hold one row down to 360; at 320 the last one may wrap */
+@media (max-width:380px){
+  .mnav-lang a{padding:13px 10px}
 }
 /* The desktop bar was already full between 981 and about 1250 before
    the menu joined it (USE CASES and LOG IN wrapped there), so in that
@@ -5282,9 +5286,12 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 @media (max-width:400px){
   .lp-site-head .btn-primary{padding:9px 10px;letter-spacing:.04em}
 }
-/* the footer's quiet pointer to a language page sits in the legal row
-   (English pages: "Résumé en français"; a language page: its way back) */
+/* the footer's quiet pointers to the language pages sit in the legal row
+   (English pages: "Résumé en français", "Resumen en español"; a language
+   page: its way back). On the English pages the pointers are one item
+   (.foot-langs), so a narrow row wraps them together, never one alone. */
 .foot-legal .foot-lang{color:var(--ink-dim)}
+.foot-legal .foot-langs{display:inline-flex;flex-wrap:wrap;gap:10px 26px}
 
 /* ---- 39.2 the landing page fold ---- */
 /* The fold is Home's (.hero-v1, .hz, the globe, .cadence-v1), unchanged.
@@ -5292,10 +5299,20 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
    second one tucks under the first instead of taking a dek's full gap. */
 .lp-dek-2{margin-top:12px}
 /* A bilingual eyebrow: the page's language, then the English term on its
-   own line. The category name is the one phrase the hero sets in ink. */
+   own line. The category name is the one phrase the hero sets in ink.
+   On a phone the tracking closes a little so the page's own category
+   name (kept whole in a .nw) holds one line from 360. */
 .lp-hero .hero-eyebrow span[lang]{display:block}
+@media (max-width:430px){
+  .lp .lp-hero .hero-eyebrow{letter-spacing:.12em}
+}
+/* under 360 even that does not fit: the name may break again */
+@media (max-width:359px){
+  .lp-hero .hero-eyebrow .nw{white-space:normal}
+}
 .lp-hero .hero-dek strong{color:var(--ink);font-weight:600}
-/* French questions never break at their hyphen (est-elle, peut-il). */
+/* phrases that never break: French questions at their hyphen (est-elle,
+   peut-il), a category name in the hero eyebrow */
 .nw{white-space:nowrap}
 /* where Home prints its operating cadence, a language page prints the
    five places: the same ledger, five stations */
@@ -5308,6 +5325,12 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
    line-height of 1 two wrapped lines touch, so a language page opens
    them to 1.5. */
 .lp .eyebrow,.lp .frame-bar,.lp .rx-k,.lp .more-link a,.lp .cadence .k,.lp .ruled-row .k,.lp .globe-cap{line-height:1.5}
+/* the three inputs side by side: every title keeps room for two lines
+   (3em, plus the 2px the letter box rides above the text's baseline), so
+   the descriptions start on one line when one title wraps */
+@media (min-width:901px){
+  .lp .rx-k{min-height:calc(3em + 2px);text-wrap:balance}
+}
 .lp .lp-places .v{font-size:15px;line-height:1.35}
 
 /* ---- 39.3 the split head: claim left, reading right ---- */
