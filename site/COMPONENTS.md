@@ -3967,10 +3967,10 @@ On the chairman's ask: with thirty-three members the roster needed a way to
 read only the part a visitor came for. Two registers of toggle buttons sit
 between the roster key (`.gd-key`) and the list, **Expertise** (All,
 Geopolitics, Finance, Technology, Regulation, Security, Operations,
-Strategy, in the order of the Expertise areas register above) and **Region** (All, Asia, Europe, Middle East, Africa,
+Strategy, in the order of the Expertise areas register above) and **Region** (All, APAC, Europe, Middle East, Africa,
 Americas). One choice per register, `All` pressed by default, and the two
-combine: Finance and Asia shows the members tagged Finance whose regions
-include Asia. Pressing the pressed choice again returns that register to
+combine: Finance and APAC shows the members tagged Finance whose regions
+include APAC. Pressing the pressed choice again returns that register to
 `All`. No card's content or shape changed, and the fold's `33 members` and
 its register are untouched (they count the Guild, not the view).
 
@@ -3990,13 +3990,14 @@ above its stations and the stations wrap. Nothing animates.
   filterable; add a button to the Expertise register to make it so.
 - Region means where the member is based, plus a second region only where
   their work clearly centres on another (an EU-China specialist based in
-  Taipei carries `Asia|Europe`).
+  Taipei carries `APAC|Europe`). The Asia region is named APAC because it
+  includes Australia and the Pacific (the chairman's naming, 2026-10-29).
 - Region lives in `data-regions` on each `<li class="gd-m" data-person>`:
   the region names exactly as the buttons print them, several joined with
   `|`, no spaces around the bar (`data-regions="Europe|Middle East"`). An
-  empty value matches no region. The first values (2026-10-29) are drafts
-  from public profiles for the chairman to correct; four members carry an
-  empty value until their region is known. A new member's `<li>` takes the
+  empty value matches no region. The values are the chairman's (2026-10-29:
+  he corrected a draft drawn from public profiles); every member carries at
+  least one region, two where the work spans both. A new member's `<li>` takes the
   attribute too.
 - A station that no card answers to (Middle East on 2026-10-29) is hidden
   by the script, so the register never offers a dead end; it shows the day
@@ -4016,7 +4017,7 @@ above its stations and the stations wrap. Nothing animates.
   hides lets go of its selection: the filter script fires a `gd-filter`
   event on the list and the selection script releases a hidden record.
 - The view is mirrored in the address with `history.replaceState`
-  (`/guild/?expertise=finance&region=asia`), so a filtered roster can
+  (`/guild/?expertise=finance&region=apac`), so a filtered roster can
   be linked; the page reads it on load and ignores values it does not
   know. No history entry is added per click.
 - **Without JavaScript the bar does not exist.** It ships with `hidden` and
