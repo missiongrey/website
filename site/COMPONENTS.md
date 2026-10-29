@@ -4051,8 +4051,8 @@ own.
 | # | Section | Built from |
 |---|---|---|
 | 1 | Hero: headline, two short paragraphs, primary CTA (the Calendly working session) and secondary CTA (`/platform/`), then the five places as the page's first facts | Home's fold: `.hero.hero-v1`, `.hz`, the globe canvas and its script. Add `.lp-hero` (wider headline measure) and `.lp-dek-2` on the second paragraph. Where Home prints its operating cadence, the ledger `.cadence.cadence-v1.lp-places` prints the five places (city, country). Do not bring the cadence back on a language page: out of its context it reads as a news-feed specification |
-| 2 | Why external intelligence | `.lp-split` (claim left, reading right) + `.principle` |
-| 3 | How it works: three inputs, then Monitor, Analyze, Decide, Act | one `.frame` holding `.rx-stack` (`.rx-cols` with `.rx-v` descriptions) and `.loop-row.loop-4.lp-loop`, then `.sec-note` and a `.more-link` to `/platform/` |
+| 2 | Why external intelligence | `.lp-split` (claim left, reading right), with the `.principle` under the claim in `.lp-split-head` |
+| 3 | How it works: three inputs, then Monitor, Analyze, Decide, Act | one `.frame` holding `.rx-stack` (`.rx-cols` with `.rx-v` descriptions) and `.loop-row.loop-4.lp-loop`, then `.sec-note` (one or two paragraphs) and a `.more-link` to `/platform/` |
 | 4 | The global organization, the page's high point | `.lp-split` inside `.wrap`; then, OUTSIDE `.wrap`, the map figure `.frame.lp-map` (up to 1440px wide) with its `.lp-tags` (names at the dots, phone) and `.lp-sites` register (desktop); then back in `.wrap`, `.lp-trio` (three differentiators) and `.proofstrip.lp-strip` (Home's research-partner strip, inside the column). Say it once: no kicker, no closing pull quote |
 | 5 | Business applications, four functions | `.ruled` rows + a `.more-link` to `/solutions/` |
 | 6 | Call to action | `.access-panel` with `.cta-notes`, `access-mail`, then `.lp-en`: the way to the full English site. On a language page each note is one plain line, without the mono repeat of the button's words; under 561px each line follows its own button |

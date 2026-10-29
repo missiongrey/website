@@ -5291,6 +5291,12 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
    A landing page's proposition runs to two short paragraphs, so the
    second one tucks under the first instead of taking a dek's full gap. */
 .lp-dek-2{margin-top:12px}
+/* A bilingual eyebrow: the page's language, then the English term on its
+   own line. The category name is the one phrase the hero sets in ink. */
+.lp-hero .hero-eyebrow span[lang]{display:block}
+.lp-hero .hero-dek strong{color:var(--ink);font-weight:600}
+/* French questions never break at their hyphen (est-elle, peut-il). */
+.nw{white-space:nowrap}
 /* where Home prints its operating cadence, a language page prints the
    five places: the same ledger, five stations */
 .lp-places{grid-template-columns:repeat(5,minmax(0,1fr))}
@@ -5327,6 +5333,7 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
    its own padding. */
 .lp-loop{padding:0}
 .lp-how .sec-note{max-width:70ch}
+.lp-how .sec-note p + p{margin-top:12px}
 
 /* ---- 39.5 the global section: the map, the places, the three claims ---- */
 /* The page's high point, so the map is wider than the text column: up to
