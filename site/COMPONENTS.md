@@ -4036,7 +4036,7 @@ two register labels, `All`, the result line, the empty-state line and
 The site is English. A language landing page is one short standalone page
 in another language for visitors who want to understand Mission Grey in
 their own language first: `/fr/` was the first, `/es/` the second,
-`/de/` the third. It is **not** a
+`/de/` the third, `/pt-br/` the fourth. It is **not** a
 translation of Home and not a translated site. **No other page is ever
 translated**: Platform, Solutions, Use cases, Guild, Insights, About and
 the rest stay English only, and every link out of a language page that
@@ -4089,8 +4089,12 @@ gives the city its own form (`París La Défense` in Spanish).
 ### Adding a language
 
 1. Copy `site/fr/index.html` to `site/<code>/index.html` (ISO 639-1 code,
-   lower case: `es`, `de`, `pt`, `ja`). The depth is the same, so every
-   `../../assets/` and `../styles.css` path is already right.
+   lower case: `es`, `de`, `ja`). A language whose regional variant is the
+   point takes the region too, lower case in the route and BCP 47 case in
+   `lang` and `hreflang`: `/pt-br/` is `pt-BR`, because the page is
+   written for Brazil and European Portuguese reads differently. The
+   depth is the same, so every `../../assets/` and `../styles.css` path
+   is already right.
 2. In the copy: `<html lang="<code>">`, title, description, the `og:` and
    `twitter:` text, `og:locale`, the canonical
    (`https://missiongrey.com/<code>/`), `og:url`, and the hreflang set. A
@@ -4113,6 +4117,11 @@ gives the city its own form (`París La Défense` in Spanish).
    - in `details.lang .lang-menu`, one line
      `<a href="/<code>/" lang="<code>" hreflang="<code>">Name in its own language</a>`;
    - in `.mnav-lang`, the same link.
+   The phone row (`.mnav-lang`, section 39.1) gives English, the full
+   site, the whole first row and sets the language pages under it in
+   even columns: two by two on a phone, four in one row from 500. Three
+   across does not fit a label at 320. A sixth language breaks the even
+   grid again and needs its own look at 320 and 500.
    Mark the current page's language with `aria-current="true"`, and keep
    the summary's code (`EN`, `FR`, `ES`) and its `aria-label` in the page's
    language. The menu is a `<details>` and needs no script; the shared
@@ -4131,7 +4140,9 @@ gives the city its own form (`París La Défense` in Spanish).
    every English page and leave the language menu as the only way in.
    `/de/` went onto the draft without a third pointer: the language menu
    carries Deutsch everywhere, and the footer question went to the
-   Chairman with the German preview (2026-10-29). The
+   Chairman with the German preview (2026-10-29). `/pt-br/` followed
+   the same way: Português in the language menu everywhere, no footer
+   pointer, the question still open with the gate-holders. The
    language page's own footer translates headings and labels and carries
    one pointer, `English website` back to `/`; it does not point to the
    other language pages, which its language menu already lists.
@@ -4294,3 +4305,59 @@ working session (Calendly), `Zugang anfragen` is `/contact/`. Links to
 English pages carry `(EN)`. The page claims no German office and no
 German-language service: the platform, the session and support are not
 described as available in German.
+
+### Brazilian Portuguese typography
+
+- No space before `? ! : ;`, as in English. Questions end with `?`; a
+  question heading ends with `?` instead of a period.
+- The house style holds: no em dashes, no en dashes, no exclamation
+  marks; sentence case headings end with a period.
+- Brazilian spelling and accents as the Acordo Ortográfico writes them
+  in Brazil (`econômicas`, `fenômeno`, `ação`, `Finlândia`); never the
+  European forms (`económicas`, `equipa`, `registo`, `facto`). Accented
+  capitals stay accented in the mono labels (`SOLUÇÕES`, `SOBRE NÓS`).
+- The company takes the feminine article, as Brazilian business writing
+  does for a company: `a Mission&nbsp;Grey`, `da Mission&nbsp;Grey`, and
+  the Guild is feminine too (`a Mission&nbsp;Grey Guild`). The brand
+  never splits.
+- Places take the Brazilian form: `Singapura`, `Finlândia`, `França`,
+  `Estados Unidos`, `Bruxelas`, `estreito de Ormuz`, `golfo de Bengala`,
+  `canal do Panamá`. The register under the map and the footer print
+  `EUA`, the short form, for the reason `/es/` prints `EE.&nbsp;UU.`. The
+  longitudes print `O` (oeste) and `L` (leste), the Brazilian cardinal
+  letters. The Paris office is `Paris La Défense`.
+- `você` throughout, the register Brazilian companies use with
+  executives (`sua organização`); never `tu` or the European `vós`.
+  Brazilian business words where they differ from Portugal: `equipe`,
+  `gerenciar`, `contato`, `cadeias de suprimentos`, `tomada de decisão`.
+  `dashboards` and `workshops` stay English, as Brazilian companies
+  write them.
+- The five assessment questions in section 3 are the one list on a
+  language page: `.lp-pts` (section 39.3) with the site's `.checker`
+  bullet, the sanctioned list marker. The headline sets in two lines
+  from 390 and needs no `.lp-h1-long`.
+
+### Brazilian Portuguese terminology, for the next writer
+
+The category is `Gestão da Inteligência Externa`, with the English
+`External Intelligence Management` beside it in the hero eyebrow (the
+brief's `Gestão da Inteligência Externa | External Intelligence
+Management`, set in two lines as on `/es/`), and `Inteligência Externa`
+for the capability; both keep their capitals. Section 2 defines each in
+one principle (the capability, then the discipline that integrates it
+into decisions and actions). Do not name the category *inteligência
+competitiva*, *inteligência de mercado*, *gestão de riscos* or
+*monitoramento estratégico*: the page names them once, in the reading
+beside the definitions, as narrower related capabilities, in the same
+paragraph that says the discipline is not government intelligence or
+espionage. One such device per page. Avoid *inteligência de negócios*:
+in Brazil it means BI software. The process is `Monitorar, Analisar,
+Decidir, Agir`; the globe caption says `Monitoramento de sinais`. The
+nav says `Sobre nós` for About and keeps `Insights`, a word Brazilian
+business sites use as is; `Entrar` is Log in. The CTA pair: `Agende uma
+conversa` is the working session (Calendly), `Solicitar acesso` is
+`/contact/`. Links to English pages carry `(EN)`. The page claims no
+Brazilian office, staff, customers or partners and no Portuguese-language
+service: the platform, the session and support are not described as
+available in Portuguese, and the examples are international, not
+Brazilian or Latin American.
