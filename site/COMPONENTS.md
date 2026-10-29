@@ -2007,7 +2007,7 @@ and no decoration on a face, ever.
 **Where we are, as a west-to-east register.** The three offices were three
 boxes in a row, which says the regions are three equal products. They are
 places, so they are drawn as places: one rule, one station per office at
-its true meridian (Arlington 77W, Puteaux 2E, Singapore 104E on a scale
+its true meridian (Arlington 77W, Paris La Défense 2E, Singapore 104E on a scale
 whose ends are San Francisco 122W and Singapore), the label hanging under
 its tick. Other offices and operations hang from a second rule on the same
 scale. **The meridians are the only text this page added, and they are
@@ -2019,7 +2019,7 @@ less. Two rules learned here: two lines of region label are reserved in
 every station (`min-height:3em`), because EMEA wraps and the other two do
 not and a wrapped label drops its own city one line; and below 1080px the
 register stops being a map and becomes a ruled list, because a 226 degree
-spread drawn 900px wide puts Puteaux under Singapore. The notation stays
+spread drawn 900px wide puts Paris under Singapore. The notation stays
 in the list, since the meridian is what the stations were ordered by.
 It wears no `.frame`: this is a statement of where the company is, not a
 claimed view of data, the same reasoning that keeps `.steps` out of
@@ -4035,7 +4035,8 @@ two register labels, `All`, the result line, the empty-state line and
 
 The site is English. A language landing page is one short standalone page
 in another language for visitors who want to understand Mission Grey in
-their own language first: `/fr/` was the first, `/es/` the second. It is **not** a
+their own language first: `/fr/` was the first, `/es/` the second,
+`/de/` the third. It is **not** a
 translation of Home and not a translated site. **No other page is ever
 translated**: Platform, Solutions, Use cases, Guild, Insights, About and
 the rest stay English only, and every link out of a language page that
@@ -4079,9 +4080,11 @@ sit in, and the names move to the dots (`.lp-tags`, placed with the same
 uses `preserveAspectRatio="none"` and every stroke in it is non-scaling,
 so dots and place marks stay round whatever the box's shape. The place
 marks are zero-length round-capped strokes, not circles: CSS `r` is not
-reliable in older Safari. Paris La Défense is the name the strip and the
-map print for the Puteaux office (the map adds "(Puteaux)"); `/contact/`
-prints "La Défense, Puteaux".
+reliable in older Safari. The Paris office prints as Paris La Défense
+everywhere on the site, and the commune name is never printed: not on
+the map, not in the register under it, not in any footer, not on
+`/contact/` or About (the Chairman's ruling, 2026-10-29). Each language
+gives the city its own form (`París La Défense` in Spanish).
 
 ### Adding a language
 
@@ -4125,7 +4128,10 @@ prints "La Défense, Puteaux".
    is the limit: the row has no room for a third. Before the next
    language goes in, decide with the gate-holders what happens to the
    pointers; the likely answer is to remove the `.foot-langs` group from
-   every English page and leave the language menu as the only way in. The
+   every English page and leave the language menu as the only way in.
+   `/de/` went onto the draft without a third pointer: the language menu
+   carries Deutsch everywhere, and the footer question went to the
+   Chairman with the German preview (2026-10-29). The
    language page's own footer translates headings and labels and carries
    one pointer, `English website` back to `/`; it does not point to the
    other language pages, which its language menu already lists.
@@ -4204,10 +4210,9 @@ the working session (Calendly), `Demander un accès` is `/contact/`.
   University of Cambridge, Aalto University, Tampere University) and the
   brand never splits (`Mission&nbsp;Grey`). Places take the Spanish form:
   `Singapur`, `Finlandia`, `Estados Unidos`, `Francia`, `Bruselas`,
-  `estrecho de Ormuz`, `golfo de Bengala`, `canal de Panamá`. The Puteaux
-  office is `París La Défense` in the fold and on the map, `París La
-  Défense (Puteaux)` in the register under it, `Puteaux, Francia` in the
-  footer. The register under the map and the footer's place line print
+  `estrecho de Ormuz`, `golfo de Bengala`, `canal de Panamá`. The Paris
+  office is `París La Défense` everywhere on the page, the footer
+  included. The register under the map and the footer's place line print
   `EE.&nbsp;UU.` instead of `Estados Unidos`: on the map the long form
   pushed the San Francisco label (which hangs west of its tick) past the
   map's left edge below about 1020px. The hero eyebrow keeps the whole
@@ -4239,3 +4244,53 @@ pair: `Hablemos de sus desafíos` is the working session (Calendly),
 in the label, as on `/fr/`. The page claims nothing about Spanish
 service: the platform, the session and support are not described as
 available in Spanish.
+
+### German typography
+
+- No space before `? ! : ;`, as in English. Questions end with `?`; a
+  question heading ends with `?` instead of a period.
+- The house style holds: no em dashes, no en dashes, no exclamation
+  marks; sentence case headings end with a period. German nouns keep
+  their capitals, which is sentence case in German.
+- Umlauts and `ß` stay as they are in the source (`Über uns`,
+  `Maßnahmen`); never write `ue` or `ss`. The uppercase mono labels keep
+  the umlauts (`ÜBER UNS`, `LÖSUNGEN`), while CSS uppercase renders `ß` as
+  `SS` (the globe readout prints `STRASSE VON HORMUS`).
+- Long compounds: the hero headline is two sentences in the Chairman's
+  wording and runs to five lines at full size, so it carries
+  `.lp-h1-long` (section 39: a little smaller, no measure, 25px under
+  390), a `<br>` before its second sentence and `besser entscheiden.` in
+  one `.nw`, so the verb never sits alone. Long compounds in the
+  application labels carry a soft hyphen (`Unternehmens&shy;führung`,
+  `Geschäfts&shy;entwicklung`): in the letter-spaced mono type they run
+  past the 180px label column between 768 and 900 otherwise.
+- Places take the German form: `Singapur`, `Finnland`, `Frankreich`,
+  `USA`, `Brüssel`, `Panamakanal`, `Straße von Hormus`, `Golf von
+  Bengalen`. The longitudes print `W` and `O` (Ost). The Paris office is
+  `Paris La Défense`. Proper names stay as the English site prints them;
+  the brand never splits (`Mission&nbsp;Grey`), and the page writes
+  `die Plattform von Mission Grey` rather than a hyphenated compound.
+- `Sie` throughout, Standard German for Germany, Austria and
+  Switzerland (`ß`, not the Swiss `ss`).
+
+### German terminology, for the next writer
+
+The category name stays English: `External Intelligence Management`,
+and `External Intelligence` for the capability, each in a `<span
+lang="en">` so a screen reader speaks it in English. The hero eyebrow
+therefore carries one line, the English name, instead of the bilingual
+pair. Never `Externe Intelligenz`: in German it reads as artificial
+intelligence. The page defines the term once, in section 2, in the
+Chairman's own two sentences (the two principles), and names the related
+activities once, in the reading beside them (`Risikomanagement,
+Marktbeobachtung, Wettbewerbsanalyse und strategische Frühaufklärung
+decken jeweils einen Ausschnitt davon ab`), so none of them is mistaken
+for the category. One such device per page. The process is `Beobachten,
+Analysieren, Entscheiden, Handeln`; the globe caption says
+`Signalbeobachtung`. The nav says `Anwendungen` for Use cases (the bar
+holds it on one line from 1381) and keeps `Insights`, a word German
+business sites use as is. The CTA pair: `Gespräch vereinbaren` is the
+working session (Calendly), `Zugang anfragen` is `/contact/`. Links to
+English pages carry `(EN)`. The page claims no German office and no
+German-language service: the platform, the session and support are not
+described as available in German.

@@ -2752,7 +2752,7 @@ html.js .reveal.in .pl-run{transform:scaleX(1)}
 
 /* ---- 24.6 responsive ---- */
 @media (max-width:1080px){
-  /* A 226 degree spread drawn 900px wide puts Puteaux under Singapore, so
+  /* A 226 degree spread drawn 900px wide puts Paris under Singapore, so
      below this width the register stops being a map and becomes a ruled
      list. The notation stays: the meridian is what the stations were
      ordered by, and it is still true in a column. */
@@ -5240,10 +5240,14 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 .mnav-lang{display:none}
 @media (max-width:640px){
   .lang{display:none}
-  .mnav-lang{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;border-top:1px solid var(--line);padding-top:8px}
+  .mnav-lang{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;margin-top:8px;border-top:1px solid var(--line);padding-top:8px}
   .mnav-lang a{padding:13px 14px}
 }
-/* three languages hold one row down to 360; at 320 the last one may wrap */
+/* the languages sit in even columns: two by two on a phone, four in one
+   row from 500, never three and a lone fourth */
+@media (min-width:500px) and (max-width:640px){
+  .mnav-lang{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
 @media (max-width:380px){
   .mnav-lang a{padding:13px 10px}
 }
@@ -5320,6 +5324,14 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 /* a French proposition runs longer than Home's: the measure widens so
    the headline sets in three lines, not four */
 .lp-hero h1{max-width:19ch}
+/* a two-sentence headline in a language of long compounds (German, /de/)
+   runs to five lines at the full size: it steps down a little, drops the
+   measure (the column is the measure) and starts its second sentence on
+   its own line, so each sentence sets in two lines */
+.lp-hero h1.lp-h1-long{font-size:calc(var(--fs-hero)*.86);max-width:none}
+@media (max-width:389px){
+  .lp-hero h1.lp-h1-long{font-size:25px}
+}
 
 /* Translated mono labels run longer and wrap on a phone; at the chassis'
    line-height of 1 two wrapped lines touch, so a language page opens
