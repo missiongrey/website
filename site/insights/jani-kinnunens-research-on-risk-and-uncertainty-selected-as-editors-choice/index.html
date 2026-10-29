@@ -122,6 +122,16 @@
     </nav>
     <div class="head-right">
       <span class="utc" id="utc" aria-hidden="true"></span>
+      <details class="lang">
+        <summary aria-label="Language: EN"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><ellipse cx="8" cy="8" rx="2.9" ry="6.5"/><path d="M1.5 8h13"/></svg><span>EN</span></summary>
+        <nav class="lang-menu" aria-label="Language">
+          <a href="/" lang="en" hreflang="en" aria-current="true">English</a>
+          <a href="/fr/" lang="fr" hreflang="fr">Français</a>
+          <a href="/es/" lang="es" hreflang="es">Español</a>
+          <a href="/de/" lang="de" hreflang="de">Deutsch</a>
+          <a href="/pt-br/" lang="pt-BR" hreflang="pt-BR">Português (Brasil)</a>
+        </nav>
+      </details>
       <a class="login" href="https://app.missiongrey.com/">Log in</a>
       <a class="btn btn-primary" href="/contact/">Request access</a>
       <details class="mnav">
@@ -140,6 +150,7 @@
           <a href="/contact/">Contact</a>
           <a href="https://app.missiongrey.com/">Log in</a>
           <div class="mnav-cta"><a href="/contact/">Request access</a></div>
+          <div class="mnav-lang"><a href="/" lang="en" hreflang="en" aria-current="true">English</a><a href="/fr/" lang="fr" hreflang="fr">Français</a><a href="/es/" lang="es" hreflang="es">Español</a><a href="/de/" lang="de" hreflang="de">Deutsch</a><a href="/pt-br/" lang="pt-BR" hreflang="pt-BR">Português (Brasil)</a></div>
         </nav>
       </details>
     </div>
@@ -251,7 +262,7 @@
     </div>
     <div class="foot-strip">
       <p class="foot-offices" aria-label="Offices">
-        <span>Arlington, VA</span><span>Puteaux, France</span><span>Singapore</span><span>Tampere, Finland</span><span>San Francisco, USA</span>
+        <span>Arlington, VA</span><span>Paris La D&eacute;fense, France</span><span>Singapore</span><span>Tampere, Finland</span><span>San Francisco, USA</span>
       </p>
       <nav class="foot-social" aria-label="Mission Grey channels">
         <a href="https://x.com/MissionGrey" target="_blank" rel="noopener" aria-label="Mission Grey on X" title="Mission Grey on X"><svg aria-hidden="true"><use href="../../../assets/social-icons.svg#x"/></svg></a>
@@ -268,6 +279,7 @@
       <span>&copy; 2026 Mission Grey. All rights reserved.</span>
       <a href="/privacy/">Privacy Policy</a>
       <a href="/terms/">Terms of Use</a>
+      <span class="foot-langs"><a class="foot-lang" href="/fr/" lang="fr" hreflang="fr">Résumé en français</a><a class="foot-lang" href="/es/" lang="es" hreflang="es">Resumen en español</a></span>
       <span class="tag">Built for enterprise decision&#8209;makers</span>
     </div>
   </div>
@@ -291,13 +303,12 @@
     document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
   }
 
-  /* close mobile menu after navigation or outside click */
-  var mn=document.querySelector('.mnav');
-  if(mn){
+  /* close the mobile menu and the language menu after navigation or outside click */
+  document.querySelectorAll('.mnav,.lang').forEach(function(mn){
     mn.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mn.removeAttribute('open');});});
     document.addEventListener('click',function(e){if(mn.hasAttribute('open')&&!mn.contains(e.target)){mn.removeAttribute('open');}});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'){mn.removeAttribute('open');}});
-  }
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mn.hasAttribute('open')){mn.removeAttribute('open');if(mn.contains(document.activeElement)){mn.querySelector('summary').focus();}}});
+  });
 })();
 </script>
 </body>
