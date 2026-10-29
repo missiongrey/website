@@ -5229,6 +5229,12 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
   font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);
 }
 .lang-menu a:hover,.mnav-lang a:hover{background:var(--bg-2);color:var(--ink)}
+/* "Português (Brasil)" is the longest label: the desktop menu widens to
+   hold it on one line, and in the phone row's narrow columns it may wrap
+   at its space, so a wrapped label gets a line-height its two lines do
+   not touch at */
+.lang-menu a{white-space:nowrap}
+.mnav-lang a{line-height:1.35}
 /* the current language: ink, and the checker mark the site uses as its
    only list marker; the other entries keep the mark's room so the two
    names stay on one left edge */
@@ -5358,12 +5364,6 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 .lp-read{margin-top:20px}
 .lp-read p{font-size:var(--fs-dek);line-height:1.62;color:var(--ink-body);max-width:62ch}
 .lp-read p + p{margin-top:16px}
-/* a reading that lists (the five assessment questions on /pt-br/): the
-   site's checker bullet at the reading's type, centred on the first line */
-.lp-pts{display:grid;gap:10px;margin-top:16px;max-width:62ch}
-.lp-pts li{display:flex;gap:14px;font-size:var(--fs-dek);line-height:1.55;color:var(--ink-body)}
-.lp-pts .checker{flex:none;margin-top:calc(.775em - 3px)}
-.lp-read .lp-pts + p{margin-top:18px}
 @media (min-width:901px){
   .lp-split{display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr);column-gap:clamp(36px,4.4vw,64px);align-items:start}
   .lp-read{margin-top:25px}

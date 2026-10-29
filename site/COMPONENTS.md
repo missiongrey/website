@@ -4051,12 +4051,30 @@ own.
 
 | # | Section | Built from |
 |---|---|---|
-| 1 | Hero: headline, two short paragraphs, primary CTA (the Calendly working session) and secondary CTA (`/platform/`), then the five places as the page's first facts | Home's fold: `.hero.hero-v1`, `.hz`, the globe canvas and its script. Add `.lp-hero` (wider headline measure) and `.lp-dek-2` on the second paragraph. Where Home prints its operating cadence, the ledger `.cadence.cadence-v1.lp-places` prints the five places (city, country). Do not bring the cadence back on a language page: out of its context it reads as a news-feed specification |
+| 1 | Hero: headline, two short paragraphs, primary CTA (the Calendly working session) and secondary CTA (`/platform/`), then the five places as the page's first facts, principal offices first | Home's fold: `.hero.hero-v1`, `.hz`, the globe canvas and its script. Add `.lp-hero` (wider headline measure) and `.lp-dek-2` on the second paragraph. Where Home prints its operating cadence, the ledger `.cadence.cadence-v1.lp-places` prints the five places: the city in `.v` (Arlington as `Arlington, VA`) and its role in `.k`, principal office or other location (see below). Do not bring the cadence back on a language page: out of its context it reads as a news-feed specification |
 | 2 | Why external intelligence | `.lp-split` (claim left, reading right), with the `.principle` under the claim in `.lp-split-head` |
 | 3 | How it works: three inputs, then Monitor, Analyze, Decide, Act | one `.frame` holding `.rx-stack` (`.rx-cols` with `.rx-v` descriptions) and `.loop-row.loop-4.lp-loop`, then `.sec-note` (one or two paragraphs) and a `.more-link` to `/platform/` |
 | 4 | The global organization, the page's high point | `.lp-split` inside `.wrap`; then, OUTSIDE `.wrap`, the map figure `.frame.lp-map` (up to 1440px wide) with its `.lp-tags` (names at the dots, phone) and `.lp-sites` register (desktop); then back in `.wrap`, `.lp-trio` (three differentiators) and `.proofstrip.lp-strip` (Home's research-partner strip, inside the column). Say it once: no kicker, no closing pull quote |
 | 5 | Business applications, four functions | `.ruled` rows + a `.more-link` to `/solutions/` |
 | 6 | Call to action | `.access-panel` with `.cta-notes`, `access-mail`, then `.lp-en`: the way to the full English site. On a language page each note is one plain line, without the mono repeat of the button's words; under 561px each line follows its own button |
+
+**Principal offices and other locations.** Mission Grey's three principal
+offices are Arlington (Virginia, USA), Paris La Défense and Singapore; San
+Francisco and Tampere are other locations (the English site's "Other
+offices and operations"). A language page never presents the five as
+equal: the hero ledger lists the three principal offices first, labelled
+as such (`Bureau principal`, `Oficina principal`, `Hauptstandort`,
+`Escritório principal`), then the two others (`Autre implantation`,
+`Otra sede`, `Weiterer Standort`, `Outro local`), noun labels because a
+screen reader reads the label after the city; the section 4 reading names the
+three principal offices in one sentence; the map keeps all five points
+and links unchanged, under the frame-bar label "our global network" in
+the page's language.
+
+**The hero's secondary button.** It leads to the English `/platform/`
+page and carries `hreflang="en"` but no visible `(EN)`: the extra word
+wrapped the hero's two buttons onto two rows at desktop widths. Links in
+running copy (`.more-link`) do carry `(EN)`.
 
 The map in section 4 is the site's own dot-grid world, laid flat
 (equirectangular: x is longitude, y is latitude, from the same packed
@@ -4141,10 +4159,12 @@ gives the city its own form (`París La Défense` in Spanish).
    `/de/` went onto the draft without a third pointer: the language menu
    carries Deutsch everywhere, and the footer question went to the
    Chairman with the German preview (2026-10-29). `/pt-br/` followed
-   the same way: Português in the language menu everywhere, no footer
-   pointer, the question still open with the gate-holders. The
-   language page's own footer translates headings and labels and carries
-   one pointer, `English website` back to `/`; it does not point to the
+   the same way: `Português (Brasil)` in the language menu everywhere
+   (the Chairman's label, 2026-10-29), no footer pointer, the question
+   still open with the gate-holders. The language page's own footer
+   translates headings and labels and carries one pointer back to `/`,
+   written in the page's language (`Site en anglais`, `Sitio en inglés`,
+   `Englische Website`, `Site em inglês`); it does not point to the
    other language pages, which its language menu already lists.
 8. Run `deploy/build.sh`. It counts the new page into the sitemap by
    itself; no build change is needed.
@@ -4184,7 +4204,10 @@ Language pages open the line-height of wrapped mono labels to 1.5
   PROPOS`, `DÉCIDER`): the fonts carry them.
 - Proper names stay as the English site prints them, and the brand never
   splits across a line (`Mission&nbsp;Grey`): Mission Grey, Mission
-  Grey Guild, University of Cambridge, Judge Business School. Place names
+  Grey Guild, University of Cambridge, Aalto University, Tampere University.
+  The research strip on a language page prints Cambridge's school as
+  `Cambridge Judge Business School`, its own name; the English pages
+  still print `Judge Business School` and were left unchanged. Place names
   take the language's form (`Singapour`, `Finlande`, `États-Unis`).
 
 ### French terminology, for the next writer
@@ -4195,11 +4218,10 @@ vos décisions"); the product is "plateforme d'intelligence externe". The
 terms *veille stratégique* and *intelligence économique* are deliberately
 not used as the name: the first is narrower than the concept (monitoring
 only) and the second carries a specific French public-policy meaning. The
-page defines the term once, in section 2, against that vocabulary
-("plus large que la veille stratégique ou l'analyse prospective, une aide
-à la décision intégrée à vos processus habituels de pilotage"), and says
-once what it is not ("ni un flux d'information de plus, ni un rapport
-ponctuel"). One such device per page, and "intelligence" is rationed:
+page sets the discipline once, in section 2, against neighbouring
+activities, positively ("Au-delà de la veille des risques, de la
+business intelligence, de l'analyse par l'IA ou du conseil, c'est une
+discipline de management à part entière"). One such device per page, and "intelligence" is rationed:
 "trois apports complémentaires", not "trois sources d'intelligence";
 "veille de marché", not "intelligence de marché". The CTA pair: `Discuter de vos enjeux` is
 the working session (Calendly), `Demander un accès` is `/contact/`.
@@ -4240,13 +4262,17 @@ The category is `Gestión de la Inteligencia Externa`, with the English
 `Inteligencia Externa` for the capability itself; both keep their
 capitals. Do not name the category *inteligencia competitiva*,
 *vigilancia estratégica*, *análisis de riesgos* or *inteligencia
-empresarial*: they describe narrower, related activities, and the page
-does not use them at all. In Spanish, *inteligencia* first suggests the
-state's intelligence services, so the page says once, in section 2,
-what the discipline is not: "No hablamos de inteligencia gubernamental
-ni de espionaje, ni de un simple seguimiento de riesgos o un servicio
-de información basado en IA, sino de una disciplina de gestión
-empresarial." One such device per page. The
+empresarial*: they describe narrower, related activities. The page uses
+none of them as a name; the one occurrence is *inteligencia competitiva*
+inside the Chairman's definition, as something the discipline goes
+beyond. Section 2 defines the
+category positively, in the Chairman's words (2026-10-29): "La Gestión
+de la Inteligencia Externa va más allá del seguimiento de riesgos, la
+inteligencia competitiva o las herramientas de análisis. Es una
+disciplina de gestión que conecta el conocimiento del entorno exterior
+con las decisiones y acciones de toda la organización." Never bring
+government intelligence or espionage onto a language page, not even to
+deny it (his ruling, same day). The
 process is `Monitorear, Analizar, Decidir, Actuar` (the brief's own
 verbs); the globe caption says `Seguimiento de señales`. The Guild is
 masculine: `el Mission&nbsp;Grey Guild`. The CTA
@@ -4332,10 +4358,10 @@ described as available in German.
   `gerenciar`, `contato`, `cadeias de suprimentos`, `tomada de decisão`.
   `dashboards` and `workshops` stay English, as Brazilian companies
   write them.
-- The five assessment questions in section 3 are the one list on a
-  language page: `.lp-pts` (section 39.3) with the site's `.checker`
-  bullet, the sanctioned list marker. The headline sets in two lines
-  from 390 and needs no `.lp-h1-long`.
+- The adoption reading is prose, two or three sentences, like the
+  other three pages (the Chairman's ruling 2026-10-29 replaced the
+  five-point list). The headline sets in two lines from 390 and needs
+  no `.lp-h1-long`.
 
 ### Brazilian Portuguese terminology, for the next writer
 
@@ -4348,9 +4374,9 @@ one principle (the capability, then the discipline that integrates it
 into decisions and actions). Do not name the category *inteligência
 competitiva*, *inteligência de mercado*, *gestão de riscos* or
 *monitoramento estratégico*: the page names them once, in the reading
-beside the definitions, as narrower related capabilities, in the same
-paragraph that says the discipline is not government intelligence or
-espionage. One such device per page. Avoid *inteligência de negócios*:
+beside the definitions, as narrower related capabilities, never in the
+same breath as government intelligence or espionage, which no language
+page mentions. Avoid *inteligência de negócios*:
 in Brazil it means BI software. The process is `Monitorar, Analisar,
 Decidir, Agir`; the globe caption says `Monitoramento de sinais`. The
 nav says `Sobre nós` for About and keeps `Insights`, a word Brazilian
