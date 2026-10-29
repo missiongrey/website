@@ -5093,3 +5093,97 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 .cr-pos-ul li::before{content:"";position:absolute;left:0;top:.8em;width:9px;height:1px;background:var(--line-3)}
 
 /* ---- end 37 ---- */
+
+/* ============ 38 GUILD ROSTER FILTER (2026-10-29): two registers of stations above the roster ============ */
+/* The chairman's ask: with thirty-three members the roster needs a way to
+   read only the part of it a visitor came for. Two questions, Expertise and
+   Region, each asked by a register of stations above the list. No new
+   token, font or motion; every value below is one the page already prints.
+   38.1 the bar: each register is its label and a run of stations, drawn
+        as .gd-doms draws the expertise areas (words hung from one rule,
+        a tick at each station). Separation is padding and never gap, so
+        a row of stations abuts into one continuous rule, the lesson
+        .px-rail records in section 27;
+   38.2 the pressed station takes the .px-rail selected state: amber ink,
+        its own amber segment of the rule, a taller amber tick. Amber
+        keeps its one meaning on this site, the selected thing;
+   38.3 the count line and the empty state;
+   38.4 phone: the label goes above its register and the stations wrap.
+   Nothing here moves: a state change is immediate, so there is no
+   transition for prefers-reduced-motion to take away.
+   Sections 21 and 26 are untouched. The bar ships `hidden` and its page
+   script reveals it; the [hidden] rules below exist because every one of
+   these boxes sets its own display, which outranks the UA rule (the
+   same trap section 27 records for .px-view). */
+
+/* ---- 38.1 the bar ---- */
+.gd-filter{display:grid;gap:14px;margin-top:clamp(22px,2.6vw,30px)}
+.gd-filter[hidden],.gd-none[hidden],.gd-roster[hidden],.gd-m[hidden],.gd-fb[hidden]{display:none}
+.gd-fg{
+  display:grid;grid-template-columns:minmax(0,112px) minmax(0,1fr);
+  gap:0 clamp(16px,2vw,28px);align-items:start;
+}
+/* the register's name, set as the fold's count line is set: metadata,
+   level with the station words it names */
+.gd-fg-l{
+  padding-top:13px;
+  font:500 var(--fs-meta)/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);
+}
+.gd-fg-b{display:flex;flex-wrap:wrap}
+.gd-fb{
+  position:relative;appearance:none;-webkit-appearance:none;background:none;border:0;border-radius:0;
+  border-top:1px solid var(--line-2);margin:0;cursor:pointer;text-align:left;
+  min-height:38px;padding:12px clamp(14px,1.8vw,26px) 10px 9px;
+  font:500 var(--fs-meta)/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);
+}
+.gd-fb::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
+/* pointer and keyboard get the same one-step emphasis; the hover half is
+   gated on a pointer that hovers, so a phone does not keep it on the
+   station it last tapped */
+@media (hover:hover){
+  .gd-fb:hover{color:var(--ink)}
+  .gd-fb:hover::before{height:12px;background:var(--ink-dim)}
+}
+.gd-fb:focus-visible{color:var(--ink)}
+.gd-fb:focus-visible::before{height:12px;background:var(--ink-dim)}
+
+/* ---- 38.2 pressed ---- */
+.gd-fb[aria-pressed="true"]{color:var(--accent);border-top-color:var(--accent)}
+.gd-fb[aria-pressed="true"]::before{width:2px;height:14px;background:var(--accent)}
+
+/* ---- 38.3 the count and the empty state ---- */
+/* the count reads as a third line of the roster key above it: same
+   voice, same ink, so the bar adds one sentence of type and no new kind */
+.gd-filter-n{
+  margin-top:4px;
+  font:400 var(--fs-meta)/1.8 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim);
+}
+/* The empty state stands where the roster stood, on the roster's own
+   first rule and tick, so the page does not change shape around it. The
+   way back is a button dressed as the roster's profile links are: mono
+   at label size on an underline, which is how this page says "go". */
+.gd-none{
+  position:relative;margin-top:clamp(20px,2.4vw,28px);padding:22px 0 26px 8px;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 24px;
+}
+.gd-none::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
+.gd-none p{font-size:var(--fs-small);line-height:1.6;color:var(--ink-mute)}
+.gd-none-b{
+  appearance:none;-webkit-appearance:none;background:none;border:0;border-radius:0;margin:0;cursor:pointer;
+  display:inline-flex;align-items:center;min-height:32px;padding:0;
+  font:500 var(--fs-meta)/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
+  border-bottom:1px solid var(--line-3);
+}
+@media (hover:hover){.gd-none-b:hover{color:var(--accent);border-bottom-color:var(--accent)}}
+
+/* ---- 38.4 phone ---- */
+/* Below 561px a 112px label column would leave the stations 220px, so
+   the label sits on its own line above them and the stations wrap under
+   it, each still 38px tall: a tap target, not a link in running text. */
+@media (max-width:560px){
+  .gd-fg{grid-template-columns:minmax(0,1fr)}
+  .gd-fg-l{padding-top:0;margin-bottom:8px}
+  .gd-fb{padding-right:16px}
+}
+/* ---- end 38 ---- */

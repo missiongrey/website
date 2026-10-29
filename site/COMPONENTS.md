@@ -3960,3 +3960,68 @@ expected contributions` and `Desired experience and capabilities` as
 - **What a position may say.** The claims law applies: no salary, benefit
   or location promise that is not signed off, and remote eligibility is
   stated per position, never implied for every country.
+
+## Guild roster filter (2026-10-29, styles.css section 38)
+
+On the chairman's ask: with thirty-three members the roster needed a way to
+read only the part a visitor came for. Two registers of toggle buttons sit
+between the roster key (`.gd-key`) and the list, **Expertise** (All,
+Geopolitics, Strategy, Finance, Regulation, Operations, Security,
+Technology) and **Region** (All, Asia, Europe, Middle East, Africa,
+Americas). One choice per register, `All` pressed by default, and the two
+combine: Finance and Asia shows the members tagged Finance whose regions
+include Asia. Pressing the pressed choice again returns that register to
+`All`. No card's content or shape changed, and the fold's `33 members` and
+its register are untouched (they count the Guild, not the view).
+
+**How it is drawn.** Each register is the `.gd-doms` idiom: station words
+hung from one rule with a tick at each station, mono at metadata size,
+`.14em` tracking. The pressed station takes the `.px-rail` selected state
+from section 27 (amber ink, its own amber segment of the rule, a taller
+amber tick), because amber on this site means the selected thing. Stations
+are separated by padding, never gap, so a row abuts into one rule. Each
+button is 38px tall at every width; under 561px the register's label moves
+above its stations and the stations wrap. Nothing animates.
+
+**The data.**
+- Expertise is read from each card's own `.gd-tags` spans, so a member's
+  domains are written once. A button's `data-value` must match the tag text
+  exactly. A tag that appears on a card but has no button is simply not
+  filterable; add a button to the Expertise register to make it so.
+- Region lives in `data-regions` on each `<li class="gd-m" data-person>`:
+  the region names exactly as the buttons print them, several joined with
+  `|`, no spaces around the bar (`data-regions="Europe|Middle East"`). An
+  empty value matches no region. The first values (2026-10-29) are drafts
+  from public profiles for the chairman to correct; four members carry an
+  empty value until their region is known. A new member's `<li>` takes the
+  attribute too.
+- A station that no card answers to (Middle East on 2026-10-29) is hidden
+  by the script, so the register never offers a dead end; it shows the day
+  a card carries that value. The address ignores a hidden station's value.
+
+**Behaviour.**
+- The result line (`Showing 12 of 33 members`, `Showing all 33 members`)
+  is a polite live region, so a screen reader hears the new count once per
+  change. The totals are counted from the list, never written by hand.
+- When a pairing matches nobody the list is hidden and `.gd-none` stands in
+  its place on the same rule: `No member matches Security and Africa.` and a
+  `Show all members` button, which resets both registers and moves focus to
+  the Expertise `All` button (the button that had focus has just gone).
+- Hidden cards carry the `hidden` attribute, so the two-column grid closes
+  up with no gap. A selected card (`.pi-on`, section 26) that the filter
+  hides lets go of its selection: the filter script fires a `gd-filter`
+  event on the list and the selection script releases a hidden record.
+- The view is mirrored in the address with `history.replaceState`
+  (`/guild/?expertise=finance&region=middle-east`), so a filtered roster can
+  be linked; the page reads it on load and ignores values it does not
+  know. No history entry is added per click.
+- **Without JavaScript the bar does not exist.** It ships with `hidden` and
+  the script reveals it, so there is never a control that does nothing,
+  and the roster prints whole.
+- The `[hidden]` rules in section 38 are load-bearing: `.gd-filter`,
+  `.gd-roster` and `.gd-none` set their own `display`, which outranks the
+  browser's rule for `hidden` (the same trap section 27 records).
+
+**Words written for the build** (not the chairman's, change freely): the
+two register labels, `All`, the result line, the empty-state line and
+`Show all members`.
