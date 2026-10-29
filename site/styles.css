@@ -5334,6 +5334,17 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 .lp-loop{padding:0}
 .lp-how .sec-note{max-width:70ch}
 .lp-how .sec-note p + p{margin-top:12px}
+/* The offer closes the method: what the company actually provides and how
+   an organization starts, set as a split under a hairline so it reads as
+   the section's conclusion, not a new section. */
+.lp-offer{margin-top:clamp(44px,5.6vw,72px);padding-top:clamp(28px,3.4vw,40px);border-top:1px solid var(--line)}
+.lp-offer h3{font-size:var(--fs-h3);line-height:1.15;max-width:22ch}
+/* the platform link follows the sentence that names the platform start */
+.lp-offer .lp-read .more-link{margin-top:24px}
+/* The definition is two statements: the capability, then its management. */
+.lp-why .principle.lp-principle-2{margin-top:18px}
+/* The closing panel carries two short paragraphs: the question, then the offer. */
+.lp-access .access-panel h2 + p + p{margin:14px auto 0}
 
 /* ---- 39.5 the global section: the map, the places, the three claims ---- */
 /* The page's high point, so the map is wider than the text column: up to
