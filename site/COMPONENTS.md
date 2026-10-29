@@ -4030,3 +4030,155 @@ above its stations and the stations wrap. Nothing animates.
 **Words written for the build** (not the chairman's, change freely): the
 two register labels, `All`, the result line, the empty-state line and
 `Show all members`.
+
+## Language landing pages (2026-10-29, styles.css section 39)
+
+The site is English. A language landing page is one short standalone page
+in another language for visitors who want to understand Mission Grey in
+their own language first: `/fr/` is the first. It is **not** a
+translation of Home and not a translated site. **No other page is ever
+translated**: Platform, Solutions, Use cases, Guild, Insights, About and
+the rest stay English only, and every link out of a language page that
+leads to detail goes to those English pages. A language page may say so
+in a link label ("La plateforme en détail, en anglais").
+
+### What a language page is made of
+
+Six sections, in this order. The structure, the instruments and every
+class are shared; the words and the regional emphasis are the language's
+own.
+
+| # | Section | Built from |
+|---|---|---|
+| 1 | Hero: headline, two short paragraphs, primary CTA (the Calendly working session) and secondary CTA (`/platform/`), then the five places as the page's first facts | Home's fold: `.hero.hero-v1`, `.hz`, the globe canvas and its script. Add `.lp-hero` (wider headline measure) and `.lp-dek-2` on the second paragraph. Where Home prints its operating cadence, the ledger `.cadence.cadence-v1.lp-places` prints the five places (city, country). Do not bring the cadence back on a language page: out of its context it reads as a news-feed specification |
+| 2 | Why external intelligence | `.lp-split` (claim left, reading right) + `.principle` |
+| 3 | How it works: three inputs, then Monitor, Analyze, Decide, Act | one `.frame` holding `.rx-stack` (`.rx-cols` with `.rx-v` descriptions) and `.loop-row.loop-4.lp-loop`, then `.sec-note` and a `.more-link` to `/platform/` |
+| 4 | The global organization, the page's high point | `.lp-split` inside `.wrap`; then, OUTSIDE `.wrap`, the map figure `.frame.lp-map` (up to 1440px wide) with its `.lp-tags` (names at the dots, phone) and `.lp-sites` register (desktop); then back in `.wrap`, `.lp-trio` (three differentiators) and `.proofstrip.lp-strip` (Home's research-partner strip, inside the column). Say it once: no kicker, no closing pull quote |
+| 5 | Business applications, four functions | `.ruled` rows + a `.more-link` to `/solutions/` |
+| 6 | Call to action | `.access-panel` with `.cta-notes`, `access-mail`, then `.lp-en`: the way to the full English site. On a language page each note is one plain line, without the mono repeat of the button's words; under 561px each line follows its own button |
+
+The map in section 4 is the site's own dot-grid world, laid flat
+(equirectangular: x is longitude, y is latitude, from the same packed
+land mask the Home globe draws), with the five places the footer names
+pinned at their true coordinates and every place joined to every other,
+never to a centre. That is the claim the section makes: one connected
+organization, not five regional offices. The map, the pins, the links and
+the register under it are identical on every language page; only the
+labels (country names, the frame bar, the legend, the `aria-label`) are
+translated. The map is a drawn instrument, so it is a `.frame` and carries
+the illustrative label in the page's language. Do not add places, data
+centres, hosting or data-residency claims to it: the five places are
+offices and operations, which is what the English site says.
+
+Each place hangs from the rule under the map at its own longitude. Where
+two names would collide, one hangs west of its tick (`.lp-site-w`) or
+lower on a longer tick (`.lp-site-low`). Under 701px the map runs edge to
+edge at a fixed 236px height, crops to the band of longitude the places
+sit in, and the names move to the dots (`.lp-tags`, placed with the same
+`--x`/`--y` percentages; `.lp-tag-w`, `-n`, `-s` choose the side). The svg
+uses `preserveAspectRatio="none"` and every stroke in it is non-scaling,
+so dots and place marks stay round whatever the box's shape. The place
+marks are zero-length round-capped strokes, not circles: CSS `r` is not
+reliable in older Safari. Paris La Défense is the name the strip and the
+map print for the Puteaux office (the map adds "(Puteaux)"); `/contact/`
+prints "La Défense, Puteaux".
+
+### Adding a language
+
+1. Copy `site/fr/index.html` to `site/<code>/index.html` (ISO 639-1 code,
+   lower case: `es`, `de`, `pt`, `ja`). The depth is the same, so every
+   `../../assets/` and `../styles.css` path is already right.
+2. In the copy: `<html lang="<code>">`, title, description, the `og:` and
+   `twitter:` text, `og:locale`, the canonical
+   (`https://missiongrey.com/<code>/`), `og:url`, and the hreflang set. A
+   language page lists itself, English, `x-default` (English) and every
+   other language page.
+3. Translate every visible string, the `aria-label`s, the globe's
+   `aria-label` and `noscript` alt, the five station names and signal
+   types in the globe script's `CP` array, and its pause/resume labels.
+   Rewrite the copy for the language and its market rather than
+   translating the French; the regional emphasis may differ (which places
+   to name first in the reading, which examples to use), the facts may
+   not. Every fact must already be on the English site.
+4. Header: keep `class="site-head lp-site-head"` (the language page's bar
+   drops the clock and switches to the burger menu at 1380px, because
+   translated labels run longer). Check the new language's labels at
+   1381 to 1440: a longer language may need a later switch. The nav labels are translated, the
+   hrefs stay the English routes. The logo links to the language page.
+5. Language menu, on every page of the site (all English pages and every
+   language page), two lines per header:
+   - in `details.lang .lang-menu`, one line
+     `<a href="/<code>/" lang="<code>" hreflang="<code>">Name in its own language</a>`;
+   - in `.mnav-lang`, the same link.
+   Mark the current page's language with `aria-current="true"`, and keep
+   the summary's code (`EN`, `FR`) and its `aria-label` in the page's
+   language. The menu is a `<details>` and needs no script; the shared
+   header script closes it on outside click, Escape and after a choice.
+6. Home (`site/index.html`): add the new
+   `<link rel="alternate" hreflang="<code>" ...>` line, and add it to every
+   existing language page too. The hreflang set must be the same on every
+   page that carries it.
+7. Footer: the English pages carry one quiet pointer in `.foot-legal`
+   (`Résumé en français` for French, written in the target language with
+   `lang` and `hreflang`). Decide with the gate-holders whether a second
+   language adds a second pointer or the pointers move to the language
+   menu alone; the footer row has room for one or two, not five. The
+   language page's own footer translates headings and labels and carries
+   `English website` back to `/`.
+8. Run `deploy/build.sh`. It counts the new page into the sitemap by
+   itself; no build change is needed.
+
+Never redirect a visitor by location or browser language. The language
+page is chosen, never imposed.
+
+### The English bar with the menu in it
+
+The desktop bar was already full between 981 and about 1250px before the
+language menu joined it (`USE CASES` and `LOG IN` wrapped to two lines).
+Section 39.1 makes room without touching the nav items or the 980 burger
+switch: labels never wrap (`white-space:nowrap`), the menu shows the globe
+alone up to 1339px, `.head-right` closes to 16px there, and the nav gap
+steps down where the bar is tightest (17px with no nav margin to 1099,
+20px to 1199, 17px from 1200 to 1279, where the clock returns). Measured
+against the build before the menu, 1px at a time from 975 to 1445 on Home
+and Platform: no label wraps at any width, and the page's sideways
+overflow is equal to or below the old one everywhere (it still runs from
+981 to about 1040, a little below the old figures; that overflow predates
+the menu). A further item in the bar has to repeat that sweep.
+
+Language pages open the line-height of wrapped mono labels to 1.5
+(`.lp` on `<main>`): translations run longer and wrap on a phone.
+
+### French typography (the rules a translated page adds)
+
+- A narrow no-break space `&#8239;` before `? ! : ;` and inside « » (not
+  used so far). Never a normal space there, which can break the line
+  before the mark.
+- The house style holds in every language: no em dashes, no en dashes, no
+  exclamation marks; sentence case headings ending with a period.
+- Apostrophes stay the straight ASCII `'`, the chassis convention (see
+  "Apostrophes, observed convention"); French copy has many, and a
+  page that switches alone would break the one-convention rule.
+- Accented capitals stay accented in the uppercase mono labels (`À
+  PROPOS`, `DÉCIDER`): the fonts carry them.
+- Proper names stay as the English site prints them, and the brand never
+  splits across a line (`Mission&nbsp;Grey`): Mission Grey, Mission
+  Grey Guild, University of Cambridge, Judge Business School. Place names
+  take the language's form (`Singapour`, `Finlande`, `États-Unis`).
+
+### French terminology, for the next writer
+
+The core concept, External Intelligence for Decision-Making, is rendered
+"l'intelligence externe au service de la décision" (the title says "de
+vos décisions"); the product is "plateforme d'intelligence externe". The
+terms *veille stratégique* and *intelligence économique* are deliberately
+not used as the name: the first is narrower than the concept (monitoring
+only) and the second carries a specific French public-policy meaning. The
+page defines the term once, in section 2, against that vocabulary
+("plus large que la veille stratégique ou l'analyse prospective, une aide
+à la décision intégrée à vos processus habituels de pilotage"), and says
+once what it is not ("ni un flux d'information de plus, ni un rapport
+ponctuel"). One such device per page, and "intelligence" is rationed:
+"trois apports complémentaires", not "trois sources d'intelligence";
+"veille de marché", not "intelligence de marché". The CTA pair: `Discuter de vos enjeux` is
+the working session (Calendly), `Demander un accès` is `/contact/`.
