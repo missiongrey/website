@@ -4036,7 +4036,7 @@ two register labels, `All`, the result line, the empty-state line and
 The site is English. A language landing page is one short standalone page
 in another language for visitors who want to understand Mission Grey in
 their own language first: `/fr/` was the first, `/es/` the second,
-`/de/` the third, `/pt-br/` the fourth. It is **not** a
+`/de/` the third, `/pt-br/` the fourth, `/ja/` the fifth. It is **not** a
 translation of Home and not a translated site. **No other page is ever
 translated**: Platform, Solutions, Use cases, Guild, Insights, About and
 the rest stay English only, and every link out of a language page that
@@ -4064,8 +4064,8 @@ Francisco and Tampere are other locations (the English site's "Other
 offices and operations"). A language page never presents the five as
 equal: the hero ledger lists the three principal offices first, labelled
 as such (`Bureau principal`, `Oficina principal`, `Hauptstandort`,
-`Escritório principal`), then the two others (`Autre implantation`,
-`Otra sede`, `Weiterer Standort`, `Outro local`), noun labels because a
+`Escritório principal`, `主要オフィス`), then the two others (`Autre implantation`,
+`Otra sede`, `Weiterer Standort`, `Outro local`, `その他の拠点`), noun labels because a
 screen reader reads the label after the city; the section 4 reading names the
 three principal offices in one sentence; the map keeps all five points
 and links unchanged, under the frame-bar label "our global network" in
@@ -4135,11 +4135,14 @@ gives the city its own form (`París La Défense` in Spanish).
    - in `details.lang .lang-menu`, one line
      `<a href="/<code>/" lang="<code>" hreflang="<code>">Name in its own language</a>`;
    - in `.mnav-lang`, the same link.
-   The phone row (`.mnav-lang`, section 39.1) gives English, the full
-   site, the whole first row and sets the language pages under it in
-   even columns: two by two on a phone, four in one row from 500. Three
-   across does not fit a label at 320. A sixth language breaks the even
-   grid again and needs its own look at 320 and 500.
+   The phone row (`.mnav-lang`, section 39.1) sets the six entries
+   (English first, then the five language pages) in even columns: two
+   by two in three rows on a phone, three across in two rows from 500.
+   Three across does not fit `Português (Brasil)` at 320. With four
+   language pages English took a row of its own; the fifth (`/ja/`)
+   would have left one page alone, so English joined the grid. A
+   seventh entry breaks the even grid again and needs its own look at
+   320 and 500.
    Mark the current page's language with `aria-current="true"`, and keep
    the summary's code (`EN`, `FR`, `ES`) and its `aria-label` in the page's
    language. The menu is a `<details>` and needs no script; the shared
@@ -4161,10 +4164,11 @@ gives the city its own form (`París La Défense` in Spanish).
    Chairman with the German preview (2026-10-29). `/pt-br/` followed
    the same way: `Português (Brasil)` in the language menu everywhere
    (the Chairman's label, 2026-10-29), no footer pointer, the question
-   still open with the gate-holders. The language page's own footer
+   still open with the gate-holders. `/ja/` (2026-11-01) did the same:
+   `日本語` in the language menu, no footer pointer. The language page's own footer
    translates headings and labels and carries one pointer back to `/`,
    written in the page's language (`Site en anglais`, `Sitio en inglés`,
-   `Englische Website`, `Site em inglês`); it does not point to the
+   `Englische Website`, `Site em inglês`, `英語サイト`); it does not point to the
    other language pages, which its language menu already lists.
 8. Run `deploy/build.sh`. It counts the new page into the sitemap by
    itself; no build change is needed.
@@ -4387,3 +4391,63 @@ Brazilian office, staff, customers or partners and no Portuguese-language
 service: the platform, the session and support are not described as
 available in Portuguese, and the examples are international, not
 Brazilian or Latin American.
+
+### Japanese typography
+
+- Fonts: the self-hosted faces carry Latin only. Section 39.8 sets
+  `--sans` and `--mono` on `html:lang(ja)` to Inter or JetBrains Mono
+  first, then the reader's system gothic (Hiragino, Noto Sans CJK JP,
+  Yu Gothic UI, Meiryo). Latin words, the brand and the category name
+  keep the site's faces; no Japanese web font is downloaded.
+- Line breaking: Japanese may break between any two characters, which
+  splits words in a large heading. Headings, eyebrows, labels and
+  buttons on `/ja/` set `word-break:keep-all` and break only at a
+  `<wbr>` the markup places at a phrase boundary (`外部環境の<wbr>変化を、<wbr>組織全体の<wbr>意思決定に<wbr>つなげる。`).
+  Keep every phrase short enough to fit 272px at the phone heading size
+  (section 39.8 steps headings down under 421px), and split long katakana
+  compounds (`インテリジェンス<wbr>基盤`).
+  When editing a heading, put a `<wbr>` after each phrase (after a
+  particle or a comma), never inside a word. Running text keeps normal
+  breaking with `line-break:strict` and `text-wrap:pretty`.
+- Tracking: the chassis' negative heading tracking and the wide mono
+  tracking are Latin settings; on Japanese labels they print each
+  character apart, so section 39.8 sets them to .02em (headings) and
+  .06em (labels, the header nav and the footer). Line heights open to
+  1.85 for running text and about 1.4 for headings.
+- Punctuation: full-width `、` and `。`; headings end with `。` as the
+  house style ends them with a period; `・` joins items in a label
+  (`経営戦略・投資判断`); full-width brackets `（英語）`. No em or en
+  dashes, no `―` or `〜`, no exclamation marks. The long vowel mark `ー`
+  is a letter, not a dash.
+- No space between Japanese and Latin text (`Mission&nbsp;Greyは`); the
+  brand never splits.
+- Places in katakana: `アーリントン`, `パリ・ラ・デファンス`,
+  `シンガポール`, `サンフランシスコ`, `タンペレ`, `米国`, `フランス`,
+  `フィンランド`; the hero ledger prints `アーリントン（米国）`. The
+  research partners stay in English (`lang="en"`), their own names.
+
+### Japanese terminology, for the next writer
+
+The category name stays English, `External Intelligence Management`,
+and `External Intelligence` for the concept, each in a `<span
+lang="en">`; the Chairman's brief (2026-11-01) rules out a Japanese
+literal translation as the official name. The hero eyebrow carries the
+English name alone, as on `/de/`. Section 2 defines both in his two
+sentences and names market research, competitive analysis, business
+intelligence and risk management once, in the reading beside them, as
+activities that each cover a part (one such device per page). His
+supporting vocabulary carries the explanation: `外部環境の変化`,
+`経営判断`, `不確実性への対応`, `シナリオ分析`, `継続的なモニタリング`.
+The process prints `把握 · 分析 · 判断 · 実行` (arrows in the loop figure); the globe caption says
+`シグナルの監視`, and "illustrative" is `イメージ図`. Nav: `プラット
+フォーム`, `ソリューション`, `活用事例`, `Guild` (its own name),
+`パートナー`, `API`, `インサイト`, `会社概要`; `ログイン`; the header
+button `アクセス申請` is `/contact/`. The CTA pair, in the Chairman's
+words: `経営課題について相談する` is the working session (Calendly) and
+`プラットフォームを見る` is `/platform/`, in the hero and in the closing
+panel alike (his brief names this pair for the close, where the other
+language pages pair the session with the access request). Links to
+English pages carry `（英語）`, and the closing note says the booking
+page is in English. The page claims no Japanese office, staff,
+customers or partners and no Japanese-language platform, documentation
+or support.
