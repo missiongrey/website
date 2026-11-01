@@ -5386,6 +5386,16 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 .lp-offer h3{font-size:var(--fs-h3);line-height:1.15;max-width:22ch}
 /* the platform link follows the sentence that names the platform start */
 .lp-offer .lp-read .more-link{margin-top:24px}
+/* One real product screen under the offer's heading (/ja/, the Chairman's
+   brief of 2026-11-01): the whole screen, uncropped at every width, so the
+   page shows the software exists without claiming more than the frame
+   holds. In the head column it costs the section no height on a desktop.
+   The caption runs to two lines in the column, so it is running text at
+   every width (a flex row would split its note into a second column). */
+.lp-shot{margin-top:clamp(6px,1vw,12px)}
+.lp-shot .win-cap{display:block;line-height:1.6}
+.lp-shot .win-cap::before{display:inline-block;margin-right:10px;vertical-align:1px}
+.lp:lang(ja) .lp-shot .win-cap{letter-spacing:.06em}
 /* The definition is two statements: the capability, then its management. */
 .lp-why .principle.lp-principle-2{margin-top:18px}
 /* The closing panel carries two short paragraphs: the question, then the offer. */

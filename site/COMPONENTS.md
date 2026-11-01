@@ -4074,7 +4074,19 @@ the page's language.
 **The hero's secondary button.** It leads to the English `/platform/`
 page and carries `hreflang="en"` but no visible `(EN)`: the extra word
 wrapped the hero's two buttons onto two rows at desktop widths. Links in
-running copy (`.more-link`) do carry `(EN)`.
+running copy (`.more-link`) do carry `(EN)`; on `/ja/` the marker is
+`（EN）` in full-width parentheses, on the running-copy links, the
+second call-to-action note and the privacy and terms links alike.
+
+**One product screen on `/ja/`.** The Chairman's refinement brief
+(2026-11-01) put one genuine platform screenshot in section 3, under the
+offer's heading in `.lp-split-head`: `figure.shotfig.lp-shot` holding the
+same `.window.win-plate` the English pages use, the monitoring screen
+uncropped at every width, a Japanese caption saying the screen is in
+English, and Japanese alt text that describes only what the screen
+shows. In the head column it adds no height on a desktop. The other
+language pages carry no screenshot; adding one there is a gate-holder's
+call, not a template default.
 
 The map in section 4 is the site's own dot-grid world, laid flat
 (equirectangular: x is longitude, y is latitude, from the same packed
