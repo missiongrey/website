@@ -2145,11 +2145,11 @@ Touch gets `.pi-on` from a delegated click handler on each register — tap
 a record to bring it forward, tap it again, tap the page, or press Escape
 to release. The state is deliberately NOT exposed as a control: a button
 whose whole effect is that a row gets darker is noise in a screen reader,
-and there is nothing behind it to reach. Three records (William Vogt on
-Guild, Lauri Byckling and Eva Mikkonen on About) carry no public profile
+and there is nothing behind it to reach. Two records (William Vogt on
+Guild, Lauri Byckling on About) carry no public profile
 and therefore no focus stop; they lose nothing, because the state carries
 no information. If parity is ever wanted there, the fix is a link for
-those three, not a fake control.
+those two, not a fake control.
 
 **Guard the hover TRIGGER, not only the hover state, binding.** A phone
 leaves an emulated hover on the last element tapped. The state block is
