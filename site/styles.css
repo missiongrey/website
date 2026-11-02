@@ -5398,16 +5398,22 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 .lp:lang(ja) .lp-shot .win-cap{letter-spacing:.06em}
 /* The definition is two statements: the capability, then its management. */
 .lp-why .principle.lp-principle-2{margin-top:18px}
+/* /ja/ round five: the definition's second sentence (shared across
+   functions, a named owner) reads at body weight under the bold one. */
+.lp-why .principle .lp-principle-note{font-weight:400}
 /* The closing panel carries two short paragraphs: the question, then the offer. */
 .lp-access .access-panel h2 + p + p{margin:14px auto 0}
+/* /ja/ round five: the two contact routes get equal buttons, and the
+   Japanese address in the note under its button reads as a link. */
+.lp:lang(ja) .access-panel:has(.cta-notes) .access-cta .btn{width:100%}
+.lp-access .cta-notes a{color:var(--ink);border-bottom:1px solid var(--line-2);padding-bottom:2px}
+.lp-access .cta-notes a:hover{border-color:var(--accent)}
 /* Short run-in subsections inside a reading column (/ja/, the Chairman's
    brief of 2026-11-02): the general-purpose AI note in the process note,
    and trust, then adoption, in the platform block. A small heading over
    the paragraphs it names, never a new section. */
 .lp-sub{margin-top:30px;font-size:17px;line-height:1.5;font-weight:600;color:var(--ink)}
 .lp-sub + p{margin-top:10px}
-/* The hero's booking route is English: one quiet line under the buttons. */
-.lp-hero-note{margin-top:14px;font-size:13px;line-height:1.6;color:var(--ink-dim)}
 .lp:lang(ja) .lp-sub{word-break:keep-all;overflow-wrap:anywhere;letter-spacing:.02em}
 /* One attributed customer line under the trust paragraphs: Home's quote
    rule at reading size, so it supports the claim instead of headlining. */
@@ -5431,6 +5437,7 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
    (Chromium); others fall back to the normal Japanese wrap */
 .lp:lang(ja) :is(.hero-dek,.lp-read p,.sec-head p,.sec-note p,.rx-v,.ruled-row .v,.lp-trio-i p,.access-panel p,.lp-quote p){word-break:auto-phrase}
 html:lang(ja) .foot-col a{word-break:keep-all}
+html:lang(ja) .foot-brand p{word-break:auto-phrase}
 
 /* ---- 39.5 the global section: the map, the places, the three claims ---- */
 /* The page's high point, so the map is wider than the text column: up to

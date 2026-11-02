@@ -4457,11 +4457,9 @@ The process prints `把握 · 分析 · 判断 · 実行` (arrows in the loop fi
 button is `ご相談` and goes to the page's own closing panel (`#contact`):
 the Chairman's brief of 2026-11-02 retired `アクセス申請` on `/ja/` as
 an unnatural invitation for Japanese executives, and the panel says in
-Japanese that booking and meeting run in English. The CTA pair, in the Chairman's
-words: `経営課題について相談する` is the working session (Calendly) and
-`プラットフォームを見る` is `/platform/`, in the hero and in the closing
-panel alike (his brief names this pair for the close, where the other
-language pages pair the session with the access request). Links to
+Japanese that booking and meeting run in English. Round four's CTA pair
+(`経営課題について相談する` to Calendly, `プラットフォームを見る` to
+`/platform/`, hero and panel alike) is superseded by round five, below. Links to
 English pages carry `（英語）`, and the closing note says the booking
 page is in English. The page claims no Japanese office, staff,
 customers or partners and no Japanese-language platform, documentation
@@ -4482,5 +4480,29 @@ research strip beside the G2 rating, Home's own two proof points.
 Section 5 adds three cases under `活用イメージ` with a line saying they
 are illustrative and not customers; they reuse `.lp-trio`. How to start
 lives in the closing panel only, and every English route says so
-(hero note, panel notes, footer). A Japanese contact, once agreed, is
-one more line beside the panel's email line.
+(panel notes, footer).
+
+**Round five on `/ja/`** (the Chairman's brief MG web Jap 5, 2026-11-02,
+after the reviewer's second read). Section 2's second sentence is his
+refined definition verbatim (the discipline, shared across functions,
+naming who responds); nothing else defines the category. The contact
+hierarchy turns: `japan@missiongrey.com` (a Mission Grey alias, first
+discussion in Japanese, the core team joining when an opportunity is
+concrete) is the primary route, `日本語で問い合わせる`, a mailto with
+the subject `Mission Greyへのお問い合わせ`, in the hero, the closing
+panel and the footer. The 30-minute booking stays as the panel's second
+button, `30分のオンライン相談を予約する` (the note under it says booking
+and meeting are in English, so the label drops the brief's `(EN)` and
+fits a 320px phone); both buttons share the column width. The English
+`contact@` line left the panel (the footer keeps it). The hero note is
+gone with the booking link it described; the hero's one English route,
+`プラットフォームを見る（EN）`, carries the marker, and it no longer
+appears in the panel. The panel's eyebrow is
+his heading, `日本語でのご相談・お問い合わせ`; the closing question
+stays the h2. His definition's second sentence sits at body weight
+(`.lp-principle-note`). `外部環境` is no-wrap everywhere, and the footer
+blurb breaks by phrase. No person is named. The
+alias must work in both directions before this ships: until it does, the
+live page keeps the round-four contact block. A comment in the platform
+split marks where a genuine Japanese platform output goes once one
+exists; none is mocked up.
