@@ -4453,8 +4453,11 @@ supporting vocabulary carries the explanation: `外部環境の変化`,
 The process prints `把握 · 分析 · 判断 · 実行` (arrows in the loop figure); the globe caption says
 `シグナルの監視`, and "illustrative" is `イメージ図`. Nav: `プラット
 フォーム`, `ソリューション`, `活用事例`, `Guild` (its own name),
-`パートナー`, `API`, `インサイト`, `会社概要`; `ログイン`; the header
-button `アクセス申請` is `/contact/`. The CTA pair, in the Chairman's
+`パートナー`, `API`, `インサイト`, `会社概要`; `ログイン`. The header
+button is `ご相談` and goes to the page's own closing panel (`#contact`):
+the Chairman's brief of 2026-11-02 retired `アクセス申請` on `/ja/` as
+an unnatural invitation for Japanese executives, and the panel says in
+Japanese that booking and meeting run in English. The CTA pair, in the Chairman's
 words: `経営課題について相談する` is the working session (Calendly) and
 `プラットフォームを見る` is `/platform/`, in the hero and in the closing
 panel alike (his brief names this pair for the close, where the other
@@ -4463,3 +4466,21 @@ English pages carry `（英語）`, and the closing note says the booking
 page is in English. The page claims no Japanese office, staff,
 customers or partners and no Japanese-language platform, documentation
 or support.
+
+**The 2026-11-02 revision on `/ja/`** (the Chairman's brief, after a
+native Japanese business reviewer's read). The hero leads with the
+business value (`企業の外で起きる変化を、経営判断と行動へ。`) and names
+the category after it. Three short run-in subsections (`.lp-sub`) sit in
+existing columns rather than new sections: `汎用AIツールとの違い` in the
+process note (positive, no claim about what other AI cannot do), the
+trust block in the platform split, every sentence of it backed by
+`/platform/#trust` (expert judgment "when the question requires it",
+private data "can" stay restricted, not resold). The customer line
+(`.lp-quote`) is Home's Export Agency quote, translated and marked as a
+translation, with the attribution kept in English; it sits under the
+research strip beside the G2 rating, Home's own two proof points.
+Section 5 adds three cases under `活用イメージ` with a line saying they
+are illustrative and not customers; they reuse `.lp-trio`. How to start
+lives in the closing panel only, and every English route says so
+(hero note, panel notes, footer). A Japanese contact, once agreed, is
+one more line beside the panel's email line.

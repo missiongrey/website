@@ -5400,6 +5400,37 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 .lp-why .principle.lp-principle-2{margin-top:18px}
 /* The closing panel carries two short paragraphs: the question, then the offer. */
 .lp-access .access-panel h2 + p + p{margin:14px auto 0}
+/* Short run-in subsections inside a reading column (/ja/, the Chairman's
+   brief of 2026-11-02): the general-purpose AI note in the process note,
+   and trust, then adoption, in the platform block. A small heading over
+   the paragraphs it names, never a new section. */
+.lp-sub{margin-top:30px;font-size:17px;line-height:1.5;font-weight:600;color:var(--ink)}
+.lp-sub + p{margin-top:10px}
+/* The hero's booking route is English: one quiet line under the buttons. */
+.lp-hero-note{margin-top:14px;font-size:13px;line-height:1.6;color:var(--ink-dim)}
+.lp:lang(ja) .lp-sub{word-break:keep-all;overflow-wrap:anywhere;letter-spacing:.02em}
+/* One attributed customer line under the trust paragraphs: Home's quote
+   rule at reading size, so it supports the claim instead of headlining. */
+.lp-quote{margin-top:22px;border-left:2px solid var(--accent);padding-left:18px}
+.lp-quote blockquote p{font-size:15.5px;line-height:1.75;color:var(--ink)}
+.lp-quote figcaption{margin-top:8px;font:500 12.5px/1.6 var(--sans);letter-spacing:.04em;color:var(--ink-dim)}
+/* Illustrative cases under the function rows: the label says on its own
+   line that they are not customers; the three cases reuse the global
+   section's stations. */
+.lp-cases{margin-top:clamp(40px,5vw,60px)}
+.lp-cases .lp-trio{margin-top:22px}
+.lp-cases-note{display:block;margin-top:8px;font:400 13px/1.6 var(--sans);text-transform:none;letter-spacing:.02em;color:var(--ink-dim)}
+.lp-cases .lp-trio-i h3{font-size:18px}
+/* label over note at every width: a katakana label sharing a row breaks
+   mid-word under keep-all + overflow-wrap:anywhere on a phone */
+.lp-cases .eyebrow{display:block}
+.lp-cases #cases-h{white-space:nowrap}
+/* the customer line beside the research partners, under the strip */
+.lp-quote-wide{margin-top:clamp(28px,3.4vw,40px);max-width:62ch}
+/* /ja/ reading text breaks at phrase boundaries where the browser can
+   (Chromium); others fall back to the normal Japanese wrap */
+.lp:lang(ja) :is(.hero-dek,.lp-read p,.sec-head p,.sec-note p,.rx-v,.ruled-row .v,.lp-trio-i p,.access-panel p,.lp-quote p){word-break:auto-phrase}
+html:lang(ja) .foot-col a{word-break:keep-all}
 
 /* ---- 39.5 the global section: the map, the places, the three claims ---- */
 /* The page's high point, so the map is wider than the text column: up to
