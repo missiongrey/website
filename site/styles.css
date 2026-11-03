@@ -5249,13 +5249,14 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
   .mnav-lang{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;margin-top:8px;border-top:1px solid var(--line);padding-top:8px}
   .mnav-lang a{padding:13px 14px}
 }
-/* the languages sit in even columns, never with a lone last one: English,
-   the full site, takes the whole first row, and the four language pages
-   sit under it, two by two on a phone, four in one row from 500 (three
-   across does not fit a label at 320) */
-.mnav-lang a:first-child{grid-column:1/-1}
+/* the languages sit in even columns, never with a lone last one: six
+   entries (English, the full site, first, then the five language pages)
+   set two by two in three rows on a phone and three across in two rows
+   from 500 (three across does not fit "Português (Brasil)" at 320). With
+   four language pages English took a row of its own; with five, that
+   would leave one page alone on the last row. */
 @media (min-width:500px) and (max-width:640px){
-  .mnav-lang{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .mnav-lang{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media (max-width:380px){
   .mnav-lang a{padding:13px 10px}
@@ -5385,10 +5386,58 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 .lp-offer h3{font-size:var(--fs-h3);line-height:1.15;max-width:22ch}
 /* the platform link follows the sentence that names the platform start */
 .lp-offer .lp-read .more-link{margin-top:24px}
+/* One real product screen under the offer's heading (/ja/, the Chairman's
+   brief of 2026-11-01): the whole screen, uncropped at every width, so the
+   page shows the software exists without claiming more than the frame
+   holds. In the head column it costs the section no height on a desktop.
+   The caption runs to two lines in the column, so it is running text at
+   every width (a flex row would split its note into a second column). */
+.lp-shot{margin-top:clamp(6px,1vw,12px)}
+.lp-shot .win-cap{display:block;line-height:1.6}
+.lp-shot .win-cap::before{display:inline-block;margin-right:10px;vertical-align:1px}
+.lp:lang(ja) .lp-shot .win-cap{letter-spacing:.06em}
 /* The definition is two statements: the capability, then its management. */
 .lp-why .principle.lp-principle-2{margin-top:18px}
+/* /ja/ round five: the definition's second sentence (shared across
+   functions, a named owner) reads at body weight under the bold one. */
+.lp-why .principle .lp-principle-note{font-weight:400}
 /* The closing panel carries two short paragraphs: the question, then the offer. */
 .lp-access .access-panel h2 + p + p{margin:14px auto 0}
+/* /ja/ round five: the two contact routes get equal buttons, and the
+   Japanese address in the note under its button reads as a link. */
+.lp:lang(ja) .access-panel:has(.cta-notes) .access-cta .btn{width:100%}
+.lp-access .cta-notes a{color:var(--ink);border-bottom:1px solid var(--line-2);padding-bottom:2px}
+.lp-access .cta-notes a:hover{border-color:var(--accent)}
+/* Short run-in subsections inside a reading column (/ja/, the Chairman's
+   brief of 2026-11-02): the general-purpose AI note in the process note,
+   and trust, then adoption, in the platform block. A small heading over
+   the paragraphs it names, never a new section. */
+.lp-sub{margin-top:30px;font-size:17px;line-height:1.5;font-weight:600;color:var(--ink)}
+.lp-sub + p{margin-top:10px}
+.lp:lang(ja) .lp-sub{word-break:keep-all;overflow-wrap:anywhere;letter-spacing:.02em}
+/* One attributed customer line under the trust paragraphs: Home's quote
+   rule at reading size, so it supports the claim instead of headlining. */
+.lp-quote{margin-top:22px;border-left:2px solid var(--accent);padding-left:18px}
+.lp-quote blockquote p{font-size:15.5px;line-height:1.75;color:var(--ink)}
+.lp-quote figcaption{margin-top:8px;font:500 12.5px/1.6 var(--sans);letter-spacing:.04em;color:var(--ink-dim)}
+/* Illustrative cases under the function rows: the label says on its own
+   line that they are not customers; the three cases reuse the global
+   section's stations. */
+.lp-cases{margin-top:clamp(40px,5vw,60px)}
+.lp-cases .lp-trio{margin-top:22px}
+.lp-cases-note{display:block;margin-top:8px;font:400 13px/1.6 var(--sans);text-transform:none;letter-spacing:.02em;color:var(--ink-dim)}
+.lp-cases .lp-trio-i h3{font-size:18px}
+/* label over note at every width: a katakana label sharing a row breaks
+   mid-word under keep-all + overflow-wrap:anywhere on a phone */
+.lp-cases .eyebrow{display:block}
+.lp-cases #cases-h{white-space:nowrap}
+/* the customer line beside the research partners, under the strip */
+.lp-quote-wide{margin-top:clamp(28px,3.4vw,40px);max-width:62ch}
+/* /ja/ reading text breaks at phrase boundaries where the browser can
+   (Chromium); others fall back to the normal Japanese wrap */
+.lp:lang(ja) :is(.hero-dek,.lp-read p,.sec-head p,.sec-note p,.rx-v,.ruled-row .v,.lp-trio-i p,.access-panel p,.lp-quote p){word-break:auto-phrase}
+html:lang(ja) .foot-col a{word-break:keep-all}
+html:lang(ja) .foot-brand p{word-break:auto-phrase}
 
 /* ---- 39.5 the global section: the map, the places, the three claims ---- */
 /* The page's high point, so the map is wider than the text column: up to
@@ -5500,5 +5549,65 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
   .lp-tags li.lp-tag-s{transform:translate(-6px,9px)}
   .lp-tags li.lp-tag-n{transform:translate(4px,calc(-100% - 7px))}
   .lp-tags li.lp-tag-w.lp-tag-n{transform:translate(calc(-100% - 4px),calc(-100% - 7px))}
+}
+
+/* ---- 39.8 Japanese (/ja/) ---- */
+/* The self-hosted fonts carry Latin only, so a Japanese page names its
+   Japanese faces after them: Latin text, the brand and the English
+   category name keep Inter and JetBrains Mono, and kana and kanji fall to
+   the reader's system gothic (Hiragino on Apple, Noto Sans CJK on Android,
+   Yu Gothic UI or Meiryo on Windows). No web font download: a Japanese
+   face is several megabytes. */
+html:lang(ja){
+  --sans:'Inter','Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic UI',Meiryo,system-ui,sans-serif;
+  --mono:'JetBrains Mono','Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic UI',Meiryo,ui-monospace,monospace;
+}
+/* Japanese breaks between any two characters by default, which splits
+   words in a heading. Headings and labels keep phrases whole
+   (keep-all) and break only where the markup puts a <wbr> at a phrase
+   boundary; a run too long for its box may still break anywhere, so
+   nothing overflows. Running text keeps the browser's normal breaking,
+   with the strict kinsoku rules (no small kana or long vowel mark at a
+   line start). */
+html:lang(ja) body{line-break:strict}
+.lp:lang(ja) :is(h1,h2,h3,.eyebrow,.rx-k,.loop-node,.ruled-row .k,.lp-places .v,.btn,.more-link a,.cta-notes p,.strip-label){word-break:keep-all;overflow-wrap:anywhere}
+/* the chassis' negative heading tracking and wide mono tracking are set
+   for Latin; full-width characters already carry their own space (the
+   hero eyebrow is the English category name and keeps its tracking) */
+.lp:lang(ja) :is(h1,h2,h3){letter-spacing:.02em}
+.lp:lang(ja) .hero h1{line-height:1.3;max-width:none}
+.lp:lang(ja) :is(.lp-split h2,.lp-offer h3){max-width:none}
+.lp:lang(ja) :is(.sec-head h2,.lp-split h2,.access-panel h2){line-height:1.42}
+.lp:lang(ja) :is(.lp-offer h3,.lp-trio-i h3){line-height:1.45}
+.lp:lang(ja) .lp-trio-i h3{min-height:2.9em}
+.lp:lang(ja) .principle{line-height:1.7;letter-spacing:0}
+/* a katakana place name is one word: in the five-column ledger it steps
+   down with the viewport instead of breaking (サンフランシスコ at 820) */
+.lp:lang(ja) .lp-places .v{font-size:clamp(13px,1.5vw,15px);letter-spacing:0}
+.lp:lang(ja) :is(.eyebrow:not(.hero-eyebrow),.rule-label,.frame-bar,.rx-k,.loop-node .k,.ruled-row .k,.cadence .k,.strip-label,.globe-cap,.lp-sites b,.lp-sites span,.lp-tags li,.more-link a){letter-spacing:.06em}
+/* running text: a Japanese line reads more open than a Latin one */
+.lp:lang(ja) :is(.hero-dek,.lp-read p,.sec-head p,.sec-note p,.rx-v,.loop-node .v,.ruled-row .v,.lp-trio-i p,.access-panel p){line-height:1.85}
+/* text-wrap:pretty keeps a last line from holding two characters
+   (browsers without it set the text as before) */
+.lp:lang(ja) :is(.hero-dek,.lp-read p,.sec-head p,.sec-note p,.rx-v,.ruled-row .v,.lp-trio-i p,.access-panel p,.principle){text-wrap:pretty}
+/* the shared header and footer: the same tracking for the Japanese labels */
+html:lang(ja) :is(.nav-main a,.login,.site-head .btn,.mnav-panel > a,.foot-col h3,.foot-offices,.foot-legal .tag,.foot-brand .entity){letter-spacing:.06em}
+/* the row number never shares its flex line with a shrinking label */
+.lp:lang(ja) .ruled-row .n{flex:none}
+/* Chromium segments Japanese into phrases itself (auto-phrase): the large
+   definitions break between phrases there, and normally elsewhere */
+@supports (word-break:auto-phrase){
+  .lp:lang(ja) .principle{word-break:auto-phrase}
+}
+@media (max-width:900px){
+  .lp:lang(ja) .lp-trio-i h3{min-height:0}
+}
+/* On a phone the longest phrase of a heading (外部環境の変化を、 is nine
+   characters) has to fit the column whole: the headings step down so no
+   phrase is wider than 272px at 320 */
+@media (max-width:420px){
+  .lp:lang(ja) .hero h1{font-size:30px}
+  .lp:lang(ja) :is(.sec-head h2,.lp-split h2,.access-panel h2){font-size:24px}
+  .lp:lang(ja) :is(.lp-offer h3,.lp-trio-i h3){font-size:21px}
 }
 /* ---- end 39 ---- */

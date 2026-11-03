@@ -4036,7 +4036,7 @@ two register labels, `All`, the result line, the empty-state line and
 The site is English. A language landing page is one short standalone page
 in another language for visitors who want to understand Mission Grey in
 their own language first: `/fr/` was the first, `/es/` the second,
-`/de/` the third, `/pt-br/` the fourth. It is **not** a
+`/de/` the third, `/pt-br/` the fourth, `/ja/` the fifth. It is **not** a
 translation of Home and not a translated site. **No other page is ever
 translated**: Platform, Solutions, Use cases, Guild, Insights, About and
 the rest stay English only, and every link out of a language page that
@@ -4064,8 +4064,8 @@ Francisco and Tampere are other locations (the English site's "Other
 offices and operations"). A language page never presents the five as
 equal: the hero ledger lists the three principal offices first, labelled
 as such (`Bureau principal`, `Oficina principal`, `Hauptstandort`,
-`Escritório principal`), then the two others (`Autre implantation`,
-`Otra sede`, `Weiterer Standort`, `Outro local`), noun labels because a
+`Escritório principal`, `主要オフィス`), then the two others (`Autre implantation`,
+`Otra sede`, `Weiterer Standort`, `Outro local`, `その他の拠点`), noun labels because a
 screen reader reads the label after the city; the section 4 reading names the
 three principal offices in one sentence; the map keeps all five points
 and links unchanged, under the frame-bar label "our global network" in
@@ -4074,7 +4074,19 @@ the page's language.
 **The hero's secondary button.** It leads to the English `/platform/`
 page and carries `hreflang="en"` but no visible `(EN)`: the extra word
 wrapped the hero's two buttons onto two rows at desktop widths. Links in
-running copy (`.more-link`) do carry `(EN)`.
+running copy (`.more-link`) do carry `(EN)`; on `/ja/` the marker is
+`（EN）` in full-width parentheses, on the running-copy links, the
+second call-to-action note and the privacy and terms links alike.
+
+**One product screen on `/ja/`.** The Chairman's refinement brief
+(2026-11-01) put one genuine platform screenshot in section 3, under the
+offer's heading in `.lp-split-head`: `figure.shotfig.lp-shot` holding the
+same `.window.win-plate` the English pages use, the monitoring screen
+uncropped at every width, a Japanese caption saying the screen is in
+English, and Japanese alt text that describes only what the screen
+shows. In the head column it adds no height on a desktop. The other
+language pages carry no screenshot; adding one there is a gate-holder's
+call, not a template default.
 
 The map in section 4 is the site's own dot-grid world, laid flat
 (equirectangular: x is longitude, y is latitude, from the same packed
@@ -4135,11 +4147,14 @@ gives the city its own form (`París La Défense` in Spanish).
    - in `details.lang .lang-menu`, one line
      `<a href="/<code>/" lang="<code>" hreflang="<code>">Name in its own language</a>`;
    - in `.mnav-lang`, the same link.
-   The phone row (`.mnav-lang`, section 39.1) gives English, the full
-   site, the whole first row and sets the language pages under it in
-   even columns: two by two on a phone, four in one row from 500. Three
-   across does not fit a label at 320. A sixth language breaks the even
-   grid again and needs its own look at 320 and 500.
+   The phone row (`.mnav-lang`, section 39.1) sets the six entries
+   (English first, then the five language pages) in even columns: two
+   by two in three rows on a phone, three across in two rows from 500.
+   Three across does not fit `Português (Brasil)` at 320. With four
+   language pages English took a row of its own; the fifth (`/ja/`)
+   would have left one page alone, so English joined the grid. A
+   seventh entry breaks the even grid again and needs its own look at
+   320 and 500.
    Mark the current page's language with `aria-current="true"`, and keep
    the summary's code (`EN`, `FR`, `ES`) and its `aria-label` in the page's
    language. The menu is a `<details>` and needs no script; the shared
@@ -4161,10 +4176,11 @@ gives the city its own form (`París La Défense` in Spanish).
    Chairman with the German preview (2026-10-29). `/pt-br/` followed
    the same way: `Português (Brasil)` in the language menu everywhere
    (the Chairman's label, 2026-10-29), no footer pointer, the question
-   still open with the gate-holders. The language page's own footer
+   still open with the gate-holders. `/ja/` (2026-11-01) did the same:
+   `日本語` in the language menu, no footer pointer. The language page's own footer
    translates headings and labels and carries one pointer back to `/`,
    written in the page's language (`Site en anglais`, `Sitio en inglés`,
-   `Englische Website`, `Site em inglês`); it does not point to the
+   `Englische Website`, `Site em inglês`, `英語サイト`); it does not point to the
    other language pages, which its language menu already lists.
 8. Run `deploy/build.sh`. It counts the new page into the sitemap by
    itself; no build change is needed.
@@ -4387,3 +4403,106 @@ Brazilian office, staff, customers or partners and no Portuguese-language
 service: the platform, the session and support are not described as
 available in Portuguese, and the examples are international, not
 Brazilian or Latin American.
+
+### Japanese typography
+
+- Fonts: the self-hosted faces carry Latin only. Section 39.8 sets
+  `--sans` and `--mono` on `html:lang(ja)` to Inter or JetBrains Mono
+  first, then the reader's system gothic (Hiragino, Noto Sans CJK JP,
+  Yu Gothic UI, Meiryo). Latin words, the brand and the category name
+  keep the site's faces; no Japanese web font is downloaded.
+- Line breaking: Japanese may break between any two characters, which
+  splits words in a large heading. Headings, eyebrows, labels and
+  buttons on `/ja/` set `word-break:keep-all` and break only at a
+  `<wbr>` the markup places at a phrase boundary (`外部環境の<wbr>変化を、<wbr>組織全体の<wbr>意思決定に<wbr>つなげる。`).
+  Keep every phrase short enough to fit 272px at the phone heading size
+  (section 39.8 steps headings down under 421px), and split long katakana
+  compounds (`インテリジェンス<wbr>基盤`).
+  When editing a heading, put a `<wbr>` after each phrase (after a
+  particle or a comma), never inside a word. Running text keeps normal
+  breaking with `line-break:strict` and `text-wrap:pretty`.
+- Tracking: the chassis' negative heading tracking and the wide mono
+  tracking are Latin settings; on Japanese labels they print each
+  character apart, so section 39.8 sets them to .02em (headings) and
+  .06em (labels, the header nav and the footer). Line heights open to
+  1.85 for running text and about 1.4 for headings.
+- Punctuation: full-width `、` and `。`; headings end with `。` as the
+  house style ends them with a period; `・` joins items in a label
+  (`経営戦略・投資判断`); full-width brackets `（英語）`. No em or en
+  dashes, no `―` or `〜`, no exclamation marks. The long vowel mark `ー`
+  is a letter, not a dash.
+- No space between Japanese and Latin text (`Mission&nbsp;Greyは`); the
+  brand never splits.
+- Places in katakana: `アーリントン`, `パリ・ラ・デファンス`,
+  `シンガポール`, `サンフランシスコ`, `タンペレ`, `米国`, `フランス`,
+  `フィンランド`; the hero ledger prints `アーリントン（米国）`. The
+  research partners stay in English (`lang="en"`), their own names.
+
+### Japanese terminology, for the next writer
+
+The category name stays English, `External Intelligence Management`,
+and `External Intelligence` for the concept, each in a `<span
+lang="en">`; the Chairman's brief (2026-11-01) rules out a Japanese
+literal translation as the official name. The hero eyebrow carries the
+English name alone, as on `/de/`. Section 2 defines both in his two
+sentences and names market research, competitive analysis, business
+intelligence and risk management once, in the reading beside them, as
+activities that each cover a part (one such device per page). His
+supporting vocabulary carries the explanation: `外部環境の変化`,
+`経営判断`, `不確実性への対応`, `シナリオ分析`, `継続的なモニタリング`.
+The process prints `把握 · 分析 · 判断 · 実行` (arrows in the loop figure); the globe caption says
+`シグナルの監視`, and "illustrative" is `イメージ図`. Nav: `プラット
+フォーム`, `ソリューション`, `活用事例`, `Guild` (its own name),
+`パートナー`, `API`, `インサイト`, `会社概要`; `ログイン`. The header
+button is `ご相談` and goes to the page's own closing panel (`#contact`):
+the Chairman's brief of 2026-11-02 retired `アクセス申請` on `/ja/` as
+an unnatural invitation for Japanese executives, and the panel says in
+Japanese that booking and meeting run in English. Round four's CTA pair
+(`経営課題について相談する` to Calendly, `プラットフォームを見る` to
+`/platform/`, hero and panel alike) is superseded by round five, below. Links to
+English pages carry `（英語）`, and the closing note says the booking
+page is in English. The page claims no Japanese office, staff,
+customers or partners and no Japanese-language platform, documentation
+or support.
+
+**The 2026-11-02 revision on `/ja/`** (the Chairman's brief, after a
+native Japanese business reviewer's read). The hero leads with the
+business value (`企業の外で起きる変化を、経営判断と行動へ。`) and names
+the category after it. Three short run-in subsections (`.lp-sub`) sit in
+existing columns rather than new sections: `汎用AIツールとの違い` in the
+process note (positive, no claim about what other AI cannot do), the
+trust block in the platform split, every sentence of it backed by
+`/platform/#trust` (expert judgment "when the question requires it",
+private data "can" stay restricted, not resold). The customer line
+(`.lp-quote`) is Home's Export Agency quote, translated and marked as a
+translation, with the attribution kept in English; it sits under the
+research strip beside the G2 rating, Home's own two proof points.
+Section 5 adds three cases under `活用イメージ` with a line saying they
+are illustrative and not customers; they reuse `.lp-trio`. How to start
+lives in the closing panel only, and every English route says so
+(panel notes, footer).
+
+**Round five on `/ja/`** (the Chairman's brief MG web Jap 5, 2026-11-02,
+after the reviewer's second read). Section 2's second sentence is his
+refined definition verbatim (the discipline, shared across functions,
+naming who responds); nothing else defines the category. The contact
+hierarchy turns: `japan@missiongrey.com` (a Mission Grey alias, first
+discussion in Japanese, the core team joining when an opportunity is
+concrete) is the primary route, `日本語で問い合わせる`, a mailto with
+the subject `Mission Greyへのお問い合わせ`, in the hero, the closing
+panel and the footer. The 30-minute booking stays as the panel's second
+button, `30分のオンライン相談を予約する` (the note under it says booking
+and meeting are in English, so the label drops the brief's `(EN)` and
+fits a 320px phone); both buttons share the column width. The English
+`contact@` line left the panel (the footer keeps it). The hero note is
+gone with the booking link it described; the hero's one English route,
+`プラットフォームを見る（EN）`, carries the marker, and it no longer
+appears in the panel. The panel's eyebrow is
+his heading, `日本語でのご相談・お問い合わせ`; the closing question
+stays the h2. His definition's second sentence sits at body weight
+(`.lp-principle-note`). `外部環境` is no-wrap everywhere, and the footer
+blurb breaks by phrase. No person is named. The
+alias must work in both directions before this ships: until it does, the
+live page keeps the round-four contact block. A comment in the platform
+split marks where a genuine Japanese platform output goes once one
+exists; none is mocked up.
