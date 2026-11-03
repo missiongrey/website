@@ -955,7 +955,7 @@ cannot tell which one they want from two mono labels, so **every closing
 panel that offers a choice carries `.cta-notes`**: a two-column block under
 the button pair with one line per button, the button's own words as the mono
 label. Home, Platform, Solutions, Use cases, Guild, About, Partners, API,
-Insights and the thirteen insight articles all carry it.
+Insights and the fourteen insight articles all carry it.
 
 **Two deliberate exceptions.** `/contact/` is where `Request access` leads,
 so a panel there explaining the button the reader just followed is noise;
@@ -3838,6 +3838,19 @@ The share image (`og:image`, `twitter:image`, schema `image`) is a
 separate `<slug>-share.jpg` at 1200x627, the wide cover centred on white:
 the social cards crop to about 1.91:1 from the centre and would cut a 3:1
 band's logos and title ends.
+
+When the paper has a designed front cover with no contact details on it
+(second: the ISDP special paper piece,
+`/insights/europe-reindustrialization-lessons-from-asia/`), the cover is
+that whole front page, portrait, at the snapshot sheet width (340px,
+`.art-cover.doc`), and the share image is the same page centred on white
+at 1200x627. Reproduce only where the publisher allows it with the source
+acknowledged (ISDP's imprint page does), and say the publisher in the
+caption. External links in the article body and on the cover open in a
+new tab (`target="_blank" rel="noopener"`), on the chairman's ask for this
+piece. The editor and every contributor the paper lists are named in a
+`.note` under the publication link, so an edited volume never reads as one
+author's work.
 
 Body links in an article (`.art-body a`) are underlined in `--ink-dim`
 and darken on hover; the site's global link style has no
