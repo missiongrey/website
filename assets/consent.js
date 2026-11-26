@@ -282,7 +282,10 @@
     }
 
     var row = document.createElement('div');
-    row.className = 'consent-cta';
+    // Not "consent-cta": Brave's cookie notice filter (EasyList Cookie) hides
+    // any element with that class on every site, which left the slip on
+    // screen with no Accept or Decline to press.
+    row.className = 'consent-answers';
 
     function button(label, value) {
       var b = document.createElement('button');
