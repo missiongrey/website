@@ -64,6 +64,17 @@
     </nav>
     <div class="head-right">
       <span class="utc" id="utc" aria-hidden="true"></span>
+      <details class="lang">
+        <summary aria-label="Language: EN"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><ellipse cx="8" cy="8" rx="2.9" ry="6.5"/><path d="M1.5 8h13"/></svg><span>EN</span></summary>
+        <nav class="lang-menu" aria-label="Language">
+          <a href="/" lang="en" hreflang="en" aria-current="true">English</a>
+          <a href="/fr/" lang="fr" hreflang="fr">Français</a>
+          <a href="/es/" lang="es" hreflang="es">Español</a>
+          <a href="/de/" lang="de" hreflang="de">Deutsch</a>
+          <a href="/pt-br/" lang="pt-BR" hreflang="pt-BR">Português (Brasil)</a>
+          <a href="/ja/" lang="ja" hreflang="ja">日本語</a>
+        </nav>
+      </details>
       <a class="login" href="https://app.missiongrey.com/">Log in</a>
       <a class="btn btn-primary" href="/contact/">Request access</a>
       <details class="mnav">
@@ -82,6 +93,7 @@
           <a href="/contact/">Contact</a>
           <a href="https://app.missiongrey.com/">Log in</a>
           <div class="mnav-cta"><a href="/contact/">Request access</a></div>
+          <div class="mnav-lang"><a href="/" lang="en" hreflang="en" aria-current="true">English</a><a href="/fr/" lang="fr" hreflang="fr">Français</a><a href="/es/" lang="es" hreflang="es">Español</a><a href="/de/" lang="de" hreflang="de">Deutsch</a><a href="/pt-br/" lang="pt-BR" hreflang="pt-BR">Português (Brasil)</a><a href="/ja/" lang="ja" hreflang="ja">日本語</a></div>
         </nav>
       </details>
     </div>
@@ -97,7 +109,7 @@
        condition under which this site draws a scale at all. Round ten
        removed its four accent marks: they pointed at four members printed
        larger below, and a permanent mark on four people in a register of
-       thirty is a ranking whatever it was chosen for. The count
+       thirty-five is a ranking whatever it was chosen for. The count
        beside it is the roster key's own line, moved here because the
        scale of the network belongs at the top of the page that is about
        the network. -->
@@ -109,7 +121,7 @@
         <p class="hero-dek">The Mission Grey Guild is a curated network of domain and regional experts whose knowledge feeds analysis, structured assessments, and high&#8209;impact decisions. It is part of the intelligence process when the question requires it, not an advisory board beside it.</p>
       </div>
       <div class="gd-reg">
-        <p class="gd-count">30 members</p>
+        <p class="gd-count">35 members</p>
         <span class="gd-reg-rule" aria-hidden="true"></span>
       </div>
     </div>
@@ -178,7 +190,52 @@
         <span>Domains listed per member</span>
         <span>Most profiles link to LinkedIn</span>
       </div>
-      <!-- One list, thirty entries, one markup, ONE SIZE. Every
+      <!-- THE FILTER (chairman's ask, 2026-10-29): with thirty-three members
+           the roster is long enough that a reader looking for one kind of
+           expertise, or one part of the world, reads past most of it. Two
+           registers of stations above the list, one per question, drawn the
+           way .gd-doms draws the areas: words hung from one rule, a tick at
+           each station, the pressed one taking its own segment in amber.
+           One choice per register, `All` pressed by default, and the two
+           combine: Finance and APAC is the members tagged Finance whose
+           data-regions carries APAC.
+           Expertise is read from each card's own .gd-tags, so a member's
+           domains are written once. Region has no printed field, so it lives
+           in data-regions on each <li>: region names exactly as the buttons
+           print them, several joined with "|" (data-regions="Europe|Middle
+           East"); an empty value matches no region. COMPONENTS.md, "Guild
+           roster filter", is the edit guide.
+           The bar ships `hidden` and the script below reveals it, so without
+           the script there is no control that does nothing and the roster is
+           printed whole. -->
+      <div class="gd-filter" data-filter hidden>
+        <div class="gd-fg" role="group" aria-labelledby="gd-fg-exp">
+          <p class="gd-fg-l" id="gd-fg-exp">Expertise</p>
+          <div class="gd-fg-b" data-filter-group="expertise">
+            <button type="button" class="gd-fb" aria-pressed="true" data-value="" aria-label="All expertise">All</button>
+            <button type="button" class="gd-fb" aria-pressed="false" data-value="Geopolitics">Geopolitics</button>
+            <button type="button" class="gd-fb" aria-pressed="false" data-value="Finance">Finance</button>
+            <button type="button" class="gd-fb" aria-pressed="false" data-value="Technology">Technology</button>
+            <button type="button" class="gd-fb" aria-pressed="false" data-value="Regulation">Regulation</button>
+            <button type="button" class="gd-fb" aria-pressed="false" data-value="Security">Security</button>
+            <button type="button" class="gd-fb" aria-pressed="false" data-value="Operations">Operations</button>
+            <button type="button" class="gd-fb" aria-pressed="false" data-value="Strategy">Strategy</button>
+          </div>
+        </div>
+        <div class="gd-fg" role="group" aria-labelledby="gd-fg-reg">
+          <p class="gd-fg-l" id="gd-fg-reg">Region</p>
+          <div class="gd-fg-b" data-filter-group="region">
+            <button type="button" class="gd-fb" aria-pressed="true" data-value="" aria-label="All regions">All</button>
+            <button type="button" class="gd-fb" aria-pressed="false" data-value="APAC">APAC</button>
+            <button type="button" class="gd-fb" aria-pressed="false" data-value="Europe">Europe</button>
+            <button type="button" class="gd-fb" aria-pressed="false" data-value="Middle East">Middle East</button>
+            <button type="button" class="gd-fb" aria-pressed="false" data-value="Africa">Africa</button>
+            <button type="button" class="gd-fb" aria-pressed="false" data-value="Americas">Americas</button>
+          </div>
+        </div>
+        <p class="gd-filter-n" aria-live="polite" data-filter-count></p>
+      </div>
+      <!-- One list, thirty-five entries, one markup, ONE SIZE. Every
            member carries the same plate, the same type scale and the same
            fields, in the alphabetical order the live site prints; nothing in the
            markup encodes rank. Prominence is temporary and belongs to the
@@ -188,7 +245,7 @@
            carries the monogram now and takes an <img> the day the
            photographs exist, with no other change. -->
       <ul class="gd-roster reveal" role="list" data-people>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Americas">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">MA</span></div>
             <div class="gd-body">
@@ -201,7 +258,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Americas|Europe">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">SJ</span></div>
             <div class="gd-body">
@@ -214,7 +271,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Europe">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">MB</span></div>
             <div class="gd-body">
@@ -227,7 +284,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="APAC|Europe">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">GC</span></div>
             <div class="gd-body">
@@ -240,7 +297,20 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="APAC">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">JM</span></div>
+            <div class="gd-body">
+              <h3>Jih Min Cheng</h3>
+              <p class="gd-bio">Capital markets, asset management and cross-border M&amp;A</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Finance</span><span>Strategy</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/chengjihmin/" aria-label="Jih Min Cheng on LinkedIn">LinkedIn</a>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li class="gd-m" data-person data-regions="APAC">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">JC</span></div>
             <div class="gd-body">
@@ -253,7 +323,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Americas">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">RC</span></div>
             <div class="gd-body">
@@ -266,7 +336,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Americas">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">KC</span></div>
             <div class="gd-body">
@@ -279,7 +349,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="APAC|Europe">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">ZA</span></div>
             <div class="gd-body">
@@ -292,7 +362,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Europe">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">FF</span></div>
             <div class="gd-body">
@@ -305,7 +375,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Africa">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">JG</span></div>
             <div class="gd-body">
@@ -318,7 +388,20 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Europe">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">PI</span></div>
+            <div class="gd-body">
+              <h3>Peter Ib</h3>
+              <p class="gd-bio">Executive transformation leader with international experience driving turnarounds</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Strategy</span><span>Operations</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/peterib/" aria-label="Peter Ib on LinkedIn">LinkedIn</a>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li class="gd-m" data-person data-regions="Americas">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">JI</span></div>
             <div class="gd-body">
@@ -331,7 +414,20 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Europe|Middle East">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">ZJ</span></div>
+            <div class="gd-body">
+              <h3>Zara Järvinen</h3>
+              <p class="gd-bio">Political adviser with two decades in conflict and security</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span><span>Security</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/zarajar/" aria-label="Zara Järvinen on LinkedIn">LinkedIn</a>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li class="gd-m" data-person data-regions="Americas">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">SK</span></div>
             <div class="gd-body">
@@ -344,7 +440,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Europe">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">AL</span></div>
             <div class="gd-body">
@@ -357,7 +453,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="APAC">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">LT</span></div>
             <div class="gd-body">
@@ -370,20 +466,20 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Europe">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">LL</span></div>
             <div class="gd-body">
               <h3>Ludvig Lund</h3>
-              <p class="gd-bio">Seasoned security consultant</p>
+              <p class="gd-bio">Security and cybersecurity expert</p>
               <div class="gd-foot">
-                <div class="gd-tags"><span>Security</span></div>
+                <div class="gd-tags"><span>Security</span><span>Technology</span></div>
                 <a class="gd-prof" href="https://www.linkedin.com/in/youfoundmegood/" aria-label="Ludvig Lund on LinkedIn">LinkedIn</a>
               </div>
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Europe|APAC">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">DM</span></div>
             <div class="gd-body">
@@ -396,7 +492,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="APAC">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">AM</span></div>
             <div class="gd-body">
@@ -409,7 +505,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="APAC">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">SM</span></div>
             <div class="gd-body">
@@ -422,7 +518,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="APAC|Europe">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">TN</span></div>
             <div class="gd-body">
@@ -435,7 +531,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Americas|Europe">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">FP</span></div>
             <div class="gd-body">
@@ -448,7 +544,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Africa">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">RR</span></div>
             <div class="gd-body">
@@ -461,7 +557,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Americas|Europe">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">AS</span></div>
             <div class="gd-body">
@@ -474,7 +570,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Europe">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">SS</span></div>
             <div class="gd-body">
@@ -487,7 +583,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Americas">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">SR</span></div>
             <div class="gd-body">
@@ -500,7 +596,33 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Europe">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">RS</span></div>
+            <div class="gd-body">
+              <h3>Romain Su</h3>
+              <p class="gd-bio">Data analyst and European affairs writer, former international correspondent</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Geopolitics</span><span>Technology</span></div>
+                <a class="gd-prof" href="https://romain.su/" aria-label="Romain Su's website">Website</a>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li class="gd-m" data-person data-regions="APAC">
+          <article class="gd-p">
+            <div class="gd-plate"><span class="gd-gram" aria-hidden="true">AS</span></div>
+            <div class="gd-body">
+              <h3>Alex Szabo</h3>
+              <p class="gd-bio">APAC market entry, commercial strategy and due diligence</p>
+              <div class="gd-foot">
+                <div class="gd-tags"><span>Strategy</span><span>Operations</span><span>Technology</span></div>
+                <a class="gd-prof" href="https://www.linkedin.com/in/alexszabo/" aria-label="Alex Szabo on LinkedIn">LinkedIn</a>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li class="gd-m" data-person data-regions="APAC">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">DT</span></div>
             <div class="gd-body">
@@ -513,7 +635,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Americas">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">DV</span></div>
             <div class="gd-body">
@@ -526,7 +648,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Europe">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">MV</span></div>
             <div class="gd-body">
@@ -539,7 +661,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Europe">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">PV</span></div>
             <div class="gd-body">
@@ -552,7 +674,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Americas|APAC">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">WV</span></div>
             <div class="gd-body">
@@ -564,7 +686,7 @@
             </div>
           </article>
         </li>
-        <li class="gd-m" data-person>
+        <li class="gd-m" data-person data-regions="Europe">
           <article class="gd-p">
             <div class="gd-plate"><span class="gd-gram" aria-hidden="true">PV</span></div>
             <div class="gd-body">
@@ -578,6 +700,12 @@
           </article>
         </li>
       </ul>
+      <!-- the filter's empty state: printed in the roster's place when a
+           pairing matches nobody, with the one way back -->
+      <div class="gd-none" data-filter-none hidden>
+        <p data-filter-none-line>No member matches this selection.</p>
+        <button type="button" class="gd-none-b" data-filter-reset>Show all members</button>
+      </div>
     </div>
   </section>
 
@@ -673,7 +801,7 @@
     </div>
     <div class="foot-strip">
       <p class="foot-offices" aria-label="Offices">
-        <span>Arlington, VA</span><span>Puteaux, France</span><span>Singapore</span><span>Tampere, Finland</span><span>San Francisco, USA</span>
+        <span>Arlington, VA</span><span>Paris La D&eacute;fense, France</span><span>Singapore</span><span>Tampere, Finland</span><span>San Francisco, USA</span>
       </p>
       <nav class="foot-social" aria-label="Mission Grey channels">
         <a href="https://x.com/MissionGrey" target="_blank" rel="noopener" aria-label="Mission Grey on X" title="Mission Grey on X"><svg aria-hidden="true"><use href="../../assets/social-icons.svg#x"/></svg></a>
@@ -690,6 +818,7 @@
       <span>&copy; 2026 Mission Grey. All rights reserved.</span>
       <a href="/privacy/">Privacy Policy</a>
       <a href="/terms/">Terms of Use</a>
+      <span class="foot-langs"><a class="foot-lang" href="/fr/" lang="fr" hreflang="fr">Résumé en français</a><a class="foot-lang" href="/es/" lang="es" hreflang="es">Resumen en español</a></span>
       <span class="tag">Built for enterprise decision&#8209;makers</span>
     </div>
   </div>
@@ -713,13 +842,12 @@
     document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
   }
 
-  /* close mobile menu after navigation or outside click */
-  var mn=document.querySelector('.mnav');
-  if(mn){
+  /* close the mobile menu and the language menu after navigation or outside click */
+  document.querySelectorAll('.mnav,.lang').forEach(function(mn){
     mn.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mn.removeAttribute('open');});});
     document.addEventListener('click',function(e){if(mn.hasAttribute('open')&&!mn.contains(e.target)){mn.removeAttribute('open');}});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'){mn.removeAttribute('open');}});
-  }
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mn.hasAttribute('open')){mn.removeAttribute('open');if(mn.contains(document.activeElement)){mn.querySelector('summary').focus();}}});
+  });
 })();
 </script>
 
@@ -754,6 +882,148 @@
   document.addEventListener('keydown',function(e){
     if(e.key==='Escape'){release();}
   });
+  /* the roster filter hides records; a record it hides lets go of the
+     selected state, so nothing is forward that cannot be seen and the next
+     tap on it, once shown again, selects rather than releases */
+  regs.forEach(function(reg){
+    reg.addEventListener('gd-filter',function(){if(on&&on.hidden){release();}});
+  });
+})();
+</script>
+
+<script>
+/* GUILD ROSTER FILTER (2026-10-29). Two registers of toggle buttons above
+   the roster, Expertise and Region, one choice each, `All` by default; the
+   two combine. Expertise reads each card's printed .gd-tags, Region reads
+   its data-regions ("|" between names). Hidden cards take the `hidden`
+   attribute, so the grid closes up with no gap. The result line is a polite
+   live region: a screen reader hears the new count once per change, and
+   nothing else on the page moves focus. The view is mirrored in the address
+   (?expertise=finance&region=apac) with replaceState, so a filtered
+   roster can be linked without filling the back button with clicks. With
+   the script off none of this exists: the bar stays hidden and the roster
+   is complete. */
+(function(){
+  var bar=document.querySelector('[data-filter]');
+  var list=document.querySelector('.gd-roster[data-people]');
+  if(!bar||!list){return;}
+  var cards=[].slice.call(list.querySelectorAll('[data-person]'));
+  var count=bar.querySelector('[data-filter-count]');
+  var none=document.querySelector('[data-filter-none]');
+  var noneLine=none&&none.querySelector('[data-filter-none-line]');
+  var groups={};
+  bar.querySelectorAll('[data-filter-group]').forEach(function(g){
+    groups[g.getAttribute('data-filter-group')]=[].slice.call(g.querySelectorAll('button'));
+  });
+  var state={expertise:'',region:''};
+
+  /* a station no card answers to is a dead end, so it waits off the
+     register: Middle East shows the day a card carries it. */
+  Object.keys(groups).forEach(function(key){
+    groups[key].forEach(function(b){
+      var v=b.getAttribute('data-value');
+      if(v&&!cards.some(function(li){return facts(li)[key].indexOf(v)>-1;})){b.hidden=true;}
+    });
+  });
+
+  /* what a card answers to: its printed tags, its regions. Read at every
+     change rather than cached, thirty-five cards is nothing, and an edit
+     to data-regions in the inspector shows at once. */
+  function facts(li){
+    return {
+      expertise:[].map.call(li.querySelectorAll('.gd-tags span'),function(s){return s.textContent.trim();}),
+      region:(li.getAttribute('data-regions')||'').split('|').map(function(r){return r.trim();}).filter(Boolean)
+    };
+  }
+
+  /* "Middle East" travels as middle-east in the address */
+  function slug(v){return v.toLowerCase().replace(/\s+/g,'-');}
+  function fromSlug(key,s){
+    var hit='';
+    (groups[key]||[]).forEach(function(b){var v=b.getAttribute('data-value');if(v&&!b.hidden&&slug(v)===s){hit=v;}});
+    return hit;
+  }
+
+  function apply(){
+    var shown=0;
+    cards.forEach(function(li){
+      var f=facts(li);
+      var ok=(!state.expertise||f.expertise.indexOf(state.expertise)>-1)&&
+             (!state.region||f.region.indexOf(state.region)>-1);
+      li.hidden=!ok;
+      if(ok){shown++;}
+    });
+    Object.keys(groups).forEach(function(key){
+      groups[key].forEach(function(b){
+        b.setAttribute('aria-pressed',String(b.getAttribute('data-value')===state[key]));
+      });
+    });
+    /* the fold already prints the whole count; the line speaks only while
+       a filter narrows the view, and gives way to the empty line at zero */
+    count.textContent=(state.expertise||state.region)&&shown?
+      'Showing '+shown+' of '+cards.length+' members':'';
+    /* the empty list gives its place to the empty state rather than
+       leaving its own closing rule under a sentence */
+    list.hidden=shown===0;
+    if(none){
+      none.hidden=shown!==0;
+      if(noneLine&&!shown){
+        noneLine.textContent='No member matches '+[state.expertise,state.region].filter(Boolean).join(' and ')+'.';
+      }
+    }
+    list.dispatchEvent(new Event('gd-filter'));
+  }
+
+  function sync(){
+    if(!window.history||!history.replaceState){return;}
+    var q=new URLSearchParams(location.search);
+    /* both keys dropped and re-added, so the address always reads
+       expertise first, region second, whichever was clicked last */
+    ['expertise','region'].forEach(function(key){q.delete(key);});
+    ['expertise','region'].forEach(function(key){
+      if(state[key]){q.append(key,slug(state[key]));}
+    });
+    var s=q.toString();
+    history.replaceState(history.state,'',location.pathname+(s?'?'+s:'')+location.hash);
+  }
+
+  Object.keys(groups).forEach(function(key){
+    groups[key].forEach(function(b){
+      b.addEventListener('click',function(){
+        var v=b.getAttribute('data-value');
+        /* pressing the pressed choice again hands the register back to All */
+        var next=(v&&state[key]===v)?'':v;
+        if(next===state[key]){return;}
+        state[key]=next;
+        apply();sync();
+      });
+    });
+  });
+
+  if(none){
+    var reset=none.querySelector('[data-filter-reset]');
+    if(reset){
+      reset.addEventListener('click',function(){
+        state.expertise='';state.region='';
+        apply();sync();
+        /* the button that had focus is hidden now; focus goes to the
+           control it stood in for rather than falling to the page */
+        groups.expertise[0].focus();
+      });
+    }
+  }
+
+  /* a linked view: unknown values are ignored, not guessed at */
+  if(window.URLSearchParams){
+    var q=new URLSearchParams(location.search);
+    state.expertise=fromSlug('expertise',(q.get('expertise')||'').toLowerCase());
+    state.region=fromSlug('region',(q.get('region')||'').toLowerCase());
+  }
+  bar.hidden=false;
+  apply();
+  if(location.search){sync();}
+  /* a shared filtered link lands on the filtered list, not on the fold */
+  if(state.expertise||state.region){bar.scrollIntoView({block:'start'});}
 })();
 </script>
 </body>

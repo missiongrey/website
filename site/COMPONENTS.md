@@ -442,7 +442,7 @@ reader cannot see. The schema logo is `assets/mission-grey-logo.png`, the
 ink version of the wordmark (the white file is for the header, where CSS
 turns it to ink); Google shows the logo on white.
 
-### Cookie choice (styles.css section 38)
+### Cookie choice (styles.css section 40)
 
 The one exception to "zero external network requests" is Mission Grey's
 own: `assets/consent.js` posts page-view beacons to the platform's
@@ -458,7 +458,7 @@ why it uses the paper tokens rather than the chassis tokens. It has no
 motion of any kind. Accept and Decline are one button style, equal in size
 and weight: the choice is the visitor's, and the design does not lean
 either way. If the register ruling changes, the whole component is the
-`.consent*` block in section 38 of styles.css.
+`.consent*` block in section 40 of styles.css.
 
 ### Asset formats
 
@@ -958,7 +958,7 @@ cannot tell which one they want from two mono labels, so **every closing
 panel that offers a choice carries `.cta-notes`**: a two-column block under
 the button pair with one line per button, the button's own words as the mono
 label. Home, Platform, Solutions, Use cases, Guild, About, Partners, API,
-Insights and the thirteen insight articles all carry it.
+Insights and the fourteen insight articles all carry it.
 
 **Two deliberate exceptions.** `/contact/` is where `Request access` leads,
 so a panel there explaining the button the reader just followed is noise;
@@ -2010,7 +2010,7 @@ and no decoration on a face, ever.
 **Where we are, as a west-to-east register.** The three offices were three
 boxes in a row, which says the regions are three equal products. They are
 places, so they are drawn as places: one rule, one station per office at
-its true meridian (Arlington 77W, Puteaux 2E, Singapore 104E on a scale
+its true meridian (Arlington 77W, Paris La Défense 2E, Singapore 104E on a scale
 whose ends are San Francisco 122W and Singapore), the label hanging under
 its tick. Other offices and operations hang from a second rule on the same
 scale. **The meridians are the only text this page added, and they are
@@ -2022,7 +2022,7 @@ less. Two rules learned here: two lines of region label are reserved in
 every station (`min-height:3em`), because EMEA wraps and the other two do
 not and a wrapped label drops its own city one line; and below 1080px the
 register stops being a map and becomes a ruled list, because a 226 degree
-spread drawn 900px wide puts Puteaux under Singapore. The notation stays
+spread drawn 900px wide puts Paris under Singapore. The notation stays
 in the list, since the meridian is what the stations were ordered by.
 It wears no `.frame`: this is a statement of where the company is, not a
 claimed view of data, the same reasoning that keeps `.steps` out of
@@ -2148,11 +2148,11 @@ Touch gets `.pi-on` from a delegated click handler on each register — tap
 a record to bring it forward, tap it again, tap the page, or press Escape
 to release. The state is deliberately NOT exposed as a control: a button
 whose whole effect is that a row gets darker is noise in a screen reader,
-and there is nothing behind it to reach. Three records (William Vogt on
-Guild, Lauri Byckling and Eva Mikkonen on About) carry no public profile
+and there is nothing behind it to reach. Two records (William Vogt on
+Guild, Lauri Byckling on About) carry no public profile
 and therefore no focus stop; they lose nothing, because the state carries
 no information. If parity is ever wanted there, the fix is a link for
-those three, not a fake control.
+those two, not a fake control.
 
 **Guard the hover TRIGGER, not only the hover state, binding.** A phone
 leaves an emulated hover on the last element tapped. The state block is
@@ -3842,6 +3842,19 @@ separate `<slug>-share.jpg` at 1200x627, the wide cover centred on white:
 the social cards crop to about 1.91:1 from the centre and would cut a 3:1
 band's logos and title ends.
 
+When the paper has a designed front cover with no contact details on it
+(second: the ISDP special paper piece,
+`/insights/europe-reindustrialization-lessons-from-asia/`), the cover is
+that whole front page, portrait, at the snapshot sheet width (340px,
+`.art-cover.doc`), and the share image is the same page centred on white
+at 1200x627. Reproduce only where the publisher allows it with the source
+acknowledged (ISDP's imprint page does), and say the publisher in the
+caption. External links in the article body and on the cover open in a
+new tab (`target="_blank" rel="noopener"`), on the chairman's ask for this
+piece. The editor and every contributor the paper lists are named in a
+`.note` under the publication link, so an edited volume never reads as one
+author's work.
+
 Body links in an article (`.art-body a`) are underlined in `--ink-dim`
 and darken on hover; the site's global link style has no
 underline, which inside running serif text reads as no link at all.
@@ -3963,3 +3976,549 @@ expected contributions` and `Desired experience and capabilities` as
 - **What a position may say.** The claims law applies: no salary, benefit
   or location promise that is not signed off, and remote eligibility is
   stated per position, never implied for every country.
+
+## Guild roster filter (2026-10-29, styles.css section 38)
+
+On the chairman's ask: with thirty-three members the roster needed a way to
+read only the part a visitor came for. Two registers of toggle buttons sit
+between the roster key (`.gd-key`) and the list, **Expertise** (All,
+Geopolitics, Finance, Technology, Regulation, Security, Operations,
+Strategy, in the order of the Expertise areas register above) and **Region** (All, APAC, Europe, Middle East, Africa,
+Americas). One choice per register, `All` pressed by default, and the two
+combine: Finance and APAC shows the members tagged Finance whose regions
+include APAC. Pressing the pressed choice again returns that register to
+`All`. No card's content or shape changed, and the fold's `33 members` and
+its register are untouched (they count the Guild, not the view).
+
+**How it is drawn.** Each register is the `.gd-doms` idiom: station words
+hung from one rule with a tick at each station, mono at metadata size,
+`.14em` tracking. The pressed station takes the `.px-rail` selected state
+from section 27 (amber ink, its own amber segment of the rule, a taller
+amber tick), because amber on this site means the selected thing. Stations
+are separated by padding, never gap, so a row abuts into one rule. Each
+button is 38px tall at every width; under 561px the register's label moves
+above its stations and the stations wrap. Nothing animates.
+
+**The data.**
+- Expertise is read from each card's own `.gd-tags` spans, so a member's
+  domains are written once. A button's `data-value` must match the tag text
+  exactly. A tag that appears on a card but has no button is simply not
+  filterable; add a button to the Expertise register to make it so.
+- Region means where the member is based, plus a second region only where
+  their work clearly centres on another (an EU-China specialist based in
+  Taipei carries `APAC|Europe`). The Asia region is named APAC because it
+  includes Australia and the Pacific (the chairman's naming, 2026-10-29).
+- Region lives in `data-regions` on each `<li class="gd-m" data-person>`:
+  the region names exactly as the buttons print them, several joined with
+  `|`, no spaces around the bar (`data-regions="Europe|Middle East"`). An
+  empty value matches no region. The values are the chairman's (2026-10-29:
+  he corrected a draft drawn from public profiles); every member carries at
+  least one region, two where the work spans both. A new member's `<li>` takes the
+  attribute too.
+- A station that no card answers to (Middle East on 2026-10-29) is hidden
+  by the script, so the register never offers a dead end; it shows the day
+  a card carries that value. The address ignores a hidden station's value.
+
+**Behaviour.**
+- The result line (`Showing 12 of 33 members`) speaks only while a filter
+  narrows the view; at rest and in the empty state it is blank, because the
+  fold prints the count. It is a polite live region, so a screen reader hears the new count once per
+  change. The totals are counted from the list, never written by hand.
+- When a pairing matches nobody the list is hidden and `.gd-none` stands in
+  its place on the same rule: `No member matches Security and Africa.` and a
+  `Show all members` button, which resets both registers and moves focus to
+  the Expertise `All` button (the button that had focus has just gone).
+- Hidden cards carry the `hidden` attribute, so the two-column grid closes
+  up with no gap. A selected card (`.pi-on`, section 26) that the filter
+  hides lets go of its selection: the filter script fires a `gd-filter`
+  event on the list and the selection script releases a hidden record.
+- The view is mirrored in the address with `history.replaceState`
+  (`/guild/?expertise=finance&region=apac`), so a filtered roster can
+  be linked; the page reads it on load and ignores values it does not
+  know. No history entry is added per click.
+- **Without JavaScript the bar does not exist.** It ships with `hidden` and
+  the script reveals it, so there is never a control that does nothing,
+  and the roster prints whole.
+- The `[hidden]` rules in section 38 are load-bearing: `.gd-filter`,
+  `.gd-roster` and `.gd-none` set their own `display`, which outranks the
+  browser's rule for `hidden` (the same trap section 27 records).
+
+**Words written for the build** (not the chairman's, change freely): the
+two register labels, `All`, the result line, the empty-state line and
+`Show all members`.
+
+## Language landing pages (2026-10-29, styles.css section 39)
+
+The site is English. A language landing page is one short standalone page
+in another language for visitors who want to understand Mission Grey in
+their own language first: `/fr/` was the first, `/es/` the second,
+`/de/` the third, `/pt-br/` the fourth, `/ja/` the fifth. It is **not** a
+translation of Home and not a translated site. **No other page is ever
+translated**: Platform, Solutions, Use cases, Guild, Insights, About and
+the rest stay English only, and every link out of a language page that
+leads to detail goes to those English pages. A language page may say so
+in a link label ("La plateforme en détail, en anglais").
+
+### What a language page is made of
+
+Six sections, in this order. The structure, the instruments and every
+class are shared; the words and the regional emphasis are the language's
+own.
+
+| # | Section | Built from |
+|---|---|---|
+| 1 | Hero: headline, two short paragraphs, primary CTA (the Calendly working session) and secondary CTA (`/platform/`), then the five places as the page's first facts, principal offices first | Home's fold: `.hero.hero-v1`, `.hz`, the globe canvas and its script. Add `.lp-hero` (wider headline measure) and `.lp-dek-2` on the second paragraph. Where Home prints its operating cadence, the ledger `.cadence.cadence-v1.lp-places` prints the five places: the city in `.v` (Arlington as `Arlington, VA`) and its role in `.k`, principal office or other location (see below). Do not bring the cadence back on a language page: out of its context it reads as a news-feed specification |
+| 2 | Why external intelligence | `.lp-split` (claim left, reading right), with the `.principle` under the claim in `.lp-split-head` |
+| 3 | How it works: three inputs, then Monitor, Analyze, Decide, Act | one `.frame` holding `.rx-stack` (`.rx-cols` with `.rx-v` descriptions) and `.loop-row.loop-4.lp-loop`, then `.sec-note` (one or two paragraphs) and a `.more-link` to `/platform/` |
+| 4 | The global organization, the page's high point | `.lp-split` inside `.wrap`; then, OUTSIDE `.wrap`, the map figure `.frame.lp-map` (up to 1440px wide) with its `.lp-tags` (names at the dots, phone) and `.lp-sites` register (desktop); then back in `.wrap`, `.lp-trio` (three differentiators) and `.proofstrip.lp-strip` (Home's research-partner strip, inside the column). Say it once: no kicker, no closing pull quote |
+| 5 | Business applications, four functions | `.ruled` rows + a `.more-link` to `/solutions/` |
+| 6 | Call to action | `.access-panel` with `.cta-notes`, `access-mail`, then `.lp-en`: the way to the full English site. On a language page each note is one plain line, without the mono repeat of the button's words; under 561px each line follows its own button |
+
+**Principal offices and other locations.** Mission Grey's three principal
+offices are Arlington (Virginia, USA), Paris La Défense and Singapore; San
+Francisco and Tampere are other locations (the English site's "Other
+offices and operations"). A language page never presents the five as
+equal: the hero ledger lists the three principal offices first, labelled
+as such (`Bureau principal`, `Oficina principal`, `Hauptstandort`,
+`Escritório principal`, `主要オフィス`), then the two others (`Autre implantation`,
+`Otra sede`, `Weiterer Standort`, `Outro local`, `その他の拠点`), noun labels because a
+screen reader reads the label after the city; the section 4 reading names the
+three principal offices in one sentence; the map keeps all five points
+and links unchanged, under the frame-bar label "our global network" in
+the page's language.
+
+**The hero's secondary button.** It leads to the English `/platform/`
+page and carries `hreflang="en"` but no visible `(EN)`: the extra word
+wrapped the hero's two buttons onto two rows at desktop widths. Links in
+running copy (`.more-link`) do carry `(EN)`; on `/ja/` the marker is
+`（EN）` in full-width parentheses, on the running-copy links, the
+second call-to-action note and the privacy and terms links alike.
+
+**One product screen on `/ja/`.** The Chairman's refinement brief
+(2026-11-01) put one genuine platform screenshot in section 3, under the
+offer's heading in `.lp-split-head`: `figure.shotfig.lp-shot` holding the
+same `.window.win-plate` the English pages use, the monitoring screen
+uncropped at every width, a Japanese caption saying the screen is in
+English, and Japanese alt text that describes only what the screen
+shows. In the head column it adds no height on a desktop. The other
+language pages carry no screenshot; adding one there is a gate-holder's
+call, not a template default.
+
+The map in section 4 is the site's own dot-grid world, laid flat
+(equirectangular: x is longitude, y is latitude, from the same packed
+land mask the Home globe draws), with the five places the footer names
+pinned at their true coordinates and every place joined to every other,
+never to a centre. That is the claim the section makes: one connected
+organization, not five regional offices. The map, the pins, the links and
+the register under it are identical on every language page; only the
+labels (country names, the frame bar, the legend, the `aria-label`) are
+translated. The map is a drawn instrument, so it is a `.frame` and carries
+the illustrative label in the page's language. Do not add places, data
+centres, hosting or data-residency claims to it: the five places are
+offices and operations, which is what the English site says.
+
+Each place hangs from the rule under the map at its own longitude. Where
+two names would collide, one hangs west of its tick (`.lp-site-w`) or
+lower on a longer tick (`.lp-site-low`). Under 701px the map runs edge to
+edge at a fixed 236px height, crops to the band of longitude the places
+sit in, and the names move to the dots (`.lp-tags`, placed with the same
+`--x`/`--y` percentages; `.lp-tag-w`, `-n`, `-s` choose the side). The svg
+uses `preserveAspectRatio="none"` and every stroke in it is non-scaling,
+so dots and place marks stay round whatever the box's shape. The place
+marks are zero-length round-capped strokes, not circles: CSS `r` is not
+reliable in older Safari. The Paris office prints as Paris La Défense
+everywhere on the site, and the commune name is never printed: not on
+the map, not in the register under it, not in any footer, not on
+`/contact/` or About (the Chairman's ruling, 2026-10-29). Each language
+gives the city its own form (`París La Défense` in Spanish).
+
+### Adding a language
+
+1. Copy `site/fr/index.html` to `site/<code>/index.html` (ISO 639-1 code,
+   lower case: `es`, `de`, `ja`). A language whose regional variant is the
+   point takes the region too, lower case in the route and BCP 47 case in
+   `lang` and `hreflang`: `/pt-br/` is `pt-BR`, because the page is
+   written for Brazil and European Portuguese reads differently. The
+   depth is the same, so every `../../assets/` and `../styles.css` path
+   is already right.
+2. In the copy: `<html lang="<code>">`, title, description, the `og:` and
+   `twitter:` text, `og:locale`, the canonical
+   (`https://missiongrey.com/<code>/`), `og:url`, and the hreflang set. A
+   language page lists itself, English, `x-default` (English) and every
+   other language page.
+3. Translate every visible string, the `aria-label`s, the globe's
+   `aria-label` and `noscript` alt, the five station names and signal
+   types in the globe script's `CP` array, and its pause/resume labels.
+   Rewrite the copy for the language and its market rather than
+   translating the French; the regional emphasis may differ (which places
+   to name first in the reading, which examples to use), the facts may
+   not. Every fact must already be on the English site.
+4. Header: keep `class="site-head lp-site-head"` (the language page's bar
+   drops the clock and switches to the burger menu at 1380px, because
+   translated labels run longer). Check the new language's labels at
+   1381 to 1440: a longer language may need a later switch. The nav labels are translated, the
+   hrefs stay the English routes. The logo links to the language page.
+5. Language menu, on every page of the site (all English pages and every
+   language page), two lines per header:
+   - in `details.lang .lang-menu`, one line
+     `<a href="/<code>/" lang="<code>" hreflang="<code>">Name in its own language</a>`;
+   - in `.mnav-lang`, the same link.
+   The phone row (`.mnav-lang`, section 39.1) sets the six entries
+   (English first, then the five language pages) in even columns: two
+   by two in three rows on a phone, three across in two rows from 500.
+   Three across does not fit `Português (Brasil)` at 320. With four
+   language pages English took a row of its own; the fifth (`/ja/`)
+   would have left one page alone, so English joined the grid. A
+   seventh entry breaks the even grid again and needs its own look at
+   320 and 500.
+   Mark the current page's language with `aria-current="true"`, and keep
+   the summary's code (`EN`, `FR`, `ES`) and its `aria-label` in the page's
+   language. The menu is a `<details>` and needs no script; the shared
+   header script closes it on outside click, Escape and after a choice.
+6. Home (`site/index.html`): add the new
+   `<link rel="alternate" hreflang="<code>" ...>` line, and add it to every
+   existing language page too. The hreflang set must be the same on every
+   page that carries it.
+7. Footer: the English pages carry two quiet pointers in `.foot-legal`,
+   `Résumé en français` and `Resumen en español`, each written in its
+   own language with `lang` and `hreflang`, held in one
+   `<span class="foot-langs">` so a narrow row wraps them together. Two
+   is the limit: the row has no room for a third. Before the next
+   language goes in, decide with the gate-holders what happens to the
+   pointers; the likely answer is to remove the `.foot-langs` group from
+   every English page and leave the language menu as the only way in.
+   `/de/` went onto the draft without a third pointer: the language menu
+   carries Deutsch everywhere, and the footer question went to the
+   Chairman with the German preview (2026-10-29). `/pt-br/` followed
+   the same way: `Português (Brasil)` in the language menu everywhere
+   (the Chairman's label, 2026-10-29), no footer pointer, the question
+   still open with the gate-holders. `/ja/` (2026-11-01) did the same:
+   `日本語` in the language menu, no footer pointer. The language page's own footer
+   translates headings and labels and carries one pointer back to `/`,
+   written in the page's language (`Site en anglais`, `Sitio en inglés`,
+   `Englische Website`, `Site em inglês`, `英語サイト`); it does not point to the
+   other language pages, which its language menu already lists.
+8. Run `deploy/build.sh`. It counts the new page into the sitemap by
+   itself; no build change is needed.
+
+Never redirect a visitor by location or browser language. The language
+page is chosen, never imposed.
+
+### The English bar with the menu in it
+
+The desktop bar was already full between 981 and about 1250px before the
+language menu joined it (`USE CASES` and `LOG IN` wrapped to two lines).
+Section 39.1 makes room without touching the nav items or the 980 burger
+switch: labels never wrap (`white-space:nowrap`), the menu shows the globe
+alone up to 1339px, `.head-right` closes to 16px there, and the nav gap
+steps down where the bar is tightest (17px with no nav margin to 1099,
+20px to 1199, 17px from 1200 to 1279, where the clock returns). Measured
+against the build before the menu, 1px at a time from 975 to 1445 on Home
+and Platform: no label wraps at any width, and the page's sideways
+overflow is equal to or below the old one everywhere (it still runs from
+981 to about 1040, a little below the old figures; that overflow predates
+the menu). A further item in the bar has to repeat that sweep.
+
+Language pages open the line-height of wrapped mono labels to 1.5
+(`.lp` on `<main>`): translations run longer and wrap on a phone.
+
+### French typography (the rules a translated page adds)
+
+- A narrow no-break space `&#8239;` before `? ! : ;` and inside « » (not
+  used so far). Never a normal space there, which can break the line
+  before the mark.
+- The house style holds in every language: no em dashes, no en dashes, no
+  exclamation marks; sentence case headings ending with a period.
+- Apostrophes stay the straight ASCII `'`, the chassis convention (see
+  "Apostrophes, observed convention"); French copy has many, and a
+  page that switches alone would break the one-convention rule.
+- Accented capitals stay accented in the uppercase mono labels (`À
+  PROPOS`, `DÉCIDER`): the fonts carry them.
+- Proper names stay as the English site prints them, and the brand never
+  splits across a line (`Mission&nbsp;Grey`): Mission Grey, Mission
+  Grey Guild, University of Cambridge, Aalto University, Tampere University.
+  The research strip on a language page prints Cambridge's school as
+  `Cambridge Judge Business School`, its own name; the English pages
+  still print `Judge Business School` and were left unchanged. Place names
+  take the language's form (`Singapour`, `Finlande`, `États-Unis`).
+
+### French terminology, for the next writer
+
+The core concept, External Intelligence for Decision-Making, is rendered
+"l'intelligence externe au service de la décision" (the title says "de
+vos décisions"); the product is "plateforme d'intelligence externe". The
+terms *veille stratégique* and *intelligence économique* are deliberately
+not used as the name: the first is narrower than the concept (monitoring
+only) and the second carries a specific French public-policy meaning. The
+page sets the discipline once, in section 2, against neighbouring
+activities, positively ("Au-delà de la veille des risques, de la
+business intelligence, de l'analyse par l'IA ou du conseil, c'est une
+discipline de management à part entière"). One such device per page, and "intelligence" is rationed:
+"trois apports complémentaires", not "trois sources d'intelligence";
+"veille de marché", not "intelligence de marché". The CTA pair: `Discuter de vos enjeux` is
+the working session (Calendly), `Demander un accès` is `/contact/`.
+
+### Spanish typography
+
+- Questions open with `¿` and close with `?`, with no space inside
+  either mark; a question heading ends with `?` instead of a period.
+  After a colon a question starts lower case (`de negocio: ¿qué
+  decisiones...?`). No narrow spaces: Spanish puts none before `? : ;`.
+- The house style holds: no em dashes, no en dashes, and no exclamation
+  marks, so `¡` never appears either. Sentence case headings end with a
+  period.
+- Straight ASCII apostrophes, as everywhere (Spanish copy rarely needs
+  one). Accented capitals stay accented in the mono labels (`ANÁLISIS`,
+  `INICIAR SESIÓN`). The nav says `Nosotros` for About: `Quiénes somos`
+  pushed the bar's right group 26px past the column from 1381 up.
+- Proper names stay as the English site prints them (Mission Grey Guild,
+  University of Cambridge, Aalto University, Tampere University) and the
+  brand never splits (`Mission&nbsp;Grey`). Places take the Spanish form:
+  `Singapur`, `Finlandia`, `Estados Unidos`, `Francia`, `Bruselas`,
+  `estrecho de Ormuz`, `golfo de Bengala`, `canal de Panamá`. The Paris
+  office is `París La Défense` everywhere on the page, the footer
+  included. The register under the map and the footer's place line print
+  `EE.&nbsp;UU.` instead of `Estados Unidos`: on the map the long form
+  pushed the San Francisco label (which hangs west of its tick) past the
+  map's left edge below about 1020px. The hero eyebrow keeps the whole
+  category name in one `.nw`.
+- Neutral Spanish for Spain and Latin America: `usted` throughout (`su
+  organización`), no `vosotros`, no regional words. Where the two
+  regions differ, take the word both read without effort (`paneles`, not
+  `tableros` or `cuadros de mando`; `modelar`; `Iniciar sesión`).
+
+### Spanish terminology, for the next writer
+
+The category is `Gestión de la Inteligencia Externa`, with the English
+`External Intelligence Management` beside it in the hero eyebrow, and
+`Inteligencia Externa` for the capability itself; both keep their
+capitals. Do not name the category *inteligencia competitiva*,
+*vigilancia estratégica*, *análisis de riesgos* or *inteligencia
+empresarial*: they describe narrower, related activities. The page uses
+none of them as a name; the one occurrence is *inteligencia competitiva*
+inside the Chairman's definition, as something the discipline goes
+beyond. Section 2 defines the
+category positively, in the Chairman's words (2026-10-29): "La Gestión
+de la Inteligencia Externa va más allá del seguimiento de riesgos, la
+inteligencia competitiva o las herramientas de análisis. Es una
+disciplina de gestión que conecta el conocimiento del entorno exterior
+con las decisiones y acciones de toda la organización." Never bring
+government intelligence or espionage onto a language page, not even to
+deny it (his ruling, same day). The
+process is `Monitorear, Analizar, Decidir, Actuar` (the brief's own
+verbs); the globe caption says `Seguimiento de señales`. The Guild is
+masculine: `el Mission&nbsp;Grey Guild`. The CTA
+pair: `Hablemos de sus desafíos` is the working session (Calendly),
+`Solicitar acceso` is `/contact/`. Links to English pages carry `(EN)`
+in the label, as on `/fr/`. The page claims nothing about Spanish
+service: the platform, the session and support are not described as
+available in Spanish.
+
+### German typography
+
+- No space before `? ! : ;`, as in English. Questions end with `?`; a
+  question heading ends with `?` instead of a period.
+- The house style holds: no em dashes, no en dashes, no exclamation
+  marks; sentence case headings end with a period. German nouns keep
+  their capitals, which is sentence case in German.
+- Umlauts and `ß` stay as they are in the source (`Über uns`,
+  `Maßnahmen`); never write `ue` or `ss`. The uppercase mono labels keep
+  the umlauts (`ÜBER UNS`, `LÖSUNGEN`), while CSS uppercase renders `ß` as
+  `SS` (the globe readout prints `STRASSE VON HORMUS`).
+- Long compounds: the hero headline is two sentences in the Chairman's
+  wording and runs to five lines at full size, so it carries
+  `.lp-h1-long` (section 39: a little smaller, no measure, 25px under
+  390), a `<br>` before its second sentence and `besser entscheiden.` in
+  one `.nw`, so the verb never sits alone. Long compounds in the
+  application labels carry a soft hyphen (`Unternehmens&shy;führung`,
+  `Geschäfts&shy;entwicklung`): in the letter-spaced mono type they run
+  past the 180px label column between 768 and 900 otherwise.
+- Places take the German form: `Singapur`, `Finnland`, `Frankreich`,
+  `USA`, `Brüssel`, `Panamakanal`, `Straße von Hormus`, `Golf von
+  Bengalen`. The longitudes print `W` and `O` (Ost). The Paris office is
+  `Paris La Défense`. Proper names stay as the English site prints them;
+  the brand never splits (`Mission&nbsp;Grey`), and the page writes
+  `die Plattform von Mission Grey` rather than a hyphenated compound.
+- `Sie` throughout, Standard German for Germany, Austria and
+  Switzerland (`ß`, not the Swiss `ss`).
+
+### German terminology, for the next writer
+
+The category name stays English: `External Intelligence Management`,
+and `External Intelligence` for the capability, each in a `<span
+lang="en">` so a screen reader speaks it in English. The hero eyebrow
+therefore carries one line, the English name, instead of the bilingual
+pair. Never `Externe Intelligenz`: in German it reads as artificial
+intelligence. The page defines the term once, in section 2, in the
+Chairman's own two sentences (the two principles), and names the related
+activities once, in the reading beside them (`Risikomanagement,
+Marktbeobachtung, Wettbewerbsanalyse und strategische Frühaufklärung
+decken jeweils einen Ausschnitt davon ab`), so none of them is mistaken
+for the category. One such device per page. The process is `Beobachten,
+Analysieren, Entscheiden, Handeln`; the globe caption says
+`Signalbeobachtung`. The nav says `Anwendungen` for Use cases (the bar
+holds it on one line from 1381) and keeps `Insights`, a word German
+business sites use as is. The CTA pair: `Gespräch vereinbaren` is the
+working session (Calendly), `Zugang anfragen` is `/contact/`. Links to
+English pages carry `(EN)`. The page claims no German office and no
+German-language service: the platform, the session and support are not
+described as available in German.
+
+### Brazilian Portuguese typography
+
+- No space before `? ! : ;`, as in English. Questions end with `?`; a
+  question heading ends with `?` instead of a period.
+- The house style holds: no em dashes, no en dashes, no exclamation
+  marks; sentence case headings end with a period.
+- Brazilian spelling and accents as the Acordo Ortográfico writes them
+  in Brazil (`econômicas`, `fenômeno`, `ação`, `Finlândia`); never the
+  European forms (`económicas`, `equipa`, `registo`, `facto`). Accented
+  capitals stay accented in the mono labels (`SOLUÇÕES`, `SOBRE NÓS`).
+- The company takes the feminine article, as Brazilian business writing
+  does for a company: `a Mission&nbsp;Grey`, `da Mission&nbsp;Grey`, and
+  the Guild is feminine too (`a Mission&nbsp;Grey Guild`). The brand
+  never splits.
+- Places take the Brazilian form: `Singapura`, `Finlândia`, `França`,
+  `Estados Unidos`, `Bruxelas`, `estreito de Ormuz`, `golfo de Bengala`,
+  `canal do Panamá`. The register under the map and the footer print
+  `EUA`, the short form, for the reason `/es/` prints `EE.&nbsp;UU.`. The
+  longitudes print `O` (oeste) and `L` (leste), the Brazilian cardinal
+  letters. The Paris office is `Paris La Défense`.
+- `você` throughout, the register Brazilian companies use with
+  executives (`sua organização`); never `tu` or the European `vós`.
+  Brazilian business words where they differ from Portugal: `equipe`,
+  `gerenciar`, `contato`, `cadeias de suprimentos`, `tomada de decisão`.
+  `dashboards` and `workshops` stay English, as Brazilian companies
+  write them.
+- The adoption reading is prose, two or three sentences, like the
+  other three pages (the Chairman's ruling 2026-10-29 replaced the
+  five-point list). The headline sets in two lines from 390 and needs
+  no `.lp-h1-long`.
+
+### Brazilian Portuguese terminology, for the next writer
+
+The category is `Gestão da Inteligência Externa`, with the English
+`External Intelligence Management` beside it in the hero eyebrow (the
+brief's `Gestão da Inteligência Externa | External Intelligence
+Management`, set in two lines as on `/es/`), and `Inteligência Externa`
+for the capability; both keep their capitals. Section 2 defines each in
+one principle (the capability, then the discipline that integrates it
+into decisions and actions). Do not name the category *inteligência
+competitiva*, *inteligência de mercado*, *gestão de riscos* or
+*monitoramento estratégico*: the page names them once, in the reading
+beside the definitions, as narrower related capabilities, never in the
+same breath as government intelligence or espionage, which no language
+page mentions. Avoid *inteligência de negócios*:
+in Brazil it means BI software. The process is `Monitorar, Analisar,
+Decidir, Agir`; the globe caption says `Monitoramento de sinais`. The
+nav says `Sobre nós` for About and keeps `Insights`, a word Brazilian
+business sites use as is; `Entrar` is Log in. The CTA pair: `Agende uma
+conversa` is the working session (Calendly), `Solicitar acesso` is
+`/contact/`. Links to English pages carry `(EN)`. The page claims no
+Brazilian office, staff, customers or partners and no Portuguese-language
+service: the platform, the session and support are not described as
+available in Portuguese, and the examples are international, not
+Brazilian or Latin American.
+
+### Japanese typography
+
+- Fonts: the self-hosted faces carry Latin only. Section 39.8 sets
+  `--sans` and `--mono` on `html:lang(ja)` to Inter or JetBrains Mono
+  first, then the reader's system gothic (Hiragino, Noto Sans CJK JP,
+  Yu Gothic UI, Meiryo). Latin words, the brand and the category name
+  keep the site's faces; no Japanese web font is downloaded.
+- Line breaking: Japanese may break between any two characters, which
+  splits words in a large heading. Headings, eyebrows, labels and
+  buttons on `/ja/` set `word-break:keep-all` and break only at a
+  `<wbr>` the markup places at a phrase boundary (`外部環境の<wbr>変化を、<wbr>組織全体の<wbr>意思決定に<wbr>つなげる。`).
+  Keep every phrase short enough to fit 272px at the phone heading size
+  (section 39.8 steps headings down under 421px), and split long katakana
+  compounds (`インテリジェンス<wbr>基盤`).
+  When editing a heading, put a `<wbr>` after each phrase (after a
+  particle or a comma), never inside a word. Running text keeps normal
+  breaking with `line-break:strict` and `text-wrap:pretty`.
+- Tracking: the chassis' negative heading tracking and the wide mono
+  tracking are Latin settings; on Japanese labels they print each
+  character apart, so section 39.8 sets them to .02em (headings) and
+  .06em (labels, the header nav and the footer). Line heights open to
+  1.85 for running text and about 1.4 for headings.
+- Punctuation: full-width `、` and `。`; headings end with `。` as the
+  house style ends them with a period; `・` joins items in a label
+  (`経営戦略・投資判断`); full-width brackets `（英語）`. No em or en
+  dashes, no `―` or `〜`, no exclamation marks. The long vowel mark `ー`
+  is a letter, not a dash.
+- No space between Japanese and Latin text (`Mission&nbsp;Greyは`); the
+  brand never splits.
+- Places in katakana: `アーリントン`, `パリ・ラ・デファンス`,
+  `シンガポール`, `サンフランシスコ`, `タンペレ`, `米国`, `フランス`,
+  `フィンランド`; the hero ledger prints `アーリントン（米国）`. The
+  research partners stay in English (`lang="en"`), their own names.
+
+### Japanese terminology, for the next writer
+
+The category name stays English, `External Intelligence Management`,
+and `External Intelligence` for the concept, each in a `<span
+lang="en">`; the Chairman's brief (2026-11-01) rules out a Japanese
+literal translation as the official name. The hero eyebrow carries the
+English name alone, as on `/de/`. Section 2 defines both in his two
+sentences and names market research, competitive analysis, business
+intelligence and risk management once, in the reading beside them, as
+activities that each cover a part (one such device per page). His
+supporting vocabulary carries the explanation: `外部環境の変化`,
+`経営判断`, `不確実性への対応`, `シナリオ分析`, `継続的なモニタリング`.
+The process prints `把握 · 分析 · 判断 · 実行` (arrows in the loop figure); the globe caption says
+`シグナルの監視`, and "illustrative" is `イメージ図`. Nav: `プラット
+フォーム`, `ソリューション`, `活用事例`, `Guild` (its own name),
+`パートナー`, `API`, `インサイト`, `会社概要`; `ログイン`. The header
+button is `ご相談` and goes to the page's own closing panel (`#contact`):
+the Chairman's brief of 2026-11-02 retired `アクセス申請` on `/ja/` as
+an unnatural invitation for Japanese executives, and the panel says in
+Japanese that booking and meeting run in English. Round four's CTA pair
+(`経営課題について相談する` to Calendly, `プラットフォームを見る` to
+`/platform/`, hero and panel alike) is superseded by round five, below. Links to
+English pages carry `（英語）`, and the closing note says the booking
+page is in English. The page claims no Japanese office, staff,
+customers or partners and no Japanese-language platform, documentation
+or support.
+
+**The 2026-11-02 revision on `/ja/`** (the Chairman's brief, after a
+native Japanese business reviewer's read). The hero leads with the
+business value (`企業の外で起きる変化を、経営判断と行動へ。`) and names
+the category after it. Three short run-in subsections (`.lp-sub`) sit in
+existing columns rather than new sections: `汎用AIツールとの違い` in the
+process note (positive, no claim about what other AI cannot do), the
+trust block in the platform split, every sentence of it backed by
+`/platform/#trust` (expert judgment "when the question requires it",
+private data "can" stay restricted, not resold). The customer line
+(`.lp-quote`) is Home's Export Agency quote, translated and marked as a
+translation, with the attribution kept in English; it sits under the
+research strip beside the G2 rating, Home's own two proof points.
+Section 5 adds three cases under `活用イメージ` with a line saying they
+are illustrative and not customers; they reuse `.lp-trio`. How to start
+lives in the closing panel only, and every English route says so
+(panel notes, footer).
+
+**Round five on `/ja/`** (the Chairman's brief MG web Jap 5, 2026-11-02,
+after the reviewer's second read). Section 2's second sentence is his
+refined definition verbatim (the discipline, shared across functions,
+naming who responds); nothing else defines the category. The contact
+hierarchy turns: `japan@missiongrey.com` (a Mission Grey alias, first
+discussion in Japanese, the core team joining when an opportunity is
+concrete) is the primary route, `日本語で問い合わせる`, a mailto with
+the subject `Mission Greyへのお問い合わせ`, in the hero, the closing
+panel and the footer. The 30-minute booking stays as the panel's second
+button, `30分のオンライン相談を予約する` (the note under it says booking
+and meeting are in English, so the label drops the brief's `(EN)` and
+fits a 320px phone); both buttons share the column width. The English
+`contact@` line left the panel (the footer keeps it). The hero note is
+gone with the booking link it described; the hero's one English route,
+`プラットフォームを見る（EN）`, carries the marker, and it no longer
+appears in the panel. The panel's eyebrow is
+his heading, `日本語でのご相談・お問い合わせ`; the closing question
+stays the h2. His definition's second sentence sits at body weight
+(`.lp-principle-note`). `外部環境` is no-wrap everywhere, and the footer
+blurb breaks by phrase. No person is named. The
+alias must work in both directions before this ships: until it does, the
+live page keeps the round-four contact block. A comment in the platform
+split marks where a genuine Japanese platform output goes once one
+exists; none is mocked up.

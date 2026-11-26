@@ -1828,7 +1828,7 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
 /* ---- 21.1 the member register ---- */
 /* The Guild's one figure, and the only one this section draws twice: a
    rule with one tick per member of the roster, in the roster's own
-   order. It measures something real (thirty members, thirty
+   order. It measures something real (thirty-five members, thirty-five
    ticks), which is the condition section 19 put on drawing a scale at
    all; a ruler that tracks nothing is a HUD graphic. The four accent
    ticks are the four members printed at plate scale further down the
@@ -1846,14 +1846,14 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
   position:relative;display:block;height:17px;margin-top:13px;
   border-top:1px solid var(--line-2);
   background-image:linear-gradient(to right,var(--line-2) 0 1px,transparent 1px);
-  background-size:calc(100% / 30) 9px;background-repeat:repeat-x;background-position:left top;
+  background-size:calc(100% / 35) 9px;background-repeat:repeat-x;background-position:left top;
 }
 /* the closing tick: a background repeat draws the leading edge of each
-   cell, so the thirtieth station has a tick and the rule's own end
+   cell, so the thirty-fifth station has a tick and the rule's own end
    does not. The register is a measure and a measure is closed. */
 .gd-reg-rule::after{content:"";position:absolute;right:0;top:0;width:1px;height:9px;background:var(--line-2)}
 .gd-reg-rule i{
-  position:absolute;top:-1px;left:calc(100% * (var(--n) - 1) / 30);
+  position:absolute;top:-1px;left:calc(100% * (var(--n) - 1) / 35);
   width:2px;height:17px;background:var(--accent);
 }
 
@@ -1918,7 +1918,7 @@ html:not(.js) .hero-v1 .globe-cap{padding-left:0}
 .gd-doms li::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
 
 /* ---- 21.5 the roster ---- */
-/* ONE list, thirty entries, one markup. A featured entry is the
+/* ONE list, thirty-five entries, one markup. A featured entry is the
    same <li> carrying one extra class, so what the page treats as an
    editorial choice is an editorial choice in the source too: same
    fields, same profile link, same list semantics for a screen reader,
@@ -2752,7 +2752,7 @@ html.js .reveal.in .pl-run{transform:scaleX(1)}
 
 /* ---- 24.6 responsive ---- */
 @media (max-width:1080px){
-  /* A 226 degree spread drawn 900px wide puts Puteaux under Singapore, so
+  /* A 226 degree spread drawn 900px wide puts Paris under Singapore, so
      below this width the register stops being a map and becomes a ruled
      list. The notation stays: the meridian is what the stations were
      ordered by, and it is still true in a column. */
@@ -5094,7 +5094,525 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 
 /* ---- end 37 ---- */
 
-/* ============ 38 COOKIE CHOICE (2026-10-28): the consent banner and its footer link ============ */
+/* ============ 38 GUILD ROSTER FILTER (2026-10-29): two registers of stations above the roster ============ */
+/* The chairman's ask: with thirty-three members the roster needs a way to
+   read only the part of it a visitor came for. Two questions, Expertise and
+   Region, each asked by a register of stations above the list. No new
+   token, font or motion; every value below is one the page already prints.
+   38.1 the bar: each register is its label and a run of stations, drawn
+        as .gd-doms draws the expertise areas (words hung from one rule,
+        a tick at each station). Separation is padding and never gap, so
+        a row of stations abuts into one continuous rule, the lesson
+        .px-rail records in section 27;
+   38.2 the pressed station takes the .px-rail selected state: amber ink,
+        its own amber segment of the rule, a taller amber tick. Amber
+        keeps its one meaning on this site, the selected thing;
+   38.3 the count line and the empty state;
+   38.4 phone: the label goes above its register and the stations wrap.
+   Nothing here moves: a state change is immediate, so there is no
+   transition for prefers-reduced-motion to take away.
+   Sections 21 and 26 are untouched. The bar ships `hidden` and its page
+   script reveals it; the [hidden] rules below exist because every one of
+   these boxes sets its own display, which outranks the UA rule (the
+   same trap section 27 records for .px-view). */
+
+/* ---- 38.1 the bar ---- */
+.gd-filter{display:grid;gap:14px;margin-top:clamp(22px,2.6vw,30px)}
+.gd-filter[hidden],.gd-none[hidden],.gd-roster[hidden],.gd-m[hidden],.gd-fb[hidden]{display:none}
+/* a shared filtered link scrolls here; the margin keeps the bar clear of
+   the sticky header */
+.gd-filter{scroll-margin-top:108px}
+.gd-fg{
+  display:grid;grid-template-columns:minmax(0,112px) minmax(0,1fr);
+  gap:0 clamp(16px,2vw,28px);align-items:start;
+}
+/* the register's name, set as the fold's count line is set: metadata,
+   level with the station words it names */
+.gd-fg-l{
+  padding-top:13px;
+  font:500 var(--fs-meta)/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);
+}
+.gd-fg-b{display:flex;flex-wrap:wrap}
+.gd-fb{
+  position:relative;appearance:none;-webkit-appearance:none;background:none;border:0;border-radius:0;
+  border-top:1px solid var(--line-2);margin:0;cursor:pointer;text-align:left;
+  min-height:38px;padding:12px clamp(14px,1.8vw,26px) 10px 9px;
+  font:500 var(--fs-meta)/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);
+}
+.gd-fb::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
+/* pointer and keyboard get the same one-step emphasis; the hover half is
+   gated on a pointer that hovers, so a phone does not keep it on the
+   station it last tapped */
+@media (hover:hover){
+  .gd-fb:hover{color:var(--ink)}
+  .gd-fb:hover::before{height:12px;background:var(--ink-dim)}
+}
+.gd-fb:focus-visible{color:var(--ink)}
+.gd-fb:focus-visible::before{height:12px;background:var(--ink-dim)}
+
+/* ---- 38.2 pressed ---- */
+.gd-fb[aria-pressed="true"]{color:var(--accent);border-top-color:var(--accent)}
+.gd-fb[aria-pressed="true"]::before{width:2px;height:14px;background:var(--accent)}
+
+/* ---- 38.3 the count and the empty state ---- */
+/* the count reads as a third line of the roster key above it: same
+   voice, same ink, so the bar adds one sentence of type and no new kind */
+.gd-filter-n{
+  margin-top:4px;
+  font:400 var(--fs-meta)/1.8 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-dim);
+}
+/* The empty state stands where the roster stood, on the roster's own
+   first rule and tick, so the page does not change shape around it. The
+   way back is a button dressed as the roster's profile links are: mono
+   at label size on an underline, which is how this page says "go". */
+.gd-none{
+  position:relative;margin-top:clamp(20px,2.4vw,28px);padding:22px 0 26px 8px;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 24px;
+}
+.gd-none::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:7px;background:var(--line-3)}
+.gd-none p{font-size:var(--fs-small);line-height:1.6;color:var(--ink-mute)}
+.gd-none-b{
+  appearance:none;-webkit-appearance:none;background:none;border:0;border-radius:0;margin:0;cursor:pointer;
+  display:inline-flex;align-items:center;min-height:38px;padding:0;
+  font:500 var(--fs-meta)/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
+  border-bottom:1px solid var(--line-3);
+}
+@media (hover:hover){.gd-none-b:hover{color:var(--accent);border-bottom-color:var(--accent)}}
+
+/* ---- 38.4 phone ---- */
+/* Below 561px a 112px label column would leave the stations 220px, so
+   the label sits on its own line above them and the stations wrap under
+   it, each still 38px tall: a tap target, not a link in running text. */
+@media (max-width:560px){
+  .gd-fg{grid-template-columns:minmax(0,1fr)}
+  .gd-fg-l{padding-top:0;margin-bottom:8px}
+  .gd-fb{padding-right:16px}
+}
+/* ---- end 38 ---- */
+
+/* ============ 39 LANGUAGES (2026-10-29): the header language menu, language landing pages ============ */
+/* Two parts, both language neutral. 39.1 is the language menu every page
+   carries in its header (a globe, the current language code, a menu of
+   one line per language) and the matching row at the foot of the phone menu. 39.2 onward
+   is the language landing page, /fr/ first: one short standalone page per
+   language, built from Home's existing instruments plus the .lp-* blocks
+   below. No class here names a language; the next language page is a
+   copy of site/fr/index.html with its own words. See COMPONENTS.md,
+   "Language landing pages". */
+
+/* ---- 39.1 the language menu ---- */
+/* A <details> like the phone menu: opens without JS, closes on outside
+   click, on Escape and after a choice through the shared header script.
+   It sits in .head-right at the nav's own type, so the main navigation
+   does not change. Under 641px the bar has no room beside the access
+   button and the burger, so the menu leaves the bar and the same
+   links print as the last row of the phone menu (.mnav-lang). */
+.lang{position:relative}
+.lang summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;gap:7px;
+  height:32px;padding:0 8px;margin-inline:-8px;border-radius:2px;
+  font:500 11.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);
+}
+.lang summary::-webkit-details-marker{display:none}
+.lang summary svg{display:block;flex:none}
+.lang summary:hover,.lang[open] summary{color:var(--ink)}
+.lang[open] summary{background:var(--bg-2)}
+.lang-menu{
+  position:absolute;right:-8px;top:calc(100% + 15px);z-index:120;min-width:176px;
+  display:flex;flex-direction:column;padding:6px;
+  background:var(--bg-1);border:1px solid var(--line-2);border-radius:2px;
+  box-shadow:0 20px 44px -18px rgba(15,23,32,.35);
+}
+.lang-menu a,.mnav-lang a{
+  display:flex;align-items:center;gap:10px;padding:12px 12px;border-radius:2px;
+  font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);
+}
+.lang-menu a:hover,.mnav-lang a:hover{background:var(--bg-2);color:var(--ink)}
+/* "Português (Brasil)" is the longest label: the desktop menu widens to
+   hold it on one line, and in the phone row's narrow columns it may wrap
+   at its space, so a wrapped label gets a line-height its two lines do
+   not touch at */
+.lang-menu a{white-space:nowrap}
+.mnav-lang a{line-height:1.35}
+/* the current language: ink, and the checker mark the site uses as its
+   only list marker; the other entries keep the mark's room so the two
+   names stay on one left edge */
+.lang-menu a::before,.mnav-lang a::before{content:"";width:6px;height:6px;flex:none}
+.lang-menu a[aria-current="true"],.mnav-lang a[aria-current="true"]{color:var(--ink)}
+.lang-menu a[aria-current="true"]::before,.mnav-lang a[aria-current="true"]::before{
+  background:conic-gradient(var(--accent) 0 25%,transparent 25% 50%,var(--accent) 50% 75%,transparent 75%);
+}
+.mnav-lang{display:none}
+@media (max-width:640px){
+  .lang{display:none}
+  .mnav-lang{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;margin-top:8px;border-top:1px solid var(--line);padding-top:8px}
+  .mnav-lang a{padding:13px 14px}
+}
+/* the languages sit in even columns, never with a lone last one: six
+   entries (English, the full site, first, then the five language pages)
+   set two by two in three rows on a phone and three across in two rows
+   from 500 (three across does not fit "Português (Brasil)" at 320). With
+   four language pages English took a row of its own; with five, that
+   would leave one page alone on the last row. */
+@media (min-width:500px) and (max-width:640px){
+  .mnav-lang{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:380px){
+  .mnav-lang a{padding:13px 10px}
+}
+/* The desktop bar was already full between 981 and about 1250 before
+   the menu joined it (USE CASES and LOG IN wrapped there), so in that
+   range the bar makes room: labels never wrap, the menu shows the globe
+   alone up to 1339 (the code returns with room to spare), and the gaps
+   close a little where the bar is tightest. Nothing changes from 1340. */
+.nav-main a,.login{white-space:nowrap}
+@media (min-width:981px) and (max-width:1339px){
+  .lang summary span{display:none}
+  .head-right{gap:16px}
+}
+@media (min-width:981px) and (max-width:1099px){
+  .site-head .wrap{gap:20px}
+  .nav-main{gap:17px;margin-left:0}
+}
+@media (min-width:1100px) and (max-width:1199px){
+  .nav-main{gap:20px}
+}
+@media (min-width:1200px) and (max-width:1279px){
+  .nav-main{gap:17px}
+}
+/* A language page's bar carries longer words than the English one, so it
+   drops the clock, keeps every label on one line and hands over to the
+   burger menu earlier. .lp-site-head is the one class a language page
+   adds to the shared header. */
+.lp-site-head .utc{display:none}
+.lp-site-head .nav-main a,.lp-site-head .login{white-space:nowrap}
+@media (max-width:1380px){
+  .lp-site-head .nav-main,.lp-site-head .login{display:none}
+  .lp-site-head .mnav{display:block}
+  .lp-site-head .wrap{gap:16px}
+}
+/* in burger mode the bar has room again, so the code comes back */
+@media (min-width:981px) and (max-width:1339px){
+  .lp-site-head .lang summary span{display:inline}
+  .lp-site-head .head-right{gap:22px}
+}
+@media (max-width:400px){
+  .lp-site-head .btn-primary{padding:9px 10px;letter-spacing:.04em}
+}
+/* the footer's quiet pointers to the language pages sit in the legal row
+   (English pages: "Résumé en français", "Resumen en español"; a language
+   page: its way back). On the English pages the pointers are one item
+   (.foot-langs), so a narrow row wraps them together, never one alone. */
+.foot-legal .foot-lang{color:var(--ink-dim)}
+.foot-legal .foot-langs{display:inline-flex;flex-wrap:wrap;gap:10px 26px}
+
+/* ---- 39.2 the landing page fold ---- */
+/* The fold is Home's (.hero-v1, .hz, the globe, .cadence-v1), unchanged.
+   A landing page's proposition runs to two short paragraphs, so the
+   second one tucks under the first instead of taking a dek's full gap. */
+.lp-dek-2{margin-top:12px}
+/* A bilingual eyebrow: the page's language, then the English term on its
+   own line. The category name is the one phrase the hero sets in ink.
+   On a phone the tracking closes a little so the page's own category
+   name (kept whole in a .nw) holds one line from 360. */
+.lp-hero .hero-eyebrow span[lang]{display:block}
+@media (max-width:430px){
+  .lp .lp-hero .hero-eyebrow{letter-spacing:.12em}
+}
+/* under 360 even that does not fit: the name may break again */
+@media (max-width:359px){
+  .lp-hero .hero-eyebrow .nw{white-space:normal}
+}
+.lp-hero .hero-dek strong{color:var(--ink);font-weight:600}
+/* phrases that never break: French questions at their hyphen (est-elle,
+   peut-il), a category name in the hero eyebrow */
+.nw{white-space:nowrap}
+/* where Home prints its operating cadence, a language page prints the
+   five places: the same ledger, five stations */
+.lp-places{grid-template-columns:repeat(5,minmax(0,1fr))}
+/* a French proposition runs longer than Home's: the measure widens so
+   the headline sets in three lines, not four */
+.lp-hero h1{max-width:19ch}
+/* a two-sentence headline in a language of long compounds (German, /de/)
+   runs to five lines at the full size: it steps down a little, drops the
+   measure (the column is the measure) and starts its second sentence on
+   its own line, so each sentence sets in two lines */
+.lp-hero h1.lp-h1-long{font-size:calc(var(--fs-hero)*.86);max-width:none}
+@media (max-width:389px){
+  .lp-hero h1.lp-h1-long{font-size:25px}
+}
+
+/* Translated mono labels run longer and wrap on a phone; at the chassis'
+   line-height of 1 two wrapped lines touch, so a language page opens
+   them to 1.5. */
+.lp .eyebrow,.lp .frame-bar,.lp .rx-k,.lp .more-link a,.lp .cadence .k,.lp .ruled-row .k,.lp .globe-cap{line-height:1.5}
+/* the three inputs side by side: every title keeps room for two lines
+   (3em, plus the 2px the letter box rides above the text's baseline), so
+   the descriptions start on one line when one title wraps */
+@media (min-width:901px){
+  .lp .rx-k{min-height:calc(3em + 2px);text-wrap:balance}
+}
+.lp .lp-places .v{font-size:15px;line-height:1.35}
+
+/* ---- 39.3 the split head: claim left, reading right ---- */
+/* Home's .hs-statement grammar for a section that opens with an argument
+   and two paragraphs: the heading hangs in the left column, the reading
+   carries the density beside it. Stacks under 901px. */
+.lp-split{margin-top:var(--label-gap,34px)}
+.lp-split-head{display:flex;flex-direction:column;gap:14px}
+.lp-split h2{font-size:var(--fs-h2);line-height:1.12;max-width:22ch}
+.lp-read{margin-top:20px}
+.lp-read p{font-size:var(--fs-dek);line-height:1.62;color:var(--ink-body);max-width:62ch}
+.lp-read p + p{margin-top:16px}
+@media (min-width:901px){
+  .lp-split{display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr);column-gap:clamp(36px,4.4vw,64px);align-items:start}
+  .lp-read{margin-top:25px}
+}
+.lp-head{margin-top:var(--label-gap,34px)}
+.lp-why .principle{margin-top:clamp(36px,4.4vw,56px)}
+
+/* ---- 39.4 the method: recipe and pipeline as one figure ---- */
+/* Inputs at the top, the continuous process at the bottom: Home's two
+   figures in its one direction. The loop sits in the stack, so it drops
+   its own padding. */
+.lp-loop{padding:0}
+.lp-how .sec-note{max-width:70ch}
+.lp-how .sec-note p + p{margin-top:12px}
+/* The offer closes the method: what the company actually provides and how
+   an organization starts, set as a split under a hairline so it reads as
+   the section's conclusion, not a new section. */
+.lp-offer{margin-top:clamp(44px,5.6vw,72px);padding-top:clamp(28px,3.4vw,40px);border-top:1px solid var(--line)}
+.lp-offer h3{font-size:var(--fs-h3);line-height:1.15;max-width:22ch}
+/* the platform link follows the sentence that names the platform start */
+.lp-offer .lp-read .more-link{margin-top:24px}
+/* One real product screen under the offer's heading (/ja/, the Chairman's
+   brief of 2026-11-01): the whole screen, uncropped at every width, so the
+   page shows the software exists without claiming more than the frame
+   holds. In the head column it costs the section no height on a desktop.
+   The caption runs to two lines in the column, so it is running text at
+   every width (a flex row would split its note into a second column). */
+.lp-shot{margin-top:clamp(6px,1vw,12px)}
+.lp-shot .win-cap{display:block;line-height:1.6}
+.lp-shot .win-cap::before{display:inline-block;margin-right:10px;vertical-align:1px}
+.lp:lang(ja) .lp-shot .win-cap{letter-spacing:.06em}
+/* The definition is two statements: the capability, then its management. */
+.lp-why .principle.lp-principle-2{margin-top:18px}
+/* /ja/ round five: the definition's second sentence (shared across
+   functions, a named owner) reads at body weight under the bold one. */
+.lp-why .principle .lp-principle-note{font-weight:400}
+/* The closing panel carries two short paragraphs: the question, then the offer. */
+.lp-access .access-panel h2 + p + p{margin:14px auto 0}
+/* /ja/ round five: the two contact routes get equal buttons, and the
+   Japanese address in the note under its button reads as a link. */
+.lp:lang(ja) .access-panel:has(.cta-notes) .access-cta .btn{width:100%}
+.lp-access .cta-notes a{color:var(--ink);border-bottom:1px solid var(--line-2);padding-bottom:2px}
+.lp-access .cta-notes a:hover{border-color:var(--accent)}
+/* Short run-in subsections inside a reading column (/ja/, the Chairman's
+   brief of 2026-11-02): the general-purpose AI note in the process note,
+   and trust, then adoption, in the platform block. A small heading over
+   the paragraphs it names, never a new section. */
+.lp-sub{margin-top:30px;font-size:17px;line-height:1.5;font-weight:600;color:var(--ink)}
+.lp-sub + p{margin-top:10px}
+.lp:lang(ja) .lp-sub{word-break:keep-all;overflow-wrap:anywhere;letter-spacing:.02em}
+/* One attributed customer line under the trust paragraphs: Home's quote
+   rule at reading size, so it supports the claim instead of headlining. */
+.lp-quote{margin-top:22px;border-left:2px solid var(--accent);padding-left:18px}
+.lp-quote blockquote p{font-size:15.5px;line-height:1.75;color:var(--ink)}
+.lp-quote figcaption{margin-top:8px;font:500 12.5px/1.6 var(--sans);letter-spacing:.04em;color:var(--ink-dim)}
+/* Illustrative cases under the function rows: the label says on its own
+   line that they are not customers; the three cases reuse the global
+   section's stations. */
+.lp-cases{margin-top:clamp(40px,5vw,60px)}
+.lp-cases .lp-trio{margin-top:22px}
+.lp-cases-note{display:block;margin-top:8px;font:400 13px/1.6 var(--sans);text-transform:none;letter-spacing:.02em;color:var(--ink-dim)}
+.lp-cases .lp-trio-i h3{font-size:18px}
+/* label over note at every width: a katakana label sharing a row breaks
+   mid-word under keep-all + overflow-wrap:anywhere on a phone */
+.lp-cases .eyebrow{display:block}
+.lp-cases #cases-h{white-space:nowrap}
+/* the customer line beside the research partners, under the strip */
+.lp-quote-wide{margin-top:clamp(28px,3.4vw,40px);max-width:62ch}
+/* /ja/ reading text breaks at phrase boundaries where the browser can
+   (Chromium); others fall back to the normal Japanese wrap */
+.lp:lang(ja) :is(.hero-dek,.lp-read p,.sec-head p,.sec-note p,.rx-v,.ruled-row .v,.lp-trio-i p,.access-panel p,.lp-quote p){word-break:auto-phrase}
+html:lang(ja) .foot-col a{word-break:keep-all}
+html:lang(ja) .foot-brand p{word-break:auto-phrase}
+
+/* ---- 39.5 the global section: the map, the places, the three claims ---- */
+/* The page's high point, so the map is wider than the text column: up to
+   1440px, near full bleed on a desktop and edge to edge on a phone. It is
+   the site's dot-grid world laid flat (x is longitude, y is latitude), the
+   five places at their true coordinates, every place joined to every
+   other and to no centre. The svg stretches to its box
+   (preserveAspectRatio="none"), and every stroke in it is non-scaling, so
+   the land dots and the place marks stay round at any box shape: that is
+   what lets the phone plot be taller than the world's own proportions.
+   One accent role, the places; links and drops are ink hairlines; the
+   "illustrative" label stays in the frame bar, quietly. */
+.lp-map{width:calc(100% - 2 * var(--pad));max-width:1440px;margin:clamp(40px,5vw,60px) auto 0;background:var(--bg-1)}
+.lp-map-plot{position:relative;padding:clamp(14px,2.2vw,30px) clamp(10px,1.8vw,24px) 0}
+.lp-map-plot svg{display:block;width:100%;height:auto;aspect-ratio:1000/288;overflow:visible}
+.lp-land{fill:none;stroke:var(--ink-mute);stroke-opacity:.5;stroke-width:clamp(2.6px,.33vw,4.8px);stroke-linecap:round;vector-effect:non-scaling-stroke}
+.lp-links path{fill:none;stroke:var(--ink);stroke-opacity:.42;stroke-width:1;vector-effect:non-scaling-stroke}
+.lp-drops path{fill:none;stroke:var(--line-3);stroke-width:1;stroke-dasharray:2 4;vector-effect:non-scaling-stroke}
+.lp-pin,.lp-pin-halo{fill:none;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.lp-pin{stroke:var(--accent-mark);stroke-width:clamp(10px,.95vw,14px)}
+.lp-pin-halo{stroke:var(--bg-1);stroke-width:clamp(15px,1.3vw,19px)}
+/* the register under the map: one rule, a tick per place at its x */
+.lp-sites{
+  position:relative;height:112px;list-style:none;
+  margin:0 clamp(10px,1.8vw,24px);border-top:1px solid var(--line-2);
+}
+.lp-sites li{position:absolute;top:0;left:var(--x);padding:13px 0 0 10px;white-space:nowrap}
+.lp-sites li::before{content:"";position:absolute;left:0;top:-1px;width:1px;height:9px;background:var(--accent)}
+.lp-sites b{display:block;font:500 11.5px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.lp-sites span{display:block;margin-top:5px;font:400 var(--fs-meta)/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim)}
+/* places a short step of longitude apart: a name may hang west of its
+   tick (.lp-site-w) or lower on a longer one (.lp-site-low), so no name
+   runs into its neighbour and no tick crosses a name */
+.lp-sites li.lp-site-w{transform:translateX(-100%);padding:13px 10px 0 0;text-align:right}
+.lp-sites li.lp-site-w::before{left:auto;right:0}
+.lp-sites li.lp-site-low{padding-top:56px}
+.lp-sites li.lp-site-low::before{height:52px}
+/* the names at the dots, used where the register cannot hang (phone) */
+.lp-tags{display:none}
+/* the three differentiators: stations on one rule, an accent tick each */
+.lp-trio{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(28px,3.4vw,52px);margin-top:clamp(44px,5.4vw,72px);
+}
+.lp-trio-i{position:relative;border-top:1px solid var(--line-2);padding-top:20px}
+.lp-trio-i::before{content:"";position:absolute;left:0;top:-1px;width:2px;height:12px;background:var(--accent)}
+.lp-n{font:500 var(--fs-label)/1 var(--mono);letter-spacing:.18em;color:var(--accent)}
+/* the three headings share two lines, so the three paragraphs start level */
+.lp-trio-i h3{margin-top:16px;font-size:var(--fs-l3);line-height:1.2;min-height:2.4em}
+.lp-trio-i h3 + p{margin-top:14px;font-size:15px;line-height:1.62;color:var(--ink-mute);max-width:46ch}
+/* the research partners: Home's proof strip, inside the column */
+.lp-strip{margin-top:clamp(44px,5.4vw,64px)}
+.lp-strip .strip-row{padding-inline:clamp(16px,2vw,24px)}
+
+/* ---- 39.6 the close ---- */
+/* The access panel unchanged; a landing page's question runs longer than
+   Home's four words, so the heading takes a wider measure, and the way to
+   the full site sits under the panel as a pointer. */
+.lp-access .access-panel h2{max-width:24ch}
+/* Without the mono repeat of each button's words, the stacked phone panel
+   would print both buttons and then two unlabelled lines. Under 561px
+   each line follows its own button instead: the two wrappers step aside
+   (display:contents) and the panel orders the four pieces as pairs. */
+@media (max-width:560px){
+  .lp-access .access-panel{display:flex;flex-direction:column}
+  .lp-access .access-panel:has(.cta-notes) .access-cta,.lp-access .access-panel .cta-notes{display:contents}
+  .lp-access .access-panel > *{order:1}
+  .lp-access .access-panel .access-cta .btn{align-self:stretch;width:auto}
+  .lp-access .access-cta .btn:first-child{order:2;margin-top:30px}
+  .lp-access .cta-notes p:first-child{order:3;margin-top:12px}
+  .lp-access .access-cta .btn:last-child{order:4;margin-top:24px}
+  .lp-access .cta-notes p:last-child{order:5;margin-top:12px}
+  .lp-access .access-panel .access-mail{order:6}
+}
+.lp-en{margin-top:26px;text-align:center;font-size:15px;color:var(--ink-mute)}
+.lp-en a{
+  display:inline-flex;align-items:center;gap:10px;color:var(--ink);
+  border-bottom:1px solid var(--line-2);padding-bottom:3px;
+}
+.lp-en a svg{color:var(--accent);flex:none}
+.lp-en a:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ---- 39.7 responsive ---- */
+@media (max-width:900px){
+  .lp-trio{grid-template-columns:minmax(0,1fr);gap:32px}
+  .lp-trio-i h3{min-height:0}
+}
+@media (max-width:700px){
+  /* the fold's five places: two columns of stations */
+  .lp-places{grid-template-columns:repeat(2,minmax(0,1fr))}
+  /* The map goes edge to edge and is read closer: the plot crops to the
+     band of longitude the five places sit in (about 145W to 135E) and
+     takes a phone-sized height, the names move to the dots and the
+     hanging register and the drops leave. */
+  .lp-map{width:100%;border-inline:0}
+  .lp-map::before,.lp-map::after,.lp-map > .tick::before,.lp-map > .tick::after{display:none}
+  .lp-map-plot{height:236px;padding:0;overflow:hidden}
+  .lp-map-plot svg{position:absolute;top:0;left:-16.4%;width:137%;height:100%;aspect-ratio:auto}
+  .lp-drops,.lp-sites{display:none}
+  .lp-land{stroke-width:2.6px}
+  .lp-tags{display:block;list-style:none;position:absolute;inset:0}
+  .lp-tags li{
+    position:absolute;left:calc(var(--x) * 1.37 - 16.4%);top:var(--y);
+    transform:translate(9px,-50%);white-space:nowrap;
+    padding:2px 5px;background:rgba(250,251,252,.88);
+    font:500 10px/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);
+  }
+  .lp-tags li.lp-tag-w{transform:translate(calc(-100% - 9px),-50%)}
+  .lp-tags li.lp-tag-s{transform:translate(-6px,9px)}
+  .lp-tags li.lp-tag-n{transform:translate(4px,calc(-100% - 7px))}
+  .lp-tags li.lp-tag-w.lp-tag-n{transform:translate(calc(-100% - 4px),calc(-100% - 7px))}
+}
+
+/* ---- 39.8 Japanese (/ja/) ---- */
+/* The self-hosted fonts carry Latin only, so a Japanese page names its
+   Japanese faces after them: Latin text, the brand and the English
+   category name keep Inter and JetBrains Mono, and kana and kanji fall to
+   the reader's system gothic (Hiragino on Apple, Noto Sans CJK on Android,
+   Yu Gothic UI or Meiryo on Windows). No web font download: a Japanese
+   face is several megabytes. */
+html:lang(ja){
+  --sans:'Inter','Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic UI',Meiryo,system-ui,sans-serif;
+  --mono:'JetBrains Mono','Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic UI',Meiryo,ui-monospace,monospace;
+}
+/* Japanese breaks between any two characters by default, which splits
+   words in a heading. Headings and labels keep phrases whole
+   (keep-all) and break only where the markup puts a <wbr> at a phrase
+   boundary; a run too long for its box may still break anywhere, so
+   nothing overflows. Running text keeps the browser's normal breaking,
+   with the strict kinsoku rules (no small kana or long vowel mark at a
+   line start). */
+html:lang(ja) body{line-break:strict}
+.lp:lang(ja) :is(h1,h2,h3,.eyebrow,.rx-k,.loop-node,.ruled-row .k,.lp-places .v,.btn,.more-link a,.cta-notes p,.strip-label){word-break:keep-all;overflow-wrap:anywhere}
+/* the chassis' negative heading tracking and wide mono tracking are set
+   for Latin; full-width characters already carry their own space (the
+   hero eyebrow is the English category name and keeps its tracking) */
+.lp:lang(ja) :is(h1,h2,h3){letter-spacing:.02em}
+.lp:lang(ja) .hero h1{line-height:1.3;max-width:none}
+.lp:lang(ja) :is(.lp-split h2,.lp-offer h3){max-width:none}
+.lp:lang(ja) :is(.sec-head h2,.lp-split h2,.access-panel h2){line-height:1.42}
+.lp:lang(ja) :is(.lp-offer h3,.lp-trio-i h3){line-height:1.45}
+.lp:lang(ja) .lp-trio-i h3{min-height:2.9em}
+.lp:lang(ja) .principle{line-height:1.7;letter-spacing:0}
+/* a katakana place name is one word: in the five-column ledger it steps
+   down with the viewport instead of breaking (サンフランシスコ at 820) */
+.lp:lang(ja) .lp-places .v{font-size:clamp(13px,1.5vw,15px);letter-spacing:0}
+.lp:lang(ja) :is(.eyebrow:not(.hero-eyebrow),.rule-label,.frame-bar,.rx-k,.loop-node .k,.ruled-row .k,.cadence .k,.strip-label,.globe-cap,.lp-sites b,.lp-sites span,.lp-tags li,.more-link a){letter-spacing:.06em}
+/* running text: a Japanese line reads more open than a Latin one */
+.lp:lang(ja) :is(.hero-dek,.lp-read p,.sec-head p,.sec-note p,.rx-v,.loop-node .v,.ruled-row .v,.lp-trio-i p,.access-panel p){line-height:1.85}
+/* text-wrap:pretty keeps a last line from holding two characters
+   (browsers without it set the text as before) */
+.lp:lang(ja) :is(.hero-dek,.lp-read p,.sec-head p,.sec-note p,.rx-v,.ruled-row .v,.lp-trio-i p,.access-panel p,.principle){text-wrap:pretty}
+/* the shared header and footer: the same tracking for the Japanese labels */
+html:lang(ja) :is(.nav-main a,.login,.site-head .btn,.mnav-panel > a,.foot-col h3,.foot-offices,.foot-legal .tag,.foot-brand .entity){letter-spacing:.06em}
+/* the row number never shares its flex line with a shrinking label */
+.lp:lang(ja) .ruled-row .n{flex:none}
+/* Chromium segments Japanese into phrases itself (auto-phrase): the large
+   definitions break between phrases there, and normally elsewhere */
+@supports (word-break:auto-phrase){
+  .lp:lang(ja) .principle{word-break:auto-phrase}
+}
+@media (max-width:900px){
+  .lp:lang(ja) .lp-trio-i h3{min-height:0}
+}
+/* On a phone the longest phrase of a heading (外部環境の変化を、 is nine
+   characters) has to fit the column whole: the headings step down so no
+   phrase is wider than 272px at 320 */
+@media (max-width:420px){
+  .lp:lang(ja) .hero h1{font-size:30px}
+  .lp:lang(ja) :is(.sec-head h2,.lp-split h2,.access-panel h2){font-size:24px}
+  .lp:lang(ja) :is(.lp-offer h3,.lp-trio-i h3){font-size:21px}
+}
+/* ---- end 39 ---- */
+
+/* ============ 40 COOKIE CHOICE (2026-10-28): the consent banner and its footer link ============ */
 /* A paper object, like .sheet: a printed slip laid on the desk rather than
    chrome. Injected by assets/consent.js only while the visitor has made no
    choice, or when they open "Cookie settings". No motion, ever. Accept and
@@ -5136,4 +5654,4 @@ html.js .px-walk .px-view{padding-top:clamp(16px,2vw,26px)}
 .foot-legal-btn:hover{color:var(--ink)}
 .foot-legal-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
-/* ---- end 38 ---- */
+/* ---- end 40 ---- */
