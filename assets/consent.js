@@ -235,6 +235,7 @@
 
   var box = null;
   var settingsButton = null;
+  var fromSettings = false; // the slip was reopened from Cookie settings
 
   function closeBanner() {
     if (box && box.parentNode) { box.parentNode.removeChild(box); }
@@ -244,10 +245,19 @@
 
   function decide(value) {
     var hadFocus = box && box.contains(document.activeElement);
+    var reopened = fromSettings;
+    fromSettings = false;
     writeCookie(CHOICE, value, MAX_AGE);
     settle();
     closeBanner();
-    if (hadFocus && settingsButton) { settingsButton.focus(); }
+    // Focus goes back to Cookie settings only when the slip was opened from
+    // there: the reader is already at the footer. After the first-visit
+    // slip the page stays where the reader was. Focusing the footer button
+    // then scrolled every browser to the bottom of the page (the slip
+    // itself takes focus on click, as it has tabindex -1).
+    if (hadFocus && reopened && settingsButton) {
+      settingsButton.focus({ preventScroll: true });
+    }
     // A page view still waiting for the choice goes now, with the reader id
     // if the answer was Accept.
     sendPageView();
@@ -324,7 +334,10 @@
     b.type = 'button';
     b.className = 'foot-legal-btn';
     b.textContent = 'Cookie settings';
-    b.addEventListener('click', function () { banner(true); });
+    b.addEventListener('click', function () {
+      if (!box) { fromSettings = true; }
+      banner(true);
+    });
     settingsButton = b;
     var terms = legal.querySelector('a[href="/terms/"]');
     if (terms && terms.nextSibling) { legal.insertBefore(b, terms.nextSibling); }
