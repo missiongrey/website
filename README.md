@@ -68,24 +68,38 @@ That serves exactly the tree that gets published. The one difference is the
 
 ## Analytics
 
-Google Analytics 4 is wired but switched off until it is configured. It
-runs cookieless: nothing is ever stored on the visitor's device, so there
-is no consent notice.
+The site counts its own visitors. There is no Google Analytics, no tag
+manager and no third-party script; nothing is sent to anyone but Mission
+Grey's own platform.
 
-- `assets/consent.js` reads the measurement id from its own `data-ga`
-  attribute. Until a real id is set, that attribute holds the placeholder
-  `__GA_MEASUREMENT_ID__`, the script does nothing and no request is made
-  to Google.
-- To switch it on, set an environment variable named `GA_MEASUREMENT_ID` in
-  the Amplify console (App settings, Environment variables), value like
-  `G-XXXXXXXXXX`, then redeploy the branch. The build substitutes the id
-  into every page.
-- With a real id set, gtag.js loads in Consent Mode with every storage
-  type denied: no analytics cookie is set, measurement rides on
-  cookieless aggregate pings, and visitor and session counts in GA are
-  Google's modeled estimates rather than exact.
-- The privacy policy describes this behaviour in section 3, Activity
-  Logging. If the analytics setup changes, that section changes with it.
+- `assets/consent.js`, loaded by every page, sends two small beacons per
+  page view to the platform's collector,
+  `https://app.missiongrey.com/insights/hit/`: one when the page opens and
+  one when it is left or hidden, carrying the time it was visible. The
+  figures appear in the platform under Customer Insights, Website
+  (`/internal/insights/website/`, staff and internal accounts).
+- Every visitor is counted without cookies: the collector forms a visitor
+  code that changes every day, and nothing is stored on the device.
+- On the first visit a banner asks whether Mission Grey may set its own
+  cookie, with equal Accept and Decline buttons. After Accept the script
+  keeps a random reader id in the host-only cookie `mg_vid`, so returning
+  readers can be told from new ones. The choice itself lives in
+  `mg_consent` (`accepted` or `declined`). Both last 13 months and are
+  re-written on every page load (Safari keeps a script-written cookie for 7
+  days otherwise). "Cookie settings" in the footer's legal row reopens the
+  banner on every page.
+- The script only sends from `missiongrey.com` and `www.missiongrey.com`.
+  On any other host (a local build, a preview) the banner and the cookies
+  work, and each beacon is written to the browser console instead of being
+  sent.
+- `www.missiongrey.com` is counted the cookieless way only, with no banner
+  and no cookie: a host-only cookie would give one reader two ids. Once www
+  redirects to the apex in the Amplify console that case stops occurring.
+- The beacon format is defined by the collector, in the platform
+  repository's `insights/collector.py`. Change the two together.
+- The privacy policy describes all of this in section 3, Activity Logging
+  and Cookies. If the analytics setup changes, that section changes with
+  it.
 
 ## DNS
 

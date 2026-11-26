@@ -3,13 +3,13 @@
 # Sibling of stage.sh: same depth-aware asset rewrite, no URL prefix, plus
 # everything the live site needs that the preview does not (CNAME,
 # .nojekyll, robots.txt, sitemap.xml, redirect stubs for retired URLs,
-# absolute social-image URLs, and the analytics measurement id).
+# absolute social-image URLs).
 #
-#   GA_MEASUREMENT_ID=G-XXXXXXXXXX deploy/build.sh
+#   deploy/build.sh
 #
-# Without that variable the build leaves the __GA_MEASUREMENT_ID__ token in
-# place, which the runtime treats as "analytics off": no banner, no request.
-# The script fails non-zero if any self-check below does not hold.
+# Analytics needs no build input: assets/consent.js is Mission Grey's own
+# script and posts to the platform's collector (see the README). The script
+# fails non-zero if any self-check below does not hold.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -35,15 +35,13 @@ cp -r "$ROOT/newsletters" "$PROD/newsletters"
 cp "$ROOT/assets/favicon.ico" "$PROD/favicon.ico"
 
 # 4) Rewrites, sitemap and the redirect stubs.
-PROD="$PROD" BASE="$BASE" GA="${GA_MEASUREMENT_ID:-}" python3 - <<'PY'
+PROD="$PROD" BASE="$BASE" python3 - <<'PY'
 import os
 import re
 import sys
 
 PROD = os.environ["PROD"]
 BASE = os.environ["BASE"]
-GA = os.environ.get("GA", "").strip()
-TOKEN = "__GA_MEASUREMENT_ID__"
 
 html_files = []
 for dp, _dn, fn in os.walk(PROD):
@@ -128,21 +126,6 @@ for rel, (anchor, label) in STUBS.items():
     with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as fh:
         fh.write(STUB.format(target=insights + anchor, canonical=insights,
                              label=label))
-
-# --- analytics measurement id ------------------------------------------
-if GA and re.fullmatch(r"G-[A-Z0-9]+", GA):
-    hits = 0
-    for path in html_files:
-        s = open(path, encoding="utf-8").read()
-        if TOKEN in s:
-            open(path, "w", encoding="utf-8").write(s.replace(TOKEN, GA))
-            hits += 1
-    print("GA measurement id injected into %d pages" % hits)
-elif GA:
-    print("WARNING: GA_MEASUREMENT_ID=%r is not a G-XXXXXXXX measurement id. "
-          "Token left in place, analytics stays off." % GA, file=sys.stderr)
-else:
-    print("GA_MEASUREMENT_ID unset: token left in place, analytics stays off")
 
 print("pages built: %d (of which indexable: %d)" % (len(html_files), len(indexable)))
 print("sitemap urls: %d" % len(urls))
@@ -249,17 +232,24 @@ for loc in locs:
     if loc.endswith("404.html"):
         problems.append("sitemap lists 404.html")
 
-# 4) the analytics token is either a real id everywhere or nowhere
-tokens = sum("__GA_MEASUREMENT_ID__" in open(p, encoding="utf-8").read()
-             for p in html_files)
-ids = sum(bool(re.search(r'data-ga="G-[A-Z0-9]+"', open(p, encoding="utf-8").read()))
-          for p in html_files)
-if tokens and ids:
-    problems.append("mixed analytics state: %d pages with the token, %d with an id"
-                    % (tokens, ids))
-if tokens + ids != SRC_PAGES:
-    problems.append("consent script missing on %d pages"
-                    % (SRC_PAGES - tokens - ids))
+# 4) every page carries the analytics and cookie-choice script, and no
+#    page carries a leftover of the retired Google Analytics wiring
+SCRIPT = re.compile(r'<script src="/?(?:\.\./)*assets/consent\.js" defer></script>')
+carrying = 0
+for p in html_files:
+    text = open(p, encoding="utf-8").read()
+    rel = os.path.relpath(p, PROD)
+    found = len(SCRIPT.findall(text))
+    if found > 1:
+        problems.append("%s: consent script included %d times" % (rel, found))
+    if found:
+        carrying += 1
+    elif os.path.dirname(rel).replace(os.sep, "/") + "/" not in stub_dirs:
+        problems.append("%s: consent script missing" % rel)
+    if "data-ga=" in text or "googletagmanager" in text or "__GA_MEASUREMENT_ID__" in text:
+        problems.append("%s: Google Analytics leftover" % rel)
+if carrying != SRC_PAGES:
+    problems.append("consent script on %d pages, expected %d" % (carrying, SRC_PAGES))
 
 if problems:
     print("\nBUILD CHECKS FAILED (%d):" % len(problems), file=sys.stderr)
@@ -269,8 +259,7 @@ if problems:
 
 print("link + asset check: %d html files, %d sitemap urls, 0 broken refs"
       % (len(html_files), len(locs)))
-print("analytics: %d pages carry the token, %d carry a measurement id"
-      % (tokens, ids))
+print("analytics: %d pages carry the consent script" % carrying)
 PY
 
 echo "built -> $PROD"
